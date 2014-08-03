@@ -1,0 +1,494 @@
+# Copyright (C) 2012 Content Aware Sidebars
+# This file is distributed under the same license as the Content Aware Sidebars package.
+msgid ""
+msgstr ""
+"Project-Id-Version: Content Aware Sidebars\n"
+"Report-Msgid-Bugs-To: http://wordpress.org/tag/content-aware-sidebars\n"
+"POT-Creation-Date: 2014-05-01 12:57+0100\n"
+"PO-Revision-Date: 2014-06-20 15:21+0100\n"
+"Last-Translator: Joachim Jensen (Intox Studio) <jv@intox.dk>\n"
+"Language-Team: MyWeb2 <info@myweb2.it>\n"
+"Language: it_IT\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Generator: Poedit 1.6.5\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: ../content-aware-sidebars.php:111
+msgid "Manage and show sidebars according to the content being viewed."
+msgstr "Gestisce e mostra sidebars a seconda del contenuto visualizzato."
+
+#: ../content-aware-sidebars.php:112
+msgid "Content Aware Sidebars"
+msgstr "Content Aware Sidebars"
+
+#: ../content-aware-sidebars.php:232 ../content-aware-sidebars.php:432
+msgid "Exposure"
+msgstr "Tipologia"
+
+#: ../content-aware-sidebars.php:238
+msgid "Singular"
+msgstr "Singola"
+
+#: ../content-aware-sidebars.php:239
+msgid "Singular & Archive"
+msgstr "Singola e archivio"
+
+#: ../content-aware-sidebars.php:240
+msgid "Archive"
+msgstr "Archivio"
+
+#: ../content-aware-sidebars.php:244 ../content-aware-sidebars.php:433
+msgctxt "option"
+msgid "Handle"
+msgstr "Comportamento"
+
+#: ../content-aware-sidebars.php:246
+msgid "Replace host sidebar, merge with it or add sidebar manually."
+msgstr ""
+"Sostituisce sidebar, si fonde con essa o aggiunge la sidebar manualmente."
+
+#: ../content-aware-sidebars.php:250
+msgid "Replace"
+msgstr "Sostituzione"
+
+#: ../content-aware-sidebars.php:251
+msgid "Merge"
+msgstr "Unione"
+
+#: ../content-aware-sidebars.php:252
+msgid "Manual"
+msgstr "Manuale"
+
+#: ../content-aware-sidebars.php:256
+msgid "Host Sidebar"
+msgstr "Sidebar"
+
+#: ../content-aware-sidebars.php:264 ../content-aware-sidebars.php:434
+msgid "Merge position"
+msgstr "Posizione"
+
+#: ../content-aware-sidebars.php:266
+msgid "Place sidebar on top or bottom of host when merging."
+msgstr "Posizione sidebar in alto o in basso dell'host durante la fusione."
+
+#: ../content-aware-sidebars.php:270
+msgid "Top"
+msgstr "Alto"
+
+#: ../content-aware-sidebars.php:271
+msgid "Bottom"
+msgstr "Basso"
+
+#: ../content-aware-sidebars.php:296
+msgid "Sidebars"
+msgstr "Sidebars"
+
+#: ../content-aware-sidebars.php:297
+msgid "Sidebar"
+msgstr "Sidebar"
+
+#: ../content-aware-sidebars.php:298
+msgctxt "sidebar"
+msgid "Add New"
+msgstr "Aggiungi"
+
+#: ../content-aware-sidebars.php:299
+msgid "Add New Sidebar"
+msgstr "Aggiungi Nuova Sidebar"
+
+#: ../content-aware-sidebars.php:300
+msgid "Edit Sidebar"
+msgstr "Modifica Sidebar"
+
+#: ../content-aware-sidebars.php:301
+msgid "New Sidebar"
+msgstr "Nuova Sidebar"
+
+#: ../content-aware-sidebars.php:302
+msgid "All Sidebars"
+msgstr "Tutte le Sidebars"
+
+#: ../content-aware-sidebars.php:303
+msgid "View Sidebar"
+msgstr "Vedi Sidebar"
+
+#: ../content-aware-sidebars.php:304
+msgid "Search Sidebars"
+msgstr "Cerca Sidebars"
+
+#: ../content-aware-sidebars.php:305
+msgid "No sidebars found"
+msgstr "Nessuna sidebar trovata"
+
+#: ../content-aware-sidebars.php:306
+msgid "No sidebars found in Trash"
+msgstr "nessuna sidebar cancellata"
+
+#: ../content-aware-sidebars.php:321 ../content-aware-sidebars.php:892
+msgid "Condition Groups"
+msgstr "Condizione gruppi "
+
+#: ../content-aware-sidebars.php:322
+msgid "Condition Group"
+msgstr "Condizione gruppo "
+
+#: ../content-aware-sidebars.php:323
+msgctxt "group"
+msgid "Add New"
+msgstr "Aggiungi"
+
+#: ../content-aware-sidebars.php:324 ../content-aware-sidebars.php:892
+#: ../content-aware-sidebars.php:922
+msgid "Add New Group"
+msgstr "Aggiungi"
+
+#: ../content-aware-sidebars.php:325 ../content-aware-sidebars.php:907
+#: ../content-aware-sidebars.php:1299
+msgctxt "group"
+msgid "Edit"
+msgstr "Modifica"
+
+#: ../content-aware-sidebars.php:351 ../content-aware-sidebars.php:354
+msgid "Sidebar updated."
+msgstr "Sidebar aggiornata."
+
+#: ../content-aware-sidebars.php:351 ../content-aware-sidebars.php:356
+#: ../content-aware-sidebars.php:358 ../content-aware-sidebars.php:363
+msgid "Manage widgets"
+msgstr "Gestione Widgets"
+
+#: ../content-aware-sidebars.php:356
+msgid "Sidebar published."
+msgstr "Sidebar pubblicata."
+
+#: ../content-aware-sidebars.php:357
+msgid "Sidebar saved."
+msgstr "Sidebar salvata."
+
+#: ../content-aware-sidebars.php:358
+msgid "Sidebar submitted."
+msgstr "Sidebar aggiornata."
+
+#: ../content-aware-sidebars.php:359
+#, php-format
+msgid "Sidebar scheduled for: <strong>%1$s</strong>."
+msgstr "Sidebar posticipata per: <strong>%1$s</strong>."
+
+#: ../content-aware-sidebars.php:361
+msgid "M j, Y @ G:i"
+msgstr "M j, Y @ G:i"
+
+#: ../content-aware-sidebars.php:364
+msgid "Sidebar draft updated."
+msgstr "Bozza sidebar aggiornata. "
+
+#: ../content-aware-sidebars.php:408 ../content-aware-sidebars.php:493
+msgid "Please update Host Sidebar"
+msgstr "Aggiorna Sidebar"
+
+#: ../content-aware-sidebars.php:568
+msgid "Manage Widgets"
+msgstr "Gestione Widgets"
+
+#: ../content-aware-sidebars.php:821
+msgid "Support the Author of Content Aware Sidebars"
+msgstr "Supporta l'autore di Content Aware Sidebars"
+
+#: ../content-aware-sidebars.php:829
+msgid "Content"
+msgstr "Contenuto"
+
+#: ../content-aware-sidebars.php:837
+msgid "Options"
+msgstr "Opzioni"
+
+#: ../content-aware-sidebars.php:893
+msgid ""
+"Click to edit a group or create a new one. Select content on the left to add "
+"it. In each group, you can combine different types of associated content."
+msgstr ""
+"Clicca per modificare un gruppo o crearne uno nuovo. Seleziona il contenuto "
+"a sinistra per aggiungerlo. In ogni gruppo, è possibile combinare diversi "
+"tipi di contenuti associati."
+
+#: ../content-aware-sidebars.php:894
+msgid "Display sidebar with"
+msgstr "Visualizza larghezza sidebar"
+
+#: ../content-aware-sidebars.php:899
+msgid ""
+"No content. Please add at least one condition group to make the sidebar "
+"content aware."
+msgstr ""
+"Nessun contenuto. Si prega di aggiungere almeno una condizione di gruppo per "
+"impostare il il contenuto della sidebar"
+
+#: ../content-aware-sidebars.php:904 ../content-aware-sidebars.php:1297
+msgid "Save"
+msgstr "Salva"
+
+#: ../content-aware-sidebars.php:904 ../content-aware-sidebars.php:1298
+msgid "Cancel"
+msgstr "Annulla"
+
+#: ../content-aware-sidebars.php:907 ../content-aware-sidebars.php:1300
+msgid "Remove"
+msgstr "Elimina"
+
+#: ../content-aware-sidebars.php:997 ../content-aware-sidebars.php:1002
+#: ../content-aware-sidebars.php:1044 ../content-aware-sidebars.php:1049
+#: ../content-aware-sidebars.php:1082 ../content-aware-sidebars.php:1087
+msgid "Unauthorized request"
+msgstr "Richiesta non autorizzata"
+
+#: ../content-aware-sidebars.php:1010
+msgid "Condition group cannot be empty"
+msgstr "Impossibile creare condizioni di gruppo"
+
+#: ../content-aware-sidebars.php:1024
+msgid "Condition group saved"
+msgstr "Condizioni di gruppo salvate"
+
+#: ../content-aware-sidebars.php:1056
+msgid "Condition group could not be created"
+msgstr "Impossibile creare condizioni di gruppo"
+
+#: ../content-aware-sidebars.php:1061
+msgid "Condition group added"
+msgstr "Aggiunta condizione di gruppo"
+
+#: ../content-aware-sidebars.php:1092
+msgid "Condition group could not be removed"
+msgstr "Le condizioni di gruppo non possono essere eliminate"
+
+#: ../content-aware-sidebars.php:1097
+msgid "Condition group removed"
+msgstr "Condizione di gruppo eliminata "
+
+#: ../content-aware-sidebars.php:1163
+msgid ""
+"If you love this plugin, please consider donating to support future "
+"development."
+msgstr ""
+"Se ti piace questo plugin, considera l'eventualità di fare una donazione."
+
+#: ../content-aware-sidebars.php:1172
+msgid "Or you could:"
+msgstr "Ti potrebbe anche interessare:"
+
+#: ../content-aware-sidebars.php:1174
+msgid "Rate the plugin on WordPress.org"
+msgstr "Valutare il plugin su WordPress.org"
+
+#: ../content-aware-sidebars.php:1175
+msgid "Link to the plugin page"
+msgstr "Collegarti alla pagina WordPress del plugin"
+
+#: ../content-aware-sidebars.php:1176
+msgid "Translate the plugin into your language"
+msgstr "Tradurre questo plugin nella tua lingua"
+
+#: ../content-aware-sidebars.php:1301
+msgid "Remove this group and its contents permanently?"
+msgstr "Vuoi eliminare questo gruppo e il suo contenuto in modo permanente?"
+
+#: ../content-aware-sidebars.php:1302
+msgid "No results found."
+msgstr "Nessuna sidebar trovata"
+
+#: ../content-aware-sidebars.php:1303
+msgid ""
+"The current group has unsaved changes. Do you want to continue and discard "
+"these changes?"
+msgstr ""
+"Il gruppo attuale contiene modifiche non salvate. Vuoi proseguire e "
+"eliminare questi cambiamenti?"
+
+#: ../modules/abstract.php:88
+#, php-format
+msgid "Display with All %s"
+msgstr "Visualizza tutte le %s"
+
+#: ../modules/abstract.php:98 ../modules/bp_member.php:104
+#: ../modules/post_type.php:198 ../modules/taxonomy.php:243
+msgid "View All"
+msgstr "Vedi tutti"
+
+#: ../modules/abstract.php:105 ../modules/abstract.php:108
+#: ../modules/post_type.php:204 ../modules/post_type.php:207
+#: ../modules/taxonomy.php:249 ../modules/taxonomy.php:252
+msgid "Search"
+msgstr "Cerca"
+
+#: ../modules/abstract.php:116 ../modules/bp_member.php:113
+#: ../modules/post_type.php:217 ../modules/taxonomy.php:262
+msgid "Add to Group"
+msgstr "Aggiungi gruppo"
+
+#: ../modules/abstract.php:188
+#, php-format
+msgid "All %s"
+msgstr "Tutte le %s"
+
+#: ../modules/author.php:22
+msgid "Authors"
+msgstr "Autori"
+
+#: ../modules/bbpress.php:23
+msgid "bbPress User Profiles"
+msgstr "Profilo utente bbPress"
+
+#: ../modules/bp_member.php:21
+msgid "BuddyPress Members"
+msgstr "Utenti BuddyPress"
+
+#: ../modules/page_template.php:22
+msgid "Page Templates"
+msgstr "Template pagine"
+
+#: ../modules/polylang.php:21 ../modules/qtranslate.php:21
+#: ../modules/transposh.php:21 ../modules/wpml.php:21
+msgid "Languages"
+msgstr "Lingue"
+
+#: ../modules/post_type.php:28
+msgid "Post Types"
+msgstr "Tipi di messaggi"
+
+#: ../modules/post_type.php:105 ../modules/post_type.php:171
+#: ../modules/taxonomy.php:182 ../modules/taxonomy.php:217
+msgid "Automatically select new children of a selected ancestor"
+msgstr "Seleziona automaticamente nuovi figli di un percorso selezionato"
+
+#: ../modules/post_type.php:177 ../modules/taxonomy.php:221
+#, php-format
+msgid "Display with %s"
+msgstr "Larghezza %s"
+
+#: ../modules/post_type.php:182 ../modules/taxonomy.php:225
+msgid "No items."
+msgstr "Nessun oggetto."
+
+#: ../modules/post_type.php:193
+msgid "Most Recent"
+msgstr "Più usati"
+
+#: ../modules/static.php:23
+msgid "Static Pages"
+msgstr "Pagine statiche"
+
+#: ../modules/static.php:33
+msgid "Front Page"
+msgstr "Pagina principale"
+
+#: ../modules/static.php:34
+msgid "Search Results"
+msgstr "Risultati di ricerca"
+
+#: ../modules/static.php:35
+msgid "404 Page"
+msgstr "Pagina 404"
+
+#: ../modules/taxonomy.php:34
+msgid "Taxonomies"
+msgstr "Tassonomie"
+
+#: ../modules/taxonomy.php:238
+msgid "Most Used"
+msgstr "Più usati"
+
+#: ../modules/url.php:22
+msgid "URLs"
+msgstr "URL"
+
+#: ../modules/url.php:40
+msgid "Add"
+msgstr "Aggiungi"
+
+#~ msgid "Show with All %s"
+#~ msgstr "Seleziona tutto: %s"
+
+#, fuzzy
+#~ msgid "New Sidebar Group"
+#~ msgstr "Nuova Sidebar"
+
+#, fuzzy
+#~ msgid "Sidebar Groups"
+#~ msgstr "Sidebars"
+
+#, fuzzy
+#~ msgid "Sidebar Group"
+#~ msgstr "Sidebar"
+
+#, fuzzy
+#~ msgid "Add New Sidebar Group"
+#~ msgstr "Aggiungi Nuova Sidebar"
+
+#, fuzzy
+#~ msgid "Edit Sidebar Group"
+#~ msgstr "Modifica Sidebar"
+
+#, fuzzy
+#~ msgid "All Sidebar Groups"
+#~ msgstr "Tutte le Sidebars"
+
+#, fuzzy
+#~ msgid "View Sidebar Group"
+#~ msgstr "Vedi Sidebar"
+
+#, fuzzy
+#~ msgid "Search Sidebar Groups"
+#~ msgstr "Cerca Sidebars"
+
+#, fuzzy
+#~ msgid "No sidebar groups found"
+#~ msgstr "Nessuna sidebar trovata"
+
+#, fuzzy
+#~ msgid "No sidebar groups found in Trash"
+#~ msgstr "nessuna sidebar cancellata"
+
+#~ msgid "http://www.intox.dk/"
+#~ msgstr "http://www.intox.dk/"
+
+#~ msgid "Joachim Jensen, Intox Studio"
+#~ msgstr "Joachim Jensen, Intox Studio"
+
+#~ msgid "Sidebar updated. <a href=\"%s\">Manage widgets</a>"
+#~ msgstr "Sidebar aggiornata. <a href=\"%s\">Gestione widgets</a>"
+
+#~ msgid "Sidebar published. <a href=\"%s\">Manage widgets</a>"
+#~ msgstr "Sidebar publicata. <a href=\"%s\">Gestione widgets</a>"
+
+#~ msgid "Sidebar submitted. <a href=\"%s\">Manage widgets</a>"
+#~ msgstr "Sidebar inviata. <a href=\"%s\">Gestione widgets</a>"
+
+#~ msgid "Spread the Word"
+#~ msgstr "Spargi la voce"
+
+#~ msgid "Show with %s"
+#~ msgstr "Mostra %s"
+
+#~ msgid "Words from the author"
+#~ msgstr "Parole dell'autore"
+
+#~ msgid ""
+#~ "Remember to <a class=\"button\" href=\"%1$s\" target=\"_blank\">rate</a> "
+#~ "and <a class=\"button\" href=\"%2$s\" target=\"_blank\">share</a> it too!"
+#~ msgstr ""
+#~ "Ricorda  di <a class=\"button\" href=\"%1$s\" target=\"_blank"
+#~ "\">valutarlo</a> e <a class=\"button\" href=\"%2$s\" target=\"_blank"
+#~ "\">condiverlo</a>!"
+
+#~ msgid "Check out Content Aware Sidebars for %23WordPress! :)"
+#~ msgstr "Verifica Content Aware Sidebars per %23WordPress! :)"
+
+#~ msgid "bbPress"
+#~ msgstr "bbPress"
+
+#, fuzzy
+#~ msgid "Sidebar draft updated. <a href=\"%s\">Manage widgets</a>"
+#~ msgstr "Sidebar aggiornata. <a href=\"%s\">Gestione widgets</a>"

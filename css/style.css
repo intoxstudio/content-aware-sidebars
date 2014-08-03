@@ -1,0 +1,305 @@
+/**
+ * @package Content Aware Sidebars
+ * @author Joachim Jensen <jv@intox.dk>
+ */
+
+.icon32-posts-sidebar {
+	background:transparent url('../img/icon-32.png') no-repeat !important;
+}
+
+.fixed .column-widgets {
+	width:10%;
+}
+.fixed .column-merge-pos {
+	width:20%;
+}
+.fixed .column-handle {
+	width:20%;
+}
+
+#cas-rules > .handlediv, #cas-rules > .hndle {
+	display:none;
+}
+
+#cas-rules.postbox {
+	background:none;
+	border:none;
+	box-shadow: none;
+}
+
+#cas-rules > .inside {
+	overflow:hidden;
+	margin:0;
+	padding:0;
+}
+
+#cas-container {
+	overflow:hidden;
+	width:100%;
+}
+
+#cas-accordion {
+	float:left;
+	width:280px;
+}
+
+#cas-accordion .outer-border {
+	margin:0;
+}
+
+#cas-accordion.accordion-container .accordion-section:first-child,
+#cas-accordion.accordion-container .accordion-section:first-child h3,
+#cas-accordion.accordion-container .top,
+#cas-accordion.accordion-container .top h3 {
+	border-top-left-radius: 3px;
+	border-top-right-radius: 3px;
+	border-top:none;
+}
+
+#cas-accordion.accordion-container .accordion-section:last-child,
+#cas-accordion.accordion-container .accordion-section:last-child .accordion-section-content,
+#cas-accordion.accordion-container .bottom,
+#cas-accordion.accordion-container .bottom:not(.open) h3 {
+	border-bottom-left-radius: 3px;
+	border-bottom-right-radius: 3px;
+}
+
+.js #cas-accordion .accordion-section-title {
+	cursor: pointer;
+	border-radius:0!important;
+	box-shadow:none!important;
+	border-bottom-width: 0;
+}
+
+#cas-accordion .accordion-section-title {
+	padding: 10px 20px;
+	margin:0!important;
+	overflow:hidden;
+	border-left:none;
+	border-right:none;
+}
+
+#cas-accordion .control-section.open .accordion-section-title {
+	border-bottom:1px solid #DFDFDF;
+}
+
+#cas-accordion .accordion-section-content {
+    padding: 18px 13px;
+    font-size: 13px;
+    border-left:none;
+    border-right:none;
+}
+
+#cas-accordion .accordion-section {
+	margin:0;
+	border-bottom: 1px solid #DFDFDF;
+}
+
+.js #cas-accordion .accordion-section:not(.open) .accordion-section-content {
+	display:none;
+}
+
+#cas-accordion ul.category-tabs {
+	width:auto;
+	margin: 20px 0 -1px;
+}
+
+#cas-accordion ul.category-tabs li {
+	padding: 3px 5px 3px 8px;
+	border-style: solid;
+	border-width: 1px;
+	position: relative;
+	display: inline-block;
+	line-height: 1.35em;
+	margin:0;
+	border-color: transparent;
+}
+
+#cas-accordion ul.category-tabs li.tabs {
+	border-color: #DFDFDF #DFDFDF #FDFDFD;
+	border-style: solid;
+	border-width: 1px;
+}
+
+#cas-accordion .tabs-panel {
+	overflow:auto;
+	clear:both;
+}
+
+#cas-accordion .button-controls {
+	margin:10px 0 0;
+}
+
+.cas-tick {
+	background-image:url('../img/tick.png'); /* Icon by fatcow.com */
+	background-repeat: no-repeat;
+	background-position: 8px center;
+}
+
+.cas-contentlist .children li {
+	padding-left:20px;
+}
+
+#cas-accordion .button-controls {
+	overflow:hidden;
+}
+
+.add-to-group {
+	float:right;
+}
+
+#cas-groups {
+	box-sizing:border-box;
+	-moz-box-sizing:border-box;
+	-webkit-box-sizing:border-box;
+	-o-box-sizing:border-box;
+	-ms-box-sizing:border-box;
+	margin-left:300px;
+}
+
+#cas-groups h3 {
+	cursor:auto;
+	display:inline-block;
+	border:none;
+	padding:0;
+	line-height:2;
+	background:none;
+	box-shadow: none;
+}
+
+.cas-groups-header, .cas-groups-footer {
+	background: none repeat scroll 0 0 #F5F5F5;
+	padding: 6px 10px;
+	overflow:hidden;
+}
+
+.cas-groups-header .button, .cas-groups-footer .button {
+	float:right;
+}
+
+.cas-groups-header {
+	border-bottom:1px solid #DFDFDF;
+}
+
+.cas-groups-footer {
+	border-top:1px solid #DFDFDF;
+}
+
+.cas-groups-body {
+	padding:8px 10px;
+	background-color: #fff;
+}
+
+.cas-group-single.cas-group-active {
+	border-color:#5B9DD9;
+	box-shadow: 0 0 2px rgba(30, 140, 190, 0.8);
+}
+/*.cas-group-single.cas-group-active .cas-group-control {
+	border-color:#555;
+}*/
+
+.cas-group-single {
+	-webkit-box-sizing:border-box;
+	-moz-box-sizing:border-box;
+	-ms-box-sizing:border-box;
+	box-sizing:border-box;
+	border-width:1px;
+	border-style:solid;
+	border-color:#cfcfcf;
+	padding:4px 10px;
+	overflow:hidden;
+	position:relative;
+	box-shadow: 0 1px 1px rgba(0, 0, 0, 0.04);
+	min-height:45px;
+	margin-bottom:10px;
+}
+
+.cas-group-single .cas-group-control {
+	text-align: right;
+	display:inline;
+	position:absolute;
+	top:0;
+	right:0;
+	line-height:30px;
+	padding:5px 10px;
+	background-color:#fafafa;
+	border-width:0 0 1px 1px;
+	border-style:solid;
+	border-color:#cfcfcf;
+	box-shadow: 0 1px 1px rgba(0, 0, 0, 0.04);
+}
+.cas-group-single .cas-group-control a {
+	text-decoration: none;
+}
+.cas-group-active .cas-group-control {
+	display:none;
+}
+
+.cas-group-single .cas-group-control-active {
+	display:none;
+}
+
+.cas-group-active .cas-group-control-active {
+	display:inline;
+}
+
+.cas-group-single:not(.cas-group-active) label {
+	cursor:auto;
+}
+
+.cas-group-single:not(.cas-group-active) input[type="checkbox"] {
+	display:none;
+}
+
+.cas-group-single .submitdelete {
+	color:#BC0B0B;
+}
+.cas-group-single .submitdelete:hover {
+	color:#fff;
+	background-color:#FF0000;
+}
+
+.cas-group-single li {
+	list-style: disc inside;
+}
+
+.cas-group-single li.cas-new {
+	background:#F6F3E4;
+}
+
+.cas-group-single.cas-group-active li {
+	list-style:none;
+}
+
+.cas-condition {
+	padding:0 0 5px;
+}
+
+#cas-groups.cas-has-groups .cas-no-groups {
+	display:none;
+}
+#cas-groups:not(.cas-has-groups) .cas-no-groups {
+	display:inline;
+}
+
+.cas-alert {
+	position:fixed;
+	top:23px;
+	left:50%;
+}
+
+.cas-alert > div {
+	padding:5px 30px;
+	position: relative;
+	left: -50%;
+}
+
+@media (max-width: 600px), (min-width:850px) and (max-width:1060px) {
+	#cas-accordion {
+		float:none;
+		width:auto;
+	}
+	#cas-groups {
+		margin:0;
+	}
+}

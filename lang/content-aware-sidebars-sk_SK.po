@@ -1,0 +1,311 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: http://wordpress.org/tag/content-aware-sidebars\n"
+"POT-Creation-Date: 2013-05-14 13:07:12+00:00\n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=iso-8859-1\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.5.5\n"
+
+# Copyright (C) 2013 Content Aware Sidebars
+# This file is distributed under the same license as the Content Aware Sidebars package.
+#: content-aware-sidebars.php:178 content-aware-sidebars.php:345
+msgid "Exposure"
+msgstr "Expozicie"
+
+#: content-aware-sidebars.php:184
+msgid "Singular"
+msgstr "Singularni"
+
+#: content-aware-sidebars.php:185
+msgid "Singular & Archive"
+msgstr "Singularni & Archiv"
+
+#: content-aware-sidebars.php:186
+msgid "Archive"
+msgstr "Archiv"
+
+#: content-aware-sidebars.php:190 content-aware-sidebars.php:346
+msgctxt "option"
+msgid "Handle"
+msgstr "Rukovat"
+
+#: content-aware-sidebars.php:192
+msgid "Replace host sidebar, merge with it or add sidebar manually."
+msgstr ""
+"Nahradit hostitela sidebar, zlucit s nim alebo manualne pridat sidebar."
+
+#: content-aware-sidebars.php:196
+msgid "Replace"
+msgstr "Nahradit"
+
+#: content-aware-sidebars.php:197
+msgid "Merge"
+msgstr "Zlucit"
+
+#: content-aware-sidebars.php:198
+msgid "Manual"
+msgstr "Manual"
+
+#: content-aware-sidebars.php:202
+msgid "Host Sidebar"
+msgstr "Hostitel Sidebar"
+
+#: content-aware-sidebars.php:210 content-aware-sidebars.php:347
+msgid "Merge position"
+msgstr "Zlucit pozicie"
+
+#: content-aware-sidebars.php:212
+msgid "Place sidebar on top or bottom of host when merging."
+msgstr "Miesto sidebar na hornej alebo dolnej casti hostitela pri zlucovani."
+
+#: content-aware-sidebars.php:216
+msgid "Top"
+msgstr "Top"
+
+#: content-aware-sidebars.php:217
+msgid "Bottom"
+msgstr "Dno"
+
+#: content-aware-sidebars.php:232
+msgid "Sidebars"
+msgstr "Bocne panely"
+
+#: content-aware-sidebars.php:233
+msgid "Sidebar"
+msgstr "Bocny panel"
+
+#: content-aware-sidebars.php:234
+msgctxt "sidebar"
+msgid "Add New"
+msgstr "Pridat nove"
+
+#: content-aware-sidebars.php:235
+msgid "Add New Sidebar"
+msgstr "Pridat novy bocny panel"
+
+#: content-aware-sidebars.php:236
+msgid "Edit Sidebar"
+msgstr "Upravit Sidebar"
+
+#: content-aware-sidebars.php:237
+msgid "New Sidebar"
+msgstr "Novy bocny panel"
+
+#: content-aware-sidebars.php:238
+msgid "All Sidebars"
+msgstr "Vsetci postranne"
+
+#: content-aware-sidebars.php:239
+msgid "View Sidebar"
+msgstr "Zobrazit bocny panel"
+
+#: content-aware-sidebars.php:240
+msgid "Search Sidebars"
+msgstr "Hladat Sidebars"
+
+#: content-aware-sidebars.php:241
+msgid "No sidebars found"
+msgstr "C sidebars nasiel"
+
+#: content-aware-sidebars.php:242
+msgid "No sidebars found in Trash"
+msgstr "Ziadne sidebars, nachadza v kosi"
+
+#: content-aware-sidebars.php:273
+msgid "Sidebar updated. <a href=\"%s\">Manage widgets</a>"
+msgstr "Sidebar aktualizovane. <a href=\"%s\">Spravovat widgety</a>"
+
+#: content-aware-sidebars.php:276
+msgid "Sidebar updated."
+msgstr "Sidebar aktualizovane."
+
+#: content-aware-sidebars.php:278
+msgid "Sidebar published. <a href=\"%s\">Manage widgets</a>"
+msgstr "Bocny panel publikoval. <a href=\"%s\">Spravovat widgety</a>"
+
+#: content-aware-sidebars.php:279
+msgid "Sidebar saved."
+msgstr "Sidebar ulozene."
+
+#: content-aware-sidebars.php:280
+msgid "Sidebar submitted. <a href=\"%s\">Manage widgets</a>"
+msgstr "Bocnom paneli posielaju. <a href=\"%s\">Spravovat widgety</a>"
+
+#: content-aware-sidebars.php:281
+msgid ""
+"Sidebar scheduled for: <strong>%1$s</strong>. <a href=\"%2$s\">Manage "
+"widgets</a>"
+msgstr ""
+"Sidebar naplanovane na: <strong>%1$s</strong>. <a href=\"%2$s\">Spravovat "
+"widgety</a>"
+
+#. translators: Publish box date format, see http:php.net/date
+#: content-aware-sidebars.php:283
+msgid "M j, Y @ G:i"
+msgstr "M j, Y @ G:i"
+
+#: content-aware-sidebars.php:284
+msgid "Sidebar draft updated."
+msgstr "Sidebar navrh aktualizovane."
+
+#: content-aware-sidebars.php:321 content-aware-sidebars.php:402
+msgid "Please update Host Sidebar"
+msgstr "Prosim aktualizujte hostitela Sidebar"
+
+#: content-aware-sidebars.php:457
+msgid "Manage Widgets"
+msgstr "Spravovat widgety"
+
+#: content-aware-sidebars.php:689
+msgid "Content"
+msgstr "Obsah"
+
+#: content-aware-sidebars.php:699
+msgid "Options"
+msgstr "Moznosti"
+
+#: content-aware-sidebars.php:708
+msgid "Spread the Word"
+msgstr ""
+
+#: content-aware-sidebars.php:798
+#, fuzzy
+msgid ""
+"If you love this plugin, please consider donating to support future "
+"development."
+msgstr "Ak mate radi tento plugin, prosim zvazte darovanie."
+
+#: content-aware-sidebars.php:803
+msgid "Or you could:"
+msgstr ""
+
+#: content-aware-sidebars.php:805
+msgid "Rate the plugin on WordPress.org"
+msgstr ""
+
+#: content-aware-sidebars.php:806
+msgid "Link to the plugin page"
+msgstr ""
+
+#: modules/abstract.php:57 modules/post_type.php:110
+msgid "Show with All %s"
+msgstr "Zobrazit s vsetky %s"
+
+#: modules/abstract.php:61 modules/post_type.php:134 modules/taxonomy.php:175
+msgctxt "verb"
+msgid "Search"
+msgstr "Hladat"
+
+#: modules/abstract.php:61 modules/post_type.php:134 modules/taxonomy.php:175
+#: modules/url.php:42
+msgid "Add"
+msgstr ""
+
+#: modules/author.php:24
+msgid "Authors"
+msgstr "Autori"
+
+#: modules/bbpress.php:23
+msgid "bbPress User Profiles"
+msgstr "bbPress pouzivatelske profily"
+
+#: modules/bp_member.php:23
+msgid "BuddyPress Members"
+msgstr "BuddyPress clenov"
+
+#: modules/page_template.php:24
+msgid "Page Templates"
+msgstr "Stranky sablony"
+
+#: modules/polylang.php:23 modules/qtranslate.php:23 modules/transposh.php:23
+#: modules/wpml.php:23
+msgid "Languages"
+msgstr "Jazyky"
+
+#: modules/post_type.php:30
+msgid "Post Types"
+msgstr "Prispevok typy"
+
+#: modules/post_type.php:104 modules/taxonomy.php:151
+msgid "Automatically select new children of a selected ancestor"
+msgstr "Automaticky vybrat nove deti z vybranych predok"
+
+#: modules/post_type.php:114 modules/taxonomy.php:159
+msgid "No items."
+msgstr "Ziadne polozky."
+
+#: modules/static.php:25
+msgid "Static Pages"
+msgstr "Staticke stranky"
+
+#: modules/static.php:34
+msgid "Front Page"
+msgstr "Predna strana"
+
+#: modules/static.php:35
+msgid "Search Results"
+msgstr "Vysledky hladania"
+
+#: modules/static.php:36
+msgid "404 Page"
+msgstr "404 Stranka"
+
+#: modules/taxonomy.php:36
+msgid "Taxonomies"
+msgstr "Taxonomie"
+
+#: modules/taxonomy.php:155
+msgid "Show with %s"
+msgstr "Zobrazit s %s"
+
+#: modules/url.php:24
+msgid "URLs"
+msgstr ""
+
+#. Plugin Name of the plugin/theme
+msgid "Content Aware Sidebars"
+msgstr "Obsah vedomi Sidebars"
+
+#. #-#-#-#-#  plugin.pot (Content Aware Sidebars 1.3.1)  #-#-#-#-#
+#. Plugin URI of the plugin/theme
+#. #-#-#-#-#  plugin.pot (Content Aware Sidebars 1.3.1)  #-#-#-#-#
+#. Author URI of the plugin/theme
+msgid "http://www.intox.dk/"
+msgstr "http://www.Intox.dk/"
+
+#. Description of the plugin/theme
+msgid "Manage and show sidebars according to the content being viewed."
+msgstr "Spravovat a Zobrazit sidebars podla obsahu je prezerana."
+
+#. Author of the plugin/theme
+msgid "Joachim Jensen, Intox Studio"
+msgstr "Joachim Jensen, Intox Studio"
+
+#~ msgid "Words from the author"
+#~ msgstr "Slov od autora"
+
+#~ msgid ""
+#~ "this-is-translatedRemember to <a class=\"button\" href=\"%1$s\" target="
+#~ "\"_blank\">rate</a> and <a class=\"button\" href=\"%2$s\" target=\"_blank"
+#~ "\">share</a> it too!"
+#~ msgstr ""
+#~ "Nezabudnite <a class=\"button\" href=\"%1$s\" target=\"_blank\">rate</a> "
+#~ "and <a class=\"button\" href=\"%2$s\" target=\"_blank\">zdielat</a> to "
+#~ "taky!"
+
+#~ msgid "Check out Content Aware Sidebars for %23WordPress! :)"
+#~ msgstr "Pozrite sa na obsah vedomi postrehov pre % 23WordPress! :)"
+
+#~ msgid "Check out Content Aware Sidebars :)"
+#~ msgstr "Pozrite sa na obsah vedomi Sidebars:)"
+
+#~ msgid "View All"
+#~ msgstr "Zobrazit vsetky"
+
+#~ msgid "Most Used"
+#~ msgstr "Najpouzivanejsie"
