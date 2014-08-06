@@ -133,13 +133,13 @@ class CASModule_post_type extends CASModule {
 				$posts =$this->_get_content(array('include' => $ids, 'posts_per_page' => -1, 'post_type' => $post_type->name, 'orderby' => 'title', 'order' => 'ASC'));
 				if($posts || isset($lookup[$post_type->name]) || isset($lookup[ContentAwareSidebars::PREFIX.'sub_' . $post_type->name])) {
 					echo '<div class="cas-condition cas-condition-'.$this->id.'-'.$post_type->name.'">';
-					echo '<strong>'.$post_type->label.'</strong>';
+					echo '<h4>'.$post_type->label.'</h4>';
 					echo '<ul>';
 					if(isset($lookup[ContentAwareSidebars::PREFIX.'sub_' . $post_type->name])) {
-						echo '<li><label><input type="checkbox" name="cas_condition[post_types][]" value="'.ContentAwareSidebars::PREFIX.'sub_' . $post_type->name . '" checked="checked" /> ' . __('Automatically select new children of a selected ancestor', ContentAwareSidebars::DOMAIN) . '</label></li>' . "\n";
+						echo '<li><label><input type="checkbox" name="cas_condition['.$this->id.'][]" value="'.ContentAwareSidebars::PREFIX.'sub_' . $post_type->name . '" checked="checked" /> ' . __('Automatically select new children of a selected ancestor', ContentAwareSidebars::DOMAIN) . '</label></li>' . "\n";
 					}
 					if(isset($lookup[$post_type->name])) {
-						echo '<li><label><input type="checkbox" name="cas_condition[post_types][]" value="'.$post_type->name.'" checked="checked" /> '.$post_type->labels->all_items.'</label></li>' . "\n";
+						echo '<li><label><input type="checkbox" name="cas_condition['.$this->id.'][]" value="'.$post_type->name.'" checked="checked" /> '.$post_type->labels->all_items.'</label></li>' . "\n";
 					}
 					if($posts) {
 						echo $this->post_checklist($post_type, $posts, false, $ids);	
@@ -223,7 +223,11 @@ class CASModule_post_type extends CASModule {
 				if(count($recent_posts) < 20) {
 					$posts = $recent_posts;
 				} else {
-					$posts = $this->_get_content(array('post_type' => $post_type->name, 'orderby' => 'title', 'order' => 'ASC'));
+					$posts = $this->_get_content(array(
+						'post_type' => $post_type->name,
+						'orderby' => 'title',
+						'order' => 'ASC'
+					));
 				}
 
 				$tabs = array();

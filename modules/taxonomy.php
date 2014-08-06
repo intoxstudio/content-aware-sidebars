@@ -67,7 +67,7 @@ class CASModule_taxonomy extends CASModule {
 	 * Determine if content is relevant
 	 * @return boolean 
 	 */
-	public function in_context() {		
+	public function in_context() {
 		if(is_singular()) {
 			// Check if content has any taxonomies supported
 			$taxonomies = get_object_taxonomies(get_post_type(),'object');
@@ -221,13 +221,13 @@ class CASModule_taxonomy extends CASModule {
 			//$posts = wp_get_object_terms( $post_id, $taxonomy->name);
 			if($posts || isset($ids[$taxonomy->name]) || isset($ids[ContentAwareSidebars::PREFIX.'sub_' . $taxonomy->name])) {
 				echo '<div class="cas-condition cas-condition-'.$this->id.'-'.$taxonomy->name.'">';
-				echo '<strong>'.$taxonomy->label.'</strong>';
+				echo '<h4>'.$taxonomy->label.'</h4>';
 				echo '<ul>';
 				if(isset($ids[ContentAwareSidebars::PREFIX.'sub_' . $taxonomy->name])) {
-					echo '<li class=""><label><input type="checkbox" name="cas_condition[taxonomies][]" value="'.ContentAwareSidebars::PREFIX.'sub_' . $taxonomy->name . '" checked="checked" /> ' . __('Automatically select new children of a selected ancestor', ContentAwareSidebars::DOMAIN) . '</label></li>' . "\n";
+					echo '<li class=""><label><input type="checkbox" name="cas_condition['.$this->id.'][]" value="'.ContentAwareSidebars::PREFIX.'sub_' . $taxonomy->name . '" checked="checked" /> ' . __('Automatically select new children of a selected ancestor', ContentAwareSidebars::DOMAIN) . '</label></li>' . "\n";
 				}
 				if(isset($ids[$taxonomy->name])) {
-					echo '<li class=""><label><input type="checkbox" name="cas_condition[taxonomies][]" value="'.$taxonomy->name.'" checked="checked" /> '.$taxonomy->labels->all_items.'</label></li>' . "\n";
+					echo '<li class=""><label><input type="checkbox" name="cas_condition['.$this->id.'][]" value="'.$taxonomy->name.'" checked="checked" /> '.$taxonomy->labels->all_items.'</label></li>' . "\n";
 				}
 				if($posts) {
 					echo $this->term_checklist($taxonomy, $posts);
@@ -263,11 +263,11 @@ class CASModule_taxonomy extends CASModule {
 
 			if($taxonomy->hierarchical) {
 				echo '<ul><li>' . "\n";
-				echo '<label><input type="checkbox" name="cas_condition[taxonomies][]" value="'.ContentAwareSidebars::PREFIX.'sub_' . $taxonomy->name . '" /> ' . __('Automatically select new children of a selected ancestor', ContentAwareSidebars::DOMAIN) . '</label>' . "\n";
+				echo '<label><input type="checkbox" name="cas_condition['.$this->id.'][]" value="'.ContentAwareSidebars::PREFIX.'sub_' . $taxonomy->name . '" /> ' . __('Automatically select new children of a selected ancestor', ContentAwareSidebars::DOMAIN) . '</label>' . "\n";
 				echo '</li></ul>' . "\n";
 			}
 			echo '<ul><li>' . "\n";
-			echo '<label><input class="cas-chk-all" type="checkbox" name="cas_condition[taxonomies][]" value="' . $taxonomy->name . '" /> ' . sprintf(__('Display with %s', ContentAwareSidebars::DOMAIN), $taxonomy->labels->all_items) . '</label>' . "\n";
+			echo '<label><input class="cas-chk-all" type="checkbox" name="cas_condition['.$this->id.'][]" value="' . $taxonomy->name . '" /> ' . sprintf(__('Display with %s', ContentAwareSidebars::DOMAIN), $taxonomy->labels->all_items) . '</label>' . "\n";
 			echo '</li></ul>' . "\n";
 	
 			if (!$terms) {
@@ -330,7 +330,7 @@ class CASModule_taxonomy extends CASModule {
 		$walker = new CAS_Walker_Checklist('category',array('parent' => 'parent', 'id' => 'term_id'));
 
 		$args = array(
-			'taxonomy'	=> $taxonomy,
+			'taxonomy'       => $taxonomy,
 			'selected_terms' => $selected_terms
 		);
 

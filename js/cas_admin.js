@@ -131,6 +131,8 @@
 								$(this).remove();
 							}
 						});
+						//Show all again
+						$('li').fadeIn('slow');
 						this._setActive(false);
 						this._currentGroup = null;					
 					} else {
@@ -193,7 +195,7 @@
 		 * @param  {Boolean}  active
 		 */
 		this._setActive = function(active) {
-			$('.js-cas-condition-add').attr('disabled',!active);
+			$('.js-cas-condition-add, .accordion-section-content input:checkbox').attr('disabled',!active);
 			this.getCurrent().toggleClass(this._activeClass,active);
 			var checkboxes = $("input:checkbox",this.getCurrent());
 			checkboxes.attr('disabled',!active);
@@ -272,6 +274,13 @@
 				this.groups.setCurrent(new_current_group);
 			}
 
+			$('.cas-groups-body').on('change', 'input:checkbox', function(e) {
+				$this = $(this);
+				if(!$this.is('checked')) {
+					$this.closest('li').hide();
+				}
+			});
+
 			this.addPaginationListener();	
 			this.addTabListener();
 			this.addPublishListener();
@@ -348,7 +357,7 @@
 					var data = [];
 
 					if(condition_elem.length == 0) {
-						condition_elem = $('<div class="cas-condition cas-condition-'+button.attr('data-cas-condition')+'"><strong>'+button.closest('.accordion-section').find('.accordion-section-title').text()+'</strong><ul></ul></div>');
+						condition_elem = $('<div class="cas-condition cas-condition-'+button.attr('data-cas-condition')+'"><h4>'+button.closest('.accordion-section').find('.accordion-section-title').text()+'</h4><ul></ul></div>');
 						cas_admin.groups.getCurrent().find('.cas-content').append(condition_elem);
 					}
 					
@@ -356,7 +365,7 @@
 					old_checkboxes.each( function() {
 						var elem = $(this);
 						if(condition_elem.find("input[value='"+elem.val()+"']").length == 0) {
-							var temp = elem.closest('li').clone().addClass('cas-new');
+							var temp = elem.closest('li').clone().addClass('cas-new').append("&nbsp;"); //add whitespace to make it look nice
 							//jQuery 1.7 fix
 							data.push(temp[0]);
 						}

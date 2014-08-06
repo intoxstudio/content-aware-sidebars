@@ -208,7 +208,7 @@ abstract class CASModule {
 		if($data) {
 			echo '<div class="cas-condition cas-condition-'.$this->id.'">';
 
-			echo '<strong>'.$this->name.'</strong>';
+			echo '<h4>'.$this->name.'</h4>';
 			echo '<ul>';
 
 			if(in_array($this->id,$data)) {
