@@ -105,7 +105,7 @@ class CASModule_author extends CASModule {
 			WHERE display_name 
 			LIKE '%s' 
 			ORDER BY display_name ASC 
-			LIMIT 0,10
+			LIMIT 0,20
 		", 
 		'%'.$_REQUEST['q'].'%'));
 
@@ -115,7 +115,7 @@ class CASModule_author extends CASModule {
 						'value'  => $user->ID,
 						'id'     => $user->ID,
 						'module' => $this->id,
-						'name'   => $this->id,
+						'name'   => 'cas_condition['.$this->id.']',
 						'id2'    => $this->id,
 						'elem'   => $this->id.'-'.$user->ID
 					);
