@@ -3,8 +3,8 @@ Contributors: intoxstudio
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=KPZHE6A72LEN4&lc=US&item_name=WordPress%20Plugin%3a%20Content%20Aware%20Sidebars&currency_code=USD&bn=PP%2dDonationsBF%3abtn_donateCC_LG%2egif%3aNonHosted
 Tags: sidebar, widget, widget area, content aware, context aware, conditional, seo, dynamic, bbpress, buddypress, qtranslate, polylang, transposh, wpml, woocommerce
 Requires at least: 3.3
-Tested up to: 3.9.1
-Stable tag: 2.3
+Tested up to: 4.0
+Stable tag: 2.4
 License: GPLv3
 
 Create and display sidebars according to the content being viewed.
@@ -15,17 +15,6 @@ Manage an infinite number of sidebars.
 Boost on-site SEO with better Calls to Action by controlling what content your sidebars should be displayed with.
 The sidebar manager makes it incredibly easy for anyone to create flexible, dynamic sidebars without the need of code.
 Developed with speed and performance in mind and will add no extra database tables or table columns.
-
-> **New in version 2**
->
-> Manage widgets for your created sidebars in the Theme Customizer.
->
-> Condition groups let you display a sidebar together with both associated and distinct content.
->
-> Improved GUI makes it even easier to select content and edit sidebars.
->
-> Improved API for developers who want to extend and manipulate content support.
->
 
 = Features =
 
@@ -53,6 +42,17 @@ Developed with speed and performance in mind and will add no extra database tabl
 * Private sidebars only for members
 * Schedule sidebars for later publishing
 * Template Tag to display content aware sidebars anywhere in your theme
+
+> **New in version 2**
+>
+> Manage widgets for your created sidebars in the Theme Customizer.
+>
+> Condition groups let you display a sidebar together with both associated and distinct content.
+>
+> Improved GUI makes it even easier to select content and edit sidebars.
+>
+> Improved API for developers who want to extend and manipulate content support.
+>
 
 = Builtin Plugin Support =
 
@@ -84,6 +84,7 @@ Download the latest [template .po file](http://plugins.svn.wordpress.org/content
 = More information =
 
 [Documentation](http://www.intox.dk/en/plugin/content-aware-sidebars-en/)
+[Follow development on Github](https://github.com/intoxstudio/content-aware-sidebars)
 
 == Installation ==
 
@@ -132,6 +133,15 @@ Download the latest [template .po file](http://plugins.svn.wordpress.org/content
 * Hello World
 
 == Changelog ==
+
+= 2.4 =
+
+* Added: compatibility with wp4.0
+* Added: better ux design for condition groups
+* Added: better ux design for sidebars in widgets screen, including an edit link
+* Added: dashicon for admin menu (wp3.8+)
+* Fixed: using some newer wordpress actions and filters for admin columns
+* Fixed: sidebars could be fetched and prepared in administration
 
 = 2.3 =
 
