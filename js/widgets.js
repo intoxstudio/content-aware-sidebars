@@ -27,9 +27,9 @@
 				var id = $this.attr('id').replace('ca-sidebar-','');
 				var $sidebar = $this.closest('.widgets-holder-wrap');
 
-				$sidebar.addClass('content-aware-sidebar')
+				$sidebar.addClass('content-aware-sidebar');
 
-				$this.append('<div class="cas-sidebar-footer"><a title="'+CASAdmin.edit+'" class="cas-sidebar-link" href="post.php?post='+id+'&action=edit"><i class="dashicons dashicons-admin-generic"></i> '+CASAdmin.edit+'</a></div>');
+				$this.find('.sidebar-description').append('<div class="cas-settings"><a title="'+CASAdmin.edit+'" class="cas-sidebar-link" href="post.php?post='+id+'&action=edit"><i class="dashicons dashicons-admin-generic"></i> '+CASAdmin.edit+'</a></div>');
 
 			});
 		}
