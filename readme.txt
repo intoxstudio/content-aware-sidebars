@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=KPZHE
 Tags: sidebar, widget, widget area, content aware, context aware, conditional, seo, dynamic, bbpress, buddypress, qtranslate, polylang, transposh, wpml, woocommerce
 Requires at least: 3.3
 Tested up to: 4.0
-Stable tag: 2.4
+Stable tag: 2.4.1
 License: GPLv3
 
 Create and display sidebars according to the content being viewed.
@@ -133,6 +133,12 @@ Download the latest [template .po file](http://plugins.svn.wordpress.org/content
 * Hello World
 
 == Changelog ==
+
+= 2.4.1 =
+
+* Fixed: authors found via search in sidebar editor could not be saved
+* Fixed: displaying max 20 authors in search results instead of 10
+* Fixed: improved ux design for sidebars in widgets screen
 
 = 2.4 =
 
