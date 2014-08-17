@@ -403,7 +403,7 @@ class CASModule_post_type extends CASModule {
 			if(!in_array($old_status,$status) && in_array($new_status,$status)) {
 				
 				$post_type = get_post_type_object($post->post_type);
-				if($post_type->hierarchical && $post_type->public && $post->parent != '0') {
+				if($post_type->hierarchical && $post_type->public && $post->post_parent) {
 				
 					// Get sidebars with post ancestor wanting to auto-select post
 					$query = new WP_Query(array(
