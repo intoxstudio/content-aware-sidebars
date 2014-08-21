@@ -72,8 +72,9 @@ Developed with speed and performance in mind and will add no extra database tabl
 * Italian (it_IT): [Luciano Del Fico](http://www.myweb2.it/)
 * Latvian (lv_LV): Haralds Gribusts
 * Lithuanian (lt_LT): Vincent G
+* Polish (pl_PL): [Marta Jasiuk](http://linkedin.com/in/martajasiuk)
 * Slovak (sk_SK): Branco
-* Spanish (es_ES): [Analia Jensen](http://www.linkedin.com/in/analiajensen)
+* Spanish (es_ES)
 * Ukranian (uk_UA): [Michael Yunat](http://getvoip.com)
 
 Do you want to see your name here?
@@ -133,6 +134,10 @@ Download the latest [template .po file](http://plugins.svn.wordpress.org/content
 * Hello World
 
 == Changelog ==
+
+= x.x =
+
+* Added: polish translation
 
 = 2.4.1 =
 
