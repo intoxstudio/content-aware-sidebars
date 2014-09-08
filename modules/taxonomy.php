@@ -123,6 +123,7 @@ class CASModule_taxonomy extends CASModule {
 			foreach($terms as $taxonomy => $term_arr) {  
 				$termrules[] = "(taxonomy.taxonomy = '".$taxonomy."' AND terms.term_id IN('".implode("','",$term_arr)."'))";
 				$taxrules[] = $taxonomy;
+				$taxrules[] = ContentAwareSidebars::PREFIX."sub_".$taxonomy;
 			}
 
 			return "(terms.slug IS NULL OR ".implode(" OR ",$termrules).") AND (taxonomies.meta_value IS NULL OR taxonomies.meta_value IN('".implode("','",$taxrules)."'))";
@@ -131,7 +132,7 @@ class CASModule_taxonomy extends CASModule {
 		}
 		$term = get_queried_object();
 
-		return "(terms.slug IS NULL OR (taxonomy.taxonomy = '".$term->taxonomy."' AND terms.slug = '".$term->slug."')) AND (taxonomies.meta_value IS NULL OR taxonomies.meta_value = '".$term->taxonomy."')";
+		return "(terms.slug IS NULL OR (taxonomy.taxonomy = '".$term->taxonomy."' AND terms.slug = '".$term->slug."')) AND (taxonomies.meta_value IS NULL OR taxonomies.meta_value IN ('".$term->taxonomy."','".ContentAwareSidebars::PREFIX."sub_".$term->taxonomy."'))";
 	}
 	
 	/**
