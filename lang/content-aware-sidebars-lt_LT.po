@@ -1,299 +1,430 @@
-# Copyright (C) 2013 Content Aware Sidebars
+# Copyright (C) 2012 Content Aware Sidebars
 # This file is distributed under the same license as the Content Aware Sidebars package.
+# Translators:
 msgid ""
 msgstr ""
-"Project-Id-Version: Content Aware Sidebars 1.3\n"
+"Project-Id-Version: Content Aware Sidebars\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/content-aware-sidebars\n"
-"POT-Creation-Date: 2013-05-14 13:07:12+00:00\n"
-"PO-Revision-Date: 2013-05-14 15:11+0100\n"
-"Last-Translator: Joachim Jensen <jv@intox.dk>\n"
-"Language-Team: Host1Free.com <info@host1free.com>\n"
-"Language: Lithuanian\n"
+"POT-Creation-Date: 2014-06-17 19:34+0100\n"
+"PO-Revision-Date: 2014-08-19 15:51+0000\n"
+"Last-Translator: Joachim <jv@intox.dk>\n"
+"Language-Team: Lithuanian (Lithuania) (http://www.transifex.com/projects/p/content-aware-sidebars/language/lt_LT/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.5.5\n"
+"Language: lt_LT\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"X-Generator: Poedit 1.6.5\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-KeywordsList: __;_e;__ngettext:1,2;_n:1,2;__ngettext_noop:1,2;_n_noop:1,2;_c,_nc:4c,1,2;_x:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2;_ex:1,2c;esc_attr__;esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPath-1: ..\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Textdomain-Support: yes\n"
 
-#: content-aware-sidebars.php:178 content-aware-sidebars.php:345
+#: ../content-aware-sidebars.php:117
+msgid "Manage and show sidebars according to the content being viewed."
+msgstr "Pagal šiuo metu peržiūrimą turinį valdykite ir rodykite tinkamas šonines juostas."
+
+#: ../content-aware-sidebars.php:118
+msgid "Content Aware Sidebars"
+msgstr "Content Aware Sidebars"
+
+#: ../content-aware-sidebars.php:257 ../content-aware-sidebars.php:462
 msgid "Exposure"
 msgstr "Atidengimas"
 
-#: content-aware-sidebars.php:184
+#: ../content-aware-sidebars.php:263
 msgid "Singular"
 msgstr "Išskirti"
 
-#: content-aware-sidebars.php:185
+#: ../content-aware-sidebars.php:264
 msgid "Singular & Archive"
 msgstr "Išskirti ir Archyvuoti"
 
-#: content-aware-sidebars.php:186
+#: ../content-aware-sidebars.php:265
 msgid "Archive"
 msgstr "Archyvuoti"
 
-#: content-aware-sidebars.php:190 content-aware-sidebars.php:346
+#: ../content-aware-sidebars.php:269 ../content-aware-sidebars.php:463
 msgctxt "option"
 msgid "Handle"
 msgstr "Apdoroti [ parinktis ]"
 
-#: content-aware-sidebars.php:192
+#: ../content-aware-sidebars.php:271
 msgid "Replace host sidebar, merge with it or add sidebar manually."
-msgstr ""
-"Pakeisti serverio šoninę juostą, sulieti ją ar pridėti šoninę juostą "
-"rankiniu būdu"
+msgstr "Pakeisti serverio šoninę juostą, sulieti ją ar pridėti šoninę juostą rankiniu būdu"
 
-#: content-aware-sidebars.php:196
+#: ../content-aware-sidebars.php:275
 msgid "Replace"
 msgstr "Pakeisti"
 
-#: content-aware-sidebars.php:197
+#: ../content-aware-sidebars.php:276
 msgid "Merge"
 msgstr "Sulieti"
 
-#: content-aware-sidebars.php:198
+#: ../content-aware-sidebars.php:277
 msgid "Manual"
 msgstr "Rankinis"
 
-#: content-aware-sidebars.php:202
+#: ../content-aware-sidebars.php:278
+msgid "Forced replace"
+msgstr ""
+
+#: ../content-aware-sidebars.php:282
 msgid "Host Sidebar"
 msgstr "Serverio šoninė juosta"
 
-#: content-aware-sidebars.php:210 content-aware-sidebars.php:347
+#: ../content-aware-sidebars.php:290 ../content-aware-sidebars.php:464
 msgid "Merge position"
 msgstr "Sulieti poziciją"
 
-#: content-aware-sidebars.php:212
+#: ../content-aware-sidebars.php:292
 msgid "Place sidebar on top or bottom of host when merging."
-msgstr ""
-"Patalpinti šoninę serverio juostą viršuje arba apačioje kuomet suliejama."
+msgstr "Patalpinti šoninę serverio juostą viršuje arba apačioje kuomet suliejama."
 
-#: content-aware-sidebars.php:216
+#: ../content-aware-sidebars.php:296
 msgid "Top"
 msgstr "Viršus"
 
-#: content-aware-sidebars.php:217
+#: ../content-aware-sidebars.php:297
 msgid "Bottom"
 msgstr "Apačia"
 
-#: content-aware-sidebars.php:232
+#: ../content-aware-sidebars.php:322
 msgid "Sidebars"
 msgstr "Šoninės juostos"
 
-#: content-aware-sidebars.php:233
+#: ../content-aware-sidebars.php:323
 msgid "Sidebar"
 msgstr "Šoninė juosta"
 
-#: content-aware-sidebars.php:234
+#: ../content-aware-sidebars.php:324
 msgctxt "sidebar"
 msgid "Add New"
 msgstr "Pridėti Naują [ šoninę juostą ]"
 
-#: content-aware-sidebars.php:235
+#: ../content-aware-sidebars.php:325
 msgid "Add New Sidebar"
 msgstr "Pridėti Naują Šoninę Juostą"
 
-#: content-aware-sidebars.php:236
+#: ../content-aware-sidebars.php:326
 msgid "Edit Sidebar"
 msgstr "Redaguoti Šoninę Juostą"
 
-#: content-aware-sidebars.php:237
+#: ../content-aware-sidebars.php:327
 msgid "New Sidebar"
 msgstr "Nauja Šoninė Juosta"
 
-#: content-aware-sidebars.php:238
+#: ../content-aware-sidebars.php:328
 msgid "All Sidebars"
 msgstr "Visos Šoninės Juostos"
 
-#: content-aware-sidebars.php:239
+#: ../content-aware-sidebars.php:329
 msgid "View Sidebar"
 msgstr "Peržiūrėti Šoninę Juostą"
 
-#: content-aware-sidebars.php:240
+#: ../content-aware-sidebars.php:330
 msgid "Search Sidebars"
 msgstr "Ieškoti Šoninių Juostų"
 
-#: content-aware-sidebars.php:241
+#: ../content-aware-sidebars.php:331
 msgid "No sidebars found"
 msgstr "Šoninių juostų nerasta"
 
-#: content-aware-sidebars.php:242
+#: ../content-aware-sidebars.php:332
 msgid "No sidebars found in Trash"
 msgstr "Šiukšlėse nerasta jokių šoninių juostų"
 
-#: content-aware-sidebars.php:273
-msgid "Sidebar updated. <a href=\"%s\">Manage widgets</a>"
-msgstr "Šoninė juosta atnaujinta. <a href=\"%s\">Tvarkyti Valdiklius</a>"
+#: ../content-aware-sidebars.php:347 ../content-aware-sidebars.php:891
+#: ../content-aware-sidebars.php:937
+msgid "Condition Groups"
+msgstr ""
 
-#: content-aware-sidebars.php:276
+#: ../content-aware-sidebars.php:348
+msgid "Condition Group"
+msgstr ""
+
+#: ../content-aware-sidebars.php:349
+msgctxt "group"
+msgid "Add New"
+msgstr "Pridėti Naują [ šoninę juostą ]"
+
+#: ../content-aware-sidebars.php:350 ../content-aware-sidebars.php:937
+#: ../content-aware-sidebars.php:967
+msgid "Add New Group"
+msgstr ""
+
+#: ../content-aware-sidebars.php:351 ../content-aware-sidebars.php:952
+#: ../content-aware-sidebars.php:1308
+msgctxt "group"
+msgid "Edit"
+msgstr ""
+
+#: ../content-aware-sidebars.php:377 ../content-aware-sidebars.php:380
 msgid "Sidebar updated."
 msgstr "Šoninė juosta atnaujinta."
 
-#: content-aware-sidebars.php:278
-msgid "Sidebar published. <a href=\"%s\">Manage widgets</a>"
-msgstr "Šoninė juosta publikuota. <a href=\"%s\">Manage widgets</a>"
+#: ../content-aware-sidebars.php:377 ../content-aware-sidebars.php:382
+#: ../content-aware-sidebars.php:384 ../content-aware-sidebars.php:389
+msgid "Manage widgets"
+msgstr ""
 
-#: content-aware-sidebars.php:279
+#: ../content-aware-sidebars.php:382
+msgid "Sidebar published."
+msgstr ""
+
+#: ../content-aware-sidebars.php:383
 msgid "Sidebar saved."
 msgstr "Šoninė juosta įrašyta."
 
-#: content-aware-sidebars.php:280
-msgid "Sidebar submitted. <a href=\"%s\">Manage widgets</a>"
-msgstr "Šoninė juosta išsiųsta. <a href=\"%s\">Manage widgets</a>"
-
-#: content-aware-sidebars.php:281
-msgid ""
-"Sidebar scheduled for: <strong>%1$s</strong>. <a href=\"%2$s\">Manage "
-"widgets</a>"
+#: ../content-aware-sidebars.php:384
+msgid "Sidebar submitted."
 msgstr ""
-"Šoninė juosta suplanuota už: <strong>%1$s</strong>. <a href=\"%s\">Manage "
-"widgets</a>"
 
-#. translators: Publish box date format, see http:php.net/date
-#: content-aware-sidebars.php:283
+#: ../content-aware-sidebars.php:385
+#, php-format
+msgid "Sidebar scheduled for: <strong>%1$s</strong>."
+msgstr ""
+
+#. translators: Publish box date format, see http://php.net/date
+#: ../content-aware-sidebars.php:387
 msgid "M j, Y @ G:i"
 msgstr "M j, Y @ G:i"
 
-#: content-aware-sidebars.php:284
+#: ../content-aware-sidebars.php:390
 msgid "Sidebar draft updated."
 msgstr "Šoninės juostos juodraštis atnaujintas."
 
-#: content-aware-sidebars.php:321 content-aware-sidebars.php:402
+#: ../content-aware-sidebars.php:438 ../content-aware-sidebars.php:523
 msgid "Please update Host Sidebar"
 msgstr "Prašome atnaujinti Serverio Šoninę Juostą"
 
-#: content-aware-sidebars.php:457
+#: ../content-aware-sidebars.php:598
 msgid "Manage Widgets"
 msgstr "Tvarkyti Valdiklius"
 
-#: content-aware-sidebars.php:689
+#: ../content-aware-sidebars.php:853
+msgid "Support the Author of Content Aware Sidebars"
+msgstr ""
+
+#: ../content-aware-sidebars.php:861
 msgid "Content"
 msgstr "Turinys"
 
-#: content-aware-sidebars.php:699
+#: ../content-aware-sidebars.php:869
 msgid "Options"
 msgstr "Parinktys"
 
-#: content-aware-sidebars.php:708
-msgid "Spread the Word"
-msgstr "Paskleiskite Žinią"
+#: ../content-aware-sidebars.php:892
+msgid ""
+"Each created condition group describe some specific content (conditions) "
+"that the current sidebar should be displayed with."
+msgstr ""
 
-#: content-aware-sidebars.php:798
+#: ../content-aware-sidebars.php:893
+msgid ""
+"Content added to a condition group uses logical conjunction, while condition"
+" groups themselves use logical disjunction. This means that content added to"
+" a group should be associated, as they are treated as such, and that the "
+"groups do not interfere with each other. Thus it is possible to have both "
+"extremely focused and at the same time distinct conditions."
+msgstr ""
+
+#: ../content-aware-sidebars.php:896
+msgid "More Information"
+msgstr ""
+
+#: ../content-aware-sidebars.php:897
+msgid "FAQ"
+msgstr ""
+
+#: ../content-aware-sidebars.php:898
+msgid "Get Support"
+msgstr ""
+
+#: ../content-aware-sidebars.php:938
+msgid ""
+"Click to edit a group or create a new one. Select content on the left to add"
+" it. In each group, you can combine different types of associated content."
+msgstr ""
+
+#: ../content-aware-sidebars.php:939
+msgid "Display sidebar with"
+msgstr ""
+
+#: ../content-aware-sidebars.php:944
+msgid ""
+"No content. Please add at least one condition group to make the sidebar "
+"content aware."
+msgstr ""
+
+#: ../content-aware-sidebars.php:949 ../content-aware-sidebars.php:1306
+msgid "Save"
+msgstr ""
+
+#: ../content-aware-sidebars.php:949 ../content-aware-sidebars.php:1307
+msgid "Cancel"
+msgstr ""
+
+#: ../content-aware-sidebars.php:952 ../content-aware-sidebars.php:1309
+msgid "Remove"
+msgstr ""
+
+#: ../content-aware-sidebars.php:1042 ../content-aware-sidebars.php:1047
+#: ../content-aware-sidebars.php:1089 ../content-aware-sidebars.php:1094
+msgid "Unauthorized request"
+msgstr ""
+
+#: ../content-aware-sidebars.php:1055
+msgid "Condition group cannot be empty"
+msgstr ""
+
+#: ../content-aware-sidebars.php:1069
+msgid "Condition group saved"
+msgstr ""
+
+#: ../content-aware-sidebars.php:1099
+msgid "Condition group could not be removed"
+msgstr ""
+
+#: ../content-aware-sidebars.php:1104
+msgid "Condition group removed"
+msgstr ""
+
+#: ../content-aware-sidebars.php:1172
 msgid ""
 "If you love this plugin, please consider donating to support future "
 "development."
-msgstr ""
-"Jeigu Jums patiko šis papildinys, prašome paaukoti. Taip prisidėsi prie "
-"tolesnio papildinio plėtojimo."
+msgstr "Jeigu Jums patiko šis papildinys, prašome paaukoti. Taip prisidėsi prie tolesnio papildinio plėtojimo."
 
-#: content-aware-sidebars.php:803
+#: ../content-aware-sidebars.php:1181
 msgid "Or you could:"
 msgstr "Arba galite:"
 
-#: content-aware-sidebars.php:805
+#: ../content-aware-sidebars.php:1183
 msgid "Rate the plugin on WordPress.org"
 msgstr "Įvertinti papildinį WordPress.org svetainėje"
 
-#: content-aware-sidebars.php:806
+#: ../content-aware-sidebars.php:1184
 msgid "Link to the plugin page"
 msgstr "Nukreipti į papildinio puslapį"
 
-#: modules/abstract.php:57 modules/post_type.php:110
-msgid "Show with All %s"
-msgstr "Rodyti su Visais %s"
+#: ../content-aware-sidebars.php:1185
+msgid "Translate the plugin into your language"
+msgstr ""
 
-#: modules/abstract.php:61 modules/post_type.php:134 modules/taxonomy.php:175
-msgctxt "verb"
+#: ../content-aware-sidebars.php:1310
+msgid "Remove this group and its contents permanently?"
+msgstr ""
+
+#: ../content-aware-sidebars.php:1311
+msgid "No results found."
+msgstr ""
+
+#: ../content-aware-sidebars.php:1312
+msgid ""
+"The current group has unsaved changes. Do you want to continue and discard "
+"these changes?"
+msgstr ""
+
+#: ../modules/abstract.php:106
+#, php-format
+msgid "Display with All %s"
+msgstr ""
+
+#: ../modules/abstract.php:116 ../modules/bp_member.php:127
+#: ../modules/post_type.php:217 ../modules/taxonomy.php:273
+msgid "View All"
+msgstr ""
+
+#: ../modules/abstract.php:123 ../modules/abstract.php:126
+#: ../modules/post_type.php:223 ../modules/post_type.php:226
+#: ../modules/taxonomy.php:279 ../modules/taxonomy.php:282
 msgid "Search"
-msgstr "Ieškoti"
+msgstr ""
 
-#: modules/abstract.php:61 modules/post_type.php:134 modules/taxonomy.php:175
-#: modules/url.php:42
-msgid "Add"
-msgstr "Pridėti"
+#: ../modules/abstract.php:134 ../modules/bp_member.php:136
+#: ../modules/post_type.php:236 ../modules/taxonomy.php:292
+msgid "Add to Group"
+msgstr ""
 
-#: modules/author.php:24
+#: ../modules/abstract.php:206
+#, php-format
+msgid "All %s"
+msgstr ""
+
+#: ../modules/author.php:28
 msgid "Authors"
 msgstr "Autorius"
 
-#: modules/bbpress.php:23
+#: ../modules/bbpress.php:29
 msgid "bbPress User Profiles"
 msgstr "bbPress Vartotojų Profilius"
 
-#: modules/bp_member.php:23
+#: ../modules/bp_member.php:27
 msgid "BuddyPress Members"
 msgstr "BuddyPress Narius"
 
-#: modules/page_template.php:24
+#: ../modules/page_template.php:28
 msgid "Page Templates"
 msgstr "Puslapių Ruošinius"
 
-#: modules/polylang.php:23 modules/qtranslate.php:23 modules/transposh.php:23
-#: modules/wpml.php:23
+#: ../modules/polylang.php:27 ../modules/qtranslate.php:27
+#: ../modules/transposh.php:27 ../modules/wpml.php:27
 msgid "Languages"
 msgstr "Kalbas"
 
-#: modules/post_type.php:30
+#: ../modules/post_type.php:34
 msgid "Post Types"
 msgstr "Įrašų Tipus"
 
-#: modules/post_type.php:104 modules/taxonomy.php:151
+#: ../modules/post_type.php:119 ../modules/post_type.php:190
+#: ../modules/taxonomy.php:208 ../modules/taxonomy.php:247
 msgid "Automatically select new children of a selected ancestor"
 msgstr "Automatiškai pasirinkti naujus pažymėtų savininkų \"vaikus\"."
 
-#: modules/post_type.php:114 modules/taxonomy.php:159
+#: ../modules/post_type.php:196 ../modules/taxonomy.php:251
+#, php-format
+msgid "Display with %s"
+msgstr ""
+
+#: ../modules/post_type.php:201 ../modules/taxonomy.php:255
 msgid "No items."
 msgstr "Jokių elementų. "
 
-#: modules/static.php:25
+#: ../modules/post_type.php:212
+msgid "Most Recent"
+msgstr ""
+
+#: ../modules/static.php:29
 msgid "Static Pages"
 msgstr "Statiniai Puslapiai"
 
-#: modules/static.php:34
+#: ../modules/static.php:39
 msgid "Front Page"
 msgstr "Titulinis Puslapis"
 
-#: modules/static.php:35
+#: ../modules/static.php:40
 msgid "Search Results"
 msgstr "Paieškos Rezultatai"
 
-#: modules/static.php:36
+#: ../modules/static.php:41
 msgid "404 Page"
 msgstr "404 Puslapis"
 
-#: modules/taxonomy.php:36
+#: ../modules/taxonomy.php:40
 msgid "Taxonomies"
 msgstr "Taksonomijos"
 
-#: modules/taxonomy.php:155
-msgid "Show with %s"
-msgstr "Rodyti su %s"
+#: ../modules/taxonomy.php:268
+msgid "Most Used"
+msgstr ""
 
-#: modules/url.php:24
+#: ../modules/url.php:22
 msgid "URLs"
 msgstr "Universalieji Adresai"
 
-#. Plugin Name of the plugin/theme
-msgid "Content Aware Sidebars"
-msgstr "Content Aware Sidebars"
-
-#. #-#-#-#-#  plugin.pot (Content Aware Sidebars 1.3.1)  #-#-#-#-#
-#. Plugin URI of the plugin/theme
-#. #-#-#-#-#  plugin.pot (Content Aware Sidebars 1.3.1)  #-#-#-#-#
-#. Author URI of the plugin/theme
-msgid "http://www.intox.dk/"
-msgstr "http://www.intox.dk/"
-
-#. Description of the plugin/theme
-msgid "Manage and show sidebars according to the content being viewed."
-msgstr ""
-"Pagal šiuo metu peržiūrimą turinį valdykite ir rodykite tinkamas šonines "
-"juostas."
-
-#. Author of the plugin/theme
-msgid "Joachim Jensen, Intox Studio"
-msgstr "Joachim Jensen, Intox Studio"
-
-#~ msgid "View All"
-#~ msgstr "Peržiūrėti Visus"
-
-#~ msgid "Most Used"
-#~ msgstr "Dažniausiai naudoti(os)"
+#: ../modules/url.php:40
+msgid "Add"
+msgstr "Pridėti"

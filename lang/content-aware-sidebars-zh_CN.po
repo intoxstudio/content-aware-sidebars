@@ -1,402 +1,424 @@
 # Copyright (C) 2012 Content Aware Sidebars
 # This file is distributed under the same license as the Content Aware Sidebars package.
+# Translators:
+# tkjune <tkjune@gmail.com>, 2014
 msgid ""
 msgstr ""
-"Project-Id-Version: Content Aware Sidebars 2.1\n"
+"Project-Id-Version: Content Aware Sidebars\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/content-aware-sidebars\n"
-"POT-Creation-Date: 2014-05-01 12:57+0100\n"
-"PO-Revision-Date: 2014-06-20 15:24+0100\n"
-"Last-Translator: Joachim Jensen (Intox Studio) <jv@intox.dk>\n"
-"Language-Team: \n"
-"Language: zh_Hans_CN\n"
+"POT-Creation-Date: 2014-06-17 19:34+0100\n"
+"PO-Revision-Date: 2014-08-29 03:00+0000\n"
+"Last-Translator: tkjune <tkjune@gmail.com>\n"
+"Language-Team: Chinese (http://www.transifex.com/projects/p/content-aware-sidebars/language/zh/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.6.5\n"
-"X-Poedit-KeywordsList: __;_e;__ngettext:1,2;_n:1,2;__ngettext_noop:1,2;"
-"_n_noop:1,2;_c,_nc:4c,1,2;_x:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2;_ex:1,2c;"
-"esc_attr__;esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c\n"
-"X-Poedit-Basepath: .\n"
-"X-Textdomain-Support: yes\n"
-"X-Poedit-SourceCharset: UTF-8\n"
+"Language: zh\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Poedit 1.6.5\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-KeywordsList: __;_e;__ngettext:1,2;_n:1,2;__ngettext_noop:1,2;_n_noop:1,2;_c,_nc:4c,1,2;_x:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2;_ex:1,2c;esc_attr__;esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c\n"
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPath-1: ..\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Textdomain-Support: yes\n"
 
-#: ../content-aware-sidebars.php:111
+#: ../content-aware-sidebars.php:117
 msgid "Manage and show sidebars according to the content being viewed."
 msgstr "根据页面内容管理和显示边栏"
 
-#: ../content-aware-sidebars.php:112
+#: ../content-aware-sidebars.php:118
 msgid "Content Aware Sidebars"
 msgstr "自由定制边栏"
 
-#: ../content-aware-sidebars.php:232 ../content-aware-sidebars.php:432
+#: ../content-aware-sidebars.php:257 ../content-aware-sidebars.php:462
 msgid "Exposure"
 msgstr "显示于"
 
-#: ../content-aware-sidebars.php:238
+#: ../content-aware-sidebars.php:263
 msgid "Singular"
 msgstr "文章页"
 
-#: ../content-aware-sidebars.php:239
+#: ../content-aware-sidebars.php:264
 msgid "Singular & Archive"
 msgstr "文章页和列表页"
 
-#: ../content-aware-sidebars.php:240
+#: ../content-aware-sidebars.php:265
 msgid "Archive"
 msgstr "列表页"
 
-#: ../content-aware-sidebars.php:244 ../content-aware-sidebars.php:433
+#: ../content-aware-sidebars.php:269 ../content-aware-sidebars.php:463
 msgctxt "option"
 msgid "Handle"
 msgstr "处理方式"
 
-#: ../content-aware-sidebars.php:246
+#: ../content-aware-sidebars.php:271
 msgid "Replace host sidebar, merge with it or add sidebar manually."
 msgstr "替换主边栏, 合并或者手动添加边栏"
 
-#: ../content-aware-sidebars.php:250
+#: ../content-aware-sidebars.php:275
 msgid "Replace"
 msgstr "替换"
 
-#: ../content-aware-sidebars.php:251
+#: ../content-aware-sidebars.php:276
 msgid "Merge"
 msgstr "合并"
 
-#: ../content-aware-sidebars.php:252
+#: ../content-aware-sidebars.php:277
 msgid "Manual"
 msgstr "手动"
 
-#: ../content-aware-sidebars.php:256
+#: ../content-aware-sidebars.php:278
+msgid "Forced replace"
+msgstr "强制替换"
+
+#: ../content-aware-sidebars.php:282
 msgid "Host Sidebar"
 msgstr "主边栏"
 
-#: ../content-aware-sidebars.php:264 ../content-aware-sidebars.php:434
+#: ../content-aware-sidebars.php:290 ../content-aware-sidebars.php:464
 msgid "Merge position"
 msgstr "合并位置"
 
-#: ../content-aware-sidebars.php:266
+#: ../content-aware-sidebars.php:292
 msgid "Place sidebar on top or bottom of host when merging."
 msgstr "合并时将边栏放置在主边栏的顶部或底部"
 
-#: ../content-aware-sidebars.php:270
+#: ../content-aware-sidebars.php:296
 msgid "Top"
 msgstr "顶部"
 
-#: ../content-aware-sidebars.php:271
+#: ../content-aware-sidebars.php:297
 msgid "Bottom"
 msgstr "底部"
 
-#: ../content-aware-sidebars.php:296
+#: ../content-aware-sidebars.php:322
 msgid "Sidebars"
 msgstr "边栏"
 
-#: ../content-aware-sidebars.php:297
+#: ../content-aware-sidebars.php:323
 msgid "Sidebar"
 msgstr "边栏"
 
-#: ../content-aware-sidebars.php:298
+#: ../content-aware-sidebars.php:324
 msgctxt "sidebar"
 msgid "Add New"
 msgstr "新建"
 
-#: ../content-aware-sidebars.php:299
+#: ../content-aware-sidebars.php:325
 msgid "Add New Sidebar"
 msgstr "添加边栏"
 
-#: ../content-aware-sidebars.php:300
+#: ../content-aware-sidebars.php:326
 msgid "Edit Sidebar"
 msgstr "编辑边栏"
 
-#: ../content-aware-sidebars.php:301
+#: ../content-aware-sidebars.php:327
 msgid "New Sidebar"
 msgstr "新建边栏"
 
-#: ../content-aware-sidebars.php:302
+#: ../content-aware-sidebars.php:328
 msgid "All Sidebars"
 msgstr "全部边栏"
 
-#: ../content-aware-sidebars.php:303
+#: ../content-aware-sidebars.php:329
 msgid "View Sidebar"
 msgstr "查看边栏"
 
-#: ../content-aware-sidebars.php:304
+#: ../content-aware-sidebars.php:330
 msgid "Search Sidebars"
 msgstr "搜索边栏"
 
-#: ../content-aware-sidebars.php:305
+#: ../content-aware-sidebars.php:331
 msgid "No sidebars found"
 msgstr "未找到边栏"
 
-#: ../content-aware-sidebars.php:306
+#: ../content-aware-sidebars.php:332
 msgid "No sidebars found in Trash"
 msgstr "回收站中未找到边栏"
 
-#: ../content-aware-sidebars.php:321 ../content-aware-sidebars.php:892
+#: ../content-aware-sidebars.php:347 ../content-aware-sidebars.php:891
+#: ../content-aware-sidebars.php:937
 msgid "Condition Groups"
 msgstr "显示条件组"
 
-#: ../content-aware-sidebars.php:322
+#: ../content-aware-sidebars.php:348
 msgid "Condition Group"
 msgstr "显示条件组"
 
-#: ../content-aware-sidebars.php:323
+#: ../content-aware-sidebars.php:349
 msgctxt "group"
 msgid "Add New"
 msgstr "新建"
 
-#: ../content-aware-sidebars.php:324 ../content-aware-sidebars.php:892
-#: ../content-aware-sidebars.php:922
+#: ../content-aware-sidebars.php:350 ../content-aware-sidebars.php:937
+#: ../content-aware-sidebars.php:967
 msgid "Add New Group"
 msgstr "新建组"
 
-#: ../content-aware-sidebars.php:325 ../content-aware-sidebars.php:907
-#: ../content-aware-sidebars.php:1299
+#: ../content-aware-sidebars.php:351 ../content-aware-sidebars.php:952
+#: ../content-aware-sidebars.php:1308
 msgctxt "group"
 msgid "Edit"
 msgstr "编辑"
 
-#: ../content-aware-sidebars.php:351 ../content-aware-sidebars.php:354
+#: ../content-aware-sidebars.php:377 ../content-aware-sidebars.php:380
 msgid "Sidebar updated."
 msgstr "边栏已更新."
 
-#: ../content-aware-sidebars.php:351 ../content-aware-sidebars.php:356
-#: ../content-aware-sidebars.php:358 ../content-aware-sidebars.php:363
+#: ../content-aware-sidebars.php:377 ../content-aware-sidebars.php:382
+#: ../content-aware-sidebars.php:384 ../content-aware-sidebars.php:389
 msgid "Manage widgets"
 msgstr "管理小工具"
 
-#: ../content-aware-sidebars.php:356
+#: ../content-aware-sidebars.php:382
 msgid "Sidebar published."
 msgstr "已发布边栏"
 
-#: ../content-aware-sidebars.php:357
+#: ../content-aware-sidebars.php:383
 msgid "Sidebar saved."
 msgstr "边栏已保存."
 
-#: ../content-aware-sidebars.php:358
+#: ../content-aware-sidebars.php:384
 msgid "Sidebar submitted."
 msgstr "已提交边栏"
 
-#: ../content-aware-sidebars.php:359
+#: ../content-aware-sidebars.php:385
 #, php-format
 msgid "Sidebar scheduled for: <strong>%1$s</strong>."
 msgstr "已为 <strong>%1$s</strong> 设置了边栏计划"
 
-#: ../content-aware-sidebars.php:361
+#. translators: Publish box date format, see http://php.net/date
+#: ../content-aware-sidebars.php:387
 msgid "M j, Y @ G:i"
 msgstr "M j, Y @ G:i"
 
-#: ../content-aware-sidebars.php:364
+#: ../content-aware-sidebars.php:390
 msgid "Sidebar draft updated."
 msgstr "边栏草稿已更新."
 
-#: ../content-aware-sidebars.php:408 ../content-aware-sidebars.php:493
+#: ../content-aware-sidebars.php:438 ../content-aware-sidebars.php:523
 msgid "Please update Host Sidebar"
 msgstr "请更新主边栏"
 
-#: ../content-aware-sidebars.php:568
+#: ../content-aware-sidebars.php:598
 msgid "Manage Widgets"
 msgstr "管理小工具"
 
-#: ../content-aware-sidebars.php:821
+#: ../content-aware-sidebars.php:853
 msgid "Support the Author of Content Aware Sidebars"
 msgstr "支持Content Aware Sidebars"
 
-#: ../content-aware-sidebars.php:829
+#: ../content-aware-sidebars.php:861
 msgid "Content"
 msgstr "内容"
 
-#: ../content-aware-sidebars.php:837
+#: ../content-aware-sidebars.php:869
 msgid "Options"
 msgstr "选项"
 
+#: ../content-aware-sidebars.php:892
+msgid ""
+"Each created condition group describe some specific content (conditions) "
+"that the current sidebar should be displayed with."
+msgstr "每个条件组表示当前边栏会显示的特定的内容(条件)"
+
 #: ../content-aware-sidebars.php:893
 msgid ""
-"Click to edit a group or create a new one. Select content on the left to add "
-"it. In each group, you can combine different types of associated content."
-msgstr ""
-"点击修改或新建组。选择左侧内容添加到组中。在每组中，你可以组合不同的有关内"
-"容。"
+"Content added to a condition group uses logical conjunction, while condition"
+" groups themselves use logical disjunction. This means that content added to"
+" a group should be associated, as they are treated as such, and that the "
+"groups do not interfere with each other. Thus it is possible to have both "
+"extremely focused and at the same time distinct conditions."
+msgstr "加入条件组的内容使用逻辑关联，条件组自身使用逻辑分离。意思是加入组的内容必须相关，而各个组之间并不影响。"
 
-#: ../content-aware-sidebars.php:894
+#: ../content-aware-sidebars.php:896
+msgid "More Information"
+msgstr "更多信息"
+
+#: ../content-aware-sidebars.php:897
+msgid "FAQ"
+msgstr "常见问题"
+
+#: ../content-aware-sidebars.php:898
+msgid "Get Support"
+msgstr "技术支持"
+
+#: ../content-aware-sidebars.php:938
+msgid ""
+"Click to edit a group or create a new one. Select content on the left to add"
+" it. In each group, you can combine different types of associated content."
+msgstr "点击修改或新建组。选择左侧内容添加到组中。在每组中，你可以组合不同的有关内容。"
+
+#: ../content-aware-sidebars.php:939
 msgid "Display sidebar with"
 msgstr "边栏显示在"
 
-#: ../content-aware-sidebars.php:899
+#: ../content-aware-sidebars.php:944
 msgid ""
 "No content. Please add at least one condition group to make the sidebar "
 "content aware."
 msgstr "没有内容。请至少选择一项内容组以定制边栏"
 
-#: ../content-aware-sidebars.php:904 ../content-aware-sidebars.php:1297
+#: ../content-aware-sidebars.php:949 ../content-aware-sidebars.php:1306
 msgid "Save"
 msgstr "保存"
 
-#: ../content-aware-sidebars.php:904 ../content-aware-sidebars.php:1298
+#: ../content-aware-sidebars.php:949 ../content-aware-sidebars.php:1307
 msgid "Cancel"
 msgstr "取消"
 
-#: ../content-aware-sidebars.php:907 ../content-aware-sidebars.php:1300
+#: ../content-aware-sidebars.php:952 ../content-aware-sidebars.php:1309
 msgid "Remove"
 msgstr "删除"
 
-#: ../content-aware-sidebars.php:997 ../content-aware-sidebars.php:1002
-#: ../content-aware-sidebars.php:1044 ../content-aware-sidebars.php:1049
-#: ../content-aware-sidebars.php:1082 ../content-aware-sidebars.php:1087
+#: ../content-aware-sidebars.php:1042 ../content-aware-sidebars.php:1047
+#: ../content-aware-sidebars.php:1089 ../content-aware-sidebars.php:1094
 msgid "Unauthorized request"
 msgstr "未授权请求"
 
-#: ../content-aware-sidebars.php:1010
+#: ../content-aware-sidebars.php:1055
 msgid "Condition group cannot be empty"
 msgstr "未能创建条件组"
 
-#: ../content-aware-sidebars.php:1024
+#: ../content-aware-sidebars.php:1069
 msgid "Condition group saved"
 msgstr "已保存条件组"
 
-#: ../content-aware-sidebars.php:1056
-msgid "Condition group could not be created"
-msgstr "未能创建条件组"
-
-#: ../content-aware-sidebars.php:1061
-msgid "Condition group added"
-msgstr "已添加条件组"
-
-#: ../content-aware-sidebars.php:1092
+#: ../content-aware-sidebars.php:1099
 msgid "Condition group could not be removed"
 msgstr "未能删除条件组"
 
-#: ../content-aware-sidebars.php:1097
+#: ../content-aware-sidebars.php:1104
 msgid "Condition group removed"
 msgstr "已删除条件组"
 
-#: ../content-aware-sidebars.php:1163
+#: ../content-aware-sidebars.php:1172
 msgid ""
 "If you love this plugin, please consider donating to support future "
 "development."
 msgstr "如果你喜欢这个插件, 请考虑捐赠."
 
-#: ../content-aware-sidebars.php:1172
+#: ../content-aware-sidebars.php:1181
 msgid "Or you could:"
 msgstr "或者你可以："
 
-#: ../content-aware-sidebars.php:1174
+#: ../content-aware-sidebars.php:1183
 msgid "Rate the plugin on WordPress.org"
 msgstr "在WordPress.org为此插件评分"
 
-#: ../content-aware-sidebars.php:1175
+#: ../content-aware-sidebars.php:1184
 msgid "Link to the plugin page"
 msgstr "链接到插件页面"
 
-#: ../content-aware-sidebars.php:1176
+#: ../content-aware-sidebars.php:1185
 msgid "Translate the plugin into your language"
 msgstr "翻译此插件"
 
-#: ../content-aware-sidebars.php:1301
+#: ../content-aware-sidebars.php:1310
 msgid "Remove this group and its contents permanently?"
 msgstr "永久删除此组和它的内容？"
 
-#: ../content-aware-sidebars.php:1302
+#: ../content-aware-sidebars.php:1311
 msgid "No results found."
 msgstr "未找到结果"
 
-#: ../content-aware-sidebars.php:1303
+#: ../content-aware-sidebars.php:1312
 msgid ""
 "The current group has unsaved changes. Do you want to continue and discard "
 "these changes?"
 msgstr "当前修改未保存，放弃修改吗？"
 
-#: ../modules/abstract.php:88
+#: ../modules/abstract.php:106
 #, php-format
 msgid "Display with All %s"
 msgstr "在所有%s显示"
 
-#: ../modules/abstract.php:98 ../modules/bp_member.php:104
-#: ../modules/post_type.php:198 ../modules/taxonomy.php:243
+#: ../modules/abstract.php:116 ../modules/bp_member.php:127
+#: ../modules/post_type.php:217 ../modules/taxonomy.php:273
 msgid "View All"
 msgstr "查看全部"
 
-#: ../modules/abstract.php:105 ../modules/abstract.php:108
-#: ../modules/post_type.php:204 ../modules/post_type.php:207
-#: ../modules/taxonomy.php:249 ../modules/taxonomy.php:252
+#: ../modules/abstract.php:123 ../modules/abstract.php:126
+#: ../modules/post_type.php:223 ../modules/post_type.php:226
+#: ../modules/taxonomy.php:279 ../modules/taxonomy.php:282
 msgid "Search"
 msgstr "搜索"
 
-#: ../modules/abstract.php:116 ../modules/bp_member.php:113
-#: ../modules/post_type.php:217 ../modules/taxonomy.php:262
+#: ../modules/abstract.php:134 ../modules/bp_member.php:136
+#: ../modules/post_type.php:236 ../modules/taxonomy.php:292
 msgid "Add to Group"
 msgstr "添加到组"
 
-#: ../modules/abstract.php:188
+#: ../modules/abstract.php:206
 #, php-format
 msgid "All %s"
 msgstr "全部%s"
 
-#: ../modules/author.php:22
+#: ../modules/author.php:28
 msgid "Authors"
 msgstr "作者"
 
-#: ../modules/bbpress.php:23
+#: ../modules/bbpress.php:29
 msgid "bbPress User Profiles"
 msgstr "bbPress用户资料"
 
-#: ../modules/bp_member.php:21
+#: ../modules/bp_member.php:27
 msgid "BuddyPress Members"
 msgstr "BuddyPress用户"
 
-#: ../modules/page_template.php:22
+#: ../modules/page_template.php:28
 msgid "Page Templates"
 msgstr "页面模板"
 
-#: ../modules/polylang.php:21 ../modules/qtranslate.php:21
-#: ../modules/transposh.php:21 ../modules/wpml.php:21
+#: ../modules/polylang.php:27 ../modules/qtranslate.php:27
+#: ../modules/transposh.php:27 ../modules/wpml.php:27
 msgid "Languages"
 msgstr "语言"
 
-#: ../modules/post_type.php:28
+#: ../modules/post_type.php:34
 msgid "Post Types"
 msgstr "文章类型"
 
-#: ../modules/post_type.php:105 ../modules/post_type.php:171
-#: ../modules/taxonomy.php:182 ../modules/taxonomy.php:217
+#: ../modules/post_type.php:119 ../modules/post_type.php:190
+#: ../modules/taxonomy.php:208 ../modules/taxonomy.php:247
 msgid "Automatically select new children of a selected ancestor"
 msgstr "自动为选中的父级选择新子级"
 
-#: ../modules/post_type.php:177 ../modules/taxonomy.php:221
+#: ../modules/post_type.php:196 ../modules/taxonomy.php:251
 #, php-format
 msgid "Display with %s"
 msgstr "在%s显示"
 
-#: ../modules/post_type.php:182 ../modules/taxonomy.php:225
+#: ../modules/post_type.php:201 ../modules/taxonomy.php:255
 msgid "No items."
 msgstr "没有项目."
 
-#: ../modules/post_type.php:193
+#: ../modules/post_type.php:212
 msgid "Most Recent"
 msgstr "最新"
 
-#: ../modules/static.php:23
+#: ../modules/static.php:29
 msgid "Static Pages"
 msgstr "静态页面"
 
-#: ../modules/static.php:33
+#: ../modules/static.php:39
 msgid "Front Page"
 msgstr "首页"
 
-#: ../modules/static.php:34
+#: ../modules/static.php:40
 msgid "Search Results"
 msgstr "搜索结果"
 
-#: ../modules/static.php:35
+#: ../modules/static.php:41
 msgid "404 Page"
 msgstr "404页面"
 
-#: ../modules/taxonomy.php:34
+#: ../modules/taxonomy.php:40
 msgid "Taxonomies"
 msgstr "分类"
 
-#: ../modules/taxonomy.php:238
+#: ../modules/taxonomy.php:268
 msgid "Most Used"
 msgstr "最常用"
 

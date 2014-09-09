@@ -1,19 +1,20 @@
 # Copyright (C) 2012 Content Aware Sidebars
 # This file is distributed under the same license as the Content Aware Sidebars package.
 # Translators:
+# Marcelo Ghelman <marcelo.ghelman@gmail.com>, 2014
 msgid ""
 msgstr ""
 "Project-Id-Version: Content Aware Sidebars\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/content-aware-sidebars\n"
 "POT-Creation-Date: 2014-06-17 19:34+0100\n"
-"PO-Revision-Date: 2014-08-21 14:18+0000\n"
-"Last-Translator: Joachim <jv@intox.dk>\n"
-"Language-Team: Danish (Denmark) (http://www.transifex.com/projects/p/content-aware-sidebars/language/da_DK/)\n"
+"PO-Revision-Date: 2014-08-28 21:32+0000\n"
+"Last-Translator: Marcelo Ghelman <marcelo.ghelman@gmail.com>\n"
+"Language-Team: Portuguese (Brazil) (http://www.transifex.com/projects/p/content-aware-sidebars/language/pt_BR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: da_DK\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Language: pt_BR\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Generator: Poedit 1.6.5\n"
 "X-Poedit-Basepath: .\n"
 "X-Poedit-KeywordsList: __;_e;__ngettext:1,2;_n:1,2;__ngettext_noop:1,2;_n_noop:1,2;_c,_nc:4c,1,2;_x:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2;_ex:1,2c;esc_attr__;esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c\n"
@@ -24,7 +25,7 @@ msgstr ""
 
 #: ../content-aware-sidebars.php:117
 msgid "Manage and show sidebars according to the content being viewed."
-msgstr "Administrer og vis sidebars i henhold til det indhold, der vises."
+msgstr "Gerencia e exibe painéis laterais de acordo com o conteúdo sendo visto."
 
 #: ../content-aware-sidebars.php:118
 msgid "Content Aware Sidebars"
@@ -32,195 +33,195 @@ msgstr "Content Aware Sidebars"
 
 #: ../content-aware-sidebars.php:257 ../content-aware-sidebars.php:462
 msgid "Exposure"
-msgstr "Eksponering"
+msgstr "Exposição"
 
 #: ../content-aware-sidebars.php:263
 msgid "Singular"
-msgstr "Singulær"
+msgstr "Singular"
 
 #: ../content-aware-sidebars.php:264
 msgid "Singular & Archive"
-msgstr "Singulær og arkiv"
+msgstr "Singular & Pacote"
 
 #: ../content-aware-sidebars.php:265
 msgid "Archive"
-msgstr "Arkiv"
+msgstr "Pacote"
 
 #: ../content-aware-sidebars.php:269 ../content-aware-sidebars.php:463
 msgctxt "option"
 msgid "Handle"
-msgstr "Håndtering"
+msgstr "Manusear"
 
 #: ../content-aware-sidebars.php:271
 msgid "Replace host sidebar, merge with it or add sidebar manually."
-msgstr "Erstat værts-sidebar, flet med den eller tilføj denne sidebar manuelt."
+msgstr "Substituir o painel lateral do servidor, integrar-se a ele ou adicionar um painel lateral manualmente."
 
 #: ../content-aware-sidebars.php:275
 msgid "Replace"
-msgstr "Erstat"
+msgstr "Substituir"
 
 #: ../content-aware-sidebars.php:276
 msgid "Merge"
-msgstr "Flet"
+msgstr "Integrar"
 
 #: ../content-aware-sidebars.php:277
 msgid "Manual"
-msgstr "Manuel"
+msgstr "Manual"
 
 #: ../content-aware-sidebars.php:278
 msgid "Forced replace"
-msgstr "Erstat tvungent"
+msgstr "Substituição forçada"
 
 #: ../content-aware-sidebars.php:282
 msgid "Host Sidebar"
-msgstr "Værts-sidebar"
+msgstr "Painel lateral do servidor"
 
 #: ../content-aware-sidebars.php:290 ../content-aware-sidebars.php:464
 msgid "Merge position"
-msgstr "Fletteposition"
+msgstr "Posição da integração"
 
 #: ../content-aware-sidebars.php:292
 msgid "Place sidebar on top or bottom of host when merging."
-msgstr "Flet ind fra oven eller bunden."
+msgstr "Posiciona o painel lateral no topo ou na base do painel do servidor ao integrar."
 
 #: ../content-aware-sidebars.php:296
 msgid "Top"
-msgstr "Top"
+msgstr "Topo"
 
 #: ../content-aware-sidebars.php:297
 msgid "Bottom"
-msgstr "Bund"
+msgstr "Base"
 
 #: ../content-aware-sidebars.php:322
 msgid "Sidebars"
-msgstr "Sidebars"
+msgstr "Painéis laterais"
 
 #: ../content-aware-sidebars.php:323
 msgid "Sidebar"
-msgstr "Sidebar"
+msgstr "Painel lateral"
 
 #: ../content-aware-sidebars.php:324
 msgctxt "sidebar"
 msgid "Add New"
-msgstr "Tilføj ny"
+msgstr "Adicionar novo"
 
 #: ../content-aware-sidebars.php:325
 msgid "Add New Sidebar"
-msgstr "Tilføj ny sidebar"
+msgstr "Adicionar novo painel lateral"
 
 #: ../content-aware-sidebars.php:326
 msgid "Edit Sidebar"
-msgstr "Rediger sidebar"
+msgstr "Editar painel lateral"
 
 #: ../content-aware-sidebars.php:327
 msgid "New Sidebar"
-msgstr "Ny sidebar"
+msgstr "Novo painel lateral"
 
 #: ../content-aware-sidebars.php:328
 msgid "All Sidebars"
-msgstr "Alle sidebars"
+msgstr "Todos painéis laterais"
 
 #: ../content-aware-sidebars.php:329
 msgid "View Sidebar"
-msgstr "Vis sidebar"
+msgstr "Visualizar painel lateral"
 
 #: ../content-aware-sidebars.php:330
 msgid "Search Sidebars"
-msgstr "Søg sidebars"
+msgstr "Pesquisar painéis laterais"
 
 #: ../content-aware-sidebars.php:331
 msgid "No sidebars found"
-msgstr "Ingen sidebars fundet"
+msgstr "Nenhum painel lateral encontrado"
 
 #: ../content-aware-sidebars.php:332
 msgid "No sidebars found in Trash"
-msgstr "Ingen sidebars fundet i papirkurven"
+msgstr "Nenhum painel lateral encontrado na lixeira"
 
 #: ../content-aware-sidebars.php:347 ../content-aware-sidebars.php:891
 #: ../content-aware-sidebars.php:937
 msgid "Condition Groups"
-msgstr "Betingelsesgrupper"
+msgstr "Grupos condicionais"
 
 #: ../content-aware-sidebars.php:348
 msgid "Condition Group"
-msgstr "Betingelsesgruppe"
+msgstr "Grupo condicional"
 
 #: ../content-aware-sidebars.php:349
 msgctxt "group"
 msgid "Add New"
-msgstr "Tilføj ny"
+msgstr "Adicionar novo"
 
 #: ../content-aware-sidebars.php:350 ../content-aware-sidebars.php:937
 #: ../content-aware-sidebars.php:967
 msgid "Add New Group"
-msgstr "Tilføj ny gruppe"
+msgstr "Adicionar novo grupo"
 
 #: ../content-aware-sidebars.php:351 ../content-aware-sidebars.php:952
 #: ../content-aware-sidebars.php:1308
 msgctxt "group"
 msgid "Edit"
-msgstr "Rediger"
+msgstr "Editar"
 
 #: ../content-aware-sidebars.php:377 ../content-aware-sidebars.php:380
 msgid "Sidebar updated."
-msgstr "Sidebar opdateret."
+msgstr "Painel lateral atualizado."
 
 #: ../content-aware-sidebars.php:377 ../content-aware-sidebars.php:382
 #: ../content-aware-sidebars.php:384 ../content-aware-sidebars.php:389
 msgid "Manage widgets"
-msgstr "Håndter widgets"
+msgstr "Gerenciar componentes"
 
 #: ../content-aware-sidebars.php:382
 msgid "Sidebar published."
-msgstr "Sidebar udgivet."
+msgstr "Painel lateral publicado."
 
 #: ../content-aware-sidebars.php:383
 msgid "Sidebar saved."
-msgstr "Sidebar gemt."
+msgstr "Painel lateral salvo."
 
 #: ../content-aware-sidebars.php:384
 msgid "Sidebar submitted."
-msgstr "Sidebar indsendt."
+msgstr "Painel lateral enviado."
 
 #: ../content-aware-sidebars.php:385
 #, php-format
 msgid "Sidebar scheduled for: <strong>%1$s</strong>."
-msgstr "Sidebar planlagt til: <strong>%1$s</strong>."
+msgstr "Painel lateral agendado para: <strong>%1$s</strong>."
 
 #. translators: Publish box date format, see http://php.net/date
 #: ../content-aware-sidebars.php:387
 msgid "M j, Y @ G:i"
-msgstr "j. M, Y @ G:i"
+msgstr "d/m/Y @ G:i"
 
 #: ../content-aware-sidebars.php:390
 msgid "Sidebar draft updated."
-msgstr "Sidebar-kladde opdateret."
+msgstr "Rascunho do painel lateral atualizado."
 
 #: ../content-aware-sidebars.php:438 ../content-aware-sidebars.php:523
 msgid "Please update Host Sidebar"
-msgstr "Værts-sidebar skal opdateres"
+msgstr "Atualize o painel lateral do servidor"
 
 #: ../content-aware-sidebars.php:598
 msgid "Manage Widgets"
-msgstr "Håndter widgets"
+msgstr "Gerenciar componentes"
 
 #: ../content-aware-sidebars.php:853
 msgid "Support the Author of Content Aware Sidebars"
-msgstr "Støt skaberen af Content Aware Sidebars"
+msgstr "Ajude o autor do Content Aware Sidebars"
 
 #: ../content-aware-sidebars.php:861
 msgid "Content"
-msgstr "Indhold"
+msgstr "Conteúdo"
 
 #: ../content-aware-sidebars.php:869
 msgid "Options"
-msgstr "Indstillinger"
+msgstr "Opções"
 
 #: ../content-aware-sidebars.php:892
 msgid ""
 "Each created condition group describe some specific content (conditions) "
 "that the current sidebar should be displayed with."
-msgstr "Hver oprettet betingelsesgruppe beskriver noget specifikt indhold (betingelser) som den nuværende sidebar skal vises ved."
+msgstr "Cada grupo condicional criado descreve alguns conteúdos específicos (condições) com que o painel lateral atual deve ser exibido."
 
 #: ../content-aware-sidebars.php:893
 msgid ""
@@ -229,11 +230,11 @@ msgid ""
 " a group should be associated, as they are treated as such, and that the "
 "groups do not interfere with each other. Thus it is possible to have both "
 "extremely focused and at the same time distinct conditions."
-msgstr "Indhold tilføjet til en betingelsesgruppe bruger logisk konjunktion, mens betingelsesgrupperne selv bruger logisk disjunktion. Dette betyder, at indhold tilføjet til en gruppe, skal være associeret, fordi det behandles som sådant, og at grupperne ikke forstyrrer hinanden. Det er således muligt at have både ekstremt fokuserede og samtidig forskellige betingelser."
+msgstr "Conteúdos adicionados a um grupo condicional usam conjunções lógicas, enquanto os próprios grupos condicionais usam disjunções lógicas. Isto quer dizer que conteúdos adicionados a um grupo devem ser associados, já que são tratados como tal, e que os grupos não interferem uns com os outros. Assim, é possível existir ao mesmo tempo condições extremamente focadas e distintas."
 
 #: ../content-aware-sidebars.php:896
 msgid "More Information"
-msgstr "Flere informationer"
+msgstr "Mais informações"
 
 #: ../content-aware-sidebars.php:897
 msgid "FAQ"
@@ -241,185 +242,185 @@ msgstr "FAQ"
 
 #: ../content-aware-sidebars.php:898
 msgid "Get Support"
-msgstr "Få support"
+msgstr "Obtenha suporte"
 
 #: ../content-aware-sidebars.php:938
 msgid ""
 "Click to edit a group or create a new one. Select content on the left to add"
 " it. In each group, you can combine different types of associated content."
-msgstr "Klik for at redigere en gruppe eller opret en ny. Vælg indhold til venstre for at tilføje det. I hver gruppe kan du kombinere forskellige typer af forbundet indhold."
+msgstr "Clique para editar um grupo ou criar um novo. Selecione um conteúdo à esquerda para adicioná-lo. Em cada grupo, você pode combinar diferentes tipos de conteúdo associado."
 
 #: ../content-aware-sidebars.php:939
 msgid "Display sidebar with"
-msgstr "Vis sidebar ved"
+msgstr "Exibir painel lateral com"
 
 #: ../content-aware-sidebars.php:944
 msgid ""
 "No content. Please add at least one condition group to make the sidebar "
 "content aware."
-msgstr "Intet indhold. Tilføj mindst en betingelsesgruppe for at gøre sidebaren indholdsbevidst."
+msgstr "Nenhum conteúdo. Adicione pelo menos um grupo condicional para tornar o painel lateral sensível ao conteúdo."
 
 #: ../content-aware-sidebars.php:949 ../content-aware-sidebars.php:1306
 msgid "Save"
-msgstr "Gem"
+msgstr "Salvar"
 
 #: ../content-aware-sidebars.php:949 ../content-aware-sidebars.php:1307
 msgid "Cancel"
-msgstr "Annuller"
+msgstr "Cancelar"
 
 #: ../content-aware-sidebars.php:952 ../content-aware-sidebars.php:1309
 msgid "Remove"
-msgstr "Fjern"
+msgstr "Remover"
 
 #: ../content-aware-sidebars.php:1042 ../content-aware-sidebars.php:1047
 #: ../content-aware-sidebars.php:1089 ../content-aware-sidebars.php:1094
 msgid "Unauthorized request"
-msgstr "Uautoriseret forespørgsel"
+msgstr "Pedido não autorizado"
 
 #: ../content-aware-sidebars.php:1055
 msgid "Condition group cannot be empty"
-msgstr "Betingelsesgruppe må ikke være tom"
+msgstr "Grupo condicional não pode ficar vazio"
 
 #: ../content-aware-sidebars.php:1069
 msgid "Condition group saved"
-msgstr "Betingelsesgruppe gemt"
+msgstr "Grupo condicional salvo"
 
 #: ../content-aware-sidebars.php:1099
 msgid "Condition group could not be removed"
-msgstr "Betingelsesgruppe kunne ikke fjernes"
+msgstr "Não foi possível remover o grupo condicional"
 
 #: ../content-aware-sidebars.php:1104
 msgid "Condition group removed"
-msgstr "Betingelsesgruppe fjernet"
+msgstr "Grupo condicional removido"
 
 #: ../content-aware-sidebars.php:1172
 msgid ""
 "If you love this plugin, please consider donating to support future "
 "development."
-msgstr "Hvis du elsker dette plugin, kan du overveje at donere for at støtte den fremtidige udvikling."
+msgstr "Se você gosta deste plugin, considere fazer uma doação para ajudar futuros desenvolvimentos."
 
 #: ../content-aware-sidebars.php:1181
 msgid "Or you could:"
-msgstr "Eller du kunne:"
+msgstr "Ou você pode:"
 
 #: ../content-aware-sidebars.php:1183
 msgid "Rate the plugin on WordPress.org"
-msgstr "Bedømme pluginnet på WordPress.org"
+msgstr "Avaliar o plugin no WordPress.org"
 
 #: ../content-aware-sidebars.php:1184
 msgid "Link to the plugin page"
-msgstr "Linke til plugin-siden"
+msgstr "Publicar um link para a página do plugin"
 
 #: ../content-aware-sidebars.php:1185
 msgid "Translate the plugin into your language"
-msgstr "Oversæt dette plugin til dit sprog"
+msgstr "Traduzir o plugin para seu idioma"
 
 #: ../content-aware-sidebars.php:1310
 msgid "Remove this group and its contents permanently?"
-msgstr "Fjern denne gruppe og dens indhold permanent?"
+msgstr "Remover este grupo e seu conteúdo permanentemente?"
 
 #: ../content-aware-sidebars.php:1311
 msgid "No results found."
-msgstr "Ingen resultater fundet."
+msgstr "Nenhum resultado encontrado."
 
 #: ../content-aware-sidebars.php:1312
 msgid ""
 "The current group has unsaved changes. Do you want to continue and discard "
 "these changes?"
-msgstr "Den nuværende gruppe har ugemte ændringer. Ønsker du at fortsætte og kassere disse ændringer?"
+msgstr "O grupo atual tem alterações não salvas. Quer continuar e descartar essas alterações?"
 
 #: ../modules/abstract.php:106
 #, php-format
 msgid "Display with All %s"
-msgstr "Vis ved alle %s"
+msgstr "Exibir com todos %s"
 
 #: ../modules/abstract.php:116 ../modules/bp_member.php:127
 #: ../modules/post_type.php:217 ../modules/taxonomy.php:273
 msgid "View All"
-msgstr "Vis alle"
+msgstr "Ver todos"
 
 #: ../modules/abstract.php:123 ../modules/abstract.php:126
 #: ../modules/post_type.php:223 ../modules/post_type.php:226
 #: ../modules/taxonomy.php:279 ../modules/taxonomy.php:282
 msgid "Search"
-msgstr "Søg"
+msgstr "Pesquisar"
 
 #: ../modules/abstract.php:134 ../modules/bp_member.php:136
 #: ../modules/post_type.php:236 ../modules/taxonomy.php:292
 msgid "Add to Group"
-msgstr "Tilføj til gruppe"
+msgstr "Adicionar ao grupo"
 
 #: ../modules/abstract.php:206
 #, php-format
 msgid "All %s"
-msgstr "Alle %s"
+msgstr "Todos %s"
 
 #: ../modules/author.php:28
 msgid "Authors"
-msgstr "Forfattere"
+msgstr "Autores"
 
 #: ../modules/bbpress.php:29
 msgid "bbPress User Profiles"
-msgstr "bbPress brugerprofiler"
+msgstr "Perfis de usuário do bbPress"
 
 #: ../modules/bp_member.php:27
 msgid "BuddyPress Members"
-msgstr "BuddyPress medlemmer"
+msgstr "Membros do BuddyPress"
 
 #: ../modules/page_template.php:28
 msgid "Page Templates"
-msgstr "Skabeloner"
+msgstr "Modelos de página"
 
 #: ../modules/polylang.php:27 ../modules/qtranslate.php:27
 #: ../modules/transposh.php:27 ../modules/wpml.php:27
 msgid "Languages"
-msgstr "Sprog"
+msgstr "Idiomas"
 
 #: ../modules/post_type.php:34
 msgid "Post Types"
-msgstr "Indholdstyper"
+msgstr "Tipos de mensagens"
 
 #: ../modules/post_type.php:119 ../modules/post_type.php:190
 #: ../modules/taxonomy.php:208 ../modules/taxonomy.php:247
 msgid "Automatically select new children of a selected ancestor"
-msgstr "Vælg automatisk nye børn af den valgte forælder"
+msgstr "Selecionar automaticamente novos descendentes de um ancestral selecionado"
 
 #: ../modules/post_type.php:196 ../modules/taxonomy.php:251
 #, php-format
 msgid "Display with %s"
-msgstr "Vis ved %s"
+msgstr "Exibir com %s"
 
 #: ../modules/post_type.php:201 ../modules/taxonomy.php:255
 msgid "No items."
-msgstr "Ingen elementer."
+msgstr "Nenhum item."
 
 #: ../modules/post_type.php:212
 msgid "Most Recent"
-msgstr "Seneste"
+msgstr "Mais recentes"
 
 #: ../modules/static.php:29
 msgid "Static Pages"
-msgstr "Statiske sider"
+msgstr "Páginas estáticas"
 
 #: ../modules/static.php:39
 msgid "Front Page"
-msgstr "Forside"
+msgstr "Página inicial"
 
 #: ../modules/static.php:40
 msgid "Search Results"
-msgstr "Søgeresultater"
+msgstr "Resultados da pesquisa"
 
 #: ../modules/static.php:41
 msgid "404 Page"
-msgstr "404-side"
+msgstr "Página 404"
 
 #: ../modules/taxonomy.php:40
 msgid "Taxonomies"
-msgstr "Taksonomier"
+msgstr "Taxonomias"
 
 #: ../modules/taxonomy.php:268
 msgid "Most Used"
-msgstr "Mest brugte"
+msgstr "Mais usados"
 
 #: ../modules/url.php:22
 msgid "URLs"
@@ -427,4 +428,4 @@ msgstr "URLs"
 
 #: ../modules/url.php:40
 msgid "Add"
-msgstr "Tilføj"
+msgstr "Adicionar"
