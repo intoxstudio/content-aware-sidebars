@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=KPZHE
 Tags: sidebar, widget, widget area, content aware, context aware, conditional, seo, dynamic, bbpress, buddypress, qtranslate, polylang, transposh, wpml, woocommerce
 Requires at least: 3.3
 Tested up to: 4.0
-Stable tag: 2.4.1
+Stable tag: 2.4.2
 License: GPLv3
 
 Create and display sidebars according to the content being viewed.
@@ -73,19 +73,20 @@ Developed with speed and performance in mind and will add no extra database tabl
 * Latvian (lv_LV): Haralds Gribusts
 * Lithuanian (lt_LT): Vincent G
 * Polish (pl_PL): [Marta Jasiuk](http://linkedin.com/in/martajasiuk)
+* Portuguese (Brazilian) (pt_BR) [Marcelo Ghelman](https://www.transifex.com/accounts/profile/marcelo.ghelman/)
+* Russian (ru_RU) [Ilya Trofimov](https://www.transifex.com/accounts/profile/iltrof/)
 * Slovak (sk_SK): Branco
 * Spanish (es_ES)
 * Ukranian (uk_UA): [Michael Yunat](http://getvoip.com)
 
-Do you want to see your name here?
+Do you want to contribute and see your name here?
 
-If you have translated the plugin into your language or updated an existing translation, please send the .po and .mo files to jv[at]intox.dk.
-Download the latest [template .po file](http://plugins.svn.wordpress.org/content-aware-sidebars/trunk/lang/content-aware-sidebars.po) or the [.po file in your language](http://plugins.svn.wordpress.org/content-aware-sidebars/trunk/lang/).
+[Click to go to Transifex to translate Content Aware Sidebars into your language](https://www.transifex.com/projects/p/content-aware-sidebars/). Alternatively you can send the .po and .mo files to translate [at] intox.dk.
 
-= More information =
+= For more information =
 
-[Documentation](http://www.intox.dk/en/plugin/content-aware-sidebars-en/)
-[Follow development on Github](https://github.com/intoxstudio/content-aware-sidebars)
+* [Documentation](http://www.intox.dk/en/plugin/content-aware-sidebars-en/)
+* [Follow development on Github](https://github.com/intoxstudio/content-aware-sidebars)
 
 == Installation ==
 
@@ -135,9 +136,11 @@ Download the latest [template .po file](http://plugins.svn.wordpress.org/content
 
 == Changelog ==
 
-= x.x =
+= 2.4.2 =
 
-* Added: polish translation
+* Added: polish, brazilian portuguese and russian translations
+* Fixed: "auto-select new children of selected ancestors" caused new top level post types to be selected
+* Fixed: "auto-select new children of selected ancestors" for taxonomies could prevent sidebar from being displayed
 
 = 2.4.1 =
 
