@@ -119,6 +119,8 @@ final class ContentAwareSidebars {
 		
 		$this->_load_dependencies();
 
+		spl_autoload_register(array($this,"autoload_modules"));
+
 		// WordPress Hooks. Somewhat ordered by execution
 		
 		//For administration
@@ -263,7 +265,7 @@ final class ContentAwareSidebars {
 		// Forge modules
 		foreach($modules as $name => $enabled) {
 			if($enabled) {
-				if(is_bool($enabled) && include('modules/'.$name .'.php')) {
+				if(is_bool($enabled)) {
 					$class = 'CASModule_'.$name;
 					$obj = new $class;
 				} else if(class_exists((string)$enabled)) {
@@ -1390,7 +1392,22 @@ final class ContentAwareSidebars {
 		$path = plugin_dir_path( __FILE__ );
 		require($path.'/walker.php');
 		require($path.'/update_db.php');
-		require($path.'/modules/abstract.php');
+	}
+
+	/**
+	 * Autoload module class files
+	 * @author  Joachim Jensen <jv@intox.dk>
+	 * @version 2.5
+	 * @param   string    $class
+	 * @return  boolean
+	 */
+	public function autoload_modules($class) {
+		$path = plugin_dir_path( __FILE__ );
+		if($class == 'CASModule') {
+			require_once($path . "modules/" . $class . ".php");
+		} else if(strpos($class, "CASModule") !== false) {
+			require_once($path . "modules/" . str_replace("CASModule_", "", $class) . ".php");
+		}
 	}
 
 }
