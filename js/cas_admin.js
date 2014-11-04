@@ -323,16 +323,16 @@
 
 				$.ajax({
 					url: ajaxurl,
-					data:link.attr('href').split('?')[1]+'&action=cas-module-'+action.attr('data-cas-module'),
+					data:link.attr('href').split('?')[1]+'&nonce=&action=cas-module-'+action.attr('data-cas-module'),
 					dataType: 'JSON',
 					type: 'POST',
 					success:function(data){
-						link.closest('.cas-contentlist').html(data);						
+						link.closest('.cas-contentlist').html(data);
 					},
 					error: function(xhr, desc, e) {
 						console.log(xhr.responseText);
 					}
-				});			
+				});
 
 			});
 		},
@@ -622,29 +622,26 @@
 
 			spinner.show();
 
+			var action = input.closest('.cas-rule-content');
+
 			$.ajax({
 				url: ajaxurl,
 				data:{
-					'action': input.attr('class').split(' ')[0],
-					'response-format': 'JSON',
+					'action': 'cas-module-'+action.attr('data-cas-module'),
 					'nonce': cas_admin.nonce,
 					'sidebar_id': cas_admin.sidebarID,
-					'type': input.attr('id'),
-					'q': q
+					'item_object': input.attr('data-cas-item_object'),
+					'search': q
 				},
 				dataType: 'JSON',
 				type: 'POST',
 				success:function(response){
-					var elements = "";
-					if(response.length > 0) {
-						$.each(response, function(i,item) {
-							elements += '<li><label class="selectit"><input value="'+item.value+'" type="checkbox" name="'+item.name+'[]"/> '+item.label+'</label></li>';	
-						});
+					if(response) {
+						data = response;
 					} else {
-						elements = '<li><p>'+CASAdmin.noResults+'</p></li>';
+						data = '<li><p>'+CASAdmin.noResults+'</p></li>';
 					}
-					
-					$('.categorychecklist', panel).html(elements);
+					panel.find('.cas-contentlist').html(data);
 					spinner.hide();
 				},
 				error: function(xhr, desc, e) {

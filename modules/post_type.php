@@ -37,10 +37,6 @@ class CASModule_post_type extends CASModule {
 		
 		add_action('transition_post_status', array(&$this,'post_ancestry_check'),10,3);
 
-		if(is_admin()) {
-			add_action('wp_ajax_cas-autocomplete-'.$this->id, array(&$this,'ajax_content_search'));
-		}
-
 	}
 
 	/**
@@ -69,37 +65,68 @@ class CASModule_post_type extends CASModule {
 			'orderby'        => 'date',
 			'order'          => 'DESC',
 			'paged'          => 1,
-			'posts_per_page' => 20
+			'posts_per_page' => 20,
+			'search'         => ''
 		));
 		extract($args);
 
 		$exclude = array();
-		if ($post_type == 'page' && 'page' == get_option('show_on_front')) {
+		if ($args['post_type'] == 'page' && 'page' == get_option('show_on_front')) {
 			$exclude[] = get_option('page_on_front');
 			$exclude[] = get_option('page_for_posts');
 		}
 
-		//WP3.1 does not support (array) as post_status
-		$query = new WP_Query(array(
-			'posts_per_page'         => $posts_per_page,
-			'post_type'              => $post_type,
-			'post_status'            => 'publish,private,future',
-			'post__in'               => $include,
-			'exclude'                => $exclude,
-			'orderby'                => $orderby,
-			'order'                  => $order,
-			'paged'                  => $paged,
-			'ignore_sticky_posts'    => true,
-			'update_post_term_cache' => false
-		));
+		//WordPress searches in title and content by default
+		//We want to search in title and slug
+		if($args['search']) {
+			$exclude_query = '';
+			if(!empty($exclude)) {
+				$exclude_query = " AND ID NOT IN (".implode(",", $exclude).")";
+			}
+
+			//Using unprepared (safe) exclude because WP is not good at parsing arrays
+			global $wpdb;
+			$posts = $wpdb->get_results($wpdb->prepare("
+				SELECT ID, post_title, post_type, post_parent
+				FROM $wpdb->posts
+				WHERE post_type = '%s' AND (post_title LIKE '%s' OR post_name LIKE '%s') AND post_status IN('publish','private','future')
+				".$exclude_query."
+				ORDER BY post_title ASC
+				LIMIT 0,20
+				",
+				$args['post_type'],
+				"%".$args['search']."%",
+				"%".$args['search']."%"
+			));
+			$total_pages = 1;
+			$total_items = $args['posts_per_page'];
+		} else {
+			//WP3.1 does not support (array) as post_status
+			$query = new WP_Query(array(
+				'posts_per_page'         => $args['posts_per_page'],
+				'post_type'              => $args['post_type'],
+				'post_status'            => 'publish,private,future',
+				'post__in'               => $args['include'],
+				'exclude'                => $exclude,
+				'orderby'                => $args['orderby'],
+				'order'                  => $args['order'],
+				'paged'                  => $args['paged'],
+				'ignore_sticky_posts'    => true,
+				'update_post_term_cache' => false
+			));
+			$posts = $query->posts;
+			$total_pages = $query->max_num_pages;
+			$total_items = $query->found_posts;
+		}
+
 		$this->pagination = array(
-			'paged'       => $paged,
-			'per_page'    => 20,
-			'total_pages' => $query->max_num_pages,
-			'total_items' => $query->found_posts
+			'paged'       => $args['paged'],
+			'per_page'    => $args['posts_per_page'],
+			'total_pages' => $total_pages,
+			'total_items' => $total_items
 		);
-		//wp_reset_postdata();
-		return $query->posts;
+
+		return $posts;
 	}
 
 	/**
@@ -142,7 +169,7 @@ class CASModule_post_type extends CASModule {
 						echo '<li><label><input type="checkbox" name="cas_condition['.$this->id.'][]" value="'.$post_type->name.'" checked="checked" /> '.$post_type->labels->all_items.'</label></li>' . "\n";
 					}
 					if($posts) {
-						echo $this->post_checklist($post_type, $posts, false, $ids);	
+						echo $this->_get_checkboxes($post_type->name, $posts, false, $ids);	
 					}					
 					echo '</ul>';
 					echo '</div>';	
@@ -234,19 +261,19 @@ class CASModule_post_type extends CASModule {
 				$tabs['most-recent'] = array(
 					'title' => __('Most Recent'),
 					'status' => true,
-					'content' => $this->post_checklist($post_type, $recent_posts)
+					'content' => $this->_get_checkboxes($post_type->name, $recent_posts)
 				);
 				$tabs['all'] = array(
 					'title' => __('View All'),
 					'status' => false,
-					'content' => $this->post_checklist($post_type, $posts, true)
+					'content' => $this->_get_checkboxes($post_type->name, $posts, true)
 				);
 				if($this->searchable) {
 					$tabs['search'] = array(
 						'title' => __('Search'),
 						'status' => false,
 						'content' => '',
-						'content_before' => '<p><input class="cas-autocomplete-' . $this->id . ' cas-autocomplete quick-search" id="cas-autocomplete-' . $this->id . '-' . $post_type->name . '" type="search" name="cas-autocomplete" value="" placeholder="'.__('Search').'" autocomplete="off" /><span class="spinner"></span></p>'
+						'content_before' => '<p><input data-cas-item_object="'.$post_type->name.'" class="cas-autocomplete-' . $this->id . ' cas-autocomplete quick-search" id="cas-autocomplete-' . $this->id . '-' . $post_type->name . '" type="search" name="cas-autocomplete" value="" placeholder="'.__('Search').'" autocomplete="off" /><span class="spinner"></span></p>'
 					);
 				}
 
@@ -266,25 +293,25 @@ class CASModule_post_type extends CASModule {
 	}
 
 	/**
-	 * Show posts from a specific post type
-	 * @param  int     $post_id      
-	 * @param  object  $post_type    
-	 * @param  array   $posts        
-	 * @param  array   $selected_ids 
-	 * @return void                
+	 * Get checkboxes for sidebar edit screen
+	 * @author  Joachim Jensen <jv@intox.dk>
+	 * @version 2.4
+	 * @param   string          $item_object
+	 * @param   array           $data
+	 * @param   boolean         $pagination
+	 * @param   array|boolean   $selected_data
+	 * @return  string
 	 */
-	private function post_checklist($post_type, $posts, $pagination = false, $selected_ids = array()) {
+	protected function _get_checkboxes($item_object, $data, $pagination = false, $selected_data = array()) {
 
-		$walker = new CAS_Walker_Checklist('post',array('parent' => 'post_parent', 'id' => 'ID'));
+		$walker = new CAS_Walker_Post_Type_List('post',array('parent' => 'post_parent', 'id' => 'ID'));
 
-		$args = array(
-			'post_type'	=> $post_type,
-			'selected_terms' => $selected_ids
-		);
+		$args['selected_terms'] = $selected_data;
 
-		$return = call_user_func_array(array(&$walker, 'walk'), array($posts, 0, $args));
+		$return = call_user_func_array(array(&$walker, 'walk'), array($data, 0, $args));
 
 		if($pagination) {
+
 			$paginate = paginate_links(array(
 				'base'         => admin_url( 'admin-ajax.php').'%_%',
 				'format'       => '?paged=%#%',
@@ -295,95 +322,38 @@ class CASModule_post_type extends CASModule {
 				'prev_next'    => true,
 				'prev_text'    => 'prev',
 				'next_text'    => 'next',
-				'add_args'     => array('item_object'=>$post_type->name),
+				'add_args'     => array($item_object),
 			));
 			$return = $paginate.$return.$paginate;
 		}
 		
 		return $return;
+
 	}
 
-	public function ajax_get_content() {
+	public function ajax_get_content($args) {
+		$args = wp_parse_args($args, array(
+			'item_object'    => 'post',
+			'paged'          => 1,
+			'search'         => ''
+		));
 
-		//validation
-		$paged = isset($_POST['paged']) ? $_POST['paged'] : 1;
-		$search = isset($_POST['search']) ? $_POST['search'] : false;
-		$post_type = get_post_type_object($_POST['item_object']);
+		$post_type = get_post_type_object($args['item_object']);
 
-		$posts = $this->_get_content(array('post_type' => $_POST['item_object'], 'orderby' => 'title', 'order' => 'ASC', 'paged' => $paged));
-		$response = $this->post_checklist($post_type, $posts, true);
-		//$response = $_POST['paged'];
-		echo json_encode($response);
-		die();
-	}
-
-	/**
-	 * Get posts with AJAX search
-	 * @return void
-	 */
-	public function ajax_content_search() {
-		global $wpdb;
-
-		if(!isset($_POST['sidebar_id'])) {
-			die(-1);
-		}
-		
-		// Verify request
-		check_ajax_referer(ContentAwareSidebars::SIDEBAR_PREFIX.$_POST['sidebar_id'],'nonce');
-	
-		$suggestions = array();
-		if ( preg_match('/cas-autocomplete-'.$this->id.'-([a-zA-Z_-]*\b)/', $_REQUEST['type'], $matches) ) {
-			if(get_post_type_object( $matches[1] )) {
-				$exclude = array();
-				$exclude_query = "";
-				if ($matches[1] == 'page' && 'page' == get_option('show_on_front')) {
-					$exclude[] = get_option('page_on_front');
-					$exclude[] = get_option('page_for_posts');
-					$exclude_query = " AND ID NOT IN (".implode(",", $exclude).")";
-				}
-
-				//WordPress searches in title and content by default
-				//We want to search in title and slug
-				//Using unprepared (safe) exclude because WP is not good at parsing arrays
-				$posts = $wpdb->get_results($wpdb->prepare("
-					SELECT ID, post_title, post_type
-					FROM $wpdb->posts
-					WHERE post_type = '%s' AND (post_title LIKE '%s' OR post_name LIKE '%s') AND post_status IN('publish','private','future')
-					".$exclude_query."
-					ORDER BY post_title ASC
-					LIMIT 0,20
-					",
-					$matches[1],
-					"%".$_REQUEST['q']."%",
-					"%".$_REQUEST['q']."%"
-				));
-
-				// $posts = get_posts(array(
-				// 	'posts_per_page' => 10,
-				// 	'post_type' => $matches[1],
-				// 	's' => $_REQUEST['term'],
-				// 	'exclude' => $exclude,
-				// 	'orderby' => 'title',
-				// 	'order' => 'ASC',
-				// 	'post_status'	=> 'publish,private,future'
-				// ));
-				
-				foreach($posts as $post) {
-					$suggestions[] = array(
-						'label' => $post->post_title,
-						'value' => $post->ID,
-						'id'	=> $post->ID,
-						'module' => $this->id,
-						'name' => 'cas_condition['.$this->id.']',
-						'id2' => $this->id.'-'.$post->post_type,
-						'elem' => $post->post_type.'-'.$post->ID
-					);
-				}
-			}
+		if(!$post_type) {
+			return false;
 		}
 
-		echo json_encode($suggestions);
-		die();
+		$posts = $this->_get_content(array(
+			'post_type' => $post_type->name,
+			'orderby'   => 'title',
+			'order'     => 'ASC',
+			'paged'     => $args['paged'],
+			'search'    => $args['search']
+		));
+
+		return $this->_get_checkboxes($post_type->name, $posts, true);
+
 	}
 
 	

@@ -25,13 +25,12 @@ class CASModule_author extends CASModule {
 	 * Constructor
 	 */
 	public function __construct() {
-		parent::__construct('authors',__('Authors',ContentAwareSidebars::DOMAIN));
-
+		parent::__construct('authors',__('Authors',ContentAwareSidebars::DOMAIN),true);
 		$this->searchable = true;
 		$this->type_display = true;
 
 		if(is_admin()) {
-			add_action('wp_ajax_cas-autocomplete-'.$this->id, array(&$this,'ajax_content_search'));
+			//add_action('wp_ajax_cas-autocomplete-'.$this->id, array(&$this,'ajax_content_search'));
 		}
 		
 	}
@@ -81,48 +80,23 @@ class CASModule_author extends CASModule {
 		}
 		return $author_list;
 	}
+	public function ajax_get_content($args) {
+		$args = wp_parse_args($args, array(
+			'item_object'    => '',
+			'paged'          => 1,
+			'search'         => ''
+		));
 
-	/**
-	 * Get authors with AJAX search
-	 * @global wpdb $wpdb
-	 * @return void
-	 */
-	public function ajax_content_search() {
-		global $wpdb;
+		$posts = $this->_get_content(array(
+			'orderby'   => 'title',
+			'order'     => 'ASC',
+			'offset'    => $args['paged']-1,
+			'search'    => $args['search'],
+			'search_columns' => array('display_name')
+		));
 
-		if(!isset($_POST['sidebar_id'])) {
-			die(-1);
-		}
+		return $this->_get_checkboxes($posts, true);
 
-		// Verify request
-		check_ajax_referer(ContentAwareSidebars::SIDEBAR_PREFIX.$_POST['sidebar_id'],'nonce');
-	
-		$suggestions = array();
-
-		$authors =$wpdb->get_results($wpdb->prepare("
-			SELECT ID, display_name 
-			FROM $wpdb->users 
-			WHERE display_name 
-			LIKE '%s' 
-			ORDER BY display_name ASC 
-			LIMIT 0,20
-		", 
-		'%'.$_REQUEST['q'].'%'));
-
-		foreach($authors as $user) {
-			$suggestions[] = array(
-						'label'  => $user->display_name,
-						'value'  => $user->ID,
-						'id'     => $user->ID,
-						'module' => $this->id,
-						'name'   => 'cas_condition['.$this->id.']',
-						'id2'    => $this->id,
-						'elem'   => $this->id.'-'.$user->ID
-					);
-		}
-
-		echo json_encode($suggestions);
-		die();
 	}
-	
+
 }

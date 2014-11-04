@@ -155,7 +155,8 @@ class CASModule_taxonomy extends CASModule {
 			'number'   => 20,
 			'orderby'  => 'name',
 			'order'    => 'ASC',
-			'offset'   => 0
+			'offset'   => 0,
+			'search'   => ''
 		));
 		extract($args);
 		$total_items = wp_count_terms($taxonomy,array('hide_empty'=>false));
@@ -168,7 +169,8 @@ class CASModule_taxonomy extends CASModule {
 				'include'    => $include,
 				'offset'     => ($offset*$number),
 				'orderby'    => $orderby,
-				'order'      => $order
+				'order'      => $order,
+				'search'     => $args['search']
 			));	
 		}
 	
@@ -299,7 +301,7 @@ class CASModule_taxonomy extends CASModule {
 						'title' => __('Search'),
 						'status' => false,
 						'content' => '',
-						'content_before' => '<p><input class="cas-autocomplete-' . $this->id . ' cas-autocomplete quick-search" id="cas-autocomplete-' . $this->id . '-' . $taxonomy->name . '" type="search" name="cas-autocomplete" value="" placeholder="'.__('Search').'" autocomplete="off" /><span class="spinner"></span></p>'
+						'content_before' => '<p><input data-cas-item_object="'.$taxonomy->name.'" class="cas-autocomplete-' . $this->id . ' cas-autocomplete quick-search" id="cas-autocomplete-' . $this->id . '-' . $taxonomy->name . '" type="search" name="cas-autocomplete" value="" placeholder="'.__('Search').'" autocomplete="off" /><span class="spinner"></span></p>'
 					);
 				}
 
@@ -357,59 +359,30 @@ class CASModule_taxonomy extends CASModule {
 
 	}
 
-	public function ajax_get_content() {
+	public function ajax_get_content($args) {
 
-		//validation
-		$paged = (isset($_POST['paged']) ? $_POST['paged'] : 1)-1;
-		$search = isset($_POST['search']) ? $_POST['search'] : false;
-		$taxonomy = get_taxonomy($_POST['item_object']);
+		$args = wp_parse_args($args, array(
+			'item_object'    => 'post',
+			'paged'          => 1,
+			'search'         => ''
+		));
 
-		$posts = $this->_get_content(array('taxonomy' => $_POST['item_object'], 'orderby' => 'name', 'order' => 'ASC', 'offset' => $paged));
-		$response = $this->term_checklist($taxonomy, $posts, array(), true);
-		//$response = $_POST['paged'];
-		echo json_encode($response);
-		die();
-	}
-
-	/**
-	 * Get terms with AJAX search
-	 * @return void 
-	 */
-	public function ajax_content_search() {
+		$taxonomy = get_taxonomy($args['item_object']);
 		
-		if(!isset($_POST['sidebar_id'])) {
-			die(-1);
-		}
-		
-		// Verify request
-		check_ajax_referer(ContentAwareSidebars::SIDEBAR_PREFIX.$_POST['sidebar_id'],'nonce');
-	
-		$suggestions = array();
-		if ( preg_match('/cas-autocomplete-'.$this->id.'-([a-zA-Z_-]*\b)/', $_REQUEST['type'], $matches) ) {
-			if(($taxonomy = get_taxonomy( $matches[1] ))) {
-				$terms = get_terms($taxonomy->name, array(
-					'number'     => 10,
-					'hide_empty' => false,
-					'search'     => $_REQUEST['q']
-				));
-				$name = 'cas_condition[tax_input]['.$matches[1].']';
-				$value = ($taxonomy->hierarchical ? 'term_id' : 'slug');
-				foreach($terms as $term) {
-					$suggestions[] = array(
-						'label'  => $term->name,
-						'value'  => $term->$value,
-						'id'     => $term->$value,
-						'module' => $this->id,
-						'name'   => $name,
-						'id2'    => $this->id.'-'.$term->taxonomy,
-						'elem'   => $term->taxonomy.'-'.$term->term_id
-					);
-				}
-			}
+		if(!$taxonomy) {
+			return false;
 		}
 
-		echo json_encode($suggestions);
-		die();
+		$posts = $this->_get_content(array(
+			'taxonomy' => $args['item_object'],
+			'orderby'  => 'name',
+			'order'    => 'ASC',
+			'paged'    => $args['paged'],
+			'search'   => $args['search']
+		));
+
+		return $this->term_checklist($taxonomy, $posts, array(), true);
+
 	}
 
 	/**
