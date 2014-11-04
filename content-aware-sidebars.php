@@ -152,6 +152,7 @@ final class ContentAwareSidebars {
 
 		}
 
+		add_shortcode( 'ca-sidebar', array($this,'sidebar_shortcode'));
 		add_action('sidebars_widgets', array(&$this,'replace_sidebar'));
 		add_action('wp_head',array(&$this,'sidebar_notify_theme_customizer'));
 
@@ -164,10 +165,30 @@ final class ContentAwareSidebars {
 	}
 
 	/**
+	 * Display sidebar with shortcode
+	 * @author  Joachim Jensen <jv@intox.dk>
+	 * @version 2.5
+	 * @param   array     $atts
+	 * @param   string    $content
+	 * @return  string
+	 */
+	public function sidebar_shortcode( $atts, $content = null ) {
+		$a = shortcode_atts( array(
+			'id' => 0,
+		), $atts );
+		
+		$id = 'ca-sidebar-'.esc_attr($a['id']);
+		ob_start();
+		dynamic_sidebar($id);
+		return ob_get_clean();
+	}
+
+
+	/**
 	 * Add actions to plugin in Plugins screen
 	 * @author  Joachim Jensen <jv@intox.dk>
 	 * @version 2.4
-	 * @param   array    $actions
+	 * @param   array     $actions
 	 * @param   string    $plugin_file
 	 * @param   [type]    $plugin_data
 	 * @param   [type]    $context
