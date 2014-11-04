@@ -856,6 +856,7 @@ final class ContentAwareSidebars {
 
 		// Names of whitelisted meta boxes
 		$whitelist = array(
+			'cas-news'      => 'cas-news',
 			'cas-support'   => 'cas-support',
 			'cas-groups'    => 'cas-groups',
 			'cas-rules'     => 'cas-rules',
@@ -892,14 +893,22 @@ final class ContentAwareSidebars {
 			unset($this->metadata['host']['list'][self::SIDEBAR_PREFIX.get_the_ID()]);
 
 		$boxes = array(
-			//About
+			//News
 			array(
-				'id'       => 'cas-support',
-				'title'    => __('Support the Author of Content Aware Sidebars', self::DOMAIN),
-				'callback' => 'meta_box_author_words',
+				'id'       => 'cas-news',
+				'title'    => __('Get a free Content Aware Sidebars Premium Bundle', self::DOMAIN),
+				'callback' => 'meta_box_news',
 				'context'  => 'normal',
 				'priority' => 'high'
 			),
+			//About
+			// array(
+			// 	'id'       => 'cas-support',
+			// 	'title'    => __('Support the Author of Content Aware Sidebars', self::DOMAIN),
+			// 	'callback' => 'meta_box_author_words',
+			// 	'context'  => 'normal',
+			// 	'priority' => 'high'
+			// ),
 			//Content
 			array(
 				'id'       => 'cas-rules',
@@ -963,6 +972,31 @@ final class ContentAwareSidebars {
 			update_user_option($user->ID, 'metaboxhidden_sidebar', $hidden, true);
 		}
 		return $hidden;
+	}
+
+	public function meta_box_news() {
+		// Use nonce for verification. Unique per sidebar
+		wp_nonce_field(self::SIDEBAR_PREFIX.get_the_ID(), '_ca-sidebar-nonce');
+		echo '<input type="hidden" id="current_sidebar" value="'.get_the_ID().'" />';
+?>
+		<div style="overflow:hidden;">
+			<div style="float:left;width:40%;overflow:hidden">
+				<p>By translating Content Aware Sidebars into your language, you get a free BETA version of the upcoming Premium Bundle for single-site use!</p>
+				<a href="http://www.intox.dk/en/contact" class="button button-primary" style="width:50%;text-align:center;margin:0 auto;">Apply now</a>
+			</div>
+			<div style="float:left;width:60%;box-sizing:border-box;-moz-box-sizing:border-box;padding-left:15px;">
+				<p><strong>Partial Feature List</strong></p>
+				<ul>
+					<li>Display sidebars with URLs using wildcards</li>
+					<li>Display sidebars with User Roles</li>
+					<li>Display sidebars with BuddyPress User Groups</li>
+					<li>Sidebars column in your Post Type and Taxonomy overview screens</li>
+					<li>Select and create sidebars directly from the edit screens</li>
+				</ul>
+			</div>
+
+		</div>
+<?php
 	}
 
 	/**
