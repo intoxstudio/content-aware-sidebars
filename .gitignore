@@ -1,2 +1,3 @@
 *.less
 .transifexrc
+.sublime-grunt.cache
