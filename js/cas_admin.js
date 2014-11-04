@@ -389,13 +389,13 @@
 
 				e.preventDefault();
 
-				var group = $('<li>', {class: 'cas-group-single cas-group-single-new', html: '<span class="cas-group-control cas-group-control-active">'+
+				var group = $('<li>', {class: 'cas-group-single cas-group-single-new', html: '<div class="cas-group-body"><span class="cas-group-control cas-group-control-active">'+
 							'<input type="button" class="button js-cas-group-save" value="'+CASAdmin.save+'" /> | <a class="js-cas-group-cancel" href="#">'+CASAdmin.cancel+'</a>'+
 							'</span>'+
 							'<span class="cas-group-control">'+
 							'<a class="js-cas-group-edit" href="#">'+CASAdmin.edit+'</a> | <a class="submitdelete trash js-cas-group-remove" href="#">'+CASAdmin.remove+'</a>'+
 							'</span>'+
-							'<div class="cas-content"></div>'});
+							'<div class="cas-content"></div></div><div class="cas-group-sep">'+CASAdmin.or+'</div>'});
 
 				cas_admin.groups.add(group);
 			});

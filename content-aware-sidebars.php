@@ -990,7 +990,7 @@ final class ContentAwareSidebars {
 		echo '<li class="cas-no-groups">'.__('No content. Please add at least one condition group to make the sidebar content aware.',self::DOMAIN).'</li>';
 		foreach($groups as $group) {
 
-			echo '<li class="cas-group-single'.($i == 0 ? ' cas-group-active' : '').'">
+			echo '<li class="cas-group-single'.($i == 0 ? ' cas-group-active' : '').'"><div class="cas-group-body">
 			<span class="cas-group-control cas-group-control-active">
 			<input type="button" class="button js-cas-group-save" value="'.__('Save',self::DOMAIN).'" /> | <a class="js-cas-group-cancel" href="#">'.__('Cancel',self::DOMAIN).'</a>
 			</span>
@@ -1001,6 +1001,10 @@ final class ContentAwareSidebars {
 			do_action('cas-module-print-data',$group->ID);
 			echo '</div>
 			<input type="hidden" class="cas_group_id" name="cas_group_id" value="'.$group->ID.'" />';
+
+			echo '</div>';
+
+			echo '<div class="cas-group-sep">'.__('Or',self::DOMAIN).'</div>';
 
 			echo '</li>';	
 			$i++;
@@ -1359,6 +1363,7 @@ final class ContentAwareSidebars {
 				wp_localize_script( 'cas_admin_script', 'CASAdmin', array(
 					'save'          => __('Save',self::DOMAIN),
 					'cancel'        => __('Cancel',self::DOMAIN),
+					'or'            => __('Or',self::DOMAIN),
 					'edit'          => _x('Edit','group',self::DOMAIN),
 					'remove'        => __('Remove',self::DOMAIN),
 					'confirmRemove' => __('Remove this group and its contents permanently?',self::DOMAIN),
