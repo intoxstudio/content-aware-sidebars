@@ -78,6 +78,13 @@ module.exports = function(grunt) {
 					nonull: true
 				}]
 			}
+		},
+
+		watch: {
+			css: {
+				files: '**/style.less',
+				tasks: ['less']
+			}
 		}
 	});
 
