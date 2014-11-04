@@ -30,6 +30,12 @@ abstract class CASModule {
 	protected $name;
 
 	/**
+	 * Module description
+	 * @var string
+	 */
+	protected $description;
+
+	/**
 	 * Enable AJAX search in editor
 	 * @var boolean
 	 */
@@ -56,10 +62,11 @@ abstract class CASModule {
 	 * @param   string    $title
 	 * @param   boolean   $ajax
 	 */
-	public function __construct($id, $title, $ajax = false) {
+	public function __construct($id, $title, $ajax = false, $description = "") {
 		$this->id = $id;
 		$this->name = $title;
 		$this->ajax = $ajax;
+		$this->description = $description;
 
 		if(is_admin()) {
 
@@ -70,11 +77,11 @@ abstract class CASModule {
 			add_filter('manage_'.ContentAwareSidebars::TYPE_SIDEBAR.'_columns', array(&$this,'metabox_preferences'));
 
 			if($this->ajax) {
-				add_action('wp_ajax_cas-module-'.$this->id,	array(&$this,'ajax_get_content'));
+				add_action('wp_ajax_cas-module-'.$this->id,	array(&$this,'ajax_print_content'));
 			}
 		}
 		
-		add_filter('cas-context-data',						array(&$this,'parse_context_data'));	
+		add_filter('cas-context-data',						array(&$this,'parse_context_data'));
 
 	}
 
@@ -100,7 +107,7 @@ abstract class CASModule {
 
 		$data = $this->_get_content();
 		
-		if(!$data)
+		if(!$data && !$this->type_display)
 			return;
 
 		$hidden_columns  = get_hidden_columns( ContentAwareSidebars::TYPE_SIDEBAR );
@@ -111,32 +118,33 @@ abstract class CASModule {
 		echo '<h3 class="accordion-section-title" title="'.$this->name.'" tabindex="0">'.$this->name.'</h3>'."\n";
 		echo '<div class="accordion-section-content cas-rule-content" data-cas-module="'.$this->id.'" id="cas-'.$this->id.'">';
 
+		if($this->description) {
+			echo '<p>'.$this->description.'</p>';
+		}
+
 		if($this->type_display) {
 			echo '<ul><li><label><input class="cas-chk-all" type="checkbox" name="cas_condition['.$this->id.'][]" value="'.$this->id.'" /> '.sprintf(__('Display with All %s',ContentAwareSidebars::DOMAIN),$this->name).'</label></li></ul>'."\n";
 		}
 
-		$content = "";
-		foreach($data as $id => $name) {
-			$content .= '<li class="cas-'.$this->id.'-'.$id.'"><label><input class="cas-' . $this->id . '" type="checkbox" name="cas_condition['.$this->id.'][]" title="'.$name.'" value="'.$id.'" /> '.$name.'</label></li>'."\n";
-		}
-
-		$tabs = array();
-		$tabs['all'] = array(
-			'title' => __('View All'),
-			'status' => true,
-			'content' => $content
-		);
-
-		if($this->searchable) {
-			$tabs['search'] = array(
-				'title' => __('Search'),
-				'status' => false,
-				'content' => '',
-				'content_before' => '<p><input class="cas-autocomplete-' . $this->id . ' cas-autocomplete quick-search" id="cas-autocomplete-' . $this->id . '" type="search" name="cas-autocomplete" value="" placeholder="'.__('Search').'" autocomplete="off" /><span class="spinner"></span></p>'
+		if($data) {
+			$tabs = array();
+			$tabs['all'] = array(
+				'title' => __('View All'),
+				'status' => true,
+				'content' => $this->_get_checkboxes($data)
 			);
-		}
 
-		echo $this->create_tab_panels($this->id,$tabs);
+			if($this->searchable) {
+				$tabs['search'] = array(
+					'title' => __('Search'),
+					'status' => false,
+					'content' => '',
+					'content_before' => '<p><input class="cas-autocomplete-' . $this->id . ' cas-autocomplete quick-search" id="cas-autocomplete-' . $this->id . '" type="search" name="cas-autocomplete" value="" placeholder="'.__('Search').'" autocomplete="off" /><span class="spinner"></span></p>'
+				);
+			}
+
+			echo $this->create_tab_panels($this->id,$tabs);
+		}
 
 		echo '<p class="button-controls">';
 
@@ -215,9 +223,8 @@ abstract class CASModule {
 				echo '<li><label><input type="checkbox" name="cas_condition['.$this->id.'][]" value="'.$this->id.'" checked="checked" /> '.sprintf(__('All %s',ContentAwareSidebars::DOMAIN),$this->name).'</label></li>';
 			}
 
-			foreach($this->_get_content(array('include' => $data)) as $id => $name) {
-				echo '<li><label><input type="checkbox" name="cas_condition['.$this->id.'][]" value="'.$id.'" checked="checked" /> '.$name.'</label></li>'."\n";
-			}
+			echo $this->_get_checkboxes($this->_get_content(array('include' => $data)),false,true);
+
 			echo '</ul>';
 			echo '</div>';	
 		}
@@ -230,6 +237,28 @@ abstract class CASModule {
 	 * @return  array
 	 */
 	abstract protected function _get_content($args = array());
+
+	/**
+	 * Get checkboxes for sidebar edit screen
+	 * @author  Joachim Jensen <jv@intox.dk>
+	 * @version 2.4
+	 * @param   array           $data
+	 * @param   boolean         $pagination
+	 * @param   array|boolean   $selected_content
+	 * @return  string
+	 */
+	protected function _get_checkboxes($data, $pagination = false, $selected_data = array()) {
+		$content = '';
+		foreach($data as $id => $name) {
+			if(is_array($selected_data)) {
+				$selected = checked(in_array($id,$selected_data),true,false);
+			} else {
+				$selected = checked($selected_data,true,false);
+			}
+			$content .= '<li class="cas-'.$this->id.'-'.$id.'"><label><input class="cas-' . $this->id . '" type="checkbox" name="cas_condition['.$this->id.'][]" title="'.$name.'" value="'.$id.'"'.$selected.'/> '.$name.'</label></li>'."\n";
+		}
+		return $content;
+	}
 
 	/**
 	 * Determine if current content is relevant
@@ -308,6 +337,33 @@ abstract class CASModule {
 		$return .'</div>';
 
 		return $return;
+	}
+
+	public function ajax_get_content($args) {
+		return '';
+	}
+
+	final public function ajax_print_content() {
+
+		// if(!isset($_POST['sidebar_id'],$_POST['item_object'])) {
+		// 	die(-1);
+		// }
+		
+		// Verify request
+		//check_ajax_referer(ContentAwareSidebars::SIDEBAR_PREFIX.$_POST['sidebar_id'],'nonce');
+
+		$paged = isset($_POST['paged']) ? $_POST['paged'] : 1;
+		$search = isset($_POST['search']) ? $_POST['search'] : false;
+		$item_object = isset($_POST['item_object']) ? $_POST['item_object'] : '';
+
+		$response = $this->ajax_get_content(array(
+			'paged' => $paged,
+			'search' => $search,
+			'item_object' => $item_object
+		));
+
+		echo json_encode($response);
+		die();
 	}
 	
 }
