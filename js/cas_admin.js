@@ -1,4 +1,4 @@
-/**
+/*!
  * @package Content Aware Sidebars
  * @author Joachim Jensen <jv@intox.dk>
  */
@@ -56,7 +56,7 @@
 		this.remove = function(obj) {
 			var that = this;
 			obj
-			.css('background','red')
+			.css('background','#FFEBE8')
 			.fadeOut('slow', function() { 
 				obj.remove();
 				if(!that.hasGroups()) {
@@ -196,6 +196,7 @@
 		 */
 		this._setActive = function(active) {
 			$('.js-cas-condition-add, .accordion-section-content input:checkbox').attr('disabled',!active);
+			$('.accordion-container').toggleClass('accordion-disabled',!active);
 			this.getCurrent().toggleClass(this._activeClass,active);
 			var checkboxes = $("input:checkbox",this.getCurrent());
 			checkboxes.attr('disabled',!active);
@@ -275,9 +276,15 @@
 			}
 
 			$('.cas-groups-body').on('change', 'input:checkbox', function(e) {
-				$this = $(this);
+				var $this = $(this);
+				console.log("change");
 				if(!$this.is('checked')) {
-					$this.closest('li').hide();
+					var $li = $this.closest('li');
+					if($li.hasClass('cas-new')) {
+						$li.remove();
+					} else {
+						$li.hide();
+					}
 				}
 			});
 
@@ -352,7 +359,7 @@
 
 					var button = $(this);
 
-					var old_checkboxes = $("input:checkbox:checked", button.closest('.cas-rule-content'));
+					var old_checkboxes = $("input:checkbox:checked, .cas-text-input", button.closest('.cas-rule-content'));
 					var condition_elem = $('.cas-condition-'+button.attr('data-cas-condition'), cas_admin.groups.getCurrent());
 					var data = [];
 
@@ -365,9 +372,16 @@
 					old_checkboxes.each( function() {
 						var elem = $(this);
 						if(condition_elem.find("input[value='"+elem.val()+"']").length == 0) {
-							var temp = elem.closest('li').clone().addClass('cas-new').append("&nbsp;"); //add whitespace to make it look nice
+							if(elem.attr('type') != 'checkbox') {
+								if(!elem.val()) return true;
+								var temp = $('<li class="cas-new"><label><input value="'+elem.val()+'" name="'+elem.attr('name')+'" type="checkbox" checked="checked" />'+elem.val()+'</label></li>');
+							} else {
+								var temp = elem.closest('li').clone().addClass('cas-new');
+							}
+							temp.append("&nbsp;"); //add whitespace to make it look nice
 							//jQuery 1.7 fix
 							data.push(temp[0]);
+							//temp.find('input').show();
 						}
 					});
 					old_checkboxes.attr('checked',false);

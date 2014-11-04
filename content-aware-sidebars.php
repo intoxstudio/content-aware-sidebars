@@ -413,7 +413,7 @@ final class ContentAwareSidebars {
 	/**
 	 * Create update messages
 	 * @global object $post
-	 * @param  array $messages 
+	 * @param  array  $messages 
 	 * @return array           
 	 */
 	public function sidebar_updated_messages( $messages ) {
@@ -974,7 +974,7 @@ final class ContentAwareSidebars {
 		$groups = $this->_get_sidebar_groups(null,false);
 
 		echo '<div id="cas-container">'."\n";
-		echo '<div id="cas-accordion" class="accordion-container postbox">'."\n";
+		echo '<div id="cas-accordion" class="accordion-container postbox'.(empty($groups) ? ' accordion-disabled' : '').'">'."\n";
 		echo '<ul class="outer-border">';
 		do_action('cas-module-admin-box');
 		echo '</ul>';
