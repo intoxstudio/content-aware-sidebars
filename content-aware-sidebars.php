@@ -1087,22 +1087,18 @@ final class ContentAwareSidebars {
 	 */
 	public function add_sidebar_rule_ajax() {
 
-		try {
-			if(!isset($_POST['current_id'])) {
-				_e('Unauthorized request',self::DOMAIN);
-				throw new Exception("Forbidden",403);
-			}	
+		$response = array();
 
-			if(!check_ajax_referer(self::SIDEBAR_PREFIX.$_POST['current_id'],'token',false)) {
-				_e('Unauthorized request',self::DOMAIN);
+		try {
+			if(!isset($_POST['current_id']) || 
+				!check_ajax_referer(self::SIDEBAR_PREFIX.$_POST['current_id'],'token',false)) {
+				$response = __('Unauthorized request',self::DOMAIN);
 				throw new Exception("Forbidden",403);
 			}
 
-			$response = array();
-
 			//Make sure some rules are sent
 			if(!isset($_POST['cas_condition'])) {
-				_e('Condition group cannot be empty',self::DOMAIN);
+				$response = __('Condition group cannot be empty',self::DOMAIN);
 				throw new Exception("Internal Server Error",500);
 			}
 
@@ -1122,8 +1118,9 @@ final class ContentAwareSidebars {
 			
 		} catch(Exception $e) {
 			header("HTTP/1.1 ".$e->getCode()." ".$e->getMessage());
+			echo $response;
 		}
-		die();	
+		die();
 	}
 
 	/**
@@ -1134,19 +1131,21 @@ final class ContentAwareSidebars {
 	 */
 	public function remove_sidebar_group_ajax() {
 
+		$response = "";
+
 		try {
 			if(!isset($_POST['current_id'],$_POST['cas_group_id'])) {
-				_e('Unauthorized request',self::DOMAIN);
+				$response = __('Unauthorized request',self::DOMAIN);
 				throw new Exception("Forbidden",403);
 			}	
 
 			if(!check_ajax_referer(self::SIDEBAR_PREFIX.$_POST['current_id'],'token',false)) {
-				_e('Unauthorized request',self::DOMAIN);
+				$response = __('Unauthorized request',self::DOMAIN);
 				throw new Exception("Forbidden",403);
 			}
 
 			if(wp_delete_post(intval($_POST['cas_group_id']), true) === false) {
-				_e('Condition group could not be removed',self::DOMAIN);
+				$response = __('Condition group could not be removed',self::DOMAIN);
 				throw new Exception("Internal Server Error",500);
 			}
 
@@ -1156,6 +1155,7 @@ final class ContentAwareSidebars {
 			
 		} catch(Exception $e) {
 			header("HTTP/1.1 ".$e->getCode()." ".$e->getMessage());
+			echo $response;
 		}
 		die();
 	}
