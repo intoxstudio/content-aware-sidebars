@@ -169,7 +169,7 @@ class CASModule_post_type extends CASModule {
 						echo '<li><label><input type="checkbox" name="cas_condition['.$this->id.'][]" value="'.$post_type->name.'" checked="checked" /> '.$post_type->labels->all_items.'</label></li>' . "\n";
 					}
 					if($posts) {
-						echo $this->_get_checkboxes($post_type->name, $posts, false, $ids);	
+						echo $this->term_checklist($post_type->name, $posts, false, $ids);	
 					}					
 					echo '</ul>';
 					echo '</div>';	
@@ -261,12 +261,12 @@ class CASModule_post_type extends CASModule {
 				$tabs['most-recent'] = array(
 					'title' => __('Most Recent'),
 					'status' => true,
-					'content' => $this->_get_checkboxes($post_type->name, $recent_posts)
+					'content' => $this->term_checklist($post_type->name, $recent_posts)
 				);
 				$tabs['all'] = array(
 					'title' => __('View All'),
 					'status' => false,
-					'content' => $this->_get_checkboxes($post_type->name, $posts, true)
+					'content' => $this->term_checklist($post_type->name, $posts, true)
 				);
 				if($this->searchable) {
 					$tabs['search'] = array(
@@ -302,7 +302,7 @@ class CASModule_post_type extends CASModule {
 	 * @param   array|boolean   $selected_data
 	 * @return  string
 	 */
-	protected function _get_checkboxes($item_object, $data, $pagination = false, $selected_data = array()) {
+	protected function term_checklist($item_object, $data, $pagination = false, $selected_data = array()) {
 
 		$walker = new CAS_Walker_Post_Type_List('post',array('parent' => 'post_parent', 'id' => 'ID'));
 
@@ -322,7 +322,7 @@ class CASModule_post_type extends CASModule {
 				'prev_next'    => true,
 				'prev_text'    => 'prev',
 				'next_text'    => 'next',
-				'add_args'     => array($item_object),
+				'add_args'     => array('item_object'=>$item_object),
 			));
 			$return = $paginate.$return.$paginate;
 		}
@@ -352,7 +352,7 @@ class CASModule_post_type extends CASModule {
 			'search'    => $args['search']
 		));
 
-		return $this->_get_checkboxes($post_type->name, $posts, true);
+		return $this->term_checklist($post_type->name, $posts, empty($args['search']));
 
 	}
 

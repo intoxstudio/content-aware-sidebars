@@ -377,11 +377,11 @@ class CASModule_taxonomy extends CASModule {
 			'taxonomy' => $args['item_object'],
 			'orderby'  => 'name',
 			'order'    => 'ASC',
-			'paged'    => $args['paged'],
+			'offset'    => $args['paged']-1,
 			'search'   => $args['search']
 		));
 
-		return $this->term_checklist($taxonomy, $posts, array(), true);
+		return $this->term_checklist($taxonomy, $posts, array(), empty($args['search']));
 
 	}
 
