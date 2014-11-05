@@ -981,17 +981,19 @@ final class ContentAwareSidebars {
 ?>
 		<div style="overflow:hidden;">
 			<div style="float:left;width:40%;overflow:hidden">
-				<p>By translating Content Aware Sidebars into your language, you get a free BETA version of the upcoming Premium Bundle for single-site use!</p>
-				<a href="http://www.intox.dk/en/contact" class="button button-primary" style="width:50%;text-align:center;margin:0 auto;">Apply now</a>
+				<p><?php _e('Translate Content Aware Sidebars into your language and become a BETA tester of the upcoming Premium Bundle*!',self::DOMAIN); ?></p>
+				<a target="_blank" href="https://www.transifex.com/projects/p/content-aware-sidebars/" class="button button-primary" style="width:100%;text-align:center;margin-bottom:10px;"><?php _e('Translate Now',self::DOMAIN); ?></a>
+				<a href="mailto:translate@intox.dk?subject=Premium Bundle BETA tester" class="button button-primary" style="width:100%;text-align:center;margin-bottom:10px;"><?php _e('Get Premium Bundle',self::DOMAIN); ?></a>
+				<small>(*) <?php _e('Single-site use. BETA implies it is not recommended for production sites.',self::DOMAIN); ?></small>
 			</div>
-			<div style="float:left;width:60%;box-sizing:border-box;-moz-box-sizing:border-box;padding-left:15px;">
-				<p><strong>Partial Feature List</strong></p>
-				<ul>
-					<li>Display sidebars with URLs using wildcards</li>
-					<li>Display sidebars with User Roles</li>
-					<li>Display sidebars with BuddyPress User Groups</li>
-					<li>Sidebars column in your Post Type and Taxonomy overview screens</li>
-					<li>Select and create sidebars directly from the edit screens</li>
+			<div style="float:left;width:60%;box-sizing:border-box;-moz-box-sizing:border-box;padding-left:25px;">
+				<p><strong><?php _e('Partial Feature List',self::DOMAIN); ?></strong></p>
+				<ul class="cas-feature-list">
+					<li><?php _e('Select and create sidebars in the Post Editing Screens',self::DOMAIN); ?></li>
+					<li><?php _e('Display sidebars with URLs using wildcards',self::DOMAIN); ?></li>
+					<li><?php _e('Display sidebars with User Roles',self::DOMAIN); ?></li>
+					<li><?php _e('Display sidebars with BuddyPress User Groups',self::DOMAIN); ?></li>
+					<li><?php _e('Sidebars column in Post Type and Taxonomy Overview Screens',self::DOMAIN); ?></li>
 				</ul>
 			</div>
 
