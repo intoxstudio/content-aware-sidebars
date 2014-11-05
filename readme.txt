@@ -43,17 +43,6 @@ Developed with speed and performance in mind and will add no extra database tabl
 * Schedule sidebars for later publishing
 * Template Tag to display content aware sidebars anywhere in your theme
 
-> **New in version 2**
->
-> Manage widgets for your created sidebars in the Theme Customizer.
->
-> Condition groups let you display a sidebar together with both associated and distinct content.
->
-> Improved GUI makes it even easier to select content and edit sidebars.
->
-> Improved API for developers who want to extend and manipulate content support.
->
-
 = Builtin Plugin Support =
 
 * bbPress (v2.0.2+)
@@ -67,14 +56,16 @@ Developed with speed and performance in mind and will add no extra database tabl
 
 * Chinese (zh_CN): [Joe Tze](http://tkjune.com)
 * Danish (da_DK): [Joachim Jensen](http://www.intox.dk/)
+* Dutch (nl_NL): [Dennis Beckers](https://www.transifex.com/accounts/profile/denisbeckers/)
 * German (de_DE): Enno Wulff
 * Hungarian (hu_HU): Kis Lukács
 * Italian (it_IT): [Luciano Del Fico](http://www.myweb2.it/)
 * Latvian (lv_LV): Haralds Gribusts
 * Lithuanian (lt_LT): Vincent G
 * Polish (pl_PL): [Marta Jasiuk](http://linkedin.com/in/martajasiuk)
-* Portuguese (Brazilian) (pt_BR) [Marcelo Ghelman](https://www.transifex.com/accounts/profile/marcelo.ghelman/)
-* Russian (ru_RU) [Ilya Trofimov](https://www.transifex.com/accounts/profile/iltrof/)
+* Portuguese (Brazilian): (pt_BR) [Marcelo Ghelman](https://www.transifex.com/accounts/profile/marcelo.ghelman/)
+* Russian (ru_RU): [Ilya Trofimov](https://www.transifex.com/accounts/profile/iltrof/)
+* Serbian (sr_RS): [Ogi Djuraskovic](http://firstsiteguide.com/)
 * Slovak (sk_SK): Branco
 * Spanish (es_ES)
 * Ukranian (uk_UA): [Michael Yunat](http://getvoip.com)
@@ -135,6 +126,14 @@ Do you want to contribute and see your name here?
 * Hello World
 
 == Changelog ==
+
+= 2.5 =
+
+* Added: ca-sidebar shortcode
+* Added: serbian and dutch translations
+* Added: teaser meta box
+* Fixed: headers already sent error on ajax request
+* Fixed: improve ux design in sidebar editor
 
 = 2.4.3 =
 
