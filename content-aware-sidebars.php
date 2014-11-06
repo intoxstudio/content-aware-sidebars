@@ -7,7 +7,7 @@
 Plugin Name: Content Aware Sidebars
 Plugin URI: http://www.intox.dk/en/plugin/content-aware-sidebars-en/
 Description: Manage and show sidebars according to the content being viewed.
-Version: 2.4.3
+Version: 2.5
 Author: Joachim Jensen, Intox Studio
 Author URI: http://www.intox.dk/
 Text Domain: content-aware-sidebars
@@ -47,7 +47,7 @@ final class ContentAwareSidebars {
 	/**
 	 * Plugin version
 	 */
-	const PLUGIN_VERSION       = '2.4.3';
+	const PLUGIN_VERSION       = '2.5';
 
 	/**
 	 * Prefix for data (keys) stored in database
@@ -990,7 +990,7 @@ final class ContentAwareSidebars {
 				<p><?php _e('Translate Content Aware Sidebars into your language and become a BETA tester of the upcoming Premium Bundle*!',self::DOMAIN); ?></p>
 				<a target="_blank" href="https://www.transifex.com/projects/p/content-aware-sidebars/" class="button button-primary" style="width:100%;text-align:center;margin-bottom:10px;"><?php _e('Translate Now',self::DOMAIN); ?></a>
 				<a href="mailto:translate@intox.dk?subject=Premium Bundle BETA tester" class="button button-primary" style="width:100%;text-align:center;margin-bottom:10px;"><?php _e('Get Premium Bundle',self::DOMAIN); ?></a>
-				<small>(*) <?php _e('Single-site use. BETA implies it is not recommended for production sites.',self::DOMAIN); ?></small>
+				<p><small>(*) <?php _e('Single-site use. BETA implies it is not recommended for production sites.',self::DOMAIN); ?></small></p>
 			</div>
 			<div style="float:left;width:60%;box-sizing:border-box;-moz-box-sizing:border-box;padding-left:25px;">
 				<p><strong><?php _e('Partial Feature List',self::DOMAIN); ?></strong></p>

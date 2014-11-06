@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=KPZHE
 Tags: sidebar, widget, widget area, content aware, context aware, conditional, seo, dynamic, bbpress, buddypress, qtranslate, polylang, transposh, wpml, woocommerce
 Requires at least: 3.3
 Tested up to: 4.0
-Stable tag: 2.4.3
+Stable tag: 2.5
 License: GPLv3
 
 Create and display sidebars according to the content being viewed.
@@ -42,6 +42,7 @@ Developed with speed and performance in mind and will add no extra database tabl
 * Private sidebars only for members
 * Schedule sidebars for later publishing
 * Template Tag to display content aware sidebars anywhere in your theme
+* **NEW:** Shortcode to display sidebars anywhere in your content
 
 = Builtin Plugin Support =
 
@@ -72,19 +73,22 @@ Developed with speed and performance in mind and will add no extra database tabl
 
 Do you want to contribute and see your name here?
 
-[Click to go to Transifex to translate Content Aware Sidebars into your language](https://www.transifex.com/projects/p/content-aware-sidebars/). Alternatively you can send the .po and .mo files to translate [at] intox.dk.
+[Click to go to Transifex.com to translate Content Aware Sidebars into your language](https://www.transifex.com/projects/p/content-aware-sidebars/). Alternatively you can send the .po and .mo files to translate [at] intox.dk.
 
 = For more information =
 
 * [Documentation](http://www.intox.dk/en/plugin/content-aware-sidebars-en/)
 * [Follow development on Github](https://github.com/intoxstudio/content-aware-sidebars)
+* [Intox Studio on Facebook](https://www.facebook.com/intoxstudio)
+* [Intox Studio on Twitter](https://twitter.com/intoxstudio)
 
 == Installation ==
 
 1. Upload the full plugin directory to your `/wp-content/plugins/` directory or install the plugin through `Plugins` in the administration 
 1. Activate the plugin through `Plugins` in the administration
-1. Have fun creating your first sidebar
-1. Optional: Insert `<?php display_ca_sidebar( $args ); ?>` in a template if you have a special spot for the new, manual handled, sidebars.
+1. Have fun creating your first sidebar under the menu *Sidebars > Add New*
+1. Optional: Insert Template Tag `<?php display_ca_sidebar( $args ); ?>` in your theme for manually handled sidebars
+1. Optional: Insert Shortcode `[ca-sidebar id=]` in some content for manually handled sidebars
 
 == Frequently Asked Questions ==
 
@@ -132,8 +136,11 @@ Do you want to contribute and see your name here?
 * Added: ca-sidebar shortcode
 * Added: serbian and dutch translations
 * Added: teaser meta box
+* Added: shortcode is displayed when selecting manual handle in sidebar editor
+* Added: description can be added to modules
+* Added: generic module callback for ajax allowing search and pagination to use same request
+* Added: or-separator between condition groups in editor
 * Fixed: headers already sent error on ajax request
-* Fixed: improve ux design in sidebar editor
 
 = 2.4.3 =
 
