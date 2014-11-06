@@ -1,3 +1,4 @@
 *.less
 .transifexrc
 .sublime-grunt.cache
+node_modules/
