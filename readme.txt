@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=KPZHE
 Tags: sidebar, widget, widget area, content aware, context aware, conditional, seo, dynamic, bbpress, buddypress, qtranslate, polylang, transposh, wpml, woocommerce
 Requires at least: 3.3
 Tested up to: 4.0
-Stable tag: 2.5
+Stable tag: 2.5.1
 License: GPLv3
 
 Create and display sidebars according to the content being viewed.
@@ -130,6 +130,10 @@ Do you want to contribute and see your name here?
 * Hello World
 
 == Changelog ==
+
+= 2.5.1 =
+
+* Fixed: properly include casmodule.php
 
 = 2.5 =
 
