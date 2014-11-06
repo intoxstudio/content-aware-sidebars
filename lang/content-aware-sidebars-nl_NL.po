@@ -6,9 +6,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Content Aware Sidebars\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/content-aware-sidebars\n"
-"POT-Creation-Date: 2014-11-04 01:44-0800\n"
-"PO-Revision-Date: 2014-11-04 16:11+0000\n"
-"Last-Translator: Dennis Beckers <transifex@dennisbeckers.nl>\n"
+"POT-Creation-Date: 2014-11-05 01:08-0800\n"
+"PO-Revision-Date: 2014-11-05 10:24+0000\n"
+"Last-Translator: Joachim <jv@intox.dk>\n"
 "Language-Team: Dutch (Netherlands) (http://www.transifex.com/projects/p/content-aware-sidebars/language/nl_NL/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -31,206 +31,206 @@ msgstr "Manage en laat sidebars zien afhankelijk van de inhoud die getoond wordt
 msgid "Content Aware Sidebars"
 msgstr "Inhouds-afhankelijke Sidebars"
 
-#: ../content-aware-sidebars.php:202 ../content-aware-sidebars.php:952
+#: ../content-aware-sidebars.php:200 ../content-aware-sidebars.php:950
 msgid "FAQ"
 msgstr "FAQ"
 
-#: ../content-aware-sidebars.php:302
+#: ../content-aware-sidebars.php:300
 msgid "Exposure"
 msgstr "Exposure"
 
-#: ../content-aware-sidebars.php:308
+#: ../content-aware-sidebars.php:306
 msgid "Singular"
 msgstr "Singular"
 
-#: ../content-aware-sidebars.php:309
+#: ../content-aware-sidebars.php:307
 msgid "Singular & Archive"
 msgstr "Singular & Archief"
 
-#: ../content-aware-sidebars.php:310
+#: ../content-aware-sidebars.php:308
 msgid "Archive"
 msgstr "Archief"
 
-#: ../content-aware-sidebars.php:314 ../content-aware-sidebars.php:506
+#: ../content-aware-sidebars.php:312 ../content-aware-sidebars.php:504
 msgctxt "option"
 msgid "Handle"
 msgstr "Lokatie"
 
-#: ../content-aware-sidebars.php:316
+#: ../content-aware-sidebars.php:314
 msgid "Replace host sidebar, merge with it or add sidebar manually."
 msgstr "Vervang host sidebar, voeg daarmee samen of voeg sidebar met de hand toe."
 
-#: ../content-aware-sidebars.php:320
+#: ../content-aware-sidebars.php:318
 msgid "Replace"
 msgstr "Vervang"
 
-#: ../content-aware-sidebars.php:321
+#: ../content-aware-sidebars.php:319
 msgid "Merge"
 msgstr "Samenvoegen"
 
-#: ../content-aware-sidebars.php:322
+#: ../content-aware-sidebars.php:320
 msgid "Manual"
 msgstr "Handmatig"
 
-#: ../content-aware-sidebars.php:323
+#: ../content-aware-sidebars.php:321
 msgid "Forced replace"
 msgstr "Geforceerde vervanging"
 
-#: ../content-aware-sidebars.php:327
+#: ../content-aware-sidebars.php:325
 msgid "Host Sidebar"
 msgstr "Host Sidebar"
 
-#: ../content-aware-sidebars.php:335 ../content-aware-sidebars.php:507
+#: ../content-aware-sidebars.php:333 ../content-aware-sidebars.php:505
 msgid "Merge position"
 msgstr "Voeg posities samen"
 
-#: ../content-aware-sidebars.php:337
+#: ../content-aware-sidebars.php:335
 msgid "Place sidebar on top or bottom of host when merging."
 msgstr "Plaats sidebar bovenaan of onderaan host om samen te voegen"
 
-#: ../content-aware-sidebars.php:341
+#: ../content-aware-sidebars.php:339
 msgid "Top"
 msgstr "Top"
 
-#: ../content-aware-sidebars.php:342
+#: ../content-aware-sidebars.php:340
 msgid "Bottom"
 msgstr "Onderkant"
 
-#: ../content-aware-sidebars.php:367
+#: ../content-aware-sidebars.php:365
 msgid "Sidebars"
 msgstr "Sidebars"
 
-#: ../content-aware-sidebars.php:368
+#: ../content-aware-sidebars.php:366
 msgid "Sidebar"
 msgstr "Sidebar"
 
-#: ../content-aware-sidebars.php:369
+#: ../content-aware-sidebars.php:367
 msgctxt "sidebar"
 msgid "Add New"
 msgstr "Voeg toe"
 
-#: ../content-aware-sidebars.php:370
+#: ../content-aware-sidebars.php:368
 msgid "Add New Sidebar"
 msgstr "Voeg nieuwe Sidebar toe"
 
-#: ../content-aware-sidebars.php:371 ../content-aware-sidebars.php:1419
+#: ../content-aware-sidebars.php:369
 msgid "Edit Sidebar"
 msgstr "Bewerk Sidebar"
 
-#: ../content-aware-sidebars.php:372
+#: ../content-aware-sidebars.php:370
 msgid "New Sidebar"
 msgstr "Nieuwe Sidebar"
 
-#: ../content-aware-sidebars.php:373
+#: ../content-aware-sidebars.php:371
 msgid "All Sidebars"
 msgstr "Alle Sidebars"
 
-#: ../content-aware-sidebars.php:374
+#: ../content-aware-sidebars.php:372
 msgid "View Sidebar"
 msgstr "Bekijk Sidebar"
 
-#: ../content-aware-sidebars.php:375
+#: ../content-aware-sidebars.php:373
 msgid "Search Sidebars"
 msgstr "Zoek Sidebars"
 
-#: ../content-aware-sidebars.php:376
+#: ../content-aware-sidebars.php:374
 msgid "No sidebars found"
 msgstr "Geen sidebars gevonden"
 
-#: ../content-aware-sidebars.php:377
+#: ../content-aware-sidebars.php:375
 msgid "No sidebars found in Trash"
 msgstr "Geen sidebars gevonden in Prullenbak"
 
-#: ../content-aware-sidebars.php:392 ../content-aware-sidebars.php:946
+#: ../content-aware-sidebars.php:390 ../content-aware-sidebars.php:944
 #: ../content-aware-sidebars.php:1017
 msgid "Condition Groups"
 msgstr "Conditiegroepen"
 
-#: ../content-aware-sidebars.php:393
+#: ../content-aware-sidebars.php:391
 msgid "Condition Group"
 msgstr "Conditiegroep"
 
-#: ../content-aware-sidebars.php:394
+#: ../content-aware-sidebars.php:392
 msgctxt "group"
 msgid "Add New"
 msgstr "Voeg nieuwe toe"
 
-#: ../content-aware-sidebars.php:395 ../content-aware-sidebars.php:1017
+#: ../content-aware-sidebars.php:393 ../content-aware-sidebars.php:1017
 #: ../content-aware-sidebars.php:1051
 msgid "Add New Group"
 msgstr "Voeg nieuwe groep toe"
 
-#: ../content-aware-sidebars.php:396 ../content-aware-sidebars.php:1032
+#: ../content-aware-sidebars.php:394 ../content-aware-sidebars.php:1032
 #: ../content-aware-sidebars.php:1401
 msgctxt "group"
 msgid "Edit"
 msgstr "Bewerk"
 
-#: ../content-aware-sidebars.php:420
+#: ../content-aware-sidebars.php:418
 msgid "Manage widgets"
 msgstr "Stel widgets in"
 
-#: ../content-aware-sidebars.php:423 ../content-aware-sidebars.php:426
+#: ../content-aware-sidebars.php:421 ../content-aware-sidebars.php:424
 msgid "Sidebar updated."
 msgstr "Sidebar bijgewerkt."
 
-#: ../content-aware-sidebars.php:428
+#: ../content-aware-sidebars.php:426
 msgid "Sidebar published."
 msgstr "Sidebar gepubliceerd."
 
-#: ../content-aware-sidebars.php:429
+#: ../content-aware-sidebars.php:427
 msgid "Sidebar saved."
 msgstr "Sidebar opgeslagen."
 
-#: ../content-aware-sidebars.php:430
+#: ../content-aware-sidebars.php:428
 msgid "Sidebar submitted."
 msgstr "Sidebar ingediend."
 
-#: ../content-aware-sidebars.php:431
+#: ../content-aware-sidebars.php:429
 #, php-format
 msgid "Sidebar scheduled for: <strong>%1$s</strong>."
 msgstr "Sidebar geplanned voor: <strong>%1$s<strong>"
 
 #. translators: Publish box date format, see http://php.net/date
-#: ../content-aware-sidebars.php:433
+#: ../content-aware-sidebars.php:431
 msgid "M j, Y @ G:i"
 msgstr "M j, Y @ G:i"
 
-#: ../content-aware-sidebars.php:434
+#: ../content-aware-sidebars.php:432
 msgid "Sidebar draft updated."
 msgstr "Concept Sidebar opgeslagen."
 
-#: ../content-aware-sidebars.php:482 ../content-aware-sidebars.php:569
+#: ../content-aware-sidebars.php:480 ../content-aware-sidebars.php:567
 msgid "Please update Host Sidebar"
 msgstr "Update de Host Sidebar aub"
 
-#: ../content-aware-sidebars.php:508
+#: ../content-aware-sidebars.php:506
 msgid "Widgets"
 msgstr "Widgets"
 
-#: ../content-aware-sidebars.php:644
+#: ../content-aware-sidebars.php:642
 msgid "Manage Widgets"
 msgstr "Beheer Widgets"
 
-#: ../content-aware-sidebars.php:899
+#: ../content-aware-sidebars.php:897
 msgid "Get a free Content Aware Sidebars Premium Bundle"
 msgstr "Krijg een gratis Content Aware Sidebars Premium bundel"
 
-#: ../content-aware-sidebars.php:915
+#: ../content-aware-sidebars.php:913
 msgid "Content"
 msgstr "Inhoud"
 
-#: ../content-aware-sidebars.php:923
+#: ../content-aware-sidebars.php:921
 msgid "Options"
 msgstr "Opties"
 
-#: ../content-aware-sidebars.php:947
+#: ../content-aware-sidebars.php:945
 msgid ""
 "Each created condition group describe some specific content (conditions) "
 "that the current sidebar should be displayed with."
 msgstr "Elke gemaakte conditiegroep beschrijft een specifieke inhoud (conditie) die met de huidige sidebar weergegeven moet worden  "
 
-#: ../content-aware-sidebars.php:948
+#: ../content-aware-sidebars.php:946
 msgid ""
 "Content added to a condition group uses logical conjunction, while condition"
 " groups themselves use logical disjunction. This means that content added to"
@@ -239,13 +239,56 @@ msgid ""
 "extremely focused and at the same time distinct conditions."
 msgstr "Inhoud toegevoegd aan een conditiegroep gebruikt logische combinaties, terwijl conditiegroepen zelf logische disjunctie gebruiken. Dit betekent dat inhoudt die aan een groep toegevoegd is geassocieerd moet zijn, en ze als zodat behandeld worden, en dat de groepen niet interfereren met elkaar. Het is dus mogelijk om tegelijkertijd extreem gerichte als verschillende condities te hebben."
 
-#: ../content-aware-sidebars.php:951
+#: ../content-aware-sidebars.php:949
 msgid "More Information"
 msgstr "Meer informatie"
 
-#: ../content-aware-sidebars.php:953
+#: ../content-aware-sidebars.php:951
 msgid "Get Support"
 msgstr "Krijg ondersteuning"
+
+#: ../content-aware-sidebars.php:982
+msgid ""
+"Translate Content Aware Sidebars into your language and become a BETA tester"
+" of the upcoming Premium Bundle*!"
+msgstr ""
+
+#: ../content-aware-sidebars.php:983
+msgid "Translate Now"
+msgstr ""
+
+#: ../content-aware-sidebars.php:984
+msgid "Get Premium Bundle"
+msgstr ""
+
+#: ../content-aware-sidebars.php:985
+msgid ""
+"Single-site use. BETA implies it is not recommended for production sites."
+msgstr ""
+
+#: ../content-aware-sidebars.php:988
+msgid "Partial Feature List"
+msgstr ""
+
+#: ../content-aware-sidebars.php:990
+msgid "Select and create sidebars in the Post Editing Screens"
+msgstr ""
+
+#: ../content-aware-sidebars.php:991
+msgid "Display sidebars with URLs using wildcards"
+msgstr ""
+
+#: ../content-aware-sidebars.php:992
+msgid "Display sidebars with User Roles"
+msgstr ""
+
+#: ../content-aware-sidebars.php:993
+msgid "Display sidebars with BuddyPress User Groups"
+msgstr ""
+
+#: ../content-aware-sidebars.php:994
+msgid "Sidebars column in Post Type and Taxonomy Overview Screens"
+msgstr ""
 
 #: ../content-aware-sidebars.php:1018
 msgid ""
@@ -339,6 +382,10 @@ msgid ""
 "The current group has unsaved changes. Do you want to continue and discard "
 "these changes?"
 msgstr "De veranderingen in de huidige groep zijn nog niet opgeslagen. Wilt u doorgaan en deze veranderingen ongedaan maken? "
+
+#: ../content-aware-sidebars.php:1419
+msgid "Edit"
+msgstr "Bewerk"
 
 #: ../modules/author.php:28
 msgid "Authors"

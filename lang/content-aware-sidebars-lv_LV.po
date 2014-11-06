@@ -5,8 +5,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Content Aware Sidebars\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/content-aware-sidebars\n"
-"POT-Creation-Date: 2014-11-04 01:44-0800\n"
-"PO-Revision-Date: 2014-11-04 10:05+0000\n"
+"POT-Creation-Date: 2014-11-05 01:08-0800\n"
+"PO-Revision-Date: 2014-11-05 10:04+0000\n"
 "Last-Translator: Joachim <jv@intox.dk>\n"
 "Language-Team: Latvian (Latvia) (http://www.transifex.com/projects/p/content-aware-sidebars/language/lv_LV/)\n"
 "MIME-Version: 1.0\n"
@@ -30,206 +30,206 @@ msgstr "Pārvaldīt un rādīt sānsjolas atbilstoši aplūkojamajam saturam."
 msgid "Content Aware Sidebars"
 msgstr "Content Aware Sidebars"
 
-#: ../content-aware-sidebars.php:202 ../content-aware-sidebars.php:952
+#: ../content-aware-sidebars.php:200 ../content-aware-sidebars.php:950
 msgid "FAQ"
 msgstr ""
 
-#: ../content-aware-sidebars.php:302
+#: ../content-aware-sidebars.php:300
 msgid "Exposure"
 msgstr "Ekspozīcija"
 
-#: ../content-aware-sidebars.php:308
+#: ../content-aware-sidebars.php:306
 msgid "Singular"
 msgstr "Atsevišķs"
 
-#: ../content-aware-sidebars.php:309
+#: ../content-aware-sidebars.php:307
 msgid "Singular & Archive"
 msgstr "Atsevišķs un Arhīvs"
 
-#: ../content-aware-sidebars.php:310
+#: ../content-aware-sidebars.php:308
 msgid "Archive"
 msgstr "Arhīvs"
 
-#: ../content-aware-sidebars.php:314 ../content-aware-sidebars.php:506
+#: ../content-aware-sidebars.php:312 ../content-aware-sidebars.php:504
 msgctxt "option"
 msgid "Handle"
 msgstr "Pārvaldīt [iespējas]"
 
-#: ../content-aware-sidebars.php:316
+#: ../content-aware-sidebars.php:314
 msgid "Replace host sidebar, merge with it or add sidebar manually."
 msgstr "Aizvietot galveno sānjoslu, sapludināt ar to vai pievienot sānjoslu manuāli."
 
-#: ../content-aware-sidebars.php:320
+#: ../content-aware-sidebars.php:318
 msgid "Replace"
 msgstr "Aizvietot"
 
-#: ../content-aware-sidebars.php:321
+#: ../content-aware-sidebars.php:319
 msgid "Merge"
 msgstr "Sapludināt"
 
-#: ../content-aware-sidebars.php:322
+#: ../content-aware-sidebars.php:320
 msgid "Manual"
 msgstr "Manuāli"
 
-#: ../content-aware-sidebars.php:323
+#: ../content-aware-sidebars.php:321
 msgid "Forced replace"
 msgstr ""
 
-#: ../content-aware-sidebars.php:327
+#: ../content-aware-sidebars.php:325
 msgid "Host Sidebar"
 msgstr "Galvenā sānjosla"
 
-#: ../content-aware-sidebars.php:335 ../content-aware-sidebars.php:507
+#: ../content-aware-sidebars.php:333 ../content-aware-sidebars.php:505
 msgid "Merge position"
 msgstr "Sapludināšanas pozīcija"
 
-#: ../content-aware-sidebars.php:337
+#: ../content-aware-sidebars.php:335
 msgid "Place sidebar on top or bottom of host when merging."
 msgstr "Novietot sānjoslu augšā vai apakšā galvenajai joslai, kad sapludina."
 
-#: ../content-aware-sidebars.php:341
+#: ../content-aware-sidebars.php:339
 msgid "Top"
 msgstr "Augšā"
 
-#: ../content-aware-sidebars.php:342
+#: ../content-aware-sidebars.php:340
 msgid "Bottom"
 msgstr "Apakšā"
 
-#: ../content-aware-sidebars.php:367
+#: ../content-aware-sidebars.php:365
 msgid "Sidebars"
 msgstr "Sānjoslas"
 
-#: ../content-aware-sidebars.php:368
+#: ../content-aware-sidebars.php:366
 msgid "Sidebar"
 msgstr "Sānjosla"
 
-#: ../content-aware-sidebars.php:369
+#: ../content-aware-sidebars.php:367
 msgctxt "sidebar"
 msgid "Add New"
 msgstr "Pievienot jaunu"
 
-#: ../content-aware-sidebars.php:370
+#: ../content-aware-sidebars.php:368
 msgid "Add New Sidebar"
 msgstr "Pievienot jaunu sānjoslu"
 
-#: ../content-aware-sidebars.php:371 ../content-aware-sidebars.php:1419
+#: ../content-aware-sidebars.php:369
 msgid "Edit Sidebar"
 msgstr "Rediģēt sānjoslu"
 
-#: ../content-aware-sidebars.php:372
+#: ../content-aware-sidebars.php:370
 msgid "New Sidebar"
 msgstr "Jauna sānjosla"
 
-#: ../content-aware-sidebars.php:373
+#: ../content-aware-sidebars.php:371
 msgid "All Sidebars"
 msgstr "Visas sānjoslas"
 
-#: ../content-aware-sidebars.php:374
+#: ../content-aware-sidebars.php:372
 msgid "View Sidebar"
 msgstr "Aplūkot sānjoslu"
 
-#: ../content-aware-sidebars.php:375
+#: ../content-aware-sidebars.php:373
 msgid "Search Sidebars"
 msgstr "Meklēt sānjoslas"
 
-#: ../content-aware-sidebars.php:376
+#: ../content-aware-sidebars.php:374
 msgid "No sidebars found"
 msgstr "Nav atrasta neviena sānjosla"
 
-#: ../content-aware-sidebars.php:377
+#: ../content-aware-sidebars.php:375
 msgid "No sidebars found in Trash"
 msgstr "Atkritnē nav atrasta neviena sānjosla"
 
-#: ../content-aware-sidebars.php:392 ../content-aware-sidebars.php:946
+#: ../content-aware-sidebars.php:390 ../content-aware-sidebars.php:944
 #: ../content-aware-sidebars.php:1017
 msgid "Condition Groups"
 msgstr ""
 
-#: ../content-aware-sidebars.php:393
+#: ../content-aware-sidebars.php:391
 msgid "Condition Group"
 msgstr ""
 
-#: ../content-aware-sidebars.php:394
+#: ../content-aware-sidebars.php:392
 msgctxt "group"
 msgid "Add New"
 msgstr "Pievienot jaunu"
 
-#: ../content-aware-sidebars.php:395 ../content-aware-sidebars.php:1017
+#: ../content-aware-sidebars.php:393 ../content-aware-sidebars.php:1017
 #: ../content-aware-sidebars.php:1051
 msgid "Add New Group"
 msgstr ""
 
-#: ../content-aware-sidebars.php:396 ../content-aware-sidebars.php:1032
+#: ../content-aware-sidebars.php:394 ../content-aware-sidebars.php:1032
 #: ../content-aware-sidebars.php:1401
 msgctxt "group"
 msgid "Edit"
 msgstr ""
 
-#: ../content-aware-sidebars.php:420
+#: ../content-aware-sidebars.php:418
 msgid "Manage widgets"
 msgstr ""
 
-#: ../content-aware-sidebars.php:423 ../content-aware-sidebars.php:426
+#: ../content-aware-sidebars.php:421 ../content-aware-sidebars.php:424
 msgid "Sidebar updated."
 msgstr "Sānjosla atjaunota."
 
-#: ../content-aware-sidebars.php:428
+#: ../content-aware-sidebars.php:426
 msgid "Sidebar published."
 msgstr ""
 
-#: ../content-aware-sidebars.php:429
+#: ../content-aware-sidebars.php:427
 msgid "Sidebar saved."
 msgstr "Sānjosla saglabāta."
 
-#: ../content-aware-sidebars.php:430
+#: ../content-aware-sidebars.php:428
 msgid "Sidebar submitted."
 msgstr ""
 
-#: ../content-aware-sidebars.php:431
+#: ../content-aware-sidebars.php:429
 #, php-format
 msgid "Sidebar scheduled for: <strong>%1$s</strong>."
 msgstr ""
 
 #. translators: Publish box date format, see http://php.net/date
-#: ../content-aware-sidebars.php:433
+#: ../content-aware-sidebars.php:431
 msgid "M j, Y @ G:i"
 msgstr "M j, Y @ G:i"
 
-#: ../content-aware-sidebars.php:434
+#: ../content-aware-sidebars.php:432
 msgid "Sidebar draft updated."
 msgstr "Sānjoslas melnraksts atjaunināts."
 
-#: ../content-aware-sidebars.php:482 ../content-aware-sidebars.php:569
+#: ../content-aware-sidebars.php:480 ../content-aware-sidebars.php:567
 msgid "Please update Host Sidebar"
 msgstr "Lūdzu atjauniniet galveno sānjoslu"
 
-#: ../content-aware-sidebars.php:508
+#: ../content-aware-sidebars.php:506
 msgid "Widgets"
 msgstr ""
 
-#: ../content-aware-sidebars.php:644
+#: ../content-aware-sidebars.php:642
 msgid "Manage Widgets"
 msgstr "Pārvaldīt logrīkus"
 
-#: ../content-aware-sidebars.php:899
+#: ../content-aware-sidebars.php:897
 msgid "Get a free Content Aware Sidebars Premium Bundle"
 msgstr ""
 
-#: ../content-aware-sidebars.php:915
+#: ../content-aware-sidebars.php:913
 msgid "Content"
 msgstr "Saturs"
 
-#: ../content-aware-sidebars.php:923
+#: ../content-aware-sidebars.php:921
 msgid "Options"
 msgstr "Iespējas"
 
-#: ../content-aware-sidebars.php:947
+#: ../content-aware-sidebars.php:945
 msgid ""
 "Each created condition group describe some specific content (conditions) "
 "that the current sidebar should be displayed with."
 msgstr ""
 
-#: ../content-aware-sidebars.php:948
+#: ../content-aware-sidebars.php:946
 msgid ""
 "Content added to a condition group uses logical conjunction, while condition"
 " groups themselves use logical disjunction. This means that content added to"
@@ -238,12 +238,55 @@ msgid ""
 "extremely focused and at the same time distinct conditions."
 msgstr ""
 
-#: ../content-aware-sidebars.php:951
+#: ../content-aware-sidebars.php:949
 msgid "More Information"
 msgstr ""
 
-#: ../content-aware-sidebars.php:953
+#: ../content-aware-sidebars.php:951
 msgid "Get Support"
+msgstr ""
+
+#: ../content-aware-sidebars.php:982
+msgid ""
+"Translate Content Aware Sidebars into your language and become a BETA tester"
+" of the upcoming Premium Bundle*!"
+msgstr ""
+
+#: ../content-aware-sidebars.php:983
+msgid "Translate Now"
+msgstr ""
+
+#: ../content-aware-sidebars.php:984
+msgid "Get Premium Bundle"
+msgstr ""
+
+#: ../content-aware-sidebars.php:985
+msgid ""
+"Single-site use. BETA implies it is not recommended for production sites."
+msgstr ""
+
+#: ../content-aware-sidebars.php:988
+msgid "Partial Feature List"
+msgstr ""
+
+#: ../content-aware-sidebars.php:990
+msgid "Select and create sidebars in the Post Editing Screens"
+msgstr ""
+
+#: ../content-aware-sidebars.php:991
+msgid "Display sidebars with URLs using wildcards"
+msgstr ""
+
+#: ../content-aware-sidebars.php:992
+msgid "Display sidebars with User Roles"
+msgstr ""
+
+#: ../content-aware-sidebars.php:993
+msgid "Display sidebars with BuddyPress User Groups"
+msgstr ""
+
+#: ../content-aware-sidebars.php:994
+msgid "Sidebars column in Post Type and Taxonomy Overview Screens"
 msgstr ""
 
 #: ../content-aware-sidebars.php:1018
@@ -337,6 +380,10 @@ msgstr ""
 msgid ""
 "The current group has unsaved changes. Do you want to continue and discard "
 "these changes?"
+msgstr ""
+
+#: ../content-aware-sidebars.php:1419
+msgid "Edit"
 msgstr ""
 
 #: ../modules/author.php:28
