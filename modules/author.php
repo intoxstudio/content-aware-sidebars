@@ -65,6 +65,10 @@ class CASModule_author extends CASModule {
 		$args['number'] = 20;
 		$args['fields'] = array('ID','display_name');
 
+		if(isset($args['search'])) {
+			add_filter( 'user_search_columns', array(&$this,'filter_search_column'), 10, 3 );
+		}
+
 		$user_query = new WP_User_Query(  $args );
 
 		$author_list = array();
@@ -90,16 +94,32 @@ class CASModule_author extends CASModule {
 			'search'         => ''
 		));
 
+		//display_name does not seem to be recognized, add it anyway
 		$posts = $this->_get_content(array(
 			'orderby'   => 'title',
 			'order'     => 'ASC',
-			'offset'    => $args['paged']-1,
-			'search'    => $args['search'],
-			'search_columns' => array('display_name')
+			'offset'    => ($args['paged']-1)*20,
+			'search'    => '*'.$args['search'].'*',
+			'search_columns' => array( 'user_nicename', 'user_login', 'display_name' )
 		));
 
-		return $this->_get_checkboxes($posts, true);
+		return $this->_get_checkboxes($posts, empty($args['search']));
 
+	}
+
+	/**
+	 * Filter to definitely add display_name to search_columns
+	 * WP3.6+
+	 * @author  Joachim Jensen <jv@intox.dk>
+	 * @version 2.5
+	 * @param   array      $search_columns
+	 * @param   string     $search
+	 * @param   WP_User    $user
+	 * @return  array
+	 */
+	function filter_search_column($search_columns, $search, $user) {
+		$search_columns[] = 'display_name';
+		return $search_columns;
 	}
 
 }
