@@ -43,10 +43,6 @@ class CASModule_taxonomy extends CASModule {
 
 		add_action('created_term', array(&$this,'term_ancestry_check'),10,3);
 
-		if(is_admin()) {
-			add_action('wp_ajax_cas-autocomplete-'.$this->id, array(&$this,'ajax_content_search'));
-		}
-		
 	}
 
 	/**
@@ -359,6 +355,13 @@ class CASModule_taxonomy extends CASModule {
 
 	}
 
+	/**
+	 * Get content in HTML
+	 * @author  Joachim Jensen <jv@intox.dk>
+	 * @version 2.5
+	 * @param   array    $args
+	 * @return  string
+	 */
 	public function ajax_get_content($args) {
 
 		$args = wp_parse_args($args, array(

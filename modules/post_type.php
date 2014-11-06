@@ -295,7 +295,7 @@ class CASModule_post_type extends CASModule {
 	/**
 	 * Get checkboxes for sidebar edit screen
 	 * @author  Joachim Jensen <jv@intox.dk>
-	 * @version 2.4
+	 * @version 2.5
 	 * @param   string          $item_object
 	 * @param   array           $data
 	 * @param   boolean         $pagination
@@ -331,6 +331,13 @@ class CASModule_post_type extends CASModule {
 
 	}
 
+	/**
+	 * Get content in HTML
+	 * @author  Joachim Jensen <jv@intox.dk>
+	 * @version 2.5
+	 * @param   array    $args
+	 * @return  string
+	 */
 	public function ajax_get_content($args) {
 		$args = wp_parse_args($args, array(
 			'item_object'    => 'post',

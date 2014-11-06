@@ -974,6 +974,12 @@ final class ContentAwareSidebars {
 		return $hidden;
 	}
 
+	/**
+	 * Meta box for news
+	 * @author  Joachim Jensen <jv@intox.dk>
+	 * @version 2.5
+	 * @return  void
+	 */
 	public function meta_box_news() {
 		// Use nonce for verification. Unique per sidebar
 		wp_nonce_field(self::SIDEBAR_PREFIX.get_the_ID(), '_ca-sidebar-nonce');

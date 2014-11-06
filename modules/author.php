@@ -28,11 +28,6 @@ class CASModule_author extends CASModule {
 		parent::__construct('authors',__('Authors',ContentAwareSidebars::DOMAIN),true);
 		$this->searchable = true;
 		$this->type_display = true;
-
-		if(is_admin()) {
-			//add_action('wp_ajax_cas-autocomplete-'.$this->id, array(&$this,'ajax_content_search'));
-		}
-		
 	}
 	
 	/**
@@ -80,6 +75,14 @@ class CASModule_author extends CASModule {
 		}
 		return $author_list;
 	}
+
+	/**
+	 * Get content in HTML
+	 * @author  Joachim Jensen <jv@intox.dk>
+	 * @version 2.5
+	 * @param   array    $args
+	 * @return  string
+	 */
 	public function ajax_get_content($args) {
 		$args = wp_parse_args($args, array(
 			'item_object'    => '',
