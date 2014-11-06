@@ -339,18 +339,29 @@ abstract class CASModule {
 		return $return;
 	}
 
+	/**
+	 * Get content in HTML
+	 * @author  Joachim Jensen <jv@intox.dk>
+	 * @version 2.5
+	 * @param   array    $args
+	 * @return  string
+	 */
 	public function ajax_get_content($args) {
 		return '';
 	}
 
+	/**
+	 * Print HTML content for AJAX request
+	 * @author  Joachim Jensen <jv@intox.dk>
+	 * @version 2.5
+	 * @return  void
+	 */
 	final public function ajax_print_content() {
 
-		// if(!isset($_POST['sidebar_id'],$_POST['item_object'])) {
-		// 	die(-1);
-		// }
-		
-		// Verify request
-		//check_ajax_referer(ContentAwareSidebars::SIDEBAR_PREFIX.$_POST['sidebar_id'],'nonce');
+		if(!isset($_POST['sidebar_id']) || 
+			!check_ajax_referer(ContentAwareSidebars::SIDEBAR_PREFIX.$_POST['sidebar_id'],'nonce',false)) {
+			die();
+		}
 
 		$paged = isset($_POST['paged']) ? $_POST['paged'] : 1;
 		$search = isset($_POST['search']) ? $_POST['search'] : false;

@@ -330,7 +330,7 @@
 
 				$.ajax({
 					url: ajaxurl,
-					data:link.attr('href').split('?')[1]+'&nonce=&action=cas-module-'+action.attr('data-cas-module'),
+					data:link.attr('href').split('?')[1]+'&nonce='+cas_admin.nonce+'&sidebar_id='+cas_admin.sidebarID+'&action=cas-module-'+action.attr('data-cas-module'),
 					dataType: 'JSON',
 					type: 'POST',
 					success:function(data){
