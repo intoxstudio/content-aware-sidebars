@@ -356,6 +356,7 @@ final class ContentAwareSidebars {
 			'read_post'          => self::CAPABILITY,
 			'delete_post'        => self::CAPABILITY,
 			'edit_posts'         => self::CAPABILITY,
+			'delete_posts'       => self::CAPABILITY,
 			'edit_others_posts'  => self::CAPABILITY,
 			'publish_posts'      => self::CAPABILITY,
 			'read_private_posts' => self::CAPABILITY
@@ -753,9 +754,9 @@ final class ContentAwareSidebars {
 	 * @return array|boolean 
 	 */
 	public function get_sidebars() {
-		global $wpdb;
+		global $wpdb, $post;
 		
-		if(is_admin() || post_password_required())
+		if(!$post || is_admin() || post_password_required())
 			return false;
 		
 		// Return cache if present
