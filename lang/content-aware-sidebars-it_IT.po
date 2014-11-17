@@ -1,14 +1,14 @@
 # Copyright (C) 2012 Content Aware Sidebars
 # This file is distributed under the same license as the Content Aware Sidebars package.
 # Translators:
-# Lucky65 <luciano@myweb2.it>, 2014
+# Luciano <luciano@myweb2.it>, 2014
 msgid ""
 msgstr ""
 "Project-Id-Version: Content Aware Sidebars\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/content-aware-sidebars\n"
 "POT-Creation-Date: 2014-11-05 01:08-0800\n"
-"PO-Revision-Date: 2014-11-05 10:24+0000\n"
-"Last-Translator: Joachim <jv@intox.dk>\n"
+"PO-Revision-Date: 2014-11-11 19:51+0000\n"
+"Last-Translator: Luciano <luciano@myweb2.it>\n"
 "Language-Team: Italian (Italy) (http://www.transifex.com/projects/p/content-aware-sidebars/language/it_IT/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -45,7 +45,7 @@ msgstr "Singola"
 
 #: ../content-aware-sidebars.php:307
 msgid "Singular & Archive"
-msgstr "Singola e archivio"
+msgstr "Singola e Archivio"
 
 #: ../content-aware-sidebars.php:308
 msgid "Archive"
@@ -206,7 +206,7 @@ msgstr "Aggiorna Sidebar"
 
 #: ../content-aware-sidebars.php:506
 msgid "Widgets"
-msgstr ""
+msgstr "Widgets"
 
 #: ../content-aware-sidebars.php:642
 msgid "Manage Widgets"
@@ -214,7 +214,7 @@ msgstr "Gestione Widgets"
 
 #: ../content-aware-sidebars.php:897
 msgid "Get a free Content Aware Sidebars Premium Bundle"
-msgstr ""
+msgstr "Ottieni gratis Content Aware Sidebars Premium Bundle"
 
 #: ../content-aware-sidebars.php:913
 msgid "Content"
@@ -251,44 +251,44 @@ msgstr "Ottieni supporto"
 msgid ""
 "Translate Content Aware Sidebars into your language and become a BETA tester"
 " of the upcoming Premium Bundle*!"
-msgstr ""
+msgstr "Traduci Content Aware Sidebars nella tua lingua e chiedi come diventare BETA tester del plugin Premium Bundle*!"
 
 #: ../content-aware-sidebars.php:983
 msgid "Translate Now"
-msgstr ""
+msgstr "Traduci ora"
 
 #: ../content-aware-sidebars.php:984
 msgid "Get Premium Bundle"
-msgstr ""
+msgstr "Ottieni Premium Bundle"
 
 #: ../content-aware-sidebars.php:985
 msgid ""
 "Single-site use. BETA implies it is not recommended for production sites."
-msgstr ""
+msgstr "E' una versione BETA e non è raccomandato l'uso su siti web già avviati."
 
 #: ../content-aware-sidebars.php:988
 msgid "Partial Feature List"
-msgstr ""
+msgstr "Elenco parziale funzionalità"
 
 #: ../content-aware-sidebars.php:990
 msgid "Select and create sidebars in the Post Editing Screens"
-msgstr ""
+msgstr "Seleziona e crea sidebars nella schermata di modifica degli articoli"
 
 #: ../content-aware-sidebars.php:991
 msgid "Display sidebars with URLs using wildcards"
-msgstr ""
+msgstr "Mostra sidebars con URL utilizzando i caratteri jolly"
 
 #: ../content-aware-sidebars.php:992
 msgid "Display sidebars with User Roles"
-msgstr ""
+msgstr "Mostra sidebars con ruoli utente"
 
 #: ../content-aware-sidebars.php:993
 msgid "Display sidebars with BuddyPress User Groups"
-msgstr ""
+msgstr "Mostra sidebars con gruppi utenti BuddyPress"
 
 #: ../content-aware-sidebars.php:994
 msgid "Sidebars column in Post Type and Taxonomy Overview Screens"
-msgstr ""
+msgstr "Colonna sidebar nei tipi di articoli e anteprima tassonomie nella schermata"
 
 #: ../content-aware-sidebars.php:1018
 msgid ""
@@ -320,7 +320,7 @@ msgstr "Elimina"
 
 #: ../content-aware-sidebars.php:1041 ../content-aware-sidebars.php:1400
 msgid "Or"
-msgstr ""
+msgstr "O"
 
 #: ../content-aware-sidebars.php:1129 ../content-aware-sidebars.php:1172
 #: ../content-aware-sidebars.php:1177
@@ -345,7 +345,7 @@ msgstr "Condizione di gruppo eliminata "
 
 #: ../content-aware-sidebars.php:1246 ../content-aware-sidebars.php:1247
 msgid "Order"
-msgstr ""
+msgstr "Ordina"
 
 #: ../content-aware-sidebars.php:1263
 msgid ""
@@ -454,7 +454,7 @@ msgstr "Nessun oggetto."
 
 #: ../modules/post_type.php:262
 msgid "Most Recent"
-msgstr "Più usati"
+msgstr "Più recenti"
 
 #: ../modules/static.php:29
 msgid "Static Pages"

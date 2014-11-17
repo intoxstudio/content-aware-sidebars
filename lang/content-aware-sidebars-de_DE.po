@@ -1,13 +1,15 @@
 # Copyright (C) 2012 Content Aware Sidebars
 # This file is distributed under the same license as the Content Aware Sidebars package.
 # Translators:
+# Andreas Kuhl <mail@andreas-kuhl.de>, 2014
+# Henrik Heil <contact@henrikheil.net>, 2014
 msgid ""
 msgstr ""
 "Project-Id-Version: Content Aware Sidebars\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/content-aware-sidebars\n"
 "POT-Creation-Date: 2014-11-05 01:08-0800\n"
-"PO-Revision-Date: 2014-11-05 10:24+0000\n"
-"Last-Translator: Joachim <jv@intox.dk>\n"
+"PO-Revision-Date: 2014-11-07 14:23+0000\n"
+"Last-Translator: Andreas Kuhl <mail@andreas-kuhl.de>\n"
 "Language-Team: German (Germany) (http://www.transifex.com/projects/p/content-aware-sidebars/language/de_DE/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -32,7 +34,7 @@ msgstr "Content Aware Sidebars"
 
 #: ../content-aware-sidebars.php:200 ../content-aware-sidebars.php:950
 msgid "FAQ"
-msgstr ""
+msgstr "FAQ"
 
 #: ../content-aware-sidebars.php:300
 msgid "Exposure"
@@ -193,7 +195,7 @@ msgstr "Sidebar wurde eingeplant für: <strong>%1$s</strong>."
 #. translators: Publish box date format, see http://php.net/date
 #: ../content-aware-sidebars.php:431
 msgid "M j, Y @ G:i"
-msgstr ""
+msgstr "j. M Y @ G:i"
 
 #: ../content-aware-sidebars.php:432
 msgid "Sidebar draft updated."
@@ -205,7 +207,7 @@ msgstr "Bitte Haupt-Sidebar aktualisieren."
 
 #: ../content-aware-sidebars.php:506
 msgid "Widgets"
-msgstr ""
+msgstr "Widgets"
 
 #: ../content-aware-sidebars.php:642
 msgid "Manage Widgets"
@@ -213,7 +215,7 @@ msgstr "Widgetverwaltung"
 
 #: ../content-aware-sidebars.php:897
 msgid "Get a free Content Aware Sidebars Premium Bundle"
-msgstr ""
+msgstr "Erhalte ein kostenloses Content Aware Sidebars Premium Bundle"
 
 #: ../content-aware-sidebars.php:913
 msgid "Content"
@@ -227,7 +229,7 @@ msgstr "Optionen"
 msgid ""
 "Each created condition group describe some specific content (conditions) "
 "that the current sidebar should be displayed with."
-msgstr ""
+msgstr "Jede erstellte Gruppe beschreibt einige spezifische Content-Bedingungen unter welchen die aktuelle Sidebar angzeigt werden soll."
 
 #: ../content-aware-sidebars.php:946
 msgid ""
@@ -236,58 +238,58 @@ msgid ""
 " a group should be associated, as they are treated as such, and that the "
 "groups do not interfere with each other. Thus it is possible to have both "
 "extremely focused and at the same time distinct conditions."
-msgstr ""
+msgstr "Content, der zu einer Gruppe hinzugefügt wird, benutzt logische UND Verknüpfungen, während die Gruppe selbst logische ODER Verknüpfungen verwendet. Das bedeutet, dass der einer Gruppe hinzugefügte Content thematisch zugehörig sein sollte und die Gruppen sich nicht gegenseitig beeinflussen sollten. Somit ist es möglich, gleichzeitig extrem spitze als auch eindeutige Bedingungen zu haben."
 
 #: ../content-aware-sidebars.php:949
 msgid "More Information"
-msgstr ""
+msgstr "Weitere Informationen"
 
 #: ../content-aware-sidebars.php:951
 msgid "Get Support"
-msgstr ""
+msgstr "Erhalte Support"
 
 #: ../content-aware-sidebars.php:982
 msgid ""
 "Translate Content Aware Sidebars into your language and become a BETA tester"
 " of the upcoming Premium Bundle*!"
-msgstr ""
+msgstr "Übersetze Content Aware Sidebars in deine Sprache und werde ein BETA-Tester für das bald erscheinende Premium Bundle*!"
 
 #: ../content-aware-sidebars.php:983
 msgid "Translate Now"
-msgstr ""
+msgstr "Jetzt übersetzen"
 
 #: ../content-aware-sidebars.php:984
 msgid "Get Premium Bundle"
-msgstr ""
+msgstr "Premium Bundle holen"
 
 #: ../content-aware-sidebars.php:985
 msgid ""
 "Single-site use. BETA implies it is not recommended for production sites."
-msgstr ""
+msgstr "Verwendung für eine einzelne Site. BETA bedeutet, dass der Gebrauch für Produktivseiten nicht empfohlen wird."
 
 #: ../content-aware-sidebars.php:988
 msgid "Partial Feature List"
-msgstr ""
+msgstr "Unvollständige Feature Liste"
 
 #: ../content-aware-sidebars.php:990
 msgid "Select and create sidebars in the Post Editing Screens"
-msgstr ""
+msgstr "Wähle und erstelle Sidebars in der Bearbeitungsansicht von Beiträgen."
 
 #: ../content-aware-sidebars.php:991
 msgid "Display sidebars with URLs using wildcards"
-msgstr ""
+msgstr "Zeige Sidebars mit URLs, die Wildcards beinthalten"
 
 #: ../content-aware-sidebars.php:992
 msgid "Display sidebars with User Roles"
-msgstr ""
+msgstr "Zeige Sidebars mit Benutzerrollen"
 
 #: ../content-aware-sidebars.php:993
 msgid "Display sidebars with BuddyPress User Groups"
-msgstr ""
+msgstr "Zeige Sidebars mit BuddyPress Benutzergruppen"
 
 #: ../content-aware-sidebars.php:994
 msgid "Sidebars column in Post Type and Taxonomy Overview Screens"
-msgstr ""
+msgstr "Sidebars Spalte in Beiträgen und Taxonomieübersichten"
 
 #: ../content-aware-sidebars.php:1018
 msgid ""
@@ -319,7 +321,7 @@ msgstr "Löschen"
 
 #: ../content-aware-sidebars.php:1041 ../content-aware-sidebars.php:1400
 msgid "Or"
-msgstr ""
+msgstr "Oder"
 
 #: ../content-aware-sidebars.php:1129 ../content-aware-sidebars.php:1172
 #: ../content-aware-sidebars.php:1177
@@ -344,7 +346,7 @@ msgstr "Gruppe wurde entfernt"
 
 #: ../content-aware-sidebars.php:1246 ../content-aware-sidebars.php:1247
 msgid "Order"
-msgstr ""
+msgstr "Bestellung"
 
 #: ../content-aware-sidebars.php:1263
 msgid ""
@@ -401,7 +403,7 @@ msgstr "BuddyPress Mitglieder"
 #: ../modules/bp_member.php:130 ../modules/casmodule.php:132
 #: ../modules/post_type.php:267 ../modules/taxonomy.php:295
 msgid "View All"
-msgstr ""
+msgstr "Alle anzeigen"
 
 #: ../modules/bp_member.php:139 ../modules/casmodule.php:151
 #: ../modules/post_type.php:286 ../modules/taxonomy.php:314
@@ -417,7 +419,7 @@ msgstr "Anzeige aller %s"
 #: ../modules/post_type.php:273 ../modules/post_type.php:276
 #: ../modules/taxonomy.php:301 ../modules/taxonomy.php:304
 msgid "Search"
-msgstr ""
+msgstr "Suche"
 
 #: ../modules/casmodule.php:223
 #, php-format
@@ -449,11 +451,11 @@ msgstr "Anzeigen bei %s"
 
 #: ../modules/post_type.php:247 ../modules/taxonomy.php:277
 msgid "No items."
-msgstr ""
+msgstr "Keine Elemente."
 
 #: ../modules/post_type.php:262
 msgid "Most Recent"
-msgstr ""
+msgstr "Neueste"
 
 #: ../modules/static.php:29
 msgid "Static Pages"
@@ -477,4 +479,4 @@ msgstr "Taxonomien"
 
 #: ../modules/taxonomy.php:290
 msgid "Most Used"
-msgstr ""
+msgstr "Am häufigsten benutzt"
