@@ -3,20 +3,21 @@ Contributors: intoxstudio
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=KPZHE6A72LEN4&lc=US&item_name=WordPress%20Plugin%3a%20Content%20Aware%20Sidebars&currency_code=USD&bn=PP%2dDonationsBF%3abtn_donateCC_LG%2egif%3aNonHosted
 Tags: sidebar, widget, widget area, content aware, context aware, conditional, seo, dynamic, bbpress, buddypress, qtranslate, polylang, transposh, wpml, woocommerce
 Requires at least: 3.3
-Tested up to: 4.0
-Stable tag: 2.5.1
+Tested up to: 4.1
+Stable tag: 2.5.2
 License: GPLv3
 
-Create and display sidebars according to the content being viewed.
+Create and display custom sidebars according to the content being viewed.
 
 == Description ==
 
 Manage an infinite number of sidebars.
-Boost on-site SEO with better Calls to Action by controlling what content your sidebars should be displayed with.
-The sidebar manager makes it incredibly easy for anyone to create flexible, dynamic sidebars without the need of code.
-Developed with speed and performance in mind and will add no extra database tables or table columns.
+Boost on-site SEO with better Calls to Action by controlling what content or context your sidebars should be displayed with.
+The sidebar manager makes it incredibly easy for anyone to create dynamic, custom sidebars without the need of code.
 
-= Features =
+Developed with functionality and performance in mind, Content Aware Sidebars is the only plugin of its kind that will never hog or slow down your site.
+
+= Lots of awesome Features =
 
 * Easy-to-use Sidebar Manager
 * Widget management integration in Theme Customizer (WP3.9+)
@@ -44,7 +45,7 @@ Developed with speed and performance in mind and will add no extra database tabl
 * Template Tag to display content aware sidebars anywhere in your theme
 * **NEW:** Shortcode to display sidebars anywhere in your content
 
-= Builtin Plugin Support =
+= Integrated Support for Popular Plugins =
 
 * bbPress (v2.0.2+)
 * BuddyPress (v1.6.2+)
@@ -53,23 +54,27 @@ Developed with speed and performance in mind and will add no extra database tabl
 * Transposh Translation Filter (v0.9.5+)
 * [WPML Multilingual Blog/CMS (v2.4.3+) Tested and certified](http://wpml.org/plugin/content-aware-sidebars/)
 
-= Translations =
+= Multilingual and Translation Ready =
 
-* Chinese (zh_CN): [Joe Tze](http://tkjune.com)
-* Danish (da_DK): [Joachim Jensen](http://www.intox.dk/)
-* Dutch (nl_NL): [Dennis Beckers](https://www.transifex.com/accounts/profile/denisbeckers/)
-* German (de_DE): Enno Wulff
-* Hungarian (hu_HU): Kis Lukács
-* Italian (it_IT): [Luciano Del Fico](http://www.myweb2.it/)
-* Latvian (lv_LV): Haralds Gribusts
-* Lithuanian (lt_LT): Vincent G
-* Polish (pl_PL): [Marta Jasiuk](http://linkedin.com/in/martajasiuk)
-* Portuguese (Brazilian): (pt_BR) [Marcelo Ghelman](https://www.transifex.com/accounts/profile/marcelo.ghelman/)
-* Russian (ru_RU): [Ilya Trofimov](https://www.transifex.com/accounts/profile/iltrof/)
-* Serbian (sr_RS): [Ogi Djuraskovic](http://firstsiteguide.com/)
-* Slovak (sk_SK): Branco
+* Chinese (zh_CN)
+* Danish (da_DK)
+* Dutch (nl_NL)
+* German (de_DE)
+* Hungarian (hu_HU)
+* Italian (it_IT)
+* Latvian (lv_LV)
+* Lithuanian (lt_LT)
+* Polish (pl_PL)
+* Portuguese, Brazilian (pt_BR) 
+* Russian (ru_RU)
+* Serbian (sr_RS)
+* Slovak (sk_SK)
 * Spanish (es_ES)
-* Ukranian (uk_UA): [Michael Yunat](http://getvoip.com)
+* Ukranian (uk_UA)
+
+**Thanks to the translators:**
+
+[Andreas Kuhl](https://www.transifex.com/accounts/profile/akuhl/), Branco, [Dennis Beckers](https://www.transifex.com/accounts/profile/denisbeckers/), Enno Wulff, Haralds Gribusts, [Henrik Heil](https://www.transifex.com/accounts/profile/henrik.heil/), [Ilya Trofimov](https://www.transifex.com/accounts/profile/iltrof/), [Joe Tze](http://tkjune.com), Kis Lukács, [Luciano Del Fico](http://www.myweb2.it/), [Marcelo Ghelman](https://www.transifex.com/accounts/profile/marcelo.ghelman/), [Marta Jasiuk](http://linkedin.com/in/martajasiuk), [Michael Yunat](http://getvoip.com), [Ogi Djuraskovic](http://firstsiteguide.com/), Vincent G
 
 Do you want to contribute and see your name here?
 
@@ -130,6 +135,11 @@ Do you want to contribute and see your name here?
 * Hello World
 
 == Changelog ==
+
+= 2.5.2 =
+
+* Added: delete_posts capability. fixes conflict in wp4.1
+* Fixed: only get custom sidebars when $post is set. fixes conflict in wp4.1
 
 = 2.5.1 =
 
