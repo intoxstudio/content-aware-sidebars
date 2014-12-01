@@ -92,18 +92,6 @@ final class ContentAwareSidebars {
 	private $sidebars          = array();
 
 	/**
-	 * Sidebars retrieved from database
-	 * @var array
-	 */
-	private $sidebar_cache     = array();
-
-	/**
-	 * Modules for specific content or cases
-	 * @var array
-	 */
-	private $modules           = array();
-
-	/**
 	 * Instance of class
 	 * @var ContentAwareSidebars
 	 */
@@ -119,8 +107,6 @@ final class ContentAwareSidebars {
 		
 		$this->_load_dependencies();
 
-		spl_autoload_register(array($this,"autoload_modules"));
-
 		// WordPress Hooks. Somewhat ordered by execution
 		
 		//For administration
@@ -129,15 +115,10 @@ final class ContentAwareSidebars {
 			add_action('wp_loaded', array(&$this,'db_update'));
 			add_action('admin_enqueue_scripts', array(&$this,'load_admin_scripts'));
 			add_action('delete_post', array(&$this,'remove_sidebar_widgets'));
-			add_action('delete_post', array(&$this,'cascade_sidebar_delete'));
 			add_action('save_post', array(&$this,'save_post'));
 			add_action('add_meta_boxes_'.self::TYPE_SIDEBAR, array(&$this,'create_meta_boxes'));
 			add_action('in_admin_header', array(&$this,'clear_admin_menu'),99);
-			add_action('transition_post_status', array(&$this,'cascade_sidebar_status'),10,3);
 			add_action('manage_'.self::TYPE_SIDEBAR.'_posts_custom_column', array(&$this,'admin_column_rows'),10,2);
-
-			add_action('wp_ajax_cas_add_rule', array(&$this,'add_sidebar_rule_ajax'));
-			add_action('wp_ajax_cas_remove_group', array(&$this,'remove_sidebar_group_ajax'));			
 
 			add_filter('request', array(&$this,'admin_column_orderby'));
 			add_filter('default_hidden_meta_boxes', array(&$this,'change_default_hidden'),10,2);
@@ -217,7 +198,7 @@ final class ContentAwareSidebars {
 	public function sidebar_notify_theme_customizer() {
 		global $wp_customize;
 		if(!empty($wp_customize)) {
-			$sidebars = $this->get_sidebars();
+			$sidebars = WPCACore::get_posts(self::TYPE_SIDEBAR);
 			if($sidebars) {
 				foreach($sidebars as $sidebar) {
 					is_active_sidebar(self::SIDEBAR_PREFIX . $sidebar->ID);
@@ -242,45 +223,7 @@ final class ContentAwareSidebars {
 	 * @return void 
 	 */
 	public function deploy_modules() {
-
 		load_plugin_textdomain(self::DOMAIN, false, dirname(plugin_basename(__FILE__)).'/lang/');
-		
-		// List builtin modules
-		$modules = array(
-			'static'        => true,
-			'post_type'     => true,
-			'author'        => true,
-			'page_template' => true,
-			'taxonomy'      => true,
-			'bbpress'       => function_exists('bbp_get_version'),	// bbPress
-			'bp_member'     => defined('BP_VERSION'),				// BuddyPress
-			'polylang'      => defined('POLYLANG_VERSION'),			// Polylang
-			'qtranslate'    => defined('QT_SUPPORTED_WP_VERSION'),	// qTranslate
-			'transposh'     => defined('TRANSPOSH_PLUGIN_VER'),		// Transposh Translation Filter
-			'wpml'          => class_exists('SitePress')			// WPML Multilingual Blog/CMS
-		);
-		//Let developers remove builtin modules or add their own
-		$modules = apply_filters('cas-module-pre-deploy',$modules);
-		
-		// Forge modules
-		foreach($modules as $name => $enabled) {
-			if($enabled) {
-				if(is_bool($enabled)) {
-					$class = 'CASModule_'.$name;
-					$obj = new $class;
-				} else if(class_exists((string)$enabled)) {
-					$obj = new $enabled;
-					if(!($obj instanceof CASModule)) {
-						continue;
-					}
-				} else {
-					continue;
-				}
-				
-				$this->modules[$obj->get_id()] = $obj; 
-			}
-		}
-		
 	}
 	
 	/**
@@ -386,29 +329,8 @@ final class ContentAwareSidebars {
 			'supports'      => array('title','page-attributes'),
 			'menu_icon'     => version_compare(get_bloginfo('version'), '3.8' ,'>=') ? 'dashicons-welcome-widgets-menus' : plugins_url('/img/icon-16.png', __FILE__ )
 		));
-		
-		// Register the condition group type
-		register_post_type(self::TYPE_CONDITION_GROUP,array(
-			'labels'       => array(
-				'name'               => __('Condition Groups', self::DOMAIN),
-				'singular_name'      => __('Condition Group', self::DOMAIN),
-				'add_new'            => _x('Add New', 'group', self::DOMAIN),
-				'add_new_item'       => __('Add New Group', self::DOMAIN),
-				'edit_item'          => _x('Edit', 'group', self::DOMAIN),
-				'new_item'           => '',
-				'all_items'          => '',
-				'view_item'          => '',
-				'search_items'       => '',
-				'not_found'          => '',
-				'not_found_in_trash' => ''
-			),
-			'capabilities' => $capabilities,
-			'show_ui'      => false,
-			'show_in_menu' => false,
-			'query_var'    => false,
-			'rewrite'      => false,
-			'supports'     => array('author'), //prevents fallback
-		));
+
+		WPCACore::post_types()->add(self::TYPE_SIDEBAR);
 	}
 	
 	/**
@@ -610,29 +532,6 @@ final class ContentAwareSidebars {
 		unset($sidebars_widgets[$id]);
 		wp_set_sidebars_widgets($sidebars_widgets);
 	}
-
-	/**
-	 * Delete condition groups for
-	 * a sidebar that is deleted
-	 * @author Joachim Jensen <jv@intox.dk>
-	 * @since  2.0
-	 * @param  int    $post_id
-	 * @return void
-	 */
-	public function cascade_sidebar_delete($post_id) {
-
-		// Authenticate and only continue on sidebar post type
-		if (!current_user_can(self::CAPABILITY) || get_post_type($post_id) != self::TYPE_SIDEBAR)
-			return;
-
-		global $wpdb;
-		$groups = (array)$wpdb->get_col($wpdb->prepare("SELECT ID FROM $wpdb->posts WHERE post_parent = '%d'", $post_id));
-		foreach($groups as $group_id) {
-			//Takes care of metadata and terms too
-			wp_delete_post($group_id,true);
-		}
-
-	}
 	
 	/**
 	 * Add admin rows actions
@@ -658,7 +557,7 @@ final class ContentAwareSidebars {
 	 */
 	public function replace_sidebar($sidebars_widgets) {
 
-		$posts = $this->get_sidebars();
+		$posts = WPCACore::get_posts(self::TYPE_SIDEBAR);
 		if (!$posts)
 			return $sidebars_widgets;
 
@@ -708,7 +607,7 @@ final class ContentAwareSidebars {
 		extract($args, EXTR_SKIP);
 
 		// Get sidebars
-		$posts = $this->get_sidebars();
+		$posts = WPCACore::get_posts(self::TYPE_SIDEBAR);
 		if (!$posts)
 			return;
 
@@ -746,100 +645,6 @@ final class ContentAwareSidebars {
 			dynamic_sidebar($host);
 			echo $after;
 		}
-	}
-
-	/**
-	 * Query sidebars according to content
-	 * @global type $wpdb
-	 * @return array|boolean 
-	 */
-	public function get_sidebars() {
-		global $wpdb, $post;
-		
-		if(!$post || is_admin() || post_password_required())
-			return false;
-		
-		// Return cache if present
-		if(!empty($this->sidebar_cache)) {
-			if($this->sidebar_cache[0] == false)
-				return false;
-			else
-				return $this->sidebar_cache;
-		}
-
-		$context_data['WHERE'] = $context_data['JOIN'] = $context_data['EXCLUDE'] = array();
-		$context_data = apply_filters('cas-context-data',$context_data);
-
-		// Check if there are any rules for this type of content
-		if(empty($context_data['WHERE']))
-			return false;
-
-		$context_data['WHERE'][] = "posts.post_type = '".self::TYPE_CONDITION_GROUP."'";
-		$context_data['WHERE'][] = "posts.post_status ".(current_user_can('read_private_posts') ? "IN('publish','private')" : "= 'publish'")."";
-
-		//Syntax changed in MySQL 5.6
-		$wpdb->query('SET'.(version_compare($wpdb->db_version(), '5.6', '>=') ? '' : ' OPTION').' SQL_BIG_SELECTS = 1');
-
-		$sidebars_in_context = $wpdb->get_results("
-			SELECT
-				posts.ID, posts.post_parent
-			FROM $wpdb->posts posts
-			".implode(' ',$context_data['JOIN'])."
-			WHERE
-			".implode(' AND ',$context_data['WHERE'])."
-		",OBJECT_K);
-
-		$valid = array();
-
-		//Force update of meta cache to prevent lazy loading
-		update_meta_cache('post',array_keys($sidebars_in_context));
-
-		//Exclude sidebars that have unrelated content in same group
-		foreach($sidebars_in_context as $key => $sidebar) {
-			$valid[$sidebar->ID] = $sidebar->post_parent;
-			//TODO: move to modules
-			foreach($context_data['EXCLUDE'] as $exclude) {
-				//quick fix to check for taxonomies terms
-				if($exclude == 'taxonomies') {
-					if($wpdb->get_var("SELECT COUNT(*) FROM $wpdb->term_relationships WHERE object_id = '{$sidebar->ID}'") > 0) {
-						unset($valid[$sidebar->ID]);
-						break;						
-					}
-				}
-				if(get_post_custom_values(self::PREFIX . $exclude, $sidebar->ID) !== null) {
-					unset($valid[$sidebar->ID]);
-					break;
-				}
-			}
-			
-		}
-
-		if(!empty($valid)) {
-
-			$context_data = array();
-			$context_data['JOIN'][] = "INNER JOIN $wpdb->postmeta handle ON handle.post_id = posts.ID AND handle.meta_key = '".self::PREFIX."handle'";
-			$context_data['JOIN'][] = "INNER JOIN $wpdb->postmeta exposure ON exposure.post_id = posts.ID AND exposure.meta_key = '".self::PREFIX."exposure'";
-			$context_data['WHERE'][] = "posts.post_type = '".self::TYPE_SIDEBAR."'";
-			$context_data['WHERE'][] = "exposure.meta_value ".(is_archive() || is_home() ? '>' : '<')."= '1'";
-			$context_data['WHERE'][] = "posts.post_status ".(current_user_can('read_private_posts') ? "IN('publish','private')" : "= 'publish'")."";
-			$context_data['WHERE'][] = "posts.ID IN(".implode(',',$valid).")";
-
-			$this->sidebar_cache = $wpdb->get_results("
-				SELECT
-					posts.ID,
-					handle.meta_value handle
-				FROM $wpdb->posts posts
-				".implode(' ',$context_data['JOIN'])."
-				WHERE
-				".implode(' AND ',$context_data['WHERE'])."
-				ORDER BY posts.menu_order ASC, handle.meta_value DESC, posts.post_date DESC
-			");
-			
-		}
-		
-		// Return proper cache. If query was empty, tell the cache.
-		return (empty($this->sidebar_cache) ? $this->sidebar_cache[0] = false : $this->sidebar_cache);
-		
 	}
 
 	/**
@@ -910,14 +715,6 @@ final class ContentAwareSidebars {
 			// 	'context'  => 'normal',
 			// 	'priority' => 'high'
 			// ),
-			//Content
-			array(
-				'id'       => 'cas-rules',
-				'title'    => __('Content', self::DOMAIN),
-				'callback' => 'meta_box_rules',
-				'context'  => 'normal',
-				'priority' => 'high'
-			),
 			//Options
 			array(
 				'id'       => 'cas-options',
@@ -982,9 +779,6 @@ final class ContentAwareSidebars {
 	 * @return  void
 	 */
 	public function meta_box_news() {
-		// Use nonce for verification. Unique per sidebar
-		wp_nonce_field(self::SIDEBAR_PREFIX.get_the_ID(), '_ca-sidebar-nonce');
-		echo '<input type="hidden" id="current_sidebar" value="'.get_the_ID().'" />';
 ?>
 		<div style="overflow:hidden;">
 			<div style="float:left;width:40%;overflow:hidden">
@@ -1008,222 +802,6 @@ final class ContentAwareSidebars {
 <?php
 	}
 
-	/**
-	 * Meta box for content rules
-	 * @return void 
-	 */
-	public function meta_box_rules() {
-
-		$groups = $this->_get_sidebar_groups(null,false);
-
-		echo '<div id="cas-container">'."\n";
-		echo '<div id="cas-accordion" class="accordion-container postbox'.(empty($groups) ? ' accordion-disabled' : '').'">'."\n";
-		echo '<ul class="outer-border">';
-		do_action('cas-module-admin-box');
-		echo '</ul>';
-		echo '</div>'."\n";
-		echo '<div id="cas-groups" class="postbox'.(empty($groups) ? '' : ' cas-has-groups').'">'."\n";
-		echo '<div class="cas-groups-header"><h3>'.__('Condition Groups',self::DOMAIN).'</h3><input type="button" class="button button-primary js-cas-group-new" value="'.__('Add New Group',self::DOMAIN).'" /></div>';
-		echo '<div class="cas-groups-body"><p>'.__('Click to edit a group or create a new one. Select content on the left to add it. In each group, you can combine different types of associated content.',self::DOMAIN).'</p>';
-		echo '<strong>'.__('Display sidebar with',self::DOMAIN).':</strong>';
-
-		$i = 0;
-
-		echo '<ul>';
-		echo '<li class="cas-no-groups">'.__('No content. Please add at least one condition group to make the sidebar content aware.',self::DOMAIN).'</li>';
-		foreach($groups as $group) {
-
-			echo '<li class="cas-group-single'.($i == 0 ? ' cas-group-active' : '').'"><div class="cas-group-body">
-			<span class="cas-group-control cas-group-control-active">
-			<input type="button" class="button js-cas-group-save" value="'.__('Save',self::DOMAIN).'" /> | <a class="js-cas-group-cancel" href="#">'.__('Cancel',self::DOMAIN).'</a>
-			</span>
-			<span class="cas-group-control">
-			<a class="js-cas-group-edit" href="#">'._x('Edit','group',self::DOMAIN).'</a> | <a class="submitdelete js-cas-group-remove" href="#">'.__('Remove',self::DOMAIN).'</a>
-			</span>
-			<div class="cas-content">';
-			do_action('cas-module-print-data',$group->ID);
-			echo '</div>
-			<input type="hidden" class="cas_group_id" name="cas_group_id" value="'.$group->ID.'" />';
-
-			echo '</div>';
-
-			echo '<div class="cas-group-sep">'.__('Or',self::DOMAIN).'</div>';
-
-			echo '</li>';	
-			$i++;
-		}
-		echo '</ul>';
-
-		
-		echo '</div>';
-		echo '<div class="cas-groups-footer">';
-		echo '<input type="button" class="button button-primary js-cas-group-new" value="'.__('Add New Group',self::DOMAIN).'" />';
-		echo '</div>';
-		echo '</div>'."\n";
-		echo '</div>'."\n";
-		
-	}
-
-	/**
-	 * Insert new condition group for sidebar
-	 * Uses current sidebar per default
-	 * @author Joachim Jensen <jv@intox.dk>
-	 * @since  2.0
-	 * @param  WP_Post|int    $post
-	 * @return int
-	 */
-	private function _add_sidebar_group($post_id = null) {
-		$post = get_post($post_id);
-
-		$status = $post->post_status;
-		//Make sure to go from auto-draft to draft
-		if($status == 'auto-draft') {
-			$status = 'draft';
-			wp_update_post( array(
-				'ID'          => $post->ID,
-				'post_status' => $status
-			));
-		}
-
-		return wp_insert_post(array(
-			'post_status' => $status, 
-			'post_type'   => self::TYPE_CONDITION_GROUP,
-			'post_author' => $post->post_author,
-			'post_parent' => $post->ID,
-		));
-	}
-
-	/**
-	 * Get condition groups for sidebar
-	 * Uses current sidebar per default
-	 * Creates the first group if necessary
-	 * @author Joachim Jensen <jv@intox.dk>
-	 * @since  2.0
-	 * @param  WP_Post|int    $post_id
-	 * @param  boolean        $create_first
-	 * @return array
-	 */
-	private function _get_sidebar_groups($post_id = null, $create_first = false) {
-		$post = get_post($post_id);
-
-		$groups = get_posts(array(
-			'posts_per_page'   => -1,
-			'post_type'        => self::TYPE_CONDITION_GROUP,
-			'post_parent'      => $post->ID,
-			'post_status'      => 'any',
-			'order'            => 'ASC'
-		));
-		if($groups == null && $create_first) {
-			$group = $this->_add_sidebar_group($post);
-			$groups[] = get_post($group);
-		}
-
-		return $groups;
-
-	}
-
-	/**
-	 * AJAX call to add filters to a group
-	 * @author Joachim Jensen <jv@intox.dk>
-	 * @since  2.0
-	 * @return void
-	 */
-	public function add_sidebar_rule_ajax() {
-
-		$response = array();
-
-		try {
-			if(!isset($_POST['current_id']) || 
-				!check_ajax_referer(self::SIDEBAR_PREFIX.$_POST['current_id'],'token',false)) {
-				$response = __('Unauthorized request',self::DOMAIN);
-				throw new Exception("Forbidden",403);
-			}
-
-			//Make sure some rules are sent
-			if(!isset($_POST['cas_condition'])) {
-				$response = __('Condition group cannot be empty',self::DOMAIN);
-				throw new Exception("Internal Server Error",500);
-			}
-
-			//If ID was not sent at this point, it is a new group
-			if(!isset($_POST['cas_group_id'])) {
-				$post_id = $this->_add_sidebar_group(intval($_POST['current_id']));
-				$response['new_post_id'] = $post_id;
-			} else {
-				$post_id = intval($_POST['cas_group_id']);
-			}
-
-			do_action('cas-module-save-data',$post_id);
-
-			$response['message'] = __('Condition group saved',self::DOMAIN);
-
-			echo json_encode($response);
-			
-		} catch(Exception $e) {
-			header("HTTP/1.1 ".$e->getCode()." ".$e->getMessage());
-			echo $response;
-		}
-		die();
-	}
-
-	/**
-	 * AJAX call to remove group from a sidebar
-	 * @author Joachim Jensen <jv@intox.dk>
-	 * @since  2.0
-	 * @return void
-	 */
-	public function remove_sidebar_group_ajax() {
-
-		$response = "";
-
-		try {
-			if(!isset($_POST['current_id'],$_POST['cas_group_id'])) {
-				$response = __('Unauthorized request',self::DOMAIN);
-				throw new Exception("Forbidden",403);
-			}	
-
-			if(!check_ajax_referer(self::SIDEBAR_PREFIX.$_POST['current_id'],'token',false)) {
-				$response = __('Unauthorized request',self::DOMAIN);
-				throw new Exception("Forbidden",403);
-			}
-
-			if(wp_delete_post(intval($_POST['cas_group_id']), true) === false) {
-				$response = __('Condition group could not be removed',self::DOMAIN);
-				throw new Exception("Internal Server Error",500);
-			}
-
-			echo json_encode(array(
-				'message' => __('Condition group removed',self::DOMAIN)
-			));
-			
-		} catch(Exception $e) {
-			header("HTTP/1.1 ".$e->getCode()." ".$e->getMessage());
-			echo $response;
-		}
-		die();
-	}
-
-	/**
-	 * Whenever a sidebar changes post_status
-	 * Cascade that status to its groups
-	 * @author Joachim Jensen <jv@intox.dk>
-	 * @since  2.0
-	 * @param  string    $new_status
-	 * @param  string    $old_status
-	 * @param  WP_Post   $post
-	 * @return void
-	 */
-	public function cascade_sidebar_status($new_status, $old_status, $post) {
-		if($post->post_type == self::TYPE_SIDEBAR && $old_status != $new_status) {
-			global $wpdb;
-			$wpdb->query("
-				UPDATE $wpdb->posts
-				SET post_status = '".$new_status."' 
-				WHERE post_parent = '".$post->ID."' AND post_type = '".self::TYPE_CONDITION_GROUP."'
-			");
-		}	
-	}
-	
 	/**
 	 * Meta box for options
 	 * @return void
@@ -1262,10 +840,6 @@ final class ContentAwareSidebars {
 	 * @return void 
 	 */
 	public function meta_box_author_words() {
-
-		// Use nonce for verification. Unique per sidebar
-		wp_nonce_field(self::SIDEBAR_PREFIX.get_the_ID(), '_ca-sidebar-nonce');
-		echo '<input type="hidden" id="current_sidebar" value="'.get_the_ID().'" />';
 ?>
 			<div style="overflow:hidden;">
 				<div style="float:left;width:40%;overflow:hidden">
@@ -1345,7 +919,7 @@ final class ContentAwareSidebars {
 			return;
 
 		// Verify nonce
-		if (!check_admin_referer(self::SIDEBAR_PREFIX.$post_id, '_ca-sidebar-nonce'))
+		if (!check_admin_referer(self::PREFIX.$post_id, '_ca-sidebar-nonce'))
 			return;
 
 		// Check permissions
@@ -1398,21 +972,7 @@ final class ContentAwareSidebars {
 			//Sidebar editor
 			if ($current_screen->base == 'post') {
 
-				if(!wp_script_is('accordion','registered')) {
-					wp_register_script('accordion', plugins_url('/js/accordion.min.js', __FILE__), array('jquery'), self::PLUGIN_VERSION, true);
-				}
-				wp_enqueue_script('accordion');
 				wp_enqueue_script('cas_admin_script');
-				wp_localize_script( 'cas_admin_script', 'CASAdmin', array(
-					'save'          => __('Save',self::DOMAIN),
-					'cancel'        => __('Cancel',self::DOMAIN),
-					'or'            => __('Or',self::DOMAIN),
-					'edit'          => _x('Edit','group',self::DOMAIN),
-					'remove'        => __('Remove',self::DOMAIN),
-					'confirmRemove' => __('Remove this group and its contents permanently?',self::DOMAIN),
-					'noResults'     => __('No results found.',self::DOMAIN),
-					'confirmCancel' => __('The current group has unsaved changes. Do you want to continue and discard these changes?', self::DOMAIN)
-				));
 				wp_enqueue_style('cas_admin_style');
 			//Sidebar overview
 			} else if ($hook == 'edit.php') {
@@ -1440,22 +1000,7 @@ final class ContentAwareSidebars {
 		$path = plugin_dir_path( __FILE__ );
 		require($path.'/walker.php');
 		require($path.'/update_db.php');
-	}
-
-	/**
-	 * Autoload module class files
-	 * @author  Joachim Jensen <jv@intox.dk>
-	 * @version 2.5
-	 * @param   string    $class
-	 * @return  boolean
-	 */
-	public function autoload_modules($class) {
-		$path = plugin_dir_path( __FILE__ );
-		if($class == 'CASModule') {
-			require_once($path . "modules/" . strtolower($class) . ".php");
-		} else if(strpos($class, "CASModule") !== false) {
-			require_once($path . "modules/" . str_replace("CASModule_", "", $class) . ".php");
-		}
+		require($path.'/lib/wp-content-aware-engine/core.php');
 	}
 
 }
