@@ -65,11 +65,6 @@ final class ContentAwareSidebars {
 	const TYPE_SIDEBAR         = 'sidebar';
 
 	/**
-	 * Post Type for sidebar groups
-	 */
-	const TYPE_CONDITION_GROUP = 'sidebar_group';
-
-	/**
 	 * Language domain
 	 */
 	const DOMAIN               = 'content-aware-sidebars';
@@ -106,45 +101,51 @@ final class ContentAwareSidebars {
 		//__('Content Aware Sidebars',self::DOMAIN);
 		
 		$this->_load_dependencies();
-
-		// WordPress Hooks. Somewhat ordered by execution
 		
 		//For administration
 		if(is_admin()) {
 			
-			add_action('wp_loaded', array(&$this,'db_update'));
-			add_action('admin_enqueue_scripts', array(&$this,'load_admin_scripts'));
-			add_action('delete_post', array(&$this,'remove_sidebar_widgets'));
-			add_action('save_post', array(&$this,'save_post'));
-			add_action('add_meta_boxes_'.self::TYPE_SIDEBAR, array(&$this,'create_meta_boxes'));
-			add_action('in_admin_header', array(&$this,'clear_admin_menu'),99);
-			add_action('manage_'.self::TYPE_SIDEBAR.'_posts_custom_column', array(&$this,'admin_column_rows'),10,2);
+			add_action('wp_loaded',
+				array(&$this,'db_update'));
+			add_action('admin_enqueue_scripts',
+				array(&$this,'load_admin_scripts'));
+			add_action('delete_post',
+				array(&$this,'remove_sidebar_widgets'));
+			add_action('save_post',
+				array(&$this,'save_post'));
+			add_action('add_meta_boxes_'.self::TYPE_SIDEBAR,
+				array(&$this,'create_meta_boxes'));
+			add_action('in_admin_header',
+				array(&$this,'clear_admin_menu'),99);
+			add_action('manage_'.self::TYPE_SIDEBAR.'_posts_custom_column',
+				array(&$this,'admin_column_rows'),10,2);
 
-			add_filter('request', array(&$this,'admin_column_orderby'));
-			add_filter('default_hidden_meta_boxes', array(&$this,'change_default_hidden'),10,2);
-			add_filter('manage_'.self::TYPE_SIDEBAR.'_posts_columns', array(&$this,'admin_column_headers'),99);
-			add_filter('manage_edit-'.self::TYPE_SIDEBAR.'_sortable_columns',array(&$this,'admin_column_sortable_headers'));
-			add_filter('post_row_actions', array(&$this,'sidebar_row_actions'),10,2);
-			add_filter('post_updated_messages', array(&$this,'sidebar_updated_messages'));
-			add_filter( 'plugin_action_links_'.plugin_basename(__FILE__), array(&$this,'plugin_action_links'), 10, 4 );
-
-		//For frontend
-		} else {
-
-			
+			add_filter('request',
+				array(&$this,'admin_column_orderby'));
+			add_filter('default_hidden_meta_boxes',
+				array(&$this,'change_default_hidden'),10,2);
+			add_filter('manage_'.self::TYPE_SIDEBAR.'_posts_columns',
+				array(&$this,'admin_column_headers'),99);
+			add_filter('manage_edit-'.self::TYPE_SIDEBAR.'_sortable_columns',
+				array(&$this,'admin_column_sortable_headers'));
+			add_filter('post_row_actions',
+				array(&$this,'sidebar_row_actions'),10,2);
+			add_filter('post_updated_messages',
+				array(&$this,'sidebar_updated_messages'));
+			add_filter('plugin_action_links_'.plugin_basename(__FILE__),
+				array(&$this,'plugin_action_links'), 10, 4 );
 
 		}
 
-		add_shortcode( 'ca-sidebar', array($this,'sidebar_shortcode'));
 		add_action('sidebars_widgets', array(&$this,'replace_sidebar'));
 		add_action('wp_head',array(&$this,'sidebar_notify_theme_customizer'));
-
-		//For both
-		add_action('init', array(&$this,'deploy_modules'));
+		add_action('init', array(&$this,'load_textdomain'));
 		add_action('init', array(&$this,'init_sidebar_type'),99);
 		add_action('widgets_init', array(&$this,'create_sidebars'),99);
 		add_action('wp_loaded', array(&$this,'update_sidebars'),99);
-		
+
+		add_shortcode( 'ca-sidebar', array($this,'sidebar_shortcode'));
+
 	}
 
 	/**
@@ -222,7 +223,7 @@ final class ContentAwareSidebars {
 	 * Deploy modules
 	 * @return void 
 	 */
-	public function deploy_modules() {
+	public function load_textdomain() {
 		load_plugin_textdomain(self::DOMAIN, false, dirname(plugin_basename(__FILE__)).'/lang/');
 	}
 	
