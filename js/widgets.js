@@ -17,11 +17,6 @@
 
 		addSidebarEditLink: function() {
 
-			//When clicking on link, box should not close
-			$('.sidebar-name').on('click','.cas-edit-sidebar', function(e) {
-				e.stopPropagation();
-			});
-
 			this.$sidebars.each( function(e) {
 				$this = $(this);
 				var id = $this.attr('id').replace('ca-sidebar-','');
@@ -34,8 +29,7 @@
 			});
 		}
 
-
-	}
+	};
 
 	$(document).ready(function(){ cas_admin.init(); });
 
