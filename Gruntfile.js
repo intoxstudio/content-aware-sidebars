@@ -14,6 +14,7 @@ module.exports = function(grunt) {
 		 * Load parameters
 		 */
 		pkg: grunt.file.readJSON('package.json'),
+		tmp: [],
 
 		/**
 		 * Compile css
@@ -61,6 +62,30 @@ module.exports = function(grunt) {
 			}
 		},
 
+		tx_contributors: {
+			"content-aware-sidebars": {
+				options: {
+					templateFn: function(array) {
+						for(var i = 0; i < array.length; i++) {
+							array[i] = "["+array[i]+"](https://www.transifex.com/accounts/profile/"+array[i]+"/)";
+						}
+						return array.join(", ");
+					}
+				}
+			}
+		},
+
+		replace: {
+			readme: {
+				src: ['readme.txt'],
+				overwrite: true,
+				replacements: [{
+					from: /(\*{8}\n)([\S\s])*?(\n\*{8})/g,
+					to: "$1<%= tx_contributors %>$3"
+				}]
+			}
+		},
+
 		/**
 		 * Compile po files
 		 */
@@ -92,6 +117,7 @@ module.exports = function(grunt) {
 	 * Register tasks
 	 */
 	grunt.registerTask('localize', ['transifex','potomo']);
+	grunt.registerTask('localize-contrib',['tx_contributors','replace:readme']);
 	grunt.registerTask('default', ['build']);
 	grunt.registerTask('build', ['less','uglify']);
 	grunt.registerTask('deploy', ['build','localize']);
