@@ -1,13 +1,14 @@
 # Copyright (C) 2012 Content Aware Sidebars
 # This file is distributed under the same license as the Content Aware Sidebars package.
 # Translators:
+# Julijus Bogdanovas <julius@goodone.lt>, 2014
 msgid ""
 msgstr ""
 "Project-Id-Version: Content Aware Sidebars\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/content-aware-sidebars\n"
 "POT-Creation-Date: 2014-11-05 01:08-0800\n"
-"PO-Revision-Date: 2014-11-05 10:04+0000\n"
-"Last-Translator: Joachim <jv@intox.dk>\n"
+"PO-Revision-Date: 2014-11-20 13:51+0000\n"
+"Last-Translator: Julijus Bogdanovas <julius@goodone.lt>\n"
 "Language-Team: Lithuanian (Lithuania) (http://www.transifex.com/projects/p/content-aware-sidebars/language/lt_LT/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -157,13 +158,13 @@ msgstr "Pridėti Naują [ šoninę juostą ]"
 #: ../content-aware-sidebars.php:393 ../content-aware-sidebars.php:1017
 #: ../content-aware-sidebars.php:1051
 msgid "Add New Group"
-msgstr ""
+msgstr "Pridėti naują grupę"
 
 #: ../content-aware-sidebars.php:394 ../content-aware-sidebars.php:1032
 #: ../content-aware-sidebars.php:1401
 msgctxt "group"
 msgid "Edit"
-msgstr ""
+msgstr "Redaguoti"
 
 #: ../content-aware-sidebars.php:418
 msgid "Manage widgets"
@@ -384,7 +385,7 @@ msgstr ""
 
 #: ../content-aware-sidebars.php:1419
 msgid "Edit"
-msgstr ""
+msgstr "Redaguoti"
 
 #: ../modules/author.php:28
 msgid "Authors"
