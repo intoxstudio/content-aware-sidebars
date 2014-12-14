@@ -1,14 +1,15 @@
 # Copyright (C) 2012 Content Aware Sidebars
 # This file is distributed under the same license as the Content Aware Sidebars package.
 # Translators:
+# Johnny Wong <wcybrick@gmail.com>, 2014
 # tkjune <tkjune@gmail.com>, 2014
 msgid ""
 msgstr ""
 "Project-Id-Version: Content Aware Sidebars\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/content-aware-sidebars\n"
 "POT-Creation-Date: 2014-11-05 01:08-0800\n"
-"PO-Revision-Date: 2014-11-05 10:24+0000\n"
-"Last-Translator: Joachim <jv@intox.dk>\n"
+"PO-Revision-Date: 2014-11-19 10:46+0000\n"
+"Last-Translator: Johnny Wong <wcybrick@gmail.com>\n"
 "Language-Team: Chinese (http://www.transifex.com/projects/p/content-aware-sidebars/language/zh/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -206,7 +207,7 @@ msgstr "请更新主边栏"
 
 #: ../content-aware-sidebars.php:506
 msgid "Widgets"
-msgstr ""
+msgstr "小工具"
 
 #: ../content-aware-sidebars.php:642
 msgid "Manage Widgets"
@@ -214,7 +215,7 @@ msgstr "管理小工具"
 
 #: ../content-aware-sidebars.php:897
 msgid "Get a free Content Aware Sidebars Premium Bundle"
-msgstr ""
+msgstr "获取免费自由定制边栏加強版"
 
 #: ../content-aware-sidebars.php:913
 msgid "Content"
@@ -251,44 +252,44 @@ msgstr "技术支持"
 msgid ""
 "Translate Content Aware Sidebars into your language and become a BETA tester"
 " of the upcoming Premium Bundle*!"
-msgstr ""
+msgstr "译内自由定制边栏到你的语言，即可成为加強版的beta测试員* ！"
 
 #: ../content-aware-sidebars.php:983
 msgid "Translate Now"
-msgstr ""
+msgstr "即時翻译"
 
 #: ../content-aware-sidebars.php:984
 msgid "Get Premium Bundle"
-msgstr ""
+msgstr "获取自由定制边栏加強版"
 
 #: ../content-aware-sidebars.php:985
 msgid ""
 "Single-site use. BETA implies it is not recommended for production sites."
-msgstr ""
+msgstr "单一网站使用。 BETA意味着它不建议商业。"
 
 #: ../content-aware-sidebars.php:988
 msgid "Partial Feature List"
-msgstr ""
+msgstr "部分功能列表"
 
 #: ../content-aware-sidebars.php:990
 msgid "Select and create sidebars in the Post Editing Screens"
-msgstr ""
+msgstr "选择并建立后期编辑屏幕的侧边栏"
 
 #: ../content-aware-sidebars.php:991
 msgid "Display sidebars with URLs using wildcards"
-msgstr ""
+msgstr "使用通配符的URL显示侧边栏"
 
 #: ../content-aware-sidebars.php:992
 msgid "Display sidebars with User Roles"
-msgstr ""
+msgstr "边栏顯示用戶角色"
 
 #: ../content-aware-sidebars.php:993
 msgid "Display sidebars with BuddyPress User Groups"
-msgstr ""
+msgstr "以BuddyPress的用户组显示侧边栏"
 
 #: ../content-aware-sidebars.php:994
 msgid "Sidebars column in Post Type and Taxonomy Overview Screens"
-msgstr ""
+msgstr "在帖子的类型和分类概述加侧边栏列"
 
 #: ../content-aware-sidebars.php:1018
 msgid ""
@@ -320,7 +321,7 @@ msgstr "删除"
 
 #: ../content-aware-sidebars.php:1041 ../content-aware-sidebars.php:1400
 msgid "Or"
-msgstr ""
+msgstr "或"
 
 #: ../content-aware-sidebars.php:1129 ../content-aware-sidebars.php:1172
 #: ../content-aware-sidebars.php:1177
@@ -345,7 +346,7 @@ msgstr "已删除条件组"
 
 #: ../content-aware-sidebars.php:1246 ../content-aware-sidebars.php:1247
 msgid "Order"
-msgstr ""
+msgstr "訂單"
 
 #: ../content-aware-sidebars.php:1263
 msgid ""

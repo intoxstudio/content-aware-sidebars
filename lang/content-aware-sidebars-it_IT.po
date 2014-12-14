@@ -2,12 +2,13 @@
 # This file is distributed under the same license as the Content Aware Sidebars package.
 # Translators:
 # Luciano <luciano@myweb2.it>, 2014
+# Luciano <luciano@myweb2.it>, 2014
 msgid ""
 msgstr ""
 "Project-Id-Version: Content Aware Sidebars\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/content-aware-sidebars\n"
 "POT-Creation-Date: 2014-11-05 01:08-0800\n"
-"PO-Revision-Date: 2014-11-11 19:51+0000\n"
+"PO-Revision-Date: 2014-12-07 13:21+0000\n"
 "Last-Translator: Luciano <luciano@myweb2.it>\n"
 "Language-Team: Italian (Italy) (http://www.transifex.com/projects/p/content-aware-sidebars/language/it_IT/)\n"
 "MIME-Version: 1.0\n"
@@ -111,7 +112,7 @@ msgstr "Aggiungi"
 
 #: ../content-aware-sidebars.php:368
 msgid "Add New Sidebar"
-msgstr "Aggiungi Nuova Sidebar"
+msgstr "Aggiungi nuova sidebar"
 
 #: ../content-aware-sidebars.php:369
 msgid "Edit Sidebar"
@@ -158,7 +159,7 @@ msgstr "Aggiungi"
 #: ../content-aware-sidebars.php:393 ../content-aware-sidebars.php:1017
 #: ../content-aware-sidebars.php:1051
 msgid "Add New Group"
-msgstr "Aggiungi"
+msgstr "Aggiungi nuovo gruppo"
 
 #: ../content-aware-sidebars.php:394 ../content-aware-sidebars.php:1032
 #: ../content-aware-sidebars.php:1401
@@ -168,7 +169,7 @@ msgstr "Modifica"
 
 #: ../content-aware-sidebars.php:418
 msgid "Manage widgets"
-msgstr "Gestione Widgets"
+msgstr "Gestione widgets"
 
 #: ../content-aware-sidebars.php:421 ../content-aware-sidebars.php:424
 msgid "Sidebar updated."
@@ -202,7 +203,7 @@ msgstr "Bozza sidebar aggiornata. "
 
 #: ../content-aware-sidebars.php:480 ../content-aware-sidebars.php:567
 msgid "Please update Host Sidebar"
-msgstr "Aggiorna Sidebar"
+msgstr "Aggiorna sidebar"
 
 #: ../content-aware-sidebars.php:506
 msgid "Widgets"
@@ -298,7 +299,7 @@ msgstr "Clicca per modificare un gruppo o crearne uno nuovo. Seleziona il conten
 
 #: ../content-aware-sidebars.php:1019
 msgid "Display sidebar with"
-msgstr "Visualizza larghezza sidebar"
+msgstr "Visualizza sidebar"
 
 #: ../content-aware-sidebars.php:1024
 msgid ""
@@ -446,7 +447,7 @@ msgstr "Seleziona automaticamente nuovi figli di un percorso selezionato"
 #: ../modules/post_type.php:242 ../modules/taxonomy.php:273
 #, php-format
 msgid "Display with %s"
-msgstr "Larghezza %s"
+msgstr "Seleziona %s"
 
 #: ../modules/post_type.php:247 ../modules/taxonomy.php:277
 msgid "No items."
