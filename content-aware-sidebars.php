@@ -252,6 +252,7 @@ final class ContentAwareSidebars {
 			'author'        => true,
 			'page_template' => true,
 			'taxonomy'      => true,
+			'date'          => true,
 			'bbpress'       => function_exists('bbp_get_version'),	// bbPress
 			'bp_member'     => defined('BP_VERSION'),				// BuddyPress
 			'polylang'      => defined('POLYLANG_VERSION'),			// Polylang
