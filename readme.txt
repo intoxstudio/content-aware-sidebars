@@ -1,10 +1,10 @@
-﻿=== Plugin Name ===
+=== Plugin Name ===
 Contributors: intoxstudio
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=KPZHE6A72LEN4&lc=US&item_name=WordPress%20Plugin%3a%20Content%20Aware%20Sidebars&currency_code=USD&bn=PP%2dDonationsBF%3abtn_donateCC_LG%2egif%3aNonHosted
 Tags: sidebar, widget, widget area, custom sidebars, dynamic sidebar, replace sidebar, create sidebar, sidebar generator, sidebar plugin, replace widget area, merge widget area, create widget area, context aware, conditional, seo, bbpress, buddypress, qtranslate, polylang, transposh, wpml, woocommerce
 Requires at least: 3.3
 Tested up to: 4.1
-Stable tag: 2.5.2
+Stable tag: 2.5.3
 License: GPLv3
 
 Create and display custom sidebars according to the content being viewed.
@@ -56,6 +56,7 @@ Developed with functionality and performance in mind, Content Aware Sidebars is 
 
 = Multilingual and Translation Ready =
 
+* Catalan (ca)
 * Chinese (zh_CN)
 * Danish (da_DK)
 * Dutch (nl_NL)
@@ -64,17 +65,22 @@ Developed with functionality and performance in mind, Content Aware Sidebars is 
 * Italian (it_IT)
 * Latvian (lv_LV)
 * Lithuanian (lt_LT)
+* Norwegian Bokmål (nb_NO)
 * Polish (pl_PL)
 * Portuguese, Brazilian (pt_BR) 
 * Russian (ru_RU)
 * Serbian (sr_RS)
 * Slovak (sk_SK)
 * Spanish (es_ES)
+* Turkish (tr_TR)
 * Ukranian (uk_UA)
 
 **Thanks to the translators:**
 
-[Andreas Kuhl](https://www.transifex.com/accounts/profile/akuhl/), Branco, [Dennis Beckers](https://www.transifex.com/accounts/profile/denisbeckers/), Enno Wulff, Haralds Gribusts, [Henrik Heil](https://www.transifex.com/accounts/profile/henrik.heil/), [Ilya Trofimov](https://www.transifex.com/accounts/profile/iltrof/), [Joe Tze](http://tkjune.com), Kis Lukács, [Luciano Del Fico](http://www.myweb2.it/), [Marcelo Ghelman](https://www.transifex.com/accounts/profile/marcelo.ghelman/), [Marta Jasiuk](http://linkedin.com/in/martajasiuk), [Michael Yunat](http://getvoip.com), [Ogi Djuraskovic](http://firstsiteguide.com/), Vincent G
+********
+[keystorm](https://www.transifex.com/accounts/profile/keystorm/), [wcybrick](https://www.transifex.com/accounts/profile/wcybrick/), [tkjune](https://www.transifex.com/accounts/profile/tkjune/), [denisbeckers](https://www.transifex.com/accounts/profile/denisbeckers/), [akuhl](https://www.transifex.com/accounts/profile/akuhl/), [henrik.heil](https://www.transifex.com/accounts/profile/henrik.heil/), [ewx](https://www.transifex.com/accounts/profile/ewx/), [Neftigon](https://www.transifex.com/accounts/profile/Neftigon/), [Lucky65](https://www.transifex.com/accounts/profile/Lucky65/), [syruas](https://www.transifex.com/accounts/profile/syruas/), [PaalJoachim](https://www.transifex.com/accounts/profile/PaalJoachim/), [ibushi](https://www.transifex.com/accounts/profile/ibushi/), [marcelo.ghelman](https://www.transifex.com/accounts/profile/marcelo.ghelman/), [ahmetyilmaz](https://www.transifex.com/accounts/profile/ahmetyilmaz/), [iltrof](https://www.transifex.com/accounts/profile/iltrof/)
+********
+Branco, Haralds Gribusts, Michael Yunat, Ogi Djuraskovic, Vincent G
 
 Do you want to contribute and see your name here?
 
@@ -135,6 +141,11 @@ Do you want to contribute and see your name here?
 * Hello World
 
 == Changelog ==
+
+= 2.5.3 =
+
+* Added: catalan, norwegian bokmål and turkish translations
+* Fixed: updated translations
 
 = 2.5.2 =
 
