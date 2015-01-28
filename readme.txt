@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=KPZHE
 Tags: sidebar, widget, widget area, custom sidebars, dynamic sidebar, replace sidebar, create sidebar, sidebar generator, sidebar plugin, replace widget area, merge widget area, create widget area, context aware, conditional, seo, bbpress, buddypress, qtranslate, polylang, transposh, wpml, woocommerce
 Requires at least: 3.3
 Tested up to: 4.1
-Stable tag: 2.5.3
+Stable tag: 2.6
 License: GPLv3
 
 Create and display custom sidebars according to the content being viewed.
@@ -31,6 +31,7 @@ Developed with functionality and performance in mind, Content Aware Sidebars is 
 	* Post Type Archives
 	* Author Archives
 	* (Custom) Taxonomy Archives or Taxonomy Term Archives
+	* **NEW:** Date Archives
 	* Search Results
 	* 404 Page
 	* Front Page
@@ -56,10 +57,12 @@ Developed with functionality and performance in mind, Content Aware Sidebars is 
 
 = Multilingual and Translation Ready =
 
+* Basque (eu)
 * Catalan (ca)
 * Chinese (zh_CN)
 * Danish (da_DK)
 * Dutch (nl_NL)
+* French (fr_FR)
 * German (de_DE)
 * Hungarian (hu_HU)
 * Italian (it_IT)
@@ -78,7 +81,7 @@ Developed with functionality and performance in mind, Content Aware Sidebars is 
 **Thanks to the translators:**
 
 ********
-[keystorm](https://www.transifex.com/accounts/profile/keystorm/), [wcybrick](https://www.transifex.com/accounts/profile/wcybrick/), [tkjune](https://www.transifex.com/accounts/profile/tkjune/), [denisbeckers](https://www.transifex.com/accounts/profile/denisbeckers/), [akuhl](https://www.transifex.com/accounts/profile/akuhl/), [henrik.heil](https://www.transifex.com/accounts/profile/henrik.heil/), [ewx](https://www.transifex.com/accounts/profile/ewx/), [Neftigon](https://www.transifex.com/accounts/profile/Neftigon/), [Lucky65](https://www.transifex.com/accounts/profile/Lucky65/), [syruas](https://www.transifex.com/accounts/profile/syruas/), [PaalJoachim](https://www.transifex.com/accounts/profile/PaalJoachim/), [ibushi](https://www.transifex.com/accounts/profile/ibushi/), [marcelo.ghelman](https://www.transifex.com/accounts/profile/marcelo.ghelman/), [ahmetyilmaz](https://www.transifex.com/accounts/profile/ahmetyilmaz/), [iltrof](https://www.transifex.com/accounts/profile/iltrof/)
+[gattiken](https://www.transifex.com/accounts/profile/gattiken/), [keystorm](https://www.transifex.com/accounts/profile/keystorm/), [tkjune](https://www.transifex.com/accounts/profile/tkjune/), [wcybrick](https://www.transifex.com/accounts/profile/wcybrick/), [denisbeckers](https://www.transifex.com/accounts/profile/denisbeckers/), [SynergiaWeb](https://www.transifex.com/accounts/profile/SynergiaWeb/), [ewx](https://www.transifex.com/accounts/profile/ewx/), [akuhl](https://www.transifex.com/accounts/profile/akuhl/), [henrik.heil](https://www.transifex.com/accounts/profile/henrik.heil/), [Neftigon](https://www.transifex.com/accounts/profile/Neftigon/), [Lucky65](https://www.transifex.com/accounts/profile/Lucky65/), [syruas](https://www.transifex.com/accounts/profile/syruas/), [PaalJoachim](https://www.transifex.com/accounts/profile/PaalJoachim/), [ibushi](https://www.transifex.com/accounts/profile/ibushi/), [marcelo.ghelman](https://www.transifex.com/accounts/profile/marcelo.ghelman/), [iltrof](https://www.transifex.com/accounts/profile/iltrof/), [ahmetyilmaz](https://www.transifex.com/accounts/profile/ahmetyilmaz/)
 ********
 Branco, Haralds Gribusts, Michael Yunat, Ogi Djuraskovic, Vincent G
 
@@ -141,6 +144,11 @@ Do you want to contribute and see your name here?
 * Hello World
 
 == Changelog ==
+
+= 2.6 =
+
+* Added: date module to display sidebars on date archives
+* Added: basque and french translations
 
 = 2.5.3 =
 
