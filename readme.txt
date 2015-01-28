@@ -149,6 +149,7 @@ Do you want to contribute and see your name here?
 
 * Added: date module to display sidebars on date archives
 * Added: basque and french translations
+* Fixed: support for mariadb 10.0
 
 = 2.5.3 =
 
