@@ -1007,7 +1007,6 @@ final class ContentAwareSidebars {
 	 */
 	private function _load_dependencies() {
 		$path = plugin_dir_path( __FILE__ );
-		require($path.'/walker.php');
 		require($path.'/update_db.php');
 		require($path.'/lib/wp-content-aware-engine/core.php');
 	}
