@@ -7,7 +7,7 @@
 Plugin Name: Content Aware Sidebars
 Plugin URI: http://www.intox.dk/en/plugin/content-aware-sidebars-en/
 Description: Manage and show sidebars according to the content being viewed.
-Version: 2.5.2
+Version: 2.6
 Author: Joachim Jensen, Intox Studio
 Author URI: http://www.intox.dk/
 Text Domain: content-aware-sidebars
@@ -47,12 +47,7 @@ final class ContentAwareSidebars {
 	/**
 	 * Plugin version
 	 */
-	const PLUGIN_VERSION       = '2.5.2';
-
-	/**
-	 * Prefix for data (keys) stored in database
-	 */
-	const PREFIX               = '_cas_';
+	const PLUGIN_VERSION       = '2.6';
 
 	/**
 	 * Prefix for sidebar id
@@ -76,9 +71,9 @@ final class ContentAwareSidebars {
 
 	/**
 	 * Sidebar metadata
-	 * @var array
+	 * @var WPCAObjectManager
 	 */
-	private $metadata          = array();
+	private $metadata;
 
 	/**
 	 * Store all sidebars here
@@ -191,6 +186,7 @@ final class ContentAwareSidebars {
 	 * Runs is_active_sidebar for sidebars
 	 * Widget management in Theme Customizer
 	 * expects this
+	 * 
 	 * @author Joachim Jensen <jv@intox.dk>
 	 * @global type $wp_customize
 	 * @since  2.2
@@ -226,7 +222,20 @@ final class ContentAwareSidebars {
 	public function load_textdomain() {
 		load_plugin_textdomain(self::DOMAIN, false, dirname(plugin_basename(__FILE__)).'/lang/');
 	}
-	
+
+	/**
+	 * Get instance of metadata manager
+	 *
+	 * @since  3.0
+	 * @return WPCAObjectManager
+	 */
+	private function metadata() {
+		if(!$this->metadata) {
+			$this->metadata = new WPCAObjectManager();
+		}
+		return $this->metadata;
+	}
+
 	/**
 	 * Create post meta fields
 	 * @global array $wp_registered_sidebars 
@@ -241,52 +250,49 @@ final class ContentAwareSidebars {
 			$sidebar_list[$sidebar['id']] = $sidebar['name'];
 		}
 
-		// Meta fields
-		$this->metadata['exposure'] = array(
-			'name' => __('Exposure', self::DOMAIN),
-			'id'   => 'exposure',
-			'desc' => '',
-			'val'  => 1,
-			'type' => 'select',
-			'list' => array(
+		$this->metadata()
+		->add(new WPCAMeta(
+			'exposure',
+			__('Exposure', self::DOMAIN),
+			1,
+			'select',
+			array(
 				__('Singular', self::DOMAIN),
 				__('Singular & Archive', self::DOMAIN),
 				__('Archive', self::DOMAIN)
 			)
-		);
-		$this->metadata['handle'] = array(
-			'name' => _x('Handle','option', self::DOMAIN),
-			'id'   => 'handle',
-			'desc' => __('Replace host sidebar, merge with it or add sidebar manually.', self::DOMAIN),
-			'val'  => 0,
-			'type' => 'select',
-			'list' => array(
+		),'exposure')
+		->add(new WPCAMeta(
+			'handle',
+			_x('Handle','option', self::DOMAIN),
+			0,
+			'select',
+			array(
 				0 => __('Replace', self::DOMAIN),
 				1 => __('Merge', self::DOMAIN),
 				2 => __('Manual', self::DOMAIN),
 				3 => __('Forced replace',self::DOMAIN)
-			)
-		);
-		$this->metadata['host']	= array(
-			'name' => __('Host Sidebar', self::DOMAIN),
-			'id'   => 'host',
-			'desc' => '',
-			'val'  => 'sidebar-1',
-			'type' => 'select',
-			'list' => $sidebar_list
-		);
-		$this->metadata['merge-pos'] = array(
-			'name' => __('Merge position', self::DOMAIN),
-			'id'   => 'merge-pos',
-			'desc' => __('Place sidebar on top or bottom of host when merging.', self::DOMAIN),
-			'val'  => 1,
-			'type' => 'select',
-			'list' => array(
+			),
+			__('Replace host sidebar, merge with it or add sidebar manually.', self::DOMAIN)
+		),'handle')
+		->add(new WPCAMeta(
+			'host',
+			__('Host Sidebar', self::DOMAIN),
+			'sidebar-1',
+			'select',
+			$sidebar_list
+		),'host')
+		->add(new WPCAMeta(
+			'merge-pos',
+			__('Merge Position', self::DOMAIN),
+			1,
+			'select',
+			array(
 				__('Top', self::DOMAIN),
 				__('Bottom', self::DOMAIN)
-			)
-		);
-		
+			),
+			__('Place sidebar on top or bottom of host when merging.', self::DOMAIN)
+		),'merge-pos');
 	}
 	
 	/**
@@ -319,7 +325,10 @@ final class ContentAwareSidebars {
 				'view_item'          => __('View Sidebar', self::DOMAIN),
 				'search_items'       => __('Search Sidebars', self::DOMAIN),
 				'not_found'          => __('No sidebars found', self::DOMAIN),
-				'not_found_in_trash' => __('No sidebars found in Trash', self::DOMAIN)
+				'not_found_in_trash' => __('No sidebars found in Trash', self::DOMAIN),
+				//wp-content-aware-engine specific
+				'ca_title'           => __('Display sidebar with',self::DOMAIN),
+				'ca_not_found'       => __('No content. Please add at least one condition group to make the sidebar content aware.',self::DOMAIN)
 			),
 			'capabilities'  => $capabilities,
 			'show_ui'       => true,
@@ -393,26 +402,24 @@ final class ContentAwareSidebars {
 		//Now reregister sidebars with proper content
 		foreach($this->sidebars as $post) {
 			
-			$handle = get_post_meta($post->ID,self::PREFIX . 'handle', true);
-			//$handle = $post->{self::PREFIX . 'handle'};
-			if(!isset($this->metadata['handle']['list'][$handle])) {
+			$handle = $this->metadata()->get('handle')->get_list_data($post->ID,false);
+			
+			if(!$handle) {
 				continue;
 			}
-			
-			$desc = $this->metadata['handle']['list'][$handle];
 
-			if ($handle != 2) {
-				$host = get_post_meta($post->ID, self::PREFIX . 'host', true);
-				$desc .= ": " . (isset($this->metadata['host']['list'][$host]) ? $this->metadata['host']['list'][$host] :  __('Please update Host Sidebar', self::DOMAIN) );
+			if ($this->metadata()->get('handle')->get_data($post->ID) != 2) {
+				$host = $this->metadata()->get('host')->get_list_data($post->ID,false);
+				$handle .= ": " . ($host ?:  __('Please update Host Sidebar', self::DOMAIN) );
 			}
 			register_sidebar( array(
 				'name'          => $post->post_title,
-				'description'   => $desc,
+				'description'   => $handle,
 				'id'            => self::SIDEBAR_PREFIX.$post->ID,
-				'before_widget' => '<li id="%1$s" class="widget-container %2$s">',
+				'before_widget' => '<li style="background:#00cc00;" id="%1$s" class="widget-container %2$s">',
 				'after_widget'  => '</li>',
-				'before_title'  => '<h3 class="widget-title">',
-				'after_title'   => '</h3>',
+				'before_title'  => '<h4 class="widget-title">',
+				'after_title'   => '</h4>',
 			));
 		}
 	}
@@ -456,7 +463,7 @@ final class ContentAwareSidebars {
 	public function admin_column_orderby($vars) {
 		if (isset($vars['orderby']) && in_array($vars['orderby'], array('exposure', 'handle', 'merge-pos'))) {
 			$vars = array_merge($vars, array(
-				'meta_key' => self::PREFIX . $vars['orderby'],
+				'meta_key' => WPCACore::PREFIX . $vars['orderby'],
 				'orderby'  => 'meta_value'
 			));
 		}
@@ -481,18 +488,16 @@ final class ContentAwareSidebars {
 		if (!$this->metadata)
 			$this->_init_metadata();
 
-		$current = get_post_meta($post_id, self::PREFIX . $column_name, true);
-		$retval = "";
+		$retval = $this->metadata()->get($column_name)->get_list_data($post_id);
 
-		if(isset($this->metadata[$column_name]['list'][$current])) {
+		if($retval) {
 
-			$retval = $this->metadata[$column_name]['list'][$current];
+			$data = $this->metadata()->get($column_name)->get_data($post_id);
 			
-			if ($column_name == 'handle' && $current != 2) {
-				$host = get_post_meta($post_id, self::PREFIX . 'host', true);
-				$retval .= ": " . (isset($this->metadata['host']['list'][$host]) ? $this->metadata['host']['list'][$host] : '<span style="color:red;">' . __('Please update Host Sidebar', self::DOMAIN) . '</span>');
+			if ($column_name == 'handle' && $data != 2) {
+				$host = $this->metadata()->get('host')->get_list_data($post_id);
+				$retval .= ": " . ($host ?: '<span style="color:red;">' . __('Please update Host Sidebar', self::DOMAIN) . '</span>');
 			}
-
 		}
 		
 		echo $retval;
@@ -565,7 +570,7 @@ final class ContentAwareSidebars {
 		foreach ($posts as $post) {
 
 			$id = self::SIDEBAR_PREFIX . $post->ID;
-			$host = get_post_meta($post->ID, self::PREFIX . 'host', true);
+			$host = $this->metadata()->get('host')->get_data($post->ID);
 
 			// Check for correct handling and if host exist
 			if ($post->handle == 2 || !isset($sidebars_widgets[$host]))
@@ -577,7 +582,7 @@ final class ContentAwareSidebars {
 
 			// If handle is merge or if handle is replace and host has already been replaced
 			if ($post->handle == 1 || ($post->handle == 0 && isset($handled_already[$host]))) {
-				if (get_post_meta($post->ID, self::PREFIX . 'merge-pos', true))
+				if ($this->metadata()->get('merge-pos')->get_data($post->ID))
 					$sidebars_widgets[$host] = array_merge($sidebars_widgets[$host], $sidebars_widgets[$id]);
 				else
 					$sidebars_widgets[$host] = array_merge($sidebars_widgets[$id], $sidebars_widgets[$host]);
@@ -631,7 +636,7 @@ final class ContentAwareSidebars {
 
 			// Merge if more than one. First one is host.
 			if ($i > 0) {
-				if (get_post_meta($post->ID, self::PREFIX . 'merge-pos', true))
+				if ($this->metadata()->get('merge-pos')->get_data($post->ID))
 					$_wp_sidebars_widgets[$host] = array_merge($_wp_sidebars_widgets[$host], $_wp_sidebars_widgets[$id]);
 				else
 					$_wp_sidebars_widgets[$host] = array_merge($_wp_sidebars_widgets[$id], $_wp_sidebars_widgets[$host]);
@@ -696,8 +701,11 @@ final class ContentAwareSidebars {
 	public function create_meta_boxes() {
 		
 		// Remove ability to set self to host
-		if(get_the_ID())
-			unset($this->metadata['host']['list'][self::SIDEBAR_PREFIX.get_the_ID()]);
+		if(get_the_ID()) {
+			$sidebar_list = $this->metadata()->get('host')->get_input_list();
+			unset($sidebar_list[self::SIDEBAR_PREFIX.get_the_ID()]);
+			$this->metadata()->get('host')->set_input_list($sidebar_list);
+		}
 
 		$boxes = array(
 			//News
@@ -741,7 +749,7 @@ final class ContentAwareSidebars {
 		$screen = get_current_screen();
 
 		$screen->add_help_tab( array( 
-			'id'      => self::PREFIX.'help',
+			'id'      => WPCACore::PREFIX.'help',
 			'title'   => __('Condition Groups',self::DOMAIN),
 			'content' => '<p>'.__('Each created condition group describe some specific content (conditions) that the current sidebar should be displayed with.',self::DOMAIN).'</p>'.
 				'<p>'.__('Content added to a condition group uses logical conjunction, while condition groups themselves use logical disjunction. '.
@@ -819,7 +827,7 @@ final class ContentAwareSidebars {
 
 			$id = is_numeric($key) ? $value : $key;
 
-			echo '<span class="'.$id.'"><strong>' . $this->metadata[$id]['name'] . '</strong>';
+			echo '<span class="'.$id.'"><strong>' . $this->metadata()->get($id)->get_title() . '</strong>';
 			echo '<p>';
 			$values = explode(',', $value);
 			foreach ($values as $val) {
@@ -879,27 +887,27 @@ final class ContentAwareSidebars {
 	 */
 	private function _form_field($setting) {
 
-		$meta = get_post_meta(get_the_ID(), self::PREFIX . $setting, true);
-		$setting = $this->metadata[$setting];
-		$current = $meta != '' ? $meta : $setting['val'];
-		switch ($setting['type']) {
+		$setting = $this->metadata()->get($setting);
+		$current = $setting->get_data(get_the_ID(),true);
+
+		switch ($setting->get_input_type()) {
 			case 'select' :
-				echo '<select style="width:250px;" name="' . $setting['id'] . '">' . "\n";
-				foreach ($setting['list'] as $key => $value) {
+				echo '<select style="width:250px;" name="' . $setting->get_id() . '">' . "\n";
+				foreach ($setting->get_input_list() as $key => $value) {
 					echo '<option value="' . $key . '"' . selected($current,$key,false) . '>' . $value . '</option>' . "\n";
 				}
 				echo '</select>' . "\n";
 				break;
 			case 'checkbox' :
 				echo '<ul>' . "\n";
-				foreach ($setting['list'] as $key => $value) {
-					echo '<li><label><input type="checkbox" name="' . $setting['id'] . '[]" value="' . $key . '"' . (in_array($key, $current) ? ' checked="checked"' : '') . ' /> ' . $value . '</label></li>' . "\n";
+				foreach ($setting->get_input_list() as $key => $value) {
+					echo '<li><label><input type="checkbox" name="' . $setting->get_id() . '[]" value="' . $key . '"' . (in_array($key, $current) ? ' checked="checked"' : '') . ' /> ' . $value . '</label></li>' . "\n";
 				}
 				echo '</ul>' . "\n";
 				break;
 			case 'text' :
 			default :
-				echo '<input style="width:200px;" type="text" name="' . $setting['id'] . '" value="' . $current . '" />' . "\n";
+				echo '<input style="width:200px;" type="text" name="' . $setting->get_id() . '" value="' . $current . '" />' . "\n";
 				break;
 		}
 	}
@@ -920,7 +928,7 @@ final class ContentAwareSidebars {
 			return;
 
 		// Verify nonce
-		if (!check_admin_referer(self::PREFIX.$post_id, '_ca-sidebar-nonce'))
+		if (!check_admin_referer(WPCACore::PREFIX.$post_id, WPCACore::NONCE))
 			return;
 
 		// Check permissions
@@ -935,14 +943,14 @@ final class ContentAwareSidebars {
 		$this->_init_metadata();
 
 		// Update metadata
-		foreach ($this->metadata as $field) {
-			$new = isset($_POST[$field['id']]) ? $_POST[$field['id']] : '';
-			$old = get_post_meta($post_id, self::PREFIX . $field['id'], true);
+		foreach ($this->metadata()->get_all() as $field) {
+			$new = isset($_POST[$field->get_id()]) ? $_POST[$field->get_id()] : '';
+			$old = $field->get_data($post_id);
 
 			if ($new != '' && $new != $old) {
-				update_post_meta($post_id, self::PREFIX . $field['id'], $new);
+				$field->update($post_id,$new);
 			} elseif ($new == '' && $old != '') {
-				delete_post_meta($post_id, self::PREFIX . $field['id'], $old);
+				$field->delete($post_id,$old);
 			}
 		}
 	}
