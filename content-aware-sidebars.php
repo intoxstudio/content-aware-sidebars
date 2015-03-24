@@ -401,26 +401,38 @@ final class ContentAwareSidebars {
 
 		//Now reregister sidebars with proper content
 		foreach($this->sidebars as $post) {
-			
-			$handle = $this->metadata()->get('handle')->get_list_data($post->ID,false);
-			
-			if(!$handle) {
+
+			$sidebar_args = array(
+				"name"        => $post->post_title,
+				"description" => $this->metadata()->get('handle')->get_list_data($post->ID,false),
+				"id"          => self::SIDEBAR_PREFIX.$post->ID
+			);
+
+			if(!$sidebar_args["description"]) {
 				continue;
 			}
 
+			$sidebar_args["before_widget"] = '<li id="%1$s" class="widget-container %2$s">';
+			$sidebar_args["after_widget"] = '</li>';
+			$sidebar_args["before_title"] = '<h4 class="widget-title">';
+			$sidebar_args["after_title"] = '</h4>';
+
 			if ($this->metadata()->get('handle')->get_data($post->ID) != 2) {
 				$host = $this->metadata()->get('host')->get_list_data($post->ID,false);
-				$handle .= ": " . ($host ?:  __('Please update Host Sidebar', self::DOMAIN) );
+				$sidebar_args["description"] .= ": " . ($host ?:  __('Please update Host Sidebar', self::DOMAIN) );
+
+				//Set style from host to fix when content aware sidebar
+				//is called directly by other sidebar managers
+				global $wp_registered_sidebars;
+				$host_id = $this->metadata()->get('host')->get_data($post->ID);
+				if($wp_registered_sidebars[$host_id]) {
+					$sidebar_args["before_widget"] = $wp_registered_sidebars[$host_id]["before_widget"];
+					$sidebar_args["after_widget"] = $wp_registered_sidebars[$host_id]["after_widget"];
+					$sidebar_args["before_title"] = $wp_registered_sidebars[$host_id]["before_title"];
+					$sidebar_args["after_title"] = $wp_registered_sidebars[$host_id]["after_title"];
+				}
 			}
-			register_sidebar( array(
-				'name'          => $post->post_title,
-				'description'   => $handle,
-				'id'            => self::SIDEBAR_PREFIX.$post->ID,
-				'before_widget' => '<li style="background:#00cc00;" id="%1$s" class="widget-container %2$s">',
-				'after_widget'  => '</li>',
-				'before_title'  => '<h4 class="widget-title">',
-				'after_title'   => '</h4>',
-			));
+			register_sidebar($sidebar_args);
 		}
 	}
 
