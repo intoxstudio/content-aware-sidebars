@@ -1,0 +1,485 @@
+# Copyright (C) 2012 Content Aware Sidebars
+# This file is distributed under the same license as the Content Aware Sidebars package.
+# Translators:
+# Gattiken Produkzioak <gattiken@gattiken.com>, 2015
+msgid ""
+msgstr ""
+"Project-Id-Version: Content Aware Sidebars\n"
+"Report-Msgid-Bugs-To: http://wordpress.org/tag/content-aware-sidebars\n"
+"POT-Creation-Date: 2015-01-27 22:32-0800\n"
+"PO-Revision-Date: 2015-01-28 09:57+0000\n"
+"Last-Translator: Joachim Jensen <jv@intox.dk>\n"
+"Language-Team: Basque (http://www.transifex.com/projects/p/content-aware-sidebars/language/eu/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: eu\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 1.7.4\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-KeywordsList: __;_e;__ngettext:1,2;_n:1,2;__ngettext_noop:1,2;_n_noop:1,2;_c,_nc:4c,1,2;_x:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2;_ex:1,2c;esc_attr__;esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPath-1: ..\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Textdomain-Support: yes\n"
+
+#: ../content-aware-sidebars.php:117
+msgid "Manage and show sidebars according to the content being viewed."
+msgstr "Kudeatu eta erakutsi albo-barrak erakutsi nahi den edukiaren arabera."
+
+#: ../content-aware-sidebars.php:118
+msgid "Content Aware Sidebars"
+msgstr "Content Aware Sidebars"
+
+#: ../content-aware-sidebars.php:202 ../content-aware-sidebars.php:954
+msgid "FAQ"
+msgstr "Ohiko Galderak"
+
+#: ../content-aware-sidebars.php:303
+msgid "Exposure"
+msgstr "Esposaketa"
+
+#: ../content-aware-sidebars.php:309
+msgid "Singular"
+msgstr "Singularra"
+
+#: ../content-aware-sidebars.php:310
+msgid "Singular & Archive"
+msgstr "Singularra & Artxiboa"
+
+#: ../content-aware-sidebars.php:311
+msgid "Archive"
+msgstr "Artxiboa"
+
+#: ../content-aware-sidebars.php:315 ../content-aware-sidebars.php:508
+msgctxt "option"
+msgid "Handle"
+msgstr "Maneiatu"
+
+#: ../content-aware-sidebars.php:317
+msgid "Replace host sidebar, merge with it or add sidebar manually."
+msgstr "Ordezkatu berezko albo-barra, batu berarekin edo gehitu albo-barra bat eskuz."
+
+#: ../content-aware-sidebars.php:321
+msgid "Replace"
+msgstr "Ordezkatu"
+
+#: ../content-aware-sidebars.php:322
+msgid "Merge"
+msgstr "Batu"
+
+#: ../content-aware-sidebars.php:323
+msgid "Manual"
+msgstr "Eskuz"
+
+#: ../content-aware-sidebars.php:324
+msgid "Forced replace"
+msgstr "Behartu ordezkapena"
+
+#: ../content-aware-sidebars.php:328
+msgid "Host Sidebar"
+msgstr "Berezko Albo-Barra"
+
+#: ../content-aware-sidebars.php:336 ../content-aware-sidebars.php:509
+msgid "Merge position"
+msgstr "Batu kokapena"
+
+#: ../content-aware-sidebars.php:338
+msgid "Place sidebar on top or bottom of host when merging."
+msgstr "Albo-Barra berezkoaren gainean edo azpian kokatu elkartzea gauzatzean."
+
+#: ../content-aware-sidebars.php:342
+msgid "Top"
+msgstr "Gainean"
+
+#: ../content-aware-sidebars.php:343
+msgid "Bottom"
+msgstr "Azpian"
+
+#: ../content-aware-sidebars.php:369
+msgid "Sidebars"
+msgstr "Albo-Barrak"
+
+#: ../content-aware-sidebars.php:370
+msgid "Sidebar"
+msgstr "Albo-barra"
+
+#: ../content-aware-sidebars.php:371
+msgctxt "sidebar"
+msgid "Add New"
+msgstr "Gehitu berria"
+
+#: ../content-aware-sidebars.php:372
+msgid "Add New Sidebar"
+msgstr "Gehitu Albo-Barra Berria"
+
+#: ../content-aware-sidebars.php:373 ../content-aware-sidebars.php:1429
+msgid "Edit Sidebar"
+msgstr "Editatu Albo-Barra"
+
+#: ../content-aware-sidebars.php:374
+msgid "New Sidebar"
+msgstr "Albo-Barra Berria"
+
+#: ../content-aware-sidebars.php:375
+msgid "All Sidebars"
+msgstr "Albo-Barra Guztiak"
+
+#: ../content-aware-sidebars.php:376
+msgid "View Sidebar"
+msgstr "Ikusi Albo-Barra"
+
+#: ../content-aware-sidebars.php:377
+msgid "Search Sidebars"
+msgstr "Bilatu Albo-Barrak"
+
+#: ../content-aware-sidebars.php:378
+msgid "No sidebars found"
+msgstr "Ez da Albo-Barrarik topatu"
+
+#: ../content-aware-sidebars.php:379
+msgid "No sidebars found in Trash"
+msgstr "Ez da Albo-Barrarik topatu zakarrontzian"
+
+#: ../content-aware-sidebars.php:394 ../content-aware-sidebars.php:948
+#: ../content-aware-sidebars.php:1027
+msgid "Condition Groups"
+msgstr "Baldintzazko Taldeak"
+
+#: ../content-aware-sidebars.php:395
+msgid "Condition Group"
+msgstr "Baldintzazko Taldea"
+
+#: ../content-aware-sidebars.php:396
+msgctxt "group"
+msgid "Add New"
+msgstr "Gehitu Berria"
+
+#: ../content-aware-sidebars.php:397 ../content-aware-sidebars.php:1027
+#: ../content-aware-sidebars.php:1061
+msgid "Add New Group"
+msgstr "Gehitu Talde Berria"
+
+#: ../content-aware-sidebars.php:398 ../content-aware-sidebars.php:1042
+#: ../content-aware-sidebars.php:1411
+msgctxt "group"
+msgid "Edit"
+msgstr "Editatu"
+
+#: ../content-aware-sidebars.php:422
+msgid "Manage widgets"
+msgstr "Kudeatu Widgetak"
+
+#: ../content-aware-sidebars.php:425 ../content-aware-sidebars.php:428
+msgid "Sidebar updated."
+msgstr "Albo-Barra eguneratu da."
+
+#: ../content-aware-sidebars.php:430
+msgid "Sidebar published."
+msgstr "Albo-Barra argitaratu da."
+
+#: ../content-aware-sidebars.php:431
+msgid "Sidebar saved."
+msgstr "Albo-Barra gorde da."
+
+#: ../content-aware-sidebars.php:432
+msgid "Sidebar submitted."
+msgstr "Albo-Barra aurkeztu da."
+
+#: ../content-aware-sidebars.php:433
+#, php-format
+msgid "Sidebar scheduled for: <strong>%1$s</strong>."
+msgstr "<strong>%1$s</strong> erako programatutako Albo-Barra."
+
+#. translators: Publish box date format, see http://php.net/date
+#: ../content-aware-sidebars.php:435
+msgid "M j, Y @ G:i"
+msgstr "M j, Y @ G:i"
+
+#: ../content-aware-sidebars.php:436
+msgid "Sidebar draft updated."
+msgstr "Zirriborroa eguneratu da."
+
+#: ../content-aware-sidebars.php:484 ../content-aware-sidebars.php:571
+msgid "Please update Host Sidebar"
+msgstr "Faborez, eguneratu Berezko Albo-Barra"
+
+#: ../content-aware-sidebars.php:510
+msgid "Widgets"
+msgstr "Widgetak"
+
+#: ../content-aware-sidebars.php:646
+msgid "Manage Widgets"
+msgstr "Kudeatu Widgetak"
+
+#: ../content-aware-sidebars.php:901
+msgid "Get a free Content Aware Sidebars Premium Bundle"
+msgstr "Eskuratu doako Content Aware Sidebar Premium Bundle -a."
+
+#: ../content-aware-sidebars.php:917
+msgid "Content"
+msgstr "Edukia"
+
+#: ../content-aware-sidebars.php:925
+msgid "Options"
+msgstr "Ezarpenak"
+
+#: ../content-aware-sidebars.php:949
+msgid ""
+"Each created condition group describe some specific content (conditions) "
+"that the current sidebar should be displayed with."
+msgstr "Sortzen den baldintzazko talde bakoitzak, hainbat eduki (baldintza) zehatz deskribatzen ditu, uneko albo-barrak erakutsiko dituenak."
+
+#: ../content-aware-sidebars.php:950
+msgid ""
+"Content added to a condition group uses logical conjunction, while condition"
+" groups themselves use logical disjunction. This means that content added to"
+" a group should be associated, as they are treated as such, and that the "
+"groups do not interfere with each other. Thus it is possible to have both "
+"extremely focused and at the same time distinct conditions."
+msgstr "Baldintzazko talde batera gehitutako edukiak modu lojikoan elkartzen ditu, baina baldintzazko taldeek eurek ez-elkartze lojikoa dute. Honek esan nahi du, talde batera gehitutako edukiak asoziatu egin daitezkeela, modu horretan tratatzen diren bitartean, eta taldeek ez diotela elkarri interferitzen. honek baldintza desberdinek aldi berean funtzionatzeko aukera ematen du."
+
+#: ../content-aware-sidebars.php:953
+msgid "More Information"
+msgstr "Informazio Gehiago"
+
+#: ../content-aware-sidebars.php:955
+msgid "Get Support"
+msgstr "Eskuratu Laguntza"
+
+#: ../content-aware-sidebars.php:992
+msgid ""
+"Translate Content Aware Sidebars into your language and become a BETA tester"
+" of the upcoming Premium Bundle*!"
+msgstr "Itzuli Content Aware Sidebars zure hizkuntzara eta bihurtu zaitez BETA probalari bat, datorren Premiun Bundle-rako!"
+
+#: ../content-aware-sidebars.php:993
+msgid "Translate Now"
+msgstr "Itzuli orain"
+
+#: ../content-aware-sidebars.php:994
+msgid "Get Premium Bundle"
+msgstr "Eskuratu Premiun Bundle"
+
+#: ../content-aware-sidebars.php:995
+msgid ""
+"Single-site use. BETA implies it is not recommended for production sites."
+msgstr "Gune bakarreko erabilera. BETA izanik, ez da gomendatzen produkzio guneetarako."
+
+#: ../content-aware-sidebars.php:998
+msgid "Partial Feature List"
+msgstr "Ezaugarrien Zerrenda Partziala"
+
+#: ../content-aware-sidebars.php:1000
+msgid "Select and create sidebars in the Post Editing Screens"
+msgstr "Aukeratu eta sortu albo-barrak Bidalketak Editatzeko Pantailan"
+
+#: ../content-aware-sidebars.php:1001
+msgid "Display sidebars with URLs using wildcards"
+msgstr "Erakutsi albo-barrak URL-ekin komodinak erabiliz"
+
+#: ../content-aware-sidebars.php:1002
+msgid "Display sidebars with User Roles"
+msgstr "Erakutsi Albo-Barra Erabiltzaile Baimenekin"
+
+#: ../content-aware-sidebars.php:1003
+msgid "Display sidebars with BuddyPress User Groups"
+msgstr "Erakutsi albo-barrakl BuddyPress Erabiltzaile Taldeekin"
+
+#: ../content-aware-sidebars.php:1004
+msgid "Sidebars column in Post Type and Taxonomy Overview Screens"
+msgstr "Albo-Barren zutabea Post Type and Taxonomy aukeren pantailan"
+
+#: ../content-aware-sidebars.php:1028
+msgid ""
+"Click to edit a group or create a new one. Select content on the left to add"
+" it. In each group, you can combine different types of associated content."
+msgstr "Egin klik talde bat editatzeko edo sortzeko. Aukeratu edukia ezkerretik. Talde bakoitzean, elkartutako eduki mota desberdinak uztartu ditzakezu."
+
+#: ../content-aware-sidebars.php:1029
+msgid "Display sidebar with"
+msgstr "Erakutsi Albo-Barra honekin:"
+
+#: ../content-aware-sidebars.php:1034
+msgid ""
+"No content. Please add at least one condition group to make the sidebar "
+"content aware."
+msgstr "Ez dago edukirik. Faborez, gehitu gutxienez baldintzazko talde bat albo-barra erabilgarri bihurtzeko."
+
+#: ../content-aware-sidebars.php:1039 ../content-aware-sidebars.php:1408
+msgid "Save"
+msgstr "Gorde"
+
+#: ../content-aware-sidebars.php:1039 ../content-aware-sidebars.php:1409
+msgid "Cancel"
+msgstr "Ezeztatu"
+
+#: ../content-aware-sidebars.php:1042 ../content-aware-sidebars.php:1412
+msgid "Remove"
+msgstr "Ezabatu"
+
+#: ../content-aware-sidebars.php:1051 ../content-aware-sidebars.php:1410
+msgid "Or"
+msgstr "Edo"
+
+#: ../content-aware-sidebars.php:1139 ../content-aware-sidebars.php:1182
+#: ../content-aware-sidebars.php:1187
+msgid "Unauthorized request"
+msgstr "Baimenik gabeko eskaera"
+
+#: ../content-aware-sidebars.php:1145
+msgid "Condition group cannot be empty"
+msgstr "Baldintzazko Taldea ezin da hutsik egon"
+
+#: ../content-aware-sidebars.php:1159
+msgid "Condition group saved"
+msgstr "Baldintzazko taldea gorde da"
+
+#: ../content-aware-sidebars.php:1192
+msgid "Condition group could not be removed"
+msgstr "Baldintzazko taldea ezin da ezabatu"
+
+#: ../content-aware-sidebars.php:1197
+msgid "Condition group removed"
+msgstr "Baldintzazko taldea ezabatu da"
+
+#: ../content-aware-sidebars.php:1256 ../content-aware-sidebars.php:1257
+msgid "Order"
+msgstr "Ordena"
+
+#: ../content-aware-sidebars.php:1273
+msgid ""
+"If you love this plugin, please consider donating to support future "
+"development."
+msgstr "Plugin hau maite baduzu, mesedez aztertu etorkizunean berau garatzeko diru apur bat ematea."
+
+#: ../content-aware-sidebars.php:1282
+msgid "Or you could:"
+msgstr "Edo bestela:"
+
+#: ../content-aware-sidebars.php:1284
+msgid "Rate the plugin on WordPress.org"
+msgstr "Eman puntuak plugin honi WordPress.org-n"
+
+#: ../content-aware-sidebars.php:1285
+msgid "Link to the plugin page"
+msgstr "Egin lotura pluginaren orrialdearekin"
+
+#: ../content-aware-sidebars.php:1286
+msgid "Translate the plugin into your language"
+msgstr "Itzuli plugin hau zure hizkuntzara"
+
+#: ../content-aware-sidebars.php:1413
+msgid "Remove this group and its contents permanently?"
+msgstr "Ezabatu talde hau eta bere edukia betirako?"
+
+#: ../content-aware-sidebars.php:1414
+msgid "No results found."
+msgstr "Ez da emaitzarik topatu."
+
+#: ../content-aware-sidebars.php:1415
+msgid ""
+"The current group has unsaved changes. Do you want to continue and discard "
+"these changes?"
+msgstr "Talde honek gorde gabeko aldaketak ditu. Aurrera segi nahi duzu eta aldaketak baztertu?"
+
+#: ../modules/author.php:28
+msgid "Authors"
+msgstr "Egileak"
+
+#: ../modules/bbpress.php:29
+msgid "bbPress User Profiles"
+msgstr "bbPress Erabiltzaile Profilak"
+
+#: ../modules/bp_member.php:27
+msgid "BuddyPress Members"
+msgstr "BuddyPress Kideak"
+
+#: ../modules/bp_member.php:130 ../modules/casmodule.php:132
+#: ../modules/post_type.php:267 ../modules/taxonomy.php:291
+msgid "View All"
+msgstr "Ikusi Guztiak"
+
+#: ../modules/bp_member.php:139 ../modules/casmodule.php:151
+#: ../modules/post_type.php:286 ../modules/taxonomy.php:310
+msgid "Add to Group"
+msgstr "Gehitu Taldera"
+
+#: ../modules/casmodule.php:126
+#, php-format
+msgid "Display with All %s"
+msgstr "Erakutsi %s guztiekin"
+
+#: ../modules/casmodule.php:139 ../modules/casmodule.php:142
+#: ../modules/post_type.php:273 ../modules/post_type.php:276
+#: ../modules/taxonomy.php:297 ../modules/taxonomy.php:300
+msgid "Search"
+msgstr "Bilatu"
+
+#: ../modules/casmodule.php:223
+#, php-format
+msgid "All %s"
+msgstr "%s Guztiak"
+
+#: ../modules/date.php:29
+msgid "Dates"
+msgstr ""
+
+#: ../modules/date.php:65
+msgid "Date Archives"
+msgstr ""
+
+#: ../modules/page_template.php:28
+msgid "Page Templates"
+msgstr "Orrialde Plantillak"
+
+#: ../modules/polylang.php:27 ../modules/qtranslate.php:27
+#: ../modules/transposh.php:27 ../modules/wpml.php:27
+msgid "Languages"
+msgstr "Hizkuntzak"
+
+#: ../modules/post_type.php:34
+msgid "Post Types"
+msgstr "Bidalketa Motak"
+
+#: ../modules/post_type.php:166 ../modules/post_type.php:236
+#: ../modules/taxonomy.php:226 ../modules/taxonomy.php:265
+msgid "Automatically select new children of a selected ancestor"
+msgstr "Aukeratu automatikoki aukeratutako aurretiazko albo-barra baten kume berri bat "
+
+#: ../modules/post_type.php:242 ../modules/taxonomy.php:269
+#, php-format
+msgid "Display with %s"
+msgstr "Erakutsi  %s ekin"
+
+#: ../modules/post_type.php:247 ../modules/taxonomy.php:273
+msgid "No items."
+msgstr "Ez dago elementurik."
+
+#: ../modules/post_type.php:262
+msgid "Most Recent"
+msgstr "Berrienak"
+
+#: ../modules/static.php:29
+msgid "Static Pages"
+msgstr "Orrialde Estatikoak"
+
+#: ../modules/static.php:40
+msgid "Front Page"
+msgstr "Azala"
+
+#: ../modules/static.php:41
+msgid "Search Results"
+msgstr "Bilaketaren Emaitzak"
+
+#: ../modules/static.php:42
+msgid "404 Page"
+msgstr "404 orrialdea"
+
+#: ../modules/taxonomy.php:40
+msgid "Taxonomies"
+msgstr "Taxonomiak"
+
+#: ../modules/taxonomy.php:286
+msgid "Most Used"
+msgstr "Erabilienak"

@@ -1,0 +1,486 @@
+# Copyright (C) 2012 Content Aware Sidebars
+# This file is distributed under the same license as the Content Aware Sidebars package.
+# Translators:
+# killawabbit <henrik.vaglin@gmail.com>, 2015
+# Joachim Jensen <jv@intox.dk>, 2015
+msgid ""
+msgstr ""
+"Project-Id-Version: Content Aware Sidebars\n"
+"Report-Msgid-Bugs-To: http://wordpress.org/tag/content-aware-sidebars\n"
+"POT-Creation-Date: 2015-01-27 22:32-0800\n"
+"PO-Revision-Date: 2015-02-20 14:51+0000\n"
+"Last-Translator: killawabbit <henrik.vaglin@gmail.com>\n"
+"Language-Team: Swedish (Sweden) (http://www.transifex.com/projects/p/content-aware-sidebars/language/sv_SE/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: sv_SE\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 1.7.4\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-KeywordsList: __;_e;__ngettext:1,2;_n:1,2;__ngettext_noop:1,2;_n_noop:1,2;_c,_nc:4c,1,2;_x:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2;_ex:1,2c;esc_attr__;esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPath-1: ..\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Textdomain-Support: yes\n"
+
+#: ../content-aware-sidebars.php:117
+msgid "Manage and show sidebars according to the content being viewed."
+msgstr "Hantera och visa sidofält efter vilket innehåll som visas"
+
+#: ../content-aware-sidebars.php:118
+msgid "Content Aware Sidebars"
+msgstr "Content Aware Sidebars"
+
+#: ../content-aware-sidebars.php:202 ../content-aware-sidebars.php:954
+msgid "FAQ"
+msgstr "FAQ"
+
+#: ../content-aware-sidebars.php:303
+msgid "Exposure"
+msgstr "Exponering"
+
+#: ../content-aware-sidebars.php:309
+msgid "Singular"
+msgstr "Enkelformat"
+
+#: ../content-aware-sidebars.php:310
+msgid "Singular & Archive"
+msgstr "Enkelformat och arkiv"
+
+#: ../content-aware-sidebars.php:311
+msgid "Archive"
+msgstr "Arkiv"
+
+#: ../content-aware-sidebars.php:315 ../content-aware-sidebars.php:508
+msgctxt "option"
+msgid "Handle"
+msgstr "Handtag"
+
+#: ../content-aware-sidebars.php:317
+msgid "Replace host sidebar, merge with it or add sidebar manually."
+msgstr "Ersätt ursprungligt sidofält, lägg ihop med det eller lägg till sidofältet msnuellt"
+
+#: ../content-aware-sidebars.php:321
+msgid "Replace"
+msgstr "Ersätta"
+
+#: ../content-aware-sidebars.php:322
+msgid "Merge"
+msgstr "Lägg ihop"
+
+#: ../content-aware-sidebars.php:323
+msgid "Manual"
+msgstr "Manuell"
+
+#: ../content-aware-sidebars.php:324
+msgid "Forced replace"
+msgstr "Tvingande ersätta"
+
+#: ../content-aware-sidebars.php:328
+msgid "Host Sidebar"
+msgstr "Ursprungligt sidofält"
+
+#: ../content-aware-sidebars.php:336 ../content-aware-sidebars.php:509
+msgid "Merge position"
+msgstr "Lägg ihop position"
+
+#: ../content-aware-sidebars.php:338
+msgid "Place sidebar on top or bottom of host when merging."
+msgstr "Placera sidofältet över eller nedanför det ursprungliga vid sammanslagning."
+
+#: ../content-aware-sidebars.php:342
+msgid "Top"
+msgstr "Toppen"
+
+#: ../content-aware-sidebars.php:343
+msgid "Bottom"
+msgstr "Botten"
+
+#: ../content-aware-sidebars.php:369
+msgid "Sidebars"
+msgstr "Sidofält"
+
+#: ../content-aware-sidebars.php:370
+msgid "Sidebar"
+msgstr "Sidofält"
+
+#: ../content-aware-sidebars.php:371
+msgctxt "sidebar"
+msgid "Add New"
+msgstr "Lägg till ny"
+
+#: ../content-aware-sidebars.php:372
+msgid "Add New Sidebar"
+msgstr "Lägga till nytt sidofält"
+
+#: ../content-aware-sidebars.php:373 ../content-aware-sidebars.php:1429
+msgid "Edit Sidebar"
+msgstr "Redigera sidofält"
+
+#: ../content-aware-sidebars.php:374
+msgid "New Sidebar"
+msgstr "Nytt sidofält"
+
+#: ../content-aware-sidebars.php:375
+msgid "All Sidebars"
+msgstr "Alla sidofält"
+
+#: ../content-aware-sidebars.php:376
+msgid "View Sidebar"
+msgstr "Visa sidofält"
+
+#: ../content-aware-sidebars.php:377
+msgid "Search Sidebars"
+msgstr "Sök i sidofält"
+
+#: ../content-aware-sidebars.php:378
+msgid "No sidebars found"
+msgstr "Inga sidofält hittades"
+
+#: ../content-aware-sidebars.php:379
+msgid "No sidebars found in Trash"
+msgstr "Inga sidofält hittades i papperskorgen"
+
+#: ../content-aware-sidebars.php:394 ../content-aware-sidebars.php:948
+#: ../content-aware-sidebars.php:1027
+msgid "Condition Groups"
+msgstr "Villkorsgrupper"
+
+#: ../content-aware-sidebars.php:395
+msgid "Condition Group"
+msgstr "Villkorsgrupp"
+
+#: ../content-aware-sidebars.php:396
+msgctxt "group"
+msgid "Add New"
+msgstr "Lägg till ny"
+
+#: ../content-aware-sidebars.php:397 ../content-aware-sidebars.php:1027
+#: ../content-aware-sidebars.php:1061
+msgid "Add New Group"
+msgstr "Lägg till ny grupp"
+
+#: ../content-aware-sidebars.php:398 ../content-aware-sidebars.php:1042
+#: ../content-aware-sidebars.php:1411
+msgctxt "group"
+msgid "Edit"
+msgstr "Redigera"
+
+#: ../content-aware-sidebars.php:422
+msgid "Manage widgets"
+msgstr "Hantera widgets"
+
+#: ../content-aware-sidebars.php:425 ../content-aware-sidebars.php:428
+msgid "Sidebar updated."
+msgstr "Sidofält uppdaterat."
+
+#: ../content-aware-sidebars.php:430
+msgid "Sidebar published."
+msgstr "Sidofält publicerat."
+
+#: ../content-aware-sidebars.php:431
+msgid "Sidebar saved."
+msgstr "Sidofält sparat."
+
+#: ../content-aware-sidebars.php:432
+msgid "Sidebar submitted."
+msgstr "Sidofält inskickat."
+
+#: ../content-aware-sidebars.php:433
+#, php-format
+msgid "Sidebar scheduled for: <strong>%1$s</strong>."
+msgstr "Sidofält schemalagd till: <strong>%1$s</strong>."
+
+#. translators: Publish box date format, see http://php.net/date
+#: ../content-aware-sidebars.php:435
+msgid "M j, Y @ G:i"
+msgstr "l Y-m-d G:i"
+
+#: ../content-aware-sidebars.php:436
+msgid "Sidebar draft updated."
+msgstr "Utkast till sidofält uppdaterades."
+
+#: ../content-aware-sidebars.php:484 ../content-aware-sidebars.php:571
+msgid "Please update Host Sidebar"
+msgstr "Uppdatera det ursprungliga sidofältet"
+
+#: ../content-aware-sidebars.php:510
+msgid "Widgets"
+msgstr "Widgets"
+
+#: ../content-aware-sidebars.php:646
+msgid "Manage Widgets"
+msgstr "Hantera widgets"
+
+#: ../content-aware-sidebars.php:901
+msgid "Get a free Content Aware Sidebars Premium Bundle"
+msgstr "Få ett gratis Content Aware Sidebars Premiumpaket"
+
+#: ../content-aware-sidebars.php:917
+msgid "Content"
+msgstr "Innehåll"
+
+#: ../content-aware-sidebars.php:925
+msgid "Options"
+msgstr "Innehåll"
+
+#: ../content-aware-sidebars.php:949
+msgid ""
+"Each created condition group describe some specific content (conditions) "
+"that the current sidebar should be displayed with."
+msgstr "Varje ny skapad villkorsgrupp beskriver visst särskilt innehåll (villkoren) som nuvarande sidofält bör visas ihop med."
+
+#: ../content-aware-sidebars.php:950
+msgid ""
+"Content added to a condition group uses logical conjunction, while condition"
+" groups themselves use logical disjunction. This means that content added to"
+" a group should be associated, as they are treated as such, and that the "
+"groups do not interfere with each other. Thus it is possible to have both "
+"extremely focused and at the same time distinct conditions."
+msgstr "Innehållet som läggs till i en villkorsgrupp använder logiska konjunktioner medan villkorsgrupperna själva använder logiska disjunktioner. Detta betyder att innehållet som läggs till i en grupp bör associerad, eftersom de behandlas som det, och att gruppen inte kommer i konflikt med varandra  Därför är det möjligt att ha båda extremt fokuserade och på samma gång distinkta villkor."
+
+#: ../content-aware-sidebars.php:953
+msgid "More Information"
+msgstr "Mer information"
+
+#: ../content-aware-sidebars.php:955
+msgid "Get Support"
+msgstr "Få support"
+
+#: ../content-aware-sidebars.php:992
+msgid ""
+"Translate Content Aware Sidebars into your language and become a BETA tester"
+" of the upcoming Premium Bundle*!"
+msgstr "Översätt Content Aware Sidebars till ditt språk och bli BETA-testare av det kommande Premiumpaketet."
+
+#: ../content-aware-sidebars.php:993
+msgid "Translate Now"
+msgstr "Översätta nu"
+
+#: ../content-aware-sidebars.php:994
+msgid "Get Premium Bundle"
+msgstr "Få Premiumpaketet"
+
+#: ../content-aware-sidebars.php:995
+msgid ""
+"Single-site use. BETA implies it is not recommended for production sites."
+msgstr "Enkelsidig användning. BETA betyder att den inte är rekommenderad för användning i officiala sidor."
+
+#: ../content-aware-sidebars.php:998
+msgid "Partial Feature List"
+msgstr "Delvis featurelista"
+
+#: ../content-aware-sidebars.php:1000
+msgid "Select and create sidebars in the Post Editing Screens"
+msgstr "Välj och skapa sidofält i postredigeraren "
+
+#: ../content-aware-sidebars.php:1001
+msgid "Display sidebars with URLs using wildcards"
+msgstr "Visa sidofält med länkadresser som använder jokertecken"
+
+#: ../content-aware-sidebars.php:1002
+msgid "Display sidebars with User Roles"
+msgstr "Visa sidofält med användarroll"
+
+#: ../content-aware-sidebars.php:1003
+msgid "Display sidebars with BuddyPress User Groups"
+msgstr "Visa sidofält med BuddyPress användargrupp"
+
+#: ../content-aware-sidebars.php:1004
+msgid "Sidebars column in Post Type and Taxonomy Overview Screens"
+msgstr "Sidofältskolumn i posttyper och taxonomiöversikt"
+
+#: ../content-aware-sidebars.php:1028
+msgid ""
+"Click to edit a group or create a new one. Select content on the left to add"
+" it. In each group, you can combine different types of associated content."
+msgstr "Klicka för att redigera en grupp eller skapa en ny. Välj innehåll till vänster för att lägga till det. I varje grupp kan du kombinera olika typer av associerat innehåll. "
+
+#: ../content-aware-sidebars.php:1029
+msgid "Display sidebar with"
+msgstr "Visa sidofält med"
+
+#: ../content-aware-sidebars.php:1034
+msgid ""
+"No content. Please add at least one condition group to make the sidebar "
+"content aware."
+msgstr "Inget innehåll. Lägg till åtminstone en villkorsgrupp för att göra sidofältet innehållskopplat."
+
+#: ../content-aware-sidebars.php:1039 ../content-aware-sidebars.php:1408
+msgid "Save"
+msgstr "Spara"
+
+#: ../content-aware-sidebars.php:1039 ../content-aware-sidebars.php:1409
+msgid "Cancel"
+msgstr "Avbryt"
+
+#: ../content-aware-sidebars.php:1042 ../content-aware-sidebars.php:1412
+msgid "Remove"
+msgstr "Ta bort"
+
+#: ../content-aware-sidebars.php:1051 ../content-aware-sidebars.php:1410
+msgid "Or"
+msgstr "Eller"
+
+#: ../content-aware-sidebars.php:1139 ../content-aware-sidebars.php:1182
+#: ../content-aware-sidebars.php:1187
+msgid "Unauthorized request"
+msgstr "Ej auktoriserad förfrågan"
+
+#: ../content-aware-sidebars.php:1145
+msgid "Condition group cannot be empty"
+msgstr "Vilkorsgruppen får inte lämnas tom"
+
+#: ../content-aware-sidebars.php:1159
+msgid "Condition group saved"
+msgstr "Vilkorsgruppen sparades"
+
+#: ../content-aware-sidebars.php:1192
+msgid "Condition group could not be removed"
+msgstr "Vilkorsgruppen kunde inte tas bort"
+
+#: ../content-aware-sidebars.php:1197
+msgid "Condition group removed"
+msgstr "Vilkorsgruppen togs bort"
+
+#: ../content-aware-sidebars.php:1256 ../content-aware-sidebars.php:1257
+msgid "Order"
+msgstr "Ordning"
+
+#: ../content-aware-sidebars.php:1273
+msgid ""
+"If you love this plugin, please consider donating to support future "
+"development."
+msgstr "Om du gillar det här tillägget så kan överväga att donera för att stödja framtida utveckling."
+
+#: ../content-aware-sidebars.php:1282
+msgid "Or you could:"
+msgstr "Eller så kan du:"
+
+#: ../content-aware-sidebars.php:1284
+msgid "Rate the plugin on WordPress.org"
+msgstr "Betygsätt det här tillägget på WordPress. org"
+
+#: ../content-aware-sidebars.php:1285
+msgid "Link to the plugin page"
+msgstr "Länka till tillägget sida"
+
+#: ../content-aware-sidebars.php:1286
+msgid "Translate the plugin into your language"
+msgstr "Översätt tillägget till ditt språk. "
+
+#: ../content-aware-sidebars.php:1413
+msgid "Remove this group and its contents permanently?"
+msgstr "Ta bort den här gruppen och dess innehåll permanent? "
+
+#: ../content-aware-sidebars.php:1414
+msgid "No results found."
+msgstr "Inget hittades. "
+
+#: ../content-aware-sidebars.php:1415
+msgid ""
+"The current group has unsaved changes. Do you want to continue and discard "
+"these changes?"
+msgstr "Den nuvarande gruppen har ändringar som inte sparats. Vill du fortsätta utan att spara dessa? "
+
+#: ../modules/author.php:28
+msgid "Authors"
+msgstr "Författare"
+
+#: ../modules/bbpress.php:29
+msgid "bbPress User Profiles"
+msgstr "bilresa användarprofil"
+
+#: ../modules/bp_member.php:27
+msgid "BuddyPress Members"
+msgstr "BuddyPress-medlem"
+
+#: ../modules/bp_member.php:130 ../modules/casmodule.php:132
+#: ../modules/post_type.php:267 ../modules/taxonomy.php:291
+msgid "View All"
+msgstr "Visa alla"
+
+#: ../modules/bp_member.php:139 ../modules/casmodule.php:151
+#: ../modules/post_type.php:286 ../modules/taxonomy.php:310
+msgid "Add to Group"
+msgstr "Lägg till i grupp "
+
+#: ../modules/casmodule.php:126
+#, php-format
+msgid "Display with All %s"
+msgstr "Visa med alla %s"
+
+#: ../modules/casmodule.php:139 ../modules/casmodule.php:142
+#: ../modules/post_type.php:273 ../modules/post_type.php:276
+#: ../modules/taxonomy.php:297 ../modules/taxonomy.php:300
+msgid "Search"
+msgstr "Sök"
+
+#: ../modules/casmodule.php:223
+#, php-format
+msgid "All %s"
+msgstr "Alla %s"
+
+#: ../modules/date.php:29
+msgid "Dates"
+msgstr "Datum"
+
+#: ../modules/date.php:65
+msgid "Date Archives"
+msgstr "Datumarkiv"
+
+#: ../modules/page_template.php:28
+msgid "Page Templates"
+msgstr "Sidmallar"
+
+#: ../modules/polylang.php:27 ../modules/qtranslate.php:27
+#: ../modules/transposh.php:27 ../modules/wpml.php:27
+msgid "Languages"
+msgstr "Språk"
+
+#: ../modules/post_type.php:34
+msgid "Post Types"
+msgstr "Posttyper "
+
+#: ../modules/post_type.php:166 ../modules/post_type.php:236
+#: ../modules/taxonomy.php:226 ../modules/taxonomy.php:265
+msgid "Automatically select new children of a selected ancestor"
+msgstr "Välj automatiskt nya barn till valda släktingar "
+
+#: ../modules/post_type.php:242 ../modules/taxonomy.php:269
+#, php-format
+msgid "Display with %s"
+msgstr "Visa med %s"
+
+#: ../modules/post_type.php:247 ../modules/taxonomy.php:273
+msgid "No items."
+msgstr "Inga artiklar."
+
+#: ../modules/post_type.php:262
+msgid "Most Recent"
+msgstr "Senaste"
+
+#: ../modules/static.php:29
+msgid "Static Pages"
+msgstr "Statiska sidor"
+
+#: ../modules/static.php:40
+msgid "Front Page"
+msgstr "Startsida"
+
+#: ../modules/static.php:41
+msgid "Search Results"
+msgstr "Sökresultat"
+
+#: ../modules/static.php:42
+msgid "404 Page"
+msgstr "404-sida"
+
+#: ../modules/taxonomy.php:40
+msgid "Taxonomies"
+msgstr "Taxonomier"
+
+#: ../modules/taxonomy.php:286
+msgid "Most Used"
+msgstr "Mest använda"

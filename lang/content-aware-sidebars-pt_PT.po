@@ -1,0 +1,485 @@
+# Copyright (C) 2012 Content Aware Sidebars
+# This file is distributed under the same license as the Content Aware Sidebars package.
+# Translators:
+# Luis Martins <luis.martins@multiweb.pt>, 2015
+msgid ""
+msgstr ""
+"Project-Id-Version: Content Aware Sidebars\n"
+"Report-Msgid-Bugs-To: http://wordpress.org/tag/content-aware-sidebars\n"
+"POT-Creation-Date: 2015-01-27 22:32-0800\n"
+"PO-Revision-Date: 2015-05-03 16:13+0000\n"
+"Last-Translator: Luis Martins <luis.martins@multiweb.pt>\n"
+"Language-Team: Portuguese (Portugal) (http://www.transifex.com/projects/p/content-aware-sidebars/language/pt_PT/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: pt_PT\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 1.7.4\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-KeywordsList: __;_e;__ngettext:1,2;_n:1,2;__ngettext_noop:1,2;_n_noop:1,2;_c,_nc:4c,1,2;_x:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2;_ex:1,2c;esc_attr__;esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPath-1: ..\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Textdomain-Support: yes\n"
+
+#: ../content-aware-sidebars.php:117
+msgid "Manage and show sidebars according to the content being viewed."
+msgstr "Gerir e mostrar sidebars conforme conteúdo visualizado"
+
+#: ../content-aware-sidebars.php:118
+msgid "Content Aware Sidebars"
+msgstr "Content Aware Sidebars"
+
+#: ../content-aware-sidebars.php:202 ../content-aware-sidebars.php:954
+msgid "FAQ"
+msgstr "FAQ"
+
+#: ../content-aware-sidebars.php:303
+msgid "Exposure"
+msgstr "Exposição"
+
+#: ../content-aware-sidebars.php:309
+msgid "Singular"
+msgstr "Singular"
+
+#: ../content-aware-sidebars.php:310
+msgid "Singular & Archive"
+msgstr "Singular & Arquivo"
+
+#: ../content-aware-sidebars.php:311
+msgid "Archive"
+msgstr "Arquivo"
+
+#: ../content-aware-sidebars.php:315 ../content-aware-sidebars.php:508
+msgctxt "option"
+msgid "Handle"
+msgstr "Handle"
+
+#: ../content-aware-sidebars.php:317
+msgid "Replace host sidebar, merge with it or add sidebar manually."
+msgstr "Substituir sidebar anfitriã, unir ou adicionar sidebar manualmente."
+
+#: ../content-aware-sidebars.php:321
+msgid "Replace"
+msgstr "Substituir"
+
+#: ../content-aware-sidebars.php:322
+msgid "Merge"
+msgstr "Fundir"
+
+#: ../content-aware-sidebars.php:323
+msgid "Manual"
+msgstr "Manual"
+
+#: ../content-aware-sidebars.php:324
+msgid "Forced replace"
+msgstr "Substituição forçada"
+
+#: ../content-aware-sidebars.php:328
+msgid "Host Sidebar"
+msgstr "Sidebar Anfitriã"
+
+#: ../content-aware-sidebars.php:336 ../content-aware-sidebars.php:509
+msgid "Merge position"
+msgstr "Combinar posição"
+
+#: ../content-aware-sidebars.php:338
+msgid "Place sidebar on top or bottom of host when merging."
+msgstr "Mostrar sidebar no topo ou fundo da anfitriã ao combinar."
+
+#: ../content-aware-sidebars.php:342
+msgid "Top"
+msgstr "Topo"
+
+#: ../content-aware-sidebars.php:343
+msgid "Bottom"
+msgstr "Fundo"
+
+#: ../content-aware-sidebars.php:369
+msgid "Sidebars"
+msgstr "Sidebars"
+
+#: ../content-aware-sidebars.php:370
+msgid "Sidebar"
+msgstr "Sidebar"
+
+#: ../content-aware-sidebars.php:371
+msgctxt "sidebar"
+msgid "Add New"
+msgstr "Adicionar Nova"
+
+#: ../content-aware-sidebars.php:372
+msgid "Add New Sidebar"
+msgstr "Adicionar Nova Sidebar"
+
+#: ../content-aware-sidebars.php:373 ../content-aware-sidebars.php:1429
+msgid "Edit Sidebar"
+msgstr "Editar Sidebar"
+
+#: ../content-aware-sidebars.php:374
+msgid "New Sidebar"
+msgstr "Nova Sidebar"
+
+#: ../content-aware-sidebars.php:375
+msgid "All Sidebars"
+msgstr "Todas as Sidebars"
+
+#: ../content-aware-sidebars.php:376
+msgid "View Sidebar"
+msgstr "Visualizar Sidebar"
+
+#: ../content-aware-sidebars.php:377
+msgid "Search Sidebars"
+msgstr "Pesquisar Sidebars"
+
+#: ../content-aware-sidebars.php:378
+msgid "No sidebars found"
+msgstr "Não foram encontradas sidebars"
+
+#: ../content-aware-sidebars.php:379
+msgid "No sidebars found in Trash"
+msgstr "Não foram encontradas sidebars na reciclagem"
+
+#: ../content-aware-sidebars.php:394 ../content-aware-sidebars.php:948
+#: ../content-aware-sidebars.php:1027
+msgid "Condition Groups"
+msgstr "Grupos de Condições"
+
+#: ../content-aware-sidebars.php:395
+msgid "Condition Group"
+msgstr "Grupo de Condições"
+
+#: ../content-aware-sidebars.php:396
+msgctxt "group"
+msgid "Add New"
+msgstr "Adicionar Novo"
+
+#: ../content-aware-sidebars.php:397 ../content-aware-sidebars.php:1027
+#: ../content-aware-sidebars.php:1061
+msgid "Add New Group"
+msgstr "Adicionar Novo Grupo"
+
+#: ../content-aware-sidebars.php:398 ../content-aware-sidebars.php:1042
+#: ../content-aware-sidebars.php:1411
+msgctxt "group"
+msgid "Edit"
+msgstr "Editar"
+
+#: ../content-aware-sidebars.php:422
+msgid "Manage widgets"
+msgstr "Gerir widgets"
+
+#: ../content-aware-sidebars.php:425 ../content-aware-sidebars.php:428
+msgid "Sidebar updated."
+msgstr "Sidebar actualizada."
+
+#: ../content-aware-sidebars.php:430
+msgid "Sidebar published."
+msgstr "Sidebar publicada."
+
+#: ../content-aware-sidebars.php:431
+msgid "Sidebar saved."
+msgstr "Sidebar guardada."
+
+#: ../content-aware-sidebars.php:432
+msgid "Sidebar submitted."
+msgstr "Sidebar submetida."
+
+#: ../content-aware-sidebars.php:433
+#, php-format
+msgid "Sidebar scheduled for: <strong>%1$s</strong>."
+msgstr "Sidebar agendada para: <strong>%1$s</strong>."
+
+#. translators: Publish box date format, see http://php.net/date
+#: ../content-aware-sidebars.php:435
+msgid "M j, Y @ G:i"
+msgstr "M j, Y @ G:i"
+
+#: ../content-aware-sidebars.php:436
+msgid "Sidebar draft updated."
+msgstr "Rascunho de sidebar actualizado."
+
+#: ../content-aware-sidebars.php:484 ../content-aware-sidebars.php:571
+msgid "Please update Host Sidebar"
+msgstr "Por favor actualize a Sidebar anfitriã."
+
+#: ../content-aware-sidebars.php:510
+msgid "Widgets"
+msgstr "Widgets"
+
+#: ../content-aware-sidebars.php:646
+msgid "Manage Widgets"
+msgstr "Gerir Widgets"
+
+#: ../content-aware-sidebars.php:901
+msgid "Get a free Content Aware Sidebars Premium Bundle"
+msgstr "Ganhe um Bundle Content Aware Sidebars Premium"
+
+#: ../content-aware-sidebars.php:917
+msgid "Content"
+msgstr "Conteúdo"
+
+#: ../content-aware-sidebars.php:925
+msgid "Options"
+msgstr "Opções"
+
+#: ../content-aware-sidebars.php:949
+msgid ""
+"Each created condition group describe some specific content (conditions) "
+"that the current sidebar should be displayed with."
+msgstr "Cada grupo de condições descreve o conteúdo específico (condições) em que a sidebar deverá ser apresentada."
+
+#: ../content-aware-sidebars.php:950
+msgid ""
+"Content added to a condition group uses logical conjunction, while condition"
+" groups themselves use logical disjunction. This means that content added to"
+" a group should be associated, as they are treated as such, and that the "
+"groups do not interfere with each other. Thus it is possible to have both "
+"extremely focused and at the same time distinct conditions."
+msgstr "Conteúdos adicionados a um grupo utilizam conjugação lógica, enquanto os grupos excluem-se entre si. Isto significa que os conteúdos adicionados a um grupo deverão estar associados entre si e que os grupos não interagem. Isto permite criar regras muito específicas, mantendo a possibilidade de diferentes condições. "
+
+#: ../content-aware-sidebars.php:953
+msgid "More Information"
+msgstr "Mais Informação"
+
+#: ../content-aware-sidebars.php:955
+msgid "Get Support"
+msgstr "Obter Suporte"
+
+#: ../content-aware-sidebars.php:992
+msgid ""
+"Translate Content Aware Sidebars into your language and become a BETA tester"
+" of the upcoming Premium Bundle*!"
+msgstr "Traduza Content Aware Sidebars para a sua linguagem e torne-se um BETA tester para a futura versão do Premium Bundle*!"
+
+#: ../content-aware-sidebars.php:993
+msgid "Translate Now"
+msgstr "Traduzir Agora"
+
+#: ../content-aware-sidebars.php:994
+msgid "Get Premium Bundle"
+msgstr "Obter Premium Bundle"
+
+#: ../content-aware-sidebars.php:995
+msgid ""
+"Single-site use. BETA implies it is not recommended for production sites."
+msgstr "Utilização em Single-site. A versão BETA implica que não é recomendada para utilização em sites em produção."
+
+#: ../content-aware-sidebars.php:998
+msgid "Partial Feature List"
+msgstr "Lista parcial de funcionalidades"
+
+#: ../content-aware-sidebars.php:1000
+msgid "Select and create sidebars in the Post Editing Screens"
+msgstr "Seleccionar e criar sidebars nos écrans de edição de Posts"
+
+#: ../content-aware-sidebars.php:1001
+msgid "Display sidebars with URLs using wildcards"
+msgstr "Mostrar sidebars com URLs utilizando wildcards"
+
+#: ../content-aware-sidebars.php:1002
+msgid "Display sidebars with User Roles"
+msgstr "Mostrar sidebars com User Roles"
+
+#: ../content-aware-sidebars.php:1003
+msgid "Display sidebars with BuddyPress User Groups"
+msgstr "Mostrar sidebars com Grupos de Utilizadores BuddyPress"
+
+#: ../content-aware-sidebars.php:1004
+msgid "Sidebars column in Post Type and Taxonomy Overview Screens"
+msgstr "Coluna Sidebars nos écrans de tipos de Post e Taxonomias"
+
+#: ../content-aware-sidebars.php:1028
+msgid ""
+"Click to edit a group or create a new one. Select content on the left to add"
+" it. In each group, you can combine different types of associated content."
+msgstr "Clique para editar grupo ou criar novo. Seleccione conteúdo à esquera para o adicionar. Em cada grupo poderá combinar diferentes tipos de conteúdo associado."
+
+#: ../content-aware-sidebars.php:1029
+msgid "Display sidebar with"
+msgstr "Mostrar sidebar com"
+
+#: ../content-aware-sidebars.php:1034
+msgid ""
+"No content. Please add at least one condition group to make the sidebar "
+"content aware."
+msgstr "Sem conteúdo. Por favor adicionar pelo menos um Grupo de condições para tornar a sidebar sensível ao conteúdo apresentado."
+
+#: ../content-aware-sidebars.php:1039 ../content-aware-sidebars.php:1408
+msgid "Save"
+msgstr "Guardar"
+
+#: ../content-aware-sidebars.php:1039 ../content-aware-sidebars.php:1409
+msgid "Cancel"
+msgstr "Cancelar"
+
+#: ../content-aware-sidebars.php:1042 ../content-aware-sidebars.php:1412
+msgid "Remove"
+msgstr "Remover"
+
+#: ../content-aware-sidebars.php:1051 ../content-aware-sidebars.php:1410
+msgid "Or"
+msgstr "Ou"
+
+#: ../content-aware-sidebars.php:1139 ../content-aware-sidebars.php:1182
+#: ../content-aware-sidebars.php:1187
+msgid "Unauthorized request"
+msgstr "Pedido não autorizado"
+
+#: ../content-aware-sidebars.php:1145
+msgid "Condition group cannot be empty"
+msgstr "Grupo de condições não pode ser vazio"
+
+#: ../content-aware-sidebars.php:1159
+msgid "Condition group saved"
+msgstr "Grupo de condições guardado"
+
+#: ../content-aware-sidebars.php:1192
+msgid "Condition group could not be removed"
+msgstr "Grupo de condições não pode ser removido"
+
+#: ../content-aware-sidebars.php:1197
+msgid "Condition group removed"
+msgstr "Grupo de Condições removido"
+
+#: ../content-aware-sidebars.php:1256 ../content-aware-sidebars.php:1257
+msgid "Order"
+msgstr "Ordem"
+
+#: ../content-aware-sidebars.php:1273
+msgid ""
+"If you love this plugin, please consider donating to support future "
+"development."
+msgstr "Se gosta deste plugin, por favor considere um donativo para suportar o seu desenvolvimento futuro"
+
+#: ../content-aware-sidebars.php:1282
+msgid "Or you could:"
+msgstr "Ou poderá:"
+
+#: ../content-aware-sidebars.php:1284
+msgid "Rate the plugin on WordPress.org"
+msgstr "Avaliar o plugin em WordPress.org"
+
+#: ../content-aware-sidebars.php:1285
+msgid "Link to the plugin page"
+msgstr "Linkar para a página do plugin"
+
+#: ../content-aware-sidebars.php:1286
+msgid "Translate the plugin into your language"
+msgstr "Traduzir o plugin para a sua língua"
+
+#: ../content-aware-sidebars.php:1413
+msgid "Remove this group and its contents permanently?"
+msgstr "Remover este grupo e os respectivos conteúdos de forma permanente?"
+
+#: ../content-aware-sidebars.php:1414
+msgid "No results found."
+msgstr "Não foram encontrados resultados."
+
+#: ../content-aware-sidebars.php:1415
+msgid ""
+"The current group has unsaved changes. Do you want to continue and discard "
+"these changes?"
+msgstr "O grupo contém alterações por guardar. Deseja continuar e descartar essas alterações?"
+
+#: ../modules/author.php:28
+msgid "Authors"
+msgstr "Autores"
+
+#: ../modules/bbpress.php:29
+msgid "bbPress User Profiles"
+msgstr "Perfis de Utilizador bbPress"
+
+#: ../modules/bp_member.php:27
+msgid "BuddyPress Members"
+msgstr "Membros BuddyPress"
+
+#: ../modules/bp_member.php:130 ../modules/casmodule.php:132
+#: ../modules/post_type.php:267 ../modules/taxonomy.php:291
+msgid "View All"
+msgstr "Ver Todos"
+
+#: ../modules/bp_member.php:139 ../modules/casmodule.php:151
+#: ../modules/post_type.php:286 ../modules/taxonomy.php:310
+msgid "Add to Group"
+msgstr "Adicionar ao Grupo"
+
+#: ../modules/casmodule.php:126
+#, php-format
+msgid "Display with All %s"
+msgstr "Mostrar com todos %s"
+
+#: ../modules/casmodule.php:139 ../modules/casmodule.php:142
+#: ../modules/post_type.php:273 ../modules/post_type.php:276
+#: ../modules/taxonomy.php:297 ../modules/taxonomy.php:300
+msgid "Search"
+msgstr "Pesquisa"
+
+#: ../modules/casmodule.php:223
+#, php-format
+msgid "All %s"
+msgstr "Todos %s"
+
+#: ../modules/date.php:29
+msgid "Dates"
+msgstr "Datas"
+
+#: ../modules/date.php:65
+msgid "Date Archives"
+msgstr "Arquivos por Data"
+
+#: ../modules/page_template.php:28
+msgid "Page Templates"
+msgstr "Templates de Página"
+
+#: ../modules/polylang.php:27 ../modules/qtranslate.php:27
+#: ../modules/transposh.php:27 ../modules/wpml.php:27
+msgid "Languages"
+msgstr "Línguas"
+
+#: ../modules/post_type.php:34
+msgid "Post Types"
+msgstr "Tipos de Post"
+
+#: ../modules/post_type.php:166 ../modules/post_type.php:236
+#: ../modules/taxonomy.php:226 ../modules/taxonomy.php:265
+msgid "Automatically select new children of a selected ancestor"
+msgstr "Seleccionar automaticamente subconteúdos do conteúdo seleccionado"
+
+#: ../modules/post_type.php:242 ../modules/taxonomy.php:269
+#, php-format
+msgid "Display with %s"
+msgstr "Mostrar com %s"
+
+#: ../modules/post_type.php:247 ../modules/taxonomy.php:273
+msgid "No items."
+msgstr "Sem items."
+
+#: ../modules/post_type.php:262
+msgid "Most Recent"
+msgstr "Mais Recentes"
+
+#: ../modules/static.php:29
+msgid "Static Pages"
+msgstr "Páginas Estáticas"
+
+#: ../modules/static.php:40
+msgid "Front Page"
+msgstr "Página Inicial"
+
+#: ../modules/static.php:41
+msgid "Search Results"
+msgstr "Resultados de Pesquisa"
+
+#: ../modules/static.php:42
+msgid "404 Page"
+msgstr "Página 404"
+
+#: ../modules/taxonomy.php:40
+msgid "Taxonomies"
+msgstr "Taxonomias"
+
+#: ../modules/taxonomy.php:286
+msgid "Most Used"
+msgstr "Mais Usados"
