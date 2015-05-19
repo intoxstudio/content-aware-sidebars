@@ -6,16 +6,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Content Aware Sidebars\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/content-aware-sidebars\n"
-"POT-Creation-Date: 2014-11-05 01:08-0800\n"
-"PO-Revision-Date: 2014-11-05 10:24+0000\n"
-"Last-Translator: Joachim <jv@intox.dk>\n"
+"POT-Creation-Date: 2015-01-27 22:32-0800\n"
+"PO-Revision-Date: 2015-01-28 09:57+0000\n"
+"Last-Translator: Joachim Jensen <jv@intox.dk>\n"
 "Language-Team: Serbian (Serbia) (http://www.transifex.com/projects/p/content-aware-sidebars/language/sr_RS/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: sr_RS\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: Poedit 1.6.5\n"
+"X-Generator: Poedit 1.7.4\n"
 "X-Poedit-Basepath: .\n"
 "X-Poedit-KeywordsList: __;_e;__ngettext:1,2;_n:1,2;__ngettext_noop:1,2;_n_noop:1,2;_c,_nc:4c,1,2;_x:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2;_ex:1,2c;esc_attr__;esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c\n"
 "X-Poedit-SearchPath-0: .\n"
@@ -31,206 +31,206 @@ msgstr "Upravljaj bočnim menijima i prikaži ih prema pregledu sadržaja."
 msgid "Content Aware Sidebars"
 msgstr "Content Aware Sidebars"
 
-#: ../content-aware-sidebars.php:200 ../content-aware-sidebars.php:950
+#: ../content-aware-sidebars.php:202 ../content-aware-sidebars.php:954
 msgid "FAQ"
 msgstr "FAQ"
 
-#: ../content-aware-sidebars.php:300
+#: ../content-aware-sidebars.php:303
 msgid "Exposure"
 msgstr "Izlaganje"
 
-#: ../content-aware-sidebars.php:306
+#: ../content-aware-sidebars.php:309
 msgid "Singular"
 msgstr "Pojedinačno"
 
-#: ../content-aware-sidebars.php:307
+#: ../content-aware-sidebars.php:310
 msgid "Singular & Archive"
 msgstr "Pojedinačno i arhiviraj"
 
-#: ../content-aware-sidebars.php:308
+#: ../content-aware-sidebars.php:311
 msgid "Archive"
 msgstr "Arhiviraj"
 
-#: ../content-aware-sidebars.php:312 ../content-aware-sidebars.php:504
+#: ../content-aware-sidebars.php:315 ../content-aware-sidebars.php:508
 msgctxt "option"
 msgid "Handle"
 msgstr "Upravljaj"
 
-#: ../content-aware-sidebars.php:314
+#: ../content-aware-sidebars.php:317
 msgid "Replace host sidebar, merge with it or add sidebar manually."
 msgstr "Zameni postojeći bočni meni, spoji ga sa bočnim menijem ili manualno dodaj bočni meni."
 
-#: ../content-aware-sidebars.php:318
+#: ../content-aware-sidebars.php:321
 msgid "Replace"
 msgstr "Zameni"
 
-#: ../content-aware-sidebars.php:319
+#: ../content-aware-sidebars.php:322
 msgid "Merge"
 msgstr "Spoji"
 
-#: ../content-aware-sidebars.php:320
+#: ../content-aware-sidebars.php:323
 msgid "Manual"
 msgstr "Manualno"
 
-#: ../content-aware-sidebars.php:321
+#: ../content-aware-sidebars.php:324
 msgid "Forced replace"
 msgstr "Zameni prinudno"
 
-#: ../content-aware-sidebars.php:325
+#: ../content-aware-sidebars.php:328
 msgid "Host Sidebar"
 msgstr "Postojeći bočni meni"
 
-#: ../content-aware-sidebars.php:333 ../content-aware-sidebars.php:505
+#: ../content-aware-sidebars.php:336 ../content-aware-sidebars.php:509
 msgid "Merge position"
 msgstr "Spoji poziciju"
 
-#: ../content-aware-sidebars.php:335
+#: ../content-aware-sidebars.php:338
 msgid "Place sidebar on top or bottom of host when merging."
 msgstr "Smesti bočni meni na vrh ili na kraj prilikom spajanja"
 
-#: ../content-aware-sidebars.php:339
+#: ../content-aware-sidebars.php:342
 msgid "Top"
 msgstr "Vrh"
 
-#: ../content-aware-sidebars.php:340
+#: ../content-aware-sidebars.php:343
 msgid "Bottom"
 msgstr "Dno"
 
-#: ../content-aware-sidebars.php:365
+#: ../content-aware-sidebars.php:369
 msgid "Sidebars"
 msgstr "Bočni meniji"
 
-#: ../content-aware-sidebars.php:366
+#: ../content-aware-sidebars.php:370
 msgid "Sidebar"
 msgstr "Bočni meni"
 
-#: ../content-aware-sidebars.php:367
+#: ../content-aware-sidebars.php:371
 msgctxt "sidebar"
 msgid "Add New"
 msgstr "Dodaj novi"
 
-#: ../content-aware-sidebars.php:368
+#: ../content-aware-sidebars.php:372
 msgid "Add New Sidebar"
 msgstr "Dodaj novi bočni meni"
 
-#: ../content-aware-sidebars.php:369
+#: ../content-aware-sidebars.php:373 ../content-aware-sidebars.php:1429
 msgid "Edit Sidebar"
 msgstr "Uredi bočni meni"
 
-#: ../content-aware-sidebars.php:370
+#: ../content-aware-sidebars.php:374
 msgid "New Sidebar"
 msgstr "Novi bočni meni"
 
-#: ../content-aware-sidebars.php:371
+#: ../content-aware-sidebars.php:375
 msgid "All Sidebars"
 msgstr "Svi bočni meniji"
 
-#: ../content-aware-sidebars.php:372
+#: ../content-aware-sidebars.php:376
 msgid "View Sidebar"
 msgstr "Pregledaj bočni meni"
 
-#: ../content-aware-sidebars.php:373
+#: ../content-aware-sidebars.php:377
 msgid "Search Sidebars"
 msgstr "Pretraži bočne menije"
 
-#: ../content-aware-sidebars.php:374
+#: ../content-aware-sidebars.php:378
 msgid "No sidebars found"
 msgstr "Nisu pronađeno bočni meniji"
 
-#: ../content-aware-sidebars.php:375
+#: ../content-aware-sidebars.php:379
 msgid "No sidebars found in Trash"
 msgstr "Bočni meniji nisu pronađeni u korpi za otpatke"
 
-#: ../content-aware-sidebars.php:390 ../content-aware-sidebars.php:944
-#: ../content-aware-sidebars.php:1017
+#: ../content-aware-sidebars.php:394 ../content-aware-sidebars.php:948
+#: ../content-aware-sidebars.php:1027
 msgid "Condition Groups"
 msgstr "Grupe uslova"
 
-#: ../content-aware-sidebars.php:391
+#: ../content-aware-sidebars.php:395
 msgid "Condition Group"
 msgstr "Grupa uslova"
 
-#: ../content-aware-sidebars.php:392
+#: ../content-aware-sidebars.php:396
 msgctxt "group"
 msgid "Add New"
 msgstr "Dodaj novu"
 
-#: ../content-aware-sidebars.php:393 ../content-aware-sidebars.php:1017
-#: ../content-aware-sidebars.php:1051
+#: ../content-aware-sidebars.php:397 ../content-aware-sidebars.php:1027
+#: ../content-aware-sidebars.php:1061
 msgid "Add New Group"
 msgstr "Dodaj novu grupu"
 
-#: ../content-aware-sidebars.php:394 ../content-aware-sidebars.php:1032
-#: ../content-aware-sidebars.php:1401
+#: ../content-aware-sidebars.php:398 ../content-aware-sidebars.php:1042
+#: ../content-aware-sidebars.php:1411
 msgctxt "group"
 msgid "Edit"
 msgstr "Uredi"
 
-#: ../content-aware-sidebars.php:418
+#: ../content-aware-sidebars.php:422
 msgid "Manage widgets"
 msgstr "Upravljaj widget-ima"
 
-#: ../content-aware-sidebars.php:421 ../content-aware-sidebars.php:424
+#: ../content-aware-sidebars.php:425 ../content-aware-sidebars.php:428
 msgid "Sidebar updated."
 msgstr "Bočni meni ažuriran"
 
-#: ../content-aware-sidebars.php:426
+#: ../content-aware-sidebars.php:430
 msgid "Sidebar published."
 msgstr "Bočni meni objavljen"
 
-#: ../content-aware-sidebars.php:427
+#: ../content-aware-sidebars.php:431
 msgid "Sidebar saved."
 msgstr "Bočni meni sačuvan"
 
-#: ../content-aware-sidebars.php:428
+#: ../content-aware-sidebars.php:432
 msgid "Sidebar submitted."
 msgstr "Bočni meni podnesen"
 
-#: ../content-aware-sidebars.php:429
+#: ../content-aware-sidebars.php:433
 #, php-format
 msgid "Sidebar scheduled for: <strong>%1$s</strong>."
 msgstr "Bočni meni planiran za: <strong>%1$s</strong>."
 
 #. translators: Publish box date format, see http://php.net/date
-#: ../content-aware-sidebars.php:431
+#: ../content-aware-sidebars.php:435
 msgid "M j, Y @ G:i"
 msgstr "j M, Y @ H:i"
 
-#: ../content-aware-sidebars.php:432
+#: ../content-aware-sidebars.php:436
 msgid "Sidebar draft updated."
 msgstr "Skica bočnog menija ažurirana."
 
-#: ../content-aware-sidebars.php:480 ../content-aware-sidebars.php:567
+#: ../content-aware-sidebars.php:484 ../content-aware-sidebars.php:571
 msgid "Please update Host Sidebar"
 msgstr "Molimo vas, ažurirajte bočni meni hosta. "
 
-#: ../content-aware-sidebars.php:506
+#: ../content-aware-sidebars.php:510
 msgid "Widgets"
 msgstr ""
 
-#: ../content-aware-sidebars.php:642
+#: ../content-aware-sidebars.php:646
 msgid "Manage Widgets"
 msgstr "Upravljaj widget-ima"
 
-#: ../content-aware-sidebars.php:897
+#: ../content-aware-sidebars.php:901
 msgid "Get a free Content Aware Sidebars Premium Bundle"
 msgstr ""
 
-#: ../content-aware-sidebars.php:913
+#: ../content-aware-sidebars.php:917
 msgid "Content"
 msgstr "Sadržaj"
 
-#: ../content-aware-sidebars.php:921
+#: ../content-aware-sidebars.php:925
 msgid "Options"
 msgstr "Opcije"
 
-#: ../content-aware-sidebars.php:945
+#: ../content-aware-sidebars.php:949
 msgid ""
 "Each created condition group describe some specific content (conditions) "
 "that the current sidebar should be displayed with."
 msgstr "Svaki kreirani uslov grupe opisuje specifičan sadržaj (uslove) sa kojima treba prikazati tekući bočni meni. "
 
-#: ../content-aware-sidebars.php:946
+#: ../content-aware-sidebars.php:950
 msgid ""
 "Content added to a condition group uses logical conjunction, while condition"
 " groups themselves use logical disjunction. This means that content added to"
@@ -239,153 +239,149 @@ msgid ""
 "extremely focused and at the same time distinct conditions."
 msgstr "Sadržaj dodat grupi uslova koristi logičko povezivanje dok same grupe uslova upotrebljavaju logičko razdvajanje. To znači da sadržaj dodat grupi treba da ostane pridružen, sve dok se tako tretira, i da grupe ne treba da se međusobno mešaju. To omogućava da uslovi istovremeno budu pojedinačni i opšti. "
 
-#: ../content-aware-sidebars.php:949
+#: ../content-aware-sidebars.php:953
 msgid "More Information"
 msgstr "Više informacija"
 
-#: ../content-aware-sidebars.php:951
+#: ../content-aware-sidebars.php:955
 msgid "Get Support"
 msgstr "Podrška"
 
-#: ../content-aware-sidebars.php:982
+#: ../content-aware-sidebars.php:992
 msgid ""
 "Translate Content Aware Sidebars into your language and become a BETA tester"
 " of the upcoming Premium Bundle*!"
 msgstr ""
 
-#: ../content-aware-sidebars.php:983
+#: ../content-aware-sidebars.php:993
 msgid "Translate Now"
 msgstr ""
 
-#: ../content-aware-sidebars.php:984
+#: ../content-aware-sidebars.php:994
 msgid "Get Premium Bundle"
 msgstr ""
 
-#: ../content-aware-sidebars.php:985
+#: ../content-aware-sidebars.php:995
 msgid ""
 "Single-site use. BETA implies it is not recommended for production sites."
 msgstr ""
 
-#: ../content-aware-sidebars.php:988
+#: ../content-aware-sidebars.php:998
 msgid "Partial Feature List"
 msgstr ""
 
-#: ../content-aware-sidebars.php:990
+#: ../content-aware-sidebars.php:1000
 msgid "Select and create sidebars in the Post Editing Screens"
 msgstr ""
 
-#: ../content-aware-sidebars.php:991
+#: ../content-aware-sidebars.php:1001
 msgid "Display sidebars with URLs using wildcards"
 msgstr ""
 
-#: ../content-aware-sidebars.php:992
+#: ../content-aware-sidebars.php:1002
 msgid "Display sidebars with User Roles"
 msgstr ""
 
-#: ../content-aware-sidebars.php:993
+#: ../content-aware-sidebars.php:1003
 msgid "Display sidebars with BuddyPress User Groups"
 msgstr ""
 
-#: ../content-aware-sidebars.php:994
+#: ../content-aware-sidebars.php:1004
 msgid "Sidebars column in Post Type and Taxonomy Overview Screens"
 msgstr ""
 
-#: ../content-aware-sidebars.php:1018
+#: ../content-aware-sidebars.php:1028
 msgid ""
 "Click to edit a group or create a new one. Select content on the left to add"
 " it. In each group, you can combine different types of associated content."
 msgstr "Kliknite da biste uredili grupu ili da biste kreirali novu. U svakoj grupi možete kreirati različite vrste pridruženog sadržaja. "
 
-#: ../content-aware-sidebars.php:1019
+#: ../content-aware-sidebars.php:1029
 msgid "Display sidebar with"
 msgstr "Prikaži bočni meni sa"
 
-#: ../content-aware-sidebars.php:1024
+#: ../content-aware-sidebars.php:1034
 msgid ""
 "No content. Please add at least one condition group to make the sidebar "
 "content aware."
 msgstr "Nema sadržaja. Dodajte bar jednu grupu uslova da bi se bočni meni uskladio sa sadržajem. "
 
-#: ../content-aware-sidebars.php:1029 ../content-aware-sidebars.php:1398
+#: ../content-aware-sidebars.php:1039 ../content-aware-sidebars.php:1408
 msgid "Save"
 msgstr "Sačuvaj"
 
-#: ../content-aware-sidebars.php:1029 ../content-aware-sidebars.php:1399
+#: ../content-aware-sidebars.php:1039 ../content-aware-sidebars.php:1409
 msgid "Cancel"
 msgstr "Otkaži"
 
-#: ../content-aware-sidebars.php:1032 ../content-aware-sidebars.php:1402
+#: ../content-aware-sidebars.php:1042 ../content-aware-sidebars.php:1412
 msgid "Remove"
 msgstr "Ukloni"
 
-#: ../content-aware-sidebars.php:1041 ../content-aware-sidebars.php:1400
+#: ../content-aware-sidebars.php:1051 ../content-aware-sidebars.php:1410
 msgid "Or"
 msgstr ""
 
-#: ../content-aware-sidebars.php:1129 ../content-aware-sidebars.php:1172
-#: ../content-aware-sidebars.php:1177
+#: ../content-aware-sidebars.php:1139 ../content-aware-sidebars.php:1182
+#: ../content-aware-sidebars.php:1187
 msgid "Unauthorized request"
 msgstr "Neovlašćeni zahtev"
 
-#: ../content-aware-sidebars.php:1135
+#: ../content-aware-sidebars.php:1145
 msgid "Condition group cannot be empty"
 msgstr "Grupa uslova ne može biti prazna"
 
-#: ../content-aware-sidebars.php:1149
+#: ../content-aware-sidebars.php:1159
 msgid "Condition group saved"
 msgstr "Grupa uslova sačuvana"
 
-#: ../content-aware-sidebars.php:1182
+#: ../content-aware-sidebars.php:1192
 msgid "Condition group could not be removed"
 msgstr "Grupa uslova ne može biti uklonjena"
 
-#: ../content-aware-sidebars.php:1187
+#: ../content-aware-sidebars.php:1197
 msgid "Condition group removed"
 msgstr "Grupa uslova uklonjena"
 
-#: ../content-aware-sidebars.php:1246 ../content-aware-sidebars.php:1247
+#: ../content-aware-sidebars.php:1256 ../content-aware-sidebars.php:1257
 msgid "Order"
 msgstr ""
 
-#: ../content-aware-sidebars.php:1263
+#: ../content-aware-sidebars.php:1273
 msgid ""
 "If you love this plugin, please consider donating to support future "
 "development."
 msgstr "Ako vam se sviđa ovaj plugin, razmislite o donaciji da biste podržali njegov budući razvoj."
 
-#: ../content-aware-sidebars.php:1272
+#: ../content-aware-sidebars.php:1282
 msgid "Or you could:"
 msgstr "Ili biste mogli:"
 
-#: ../content-aware-sidebars.php:1274
+#: ../content-aware-sidebars.php:1284
 msgid "Rate the plugin on WordPress.org"
 msgstr "da ocenite plugin na WordPress.org"
 
-#: ../content-aware-sidebars.php:1275
+#: ../content-aware-sidebars.php:1285
 msgid "Link to the plugin page"
 msgstr "Link za stranicu plugin-a"
 
-#: ../content-aware-sidebars.php:1276
+#: ../content-aware-sidebars.php:1286
 msgid "Translate the plugin into your language"
 msgstr "Prevedite plugin na svoj jezik"
 
-#: ../content-aware-sidebars.php:1403
+#: ../content-aware-sidebars.php:1413
 msgid "Remove this group and its contents permanently?"
 msgstr "Trajno ukloniti ovu grupu i njen sadržaj?"
 
-#: ../content-aware-sidebars.php:1404
+#: ../content-aware-sidebars.php:1414
 msgid "No results found."
 msgstr "Rezultati nisu pronađeni."
 
-#: ../content-aware-sidebars.php:1405
+#: ../content-aware-sidebars.php:1415
 msgid ""
 "The current group has unsaved changes. Do you want to continue and discard "
 "these changes?"
 msgstr "Tekuća grupa ima nesačuvane izmene. Želite li da nastavite i da izgubite ove izmene?"
-
-#: ../content-aware-sidebars.php:1419
-msgid "Edit"
-msgstr "Uredi"
 
 #: ../modules/author.php:28
 msgid "Authors"
@@ -400,12 +396,12 @@ msgid "BuddyPress Members"
 msgstr "BuddyPress članovi"
 
 #: ../modules/bp_member.php:130 ../modules/casmodule.php:132
-#: ../modules/post_type.php:267 ../modules/taxonomy.php:295
+#: ../modules/post_type.php:267 ../modules/taxonomy.php:291
 msgid "View All"
 msgstr "Vidi sve"
 
 #: ../modules/bp_member.php:139 ../modules/casmodule.php:151
-#: ../modules/post_type.php:286 ../modules/taxonomy.php:314
+#: ../modules/post_type.php:286 ../modules/taxonomy.php:310
 msgid "Add to Group"
 msgstr "Dodaj grupi"
 
@@ -416,7 +412,7 @@ msgstr "Prikaži sa Svi%s"
 
 #: ../modules/casmodule.php:139 ../modules/casmodule.php:142
 #: ../modules/post_type.php:273 ../modules/post_type.php:276
-#: ../modules/taxonomy.php:301 ../modules/taxonomy.php:304
+#: ../modules/taxonomy.php:297 ../modules/taxonomy.php:300
 msgid "Search"
 msgstr "Pretraži"
 
@@ -424,6 +420,14 @@ msgstr "Pretraži"
 #, php-format
 msgid "All %s"
 msgstr "Svi %s"
+
+#: ../modules/date.php:29
+msgid "Dates"
+msgstr ""
+
+#: ../modules/date.php:65
+msgid "Date Archives"
+msgstr ""
 
 #: ../modules/page_template.php:28
 msgid "Page Templates"
@@ -439,16 +443,16 @@ msgid "Post Types"
 msgstr "Vrste posta"
 
 #: ../modules/post_type.php:166 ../modules/post_type.php:236
-#: ../modules/taxonomy.php:230 ../modules/taxonomy.php:269
+#: ../modules/taxonomy.php:226 ../modules/taxonomy.php:265
 msgid "Automatically select new children of a selected ancestor"
 msgstr "Automatski selektuje nove podređene ili određenog pretka"
 
-#: ../modules/post_type.php:242 ../modules/taxonomy.php:273
+#: ../modules/post_type.php:242 ../modules/taxonomy.php:269
 #, php-format
 msgid "Display with %s"
 msgstr "Prikaži sa %s"
 
-#: ../modules/post_type.php:247 ../modules/taxonomy.php:277
+#: ../modules/post_type.php:247 ../modules/taxonomy.php:273
 msgid "No items."
 msgstr "Nema stavki"
 
@@ -476,6 +480,6 @@ msgstr "404 stranica"
 msgid "Taxonomies"
 msgstr "Taksonomije"
 
-#: ../modules/taxonomy.php:290
+#: ../modules/taxonomy.php:286
 msgid "Most Used"
 msgstr "Najčešće korišćeni"

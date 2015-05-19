@@ -1,21 +1,22 @@
 # Copyright (C) 2012 Content Aware Sidebars
 # This file is distributed under the same license as the Content Aware Sidebars package.
 # Translators:
+# Jordi Encabo <info@abd-ong.org>, 2015
 # keystorm <keystorm@gmail.com>, 2014
 msgid ""
 msgstr ""
 "Project-Id-Version: Content Aware Sidebars\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/content-aware-sidebars\n"
-"POT-Creation-Date: 2014-11-05 01:08-0800\n"
-"PO-Revision-Date: 2014-12-09 14:52+0000\n"
-"Last-Translator: keystorm <keystorm@gmail.com>\n"
+"POT-Creation-Date: 2015-01-27 22:32-0800\n"
+"PO-Revision-Date: 2015-03-26 14:32+0000\n"
+"Last-Translator: Jordi Encabo <info@abd-ong.org>\n"
 "Language-Team: Catalan (http://www.transifex.com/projects/p/content-aware-sidebars/language/ca/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: ca\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 1.6.5\n"
+"X-Generator: Poedit 1.7.4\n"
 "X-Poedit-Basepath: .\n"
 "X-Poedit-KeywordsList: __;_e;__ngettext:1,2;_n:1,2;__ngettext_noop:1,2;_n_noop:1,2;_c,_nc:4c,1,2;_x:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2;_ex:1,2c;esc_attr__;esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c\n"
 "X-Poedit-SearchPath-0: .\n"
@@ -25,212 +26,212 @@ msgstr ""
 
 #: ../content-aware-sidebars.php:117
 msgid "Manage and show sidebars according to the content being viewed."
-msgstr "Administració i mostra de barres laterals en funció del contingut mostrat."
+msgstr "Administra i mostra les barres laterals en funció del contingut a mostrar."
 
 #: ../content-aware-sidebars.php:118
 msgid "Content Aware Sidebars"
 msgstr "Barres Laterals Intel·ligents"
 
-#: ../content-aware-sidebars.php:200 ../content-aware-sidebars.php:950
+#: ../content-aware-sidebars.php:202 ../content-aware-sidebars.php:954
 msgid "FAQ"
 msgstr "Preguntes freqüents"
 
-#: ../content-aware-sidebars.php:300
+#: ../content-aware-sidebars.php:303
 msgid "Exposure"
 msgstr "Exposició"
 
-#: ../content-aware-sidebars.php:306
+#: ../content-aware-sidebars.php:309
 msgid "Singular"
-msgstr "Vista ampliada"
+msgstr "Vista senzilla"
 
-#: ../content-aware-sidebars.php:307
+#: ../content-aware-sidebars.php:310
 msgid "Singular & Archive"
-msgstr "Vista ampliada i Arxius"
+msgstr "Vista senzilla i Arxius"
 
-#: ../content-aware-sidebars.php:308
+#: ../content-aware-sidebars.php:311
 msgid "Archive"
 msgstr "Arxius"
 
-#: ../content-aware-sidebars.php:312 ../content-aware-sidebars.php:504
+#: ../content-aware-sidebars.php:315 ../content-aware-sidebars.php:508
 msgctxt "option"
 msgid "Handle"
 msgstr "Operacions"
 
-#: ../content-aware-sidebars.php:314
+#: ../content-aware-sidebars.php:317
 msgid "Replace host sidebar, merge with it or add sidebar manually."
-msgstr "Substitueix la barra lateral original, fusiona-les o afegeix una nova."
+msgstr "Substitueix la barra lateral original, fusiona-les o afegeix-ne una de nova."
 
-#: ../content-aware-sidebars.php:318
+#: ../content-aware-sidebars.php:321
 msgid "Replace"
-msgstr "Reemplaça"
+msgstr "Substituir"
 
-#: ../content-aware-sidebars.php:319
+#: ../content-aware-sidebars.php:322
 msgid "Merge"
-msgstr "﻿Fusiona"
+msgstr "﻿Adjuntar"
 
-#: ../content-aware-sidebars.php:320
+#: ../content-aware-sidebars.php:323
 msgid "Manual"
 msgstr "Manual"
 
-#: ../content-aware-sidebars.php:321
+#: ../content-aware-sidebars.php:324
 msgid "Forced replace"
-msgstr "Força la substitució"
+msgstr "Forçar-ne la substitució"
 
-#: ../content-aware-sidebars.php:325
+#: ../content-aware-sidebars.php:328
 msgid "Host Sidebar"
 msgstr "Barra lateral original"
 
-#: ../content-aware-sidebars.php:333 ../content-aware-sidebars.php:505
+#: ../content-aware-sidebars.php:336 ../content-aware-sidebars.php:509
 msgid "Merge position"
-msgstr "Fusiona les posicions"
+msgstr "Posició de l'adjunció"
 
-#: ../content-aware-sidebars.php:335
+#: ../content-aware-sidebars.php:338
 msgid "Place sidebar on top or bottom of host when merging."
 msgstr "Coloca la barra lateral damunt o dessota de la original"
 
-#: ../content-aware-sidebars.php:339
+#: ../content-aware-sidebars.php:342
 msgid "Top"
-msgstr "Damunt"
+msgstr "Dalt"
 
-#: ../content-aware-sidebars.php:340
+#: ../content-aware-sidebars.php:343
 msgid "Bottom"
-msgstr "Dessota"
+msgstr "Baix"
 
-#: ../content-aware-sidebars.php:365
+#: ../content-aware-sidebars.php:369
 msgid "Sidebars"
 msgstr "Barres laterals"
 
-#: ../content-aware-sidebars.php:366
+#: ../content-aware-sidebars.php:370
 msgid "Sidebar"
 msgstr "Barra lateral"
 
-#: ../content-aware-sidebars.php:367
+#: ../content-aware-sidebars.php:371
 msgctxt "sidebar"
 msgid "Add New"
 msgstr "Nova Barra Lateral"
 
-#: ../content-aware-sidebars.php:368
+#: ../content-aware-sidebars.php:372
 msgid "Add New Sidebar"
 msgstr "Afegeix una nova Barra Lateral"
 
-#: ../content-aware-sidebars.php:369
+#: ../content-aware-sidebars.php:373 ../content-aware-sidebars.php:1429
 msgid "Edit Sidebar"
 msgstr "Edita la Barra lateral"
 
-#: ../content-aware-sidebars.php:370
+#: ../content-aware-sidebars.php:374
 msgid "New Sidebar"
 msgstr "Nova Barra lateral"
 
-#: ../content-aware-sidebars.php:371
+#: ../content-aware-sidebars.php:375
 msgid "All Sidebars"
 msgstr "Totes les Barres laterals"
 
-#: ../content-aware-sidebars.php:372
+#: ../content-aware-sidebars.php:376
 msgid "View Sidebar"
 msgstr "Visualitza la Barra lateral"
 
-#: ../content-aware-sidebars.php:373
+#: ../content-aware-sidebars.php:377
 msgid "Search Sidebars"
 msgstr "Cerca Barres laterals"
 
-#: ../content-aware-sidebars.php:374
+#: ../content-aware-sidebars.php:378
 msgid "No sidebars found"
 msgstr "No s'ha trobat cap barra lateral"
 
-#: ../content-aware-sidebars.php:375
+#: ../content-aware-sidebars.php:379
 msgid "No sidebars found in Trash"
 msgstr "No hi ha cap barra lateral a les escombraries"
 
-#: ../content-aware-sidebars.php:390 ../content-aware-sidebars.php:944
-#: ../content-aware-sidebars.php:1017
+#: ../content-aware-sidebars.php:394 ../content-aware-sidebars.php:948
+#: ../content-aware-sidebars.php:1027
 msgid "Condition Groups"
 msgstr "Grups condicionals"
 
-#: ../content-aware-sidebars.php:391
+#: ../content-aware-sidebars.php:395
 msgid "Condition Group"
 msgstr "Grup condicional"
 
-#: ../content-aware-sidebars.php:392
+#: ../content-aware-sidebars.php:396
 msgctxt "group"
 msgid "Add New"
 msgstr "Nou grup"
 
-#: ../content-aware-sidebars.php:393 ../content-aware-sidebars.php:1017
-#: ../content-aware-sidebars.php:1051
+#: ../content-aware-sidebars.php:397 ../content-aware-sidebars.php:1027
+#: ../content-aware-sidebars.php:1061
 msgid "Add New Group"
 msgstr "Afegeix un nou grup"
 
-#: ../content-aware-sidebars.php:394 ../content-aware-sidebars.php:1032
-#: ../content-aware-sidebars.php:1401
+#: ../content-aware-sidebars.php:398 ../content-aware-sidebars.php:1042
+#: ../content-aware-sidebars.php:1411
 msgctxt "group"
 msgid "Edit"
 msgstr "Edita"
 
-#: ../content-aware-sidebars.php:418
+#: ../content-aware-sidebars.php:422
 msgid "Manage widgets"
 msgstr "Gestiona'n els ginys"
 
-#: ../content-aware-sidebars.php:421 ../content-aware-sidebars.php:424
+#: ../content-aware-sidebars.php:425 ../content-aware-sidebars.php:428
 msgid "Sidebar updated."
 msgstr "Barra lateral actualitzada."
 
-#: ../content-aware-sidebars.php:426
+#: ../content-aware-sidebars.php:430
 msgid "Sidebar published."
 msgstr "Barra lateral publicada."
 
-#: ../content-aware-sidebars.php:427
+#: ../content-aware-sidebars.php:431
 msgid "Sidebar saved."
 msgstr "Barra lateral desada."
 
-#: ../content-aware-sidebars.php:428
+#: ../content-aware-sidebars.php:432
 msgid "Sidebar submitted."
 msgstr "Barra lateral enviada."
 
-#: ../content-aware-sidebars.php:429
+#: ../content-aware-sidebars.php:433
 #, php-format
 msgid "Sidebar scheduled for: <strong>%1$s</strong>."
 msgstr "Barra lateral programada pel: <strong%1$s</strong>."
 
 #. translators: Publish box date format, see http://php.net/date
-#: ../content-aware-sidebars.php:431
+#: ../content-aware-sidebars.php:435
 msgid "M j, Y @ G:i"
 msgstr "j/m/Y, a les G:i"
 
-#: ../content-aware-sidebars.php:432
+#: ../content-aware-sidebars.php:436
 msgid "Sidebar draft updated."
 msgstr "Esborrany de barra lateral desat"
 
-#: ../content-aware-sidebars.php:480 ../content-aware-sidebars.php:567
+#: ../content-aware-sidebars.php:484 ../content-aware-sidebars.php:571
 msgid "Please update Host Sidebar"
 msgstr "Actualitzeu la barra lateral original"
 
-#: ../content-aware-sidebars.php:506
+#: ../content-aware-sidebars.php:510
 msgid "Widgets"
 msgstr "Ginys"
 
-#: ../content-aware-sidebars.php:642
+#: ../content-aware-sidebars.php:646
 msgid "Manage Widgets"
 msgstr "Gestiona els ginys"
 
-#: ../content-aware-sidebars.php:897
+#: ../content-aware-sidebars.php:901
 msgid "Get a free Content Aware Sidebars Premium Bundle"
 msgstr "Aconseguiu la versió Premium de Barres Laterals Intel·ligents"
 
-#: ../content-aware-sidebars.php:913
+#: ../content-aware-sidebars.php:917
 msgid "Content"
 msgstr "Contingut"
 
-#: ../content-aware-sidebars.php:921
+#: ../content-aware-sidebars.php:925
 msgid "Options"
 msgstr "Opcions"
 
-#: ../content-aware-sidebars.php:945
+#: ../content-aware-sidebars.php:949
 msgid ""
 "Each created condition group describe some specific content (conditions) "
 "that the current sidebar should be displayed with."
 msgstr "Cada grup condicional creat descriu un contingut específic amb el qual l'actual barra lateral s'hauria de mostrar."
 
-#: ../content-aware-sidebars.php:946
+#: ../content-aware-sidebars.php:950
 msgid ""
 "Content added to a condition group uses logical conjunction, while condition"
 " groups themselves use logical disjunction. This means that content added to"
@@ -239,153 +240,149 @@ msgid ""
 "extremely focused and at the same time distinct conditions."
 msgstr "El continguts afegits a un grup condicional usen conjuncions lògiques, mentre els grups condicionals usen disjuncions lògiques. Això vol dir que un contingut introduït a un grup quedaran associats, i seran tractats com a tal, però els grups no interferiran entre ells. Per tant és possible tenir més d'una condició concreta per mostrar una barra lateral."
 
-#: ../content-aware-sidebars.php:949
+#: ../content-aware-sidebars.php:953
 msgid "More Information"
 msgstr "Més informació"
 
-#: ../content-aware-sidebars.php:951
+#: ../content-aware-sidebars.php:955
 msgid "Get Support"
 msgstr "Suport"
 
-#: ../content-aware-sidebars.php:982
+#: ../content-aware-sidebars.php:992
 msgid ""
 "Translate Content Aware Sidebars into your language and become a BETA tester"
 " of the upcoming Premium Bundle*!"
 msgstr "Traduïu Barres Laterals Intel·ligents al vostre idioma i convertiu-vos en verificador BETA del futur paquet Premium*."
 
-#: ../content-aware-sidebars.php:983
+#: ../content-aware-sidebars.php:993
 msgid "Translate Now"
 msgstr "Vull traduir!"
 
-#: ../content-aware-sidebars.php:984
+#: ../content-aware-sidebars.php:994
 msgid "Get Premium Bundle"
 msgstr "Vull obtenir el paquet Premium"
 
-#: ../content-aware-sidebars.php:985
+#: ../content-aware-sidebars.php:995
 msgid ""
 "Single-site use. BETA implies it is not recommended for production sites."
 msgstr "Us en un sol web. BETA significa que no es recomana el seu ús en entorns de producció."
 
-#: ../content-aware-sidebars.php:988
+#: ../content-aware-sidebars.php:998
 msgid "Partial Feature List"
 msgstr "Llista parcial de característiques"
 
-#: ../content-aware-sidebars.php:990
+#: ../content-aware-sidebars.php:1000
 msgid "Select and create sidebars in the Post Editing Screens"
 msgstr "Selecció i creació de barres laterals a l'editor d'Entrades i Pàgines"
 
-#: ../content-aware-sidebars.php:991
+#: ../content-aware-sidebars.php:1001
 msgid "Display sidebars with URLs using wildcards"
 msgstr "Mostra barres en funció de la URL."
 
-#: ../content-aware-sidebars.php:992
+#: ../content-aware-sidebars.php:1002
 msgid "Display sidebars with User Roles"
 msgstr "Mostra barres en funció del nivell d'usuari"
 
-#: ../content-aware-sidebars.php:993
+#: ../content-aware-sidebars.php:1003
 msgid "Display sidebars with BuddyPress User Groups"
 msgstr "Mostra barres laterals per a grups de BuddyPress"
 
-#: ../content-aware-sidebars.php:994
+#: ../content-aware-sidebars.php:1004
 msgid "Sidebars column in Post Type and Taxonomy Overview Screens"
 msgstr "Columna de barres laterals a les vistes de Post Types i Taxonomies de tercers."
 
-#: ../content-aware-sidebars.php:1018
+#: ../content-aware-sidebars.php:1028
 msgid ""
 "Click to edit a group or create a new one. Select content on the left to add"
 " it. In each group, you can combine different types of associated content."
 msgstr "Editeu un grup o creeu-ne un de nou. Seleccioneu el contingut a l'esquerra per afegir-lo. En cada grup, podeu combinar diferents tipus de contingut associat."
 
-#: ../content-aware-sidebars.php:1019
+#: ../content-aware-sidebars.php:1029
 msgid "Display sidebar with"
 msgstr "Mostra la barra lateral a"
 
-#: ../content-aware-sidebars.php:1024
+#: ../content-aware-sidebars.php:1034
 msgid ""
 "No content. Please add at least one condition group to make the sidebar "
 "content aware."
 msgstr "Sense contingut. Afegiu al menys un grup condicional per tal que aquesta barra sigui sensible al contingut."
 
-#: ../content-aware-sidebars.php:1029 ../content-aware-sidebars.php:1398
+#: ../content-aware-sidebars.php:1039 ../content-aware-sidebars.php:1408
 msgid "Save"
 msgstr "Desa"
 
-#: ../content-aware-sidebars.php:1029 ../content-aware-sidebars.php:1399
+#: ../content-aware-sidebars.php:1039 ../content-aware-sidebars.php:1409
 msgid "Cancel"
 msgstr "Cancel·la"
 
-#: ../content-aware-sidebars.php:1032 ../content-aware-sidebars.php:1402
+#: ../content-aware-sidebars.php:1042 ../content-aware-sidebars.php:1412
 msgid "Remove"
 msgstr "Elimina"
 
-#: ../content-aware-sidebars.php:1041 ../content-aware-sidebars.php:1400
+#: ../content-aware-sidebars.php:1051 ../content-aware-sidebars.php:1410
 msgid "Or"
 msgstr "O bé"
 
-#: ../content-aware-sidebars.php:1129 ../content-aware-sidebars.php:1172
-#: ../content-aware-sidebars.php:1177
+#: ../content-aware-sidebars.php:1139 ../content-aware-sidebars.php:1182
+#: ../content-aware-sidebars.php:1187
 msgid "Unauthorized request"
 msgstr "Sol·licitud no autoritzada"
 
-#: ../content-aware-sidebars.php:1135
+#: ../content-aware-sidebars.php:1145
 msgid "Condition group cannot be empty"
 msgstr "El grup condicional no pot estar buit."
 
-#: ../content-aware-sidebars.php:1149
+#: ../content-aware-sidebars.php:1159
 msgid "Condition group saved"
 msgstr "Grup condicional desat!"
 
-#: ../content-aware-sidebars.php:1182
+#: ../content-aware-sidebars.php:1192
 msgid "Condition group could not be removed"
 msgstr "El grup condicional no s'ha pogut eliminar"
 
-#: ../content-aware-sidebars.php:1187
+#: ../content-aware-sidebars.php:1197
 msgid "Condition group removed"
 msgstr "Grup condicional eliminat"
 
-#: ../content-aware-sidebars.php:1246 ../content-aware-sidebars.php:1247
+#: ../content-aware-sidebars.php:1256 ../content-aware-sidebars.php:1257
 msgid "Order"
 msgstr "Ordre"
 
-#: ../content-aware-sidebars.php:1263
+#: ../content-aware-sidebars.php:1273
 msgid ""
 "If you love this plugin, please consider donating to support future "
 "development."
 msgstr "Si us agrada aquesta extensió, feu una donació per recolzar el seu desenvolupament. "
 
-#: ../content-aware-sidebars.php:1272
+#: ../content-aware-sidebars.php:1282
 msgid "Or you could:"
 msgstr "O bé podeu:"
 
-#: ../content-aware-sidebars.php:1274
+#: ../content-aware-sidebars.php:1284
 msgid "Rate the plugin on WordPress.org"
 msgstr "Valorar-la a Wordpress.org"
 
-#: ../content-aware-sidebars.php:1275
+#: ../content-aware-sidebars.php:1285
 msgid "Link to the plugin page"
 msgstr "Enllaç a la pàgina de l'extensió"
 
-#: ../content-aware-sidebars.php:1276
+#: ../content-aware-sidebars.php:1286
 msgid "Translate the plugin into your language"
 msgstr "Trauir-la a la vostra llengua"
 
-#: ../content-aware-sidebars.php:1403
+#: ../content-aware-sidebars.php:1413
 msgid "Remove this group and its contents permanently?"
 msgstr "Elimina aquest grup i els continguts associats permanentment?"
 
-#: ../content-aware-sidebars.php:1404
+#: ../content-aware-sidebars.php:1414
 msgid "No results found."
 msgstr "No s'ha trobat cap resultat"
 
-#: ../content-aware-sidebars.php:1405
+#: ../content-aware-sidebars.php:1415
 msgid ""
 "The current group has unsaved changes. Do you want to continue and discard "
 "these changes?"
 msgstr "El grup actual té canvis no desats. Voleu continuar descartant aquests canvis?"
-
-#: ../content-aware-sidebars.php:1419
-msgid "Edit"
-msgstr "Edita"
 
 #: ../modules/author.php:28
 msgid "Authors"
@@ -400,12 +397,12 @@ msgid "BuddyPress Members"
 msgstr "Membres de BuddyPress"
 
 #: ../modules/bp_member.php:130 ../modules/casmodule.php:132
-#: ../modules/post_type.php:267 ../modules/taxonomy.php:295
+#: ../modules/post_type.php:267 ../modules/taxonomy.php:291
 msgid "View All"
 msgstr "Mostra tots"
 
 #: ../modules/bp_member.php:139 ../modules/casmodule.php:151
-#: ../modules/post_type.php:286 ../modules/taxonomy.php:314
+#: ../modules/post_type.php:286 ../modules/taxonomy.php:310
 msgid "Add to Group"
 msgstr "Afegeix al grup"
 
@@ -416,7 +413,7 @@ msgstr "Mostra amb qualsevol %s"
 
 #: ../modules/casmodule.php:139 ../modules/casmodule.php:142
 #: ../modules/post_type.php:273 ../modules/post_type.php:276
-#: ../modules/taxonomy.php:301 ../modules/taxonomy.php:304
+#: ../modules/taxonomy.php:297 ../modules/taxonomy.php:300
 msgid "Search"
 msgstr "Cerca"
 
@@ -424,6 +421,14 @@ msgstr "Cerca"
 #, php-format
 msgid "All %s"
 msgstr "Qualsevol %s"
+
+#: ../modules/date.php:29
+msgid "Dates"
+msgstr "Cronologia"
+
+#: ../modules/date.php:65
+msgid "Date Archives"
+msgstr "Arxius cronològics"
 
 #: ../modules/page_template.php:28
 msgid "Page Templates"
@@ -439,22 +444,22 @@ msgid "Post Types"
 msgstr "Tipus d'entrada"
 
 #: ../modules/post_type.php:166 ../modules/post_type.php:236
-#: ../modules/taxonomy.php:230 ../modules/taxonomy.php:269
+#: ../modules/taxonomy.php:226 ../modules/taxonomy.php:265
 msgid "Automatically select new children of a selected ancestor"
-msgstr "Selecciona automàticament tots el fills d'un pare."
+msgstr "Selecciona automàticament els nous descendents dels pares seleccionats."
 
-#: ../modules/post_type.php:242 ../modules/taxonomy.php:273
+#: ../modules/post_type.php:242 ../modules/taxonomy.php:269
 #, php-format
 msgid "Display with %s"
 msgstr "Mostra amb %s"
 
-#: ../modules/post_type.php:247 ../modules/taxonomy.php:277
+#: ../modules/post_type.php:247 ../modules/taxonomy.php:273
 msgid "No items."
 msgstr "Cap element."
 
 #: ../modules/post_type.php:262
 msgid "Most Recent"
-msgstr "Darers"
+msgstr "Més recents"
 
 #: ../modules/static.php:29
 msgid "Static Pages"
@@ -476,6 +481,6 @@ msgstr "Pàgina 404"
 msgid "Taxonomies"
 msgstr "Taxonomia"
 
-#: ../modules/taxonomy.php:290
+#: ../modules/taxonomy.php:286
 msgid "Most Used"
 msgstr "﻿Més utilitzats"

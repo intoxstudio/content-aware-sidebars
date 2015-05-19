@@ -1,21 +1,21 @@
 # Copyright (C) 2012 Content Aware Sidebars
 # This file is distributed under the same license as the Content Aware Sidebars package.
 # Translators:
-# Neftigon <kislukacs@gmail.com>, 2014
+# Neftigon <kislukacs@gmail.com>, 2014-2015
 msgid ""
 msgstr ""
 "Project-Id-Version: Content Aware Sidebars\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/content-aware-sidebars\n"
-"POT-Creation-Date: 2014-11-05 01:08-0800\n"
-"PO-Revision-Date: 2014-11-05 10:24+0000\n"
-"Last-Translator: Joachim <jv@intox.dk>\n"
+"POT-Creation-Date: 2015-01-27 22:32-0800\n"
+"PO-Revision-Date: 2015-03-01 16:31+0000\n"
+"Last-Translator: Neftigon <kislukacs@gmail.com>\n"
 "Language-Team: Hungarian (Hungary) (http://www.transifex.com/projects/p/content-aware-sidebars/language/hu_HU/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: hu_HU\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 1.6.5\n"
+"X-Generator: Poedit 1.7.4\n"
 "X-Poedit-Basepath: .\n"
 "X-Poedit-KeywordsList: __;_e;__ngettext:1,2;_n:1,2;__ngettext_noop:1,2;_n_noop:1,2;_c,_nc:4c,1,2;_x:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2;_ex:1,2c;esc_attr__;esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c\n"
 "X-Poedit-SearchPath-0: .\n"
@@ -31,206 +31,206 @@ msgstr "Az oldalsávok kezelése és megjelenítése a tartalomnak megfelelően.
 msgid "Content Aware Sidebars"
 msgstr "Tartalomfüggő oldalsáv"
 
-#: ../content-aware-sidebars.php:200 ../content-aware-sidebars.php:950
+#: ../content-aware-sidebars.php:202 ../content-aware-sidebars.php:954
 msgid "FAQ"
 msgstr "GYIK"
 
-#: ../content-aware-sidebars.php:300
+#: ../content-aware-sidebars.php:303
 msgid "Exposure"
 msgstr "Expozíció"
 
-#: ../content-aware-sidebars.php:306
+#: ../content-aware-sidebars.php:309
 msgid "Singular"
 msgstr "Egyes szám"
 
-#: ../content-aware-sidebars.php:307
+#: ../content-aware-sidebars.php:310
 msgid "Singular & Archive"
 msgstr "Egyes szám & archívum"
 
-#: ../content-aware-sidebars.php:308
+#: ../content-aware-sidebars.php:311
 msgid "Archive"
 msgstr "Archívum"
 
-#: ../content-aware-sidebars.php:312 ../content-aware-sidebars.php:504
+#: ../content-aware-sidebars.php:315 ../content-aware-sidebars.php:508
 msgctxt "option"
 msgid "Handle"
 msgstr "Művelet"
 
-#: ../content-aware-sidebars.php:314
+#: ../content-aware-sidebars.php:317
 msgid "Replace host sidebar, merge with it or add sidebar manually."
 msgstr "Eredeti oldalsáv helyettesítése, egyesítés vele vagy oldalsáv hozzáadása manuálisan."
 
-#: ../content-aware-sidebars.php:318
+#: ../content-aware-sidebars.php:321
 msgid "Replace"
 msgstr "Helyettesítés"
 
-#: ../content-aware-sidebars.php:319
+#: ../content-aware-sidebars.php:322
 msgid "Merge"
 msgstr "Egyesítés"
 
-#: ../content-aware-sidebars.php:320
+#: ../content-aware-sidebars.php:323
 msgid "Manual"
 msgstr "Manuális"
 
-#: ../content-aware-sidebars.php:321
+#: ../content-aware-sidebars.php:324
 msgid "Forced replace"
 msgstr "Kötelező csere"
 
-#: ../content-aware-sidebars.php:325
+#: ../content-aware-sidebars.php:328
 msgid "Host Sidebar"
 msgstr "Eredeti oldalsáv"
 
-#: ../content-aware-sidebars.php:333 ../content-aware-sidebars.php:505
+#: ../content-aware-sidebars.php:336 ../content-aware-sidebars.php:509
 msgid "Merge position"
 msgstr "Egyesítés helye"
 
-#: ../content-aware-sidebars.php:335
+#: ../content-aware-sidebars.php:338
 msgid "Place sidebar on top or bottom of host when merging."
 msgstr "Az oldalsáv elhelyezése a eredeti oldalsáv fölött vagy alatt egyesítéskor."
 
-#: ../content-aware-sidebars.php:339
+#: ../content-aware-sidebars.php:342
 msgid "Top"
 msgstr "Fent"
 
-#: ../content-aware-sidebars.php:340
+#: ../content-aware-sidebars.php:343
 msgid "Bottom"
 msgstr "Lent"
 
-#: ../content-aware-sidebars.php:365
+#: ../content-aware-sidebars.php:369
 msgid "Sidebars"
 msgstr "Oldalsávok"
 
-#: ../content-aware-sidebars.php:366
+#: ../content-aware-sidebars.php:370
 msgid "Sidebar"
 msgstr "Oldalsáv"
 
-#: ../content-aware-sidebars.php:367
+#: ../content-aware-sidebars.php:371
 msgctxt "sidebar"
 msgid "Add New"
 msgstr "Új hozzáadása"
 
-#: ../content-aware-sidebars.php:368
+#: ../content-aware-sidebars.php:372
 msgid "Add New Sidebar"
 msgstr "Új oldalsáv hozzáadása"
 
-#: ../content-aware-sidebars.php:369
+#: ../content-aware-sidebars.php:373 ../content-aware-sidebars.php:1429
 msgid "Edit Sidebar"
 msgstr "Oldalsáv szerkesztése"
 
-#: ../content-aware-sidebars.php:370
+#: ../content-aware-sidebars.php:374
 msgid "New Sidebar"
 msgstr "Új oldalsáv"
 
-#: ../content-aware-sidebars.php:371
+#: ../content-aware-sidebars.php:375
 msgid "All Sidebars"
 msgstr "Összes oldalsáv"
 
-#: ../content-aware-sidebars.php:372
+#: ../content-aware-sidebars.php:376
 msgid "View Sidebar"
 msgstr "Oldalsáv megtekintése"
 
-#: ../content-aware-sidebars.php:373
+#: ../content-aware-sidebars.php:377
 msgid "Search Sidebars"
 msgstr "Oldalsáv keresése"
 
-#: ../content-aware-sidebars.php:374
+#: ../content-aware-sidebars.php:378
 msgid "No sidebars found"
 msgstr "Oldalsáv nem található"
 
-#: ../content-aware-sidebars.php:375
+#: ../content-aware-sidebars.php:379
 msgid "No sidebars found in Trash"
 msgstr "Oldalsáv nem található a kukában"
 
-#: ../content-aware-sidebars.php:390 ../content-aware-sidebars.php:944
-#: ../content-aware-sidebars.php:1017
+#: ../content-aware-sidebars.php:394 ../content-aware-sidebars.php:948
+#: ../content-aware-sidebars.php:1027
 msgid "Condition Groups"
 msgstr "Feltétel csoportok"
 
-#: ../content-aware-sidebars.php:391
+#: ../content-aware-sidebars.php:395
 msgid "Condition Group"
 msgstr "Feltétel csoport"
 
-#: ../content-aware-sidebars.php:392
+#: ../content-aware-sidebars.php:396
 msgctxt "group"
 msgid "Add New"
 msgstr "Új hozzáadása"
 
-#: ../content-aware-sidebars.php:393 ../content-aware-sidebars.php:1017
-#: ../content-aware-sidebars.php:1051
+#: ../content-aware-sidebars.php:397 ../content-aware-sidebars.php:1027
+#: ../content-aware-sidebars.php:1061
 msgid "Add New Group"
 msgstr "Új csoport hozzáadása"
 
-#: ../content-aware-sidebars.php:394 ../content-aware-sidebars.php:1032
-#: ../content-aware-sidebars.php:1401
+#: ../content-aware-sidebars.php:398 ../content-aware-sidebars.php:1042
+#: ../content-aware-sidebars.php:1411
 msgctxt "group"
 msgid "Edit"
 msgstr "Szerkesztés"
 
-#: ../content-aware-sidebars.php:418
+#: ../content-aware-sidebars.php:422
 msgid "Manage widgets"
 msgstr "Widgetek kezelése"
 
-#: ../content-aware-sidebars.php:421 ../content-aware-sidebars.php:424
+#: ../content-aware-sidebars.php:425 ../content-aware-sidebars.php:428
 msgid "Sidebar updated."
 msgstr "Oldalsáv frissítve."
 
-#: ../content-aware-sidebars.php:426
+#: ../content-aware-sidebars.php:430
 msgid "Sidebar published."
 msgstr "Oldalsáv közzétéve."
 
-#: ../content-aware-sidebars.php:427
+#: ../content-aware-sidebars.php:431
 msgid "Sidebar saved."
 msgstr "Oldalsáv mentve."
 
-#: ../content-aware-sidebars.php:428
+#: ../content-aware-sidebars.php:432
 msgid "Sidebar submitted."
 msgstr "Oldalsáv létrehozva."
 
-#: ../content-aware-sidebars.php:429
+#: ../content-aware-sidebars.php:433
 #, php-format
 msgid "Sidebar scheduled for: <strong>%1$s</strong>."
 msgstr "Oldalsáv időzítve: <strong>%1$s</strong>."
 
 #. translators: Publish box date format, see http://php.net/date
-#: ../content-aware-sidebars.php:431
+#: ../content-aware-sidebars.php:435
 msgid "M j, Y @ G:i"
 msgstr "M j, Y @ G:i"
 
-#: ../content-aware-sidebars.php:432
+#: ../content-aware-sidebars.php:436
 msgid "Sidebar draft updated."
 msgstr "Oldalsáv vázlat frissítve."
 
-#: ../content-aware-sidebars.php:480 ../content-aware-sidebars.php:567
+#: ../content-aware-sidebars.php:484 ../content-aware-sidebars.php:571
 msgid "Please update Host Sidebar"
 msgstr "Kérjük, frissítse az eredeti oldalsávot"
 
-#: ../content-aware-sidebars.php:506
+#: ../content-aware-sidebars.php:510
 msgid "Widgets"
-msgstr ""
+msgstr "Widgetek"
 
-#: ../content-aware-sidebars.php:642
+#: ../content-aware-sidebars.php:646
 msgid "Manage Widgets"
 msgstr "Widgetek kezelése"
 
-#: ../content-aware-sidebars.php:897
+#: ../content-aware-sidebars.php:901
 msgid "Get a free Content Aware Sidebars Premium Bundle"
-msgstr ""
+msgstr "Ingyenes Tartalomfüggő oldalsáv prémium csomag beszerzése"
 
-#: ../content-aware-sidebars.php:913
+#: ../content-aware-sidebars.php:917
 msgid "Content"
 msgstr "Tartalom"
 
-#: ../content-aware-sidebars.php:921
+#: ../content-aware-sidebars.php:925
 msgid "Options"
 msgstr "Beállítások"
 
-#: ../content-aware-sidebars.php:945
+#: ../content-aware-sidebars.php:949
 msgid ""
 "Each created condition group describe some specific content (conditions) "
 "that the current sidebar should be displayed with."
 msgstr "Minden létrehozott csoport egy bizonyos tartalomfajtát (feltételt) jelöl, ami mellett az oldalsáv meg fog jelenni."
 
-#: ../content-aware-sidebars.php:946
+#: ../content-aware-sidebars.php:950
 msgid ""
 "Content added to a condition group uses logical conjunction, while condition"
 " groups themselves use logical disjunction. This means that content added to"
@@ -239,153 +239,149 @@ msgid ""
 "extremely focused and at the same time distinct conditions."
 msgstr "Tartalom hozzáadva a csoporthoz logikai konjunkció alapján, míg a csoportok egymással logikai diszjunkcióban vannak. A csoporthoz adott tartalmat társítani kell, együtt kell kezelni őket, és a csoportok között nem lehet átfedés. Így elérhető, hogy minden célzottan jelenjen meg a megfelelő helyen és körülmények között."
 
-#: ../content-aware-sidebars.php:949
+#: ../content-aware-sidebars.php:953
 msgid "More Information"
 msgstr "További információk"
 
-#: ../content-aware-sidebars.php:951
+#: ../content-aware-sidebars.php:955
 msgid "Get Support"
 msgstr "Segítség kérése"
 
-#: ../content-aware-sidebars.php:982
+#: ../content-aware-sidebars.php:992
 msgid ""
 "Translate Content Aware Sidebars into your language and become a BETA tester"
 " of the upcoming Premium Bundle*!"
-msgstr ""
-
-#: ../content-aware-sidebars.php:983
-msgid "Translate Now"
-msgstr ""
-
-#: ../content-aware-sidebars.php:984
-msgid "Get Premium Bundle"
-msgstr ""
-
-#: ../content-aware-sidebars.php:985
-msgid ""
-"Single-site use. BETA implies it is not recommended for production sites."
-msgstr ""
-
-#: ../content-aware-sidebars.php:988
-msgid "Partial Feature List"
-msgstr ""
-
-#: ../content-aware-sidebars.php:990
-msgid "Select and create sidebars in the Post Editing Screens"
-msgstr ""
-
-#: ../content-aware-sidebars.php:991
-msgid "Display sidebars with URLs using wildcards"
-msgstr ""
-
-#: ../content-aware-sidebars.php:992
-msgid "Display sidebars with User Roles"
-msgstr ""
+msgstr "Fordítsa le a Tartalomfüggő oldalsávot a saját nyelvére, és legyen béta tesztelője a prémium csomagoknak*!"
 
 #: ../content-aware-sidebars.php:993
-msgid "Display sidebars with BuddyPress User Groups"
-msgstr ""
+msgid "Translate Now"
+msgstr "Lefordítom most"
 
 #: ../content-aware-sidebars.php:994
-msgid "Sidebars column in Post Type and Taxonomy Overview Screens"
-msgstr ""
+msgid "Get Premium Bundle"
+msgstr "Prémium csomag beszerzése"
 
-#: ../content-aware-sidebars.php:1018
+#: ../content-aware-sidebars.php:995
+msgid ""
+"Single-site use. BETA implies it is not recommended for production sites."
+msgstr "Egy honlapos használat. A béta változatot nem javasolt éles honlapon használni."
+
+#: ../content-aware-sidebars.php:998
+msgid "Partial Feature List"
+msgstr "Részleges funkció lista"
+
+#: ../content-aware-sidebars.php:1000
+msgid "Select and create sidebars in the Post Editing Screens"
+msgstr "Oldalsáv kiválasztása és létrehozása a bejegyzés szerkesztése nézetben"
+
+#: ../content-aware-sidebars.php:1001
+msgid "Display sidebars with URLs using wildcards"
+msgstr "OIdalsávok megjelenítése URL-ekkel, helyettesítő karakterrel"
+
+#: ../content-aware-sidebars.php:1002
+msgid "Display sidebars with User Roles"
+msgstr "Oldalsávok megjelenítése felhasználói szerepkörökkel"
+
+#: ../content-aware-sidebars.php:1003
+msgid "Display sidebars with BuddyPress User Groups"
+msgstr "Oldalsávok megjelenítése BuddyPress felhasználói csoportokkal"
+
+#: ../content-aware-sidebars.php:1004
+msgid "Sidebars column in Post Type and Taxonomy Overview Screens"
+msgstr "Oldalsáv oszlop a bejegyzés típusánál és a taxonómiák nézetben"
+
+#: ../content-aware-sidebars.php:1028
 msgid ""
 "Click to edit a group or create a new one. Select content on the left to add"
 " it. In each group, you can combine different types of associated content."
 msgstr "Kattintson ide a csoportok szerkesztéséhez, vagy új létrehozásához. A tartalmat válassza ki a bal oldalon. Minden csoportban külön tudja kezelni a tartalomhoz megfelelő típusokat."
 
-#: ../content-aware-sidebars.php:1019
+#: ../content-aware-sidebars.php:1029
 msgid "Display sidebar with"
 msgstr "Oldalsáv megjelenítése ezzel"
 
-#: ../content-aware-sidebars.php:1024
+#: ../content-aware-sidebars.php:1034
 msgid ""
 "No content. Please add at least one condition group to make the sidebar "
 "content aware."
 msgstr "Nincs tartalom. Kérjük, adjon hozzá legalább egy feltétel csoportot, hogy az oldalsáv tartalomfüggő legyen. "
 
-#: ../content-aware-sidebars.php:1029 ../content-aware-sidebars.php:1398
+#: ../content-aware-sidebars.php:1039 ../content-aware-sidebars.php:1408
 msgid "Save"
 msgstr "Mentés"
 
-#: ../content-aware-sidebars.php:1029 ../content-aware-sidebars.php:1399
+#: ../content-aware-sidebars.php:1039 ../content-aware-sidebars.php:1409
 msgid "Cancel"
 msgstr "Mégse"
 
-#: ../content-aware-sidebars.php:1032 ../content-aware-sidebars.php:1402
+#: ../content-aware-sidebars.php:1042 ../content-aware-sidebars.php:1412
 msgid "Remove"
 msgstr "Eltávolítás"
 
-#: ../content-aware-sidebars.php:1041 ../content-aware-sidebars.php:1400
+#: ../content-aware-sidebars.php:1051 ../content-aware-sidebars.php:1410
 msgid "Or"
-msgstr ""
+msgstr "vagy"
 
-#: ../content-aware-sidebars.php:1129 ../content-aware-sidebars.php:1172
-#: ../content-aware-sidebars.php:1177
+#: ../content-aware-sidebars.php:1139 ../content-aware-sidebars.php:1182
+#: ../content-aware-sidebars.php:1187
 msgid "Unauthorized request"
 msgstr "Jogosulatlan kérés"
 
-#: ../content-aware-sidebars.php:1135
+#: ../content-aware-sidebars.php:1145
 msgid "Condition group cannot be empty"
 msgstr "Feltétel csoportot nem leht létrehozni"
 
-#: ../content-aware-sidebars.php:1149
+#: ../content-aware-sidebars.php:1159
 msgid "Condition group saved"
 msgstr "Feltétel csoport mentve"
 
-#: ../content-aware-sidebars.php:1182
+#: ../content-aware-sidebars.php:1192
 msgid "Condition group could not be removed"
 msgstr "Feltétel csoportot nem lehet törölni"
 
-#: ../content-aware-sidebars.php:1187
+#: ../content-aware-sidebars.php:1197
 msgid "Condition group removed"
 msgstr "Feltétel csoport törölve"
 
-#: ../content-aware-sidebars.php:1246 ../content-aware-sidebars.php:1247
+#: ../content-aware-sidebars.php:1256 ../content-aware-sidebars.php:1257
 msgid "Order"
-msgstr ""
+msgstr "Sorrend"
 
-#: ../content-aware-sidebars.php:1263
+#: ../content-aware-sidebars.php:1273
 msgid ""
 "If you love this plugin, please consider donating to support future "
 "development."
 msgstr "Ha tetszik ez a plugin, kérjük támogassa, hogy folytathassuk a fejlesztését."
 
-#: ../content-aware-sidebars.php:1272
+#: ../content-aware-sidebars.php:1282
 msgid "Or you could:"
 msgstr "Vagy esetleg:"
 
-#: ../content-aware-sidebars.php:1274
+#: ../content-aware-sidebars.php:1284
 msgid "Rate the plugin on WordPress.org"
 msgstr "Értékelje a plugint a WordPress.org címen"
 
-#: ../content-aware-sidebars.php:1275
+#: ../content-aware-sidebars.php:1285
 msgid "Link to the plugin page"
 msgstr "Link a plugin oldalra"
 
-#: ../content-aware-sidebars.php:1276
+#: ../content-aware-sidebars.php:1286
 msgid "Translate the plugin into your language"
 msgstr "Plugin lefordítása a saját nyelvre"
 
-#: ../content-aware-sidebars.php:1403
+#: ../content-aware-sidebars.php:1413
 msgid "Remove this group and its contents permanently?"
 msgstr "Csoport és tartalmának eltávolítása véglegesen?"
 
-#: ../content-aware-sidebars.php:1404
+#: ../content-aware-sidebars.php:1414
 msgid "No results found."
 msgstr "Nincs találat."
 
-#: ../content-aware-sidebars.php:1405
+#: ../content-aware-sidebars.php:1415
 msgid ""
 "The current group has unsaved changes. Do you want to continue and discard "
 "these changes?"
 msgstr "A csoportban vannak nem mentett módosítások. Valóban szeretné elvetni a módosításokat és szeretne továbblépni?"
-
-#: ../content-aware-sidebars.php:1419
-msgid "Edit"
-msgstr "Szerkesztés"
 
 #: ../modules/author.php:28
 msgid "Authors"
@@ -400,12 +396,12 @@ msgid "BuddyPress Members"
 msgstr "BuddyPress felhasználók"
 
 #: ../modules/bp_member.php:130 ../modules/casmodule.php:132
-#: ../modules/post_type.php:267 ../modules/taxonomy.php:295
+#: ../modules/post_type.php:267 ../modules/taxonomy.php:291
 msgid "View All"
 msgstr "Összes megtekintése"
 
 #: ../modules/bp_member.php:139 ../modules/casmodule.php:151
-#: ../modules/post_type.php:286 ../modules/taxonomy.php:314
+#: ../modules/post_type.php:286 ../modules/taxonomy.php:310
 msgid "Add to Group"
 msgstr "Hozzáadás a csoporthoz"
 
@@ -416,7 +412,7 @@ msgstr "Megjelenítés az összes %s-val/vel"
 
 #: ../modules/casmodule.php:139 ../modules/casmodule.php:142
 #: ../modules/post_type.php:273 ../modules/post_type.php:276
-#: ../modules/taxonomy.php:301 ../modules/taxonomy.php:304
+#: ../modules/taxonomy.php:297 ../modules/taxonomy.php:300
 msgid "Search"
 msgstr "Keresés"
 
@@ -424,6 +420,14 @@ msgstr "Keresés"
 #, php-format
 msgid "All %s"
 msgstr "Összes %s"
+
+#: ../modules/date.php:29
+msgid "Dates"
+msgstr "Dátum"
+
+#: ../modules/date.php:65
+msgid "Date Archives"
+msgstr "Dátum archívum"
 
 #: ../modules/page_template.php:28
 msgid "Page Templates"
@@ -439,16 +443,16 @@ msgid "Post Types"
 msgstr "Bejegyzés típusok"
 
 #: ../modules/post_type.php:166 ../modules/post_type.php:236
-#: ../modules/taxonomy.php:230 ../modules/taxonomy.php:269
+#: ../modules/taxonomy.php:226 ../modules/taxonomy.php:265
 msgid "Automatically select new children of a selected ancestor"
 msgstr "Automatikus utód kiválasztása az ős alapján."
 
-#: ../modules/post_type.php:242 ../modules/taxonomy.php:273
+#: ../modules/post_type.php:242 ../modules/taxonomy.php:269
 #, php-format
 msgid "Display with %s"
 msgstr "Megjelenítés %s-val/vel."
 
-#: ../modules/post_type.php:247 ../modules/taxonomy.php:277
+#: ../modules/post_type.php:247 ../modules/taxonomy.php:273
 msgid "No items."
 msgstr "Nincs elem."
 
@@ -476,6 +480,6 @@ msgstr "404-es oldal"
 msgid "Taxonomies"
 msgstr "Taxonómiák"
 
-#: ../modules/taxonomy.php:290
+#: ../modules/taxonomy.php:286
 msgid "Most Used"
 msgstr "Leggyakrabban használt"
