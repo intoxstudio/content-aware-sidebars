@@ -470,28 +470,42 @@ final class ContentAwareSidebars {
 
 		//Now reregister sidebars with proper content
 		foreach($this->sidebars as $post) {
-			
+
 			$handle = get_post_meta($post->ID,self::PREFIX . 'handle', true);
-			//$handle = $post->{self::PREFIX . 'handle'};
-			if(!isset($this->metadata['handle']['list'][$handle])) {
+			$sidebar_args = array(
+				"name"        => $post->post_title,
+				"description" => isset($this->metadata['handle']['list'][$handle]) ? $this->metadata['handle']['list'][$handle] : false,
+				"id"          => self::SIDEBAR_PREFIX.$post->ID
+			);
+
+			if(!$sidebar_args["description"]) {
 				continue;
 			}
-			
-			$desc = $this->metadata['handle']['list'][$handle];
+
+			$sidebar_args["before_widget"] = '<li id="%1$s" class="widget-container %2$s">';
+			$sidebar_args["after_widget"] = '</li>';
+			$sidebar_args["before_title"] = '<h3 class="widget-title">';
+			$sidebar_args["after_title"] = '</h3>';
 
 			if ($handle != 2) {
-				$host = get_post_meta($post->ID, self::PREFIX . 'host', true);
-				$desc .= ": " . (isset($this->metadata['host']['list'][$host]) ? $this->metadata['host']['list'][$host] :  __('Please update Host Sidebar', self::DOMAIN) );
+				$host_id = get_post_meta($post->ID, self::PREFIX . 'host', true);
+				$host = isset($this->metadata['host']['list'][$host_id]) ? $this->metadata['host']['list'][$host_id] : false;
+				
+				$sidebar_args["description"] .= ": " . ($host ? $host :  __('Please update Host Sidebar', self::DOMAIN) );
+
+				//Set style from host to fix when content aware sidebar
+				//is called directly by other sidebar managers
+				//does not work recursively
+				global $wp_registered_sidebars;
+				if(isset($wp_registered_sidebars[$host_id]) && $wp_registered_sidebars[$host_id]) {
+					$sidebar_args["before_widget"] = $wp_registered_sidebars[$host_id]["before_widget"];
+					$sidebar_args["after_widget"] = $wp_registered_sidebars[$host_id]["after_widget"];
+					$sidebar_args["before_title"] = $wp_registered_sidebars[$host_id]["before_title"];
+					$sidebar_args["after_title"] = $wp_registered_sidebars[$host_id]["after_title"];
+				}
 			}
-			register_sidebar( array(
-				'name'          => $post->post_title,
-				'description'   => $desc,
-				'id'            => self::SIDEBAR_PREFIX.$post->ID,
-				'before_widget' => '<li id="%1$s" class="widget-container %2$s">',
-				'after_widget'  => '</li>',
-				'before_title'  => '<h3 class="widget-title">',
-				'after_title'   => '</h3>',
-			));
+
+			register_sidebar($sidebar_args);
 		}
 	}
 
