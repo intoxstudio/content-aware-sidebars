@@ -3,8 +3,8 @@ Contributors: intoxstudio
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=KPZHE6A72LEN4&lc=US&item_name=WordPress%20Plugin%3a%20Content%20Aware%20Sidebars&currency_code=USD&bn=PP%2dDonationsBF%3abtn_donateCC_LG%2egif%3aNonHosted
 Tags: sidebar, widget, widget area, custom sidebars, dynamic sidebar, replace sidebar, create sidebar, sidebar generator, sidebar plugin, replace widget area, merge widget area, create widget area, context aware, conditional, seo, bbpress, buddypress, qtranslate, polylang, transposh, wpml, woocommerce
 Requires at least: 3.3
-Tested up to: 4.1
-Stable tag: 2.6
+Tested up to: 4.2
+Stable tag: 2.6.1
 License: GPLv3
 
 Create and display custom sidebars according to the content being viewed.
@@ -62,19 +62,24 @@ Developed with functionality and performance in mind, Content Aware Sidebars is 
 * Chinese (zh_CN)
 * Danish (da_DK)
 * Dutch (nl_NL)
+* Finnish (fi_FI)
 * French (fr_FR)
 * German (de_DE)
 * Hungarian (hu_HU)
 * Italian (it_IT)
+* Korean (ko_KR)
 * Latvian (lv_LV)
 * Lithuanian (lt_LT)
 * Norwegian Bokmål (nb_NO)
 * Polish (pl_PL)
-* Portuguese, Brazilian (pt_BR) 
+* Portuguese, Brazilian (pt_BR)
+* Portuguese, Portugal (pt_PT)
 * Russian (ru_RU)
 * Serbian (sr_RS)
 * Slovak (sk_SK)
+* Slovenian (sl_SI)
 * Spanish (es_ES)
+* Swedish (sv_SE)
 * Turkish (tr_TR)
 * Ukranian (uk_UA)
 
@@ -144,6 +149,12 @@ Do you want to contribute and see your name here?
 * Hello World
 
 == Changelog ==
+
+= 2.6.1 =
+
+* Added: finnish, korean, portuguese (portugal), slovenian and swedish translations
+* Fixed: updated translations
+* Fixed: better compatibility when used together with other sidebar managers
 
 = 2.6 =
 
