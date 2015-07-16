@@ -972,6 +972,7 @@ final class ContentAwareSidebars {
 	 * @return void 
 	 */
 	public function db_update() {
+		new CASPointerManager();
 		cas_run_db_update(self::DB_VERSION);
 	}
 
@@ -1020,6 +1021,7 @@ final class ContentAwareSidebars {
 	private function _load_dependencies() {
 		$path = plugin_dir_path( __FILE__ );
 		require($path.'/update_db.php');
+		require($path.'/pointers.php');
 		require($path.'/lib/wp-content-aware-engine/core.php');
 	}
 
