@@ -7,7 +7,7 @@
 Plugin Name: Content Aware Sidebars
 Plugin URI: http://www.intox.dk/en/plugin/content-aware-sidebars-en/
 Description: Manage and show sidebars according to the content being viewed.
-Version: 2.6
+Version: 3.0
 Author: Joachim Jensen, Intox Studio
 Author URI: http://www.intox.dk/
 Text Domain: content-aware-sidebars
@@ -47,7 +47,7 @@ final class ContentAwareSidebars {
 	/**
 	 * Plugin version
 	 */
-	const PLUGIN_VERSION       = '2.6';
+	const PLUGIN_VERSION       = '3.0';
 
 	/**
 	 * Prefix for sidebar id
@@ -99,7 +99,7 @@ final class ContentAwareSidebars {
 		
 		//For administration
 		if(is_admin()) {
-			
+
 			add_action('wp_loaded',
 				array(&$this,'db_update'));
 			add_action('admin_enqueue_scripts',
@@ -1004,10 +1004,15 @@ final class ContentAwareSidebars {
 			wp_register_style('cas_admin_style', plugins_url('/css/style.css', __FILE__), array(), self::PLUGIN_VERSION);
 			wp_enqueue_style('cas_admin_style');
 
+			$sidebar = get_post_type_object(self::TYPE_SIDEBAR);
+
 			wp_register_script('cas_admin_widgets', plugins_url('/js/widgets.js', __FILE__), array('jquery'), self::PLUGIN_VERSION, true);
 			wp_enqueue_script('cas_admin_widgets');
 			wp_localize_script( 'cas_admin_widgets', 'CASAdmin', array(
-				'edit' => __('Edit Sidebar', self::DOMAIN)
+				'edit'           => $sidebar->labels->edit_item,
+				'addNew'         => $sidebar->labels->add_new_item,
+				'filterSidebars' => __("Filter Sidebars",self::DOMAIN),
+				'filterWidgets'  => __("Filter Widgets", self::DOMAIN)
 			));
 
 		}
