@@ -117,8 +117,6 @@ final class ContentAwareSidebars {
 
 			add_filter('request',
 				array(&$this,'admin_column_orderby'));
-			add_filter('default_hidden_meta_boxes',
-				array(&$this,'change_default_hidden'),10,2);
 			add_filter('manage_'.self::TYPE_SIDEBAR.'_posts_columns',
 				array(&$this,'admin_column_headers'),99);
 			add_filter('manage_edit-'.self::TYPE_SIDEBAR.'_sortable_columns',
@@ -156,7 +154,7 @@ final class ContentAwareSidebars {
 			'id' => 0,
 		), $atts );
 		
-		$id = 'ca-sidebar-'.esc_attr($a['id']);
+		$id = self::SIDEBAR_PREFIX.esc_attr($a['id']);
 		ob_start();
 		dynamic_sidebar($id);
 		return ob_get_clean();
@@ -283,7 +281,7 @@ final class ContentAwareSidebars {
 			$sidebar_list
 		),'host')
 		->add(new WPCAMeta(
-			'merge-pos',
+			'merge_pos',
 			__('Merge Position', self::DOMAIN),
 			1,
 			'select',
@@ -292,7 +290,7 @@ final class ContentAwareSidebars {
 				__('Bottom', self::DOMAIN)
 			),
 			__('Place sidebar on top or bottom of host when merging.', self::DOMAIN)
-		),'merge-pos');
+		),'merge_pos');
 	}
 	
 	/**
@@ -392,7 +390,9 @@ final class ContentAwareSidebars {
 	
 	/**
 	 * Update the created sidebars with metadata
-	 * @return void 
+	 * 
+	 * @since  [since]
+	 * @return void
 	 */
 	public function update_sidebars() {
 
@@ -419,7 +419,7 @@ final class ContentAwareSidebars {
 
 			if ($this->metadata()->get('handle')->get_data($post->ID) != 2) {
 				$host = $this->metadata()->get('host')->get_list_data($post->ID,false);
-				$sidebar_args["description"] .= ": " . ($host ?:  __('Please update Host Sidebar', self::DOMAIN) );
+				$sidebar_args["description"] .= ": " . ($host ? $host :  __('Please update Host Sidebar', self::DOMAIN) );
 
 				//Set style from host to fix when content aware sidebar
 				//is called directly by other sidebar managers
@@ -447,7 +447,7 @@ final class ContentAwareSidebars {
 			'cb'        => $columns['cb'],
 			'title'     => $columns['title'],
 			'handle'    => _x('Handle','option', self::DOMAIN),
-			'merge-pos' => __('Merge position', self::DOMAIN),
+			'merge_pos' => __('Merge position', self::DOMAIN),
 			'widgets'   => __('Widgets'),
 			'date'      => $columns['date']
 		);
@@ -462,7 +462,7 @@ final class ContentAwareSidebars {
 		return array_merge(
 			array(
 				'handle'    => 'handle',
-				'merge-pos' => 'merge-pos'
+				'merge_pos' => 'merge_pos'
 			), $columns
 		);
 	}
@@ -473,7 +473,7 @@ final class ContentAwareSidebars {
 	 * @return array 
 	 */
 	public function admin_column_orderby($vars) {
-		if (isset($vars['orderby']) && in_array($vars['orderby'], array('exposure', 'handle', 'merge-pos'))) {
+		if (isset($vars['orderby']) && in_array($vars['orderby'], array('exposure', 'handle', 'merge_pos'))) {
 			$vars = array_merge($vars, array(
 				'meta_key' => WPCACore::PREFIX . $vars['orderby'],
 				'orderby'  => 'meta_value'
@@ -500,15 +500,17 @@ final class ContentAwareSidebars {
 		if (!$this->metadata)
 			$this->_init_metadata();
 
-		$retval = $this->metadata()->get($column_name)->get_list_data($post_id);
+		$retval = $this->metadata()->get($column_name);
 
 		if($retval) {
+
+			$retval = $retval->get_list_data($post_id);
 
 			$data = $this->metadata()->get($column_name)->get_data($post_id);
 			
 			if ($column_name == 'handle' && $data != 2) {
 				$host = $this->metadata()->get('host')->get_list_data($post_id);
-				$retval .= ": " . ($host ?: '<span style="color:red;">' . __('Please update Host Sidebar', self::DOMAIN) . '</span>');
+				$retval .= ": " . ($host ? $host : '<span style="color:red;">' . __('Please update Host Sidebar', self::DOMAIN) . '</span>');
 			}
 		}
 		
@@ -576,33 +578,32 @@ final class ContentAwareSidebars {
 	public function replace_sidebar($sidebars_widgets) {
 
 		$posts = WPCACore::get_posts(self::TYPE_SIDEBAR);
-		if (!$posts)
-			return $sidebars_widgets;
+		if ($posts) {
+			foreach ($posts as $post) {
 
-		foreach ($posts as $post) {
+				$id = self::SIDEBAR_PREFIX . $post->ID;
+				$host = $this->metadata()->get('host')->get_data($post->ID);
 
-			$id = self::SIDEBAR_PREFIX . $post->ID;
-			$host = $this->metadata()->get('host')->get_data($post->ID);
+				// Check for correct handling and if host exist
+				if ($post->handle == 2 || !isset($sidebars_widgets[$host]))
+					continue;
 
-			// Check for correct handling and if host exist
-			if ($post->handle == 2 || !isset($sidebars_widgets[$host]))
-				continue;
+				// Sidebar might not have any widgets. Get it anyway!
+				if (!isset($sidebars_widgets[$id]))
+					$sidebars_widgets[$id] = array();
 
-			// Sidebar might not have any widgets. Get it anyway!
-			if (!isset($sidebars_widgets[$id]))
-				$sidebars_widgets[$id] = array();
-
-			// If handle is merge or if handle is replace and host has already been replaced
-			if ($post->handle == 1 || ($post->handle == 0 && isset($handled_already[$host]))) {
-				if ($this->metadata()->get('merge-pos')->get_data($post->ID))
-					$sidebars_widgets[$host] = array_merge($sidebars_widgets[$host], $sidebars_widgets[$id]);
-				else
-					$sidebars_widgets[$host] = array_merge($sidebars_widgets[$id], $sidebars_widgets[$host]);
-			} else {
-				$sidebars_widgets[$host] = $sidebars_widgets[$id];
-				$handled_already[$host] = 1;
+				// If handle is merge or if handle is replace and host has already been replaced
+				if ($post->handle == 1 || ($post->handle == 0 && isset($handled_already[$host]))) {
+					if ($this->metadata()->get('merge_pos')->get_data($post->ID))
+						$sidebars_widgets[$host] = array_merge($sidebars_widgets[$host], $sidebars_widgets[$id]);
+					else
+						$sidebars_widgets[$host] = array_merge($sidebars_widgets[$id], $sidebars_widgets[$host]);
+				} else {
+					$sidebars_widgets[$host] = $sidebars_widgets[$id];
+					$handled_already[$host] = 1;
+				}
+				
 			}
-			
 		}
 		return $sidebars_widgets;
 	}
@@ -648,7 +649,7 @@ final class ContentAwareSidebars {
 
 			// Merge if more than one. First one is host.
 			if ($i > 0) {
-				if ($this->metadata()->get('merge-pos')->get_data($post->ID))
+				if ($this->metadata()->get('merge_pos')->get_data($post->ID))
 					$_wp_sidebars_widgets[$host] = array_merge($_wp_sidebars_widgets[$host], $_wp_sidebars_widgets[$id]);
 				else
 					$_wp_sidebars_widgets[$host] = array_merge($_wp_sidebars_widgets[$id], $_wp_sidebars_widgets[$host]);
@@ -773,25 +774,6 @@ final class ContentAwareSidebars {
 		);
 
 	}
-	
-	/**
-	 * Hide some meta boxes from start
-	 * @param  array $hidden 
-	 * @param  object $screen 
-	 * @return array 
-	 */
-	public function change_default_hidden($hidden, $screen) {
-
-		if ($screen->post_type == self::TYPE_SIDEBAR && get_user_option('metaboxhidden_sidebar') === false) {
-
-			$hidden_meta_boxes = array('pageparentdiv');
-			$hidden = array_merge($hidden, $hidden_meta_boxes);
-
-			$user = wp_get_current_user();
-			update_user_option($user->ID, 'metaboxhidden_sidebar', $hidden, true);
-		}
-		return $hidden;
-	}
 
 	/**
 	 * Meta box for news
@@ -832,7 +814,7 @@ final class ContentAwareSidebars {
 		$columns = array(
 			'exposure',
 			'handle' => 'handle,host',
-			'merge-pos'
+			'merge_pos'
 		);
 
 		foreach ($columns as $key => $value) {
