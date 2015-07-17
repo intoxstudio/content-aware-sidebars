@@ -198,7 +198,7 @@ class CASModule_post_type extends CASModule {
 		if(is_singular()) {
 			return array(
 				get_post_type(),
-				get_the_ID()
+				get_queried_object_id()
 			);
 		}
 		global $post_type;
