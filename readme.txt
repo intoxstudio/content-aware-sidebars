@@ -3,8 +3,8 @@ Contributors: intoxstudio
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=KPZHE6A72LEN4&lc=US&item_name=WordPress%20Plugin%3a%20Content%20Aware%20Sidebars&currency_code=USD&bn=PP%2dDonationsBF%3abtn_donateCC_LG%2egif%3aNonHosted
 Tags: sidebar, widget, widget area, custom sidebars, dynamic sidebar, replace sidebar, create sidebar, sidebar generator, sidebar plugin, replace widget area, merge widget area, create widget area, context aware, conditional, seo, bbpress, buddypress, qtranslate, polylang, transposh, wpml, woocommerce
 Requires at least: 3.3
-Tested up to: 4.2
-Stable tag: 2.6.1
+Tested up to: 4.3
+Stable tag: 2.6.2
 License: GPLv3
 
 Create and display custom sidebars according to the content being viewed.
@@ -81,7 +81,7 @@ Developed with functionality and performance in mind, Content Aware Sidebars is 
 * Spanish (es_ES)
 * Swedish (sv_SE)
 * Turkish (tr_TR)
-* Ukranian (uk_UA)
+* Ukranian (uk)
 
 **Thanks to the translators:**
 
@@ -149,6 +149,12 @@ Do you want to contribute and see your name here?
 * Hello World
 
 == Changelog ==
+
+= 2.6.2 =
+* Added: wp4.3 compatibility
+* Fixed: sidebars would not be displayed on 404 or empty content
+* Fixed: sidebars would not be displayed when queried object differed from post object
+* Fixed: included ukranian translation properly
 
 = 2.6.1 =
 
