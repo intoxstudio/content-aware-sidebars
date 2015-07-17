@@ -769,9 +769,9 @@ final class ContentAwareSidebars {
 	 * @return array|boolean 
 	 */
 	public function get_sidebars() {
-		global $wpdb, $wp_query;
-		
-		if($wp_query->query == null || is_admin() || post_password_required())
+		global $wpdb, $wp_query, $post;
+
+		if(($wp_query->query == null && $post == null) || is_admin() || post_password_required())
 			return false;
 		
 		// Return cache if present
