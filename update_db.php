@@ -61,39 +61,68 @@ function cas_run_db_update($current_version) {
 function cas_update_to_30() {
 	global $wpdb;
 
-	$wpdb->query("
-		UPDATE $wpdb->posts
-		SET post_type = 'condition_group'
-		WHERE post_type = 'sidebar_group'
-	");
+	// Get all sidebars
+	$posts = get_posts(array(
+		'numberposts'     => -1,
+		'post_type'       => 'sidebar',
+		'post_status'     => 'publish,pending,draft,future,private,trash'
+	));
 
-	//set status
+	if(!empty($posts)) {
 
-	$metadata = array(
-		'post_types'     => 'post_type',
-		'taxonomies'     => 'taxonomy',
-		'authors'        => 'author',
-		'page_templates' => 'page_template',
-		'static'         => 'static',
-		'bb_profile'     => 'bb_profile',
-		'bp_member'      => 'bp_member',
-		'date'           => 'date',
-		'language'       => 'language',
-		'exposure'       => 'exposure',
-		'handle'         => 'handle',
-		'host'           => 'host',
-		'merge-pos'      => 'merge_pos'
-	);
-	
-	foreach($metadata as $old_key => $new_key) {
 		$wpdb->query("
-			UPDATE $wpdb->postmeta 
-			SET meta_key = '_ca_".$new_key."' 
-			WHERE meta_key = '_cas_".$old_key."'
+			UPDATE $wpdb->posts
+			SET post_type = 'condition_group', post_status = 'publish'
+			WHERE post_type = 'sidebar_group'
 		");
+
+		$metadata = array(
+			'post_types'     => 'post_type',
+			'taxonomies'     => 'taxonomy',
+			'authors'        => 'author',
+			'page_templates' => 'page_template',
+			'static'         => 'static',
+			'bb_profile'     => 'bb_profile',
+			'bp_member'      => 'bp_member',
+			'date'           => 'date',
+			'language'       => 'language',
+			'exposure'       => 'exposure',
+			'handle'         => 'handle',
+			'host'           => 'host',
+			'merge-pos'      => 'merge_pos'
+		);
+		
+		foreach($metadata as $old_key => $new_key) {
+			$wpdb->query("
+				UPDATE $wpdb->postmeta 
+				SET meta_key = '_ca_".$new_key."' 
+				WHERE meta_key = '_cas_".$old_key."'
+			");
+			switch($new_key) {
+				case "author":
+				case "page_template":
+					$wpdb->query("
+						UPDATE $wpdb->postmeta 
+						SET meta_value = '".$new_key."' 
+						WHERE meta_key = '_ca_".$new_key."' 
+						AND meta_value = '".$old_key."'
+					");
+					break;
+				case "post_type":
+				case "taxonomy":
+					$wpdb->query("
+						UPDATE $wpdb->postmeta 
+						SET meta_value = REPLACE(meta_value, '_cas_sub_', '_ca_sub_') 
+						WHERE meta_key = '_ca_".$new_key."' 
+						AND meta_value LIKE '_cas_sub_%'
+					");
+					break;
+			}
+		}
+
+		// Clear cache for new meta keys
+		wp_cache_flush();
 	}
-	// Clear cache for new meta keys
-	wp_cache_flush();
 
 	return true;
 }
@@ -143,7 +172,7 @@ function cas_update_to_20() {
 				$wpdb->query("
 					UPDATE $wpdb->postmeta 
 					SET post_id = '".$group_id."' 
-					WHERE meta_key IN ('_cas_'".implode("',_cas_'",$module_keys)."')
+					WHERE meta_key IN ('_cas_".implode("','_cas_",$module_keys)."')
 					AND post_id = '".$post->ID."'
 				");
 
@@ -240,7 +269,7 @@ function cas_update_to_08() {
 		foreach($metadata as $meta) {
 			$wpdb->query("
 				UPDATE $wpdb->postmeta 
-				SET meta_key = '_cas_'".$meta."' 
+				SET meta_key = '_cas_".$meta."' 
 				WHERE meta_key = '".$meta."' 
 				AND post_id IN(".implode(',',$posts).")
 			");
