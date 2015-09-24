@@ -83,7 +83,7 @@ final class CASPointerManager {
 				wpautop(__( "To make a sidebar contextual, you start by creating a condition group.\n\nCondition groups are isolated from each other, meaning that a sidebar can have very different conditions.\n\nNegating a group means that the sidebar will be displayed on all but those conditions.", ContentAwareSidebars::DOMAIN ) )),
 			'ref_id'    => '#cas-groups',
 			'position'  => array(
-				'edge'      => 'top',
+				'edge'      => 'right',
 				'align'     => 'top'
 			)
 		);
@@ -114,7 +114,7 @@ final class CASPointerManager {
 			'ref_id'    => '#contextual-help-link-wrap',
 			'position'  => array(
 				'edge'      => 'top',
-				'align'     => 'left'
+				'align'     => 'right'
 			),
 			'next' => false
 		);
