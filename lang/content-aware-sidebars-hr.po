@@ -1,0 +1,628 @@
+# Copyright (C) 2012 Content Aware Sidebars
+# This file is distributed under the same license as the Content Aware Sidebars package.
+# Translators:
+# Luka Peharda <luka.peharda@gmail.com>, 2015
+# Marijan Rajic <mr.rajic@gmail.com>, 2015
+msgid ""
+msgstr ""
+"Project-Id-Version: Content Aware Sidebars\n"
+"Report-Msgid-Bugs-To: http://wordpress.org/tag/content-aware-sidebars\n"
+"POT-Creation-Date: 2015-05-19 00:22-0800\n"
+"PO-Revision-Date: 2015-06-05 10:22+0000\n"
+"Last-Translator: Marijan Rajic <mr.rajic@gmail.com>\n"
+"Language-Team: Croatian (http://www.transifex.com/intoxstudio/content-aware-sidebars/language/hr/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: hr\n"
+"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"X-Generator: Poedit 1.7.6\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-KeywordsList: __;_e;__ngettext:1,2;_n:1,2;__ngettext_noop:1,2;_n_noop:1,2;_c,_nc:4c,1,2;_x:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2;_ex:1,2c;esc_attr__;esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPath-1: ..\n"
+"X-Poedit-SearchPathExcluded-0: ../node_modules\n"
+"X-Poedit-SearchPathExcluded-1: ../lib/wp-content-aware-engine/node_modules\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Textdomain-Support: yes\n"
+
+#: ../content-aware-sidebars.php:95
+msgid "Manage and show sidebars according to the content being viewed."
+msgstr "Upravljaj i prikazuj bočne trake sukladno sadržaju koji se pregledava."
+
+#: ../content-aware-sidebars.php:96 ../content-aware-sidebars.php:181
+msgid "Content Aware Sidebars"
+msgstr "Sadržajno svjesne bočne trake"
+
+#: ../content-aware-sidebars.php:181
+msgid "Import"
+msgstr "Uvoz"
+
+#: ../content-aware-sidebars.php:295 ../content-aware-sidebars.php:890
+msgid "FAQ"
+msgstr "Česta pitanja"
+
+#: ../content-aware-sidebars.php:372
+msgid "Exposure"
+msgstr "Ekspozicija"
+
+#: ../content-aware-sidebars.php:376
+msgid "Singular"
+msgstr "Jednina"
+
+#: ../content-aware-sidebars.php:377
+msgid "Singular & Archive"
+msgstr "Jednina & arhiva"
+
+#: ../content-aware-sidebars.php:378
+msgid "Archive"
+msgstr "Arhiva"
+
+#: ../content-aware-sidebars.php:383 ../content-aware-sidebars.php:567
+msgctxt "option"
+msgid "Handle"
+msgstr "Rukovanje"
+
+#: ../content-aware-sidebars.php:387
+msgid "Replace"
+msgstr "Zamijeni"
+
+#: ../content-aware-sidebars.php:388
+msgid "Merge"
+msgstr "Spoji"
+
+#: ../content-aware-sidebars.php:389
+msgid "Manual"
+msgstr "Ručno"
+
+#: ../content-aware-sidebars.php:390
+msgid "Forced replace"
+msgstr "Prisilna zamjena"
+
+#: ../content-aware-sidebars.php:392
+msgid "Replace host sidebar, merge with it or add sidebar manually."
+msgstr "Zamijeni bočnu traku hosta, spoji se sa njom ili dodaj bočnu traku ručno."
+
+#: ../content-aware-sidebars.php:396
+msgid "Host Sidebar"
+msgstr "Bočna traka hosta"
+
+#: ../content-aware-sidebars.php:403
+msgid "Merge Position"
+msgstr "Spoji poziciju"
+
+#: ../content-aware-sidebars.php:407
+msgid "Top"
+msgstr "Vrh"
+
+#: ../content-aware-sidebars.php:408
+msgid "Bottom"
+msgstr "Dno"
+
+#: ../content-aware-sidebars.php:410
+msgid "Place sidebar on top or bottom of host when merging."
+msgstr "Smjesti bočnu traku na vrh ili dno hosta prilikom spajanja."
+
+#: ../content-aware-sidebars.php:434
+msgid "Sidebars"
+msgstr "Bočne trake"
+
+#: ../content-aware-sidebars.php:435
+msgid "Sidebar"
+msgstr "Bočna traka"
+
+#: ../content-aware-sidebars.php:436
+msgctxt "sidebar"
+msgid "Add New"
+msgstr "Dodaj novu"
+
+#: ../content-aware-sidebars.php:437
+msgid "Add New Sidebar"
+msgstr "Dodaj novu bočnu traku"
+
+#: ../content-aware-sidebars.php:438
+msgid "Edit Sidebar"
+msgstr "Uredi bočnu traku"
+
+#: ../content-aware-sidebars.php:439
+msgid "New Sidebar"
+msgstr "Nova bočna traka"
+
+#: ../content-aware-sidebars.php:440
+msgid "All Sidebars"
+msgstr "Sve bočne trake"
+
+#: ../content-aware-sidebars.php:441
+msgid "View Sidebar"
+msgstr "Pregled bočnih traka"
+
+#: ../content-aware-sidebars.php:442
+msgid "Search Sidebars"
+msgstr "Pretraži bočne trake"
+
+#: ../content-aware-sidebars.php:443
+msgid "No sidebars found"
+msgstr "Nisu nađene bočne trake"
+
+#: ../content-aware-sidebars.php:444
+msgid "No sidebars found in Trash"
+msgstr "Nema nađenih bočnih traka u smeću"
+
+#: ../content-aware-sidebars.php:446
+msgid "Display sidebar with"
+msgstr "Prikaži bočnu traku sa"
+
+#: ../content-aware-sidebars.php:447
+msgid ""
+"No content. Please add at least one condition group to make the sidebar "
+"content aware."
+msgstr "Bez sadržaja. Molim dodajte barem jednu uvjetnu grupu kako bi učinili bočnu traku sadržajno svjesnom."
+
+#: ../content-aware-sidebars.php:469
+msgid "Manage widgets"
+msgstr "Upravljanje widgetima"
+
+#: ../content-aware-sidebars.php:472 ../content-aware-sidebars.php:475
+msgid "Sidebar updated."
+msgstr "Bočna traka ažurirana."
+
+#: ../content-aware-sidebars.php:477
+msgid "Sidebar published."
+msgstr "Bočna traka objavljena."
+
+#: ../content-aware-sidebars.php:478
+msgid "Sidebar saved."
+msgstr "Bočna traka pohranjena."
+
+#: ../content-aware-sidebars.php:479
+msgid "Sidebar submitted."
+msgstr "Bočna traka predana."
+
+#: ../content-aware-sidebars.php:480
+#, php-format
+msgid "Sidebar scheduled for: <strong>%1$s</strong>."
+msgstr "Bočna traka na rasporedu za: <strong>%1$s</strong>."
+
+#. translators: Publish box date format, see http://php.net/date
+#: ../content-aware-sidebars.php:482
+msgid "M j, Y @ G:i"
+msgstr "M j, Y @ G:i"
+
+#: ../content-aware-sidebars.php:483
+msgid "Sidebar draft updated."
+msgstr "Nacrt bočne trake ažuriran."
+
+#: ../content-aware-sidebars.php:540 ../content-aware-sidebars.php:631
+msgid "Please update Host Sidebar"
+msgstr "Molim ažurirajte bočnu traku hosta."
+
+#: ../content-aware-sidebars.php:568
+msgid "Merge position"
+msgstr "Spoji pozicije"
+
+#: ../content-aware-sidebars.php:569
+msgid "Widgets"
+msgstr "Widgeti"
+
+#: ../content-aware-sidebars.php:682
+msgid "Manage Widgets"
+msgstr "Upravljanje widgetima"
+
+#: ../content-aware-sidebars.php:845
+msgid "Get a free Content Aware Sidebars Premium Bundle"
+msgstr "Nabavite besplatni premium paket sadržajno svjesnih bočnih traka."
+
+#: ../content-aware-sidebars.php:861
+msgid "Options"
+msgstr "Opcije"
+
+#: ../content-aware-sidebars.php:884
+#: ../lib/wp-content-aware-engine/core.php:203
+#: ../lib/wp-content-aware-engine/view/meta_box.php:20 ../pointers.php:51
+msgid "Condition Groups"
+msgstr "Uvjetne grupe"
+
+#: ../content-aware-sidebars.php:885
+msgid ""
+"Each created condition group describe some specific content (conditions) "
+"that the current sidebar should be displayed with."
+msgstr "Svaka kreirana uvjetna grupa opisuje neke specifične sadržaje (uvjete) kojim bi  trenutna bočna traka trebala biti ispunjena."
+
+#: ../content-aware-sidebars.php:886
+msgid ""
+"Content added to a condition group uses logical conjunction, while condition"
+" groups themselves use logical disjunction. This means that content added to"
+" a group should be associated, as they are treated as such, and that the "
+"groups do not interfere with each other. Thus it is possible to have both "
+"extremely focused and at the same time distinct conditions."
+msgstr "Sadržaj dodan uvjetnim grupama koristi logičke spojeve, dok same uvjetne grupe koriste logičke razmake. Ovo znači da bi sadržaj dodan u grupu trebao biti povezan, jer se kao takav i tretira, kao i da se grupe ne miješaju jedna sa drugom. Samim time moguće je imati oboje, ekstremno fokusirane, a istovremeno različite uvjete."
+
+#: ../content-aware-sidebars.php:889
+msgid "More Information"
+msgstr "Više informacija"
+
+#: ../content-aware-sidebars.php:891
+msgid "Get Support"
+msgstr "Traži podršku"
+
+#: ../content-aware-sidebars.php:906
+msgid ""
+"Translate Content Aware Sidebars into your language and become a BETA tester"
+" of the upcoming Premium Bundle*!"
+msgstr "Prevedi sadržajno svjesne bočne traka na svoj jezik i postani BETA tester za nadolazeći premium paket*!"
+
+#: ../content-aware-sidebars.php:907
+msgid "Translate Now"
+msgstr "Prevedi sad"
+
+#: ../content-aware-sidebars.php:908
+msgid "Get Premium Bundle"
+msgstr "Nabavi premium paket"
+
+#: ../content-aware-sidebars.php:909
+msgid ""
+"Single-site use. BETA implies it is not recommended for production sites."
+msgstr "Korištenje na jednom mjestu. BETA implicira da nije preporučeno korištenje u produkciji."
+
+#: ../content-aware-sidebars.php:912
+msgid "Partial Feature List"
+msgstr "Parcijalna lista značajki"
+
+#: ../content-aware-sidebars.php:914
+msgid "Select and create sidebars in the Post Editing Screens"
+msgstr "Odaberite i kreirajte bočne trake u naknadno uređivanim prikazima."
+
+#: ../content-aware-sidebars.php:915
+msgid "Display sidebars with URLs using wildcards"
+msgstr "Prikaži bočne trake sa URL adresama korištenjem wildcarda"
+
+#: ../content-aware-sidebars.php:916
+msgid "Display sidebars with User Roles"
+msgstr "Prikaži bočne trake sa korisničkim ulogama"
+
+#: ../content-aware-sidebars.php:917
+msgid "Display sidebars with BuddyPress User Groups"
+msgstr "Prikaži bočne trake sa BuddyPress korisničkim grupama"
+
+#: ../content-aware-sidebars.php:918
+msgid "Sidebars column in Post Type and Taxonomy Overview Screens"
+msgstr "Kolone bočnih traka u Post Type i prikazom Taxonomy pregleda"
+
+#: ../content-aware-sidebars.php:954 ../content-aware-sidebars.php:955
+msgid "Order"
+msgstr "Redoslijed"
+
+#: ../content-aware-sidebars.php:967
+msgid ""
+"If you love this plugin, please consider donating to support future "
+"development."
+msgstr "Ukoliko volite ovaj dodatak, molim razmotrite donaciju za podršku daljnjem razvoju."
+
+#: ../content-aware-sidebars.php:976
+msgid "Or you could:"
+msgstr "Ili možete:"
+
+#: ../content-aware-sidebars.php:978
+msgid "Rate the plugin on WordPress.org"
+msgstr "Ocijeni plugin na WordPress.org"
+
+#: ../content-aware-sidebars.php:979
+msgid "Link to the plugin page"
+msgstr "Poveznica na stranicu plugina"
+
+#: ../content-aware-sidebars.php:980
+msgid "Translate the plugin into your language"
+msgstr "Prevedi ovaj plugin na svoj jezik"
+
+#: ../content-aware-sidebars.php:1103
+msgid "Close"
+msgstr "Zatvori"
+
+#: ../content-aware-sidebars.php:1104
+msgid "Next"
+msgstr "Slijedeće"
+
+#: ../content-aware-sidebars.php:1124
+msgid "Filter Sidebars"
+msgstr "Filtriraj bočne trake"
+
+#: ../lib/wp-content-aware-engine/core.php:204
+msgid "Condition Group"
+msgstr "Grupa uvjeta"
+
+#: ../lib/wp-content-aware-engine/core.php:205
+msgctxt "group"
+msgid "Add New"
+msgstr "Dodaj novi"
+
+#: ../lib/wp-content-aware-engine/core.php:206
+#: ../lib/wp-content-aware-engine/view/meta_box.php:21
+#: ../lib/wp-content-aware-engine/view/meta_box.php:67
+msgid "Add New Group"
+msgstr "Dodaj novu grupu"
+
+#: ../lib/wp-content-aware-engine/core.php:207
+#: ../lib/wp-content-aware-engine/core.php:625
+#: ../lib/wp-content-aware-engine/view/meta_box.php:38
+msgctxt "group"
+msgid "Edit"
+msgstr "Izmijeni"
+
+#: ../lib/wp-content-aware-engine/core.php:212
+#: ../lib/wp-content-aware-engine/core.php:440
+msgid "No Groups found"
+msgstr "Nisu nađene grupe"
+
+#: ../lib/wp-content-aware-engine/core.php:224
+msgctxt "condition group"
+msgid "Negated"
+msgstr "Negirano"
+
+#: ../lib/wp-content-aware-engine/core.php:447
+msgid "Content"
+msgstr "Sadržaj"
+
+#: ../lib/wp-content-aware-engine/core.php:525
+#: ../lib/wp-content-aware-engine/core.php:573
+#: ../lib/wp-content-aware-engine/core.php:578
+msgid "Unauthorized request"
+msgstr "Nedozvoljeni zahtjev"
+
+#: ../lib/wp-content-aware-engine/core.php:531
+msgid "Condition group cannot be empty"
+msgstr "Uvjetne grupe ne mogu biti prazne"
+
+#: ../lib/wp-content-aware-engine/core.php:550
+msgid "Condition group saved"
+msgstr "Grupa uvjeta spremljena"
+
+#: ../lib/wp-content-aware-engine/core.php:583
+msgid "Condition group could not be removed"
+msgstr "Uvjetne grupe ne mogu biti uklonjene"
+
+#: ../lib/wp-content-aware-engine/core.php:588
+msgid "Condition group removed"
+msgstr "Grupa uvjeta obrisana"
+
+#: ../lib/wp-content-aware-engine/core.php:622
+#: ../lib/wp-content-aware-engine/view/meta_box.php:35
+msgid "Save"
+msgstr "Spremi"
+
+#: ../lib/wp-content-aware-engine/core.php:623
+#: ../lib/wp-content-aware-engine/view/meta_box.php:35
+msgid "Cancel"
+msgstr "Odustani"
+
+#: ../lib/wp-content-aware-engine/core.php:624
+#: ../lib/wp-content-aware-engine/view/meta_box.php:57
+msgid "Or"
+msgstr "Ili"
+
+#: ../lib/wp-content-aware-engine/core.php:626
+#: ../lib/wp-content-aware-engine/view/meta_box.php:38
+msgid "Remove"
+msgstr "Izbriši"
+
+#: ../lib/wp-content-aware-engine/core.php:627
+msgid "Remove this group and its contents permanently?"
+msgstr "Uklanjate ovu grupu i njezin sadržaj trajno?"
+
+#: ../lib/wp-content-aware-engine/core.php:628
+msgid "No results found."
+msgstr "Nema rezultata."
+
+#: ../lib/wp-content-aware-engine/core.php:629
+msgid ""
+"The current group has unsaved changes. Do you want to continue and discard "
+"these changes?"
+msgstr "Trenutna grupa ima nepohranjene promjene. Da li želite nastaviti i zanemariti ove promjene?"
+
+#: ../lib/wp-content-aware-engine/core.php:631
+#: ../lib/wp-content-aware-engine/view/meta_box.php:45
+msgid "Negate group"
+msgstr "Negirajte grupu"
+
+#: ../lib/wp-content-aware-engine/core.php:632
+#: ../lib/wp-content-aware-engine/view/meta_box.php:49
+msgid "Target all but this context"
+msgstr "Naciljaj sve osim ovog konteksta"
+
+#: ../lib/wp-content-aware-engine/core.php:633
+#: ../lib/wp-content-aware-engine/view/meta_box.php:49
+msgid "Target this context"
+msgstr "Naciljaj ovaj kontekst"
+
+#: ../lib/wp-content-aware-engine/module/author.php:30
+msgid "Authors"
+msgstr "Autori"
+
+#: ../lib/wp-content-aware-engine/module/base.php:134
+#, php-format
+msgid "Display with All %s"
+msgstr "Prikažite sa svim %s"
+
+#: ../lib/wp-content-aware-engine/module/base.php:141
+#: ../lib/wp-content-aware-engine/module/bp_member.php:139
+#: ../lib/wp-content-aware-engine/module/post_type.php:275
+#: ../lib/wp-content-aware-engine/module/taxonomy.php:299
+msgid "View All"
+msgstr "Pregledaj sve"
+
+#: ../lib/wp-content-aware-engine/module/base.php:148
+#: ../lib/wp-content-aware-engine/module/base.php:151
+#: ../lib/wp-content-aware-engine/module/post_type.php:281
+#: ../lib/wp-content-aware-engine/module/post_type.php:284
+#: ../lib/wp-content-aware-engine/module/taxonomy.php:305
+#: ../lib/wp-content-aware-engine/module/taxonomy.php:308
+msgid "Search"
+msgstr "Pretraži"
+
+#: ../lib/wp-content-aware-engine/module/bbpress.php:31
+msgid "bbPress User Profiles"
+msgstr "bbPress korisnički profili"
+
+#: ../lib/wp-content-aware-engine/module/bp_member.php:29
+msgid "BuddyPress Members"
+msgstr "BuddyPress članovi"
+
+#: ../lib/wp-content-aware-engine/module/bp_member.php:148
+#: ../lib/wp-content-aware-engine/module/taxonomy.php:318
+#: ../lib/wp-content-aware-engine/view/module/meta_box.php:24
+msgid "Add to Group"
+msgstr "Dodaj u grupu"
+
+#: ../lib/wp-content-aware-engine/module/date.php:31
+msgid "Dates"
+msgstr "Datumi"
+
+#: ../lib/wp-content-aware-engine/module/date.php:70
+msgid "Date Archives"
+msgstr "Datum arhiva"
+
+#: ../lib/wp-content-aware-engine/module/page_template.php:30
+msgid "Page Templates"
+msgstr "Predlošci stranice"
+
+#: ../lib/wp-content-aware-engine/module/polylang.php:29
+#: ../lib/wp-content-aware-engine/module/qtranslate.php:29
+#: ../lib/wp-content-aware-engine/module/transposh.php:29
+#: ../lib/wp-content-aware-engine/module/wpml.php:29
+msgid "Languages"
+msgstr "Jezici"
+
+#: ../lib/wp-content-aware-engine/module/post_type.php:37
+msgid "Post Types"
+msgstr "Tipovi objava"
+
+#: ../lib/wp-content-aware-engine/module/post_type.php:174
+#: ../lib/wp-content-aware-engine/module/taxonomy.php:230
+#: ../lib/wp-content-aware-engine/module/taxonomy.php:273
+msgid "Automatically select new children of a selected ancestor"
+msgstr "Automatski odaberite novog potomka za selektirani objekt"
+
+#: ../lib/wp-content-aware-engine/module/post_type.php:242
+msgid "Automatically add new children of a selected ancestor"
+msgstr "Automatski dodaj djecu odabranog pretka"
+
+#: ../lib/wp-content-aware-engine/module/post_type.php:247
+#, php-format
+msgid "%s Archives"
+msgstr "%s arhiva"
+
+#: ../lib/wp-content-aware-engine/module/post_type.php:248
+msgid "Blog Page"
+msgstr "Blog stranica"
+
+#: ../lib/wp-content-aware-engine/module/post_type.php:255
+#: ../lib/wp-content-aware-engine/module/taxonomy.php:281
+msgid "No items."
+msgstr "Nema stavki."
+
+#: ../lib/wp-content-aware-engine/module/post_type.php:270
+msgid "Most Recent"
+msgstr "Posljednje"
+
+#: ../lib/wp-content-aware-engine/module/static.php:31
+msgid "Static Pages"
+msgstr "Statične stranice"
+
+#: ../lib/wp-content-aware-engine/module/static.php:44
+msgid "Front Page"
+msgstr "Početna stranica"
+
+#: ../lib/wp-content-aware-engine/module/static.php:45
+msgid "Search Results"
+msgstr "Rezultati pretrage"
+
+#: ../lib/wp-content-aware-engine/module/static.php:46
+msgid "404 Page"
+msgstr "404 stranica"
+
+#: ../lib/wp-content-aware-engine/module/taxonomy.php:44
+msgid "Taxonomies"
+msgstr "Taksonomije"
+
+#: ../lib/wp-content-aware-engine/module/taxonomy.php:294
+msgid "Most Used"
+msgstr "Najčešće korištene"
+
+#: ../lib/wp-content-aware-engine/view/meta_box.php:24
+msgid ""
+"Click to edit a group or create a new one. Select content on the left to add"
+" it. In each group, you can combine different types of associated content."
+msgstr "Kliknite za uređivanje grupe ili kreirajte novu. Odaberite sadržaj na lijevo i dodajte ga. U svakoj grupi možete kombinirati različite tipove povezanih sadržaja."
+
+#: ../lib/wp-content-aware-engine/view/module/group.php:16
+#, php-format
+msgid "All %s"
+msgstr "Sve %s"
+
+#: ../pointers.php:37
+msgid "Get started"
+msgstr "Započni"
+
+#: ../pointers.php:38
+msgid ""
+"You've just installed Content Aware Sidebars!\n"
+"\n"
+"It gives you a lot of options, so this screen might look overwhelming at first. Don't worry.\n"
+"\n"
+"Click Start Tour to view a quick introduction and learn how to display a sidebar exactly where and when you want it to."
+msgstr "Upravo ste instalirali sadržajno svjesne bočne trake!\n\nOne vam daju puno opcija pa vam ovaj prikaz možda izgleda komplicirano na prvu. Ne brinite.\n\nKliknite početni obilazak kako bi na brzinu pogledali uvod i naučili kako prikazati bočnu traku točno tamo gdje je i želite."
+
+#: ../pointers.php:45
+msgid "Start Tour"
+msgstr "Početni obilazak"
+
+#: ../pointers.php:47
+msgid "Not now"
+msgstr "Ne sada"
+
+#: ../pointers.php:52
+msgid ""
+"To make a sidebar contextual, you start by creating a condition group.\n"
+"\n"
+"Condition groups are isolated from each other, meaning that a sidebar can have very different conditions.\n"
+"\n"
+"Negating a group means that the sidebar will be displayed on all but those conditions."
+msgstr "Kako bi bočne trake učinili kontekstualnima, krenite stvaranjem nove uvjetne grupe.\n\nUvjetne grupe su izolirane jedna od druge, što znači da bočna traka može imati vrlo različite uvjete.\n\nNegiranje grupe znači da će bočna traka biti prikazana ali bez tih uvjeta."
+
+#: ../pointers.php:61
+msgid "Content and contexts"
+msgstr "Sadržaj i konteksti"
+
+#: ../pointers.php:62
+msgid ""
+"Here you'll find all the content on your site that Content Aware Sidebars supports out of the box.\n"
+"\n"
+"Simply select the content you want the sidebar to be displayed with and add it to a group.\n"
+"\n"
+"You can even combine associated content in one group; try selecting \"All Posts\", a Category and an Author. Awesome!"
+msgstr "Ovdje možete naći cjelokupni sadržaj na vašem mjestu koji sadržajno svjesne bočne trake podržavaju bez ikakve prilagodbe.\n\nJednostavno odaberite sadržaj koji želite prikazati na bočnoj traci i pridodajte ga grupi.\n\nMožete čak i kombinirati povezani sadržaj u jednu grupu; pokušajte odabrati \"Sve objave\", kategoriju i autora. Izvrsno!"
+
+#: ../pointers.php:71
+msgid "Options, options"
+msgstr "Opcije, opcije"
+
+#: ../pointers.php:72
+msgid ""
+"Should the sidebar be displayed on singular pages and/or archives?\n"
+"\n"
+"Should it merge with another sidebar or replace it? Maybe you want to insert it manually in your content with a shortcode.\n"
+"\n"
+"Schedule the sidebar just like you do with posts and pages, or make it private so that it is only visible for logged-in users.\n"
+"\n"
+" You are in control."
+msgstr "Da li bočne trake treba prikazati na pojedinim stranicama i/ili arhivama?\n\nTreba li ih spojiti sa drugim postojećim bočnim trakama ili ih zamijeniti? Možda ih želite ubaciti ručno u svoj sadržaj putem kratkog koda.\n\nRasporedite bočne trake kao što radite sa objavama i stranicama ili ih učinite privatnima kako bi bile vidljive samo prijavljenim korisnicima.\n\n Vi imate kontolu."
+
+#: ../pointers.php:81
+msgid "Help and Support"
+msgstr "Pomoć i podrška"
+
+#: ../pointers.php:82
+msgid ""
+"That's it! Now you can start creating sidebars and display them on your own conditions.\n"
+"\n"
+"If you need more help, click on the \"Help\" tab here."
+msgstr "To je to! Sada možete početi kreirati bočne trake i prikazati ih po svojim uvjetima.\n\nUkoliko trebate opsežniju pomoč, kliknite na \"Pomoć\" tabulator ovdje."

@@ -1,0 +1,628 @@
+# Copyright (C) 2012 Content Aware Sidebars
+# This file is distributed under the same license as the Content Aware Sidebars package.
+# Translators:
+# Ash F <fujita@handyla.com>, 2015
+# Takafumi Kojima <tkfmkjm@gmail.com>, 2015
+msgid ""
+msgstr ""
+"Project-Id-Version: Content Aware Sidebars\n"
+"Report-Msgid-Bugs-To: http://wordpress.org/tag/content-aware-sidebars\n"
+"POT-Creation-Date: 2015-05-19 00:22-0800\n"
+"PO-Revision-Date: 2015-09-05 21:51+0000\n"
+"Last-Translator: Ash F <fujita@handyla.com>\n"
+"Language-Team: Japanese (http://www.transifex.com/intoxstudio/content-aware-sidebars/language/ja/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: ja\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Poedit 1.7.6\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-KeywordsList: __;_e;__ngettext:1,2;_n:1,2;__ngettext_noop:1,2;_n_noop:1,2;_c,_nc:4c,1,2;_x:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2;_ex:1,2c;esc_attr__;esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPath-1: ..\n"
+"X-Poedit-SearchPathExcluded-0: ../node_modules\n"
+"X-Poedit-SearchPathExcluded-1: ../lib/wp-content-aware-engine/node_modules\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Textdomain-Support: yes\n"
+
+#: ../content-aware-sidebars.php:95
+msgid "Manage and show sidebars according to the content being viewed."
+msgstr "閲覧されるコンテントによってサイドバーの管理と表示ができます。"
+
+#: ../content-aware-sidebars.php:96 ../content-aware-sidebars.php:181
+msgid "Content Aware Sidebars"
+msgstr "Content Aware Sidebars"
+
+#: ../content-aware-sidebars.php:181
+msgid "Import"
+msgstr "インポート"
+
+#: ../content-aware-sidebars.php:295 ../content-aware-sidebars.php:890
+msgid "FAQ"
+msgstr "よくある質問"
+
+#: ../content-aware-sidebars.php:372
+msgid "Exposure"
+msgstr "表示"
+
+#: ../content-aware-sidebars.php:376
+msgid "Singular"
+msgstr "単一"
+
+#: ../content-aware-sidebars.php:377
+msgid "Singular & Archive"
+msgstr "単一 & アーカイブ"
+
+#: ../content-aware-sidebars.php:378
+msgid "Archive"
+msgstr "アーカイブ"
+
+#: ../content-aware-sidebars.php:383 ../content-aware-sidebars.php:567
+msgctxt "option"
+msgid "Handle"
+msgstr "処理"
+
+#: ../content-aware-sidebars.php:387
+msgid "Replace"
+msgstr "置換"
+
+#: ../content-aware-sidebars.php:388
+msgid "Merge"
+msgstr "結合"
+
+#: ../content-aware-sidebars.php:389
+msgid "Manual"
+msgstr "手動"
+
+#: ../content-aware-sidebars.php:390
+msgid "Forced replace"
+msgstr "強制置換"
+
+#: ../content-aware-sidebars.php:392
+msgid "Replace host sidebar, merge with it or add sidebar manually."
+msgstr "対象サイドバーを結合または手動追加による置換"
+
+#: ../content-aware-sidebars.php:396
+msgid "Host Sidebar"
+msgstr "対象サイドバー"
+
+#: ../content-aware-sidebars.php:403
+msgid "Merge Position"
+msgstr "結合位置"
+
+#: ../content-aware-sidebars.php:407
+msgid "Top"
+msgstr "上部"
+
+#: ../content-aware-sidebars.php:408
+msgid "Bottom"
+msgstr "下部"
+
+#: ../content-aware-sidebars.php:410
+msgid "Place sidebar on top or bottom of host when merging."
+msgstr "結合時にサイドバーを対象の上部か下部に配置"
+
+#: ../content-aware-sidebars.php:434
+msgid "Sidebars"
+msgstr "サイドバー"
+
+#: ../content-aware-sidebars.php:435
+msgid "Sidebar"
+msgstr "サイドバー"
+
+#: ../content-aware-sidebars.php:436
+msgctxt "sidebar"
+msgid "Add New"
+msgstr "新規追加"
+
+#: ../content-aware-sidebars.php:437
+msgid "Add New Sidebar"
+msgstr "新規サイドバーを追加"
+
+#: ../content-aware-sidebars.php:438
+msgid "Edit Sidebar"
+msgstr "サイドバーを編集"
+
+#: ../content-aware-sidebars.php:439
+msgid "New Sidebar"
+msgstr "新規サイドバー"
+
+#: ../content-aware-sidebars.php:440
+msgid "All Sidebars"
+msgstr "全てのサイドバー"
+
+#: ../content-aware-sidebars.php:441
+msgid "View Sidebar"
+msgstr "サイドバーを表示"
+
+#: ../content-aware-sidebars.php:442
+msgid "Search Sidebars"
+msgstr "サイドバーを検索"
+
+#: ../content-aware-sidebars.php:443
+msgid "No sidebars found"
+msgstr "サイドバーが見つかりません"
+
+#: ../content-aware-sidebars.php:444
+msgid "No sidebars found in Trash"
+msgstr "ゴミ箱にサイドバーは入っていません"
+
+#: ../content-aware-sidebars.php:446
+msgid "Display sidebar with"
+msgstr "サイドバーを同時に表示："
+
+#: ../content-aware-sidebars.php:447
+msgid ""
+"No content. Please add at least one condition group to make the sidebar "
+"content aware."
+msgstr "条件がありません。サイドバーをコンテントに反応させる為には少なくとも条件グループを一つ追加してください。"
+
+#: ../content-aware-sidebars.php:469
+msgid "Manage widgets"
+msgstr "ウィジェットを管理"
+
+#: ../content-aware-sidebars.php:472 ../content-aware-sidebars.php:475
+msgid "Sidebar updated."
+msgstr "サイドバーを更新しました"
+
+#: ../content-aware-sidebars.php:477
+msgid "Sidebar published."
+msgstr "サイドバーを公開しました"
+
+#: ../content-aware-sidebars.php:478
+msgid "Sidebar saved."
+msgstr "サイドバーを保存しました"
+
+#: ../content-aware-sidebars.php:479
+msgid "Sidebar submitted."
+msgstr "サイドバーを送信しました"
+
+#: ../content-aware-sidebars.php:480
+#, php-format
+msgid "Sidebar scheduled for: <strong>%1$s</strong>."
+msgstr "公開予定日時: <strong>%1$s</strong>."
+
+#. translators: Publish box date format, see http://php.net/date
+#: ../content-aware-sidebars.php:482
+msgid "M j, Y @ G:i"
+msgstr "M j, Y @ G:i"
+
+#: ../content-aware-sidebars.php:483
+msgid "Sidebar draft updated."
+msgstr "サイドバーの下書きを更新しました"
+
+#: ../content-aware-sidebars.php:540 ../content-aware-sidebars.php:631
+msgid "Please update Host Sidebar"
+msgstr "対象サイドバーを更新してください"
+
+#: ../content-aware-sidebars.php:568
+msgid "Merge position"
+msgstr "結合位置"
+
+#: ../content-aware-sidebars.php:569
+msgid "Widgets"
+msgstr "ウィジェット"
+
+#: ../content-aware-sidebars.php:682
+msgid "Manage Widgets"
+msgstr "ウィジェットを管理"
+
+#: ../content-aware-sidebars.php:845
+msgid "Get a free Content Aware Sidebars Premium Bundle"
+msgstr "Content Aware Sidebars プレミアムバンドルを無料ゲット"
+
+#: ../content-aware-sidebars.php:861
+msgid "Options"
+msgstr "オプション"
+
+#: ../content-aware-sidebars.php:884
+#: ../lib/wp-content-aware-engine/core.php:203
+#: ../lib/wp-content-aware-engine/view/meta_box.php:20 ../pointers.php:51
+msgid "Condition Groups"
+msgstr "条件グループ"
+
+#: ../content-aware-sidebars.php:885
+msgid ""
+"Each created condition group describe some specific content (conditions) "
+"that the current sidebar should be displayed with."
+msgstr "作成された各条件グループは現在のサイドバーが表示されるべき特定のコンテント(条件)を表します。"
+
+#: ../content-aware-sidebars.php:886
+msgid ""
+"Content added to a condition group uses logical conjunction, while condition"
+" groups themselves use logical disjunction. This means that content added to"
+" a group should be associated, as they are treated as such, and that the "
+"groups do not interfere with each other. Thus it is possible to have both "
+"extremely focused and at the same time distinct conditions."
+msgstr "条件グループ自体が論理和を使用する一方、条件グループに追加されたコンテントは論理積を使用します。\nつまり、条件グループに追加されたコンテントは関連項目のように扱われグループ同士は妨害しません。\nよって、非常に密度の高く且つ独特な条件を持つことができます。"
+
+#: ../content-aware-sidebars.php:889
+msgid "More Information"
+msgstr "詳細情報"
+
+#: ../content-aware-sidebars.php:891
+msgid "Get Support"
+msgstr "サポートに連絡"
+
+#: ../content-aware-sidebars.php:906
+msgid ""
+"Translate Content Aware Sidebars into your language and become a BETA tester"
+" of the upcoming Premium Bundle*!"
+msgstr "Content Aware Sidebars を貴方の言語に翻訳、またはもうすぐ発表されるプレミアムバンドル*のベータテスターになりませんか！"
+
+#: ../content-aware-sidebars.php:907
+msgid "Translate Now"
+msgstr "翻訳する"
+
+#: ../content-aware-sidebars.php:908
+msgid "Get Premium Bundle"
+msgstr "プレミアムバンドルをゲット"
+
+#: ../content-aware-sidebars.php:909
+msgid ""
+"Single-site use. BETA implies it is not recommended for production sites."
+msgstr "単一サイトに限ります。ベータですので公開中のサイトには使用を推奨しません。\n."
+
+#: ../content-aware-sidebars.php:912
+msgid "Partial Feature List"
+msgstr "機能の一部リスト"
+
+#: ../content-aware-sidebars.php:914
+msgid "Select and create sidebars in the Post Editing Screens"
+msgstr "記事編集画面でサイドバーを選択、作成"
+
+#: ../content-aware-sidebars.php:915
+msgid "Display sidebars with URLs using wildcards"
+msgstr "ワイルドカードを使ったURLでサイドバーを表示"
+
+#: ../content-aware-sidebars.php:916
+msgid "Display sidebars with User Roles"
+msgstr "ユーザロールでサイドバーを表示"
+
+#: ../content-aware-sidebars.php:917
+msgid "Display sidebars with BuddyPress User Groups"
+msgstr "BuddyPress ユーザーグループでサイドバーを表示"
+
+#: ../content-aware-sidebars.php:918
+msgid "Sidebars column in Post Type and Taxonomy Overview Screens"
+msgstr "投稿タイプや分類の一覧画面にサイドバーのコラムを表示"
+
+#: ../content-aware-sidebars.php:954 ../content-aware-sidebars.php:955
+msgid "Order"
+msgstr "オーダー"
+
+#: ../content-aware-sidebars.php:967
+msgid ""
+"If you love this plugin, please consider donating to support future "
+"development."
+msgstr "もしこのプラグインが気に入ったら、将来の開発を支援する寄付にご協力ください。"
+
+#: ../content-aware-sidebars.php:976
+msgid "Or you could:"
+msgstr "あるいは："
+
+#: ../content-aware-sidebars.php:978
+msgid "Rate the plugin on WordPress.org"
+msgstr "WordPress.orgでプラグンを評価する"
+
+#: ../content-aware-sidebars.php:979
+msgid "Link to the plugin page"
+msgstr "プラグインのページをリンクする"
+
+#: ../content-aware-sidebars.php:980
+msgid "Translate the plugin into your language"
+msgstr "プラグインを貴方の言語に翻訳する"
+
+#: ../content-aware-sidebars.php:1103
+msgid "Close"
+msgstr "閉じる"
+
+#: ../content-aware-sidebars.php:1104
+msgid "Next"
+msgstr "次へ"
+
+#: ../content-aware-sidebars.php:1124
+msgid "Filter Sidebars"
+msgstr "サイドバーをフィルターする"
+
+#: ../lib/wp-content-aware-engine/core.php:204
+msgid "Condition Group"
+msgstr "条件グループ"
+
+#: ../lib/wp-content-aware-engine/core.php:205
+msgctxt "group"
+msgid "Add New"
+msgstr "新規追加"
+
+#: ../lib/wp-content-aware-engine/core.php:206
+#: ../lib/wp-content-aware-engine/view/meta_box.php:21
+#: ../lib/wp-content-aware-engine/view/meta_box.php:67
+msgid "Add New Group"
+msgstr "新規グループを追加"
+
+#: ../lib/wp-content-aware-engine/core.php:207
+#: ../lib/wp-content-aware-engine/core.php:625
+#: ../lib/wp-content-aware-engine/view/meta_box.php:38
+msgctxt "group"
+msgid "Edit"
+msgstr "編集"
+
+#: ../lib/wp-content-aware-engine/core.php:212
+#: ../lib/wp-content-aware-engine/core.php:440
+msgid "No Groups found"
+msgstr "グループがありません"
+
+#: ../lib/wp-content-aware-engine/core.php:224
+msgctxt "condition group"
+msgid "Negated"
+msgstr "否定する"
+
+#: ../lib/wp-content-aware-engine/core.php:447
+msgid "Content"
+msgstr "コンテント"
+
+#: ../lib/wp-content-aware-engine/core.php:525
+#: ../lib/wp-content-aware-engine/core.php:573
+#: ../lib/wp-content-aware-engine/core.php:578
+msgid "Unauthorized request"
+msgstr "許可されていないリクエストです"
+
+#: ../lib/wp-content-aware-engine/core.php:531
+msgid "Condition group cannot be empty"
+msgstr "条件グループは空にできません"
+
+#: ../lib/wp-content-aware-engine/core.php:550
+msgid "Condition group saved"
+msgstr "条件グループを保存しました"
+
+#: ../lib/wp-content-aware-engine/core.php:583
+msgid "Condition group could not be removed"
+msgstr "条件グループは削除できませんでした"
+
+#: ../lib/wp-content-aware-engine/core.php:588
+msgid "Condition group removed"
+msgstr "条件グループを削除しました"
+
+#: ../lib/wp-content-aware-engine/core.php:622
+#: ../lib/wp-content-aware-engine/view/meta_box.php:35
+msgid "Save"
+msgstr "保存"
+
+#: ../lib/wp-content-aware-engine/core.php:623
+#: ../lib/wp-content-aware-engine/view/meta_box.php:35
+msgid "Cancel"
+msgstr "キャンセル"
+
+#: ../lib/wp-content-aware-engine/core.php:624
+#: ../lib/wp-content-aware-engine/view/meta_box.php:57
+msgid "Or"
+msgstr "または"
+
+#: ../lib/wp-content-aware-engine/core.php:626
+#: ../lib/wp-content-aware-engine/view/meta_box.php:38
+msgid "Remove"
+msgstr "削除"
+
+#: ../lib/wp-content-aware-engine/core.php:627
+msgid "Remove this group and its contents permanently?"
+msgstr "グループとその内容を削除してもよろしいですか？"
+
+#: ../lib/wp-content-aware-engine/core.php:628
+msgid "No results found."
+msgstr "見つかりませんでした"
+
+#: ../lib/wp-content-aware-engine/core.php:629
+msgid ""
+"The current group has unsaved changes. Do you want to continue and discard "
+"these changes?"
+msgstr "現在のグループはまだ保存されていません。続行して変更内容を破棄しますか？"
+
+#: ../lib/wp-content-aware-engine/core.php:631
+#: ../lib/wp-content-aware-engine/view/meta_box.php:45
+msgid "Negate group"
+msgstr "グループを否定する"
+
+#: ../lib/wp-content-aware-engine/core.php:632
+#: ../lib/wp-content-aware-engine/view/meta_box.php:49
+msgid "Target all but this context"
+msgstr "この状況以外全てを対象"
+
+#: ../lib/wp-content-aware-engine/core.php:633
+#: ../lib/wp-content-aware-engine/view/meta_box.php:49
+msgid "Target this context"
+msgstr "この状況を対象"
+
+#: ../lib/wp-content-aware-engine/module/author.php:30
+msgid "Authors"
+msgstr "投稿者"
+
+#: ../lib/wp-content-aware-engine/module/base.php:134
+#, php-format
+msgid "Display with All %s"
+msgstr "全ての %sで表示"
+
+#: ../lib/wp-content-aware-engine/module/base.php:141
+#: ../lib/wp-content-aware-engine/module/bp_member.php:139
+#: ../lib/wp-content-aware-engine/module/post_type.php:275
+#: ../lib/wp-content-aware-engine/module/taxonomy.php:299
+msgid "View All"
+msgstr "全て表示"
+
+#: ../lib/wp-content-aware-engine/module/base.php:148
+#: ../lib/wp-content-aware-engine/module/base.php:151
+#: ../lib/wp-content-aware-engine/module/post_type.php:281
+#: ../lib/wp-content-aware-engine/module/post_type.php:284
+#: ../lib/wp-content-aware-engine/module/taxonomy.php:305
+#: ../lib/wp-content-aware-engine/module/taxonomy.php:308
+msgid "Search"
+msgstr "検索"
+
+#: ../lib/wp-content-aware-engine/module/bbpress.php:31
+msgid "bbPress User Profiles"
+msgstr "bbPress ユーザープロフィール"
+
+#: ../lib/wp-content-aware-engine/module/bp_member.php:29
+msgid "BuddyPress Members"
+msgstr "BuddyPress メンバー"
+
+#: ../lib/wp-content-aware-engine/module/bp_member.php:148
+#: ../lib/wp-content-aware-engine/module/taxonomy.php:318
+#: ../lib/wp-content-aware-engine/view/module/meta_box.php:24
+msgid "Add to Group"
+msgstr "グループを追加"
+
+#: ../lib/wp-content-aware-engine/module/date.php:31
+msgid "Dates"
+msgstr "日付"
+
+#: ../lib/wp-content-aware-engine/module/date.php:70
+msgid "Date Archives"
+msgstr "日付アーカイブ"
+
+#: ../lib/wp-content-aware-engine/module/page_template.php:30
+msgid "Page Templates"
+msgstr "ページテンプレート"
+
+#: ../lib/wp-content-aware-engine/module/polylang.php:29
+#: ../lib/wp-content-aware-engine/module/qtranslate.php:29
+#: ../lib/wp-content-aware-engine/module/transposh.php:29
+#: ../lib/wp-content-aware-engine/module/wpml.php:29
+msgid "Languages"
+msgstr "言語"
+
+#: ../lib/wp-content-aware-engine/module/post_type.php:37
+msgid "Post Types"
+msgstr "投稿タイプ"
+
+#: ../lib/wp-content-aware-engine/module/post_type.php:174
+#: ../lib/wp-content-aware-engine/module/taxonomy.php:230
+#: ../lib/wp-content-aware-engine/module/taxonomy.php:273
+msgid "Automatically select new children of a selected ancestor"
+msgstr "選択項目の子が作成された場合自動選択する"
+
+#: ../lib/wp-content-aware-engine/module/post_type.php:242
+msgid "Automatically add new children of a selected ancestor"
+msgstr "選択項目の子が作成された場合自動追加する"
+
+#: ../lib/wp-content-aware-engine/module/post_type.php:247
+#, php-format
+msgid "%s Archives"
+msgstr "%s のアーカイブ"
+
+#: ../lib/wp-content-aware-engine/module/post_type.php:248
+msgid "Blog Page"
+msgstr "ブログページ"
+
+#: ../lib/wp-content-aware-engine/module/post_type.php:255
+#: ../lib/wp-content-aware-engine/module/taxonomy.php:281
+msgid "No items."
+msgstr "項目がありません。"
+
+#: ../lib/wp-content-aware-engine/module/post_type.php:270
+msgid "Most Recent"
+msgstr "最近の"
+
+#: ../lib/wp-content-aware-engine/module/static.php:31
+msgid "Static Pages"
+msgstr "固定ページ"
+
+#: ../lib/wp-content-aware-engine/module/static.php:44
+msgid "Front Page"
+msgstr "フロントページ"
+
+#: ../lib/wp-content-aware-engine/module/static.php:45
+msgid "Search Results"
+msgstr "検索結果"
+
+#: ../lib/wp-content-aware-engine/module/static.php:46
+msgid "404 Page"
+msgstr "404ページ"
+
+#: ../lib/wp-content-aware-engine/module/taxonomy.php:44
+msgid "Taxonomies"
+msgstr "分類"
+
+#: ../lib/wp-content-aware-engine/module/taxonomy.php:294
+msgid "Most Used"
+msgstr "最も使用された"
+
+#: ../lib/wp-content-aware-engine/view/meta_box.php:24
+msgid ""
+"Click to edit a group or create a new one. Select content on the left to add"
+" it. In each group, you can combine different types of associated content."
+msgstr "クリックしてグループを編集するか新規作成できます。左側にあるコンテントを選択して追加してください。各グループで違う種類のコンテントを組み合わせることができます。"
+
+#: ../lib/wp-content-aware-engine/view/module/group.php:16
+#, php-format
+msgid "All %s"
+msgstr "全ての %s"
+
+#: ../pointers.php:37
+msgid "Get started"
+msgstr "始める"
+
+#: ../pointers.php:38
+msgid ""
+"You've just installed Content Aware Sidebars!\n"
+"\n"
+"It gives you a lot of options, so this screen might look overwhelming at first. Don't worry.\n"
+"\n"
+"Click Start Tour to view a quick introduction and learn how to display a sidebar exactly where and when you want it to."
+msgstr "Content Aware Sidebars をインストールしました！\n\nオプションが沢山あって面倒に見えるかもしれませんがご心配なく。\n\n「ツアーを開始」をクリックすると簡単な紹介とサイドバーを思い通りに表示するための説明をご覧になれます。"
+
+#: ../pointers.php:45
+msgid "Start Tour"
+msgstr "ツアーを開始"
+
+#: ../pointers.php:47
+msgid "Not now"
+msgstr "後で"
+
+#: ../pointers.php:52
+msgid ""
+"To make a sidebar contextual, you start by creating a condition group.\n"
+"\n"
+"Condition groups are isolated from each other, meaning that a sidebar can have very different conditions.\n"
+"\n"
+"Negating a group means that the sidebar will be displayed on all but those conditions."
+msgstr "サイドバーを反応させる為には、まず条件グループをつくることです。\n\n各条件グループは独立しており、一つのサイドバーが複数の異なる条件を持つことができます。\n\nグループを否定することによりサイドバーがその条件以外の時に表示されます。"
+
+#: ../pointers.php:61
+msgid "Content and contexts"
+msgstr "コンテントと状況"
+
+#: ../pointers.php:62
+msgid ""
+"Here you'll find all the content on your site that Content Aware Sidebars supports out of the box.\n"
+"\n"
+"Simply select the content you want the sidebar to be displayed with and add it to a group.\n"
+"\n"
+"You can even combine associated content in one group; try selecting \"All Posts\", a Category and an Author. Awesome!"
+msgstr "これらが Content Aware Sidebars が標準でサポートするコンテントの一覧です。\n\nサイドバーを表示したいコンテントを選んでグループに追加するだけです。\n\n関連コンテントを一つのグループにまとめることもできます。試しに「全ての投稿」、カテゴリー、投稿者を選択してみてください。素晴らしいでしょう！"
+
+#: ../pointers.php:71
+msgid "Options, options"
+msgstr "オプション"
+
+#: ../pointers.php:72
+msgid ""
+"Should the sidebar be displayed on singular pages and/or archives?\n"
+"\n"
+"Should it merge with another sidebar or replace it? Maybe you want to insert it manually in your content with a shortcode.\n"
+"\n"
+"Schedule the sidebar just like you do with posts and pages, or make it private so that it is only visible for logged-in users.\n"
+"\n"
+" You are in control."
+msgstr "サイドバーを単一ページとアーカイブのどちらか、または両方に表示したいですか？\n\nサイドバーを他のサイドバーと結合、または置換したいですか？\nショートコードを使ってコンテントに手動挿入したいかもしれませんね。\n\nサイドバーを記事やページの様に公開予約したりプライベートにしてログインしたユーザのみに見せることができます。\n\nあなたの思い通りにできます。"
+
+#: ../pointers.php:81
+msgid "Help and Support"
+msgstr "ヘルプとサポート"
+
+#: ../pointers.php:82
+msgid ""
+"That's it! Now you can start creating sidebars and display them on your own conditions.\n"
+"\n"
+"If you need more help, click on the \"Help\" tab here."
+msgstr "以上です！ これで貴方はサイドバーを作成して条件表示をすることができます。\n\nもしなにか必要なことがあったら「ヘルプ」タブを押してください。"
