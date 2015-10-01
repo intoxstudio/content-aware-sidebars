@@ -2,7 +2,7 @@
 Contributors: intoxstudio
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=KPZHE6A72LEN4&lc=US&item_name=WordPress%20Plugin%3a%20Content%20Aware%20Sidebars&currency_code=USD&bn=PP%2dDonationsBF%3abtn_donateCC_LG%2egif%3aNonHosted
 Tags: sidebar, widget, widget area, custom sidebars, dynamic sidebar, replace sidebar, create sidebar, sidebar generator, sidebar plugin, replace widget area, merge widget area, create widget area, context aware, conditional, seo, bbpress, buddypress, qtranslate, polylang, transposh, wpml, woocommerce
-Requires at least: 3.8
+Requires at least: 3.3
 Tested up to: 4.3
 Stable tag: 2.6.3
 License: GPLv3
@@ -20,30 +20,38 @@ Developed with functionality and performance in mind, Content Aware Sidebars is 
 = Lots of awesome Features =
 
 * Easy-to-use Sidebar Manager
-* Widget management integration in Theme Customizer (WP3.9+)
-* Display sidebars with all or specific:
-	* Singulars - e.g. posts or pages
-	* (Custom) Post Types
-	* Singulars with given (custom) taxonomies or taxonomy terms - e.g. categories or tags
-	* Singulars by a given author
-	* Page Templates
-	* Post Formats
-	* Post Type Archives
-	* Author Archives
-	* (Custom) Taxonomy Archives or Taxonomy Term Archives
-	* Search Results
-	* 404 Page
-	* Front Page
-	* bbPress User Profiles
-	* BuddyPress Member Pages
-	* Languages (qTranslate, Polylang, Transposh, WPML)
-	* **Any combination of the above**
-* Sidebars can automatically merge with or replace others
+* Create unlimited number of sidebars
+* Manage widgets in Theme Customizer (WP3.9+)
+* Automatic support for Custom Post Types and Taxonomies
+* Sidebars can automatically merge with or replace a host sidebar
 * Create complex content with nested sidebars
-* Private sidebars only for members
+* Private sidebars only for logged in users
 * Schedule sidebars for later publishing
-* Template Tag to display content aware sidebars anywhere in your theme
-* **NEW:** Shortcode to display sidebars anywhere in your content
+* Template Tag to display custom sidebars anywhere in your theme
+* Shortcode to display custom sidebars anywhere in your content
+
+= Display sidebars on certain conditions = 
+
+* Singulars, e.g. posts or pages
+* (Custom) Post Types
+* Singulars with given taxonomies, e.g. categories or tags
+* Singulars by a given author
+* Page Templates
+* Post Formats
+* Post Type Archives
+* Author Archives
+* (Custom) Taxonomy Archives
+* Date Archives
+* Search Results
+* 404 Not Found Page
+* Front Page
+* bbPress User Profiles
+* BuddyPress Member Pages
+* Languages (qTranslate, Polylang, Transposh, WPML)
+
+Combine these conditions in any way you like, e.g. display a sidebar on all Posts in Category X by author Y.
+
+**NEW:** Negate conditions, e.g. display a sidebar on all pages except Page X.
 
 = Integrated Support for Popular Plugins =
 
@@ -56,29 +64,11 @@ Developed with functionality and performance in mind, Content Aware Sidebars is 
 
 = Multilingual and Translation Ready =
 
-* Chinese (zh_CN)
-* Danish (da_DK)
-* Dutch (nl_NL)
-* German (de_DE)
-* Hungarian (hu_HU)
-* Italian (it_IT)
-* Latvian (lv_LV)
-* Lithuanian (lt_LT)
-* Polish (pl_PL)
-* Portuguese, Brazilian (pt_BR) 
-* Russian (ru_RU)
-* Serbian (sr_RS)
-* Slovak (sk_SK)
-* Spanish (es_ES)
-* Ukranian (uk_UA)
+Content Aware Sidebars comes in 38 languages.
 
-**Thanks to the translators:**
+Arabic (ar), Bulgarian (bg_BG), Basque (eu), Catalan (ca), Chinese (zh_CN), Croatian (hr), Czech (cs_CZ), Danish (da_DK), Dutch (nl_NL), English, Estonian (et), Finnish (fi), French, Canada (fr_CA), French, France (fr_FR), German (de_DE), Greek (el), Hebrew (he_IL), Hungarian (hu_HU), Indonesian (id_ID), Italian (it_IT), Japanaese (ja), Korean (ko_KR), Latvian (lv_LV), Lithuanian (lt_LT), Norwegian Bokmål (nb_NO), Persian (fa_IR), Polish (pl_PL), Portuguese, Brazil (pt_BR), Portuguese, Portugal (pt_PT), Russian (ru_RU), Serbian (sr_RS), Slovak (sk_SK), Slovenian (sl_SI), Spanish (es_ES), Swedish (sv_SE), Turkish (tr_TR), Ukranian (uk), Vietnamese (vi)
 
-[Andreas Kuhl](https://www.transifex.com/accounts/profile/akuhl/), Branco, [Dennis Beckers](https://www.transifex.com/accounts/profile/denisbeckers/), Enno Wulff, Haralds Gribusts, [Henrik Heil](https://www.transifex.com/accounts/profile/henrik.heil/), [Ilya Trofimov](https://www.transifex.com/accounts/profile/iltrof/), [Joe Tze](http://tkjune.com), Kis Lukács, [Luciano Del Fico](http://www.myweb2.it/), [Marcelo Ghelman](https://www.transifex.com/accounts/profile/marcelo.ghelman/), [Marta Jasiuk](http://linkedin.com/in/martajasiuk), [Michael Yunat](http://getvoip.com), [Ogi Djuraskovic](http://firstsiteguide.com/), Vincent G
-
-Do you want to contribute and see your name here?
-
-[Click to go to Transifex.com to translate Content Aware Sidebars into your language](https://www.transifex.com/projects/p/content-aware-sidebars/). Alternatively you can send the .po and .mo files to translate [at] intox.dk.
+[Click here to go to Transifex.com to translate Content Aware Sidebars into your language](https://www.transifex.com/projects/p/content-aware-sidebars/).
 
 = For more information =
 
@@ -92,12 +82,22 @@ Do you want to contribute and see your name here?
 1. Upload the full plugin directory to your `/wp-content/plugins/` directory or install the plugin through `Plugins` in the administration 
 1. Activate the plugin through `Plugins` in the administration
 1. Have fun creating your first sidebar under the menu *Sidebars > Add New*
-1. Optional: Insert Template Tag `<?php display_ca_sidebar( $args ); ?>` in your theme for manually handled sidebars
+1. Optional: Insert Template Tag `<?php ca_display_sidebar( $args ); ?>` in your theme for manually handled sidebars
 1. Optional: Insert Shortcode `[ca-sidebar id=]` in some content for manually handled sidebars
 
 == Frequently Asked Questions ==
 
 [Click here to go to the official FAQ page for Content Aware Sidebars](http://www.intox.dk/en/plugin/content-aware-sidebars-en/faq/).
+
+== Translation Contributors ==
+
+********
+[Dr.Outlander](https://www.transifex.com/accounts/profile/Dr.Outlander/), [allo.babi](https://www.transifex.com/accounts/profile/allo.babi/), [gattiken](https://www.transifex.com/accounts/profile/gattiken/), [eliuzunova](https://www.transifex.com/accounts/profile/eliuzunova/), [DCLXVI](https://www.transifex.com/accounts/profile/DCLXVI/), [kaotiko](https://www.transifex.com/accounts/profile/kaotiko/), [keystorm](https://www.transifex.com/accounts/profile/keystorm/), [tkjune](https://www.transifex.com/accounts/profile/tkjune/), [wcybrick](https://www.transifex.com/accounts/profile/wcybrick/), [luka.peharda](https://www.transifex.com/accounts/profile/luka.peharda/), [MrRajic](https://www.transifex.com/accounts/profile/MrRajic/), [denisbeckers](https://www.transifex.com/accounts/profile/denisbeckers/), [7GRAFIX](https://www.transifex.com/accounts/profile/7GRAFIX/), [SynergiaWeb](https://www.transifex.com/accounts/profile/SynergiaWeb/), [MSTannu](https://www.transifex.com/accounts/profile/MSTannu/), [addicted2web](https://www.transifex.com/accounts/profile/addicted2web/), [Fastfuel](https://www.transifex.com/accounts/profile/Fastfuel/), [ewx](https://www.transifex.com/accounts/profile/ewx/), [henrik.heil](https://www.transifex.com/accounts/profile/henrik.heil/), [18micha48](https://www.transifex.com/accounts/profile/18micha48/), [mcpitten](https://www.transifex.com/accounts/profile/mcpitten/), [milan.bolland](https://www.transifex.com/accounts/profile/milan.bolland/), [TheFluffyDonkey](https://www.transifex.com/accounts/profile/TheFluffyDonkey/), [akuhl](https://www.transifex.com/accounts/profile/akuhl/), [tabakisp](https://www.transifex.com/accounts/profile/tabakisp/), [Dimis13](https://www.transifex.com/accounts/profile/Dimis13/), [cyberwani](https://www.transifex.com/accounts/profile/cyberwani/), [Neftigon](https://www.transifex.com/accounts/profile/Neftigon/), [Lucky65](https://www.transifex.com/accounts/profile/Lucky65/), [tkfmkjm](https://www.transifex.com/accounts/profile/tkfmkjm/), [ashf](https://www.transifex.com/accounts/profile/ashf/), [saynim](https://www.transifex.com/accounts/profile/saynim/), [zanpress](https://www.transifex.com/accounts/profile/zanpress/), [phpkalemi](https://www.transifex.com/accounts/profile/phpkalemi/), [syruas](https://www.transifex.com/accounts/profile/syruas/), [PaalJoachim](https://www.transifex.com/accounts/profile/PaalJoachim/), [khalil.delavaran](https://www.transifex.com/accounts/profile/khalil.delavaran/), [mayones](https://www.transifex.com/accounts/profile/mayones/), [artilogic](https://www.transifex.com/accounts/profile/artilogic/), [greenspiracje](https://www.transifex.com/accounts/profile/greenspiracje/), [ibushi](https://www.transifex.com/accounts/profile/ibushi/), [marcelo.ghelman](https://www.transifex.com/accounts/profile/marcelo.ghelman/), [ovelhaaa](https://www.transifex.com/accounts/profile/ovelhaaa/), [luismartins](https://www.transifex.com/accounts/profile/luismartins/), [Almaz](https://www.transifex.com/accounts/profile/Almaz/), [NikitaM](https://www.transifex.com/accounts/profile/NikitaM/), [Aakurb](https://www.transifex.com/accounts/profile/Aakurb/), [Rakhmanov](https://www.transifex.com/accounts/profile/Rakhmanov/), [jurcc](https://www.transifex.com/accounts/profile/jurcc/), [horacio.salazar](https://www.transifex.com/accounts/profile/horacio.salazar/), [javitopo](https://www.transifex.com/accounts/profile/javitopo/), [killawabbit](https://www.transifex.com/accounts/profile/killawabbit/), [IBsweden](https://www.transifex.com/accounts/profile/IBsweden/), [adrianb](https://www.transifex.com/accounts/profile/adrianb/), [eebrutas](https://www.transifex.com/accounts/profile/eebrutas/), [ahmetyilmaz](https://www.transifex.com/accounts/profile/ahmetyilmaz/), [auludag](https://www.transifex.com/accounts/profile/auludag/), [Dikhotheta](https://www.transifex.com/accounts/profile/Dikhotheta/)
+********
+
+Do you want to contribute and see your name here?
+
+[Click here to go to Transifex.com to translate Content Aware Sidebars into your language](https://www.transifex.com/projects/p/content-aware-sidebars/).
 
 == Screenshots ==
 
@@ -108,6 +108,11 @@ Do you want to contribute and see your name here?
 5. Viewing a Post that contains Very Categorized. `Very Categorized Posts` sidebar has replaced `Primary Sidebar`
 
 == Upgrade Notice ==
+
+= 3.0 = 
+
+* Content Aware Sidebars data in your database will be updated automatically. It is highly recommended to backup this data before updating the plugin.
+* Minimum WordPress version compatibility is now 3.8.
 
 = 2.0 = 
 
@@ -135,6 +140,29 @@ Do you want to contribute and see your name here?
 * Hello World
 
 == Changelog ==
+
+= 3.0 =
+
+* Added: plugin rewritten with wp-content-aware-engine to take care of everything related to conditional content
+* Added: migrate existing sidebar data to wp-content-aware-engine standards
+* Added: negation of condition groups
+* Added: new api to add modules
+* Added: new action and filter hooks
+* Added: intro tour
+* Added: ca_display_sidebar deprecates display_ca_sidebar
+* Added: filter for sidebars on widgets screen
+* Added: add sidebar from widgets screen
+* Added: filter for available widgets on widgets screen
+* Added: more simple information meta box
+* Added: gui improvements in sidebar editor
+* Added: bulk update messages translatable
+* Added: draft post status included in post type lists
+* Fixed: uninstall script cleans residual data better
+* Fixed: posts page and front page excluded from page post type list
+* Fixed: minimum requirement wp3.8
+* Removed: all action and filter hooks (moved to wp-content-aware-engine under new names)
+* Removed: deprecated icons
+* Removed: screenshots
 
 = 2.6.3 =
 
