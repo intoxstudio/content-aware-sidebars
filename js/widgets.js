@@ -5,7 +5,7 @@
 
 (function($) {
 
-	var cas_admin = {
+	var cas_widgets = {
 
 		$sidebarContainer: $(".widget-liquid-right"),
 		$widgetContainer: $('#available-widgets'),
@@ -34,7 +34,7 @@
 		 * @since 3.0
 		 */
 		addWidgetSearch: function() {
-			$(".sidebar-description",this.$widgetContainer).prepend('<input type="search" class="js-cas-widget-filter" placeholder="'+CASAdmin.filterWidgets+'...">');
+			$(".sidebar-description",this.$widgetContainer).prepend('<input type="search" class="js-cas-widget-filter cas-filter-widget" placeholder="'+CASAdmin.filterWidgets+'...">');
 			this.searchWidgetListener();
 		},
 		/**
@@ -76,9 +76,9 @@
 		 */
 		addSidebarToolbar: function() {
 
-			var box = '<div class="wp-filter" style="margin: 10px 0px; vertical-align: middle;">'+
-			'<a href="post-new.php?post_type=sidebar" class="button button-primary" style="margin: 12px 0 11px">'+CASAdmin.addNew+'</a>'+
-			'<input type="search" class="js-cas-filter" placeholder="'+CASAdmin.filterSidebars+'..." style="margin: 12px 0 11px;float: right;">'+
+			var box = '<div class="wp-filter cas-filter-sidebar">'+
+			'<a href="post-new.php?post_type=sidebar" class="button button-primary">'+CASAdmin.addNew+'</a>'+
+			'<input type="search" class="js-cas-filter" placeholder="'+CASAdmin.filterSidebars+'...">'+
 			'</div>';
 
 			this.$sidebarContainer.prepend(box);
@@ -137,6 +137,6 @@
 
 	};
 
-	$(document).ready(function(){ cas_admin.init(); });
+	$(document).ready(function(){ cas_widgets.init(); });
 
 })(jQuery);

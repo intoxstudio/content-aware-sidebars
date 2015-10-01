@@ -15,7 +15,7 @@ Domain Path: /lang/
 License: GPLv3
 
 	Content Aware Sidebars Plugin
-	Copyright (C) 2011-2014 Joachim Jensen - jv@intox.dk
+	Copyright (C) 2011-2015 Joachim Jensen - jv@intox.dk
 
 	This program is free software: you can redistribute it and/or modify
 	it under the terms of the GNU General Public License as published by
@@ -143,7 +143,6 @@ final class ContentAwareSidebars {
 
 	/**
 	 * Display sidebar with shortcode
-	 * @author  Joachim Jensen <jv@intox.dk>
 	 * @version 2.5
 	 * @param   array     $atts
 	 * @param   string    $content
@@ -163,7 +162,6 @@ final class ContentAwareSidebars {
 
 	/**
 	 * Add actions to plugin in Plugins screen
-	 * @author  Joachim Jensen <jv@intox.dk>
 	 * @version 2.4
 	 * @param   array     $actions
 	 * @param   string    $plugin_file
@@ -185,7 +183,6 @@ final class ContentAwareSidebars {
 	 * Widget management in Theme Customizer
 	 * expects this
 	 * 
-	 * @author Joachim Jensen <jv@intox.dk>
 	 * @global type $wp_customize
 	 * @since  2.2
 	 * @return void
@@ -570,7 +567,6 @@ final class ContentAwareSidebars {
 
 	/**
 	 * Replace or merge a sidebar with content aware sidebars.
-	 * @author Joachim Jensen <jv@intox.dk>
 	 * @since  .
 	 * @param  array    $sidebars_widgets
 	 * @return array
@@ -681,6 +677,7 @@ final class ContentAwareSidebars {
 
 		// Names of whitelisted meta boxes
 		$whitelist = array(
+			'cas-plugin-links' => 'cas-plugin-links',
 			'cas-news'      => 'cas-news',
 			'cas-support'   => 'cas-support',
 			'cas-groups'    => 'cas-groups',
@@ -721,14 +718,21 @@ final class ContentAwareSidebars {
 		}
 
 		$boxes = array(
-			//News
 			array(
-				'id'       => 'cas-news',
-				'title'    => __('Get a free Content Aware Sidebars Premium Bundle', self::DOMAIN),
-				'callback' => 'meta_box_news',
-				'context'  => 'normal',
+				'id'       => 'cas-plugin-links',
+				'title'    => __('Content Aware Sidebars', self::DOMAIN),
+				'callback' => 'meta_box_support',
+				'context'  => 'side',
 				'priority' => 'high'
 			),
+			//News
+			// array(
+			// 	'id'       => 'cas-news',
+			// 	'title'    => __('Get a free Content Aware Sidebars Premium Bundle', self::DOMAIN),
+			// 	'callback' => 'meta_box_news',
+			// 	'context'  => 'normal',
+			// 	'priority' => 'high'
+			// ),
 			//About
 			// array(
 			// 	'id'       => 'cas-support',
@@ -777,7 +781,6 @@ final class ContentAwareSidebars {
 
 	/**
 	 * Meta box for news
-	 * @author  Joachim Jensen <jv@intox.dk>
 	 * @version 2.5
 	 * @return  void
 	 */
@@ -837,7 +840,29 @@ final class ContentAwareSidebars {
 		echo '<p><label for="menu_order" class="screen-reader-text">'.__('Order').'</label>';
 		echo '<input type="number" value="'.$post->menu_order.'" id="menu_order" size="4" name="menu_order"></p></span>';
 	}
-		
+
+	/**
+	 * Meta box for info and support
+	 *
+	 * @since  3.0
+	 * @return void 
+	 */
+	public function meta_box_support() {
+		$locale = get_locale();
+?>
+			<div style="overflow:hidden;">
+				<ul>
+					<li><a href="https://wordpress.org/support/view/plugin-reviews/content-aware-sidebars?rate=5#postform" target="_blank"><?php _e('Give a review on WordPress.org',self::DOMAIN); ?></a></li>
+<?php if($locale != "en_US") : ?>
+					<li><a href="https://www.transifex.com/projects/p/content-aware-sidebars/" target="_blank"><?php _e('Translate the plugin into your language',self::DOMAIN); ?></a></li>
+<?php endif; ?>
+					<li><a href="http://www.intox.dk/en/plugin/content-aware-sidebars-en/faq/" target="_blank"><?php _e('Read the FAQ',self::DOMAIN); ?></a></li>
+					<li><a href="https://wordpress.org/support/plugin/content-aware-sidebars/" target="_blank"><?php _e('Get Support',self::DOMAIN); ?></a></li>
+				</ul>
+			</div>
+		<?php
+	}
+
 	/**
 	 * Meta box for author words
 	 * @return void 
@@ -969,28 +994,27 @@ final class ContentAwareSidebars {
 
 		if($current_screen->post_type == self::TYPE_SIDEBAR) {
 			
-			wp_register_script('cas_admin_script', plugins_url('/js/cas_admin.js', __FILE__), array('jquery'), self::PLUGIN_VERSION, true);
+			wp_register_script('cas/admin/edit', plugins_url('/js/cas_admin.js', __FILE__), array('jquery'), self::PLUGIN_VERSION, true);
 			
-			wp_register_style('cas_admin_style', plugins_url('/css/style.css', __FILE__), array(), self::PLUGIN_VERSION);
+			wp_register_style('cas/admin/style', plugins_url('/css/style.css', __FILE__), array(), self::PLUGIN_VERSION);
 
 			//Sidebar editor
 			if ($current_screen->base == 'post') {
-
-				wp_enqueue_script('cas_admin_script');
-				wp_enqueue_style('cas_admin_style');
+				wp_enqueue_script('cas/admin/edit');
+				wp_enqueue_style('cas/admin/style');
 			//Sidebar overview
 			} else if ($hook == 'edit.php') {
-				wp_enqueue_style('cas_admin_style');
+				wp_enqueue_style('cas/admin/style');
 			}			
 		} else if($current_screen->base == 'widgets') {
-			wp_register_style('cas_admin_style', plugins_url('/css/style.css', __FILE__), array(), self::PLUGIN_VERSION);
-			wp_enqueue_style('cas_admin_style');
+			wp_register_style('cas/admin/style', plugins_url('/css/style.css', __FILE__), array(), self::PLUGIN_VERSION);
+			wp_enqueue_style('cas/admin/style');
 
 			$sidebar = get_post_type_object(self::TYPE_SIDEBAR);
 
-			wp_register_script('cas_admin_widgets', plugins_url('/js/widgets.js', __FILE__), array('jquery'), self::PLUGIN_VERSION, true);
-			wp_enqueue_script('cas_admin_widgets');
-			wp_localize_script( 'cas_admin_widgets', 'CASAdmin', array(
+			wp_register_script('cas/admin/widgets', plugins_url('/js/widgets.js', __FILE__), array('jquery'), self::PLUGIN_VERSION, true);
+			wp_enqueue_script('cas/admin/widgets');
+			wp_localize_script( 'cas/admin/widgets', 'CASAdmin', array(
 				'edit'           => $sidebar->labels->edit_item,
 				'addNew'         => $sidebar->labels->add_new_item,
 				'filterSidebars' => __("Filter Sidebars",self::DOMAIN),
