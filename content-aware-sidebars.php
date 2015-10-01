@@ -125,6 +125,8 @@ final class ContentAwareSidebars {
 				array(&$this,'sidebar_row_actions'),10,2);
 			add_filter('post_updated_messages',
 				array(&$this,'sidebar_updated_messages'));
+			add_filter( 'bulk_post_updated_messages',
+				array(&$this,'sidebar_updated_bulk_messages'), 10, 2 );
 			add_filter('plugin_action_links_'.plugin_basename(__FILE__),
 				array(&$this,'plugin_action_links'), 10, 4 );
 
@@ -211,7 +213,9 @@ final class ContentAwareSidebars {
 	}
 	
 	/**
-	 * Deploy modules
+	 * Load textdomain
+	 *
+	 * @since  3.0
 	 * @return void 
 	 */
 	public function load_textdomain() {
@@ -291,21 +295,12 @@ final class ContentAwareSidebars {
 	}
 	
 	/**
-	 * Create sidebar post type and filter group post type
+	 * Create sidebar post type
+	 * Add it to content aware engine
+	 * 
 	 * @return void 
 	 */
 	public function init_sidebar_type() {
-
-		$capabilities = array(
-			'edit_post'          => self::CAPABILITY,
-			'read_post'          => self::CAPABILITY,
-			'delete_post'        => self::CAPABILITY,
-			'edit_posts'         => self::CAPABILITY,
-			'delete_posts'       => self::CAPABILITY,
-			'edit_others_posts'  => self::CAPABILITY,
-			'publish_posts'      => self::CAPABILITY,
-			'read_private_posts' => self::CAPABILITY
-		);
 		
 		// Register the sidebar type
 		register_post_type(self::TYPE_SIDEBAR,array(
@@ -325,14 +320,23 @@ final class ContentAwareSidebars {
 				'ca_title'           => __('Display sidebar with',self::DOMAIN),
 				'ca_not_found'       => __('No content. Please add at least one condition group to make the sidebar content aware.',self::DOMAIN)
 			),
-			'capabilities'  => $capabilities,
+			'capabilities'  => array(
+				'edit_post'          => self::CAPABILITY,
+				'read_post'          => self::CAPABILITY,
+				'delete_post'        => self::CAPABILITY,
+				'edit_posts'         => self::CAPABILITY,
+				'delete_posts'       => self::CAPABILITY,
+				'edit_others_posts'  => self::CAPABILITY,
+				'publish_posts'      => self::CAPABILITY,
+				'read_private_posts' => self::CAPABILITY
+			),
 			'show_ui'       => true,
-			'show_in_menu'  => true, //current_user_can(self::CAPABILITY),
+			'show_in_menu'  => true,
 			'query_var'     => false,
 			'rewrite'       => false,
 			'menu_position' => 25.099, //less probable to be overwritten
 			'supports'      => array('title','page-attributes'),
-			'menu_icon'     => version_compare(get_bloginfo('version'), '3.8' ,'>=') ? 'dashicons-welcome-widgets-menus' : plugins_url('/img/icon-16.png', __FILE__ )
+			'menu_icon'     => 'dashicons-welcome-widgets-menus'
 		));
 
 		WPCACore::post_types()->add(self::TYPE_SIDEBAR);
@@ -340,7 +344,7 @@ final class ContentAwareSidebars {
 	
 	/**
 	 * Create update messages
-	 * @global object $post
+	 * 
 	 * @param  array  $messages 
 	 * @return array           
 	 */
@@ -360,6 +364,26 @@ final class ContentAwareSidebars {
 				// translators: Publish box date format, see http://php.net/date
 				date_i18n(__('M j, Y @ G:i'),strtotime(get_the_ID()))).$manage_widgets,
 			10 => __('Sidebar draft updated.',self::DOMAIN),
+		);
+		return $messages;
+	}
+
+	/**
+	 * Create bulk update messages
+	 *
+	 * @since  3.0
+	 * @param  array  $messages
+	 * @param  array  $counts
+	 * @return array
+	 */
+	public function sidebar_updated_bulk_messages( $messages, $counts ) {
+		$manage_widgets = sprintf(' <a href="%1$s">%2$s</a>','widgets.php',__('Manage widgets',self::DOMAIN));
+		$messages[self::TYPE_SIDEBAR] = array(
+			'updated'   => _n( '%s sidebar updated.', '%s sidebars updated.', $counts['updated'] ).$manage_widgets,
+			'locked'    => _n( '%s sidebar not updated, somebody is editing it.', '%s sidebars not updated, somebody is editing them.', $counts['locked'] ),
+			'deleted'   => _n( '%s sidebar permanently deleted.', '%s sidebars permanently deleted.', $counts['deleted'] ),
+			'trashed'   => _n( '%s sidebar moved to the Trash.', '%s sidebars moved to the Trash.', $counts['trashed'] ),
+			'untrashed' => _n( '%s sidebar restored from the Trash.', '%s sidebars restored from the Trash.', $counts['untrashed'] ),
 		);
 		return $messages;
 	}
