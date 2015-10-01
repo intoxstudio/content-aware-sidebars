@@ -66,7 +66,7 @@ Combine these conditions in any way you like, e.g. display a sidebar on all Post
 
 Content Aware Sidebars comes in 38 languages.
 
-Arabic (ar), Bulgarian (bg_BG), Basque (eu), Catalan (ca), Chinese (zh_CN), Croatian (hr), Czech (cs_CZ), Danish (da_DK), Dutch (nl_NL), English, Estonian (et), Finnish (fi), French, Canada (fr_CA), French, France (fr_FR), German (de_DE), Greek (el), Hebrew (he_IL), Hungarian (hu_HU), Indonesian (id_ID), Italian (it_IT), Japanaese (ja), Korean (ko_KR), Latvian (lv_LV), Lithuanian (lt_LT), Norwegian Bokmål (nb_NO), Persian (fa_IR), Polish (pl_PL), Portuguese, Brazil (pt_BR), Portuguese, Portugal (pt_PT), Russian (ru_RU), Serbian (sr_RS), Slovak (sk_SK), Slovenian (sl_SI), Spanish (es_ES), Swedish (sv_SE), Turkish (tr_TR), Ukranian (uk), Vietnamese (vi)
+Arabic (ar), Bulgarian (bg_BG), Basque (eu), Catalan (ca), Chinese (zh_CN), Croatian (hr), Czech (cs_CZ), Danish (da_DK), Dutch (nl_NL), English, Estonian (et), Finnish (fi), French, Canada (fr_CA), French, France (fr_FR), German (de_DE), Greek (el), Hebrew (he_IL), Hungarian (hu_HU), Indonesian (id_ID), Italian (it_IT), Japanese (ja), Korean (ko_KR), Latvian (lv_LV), Lithuanian (lt_LT), Norwegian Bokmål (nb_NO), Persian (fa_IR), Polish (pl_PL), Portuguese, Brazil (pt_BR), Portuguese, Portugal (pt_PT), Russian (ru_RU), Serbian (sr_RS), Slovak (sk_SK), Slovenian (sl_SI), Spanish (es_ES), Swedish (sv_SE), Turkish (tr_TR), Ukranian (uk), Vietnamese (vi)
 
 [Click here to go to Transifex.com to translate Content Aware Sidebars into your language](https://www.transifex.com/projects/p/content-aware-sidebars/).
 
@@ -157,8 +157,11 @@ Do you want to contribute and see your name here?
 * Added: gui improvements in sidebar editor
 * Added: bulk update messages translatable
 * Added: draft post status included in post type lists
+* Added: arabic, bulgarian, croatian, czech, estonian, french (canada), greek, hebrew, indonesian, japanese, persian, vietnamese translations
 * Fixed: uninstall script cleans residual data better
 * Fixed: posts page and front page excluded from page post type list
+* Fixed: updated translations
+* Fixed: finnish translation included properly
 * Fixed: minimum requirement wp3.8
 * Removed: all action and filter hooks (moved to wp-content-aware-engine under new names)
 * Removed: deprecated icons
