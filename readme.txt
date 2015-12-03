@@ -2,9 +2,9 @@
 Contributors: intoxstudio
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=KPZHE6A72LEN4&lc=US&item_name=WordPress%20Plugin%3a%20Content%20Aware%20Sidebars&currency_code=USD&bn=PP%2dDonationsBF%3abtn_donateCC_LG%2egif%3aNonHosted
 Tags: sidebar, widget, widget area, custom sidebars, dynamic sidebar, replace sidebar, create sidebar, sidebar generator, sidebar plugin, replace widget area, merge widget area, create widget area, context aware, conditional, seo, bbpress, buddypress, qtranslate, polylang, transposh, wpml, woocommerce
-Requires at least: 3.3
-Tested up to: 4.3
-Stable tag: 2.6.3
+Requires at least: 3.8
+Tested up to: 4.4
+Stable tag: 3.0.1
 License: GPLv3
 
 Create and display custom sidebars according to the content being viewed.
@@ -140,6 +140,10 @@ Do you want to contribute and see your name here?
 * Hello World
 
 == Changelog ==
+
+= 3.0.1 =
+
+* Added: wp4.4 compatibility
 
 = 3.0 =
 
