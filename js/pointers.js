@@ -72,20 +72,30 @@
 
 			this.finishTour();
 
-			var i = this.currentPointer,
-				$widget = this.$pointers[i],
-				$nextButton;
-			
-			$widget.css("z-index",1001);
-			$widget.pointer('open');
-			if(CASPointers.pointers[i].next !== false || typeof CASPointers.pointers[i].next == "string") {
-				$nextButton = $('<a style="margin:0 5px;" class="button-primary">' + (typeof CASPointers.pointers[i].next == "string" ? CASPointers.pointers[i].next : CASPointers.next) + '</a>');
-				$widget.pointer('widget').find('.wp-pointer-buttons').append($nextButton);
-				$nextButton.bind('click.pointer', this.continueTour);
-			}
+			var $widget = this.$pointers[this.currentPointer],
+				pointerSettings = CASPointers.pointers[this.currentPointer];
+
+			$widget
+			.css("z-index",1001)
+			.pointer('open');
+
 			$('html, body').animate({
 				scrollTop: $widget.offset().top-50
 			}, 1000);
+
+			var next = pointerSettings.next;
+			if(typeof next == "undefined") {
+				next = CASPointers.next;
+			}
+			if(next) {
+				if(next.indexOf(".") === 0 || next.indexOf("#") === 0) {
+					$("body").one(pointerSettings.nextEvent,next,this.continueTour);
+				} else {
+					var $nextButton = $('<a style="margin:0 5px;" class="button-primary">' + next + '</a>');
+					$widget.pointer('widget').find('.wp-pointer-buttons').append($nextButton);
+					$nextButton.on("click.pointer",this.continueTour);
+				}
+			}
 		},
 
 		continueTour: function(e) {
