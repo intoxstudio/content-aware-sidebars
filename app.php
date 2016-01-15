@@ -99,6 +99,8 @@ final class CAS_App {
 		if(is_admin()) {
 			add_filter('plugin_action_links_'.plugin_basename(__FILE__),
 				array($this,'plugin_action_links'), 10, 4 );
+			add_filter('admin_footer_text',
+				array($this,"admin_footer_text"),99);
 		}
 	}
 
@@ -110,6 +112,28 @@ final class CAS_App {
 	 */
 	public function load_textdomain() {
 		load_plugin_textdomain("content-aware-sidebars", false, dirname(plugin_basename(__FILE__)).'/lang/');
+	}
+
+	/**
+	 * Admin footer text on plugin specific pages
+	 *
+	 * @since  3.1
+	 * @param  string  $text
+	 * @return string
+	 */
+	public function admin_footer_text($text) {
+		$screen = get_current_screen();
+		$stars = "";
+		for($i = 5; $i > 0; $i--) { $stars .= '<span class="dashicons dashicons-star-filled"></span>'; }
+		if($screen->post_type == self::TYPE_SIDEBAR || $screen->id == "widgets") {
+			$text .= " ".sprintf("Please support future development of %sContent Aware Sidebars%s with a %s%s review on WordPress.org%s",
+				'<a target="_blank" href="http://www.intox.dk/plugin/content-aware-sidebars/">',
+				'</a>',
+				'<a target="_blank" href="https://wordpress.org/support/view/plugin-reviews/content-aware-sidebars?filter=5#postform">',
+				$stars,
+				'</a>');
+		}
+		return $text;
 	}
 
 	/**
