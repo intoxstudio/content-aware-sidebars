@@ -165,7 +165,7 @@ final class CAS_App {
 
 		if($current_screen->post_type == CAS_App::TYPE_SIDEBAR) {
 			
-			wp_register_script('cas/admin/edit', plugins_url('/js/cas_admin.js', __FILE__), array('jquery'), CAS_App::PLUGIN_VERSION, true);
+			wp_register_script('cas/admin/edit', plugins_url('/js/cas_admin.min.js', __FILE__), array('jquery'), CAS_App::PLUGIN_VERSION, true);
 			
 			wp_register_style('cas/admin/style', plugins_url('/css/style.css', __FILE__), array(), CAS_App::PLUGIN_VERSION);
 
@@ -183,7 +183,7 @@ final class CAS_App {
 
 			$sidebar = get_post_type_object(CAS_App::TYPE_SIDEBAR);
 
-			wp_register_script('cas/admin/widgets', plugins_url('/js/widgets.js', __FILE__), array('jquery'), CAS_App::PLUGIN_VERSION, true);
+			wp_register_script('cas/admin/widgets', plugins_url('/js/widgets.min.js', __FILE__), array('jquery'), CAS_App::PLUGIN_VERSION, true);
 			wp_enqueue_script('cas/admin/widgets');
 			wp_localize_script( 'cas/admin/widgets', 'CASAdmin', array(
 				'edit'           => $sidebar->labels->edit_item,
