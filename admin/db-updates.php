@@ -4,49 +4,32 @@
  * @author Joachim Jensen <jv@intox.dk>
  */
 
-if (!defined('ContentAwareSidebars::DB_VERSION')) {
+if (!defined('CAS_App::PLUGIN_VERSION')) {
 	header('Status: 403 Forbidden');
 	header('HTTP/1.1 403 Forbidden');
 	exit;
 }
 
+$cas_db_updater = new WP_DB_Updater("cas_db_version",CAS_App::PLUGIN_VERSION);
+$cas_db_updater->register_version_update("0.8","cas_update_to_08");
+$cas_db_updater->register_version_update("1.1","cas_update_to_11");
+$cas_db_updater->register_version_update("2.0","cas_update_to_20");
+$cas_db_updater->register_version_update("3.0","cas_update_to_30");
+$cas_db_updater->register_version_update("3.1","cas_update_to_31");
+
 /**
- * Run updates
- * 
- * @param  string   $current_version 
+ * Version 3.0 -> 3.1
+ * Remove flag about plugin tour for all users
+ *
+ * @since  3.1
  * @return boolean
  */
-function cas_run_db_update($current_version) {
-
-	if(current_user_can('update_plugins')) {
-		// Get current plugin db version
-		$installed_version = get_option('cas_db_version','0');
-
-		// Database is up to date
-		if($installed_version == $current_version)
-			return true;
-
-		$versions = array('0.8','1.1','2.0','3.0');
-
-		//Launch updates
-		foreach($versions as $version) {
-
-			$return = false;
-
-			if(version_compare($installed_version,$version,'<')) {
-				$function = 'cas_update_to_'.str_replace('.','',$version);
-				if(function_exists($function)) {
-					$return = $function();
-					// Update database on success
-					if($return) {
-						update_option('cas_db_version',$installed_version = $version);
-					}
-				}
-			}
-		}
-		return $return;
-	}
-	return false;
+function cas_update_to_31() {
+	$wpdb->query("
+		DELETE FROM $wpdb->usermeta
+		WHERE meta_key = 'wp__ca_cas_tour'
+	");
+	return true;
 }
 
 /**
