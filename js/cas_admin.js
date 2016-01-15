@@ -12,6 +12,7 @@
 		init: function() {
 
 			this.addHandleListener();
+			this.reviewNoticeHandler();
 
 		},
 
@@ -19,7 +20,7 @@
 		 * The value of Handle selection will control the
 		 * accessibility of the host sidebar selection
 		 * If Handling is manual, selection of host sidebar will be disabled
-		 * @author Joachim Jensen <jv@intox.dk>
+		 * 
 		 * @since  2.1
 		 */
 		addHandleListener: function() {
@@ -46,6 +47,36 @@
 			}).change(); //fire change event on page load
 		},
 
+		/**
+		 * Handle clicks on review notice
+		 * Sends dismiss event to backend
+		 *
+		 * @since  3.1
+		 * @return {void}
+		 */
+		reviewNoticeHandler: function() {
+			$notice = $(".js-cas-notice-review");
+			$("#wpbody-content").on("click","a, button", function(e) {
+				$this = $(this);
+				$.ajax({
+					url: ajaxurl,
+					data:{
+						'action': 'cas_dismiss_review_notice',
+						'dismiss': $this.attr("href") ? 1 : 0
+					},
+					dataType: 'JSON',
+					type: 'POST',
+					success:function(data){
+						$notice.fadeOut(400,function() {
+							$notice.remove();
+						});
+					},
+					error: function(xhr, desc, e) {
+						console.log(xhr.responseText);
+					}
+				});
+			});
+		}
 	};
 
 	$(document).ready(function(){ cas_options.init(); });

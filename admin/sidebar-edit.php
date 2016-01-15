@@ -30,6 +30,9 @@ final class CAS_Sidebar_Edit {
 		add_action('in_admin_header',
 			array($this,'meta_box_whitelist'),99);
 
+		add_action('wp_ajax_cas_dismiss_review_notice',
+			array($this,'ajax_review_clicked'));
+
 		add_filter('post_updated_messages',
 			array($this,'sidebar_updated_messages'));
 		add_filter( 'bulk_post_updated_messages',
@@ -197,6 +200,29 @@ final class CAS_Sidebar_Edit {
 			'<p><a href="http://wordpress.org/support/plugin/content-aware-sidebars" target="_blank">'.__('Get Support',"content-aware-sidebars").'</a></p>'
 		);
 
+		add_action( 'admin_notices', array($this,"admin_notice_review"));
+
+	}
+
+	/**
+	 * Admin notice for Plugin Review
+	 *
+	 * @since  3.1
+	 * @return void
+	 */
+	public function admin_notice_review() {
+		$has_reviewed = get_user_option(WPCACore::PREFIX."cas_review");
+		if($has_reviewed === false) {
+			$tour_taken = get_user_option(WPCACore::PREFIX.CASPointerManager::KEY_TOUR);
+			if($tour_taken && (time() - $tour_taken) >= WEEK_IN_SECONDS*2) {
+				echo '<div class="update-nag notice js-cas-notice-review">';
+				echo '<p>'.sprintf("If you like Content Aware Sidebars, please support future development with a %sreview on WordPress.org%s. Thank you.",
+				'<a target="_blank" href="https://wordpress.org/support/view/plugin-reviews/content-aware-sidebars?filter=5#postform">',
+				'</a>').'</p>';
+				echo '<p><a target="_blank" class="button-primary" href="https://wordpress.org/support/view/plugin-reviews/content-aware-sidebars?filter=5#postform">'.__("Review Plugin","content-aware-sidebars").'</a> <button class="button-secondary">'.__("Not Today","content-aware-sidebars").'</button></p>';
+				echo '</div>';
+			}
+		}
 	}
 
 	/**
@@ -317,7 +343,23 @@ final class CAS_Sidebar_Edit {
 			</div>
 		<?php
 	}
-		
+
+	/**
+	 * Set review flag for user
+	 *
+	 * @since  3.1
+	 * @return void
+	 */
+	public function ajax_review_clicked() {
+		$dismiss = isset($_POST["dismiss"]) ? (int)$_POST["dismiss"] : 0;
+		if(!$dismiss) {
+			$dismiss = time();
+		}
+
+		echo json_encode(update_user_option(get_current_user_id(),WPCACore::PREFIX."cas_review", $dismiss));
+		die();
+	}
+
 	/**
 	 * Create form field for metadata
 	 * @global object $post
