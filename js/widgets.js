@@ -57,7 +57,7 @@
 					filterTimer = setTimeout(function(){
 						$(that.$widgets).each(function(key,widget) {
 							var $widget = $(widget);
-							if ($widget.find("h4").first().text().search(new RegExp(filter, "i")) < 0) {
+							if ($widget.find(".widget-title :nth-child(1)").text().search(new RegExp(filter, "i")) < 0) {
 								$widget.fadeOut();
 							} else {
 								//CSS dependent on order, so move to top
@@ -105,7 +105,7 @@
 					filterTimer = setTimeout(function(){
 						$(".widgets-holder-wrap",that.$sidebarContainer).each(function(key,sidebar) {
 							var $sidebar = $(sidebar);
-							if ($sidebar.find("h3").first().text().search(new RegExp(filter, "i")) < 0) {
+							if ($sidebar.find(".sidebar-name :nth-child(2)").text().search(new RegExp(filter, "i")) < 0) {
 								$sidebar.fadeOut();
 							} else {
 								$sidebar.fadeIn();
