@@ -1,13 +1,13 @@
 === Plugin Name ===
 Contributors: intoxstudio
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=KPZHE6A72LEN4&lc=US&item_name=WordPress%20Plugin%3a%20Content%20Aware%20Sidebars&currency_code=USD&bn=PP%2dDonationsBF%3abtn_donateCC_LG%2egif%3aNonHosted
-Tags: sidebar, widget, widget area, custom sidebars, dynamic sidebar, replace sidebar, create sidebar, sidebar generator, sidebar plugin, replace widget area, merge widget area, create widget area, context aware, conditional, seo, bbpress, buddypress, qtranslate, polylang, transposh, wpml, woocommerce
+Tags: sidebar, widget area, custom sidebars, dynamic sidebar, replace sidebar, create sidebar, sidebar generator, replace widget area, create widget area, context aware, conditional, bbpress, buddypress, qtranslate, polylang, transposh, wpml, woocommerce
 Requires at least: 3.8
 Tested up to: 4.4
-Stable tag: 3.0.1
+Stable tag: 3.1
 License: GPLv3
 
-Create and display custom sidebars according to the content being viewed.
+Create and display custom sidebars according to the content being viewed. Fast and powerful.
 
 == Description ==
 
@@ -55,10 +55,10 @@ Combine these conditions in any way you like, e.g. display a sidebar on all Post
 
 = Integrated Support for Popular Plugins =
 
-* bbPress (v2.0.2+)
-* BuddyPress (v1.6.2+)
-* qTranslate (v2.5.29+)
-* Polylang (v1.2+)
+* bbPress (v2.5+)
+* BuddyPress (v2.0+)
+* qTranslate X (v3.4.6.4+)
+* Polylang (v1.7+)
 * Transposh Translation Filter (v0.9.5+)
 * [WPML Multilingual Blog/CMS (v2.4.3+) Tested and certified](http://wpml.org/plugin/content-aware-sidebars/)
 
@@ -140,6 +140,21 @@ Do you want to contribute and see your name here?
 * Hello World
 
 == Changelog ==
+
+= 3.1 =
+
+* Added: completely rewritten sidebar editor ui
+* Added: refactored plugin into more logical abstractions
+* Added: wp-db-updater now handles database updates
+* Added: tour reflects new sidebar editor ui
+* Added: review notice after 2 weeks use
+* Added: admin footer text on relevant pages
+* Added: minified some scripts
+* Added: qtranslate x module
+* Fixed: sidebar and widget filtering for wp4.4+
+* Fixed: bug making attachments not selectable
+* Fixed: bumped versions for integrated plugins
+* Removed: qtranslate module
 
 = 3.0.1 =
 
