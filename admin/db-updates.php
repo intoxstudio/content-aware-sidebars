@@ -28,7 +28,7 @@ function cas_update_to_31() {
 	global $wpdb;
 	$wpdb->query("
 		DELETE FROM $wpdb->usermeta
-		WHERE meta_key = 'wp__ca_cas_tour'
+		WHERE meta_key = '{$wpdb->prefix}_ca_cas_tour'
 	");
 	return true;
 }
