@@ -25,6 +25,7 @@ $cas_db_updater->register_version_update("3.1","cas_update_to_31");
  * @return boolean
  */
 function cas_update_to_31() {
+	global $wpdb;
 	$wpdb->query("
 		DELETE FROM $wpdb->usermeta
 		WHERE meta_key = 'wp__ca_cas_tour'
