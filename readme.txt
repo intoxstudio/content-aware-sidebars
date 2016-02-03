@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=KPZHE
 Tags: sidebar, widget area, custom sidebars, dynamic sidebar, replace sidebar, create sidebar, sidebar generator, replace widget area, create widget area, context aware, conditional, bbpress, buddypress, qtranslate, polylang, transposh, wpml, woocommerce
 Requires at least: 3.8
 Tested up to: 4.4
-Stable tag: 3.1
+Stable tag: 3.1.1
 License: GPLv3
 
 Create and display custom sidebars according to the content being viewed. Fast and powerful.
@@ -33,7 +33,7 @@ Developed with functionality and performance in mind, Content Aware Sidebars is 
 = Display sidebars on certain conditions = 
 
 * Singulars, e.g. posts or pages
-* (Custom) Post Types
+* Custom Post Types
 * Singulars with given taxonomies, e.g. categories or tags
 * Singulars by a given author
 * Page Templates
@@ -48,6 +48,7 @@ Developed with functionality and performance in mind, Content Aware Sidebars is 
 * bbPress User Profiles
 * BuddyPress Member Pages
 * Languages (qTranslate, Polylang, Transposh, WPML)
+* **[NEW]** Pods Pages
 
 Combine these conditions in any way you like, e.g. display a sidebar on all Posts in Category X by author Y.
 
@@ -58,6 +59,7 @@ Combine these conditions in any way you like, e.g. display a sidebar on all Post
 * bbPress (v2.5+)
 * BuddyPress (v2.0+)
 * qTranslate X (v3.4.6.4+)
+* Pods (v2.6+)
 * Polylang (v1.7+)
 * Transposh Translation Filter (v0.9.5+)
 * [WPML Multilingual Blog/CMS (v2.4.3+) Tested and certified](http://wpml.org/plugin/content-aware-sidebars/)
@@ -140,6 +142,11 @@ Do you want to contribute and see your name here?
 * Hello World
 
 == Changelog ==
+
+= 3.1.1 =
+
+* Added: pods pages module, props @sc0ttkclark @herold
+* Fixed: better compat when other themes or plugins load breaking scripts
 
 = 3.1 =
 
