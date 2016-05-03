@@ -119,6 +119,7 @@ final class CAS_Sidebar_Overview {
 			//Append new actions just before trash action
 			array_splice($actions, -1, 0, $new_actions);
 		}
+		unset($actions["inline hide-if-no-js"]);
 		return $actions;
 	}
 
@@ -137,15 +138,15 @@ final class CAS_Sidebar_Overview {
 				"sortable" => false
 			),
 			'handle'    => array(
-				"title" => _x('Handle','option', "content-aware-sidebars"),
-				"sortable" => true
-			),
-			'merge_pos' => array(
-				"title" => __('Merge position', "content-aware-sidebars"),
+				"title"    => _x('Handle','option', "content-aware-sidebars"),
 				"sortable" => true
 			),
 			'widgets'   => array(
-				"title" => __('Widgets'),
+				"title"    => __('Widgets'),
+				"sortable" => false
+			),
+			'visibility' => array(
+				"title"    => __('Visibility',"content-aware-sidebars"),
 				"sortable" => false
 			),
 			'date'      => array(
@@ -164,6 +165,7 @@ final class CAS_Sidebar_Overview {
 	 */
 	protected function column_handle($column_name,$post_id) {
 		$metadata = CAS_App::instance()->manager()->metadata()->get($column_name);
+		
 		$return = "";
 		if($metadata) {
 			$return = $metadata->get_list_data($post_id);
@@ -172,6 +174,13 @@ final class CAS_Sidebar_Overview {
 				$return .= ": " . ($host ? $host : '<span style="color:red;">' . __('Please update Host Sidebar', "content-aware-sidebars") . '</span>');
 			
 			}
+			$pos = CAS_App::instance()->manager()->metadata()->get("merge_pos")->get_data($post_id,true);
+			$pos_icon = $pos ? "up" : "down";
+			$pos_title = array(
+				__("Add sidebar at the top during merge","content-aware-sidebars"),
+				__("Add sidebar at the bottom during merge","content-aware-sidebars")
+			);
+			$return .= '<span title="'.$pos_title[$pos].'" class="dashicons dashicons-arrow-'.$pos_icon.'-alt"></span>';
 		}
 		return $return;
 	}
@@ -184,7 +193,7 @@ final class CAS_Sidebar_Overview {
 	 * @param  int     $post_id
 	 * @return string
 	 */
-	protected function column_merge_pos($column_name,$post_id) {
+	protected function column_visibility($column_name,$post_id) {
 		$metadata = CAS_App::instance()->manager()->metadata()->get($column_name);
 		return $metadata ? $metadata->get_list_data($post_id) : "";
 	}
