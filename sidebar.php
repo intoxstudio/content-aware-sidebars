@@ -32,6 +32,7 @@ final class CAS_Sidebar_Manager {
 	public function __construct() {
 
 		if(is_admin()) {
+
 			new CAS_Sidebar_Overview();
 			new CAS_Sidebar_Edit();
 		}
@@ -81,6 +82,17 @@ final class CAS_Sidebar_Manager {
 
 		$this->metadata = new WPCAObjectManager();
 		$this->metadata
+		->add(new WPCAMeta(
+			'visibility',
+			__('Visibility',"content-aware-sidebars"),
+			0,
+			'select',
+			array(
+				0 => __('All Users', "content-aware-sidebars"),
+				-1 => __('Logged-in Users', "content-aware-sidebars"),
+				-2 => __("Logged-out Users", "content-aware-sidebars")
+			)
+		),'visibility')
 		->add(new WPCAMeta(
 			'exposure',
 			__('Exposure', "content-aware-sidebars"),
@@ -252,10 +264,16 @@ final class CAS_Sidebar_Manager {
 			foreach ($posts as $post) {
 
 				$id = CAS_App::SIDEBAR_PREFIX . $post->ID;
+				$visibility = $this->metadata()->get('visibility')->get_data($post->ID);
 				$host = $this->metadata()->get('host')->get_data($post->ID);
 
+				// Check logged in
+				if(($visibility == "-1" && !is_user_logged_in()) ||
+					($visibility == "-2" && is_user_logged_in()) )
+					continue;
+
 				// Check for correct handling and if host exist
-				if ($post->handle == 2 || !isset($sidebars_widgets[$host]))
+				if ( $post->handle == 2 || !isset($sidebars_widgets[$host]))
 					continue;
 
 				// Sidebar might not have any widgets. Get it anyway!

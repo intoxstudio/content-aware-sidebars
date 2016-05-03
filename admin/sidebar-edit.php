@@ -261,6 +261,7 @@ final class CAS_Sidebar_Edit {
 	public function meta_box_options() {
 
 		$columns = array(
+			'visibility',
 			'exposure',
 			'handle' => 'handle,host',
 			'merge_pos'
