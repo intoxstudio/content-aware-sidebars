@@ -186,16 +186,28 @@ final class CAS_Sidebar_Overview {
 	}
 
 	/**
-	 * Display merge position column
+	 * Display visibility column
 	 *
-	 * @since  3.1
+	 * @since  3.2
 	 * @param  string  $column_name
 	 * @param  int     $post_id
 	 * @return string
 	 */
 	protected function column_visibility($column_name,$post_id) {
 		$metadata = CAS_App::instance()->manager()->metadata()->get($column_name);
-		return $metadata ? $metadata->get_list_data($post_id) : "";
+		if($metadata) {
+			$data = $metadata->get_data($post_id,true,false);
+			if($data) {
+				$list = $metadata->get_input_list();
+				foreach ($data as $k => $v) {
+					if(isset($list[$v])) {
+						$data[$k] = $list[$v];
+					}
+				}
+				return implode(", ", $data);
+			}
+		}
+		return __("All Users","content-aware-sidebars");
 	}
 
 	/**

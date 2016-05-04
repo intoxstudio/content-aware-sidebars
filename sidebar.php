@@ -85,12 +85,10 @@ final class CAS_Sidebar_Manager {
 		->add(new WPCAMeta(
 			'visibility',
 			__('Visibility',"content-aware-sidebars"),
-			0,
-			'select',
+			array(),
+			'multi',
 			array(
-				0 => __('All Users', "content-aware-sidebars"),
-				-1 => __('Logged-in Users', "content-aware-sidebars"),
-				-2 => __("Logged-out Users", "content-aware-sidebars")
+				-1 => __('Logged-in Users', "content-aware-sidebars")
 			)
 		),'visibility')
 		->add(new WPCAMeta(
@@ -268,8 +266,7 @@ final class CAS_Sidebar_Manager {
 				$host = $this->metadata()->get('host')->get_data($post->ID);
 
 				// Check logged in
-				if(($visibility == "-1" && !is_user_logged_in()) ||
-					($visibility == "-2" && is_user_logged_in()) )
+				if($visibility == "-1" && !is_user_logged_in())
 					continue;
 
 				// Check for correct handling and if host exist

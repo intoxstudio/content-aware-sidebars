@@ -258,10 +258,9 @@ final class CAS_Sidebar_Edit {
 	 * Meta box for options
 	 * @return void
 	 */
-	public function meta_box_options() {
+	public function meta_box_options($post) {
 
 		$columns = array(
-			'visibility',
 			'exposure',
 			'handle' => 'handle,host',
 			'merge_pos'
@@ -280,7 +279,14 @@ final class CAS_Sidebar_Edit {
 			echo '</p></span>';
 		}
 
-		global $post; 
+		$visibility = CAS_App::instance()->manager()->metadata()->get("visibility");
+
+		echo '<span>';
+		echo '<strong>'.__('Visibility').'</strong>';
+		echo '<p><label for="visibility" class="screen-reader-text">'.__('Visibility').'</label>';
+		echo '<div><input style="width:250px;" type="hidden" name="visibility" class="js-cas-visibility" value="'.implode(",", $visibility->get_data($post->ID,true,false)).'" /></div>';
+		
+		echo '</p></span>';
 
 		echo '<span>';
 		echo '<strong>'.__('Order').'</strong>';
@@ -423,14 +429,36 @@ final class CAS_Sidebar_Edit {
 
 		// Update metadata
 		foreach (CAS_App::instance()->manager()->metadata()->get_all() as $field) {
+			$single = $field->get_input_type()!="multi";
 			$new = isset($_POST[$field->get_id()]) ? $_POST[$field->get_id()] : '';
-			$old = $field->get_data($post_id);
+			$old = $field->get_data($post_id,false,$single);
 
-			if ($new != '' && $new != $old) {
-				$field->update($post_id,$new);
-			} elseif ($new == '' && $old != '') {
-				$field->delete($post_id,$old);
+			//TODO: make this more flexible
+			if($field->get_id() == "visibility") {
+				$new = $new ? explode(",", $new) : array(); 
 			}
+
+			//TODO: package update/delete in meta class
+			if($single) {
+				if ($new != '' && $new != $old) {
+					$field->update($post_id,$new);
+				} elseif ($new == '' && $old != '') {
+					$field->delete($post_id,$old);
+				}
+			} else {
+				$old = array_flip($old);
+				foreach ($new as $meta) {
+					if(isset($old[$meta])) {
+						unset($old[$meta]);
+					} else {
+						add_post_meta($post_id, WPCACore::PREFIX.$field->get_id(), $meta);
+					}
+				}
+				foreach ($old as $meta => $v) {
+					$field->delete($post_id,$meta);
+				}
+			}
+
 		}
 	}
 

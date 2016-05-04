@@ -171,7 +171,20 @@ final class CAS_App {
 
 			//Sidebar editor
 			if ($current_screen->base == 'post') {
+
+				$visibility = array();
+				foreach ($this->_manager->metadata()->get('visibility')->get_input_list() as $k => $v) {
+					$visibility[] = array(
+						"id"   => $k,
+						"text" => $v
+					);
+				}
+
 				wp_enqueue_script('cas/admin/edit');
+				wp_localize_script( 'cas/admin/edit', 'CASAdmin', array(
+					'allVisibility'  => __("All Users","content-aware-sidebars"),
+					'visibility' => $visibility
+				));
 				wp_enqueue_style('cas/admin/style');
 			//Sidebar overview
 			} else if ($hook == 'edit.php') {
