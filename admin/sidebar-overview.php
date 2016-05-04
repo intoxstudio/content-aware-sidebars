@@ -25,7 +25,8 @@ final class CAS_Sidebar_Overview {
 	 */
 	public function __construct() {
 
-		$this->init_columns();
+		add_action('load-edit.php',
+			array($this,'init_columns'));
 
 		add_action('manage_'.CAS_App::TYPE_SIDEBAR.'_posts_custom_column',
 			array($this,'admin_column_rows'),10,2);
@@ -129,7 +130,8 @@ final class CAS_Sidebar_Overview {
 	 * @since  3.1
 	 * @return void
 	 */
-	protected function init_columns() {
+	public function init_columns() {
+		CAS_App::instance()->manager()->populate_metadata();
 		$this->columns = array(
 			'cb'        => array(
 				"sortable" => false

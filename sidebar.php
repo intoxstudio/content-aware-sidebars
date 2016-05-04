@@ -133,6 +133,24 @@ final class CAS_Sidebar_Manager {
 			),
 			__('Place sidebar on top or bottom of host when merging.', "content-aware-sidebars")
 		),'merge_pos');
+		apply_filters("cas/metadata/init",$this->metadata);
+	}
+
+	/**
+	 * Populate metadata with dynamic content
+	 * for use in admin
+	 *
+	 * @since  3.2
+	 * @return void
+	 */
+	public function populate_metadata() {
+		// Remove ability to set self to host
+		if(get_the_ID()) {
+			$sidebar_list = $this->metadata()->get('host')->get_input_list();
+			unset($sidebar_list[CAS_App::SIDEBAR_PREFIX.get_the_ID()]);
+			$this->metadata()->get('host')->set_input_list($sidebar_list);
+		}
+		apply_filters("cas/metadata/populate",$this->metadata);
 	}
 
 	/**

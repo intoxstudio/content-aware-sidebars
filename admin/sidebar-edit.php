@@ -132,13 +132,8 @@ final class CAS_Sidebar_Edit {
 	 * @return void 
 	 */
 	public function create_meta_boxes() {
-		
-		// Remove ability to set self to host
-		if(get_the_ID()) {
-			$sidebar_list = CAS_App::instance()->manager()->metadata()->get('host')->get_input_list();
-			unset($sidebar_list[CAS_App::SIDEBAR_PREFIX.get_the_ID()]);
-			CAS_App::instance()->manager()->metadata()->get('host')->set_input_list($sidebar_list);
-		}
+
+		CAS_App::instance()->manager()->populate_metadata();
 
 		$boxes = array(
 			array(
