@@ -107,6 +107,7 @@ final class CAS_Sidebar_Edit {
 			'cas-rules'     => 'cas-rules',
 			'cas-options'   => 'cas-options',
 			'submitdiv'     => 'submitdiv',
+			'revisionsdiv'  => 'revisionsdiv',
 			'slugdiv'       => 'slugdiv'
 		);
 
@@ -465,12 +466,23 @@ final class CAS_Sidebar_Edit {
 		$date = date_i18n( $datef, strtotime( current_time('mysql') ) );
 	}
 
-	if ( ! empty( $args['args']['revisions_count'] ) ) : ?>
-	<div class="misc-pub-section misc-pub-revisions">
-		<?php printf( __( 'Revisions: %s' ), '<b>' . number_format_i18n( $args['args']['revisions_count'] ) . '</b>' ); ?>
-		<a class="hide-if-no-js" href="<?php echo esc_url( get_edit_post_link( $args['args']['revision_id'] ) ); ?>"><span aria-hidden="true"><?php _ex( 'Browse', 'revisions' ); ?></span> <span class="screen-reader-text"><?php _e( 'Browse revisions' ); ?></span></a>
-	</div>
-	<?php endif;
+
+	if ( post_type_supports($post->post_type, 'revisions') && 'auto-draft' != $post->post_status ) {
+		$revisions = wp_get_post_revisions( $post->ID );
+		$revision_count = count($revisions);
+
+		// We should aim to show the revisions metabox only when there are revisions.
+		if ( $revision_count > 1 ) {
+			reset( $revisions ); // Reset pointer for key()
+			$revision_id = key( $revisions );
+ ?>
+			<div class="misc-pub-section misc-pub-revisions">
+				<?php printf( __( 'Revisions: %s' ), '<b>' . number_format_i18n( $revision_count ) . '</b>' ); ?>
+				<a class="hide-if-no-js" href="<?php echo esc_url( get_edit_post_link( $revision_id ) ); ?>"><span aria-hidden="true"><?php _ex( 'Browse', 'revisions' ); ?></span> <span class="screen-reader-text"><?php _e( 'Browse revisions' ); ?></span></a>
+			</div>
+			<?php
+		}
+	}
 
 	if ( $can_publish ) : // Contributors don't get to choose the date of publish ?>
 	<div class="misc-pub-section curtime misc-pub-curtime">
