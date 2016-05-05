@@ -84,6 +84,8 @@ final class CAS_App {
 			array($this,'load_textdomain'));
 
 		if(is_admin()) {
+			add_action('plugins_loaded',
+				array($this,"redirect_revision_link"));
 			add_action('admin_enqueue_scripts',
 				array($this,'load_admin_scripts'));
 		}
@@ -155,6 +157,22 @@ final class CAS_App {
 	}
 
 	/**
+	 * Redirect revision link to upgrade
+	 *
+	 * @since  3.2
+	 * @return void
+	 */
+	public function redirect_revision_link() {
+		global $pagenow;
+		if($pagenow == "post.php" 
+			&& isset($_GET["action"],$_GET["post"]) 
+			&& $_GET["action"] == "cas-revisions") {
+			wp_safe_redirect(cas_fs()->get_upgrade_url());
+			exit;
+		}
+	}
+
+	/**
 	 * Load scripts and styles for administration
 	 * @param  string $hook 
 	 * @return void 
@@ -200,6 +218,7 @@ final class CAS_App {
 			wp_enqueue_script('cas/admin/widgets');
 			wp_localize_script( 'cas/admin/widgets', 'CASAdmin', array(
 				'edit'           => $sidebar->labels->edit_item,
+				'revisions'      => __("Revisions"),
 				'addNew'         => $sidebar->labels->add_new_item,
 				'filterSidebars' => __("Filter Sidebars","content-aware-sidebars"),
 				'filterWidgets'  => __("Filter Widgets", "content-aware-sidebars")

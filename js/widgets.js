@@ -130,8 +130,12 @@
 
 				$sidebar.addClass('content-aware-sidebar');
 
-				$this.find('.sidebar-description').append('<div class="cas-settings"><a title="'+CASAdmin.edit+'" class="cas-sidebar-link" href="post.php?post='+id+'&action=edit"><i class="dashicons dashicons-admin-generic"></i> '+CASAdmin.edit+'</a></div>');
-
+				$this.find('.sidebar-description').append(
+					'<div class="cas-settings">'+
+					'<a title="'+CASAdmin.edit+'" class="cas-sidebar-link" href="post.php?post='+id+'&action=edit"><i class="dashicons dashicons-admin-generic"></i> '+CASAdmin.edit+'</a>'+
+					'<a title="'+CASAdmin.revisions+'" class="cas-sidebar-link" href="post.php?post='+id+'&action=cas-revisions"><i class="dashicons dashicons-backup"></i> '+CASAdmin.revisions+'</a>'+
+					'</div>'
+				);
 			});
 		}
 
