@@ -19,12 +19,6 @@ final class CAS_Sidebar_Manager {
 	protected $metadata;
 
 	/**
-	 * Column definitions
-	 * @var array
-	 */
-	protected $sidebars = array();
-
-	/**
 	 * Constructor
 	 *
 	 * @since 3.1
