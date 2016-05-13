@@ -23,8 +23,8 @@ final class CAS_Sidebar_Edit {
 
 		add_action('delete_post',
 			array($this,'remove_sidebar_widgets'));
-		add_action('save_post',
-			array($this,'save_post'));
+		add_action('save_post_'.CAS_App::TYPE_SIDEBAR,
+			array($this,'save_post'),10,2);
 		add_action('add_meta_boxes_'.CAS_App::TYPE_SIDEBAR,
 			array($this,'create_meta_boxes'));
 		add_action('in_admin_header',
@@ -35,7 +35,7 @@ final class CAS_Sidebar_Edit {
 
 		add_filter('post_updated_messages',
 			array($this,'sidebar_updated_messages'));
-		add_filter( 'bulk_post_updated_messages',
+		add_filter('bulk_post_updated_messages',
 			array($this,'sidebar_updated_bulk_messages'), 10, 2 );
 	}
 
@@ -597,18 +597,15 @@ final class CAS_Sidebar_Edit {
 	 * @param  int $post_id 
 	 * @return void 
 	 */
-	public function save_post($post_id) {
+	public function save_post($post_id,$post) {
 
 		// Save button pressed
 		if (!isset($_POST['original_publish']) && !isset($_POST['save_post']))
 			return;
 
-		// Only sidebar type
-		if (get_post_type($post_id) != CAS_App::TYPE_SIDEBAR)
-			return;
-
-		// Verify nonce
-		if (!check_admin_referer(WPCACore::PREFIX.$post_id, WPCACore::NONCE))
+		//Verify nonce, check_admin_referer dies on false
+		if(!(isset($_POST[WPCACore::NONCE]) 
+			&& wp_verify_nonce($_POST[WPCACore::NONCE], WPCACore::PREFIX.$post_id)))
 			return;
 
 		// Check permissions
