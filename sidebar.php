@@ -145,13 +145,16 @@ final class CAS_Sidebar_Manager {
 	 * @return void
 	 */
 	public function populate_metadata() {
-		// Remove ability to set self to host
-		if(get_the_ID()) {
-			$sidebar_list = $this->metadata()->get('host')->get_input_list();
-			unset($sidebar_list[CAS_App::SIDEBAR_PREFIX.get_the_ID()]);
-			$this->metadata()->get('host')->set_input_list($sidebar_list);
+		if($this->metadata) {
+			// Remove ability to set self to host
+			if(get_the_ID()) {
+				$sidebar_list = $this->metadata()->get('host')->get_input_list();
+				unset($sidebar_list[CAS_App::SIDEBAR_PREFIX.get_the_ID()]);
+				$this->metadata()->get('host')->set_input_list($sidebar_list);
+			}
+			apply_filters("cas/metadata/populate",$this->metadata);
 		}
-		apply_filters("cas/metadata/populate",$this->metadata);
+		
 	}
 
 	/**
