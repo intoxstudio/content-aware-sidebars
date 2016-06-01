@@ -29,6 +29,8 @@ License: GPLv3
 
 	You should have received a copy of the GNU General Public License
 	along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+* @fs_premium_only /lib/content-aware-premium/
 */
 
 if (!defined('ABSPATH')) {
