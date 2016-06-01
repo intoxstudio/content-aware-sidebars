@@ -280,15 +280,19 @@ final class CAS_Sidebar_Manager {
 	public function replace_sidebar($sidebars_widgets) {
 
 		$posts = WPCACore::get_posts(CAS_App::TYPE_SIDEBAR);
+
+		//temporary filter until WPCACore allows filtering
+		$user_visibility = is_user_logged_in() ? array(-1) : array();
+		$user_visibility = apply_filters("cas/user_visibility",$user_visibility);
 		if ($posts) {
 			foreach ($posts as $post) {
 
 				$id = CAS_App::SIDEBAR_PREFIX . $post->ID;
-				$visibility = $this->metadata()->get('visibility')->get_data($post->ID);
+				$visibility = $this->metadata()->get('visibility')->get_data($post->ID,true,false);
 				$host = $this->metadata()->get('host')->get_data($post->ID);
 
-				// Check logged in
-				if($visibility == "-1" && !is_user_logged_in())
+				// Check visibility
+				if($visibility && !array_intersect($visibility,$user_visibility))
 					continue;
 
 				// Check for correct handling and if host exist
