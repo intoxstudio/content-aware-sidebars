@@ -176,13 +176,16 @@ final class CAS_Sidebar_Overview {
 				$return .= ": " . ($host ? $host : '<span style="color:red;">' . __('Please update Host Sidebar', "content-aware-sidebars") . '</span>');
 			
 			}
-			$pos = CAS_App::instance()->manager()->metadata()->get("merge_pos")->get_data($post_id,true);
-			$pos_icon = $pos ? "up" : "down";
-			$pos_title = array(
-				__("Add sidebar at the top during merge","content-aware-sidebars"),
-				__("Add sidebar at the bottom during merge","content-aware-sidebars")
-			);
-			$return .= '<span title="'.$pos_title[$pos].'" class="dashicons dashicons-arrow-'.$pos_icon.'-alt"></span>';
+			if($metadata->get_data($post_id) != 3) {
+				$pos = CAS_App::instance()->manager()->metadata()->get("merge_pos")->get_data($post_id,true);
+				$pos_icon = $pos ? "up" : "down";
+				$pos_title = array(
+					__("Add sidebar at the top during merge","content-aware-sidebars"),
+					__("Add sidebar at the bottom during merge","content-aware-sidebars")
+				);
+				$return .= '<span title="'.$pos_title[$pos].'" class="dashicons dashicons-arrow-'.$pos_icon.'-alt"></span>';
+			}
+			
 		}
 		return $return;
 	}
