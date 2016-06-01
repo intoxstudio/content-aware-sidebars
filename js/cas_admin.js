@@ -27,7 +27,7 @@
 		addHandleListener: function() {
 			var host = $("select[name='host']");
 			var code = $('<p>Shortcode:</p><code>[ca-sidebar id='+this.sidebarID+']</code>'+
-				'<p>Template Tag:</p><code>display_ca_sidebar();</code>');
+				'<p>Template Tag:</p><code>ca_display_sidebar();</code>');
 			var merge_pos = $('span.merge-pos');
 			host.parent().append(code);
 			$("select[name='handle']").change(function(){
