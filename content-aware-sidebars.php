@@ -42,17 +42,17 @@ if (!defined('ABSPATH')) {
 // Load dependencies
 $cas_dir_path = plugin_dir_path( __FILE__ );
 
-require($cas_dir_path.'/lib/wp-content-aware-engine/core.php');
-require($cas_dir_path.'/app.php');
-require($cas_dir_path.'/sidebar.php');
+require($cas_dir_path.'lib/wp-content-aware-engine/core.php');
+require($cas_dir_path.'app.php');
+require($cas_dir_path.'sidebar.php');
+require($cas_dir_path.'freemius.php');
 		
 if(is_admin()) {
-	require($cas_dir_path.'/lib/wp-db-updater/wp-db-updater.php');
-	require($cas_dir_path.'/admin/db-updates.php');
-	require($cas_dir_path.'/pointers.php');
-	require($cas_dir_path.'/admin/sidebar-overview.php');
-	require($cas_dir_path.'/admin/sidebar-edit.php');
-
+	require($cas_dir_path.'lib/wp-db-updater/wp-db-updater.php');
+	require($cas_dir_path.'admin/db-updates.php');
+	require($cas_dir_path.'pointers.php');
+	require($cas_dir_path.'admin/sidebar-overview.php');
+	require($cas_dir_path.'admin/sidebar-edit.php');
 }
 
 // Launch plugin
