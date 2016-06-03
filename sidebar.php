@@ -180,7 +180,7 @@ final class CAS_Sidebar_Manager {
 				'not_found'          => __('No sidebars found', "content-aware-sidebars"),
 				'not_found_in_trash' => __('No sidebars found in Trash', "content-aware-sidebars"),
 				//wp-content-aware-engine specific
-				'ca_title'           => __('Display sidebar with',"content-aware-sidebars"),
+				'ca_title'           => __('Sidebar Conditions',"content-aware-sidebars"),
 				'ca_not_found'       => __('No content. Please add at least one condition group to make the sidebar content aware.',"content-aware-sidebars")
 			),
 			'capabilities'  => array(
