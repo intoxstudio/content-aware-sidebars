@@ -263,6 +263,15 @@ final class CAS_Sidebar_Edit {
 	 */
 	public function meta_box_options($post) {
 
+		$visibility = CAS_App::instance()->manager()->metadata()->get("visibility");
+
+		echo '<span>';
+		echo '<strong>'.__('Visibility').'</strong>';
+		echo '<p><label for="visibility" class="screen-reader-text">'.__('Visibility').'</label>';
+		echo '<div><input style="width:250px;" type="hidden" name="visibility" class="js-cas-visibility" value="'.implode(",", $visibility->get_data($post->ID,true,false)).'" /></div>';
+		
+		echo '</p></span>';
+
 		$columns = array(
 			'exposure',
 			'handle' => 'handle,host',
@@ -281,15 +290,6 @@ final class CAS_Sidebar_Edit {
 			}
 			echo '</p></span>';
 		}
-
-		$visibility = CAS_App::instance()->manager()->metadata()->get("visibility");
-
-		echo '<span>';
-		echo '<strong>'.__('Visibility').'</strong>';
-		echo '<p><label for="visibility" class="screen-reader-text">'.__('Visibility').'</label>';
-		echo '<div><input style="width:250px;" type="hidden" name="visibility" class="js-cas-visibility" value="'.implode(",", $visibility->get_data($post->ID,true,false)).'" /></div>';
-		
-		echo '</p></span>';
 
 		echo '<span>';
 		echo '<strong>'.__('Order').'</strong>';
