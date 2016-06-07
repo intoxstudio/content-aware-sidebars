@@ -6,4 +6,4 @@
 	url = git@github.com:intoxstudio/wp-db-updater.git
 [submodule "lib/freemius"]
 	path = lib/freemius
-	url = git@github.com:Freemius/wordpress-sdk.git
+	url = git@github.com:intoxstudio/wordpress-sdk.git

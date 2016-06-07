@@ -33,10 +33,25 @@ final class CAS_Sidebar_Edit {
 		add_action('wp_ajax_cas_dismiss_review_notice',
 			array($this,'ajax_review_clicked'));
 
+	if ( cas_fs()->is_not_paying() )  {
+		add_action('wpca/meta_box/after',array($this,"show_review_link"));
+	}
+
+
+
 		add_filter('post_updated_messages',
 			array($this,'sidebar_updated_messages'));
 		add_filter('bulk_post_updated_messages',
 			array($this,'sidebar_updated_bulk_messages'), 10, 2 );
+	}
+
+	public function show_review_link($post_type) {
+		if($post_type == CAS_App::TYPE_SIDEBAR) {
+			echo '<div style="text-align:left;">';
+			echo '<span class="cas-heart">❤</span> ';
+			printf(__('Like it? %1$sSupport the plugin with a %2$s Review%3$s','content-aware-sidebars'),'<b><a target="_blank" href="https://wordpress.org/support/view/plugin-reviews/content-aware-sidebars?filter=5#postform">','5★','</a></b>');
+			echo '</div>';
+		}
 	}
 
 	/**
@@ -101,6 +116,7 @@ final class CAS_Sidebar_Edit {
 		// Names of whitelisted meta boxes
 		$whitelist = array(
 			'cas-plugin-links' => 'cas-plugin-links',
+			'cas-upgrade'   => 'cas-upgrade',
 			'cas-news'      => 'cas-news',
 			'cas-support'   => 'cas-support',
 			'cas-groups'    => 'cas-groups',
@@ -108,7 +124,8 @@ final class CAS_Sidebar_Edit {
 			'cas-options'   => 'cas-options',
 			'submitdiv'     => 'submitdiv',
 			'revisionsdiv'  => 'revisionsdiv',
-			'slugdiv'       => 'slugdiv'
+			'slugdiv'       => 'slugdiv',
+			'revisiontest'  => 'revisiontest'
 		);
 
 		// Loop through context (normal,advanced,side)
@@ -132,25 +149,38 @@ final class CAS_Sidebar_Edit {
 	 * @global object $post
 	 * @return void 
 	 */
-	public function create_meta_boxes() {
+	public function create_meta_boxes($post) {
 
 		CAS_App::instance()->manager()->populate_metadata();
 
-		$boxes = array(
-			array(
-				'id'       => 'submitdiv',
-				'title'    => __('Publish'),
-				'callback' => 'meta_box_submit',
+		$boxes = array();
+
+		$boxes[] = array(
+			'id'       => 'submitdiv',
+			'title'    => __('Publish'),
+			'callback' => 'meta_box_submit',
+			'context'  => 'side',
+			'priority' => 'high'
+		);
+
+		if ( cas_fs()->is_not_paying() ) {
+
+			$boxes[] = array(
+				'id'       => 'cas-upgrade',
+				'title'    => __('Content Aware Sidebars PRO', "content-aware-sidebars"),
+				'callback' => 'meta_box_upgrade',
 				'context'  => 'side',
-				'priority' => 'high'
-			),
-			array(
-				'id'       => 'cas-plugin-links',
-				'title'    => __('Content Aware Sidebars', "content-aware-sidebars"),
-				'callback' => 'meta_box_support',
-				'context'  => 'side',
-				'priority' => 'high'
-			),
+				'priority' => 'default'
+			);
+
+			// $boxes[] = array(
+			// 	'id'       => 'cas-plugin-links',
+			// 	'title'    => __('Content Aware Sidebars', "content-aware-sidebars"),
+			// 	'callback' => 'meta_box_support',
+			// 	'context'  => 'side',
+			// 	'priority' => 'high'
+			// );
+		}
 			//News
 			// array(
 			// 	'id'       => 'cas-news',
@@ -168,13 +198,13 @@ final class CAS_Sidebar_Edit {
 			// 	'priority' => 'high'
 			// ),
 			//Options
-			array(
-				'id'       => 'cas-options',
-				'title'    => __('Options', "content-aware-sidebars"),
-				'callback' => 'meta_box_options',
-				'context'  => 'side',
-				'priority' => 'default'
-			),
+			
+		$boxes[] = array(
+			'id'       => 'cas-options',
+			'title'    => __('Options', "content-aware-sidebars"),
+			'callback' => 'meta_box_options',
+			'context'  => 'side',
+			'priority' => 'default'
 		);
 
 		//Add meta boxes
@@ -200,11 +230,12 @@ final class CAS_Sidebar_Edit {
 		) );
 		$screen->set_help_sidebar( '<h4>'.__('More Information').'</h4>'.
 			'<p><a href="http://www.intox.dk/en/plugin/content-aware-sidebars-en/faq/" target="_blank">'.__('FAQ',"content-aware-sidebars").'</a></p>'.
-			'<p><a href="http://wordpress.org/support/plugin/content-aware-sidebars" target="_blank">'.__('Get Support',"content-aware-sidebars").'</a></p>'
+			'<p><a href="http://wordpress.org/support/plugin/content-aware-sidebars" target="_blank">'.__('Forum Support',"content-aware-sidebars").'</a></p>'
 		);
 
-		add_action( 'admin_notices', array($this,"admin_notice_review"));
-
+		if ( cas_fs()->is_not_paying() )  {
+			add_action( 'admin_notices', array($this,"admin_notice_review"));
+		}
 	}
 
 	/**
@@ -229,6 +260,26 @@ final class CAS_Sidebar_Edit {
 	}
 
 	/**
+	 * Meta box for upgrade notice
+	 *
+	 * @since  3.2
+	 * @param  WP_Post  $post
+	 * @return void
+	 */
+	public function meta_box_upgrade($post) {
+		?>
+<ul>
+  <li><span class="dashicons dashicons-yes"></span> <?php _e('Priority Email Support','content-aware-sidebars'); ?></li>
+  <li><span class="dashicons dashicons-yes"></span> <?php _e('Premium Features','content-aware-sidebars'); ?></li>
+  <li><span class="dashicons dashicons-yes"></span> <?php _e('White Label - No Branding','content-aware-sidebars'); ?></li>
+</ul>
+<div style="text-align: center; margin: 0px auto;">
+	<a href="<?php echo esc_url(cas_fs()->get_upgrade_url()); ?>" class="button button-large"><?php _e('Upgrade Now!','content-aware-sidebars'); ?></a>
+</div>
+		<?php
+	}
+
+	/**
 	 * Meta box for news
 	 * @version 2.5
 	 * @return  void
@@ -237,20 +288,7 @@ final class CAS_Sidebar_Edit {
 ?>
 		<div style="overflow:hidden;">
 			<div style="float:left;width:40%;overflow:hidden">
-				<p><?php _e('Translate Content Aware Sidebars into your language and become a BETA tester of the upcoming Premium Bundle*!',"content-aware-sidebars"); ?></p>
 				<a target="_blank" href="https://www.transifex.com/projects/p/content-aware-sidebars/" class="button button-primary" style="width:100%;text-align:center;margin-bottom:10px;"><?php _e('Translate Now',"content-aware-sidebars"); ?></a>
-				<a href="mailto:translate@intox.dk?subject=Premium Bundle BETA tester" class="button button-primary" style="width:100%;text-align:center;margin-bottom:10px;"><?php _e('Get Premium Bundle',"content-aware-sidebars"); ?></a>
-				<p><small>(*) <?php _e('Single-site use. BETA implies it is not recommended for production sites.',"content-aware-sidebars"); ?></small></p>
-			</div>
-			<div style="float:left;width:60%;box-sizing:border-box;-moz-box-sizing:border-box;padding-left:25px;">
-				<p><strong><?php _e('Partial Feature List',"content-aware-sidebars"); ?></strong></p>
-				<ul class="cas-feature-list">
-					<li><?php _e('Select and create sidebars in the Post Editing Screens',"content-aware-sidebars"); ?></li>
-					<li><?php _e('Display sidebars with URLs using wildcards',"content-aware-sidebars"); ?></li>
-					<li><?php _e('Display sidebars with User Roles',"content-aware-sidebars"); ?></li>
-					<li><?php _e('Display sidebars with BuddyPress User Groups',"content-aware-sidebars"); ?></li>
-					<li><?php _e('Sidebars column in Post Type and Taxonomy Overview Screens',"content-aware-sidebars"); ?></li>
-				</ul>
 			</div>
 
 		</div>
@@ -326,20 +364,9 @@ final class CAS_Sidebar_Edit {
 	public function meta_box_author_words() {
 ?>
 			<div style="overflow:hidden;">
-				<div style="float:left;width:40%;overflow:hidden">
-					<p><strong><?php _e('If you love this plugin, please consider donating to support future development.', "content-aware-sidebars"); ?></strong></p>
-					<p><a href="https://www.paypal.com/cgi-bin/webscr?cmd=_donations&amp;business=KPZHE6A72LEN4&amp;lc=US&amp;item_name=WordPress%20Plugin%3a%20Content%20Aware%20Sidebars&amp;currency_code=USD&amp;bn=PP%2dDonationsBF%3abtn_donateCC_LG%2egif%3aNonHosted" 
-						target="_blank" title="PayPal - The safer, easier way to pay online!">
-							<img src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" width="147" height="47" alt="PayPal - The safer, easier way to pay online!">	
-						</a>
-						
-					</p>
-				</div>
 				<div style="float:left;width:40%;border-left:#ebebeb 1px solid;border-right:#ebebeb 1px solid;box-sizing:border-box;-moz-box-sizing:border-box;">
 					<p><strong><?php _e('Or you could:',"content-aware-sidebars"); ?></strong></p>
 					<ul>
-						<li><a href="http://wordpress.org/support/view/plugin-reviews/content-aware-sidebars?rate=5#postform" target="_blank"><?php _e('Rate the plugin on WordPress.org',"content-aware-sidebars"); ?></a></li>
-						<li><a href="http://wordpress.org/extend/plugins/content-aware-sidebars/" target="_blank"><?php _e('Link to the plugin page',"content-aware-sidebars"); ?></a></li>
 						<li><a href="http://wordpress.org/extend/plugins/content-aware-sidebars/" target="_blank"><?php _e('Translate the plugin into your language',"content-aware-sidebars"); ?></a></li>
 					</ul>
 				</div>
@@ -424,10 +451,8 @@ final class CAS_Sidebar_Edit {
 	<div id="post-status-select" class="hide-if-js">
 	<input type="hidden" name="hidden_post_status" id="hidden_post_status" value="<?php echo esc_attr( ('auto-draft' == $post->post_status ) ? 'draft' : $post->post_status); ?>" />
 	<select name='post_status' id='post_status'>
-	<?php if ( 'publish' == $post->post_status ) : ?>
-	<option<?php selected( $post->post_status, 'publish' ); ?> value='publish'><?php _e('Published') ?></option>
-	<?php elseif ( 'private' == $post->post_status ) : ?>
-	<option<?php selected( $post->post_status, 'private' ); ?> value='publish'><?php _e('Privately Published') ?></option>
+	<?php if ( 'publish' == $post->post_status || 'private' == $post->post_status ) : ?>
+	<option<?php selected( $post->post_status, $post->post_status ); ?> value='publish'><?php _e('Published') ?></option>
 	<?php elseif ( 'future' == $post->post_status ) : ?>
 	<option<?php selected( $post->post_status, 'future' ); ?> value='future'><?php _e('Scheduled') ?></option>
 	<?php endif; ?>
@@ -482,6 +507,14 @@ final class CAS_Sidebar_Edit {
 			</div>
 			<?php
 		}
+	}
+	elseif ( $post->post_status != 'auto-draft' && cas_fs()->is_not_paying() ) {
+?>
+		<div class="misc-pub-section misc-pub-revisions">
+			<?php printf( __( 'Revisions: %s' ), '<b>'.__('Disabled').'</b>' ); ?>
+			<a href="<?php echo esc_url(cas_fs()->get_upgrade_url()); ?>"><?php _e( 'Upgrade'); ?></a>
+		</div>
+		<?php
 	}
 
 	if ( $can_publish ) : // Contributors don't get to choose the date of publish ?>
