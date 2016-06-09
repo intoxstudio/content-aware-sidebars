@@ -81,17 +81,27 @@ function cas_fs_connect_message(
 $cas_fs->add_filter('connect_message_on_update', 'cas_fs_connect_message_update', 10, 6);
 $cas_fs->add_filter('connect_message', 'cas_fs_connect_message', 10, 6);
 
+function cas_fs_upgrade() {
+	global $cas_fs;
+	$upgrade_flag_prev = get_option('cas_pro',0);
+	$upgrade_flag = $cas_fs->can_use_premium_code();
+	if($upgrade_flag != $upgrade_flag_prev) {
+		update_option('cas_pro',(int)$upgrade_flag);
+		if($cas_fs->is__premium_only()) {
+			if($upgrade_flag) {
+				require(plugin_dir_path( __FILE__ ).'/lib/content-aware-premium/upgrade.php');
+			}
+		}
+	}
+}
+add_action('admin_footer','cas_fs_upgrade',99);
+
 if($cas_fs->is__premium_only()) {
 	//Launch PRO features
 	if($cas_fs->can_use_premium_code()) {
 		require(plugin_dir_path( __FILE__ ).'/lib/content-aware-premium/app.php');
 	}
-	if(is_admin()) {
-		function cas_fs_upgrade() {
-			require(plugin_dir_path( __FILE__ ).'/lib/content-aware-premium/upgrade.php');
-		}
-		$cas_fs->add_action('after_license_activation','cas_fs_upgrade');
-	}
+	
 }
 
 //eol
