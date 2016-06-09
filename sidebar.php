@@ -2,6 +2,8 @@
 /**
  * @package Content Aware Sidebars
  * @author Joachim Jensen <jv@intox.dk>
+ * @license GPLv3
+ * @copyright 2016 by Joachim Jensen
  */
 
 if (!defined('CAS_App::PLUGIN_VERSION')) {
