@@ -85,12 +85,17 @@ $cas_fs->add_filter('connect_message', 'cas_fs_connect_message', 10, 6);
 
 function cas_fs_upgrade() {
 	global $cas_fs;
-	$upgrade_flag_prev = get_option('cas_pro',0);
-	$upgrade_flag = $cas_fs->can_use_premium_code();
-	if($upgrade_flag != $upgrade_flag_prev) {
-		update_option('cas_pro',(int)$upgrade_flag);
+	$flag = 'cas_pro';
+	$upgrade_flag = (int)$cas_fs->can_use_premium_code();
+	if($upgrade_flag != get_option($flag,0)) {
+		if(!$upgrade_flag) {
+			//downgrade
+			update_option($flag,$upgrade_flag);
+		}
 		if($cas_fs->is__premium_only()) {
 			if($upgrade_flag) {
+				//upgrade
+				update_option($flag,$upgrade_flag);
 				require(plugin_dir_path( __FILE__ ).'/lib/content-aware-premium/upgrade.php');
 			}
 		}
