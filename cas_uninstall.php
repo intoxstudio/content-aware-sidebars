@@ -2,16 +2,19 @@
 /**
  * @package Content Aware Sidebars
  * @author Joachim Jensen <jv@intox.dk>
+ * @license GPLv3
+ * @copyright 2016 by Joachim Jensen
  */
 
-if(!defined('WP_UNINSTALL_PLUGIN')) {
-	exit();
-}
+// if(!defined('WP_UNINSTALL_PLUGIN')) {
+// 	exit();
+// }
 
 global $wpdb;
 
 // Remove db version
 delete_option('cas_db_version');
+delete_option('cas_pro');
 
 //Remove all sidebars, groups, meta and terms.
 $sidebars = get_posts(array(

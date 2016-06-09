@@ -98,6 +98,11 @@ function cas_fs_upgrade() {
 }
 add_action('admin_footer','cas_fs_upgrade',99);
 
+function cas_fs_uninstall() {
+	require(plugin_dir_path( __FILE__ ).'/cas_uninstall.php');
+}
+$cas_fs->add_action('after_uninstall', 'cas_fs_uninstall');
+
 if($cas_fs->is__premium_only()) {
 	//Launch PRO features
 	if($cas_fs->can_use_premium_code()) {
