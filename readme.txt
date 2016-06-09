@@ -72,7 +72,7 @@ Negate conditions, e.g. display a sidebar on pages except Page X.
 > * Sync Widgets across Themes
 > * and more...
 >
-> Install the free version and upgrade at any time from the dashboard
+> Install the free version and upgrade at any time right from the dashboard!
 
 ####For more information
 
@@ -149,6 +149,8 @@ Do you want to contribute and see your name here?
 
 == Changelog ==
 
+[View development on GitHub](https://github.com/intoxstudio/content-aware-sidebars)
+
 = 3.2 =
 
 * Added: performance improvements
@@ -157,9 +159,11 @@ Do you want to contribute and see your name here?
 * Added: visibility column in sidebar overview
 * Added: combined handle and merge position columns
 * Added: freemius integration
+* Added: wp filters to add and populate metadata
 * Added: minimum requirement wp3.9
 * Fixed: improved sidebar editor ux
 * Fixed: display correct template tag for manual handled sidebars in editor
+* Fixed: wpml config
 * Removed: sidebar quick edit
 * Removed: ability to set private post status (in favor of visibility option)
 * Removed: donation link from readme
@@ -174,6 +178,7 @@ Do you want to contribute and see your name here?
 * Added: sidebar meta box for post types
 * Added: sidebar column for post type overviews
 * Added: widget synchronization across themes
+* Added: white label admin screens
 
 = 3.1.2 =
 
