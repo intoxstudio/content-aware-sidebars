@@ -4,7 +4,7 @@ Donate link:
 Tags: sidebar, custom sidebars, dynamic sidebar, replace sidebar, create sidebar, sidebar generator, replace widget area, create widget area, conditional sidebar, bbpress, buddypress, qtranslate, polylang, transposh, wpml, pods
 Requires at least: 3.9
 Tested up to: 4.5
-Stable tag: 3.2
+Stable tag: 3.2.1
 License: GPLv3
 
 Display custom sidebars conditionally. Posts, pages, categories, bbPress, WooCommerce, Easy Digital Downloads etc. Fast and powerful. 
@@ -150,6 +150,10 @@ Do you want to contribute and see your name here?
 == Changelog ==
 
 [View development on GitHub](https://github.com/intoxstudio/content-aware-sidebars)
+
+= 3.2.1 =
+
+* Fixed: quick edit link removed from other post types
 
 = 3.2 =
 
