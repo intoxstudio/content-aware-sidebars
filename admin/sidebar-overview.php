@@ -121,8 +121,8 @@ final class CAS_Sidebar_Overview {
 			$new_actions['mng_widgets'] = '<a href="widgets.php" title="' . esc_attr__('Manage Widgets', "content-aware-sidebars") . '">' . __('Manage Widgets', "content-aware-sidebars") . '</a>';
 			//Append new actions just before trash action
 			array_splice($actions, -1, 0, $new_actions);
+			unset($actions["inline hide-if-no-js"]);
 		}
-		unset($actions["inline hide-if-no-js"]);
 		return $actions;
 	}
 
