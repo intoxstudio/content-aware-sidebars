@@ -283,10 +283,10 @@ final class CAS_Sidebar_Manager {
 
 		$posts = WPCACore::get_posts(CAS_App::TYPE_SIDEBAR);
 
-		//temporary filter until WPCACore allows filtering
-		$user_visibility = is_user_logged_in() ? array(-1) : array();
-		$user_visibility = apply_filters("cas/user_visibility",$user_visibility);
 		if ($posts) {
+			//temporary filter until WPCACore allows filtering
+			$user_visibility = is_user_logged_in() ? array(-1) : array();
+			$user_visibility = apply_filters("cas/user_visibility",$user_visibility);
 			foreach ($posts as $post) {
 
 				$id = CAS_App::SIDEBAR_PREFIX . $post->ID;
