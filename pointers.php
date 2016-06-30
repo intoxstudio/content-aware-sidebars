@@ -72,22 +72,22 @@ final class CASPointerManager {
 	private function _get_pointers() {
 		$pointers[] = array(
 			'content'   => sprintf( '<h3>%s</h3>%s',
-				__( "Get started", "content-aware-sidebars" ),
-				wpautop(__( "You've just installed or updated Content Aware Sidebars!\n\nThe UI has been completely rewritten to make it easier for you to create a sidebar in no time!\n\nClick Start Quick Tour to get a 3 Step Introduction and learn how to display a sidebar exactly where and when you want it to.", "content-aware-sidebars" ) )),
+				__( "Get Started in 3 Easy Steps", "content-aware-sidebars" ),
+				wpautop(__( "You've just installed or updated Content Aware Sidebars. Awesome!\n\nYou can display sidebars on any page or in any context. If that is new to you, this 3 step interactive guide will show you just how easy it is.", "content-aware-sidebars" ) )),
 			'ref_id'    => '#titlediv',
 			'position'  => array(
 				'edge'      => 'top',
 				'align'     => 'center'
 			),
-			'pointerWidth' => 450,
+			'pointerWidth' => 400,
 			'next' => __("Start Quick Tour","content-aware-sidebars"),
 			'prev' => false,
-			'dismiss' => __("Not now","content-aware-sidebars")
+			'dismiss' => __("I know how to use it","content-aware-sidebars")
 		);
 		$pointers[] = array(
 			'content'   => sprintf( '<h3>%s</h3><p>%s</p>',
 				"1. ".__( 'Select Content Type', "content-aware-sidebars" ),
-				wpautop(__( "With this dropdown you can create condition groups that determines where the sidebar should be displayed.\n\nContent Aware Sidebars has built-in support for many types of content and even other plugins!\n\nSelect something to continue the tour. You can change it later.", "content-aware-sidebars" ) )),
+				wpautop(__( "With this dropdown you can select on what conditions the sidebar should be displayed.\n\nContent Aware Sidebars has built-in support for many types of content and even other plugins!\n\nSelect something to continue the tour. You can change it later.", "content-aware-sidebars" ) )),
 			'ref_id'    => '.cas-group-new',
 			'position'  => array(
 				'edge'      => 'top',
@@ -99,7 +99,7 @@ final class CASPointerManager {
 		$pointers[] = array(
 			'content'   => sprintf( '<h3>%s</h3><p>%s</p>',
 				"2. ".__( 'Condition Groups', "content-aware-sidebars" ),
-				wpautop(__( "Click on the input field and select the content you want.\n\nContent you add to this group will be isolated from other groups, and if you add other types to this group, you will target the context.\n\n Adding e.g. \"All Posts\" and an Author will target all posts written by that author. Awesome!\n\nRemember to save the changes on each group.", "content-aware-sidebars" ) )),
+				wpautop(__( "Click on the input field and select the content you want.\n\nIf you can't find the right content in the list, type something to search.\n\n You can add several types of content to the same group, try e.g. \"All Posts\" and an Author to target all posts written by that author. Awesome!\n\nRemember to save the changes on each group.", "content-aware-sidebars" ) )),
 			'ref_id'    => '#cas-groups > ul',
 			'position'  => array(
 				'edge'      => 'top',
@@ -109,7 +109,7 @@ final class CASPointerManager {
 		$pointers[] = array(
 			'content'   => sprintf( '<h3>%s</h3><p>%s</p>',
 				"3. ".__( 'Options, options', "content-aware-sidebars" ),
-				wpautop(__( "Should the sidebar be displayed on singular pages and/or archives?\n\nShould it merge with another sidebar or replace it? Maybe you want to insert it manually in your content with a shortcode.\n\nSchedule the sidebar just like you do with posts and pages, or make it private so that it is only visible for logged-in users.\n\n You are in control.", "content-aware-sidebars" ) )),
+				wpautop(__( "Should the sidebar be displayed on singular pages and/or archives?\n\nShould it merge with another sidebar or replace it? Maybe you want to insert it manually in your content with a shortcode.\n\nSchedule the sidebar just like you do with posts and pages, or make it visible only for logged-in users.\n\n You are in control.", "content-aware-sidebars" ) )),
 			'ref_id'    => '#cas-options',
 			'position'  => array(
 				'edge'      => 'right',
@@ -125,7 +125,8 @@ final class CASPointerManager {
 				'edge'      => 'top',
 				'align'     => 'right'
 			),
-			'next' => false
+			'next' => false,
+			'dismiss' => __("Finish Tour","content-aware-sidebars")
 		);
 		return $pointers;
 	}
