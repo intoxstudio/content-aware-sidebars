@@ -41,46 +41,52 @@ if (!defined('ABSPATH')) {
 	exit;
 }
 
-// Load dependencies
-$cas_dir_path = plugin_dir_path( __FILE__ );
+if(!class_exists('CAS_App')) {
 
-require($cas_dir_path.'lib/wp-content-aware-engine/core.php');
-require($cas_dir_path.'app.php');
-require($cas_dir_path.'sidebar.php');
-require($cas_dir_path.'freemius.php');
-		
-if(is_admin()) {
-	require($cas_dir_path.'lib/wp-db-updater/wp-db-updater.php');
-	require($cas_dir_path.'admin/db-updates.php');
-	require($cas_dir_path.'pointers.php');
-	require($cas_dir_path.'admin/sidebar-overview.php');
-	require($cas_dir_path.'admin/sidebar-edit.php');
+	// Load dependencies
+	$cas_dir_path = plugin_dir_path( __FILE__ );
+
+	require($cas_dir_path.'lib/wp-content-aware-engine/core.php');
+	require($cas_dir_path.'app.php');
+	require($cas_dir_path.'sidebar.php');
+	require($cas_dir_path.'freemius.php');
+			
+	if(is_admin()) {
+		require($cas_dir_path.'lib/wp-db-updater/wp-db-updater.php');
+		require($cas_dir_path.'admin/db-updates.php');
+		require($cas_dir_path.'pointers.php');
+		require($cas_dir_path.'admin/sidebar-list-table.php');
+		require($cas_dir_path.'admin/sidebar-overview.php');
+		require($cas_dir_path.'admin/sidebar-edit.php');
+	}
+
+	// Launch plugin
+	CAS_App::instance();
+
+	/**
+	 * Template wrapper to display content aware sidebars
+	 *
+	 * @since  3.0
+	 * @param  array|string  $args 
+	 * @return void 
+	 */
+	function ca_display_sidebar($args = array()) {
+		CAS_App::instance()->manager()->manual_sidebar($args);
+	}
+
+	/**
+	 * Template wrapper to display content aware sidebars
+	 *
+	 * @deprecated 3.0           ca_display_sidebar()
+	 * @param      array|string  $args 
+	 * @return     void 
+	 */
+	function display_ca_sidebar($args = array()) {
+		_deprecated_function( __FUNCTION__, '3.0', 'ca_display_sidebar()' );
+		ca_display_sidebar($args);
+	}
 }
 
-// Launch plugin
-CAS_App::instance();
 
-/**
- * Template wrapper to display content aware sidebars
- *
- * @since  3.0
- * @param  array|string  $args 
- * @return void 
- */
-function ca_display_sidebar($args = array()) {
-	CAS_App::instance()->manager()->manual_sidebar($args);
-}
-
-/**
- * Template wrapper to display content aware sidebars
- *
- * @deprecated 3.0           ca_display_sidebar()
- * @param      array|string  $args 
- * @return     void 
- */
-function display_ca_sidebar($args = array()) {
-	_deprecated_function( __FUNCTION__, '3.0', 'ca_display_sidebar()' );
-	ca_display_sidebar($args);
-}
 
 //eol
