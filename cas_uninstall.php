@@ -6,6 +6,12 @@
  * @copyright 2016 by Joachim Jensen
  */
 
+if (!defined('ABSPATH')) {
+	header('Status: 403 Forbidden');
+	header('HTTP/1.1 403 Forbidden');
+	exit;
+}
+
 // if(!defined('WP_UNINSTALL_PLUGIN')) {
 // 	exit();
 // }
