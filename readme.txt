@@ -3,8 +3,8 @@ Contributors: intoxstudio, freemius
 Donate link:
 Tags: sidebar, sidebars, custom sidebars, dynamic sidebar, replace sidebar, create sidebars, replace widget area, bbpress, buddypress, polylang, wpml, pods
 Requires at least: 3.9
-Tested up to: 4.5
-Stable tag: 3.2.3
+Tested up to: 4.6
+Stable tag: 3.2.4
 License: GPLv3
 
 Display custom sidebars conditionally. Posts, pages, categories, bbPress, WooCommerce, Easy Digital Downloads etc. Fast and powerful. 
@@ -56,7 +56,7 @@ Negate conditions, e.g. display a sidebar on pages except Page X.
 ####Integrated Support for Popular Plugins
 
 * bbPress (v2.5+)
-* BuddyPress (v2.0+)
+* BuddyPress (v2.6+)
 * qTranslate X (v3.4.6.4+)
 * Pods (v2.6+)
 * Polylang (v1.7+)
@@ -68,6 +68,7 @@ Negate conditions, e.g. display a sidebar on pages except Page X.
 > * Priority Email Support
 > * Sidebar and Widget Revisions
 > * Display sidebars on URLs + wildcards
+> * Display sidebars on content from any day, month, year
 > * Sidebar Visibility for Roles and Guests
 > * Sync Widgets across Themes
 > * and more...
@@ -83,11 +84,13 @@ Negate conditions, e.g. display a sidebar on pages except Page X.
 
 == Installation ==
 
-1. Upload the full plugin directory to your `/wp-content/plugins/` directory or install the plugin through `Plugins` in the administration 
-1. Activate the plugin through `Plugins` in the administration
+1. Unzip and upload the `content-aware-sidebars` folder to your `/wp-content/plugins/` directory via FTP or install the plugin through *Plugins* in the administration 
+1. Activate the plugin through *Plugins* in the administration
 1. Create your first sidebar under the menu *Sidebars > Add New*
-1. Optional: Insert Template Tag `<?php ca_display_sidebar( $args ); ?>` in your theme for manually handled sidebars
-1. Optional: Insert Shortcode `[ca-sidebar id=]` in a post or page for manually handled sidebars
+1. Add widgets to the sidebar like any other sidebar
+
+* Optional: Insert Template Tag `<?php ca_display_sidebar( $args ); ?>` in your theme for manually handled sidebars
+* Optional: Insert Shortcode `[ca-sidebar id=]` in a post or page for manually handled sidebars
 
 == Frequently Asked Questions ==
 
@@ -150,6 +153,21 @@ Do you want to contribute and see your name here?
 == Changelog ==
 
 [View development on GitHub](https://github.com/intoxstudio/content-aware-sidebars)
+
+= 3.2.4 =
+
+* Added: infinite scroll for content in sidebar editor
+* Added: guard when activating both free and pro version, uninstall cleanup not run if one is active
+* Added: support for buddypress 2.6 members
+* Added: wordpress 4.6 support
+* Fixed: option to select all authors and bbpress profiles
+* Fixed: simplified introduction tour
+* Fixed: uninstall cleanup for users not on freemius
+
+**Professional Plan:**
+
+* Fixed: load buddypress group module correctly
+* Fixed: search for buddypress groups
 
 = 3.2.3 =
 
