@@ -38,6 +38,9 @@ final class CAS_Sidebar_Manager {
 
 			new CAS_Sidebar_Overview();
 			new CAS_Sidebar_Edit();
+
+			add_action('load-widgets.php',
+				array($this,'load_widgets_screen'));
 		}
 
 		add_action('sidebars_widgets',
@@ -54,6 +57,53 @@ final class CAS_Sidebar_Manager {
 		add_shortcode( 'ca-sidebar',
 			array($this,'sidebar_shortcode'));
 
+	}
+
+	/**
+	 * Widgets Screen functionality
+	 *
+	 * @since  3.3
+	 * @return void
+	 */
+	public function load_widgets_screen() {
+		add_action( 'dynamic_sidebar_before',
+			array($this,'render_sidebar_controls'));
+	}
+
+	/**
+	 * Render controls for custom sidebars
+	 *
+	 * @since  3.3
+	 * @param  string  $index
+	 * @return void
+	 */
+	public function render_sidebar_controls($index) {
+		//trashed custom sidebars not included
+		if(isset($this->sidebars[$index])) {
+			$sidebar = $this->sidebars[$index];
+			$status_class = 'sidebar-'.$sidebar->post_status;
+
+			switch($sidebar->post_status) {
+				case 'publish':
+					$status = __('Published');
+					break;
+				case 'future':
+					$status = __('Scheduled');
+					break;
+				default:
+					$status = __('Draft');
+			}
+
+			$link = admin_url('post.php?post='.$sidebar->ID);
+			?>
+				<div class="cas-settings">
+				<div class="sidebar-status <?php echo $status_class; ?>" title="<?php echo $status; ?>">
+					<span class="screen-reader-text"><?php echo $status; ?></span>
+				</div>
+				<a title="<?php esc_attr_e("Edit Sidebar") ?>" class="dashicons dashicons-admin-generic cas-sidebar-link" href="<?php echo add_query_arg('action','edit',$link); ?>"></a><a title="<?php esc_attr_e("Revisions") ?>" class="cas-sidebar-link" href="<?php echo add_query_arg('action','cas-revisions',$link); ?>"><i class="dashicons dashicons-backup"></i> <?php _e("Revisions") ?></a>
+				</div>
+			<?php
+		}
 	}
 
 	/**
@@ -213,16 +263,17 @@ final class CAS_Sidebar_Manager {
 	 * @return void
 	 */
 	public function create_sidebars() {
-		$this->sidebars = get_posts(array(
+		$sidebars = get_posts(array(
 			'numberposts' => -1,
 			'post_type'   => CAS_App::TYPE_SIDEBAR,
-			'post_status' => array('publish','private','future')
+			'post_status' => array('publish','future','draft')
 		));
 
 		//Register sidebars to add them to the list
-		foreach($this->sidebars as $post) {
+		foreach($sidebars as $post) {
+			$this->sidebars[CAS_App::SIDEBAR_PREFIX.$post->ID] = $post;
 			register_sidebar( array(
-				'name' => $post->post_title,
+				'name' => $post->post_title ? $post->post_title : __('(no title)'),
 				'id'   => CAS_App::SIDEBAR_PREFIX.$post->ID
 			));
 		}
@@ -240,8 +291,8 @@ final class CAS_Sidebar_Manager {
 		foreach($this->sidebars as $post) {
 
 			$sidebar_args = array(
-				"name"        => $post->post_title,
-				"description" => $this->metadata()->get('handle')->get_list_data($post->ID,false),
+				"name"        => $post->post_title ? $post->post_title : __('(no title)'),
+				"description" => $this->metadata()->get('handle')->get_list_data($post->ID,true),
 				"id"          => CAS_App::SIDEBAR_PREFIX.$post->ID
 			);
 

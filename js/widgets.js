@@ -81,11 +81,39 @@
 			var box = '<div class="wp-filter cas-filter-sidebar">'+
 			'<a href="post-new.php?post_type=sidebar" class="button button-primary">'+CASAdmin.addNew+'</a>'+
 			'<input type="search" class="js-cas-filter" placeholder="'+CASAdmin.filterSidebars+'...">'+
+			'<a href="#" class="js-sidebars-toggle sidebars-toggle" data-toggle="0">'+CASAdmin.collapse+'</a>'+
+			'<a href="#" class="js-sidebars-toggle sidebars-toggle" data-toggle="1">'+CASAdmin.expand+'</a>'+
 			'</div>';
 
 			this.$sidebarContainer.prepend(box);
 			this.searchSidebarListener();
+			this.addSidebarToggle();
 
+		},
+
+		/**
+		 * Toggle all sidebars
+		 *
+		 * @since 3.3
+		 */
+		addSidebarToggle: function() {
+			var $document = $(document),
+				$sidebars = $('#widgets-right .widgets-holder-wrap');
+			$('body').on('click','.js-sidebars-toggle', function(e) {
+				e.preventDefault();
+				
+				var open = !!$(this).data("toggle");
+
+				$sidebars
+				.toggleClass('closed',!open);
+				if(open) {
+					$sidebars.children('.widgets-sortables').sortable('refresh');
+				}
+
+				$document.triggerHandler('wp-pin-menu');
+				
+				//$sidebars.click();
+			})
 		},
 		/**
 		 * Listen to sidebar filter
@@ -125,20 +153,9 @@
 		 */
 		addSidebarEditLink: function() {
 
-			this.$sidebars.each( function(e) {
-				$this = $(this);
-				var id = $this.attr('id').replace('ca-sidebar-','');
-				var $sidebar = $this.closest('.widgets-holder-wrap');
-
-				$sidebar.addClass('content-aware-sidebar');
-
-				$this.find('.sidebar-description').append(
-					'<div class="cas-settings">'+
-					'<a title="'+CASAdmin.edit+'" class="cas-sidebar-link" href="post.php?post='+id+'&action=edit"><i class="dashicons dashicons-admin-generic"></i> '+CASAdmin.edit+'</a>'+
-					'<a title="'+CASAdmin.revisions+'" class="cas-sidebar-link" href="post.php?post='+id+'&action=cas-revisions"><i class="dashicons dashicons-backup"></i> '+CASAdmin.revisions+'</a>'+
-					'</div>'
-				);
-			});
+			this.$sidebars
+			.closest('.widgets-holder-wrap')
+			.addClass('content-aware-sidebar');
 		}
 
 	};
