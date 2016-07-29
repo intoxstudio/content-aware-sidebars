@@ -44,7 +44,8 @@ module.exports = function(grunt) {
 			my_target: {
 				files: [{
 					'js/cas_admin.min.js': ['js/cas_admin.js'],
-					'js/widgets.min.js': ['js/widgets.js']
+					'js/widgets.min.js': ['js/widgets.js'],
+					'js/suggest-sidebars.min.js': ['js/suggest-sidebars.js']
 				}]
 			}
 		},
