@@ -21,10 +21,10 @@ final class CAS_Sidebar_Manager {
 	protected $metadata;
 
 	/**
-	 * Column definitions
+	 * Custom sidebars
 	 * @var array
 	 */
-	protected $sidebars = array();
+	public $sidebars = array();
 
 	/**
 	 * @var array
@@ -38,6 +38,7 @@ final class CAS_Sidebar_Manager {
 
 			new CAS_Sidebar_Overview();
 			new CAS_Sidebar_Edit();
+			new CAS_Post_Type_Sidebar();
 
 			add_action('load-widgets.php',
 				array($this,'load_widgets_screen'));
