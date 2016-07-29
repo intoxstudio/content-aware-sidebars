@@ -208,6 +208,14 @@ final class CAS_App {
 					);
 				}
 
+				if(cas_fs()->is_not_paying()) {
+					$visibility[] = array(
+						'id' => 'pro',
+						'text' => __('User Roles available in Pro','content-aware-sidebars'),
+						'disabled' => true
+					);
+				}
+
 				wp_enqueue_script('cas/admin/edit');
 				wp_localize_script( 'cas/admin/edit', 'CASAdmin', array(
 					'allVisibility'  => __("All Users","content-aware-sidebars"),
