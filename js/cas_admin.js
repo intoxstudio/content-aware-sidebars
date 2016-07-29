@@ -53,6 +53,8 @@
 		suggestVisibility: function() {
 			var $elem = $('.js-cas-visibility');
 			$elem.select2({
+				containerCssClass:'cas-select2',
+				dropdownCssClass: 'cas-select2',
 				placeholder: CASAdmin.allVisibility,
 				minimumInputLength: 0,
 				closeOnSelect: true,//does not work properly on false
