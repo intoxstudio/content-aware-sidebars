@@ -267,7 +267,9 @@ final class CAS_Sidebar_Manager {
 		$sidebars = get_posts(array(
 			'numberposts' => -1,
 			'post_type'   => CAS_App::TYPE_SIDEBAR,
-			'post_status' => array('publish','future','draft')
+			'post_status' => array('publish','future','draft'),
+			'orderby'     => 'title',
+			'order'       => 'ASC'
 		));
 
 		//Register sidebars to add them to the list
