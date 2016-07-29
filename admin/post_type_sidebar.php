@@ -16,13 +16,13 @@ class CAS_Post_Type_Sidebar {
 
 	const MODULE_NAME = "post_type";
 
-	private $_theme_sidebars = array();
+	protected $_theme_sidebars = array();
 
 	/**
 	 * Sidebar cache for post types
 	 * @var array
 	 */
-	private $_sidebars_for_content = array();
+	protected $_sidebars_for_content = array();
 
 	public function __construct(){
 		add_action("admin_init",
@@ -271,7 +271,7 @@ class CAS_Post_Type_Sidebar {
 	 * @param  array  $posts
 	 * @return array
 	 */
-	private function _get_content_sidebars($posts = null) {
+	protected function _get_content_sidebars($posts = null) {
 		if(is_array($posts) && $posts) {
 			global $wpdb;
 			return $wpdb->get_results(
