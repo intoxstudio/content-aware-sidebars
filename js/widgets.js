@@ -11,7 +11,6 @@
 
 		$sidebarContainer: $(".widget-liquid-right"),
 		$widgetContainer: $('#available-widgets'),
-		$sidebars:null,
 		$widgets:null,
 
 		/**
@@ -22,10 +21,6 @@
 		 */
 		init: function() {
 
-			this.$sidebars = $("div[id^='ca-sidebar']", this.$sidebarContainer);
-			this.$widgets = $(".widget",this.$widgetContainer).get().reverse();
-
-			this.addSidebarEditLink();
 			this.addSidebarToolbar();
 			this.addWidgetSearch();
 
@@ -36,6 +31,7 @@
 		 * @since 3.0
 		 */
 		addWidgetSearch: function() {
+			this.$widgets = $(".widget",this.$widgetContainer).get().reverse();
 			$(".sidebar-description",this.$widgetContainer).prepend('<input type="search" class="js-cas-widget-filter cas-filter-widget" placeholder="'+CASAdmin.filterWidgets+'...">');
 			this.searchWidgetListener();
 		},
@@ -98,7 +94,7 @@
 		 */
 		addSidebarToggle: function() {
 			var $document = $(document),
-				$sidebars = $('#widgets-right .widgets-holder-wrap');
+				$sidebars = this.$sidebarContainer.find('.widgets-holder-wrap');
 			$('body').on('click','.js-sidebars-toggle', function(e) {
 				e.preventDefault();
 				
@@ -144,18 +140,6 @@
 					}, 250);
 				}
 			});
-		},
-		/**
-		 * Add better management for
-		 * each sidebar
-		 *
-		 * @since 3.0
-		 */
-		addSidebarEditLink: function() {
-
-			this.$sidebars
-			.closest('.widgets-holder-wrap')
-			.addClass('content-aware-sidebar');
 		}
 
 	};

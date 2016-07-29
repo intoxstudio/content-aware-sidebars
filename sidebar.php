@@ -82,7 +82,7 @@ final class CAS_Sidebar_Manager {
 		//trashed custom sidebars not included
 		if(isset($this->sidebars[$index])) {
 			$sidebar = $this->sidebars[$index];
-			$status_class = 'sidebar-'.$sidebar->post_status;
+			$link = admin_url('post.php?post='.$sidebar->ID);
 
 			switch($sidebar->post_status) {
 				case 'publish':
@@ -94,13 +94,14 @@ final class CAS_Sidebar_Manager {
 				default:
 					$status = __('Draft');
 			}
-
-			$link = admin_url('post.php?post='.$sidebar->ID);
 			?>
 				<div class="cas-settings">
-				<div class="sidebar-status <?php echo $status_class; ?>" title="<?php echo $status; ?>">
-					<span class="screen-reader-text"><?php echo $status; ?></span>
+				<div class="sidebar-status">
+					<input type="checkbox" class="sidebar-status-input sidebar-status-<?php echo $sidebar->post_status; ?>" id="cas-status-<?php echo $sidebar->ID; ?>" value="<?php echo $sidebar->ID; ?>" <?php checked($sidebar->post_status, 'publish') ?> disabled="disabled">
+					<label title="<?php echo $status; ?>" class="sidebar-status-label" for="cas-status-<?php echo $sidebar->ID; ?>">
+					</label>
 				</div>
+
 				<a title="<?php esc_attr_e("Edit Sidebar") ?>" class="dashicons dashicons-admin-generic cas-sidebar-link" href="<?php echo add_query_arg('action','edit',$link); ?>"></a><a title="<?php esc_attr_e("Revisions") ?>" class="cas-sidebar-link" href="<?php echo add_query_arg('action','cas-revisions',$link); ?>"><i class="dashicons dashicons-backup"></i> <?php _e("Revisions") ?></a>
 				</div>
 			<?php
