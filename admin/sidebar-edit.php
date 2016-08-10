@@ -155,6 +155,10 @@ final class CAS_Sidebar_Edit {
 	 * @return void
 	 */
 	private function create_pointers() {
+		if($this->_tour_manager->user_has_finished_tour()) {
+			return;
+		}
+
 		$this->_tour_manager->set_pointers(array(
 			array(
 				'content'   => sprintf( '<h3>%s</h3>%s',
