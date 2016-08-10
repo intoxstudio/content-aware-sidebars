@@ -7,3 +7,6 @@
 [submodule "lib/freemius"]
 	path = lib/freemius
 	url = git@github.com:intoxstudio/wordpress-sdk.git
+[submodule "lib/wp-pointer-tour"]
+	path = lib/wp-pointer-tour
+	url = git@github.com:intoxstudio/wp-pointer-tour.git

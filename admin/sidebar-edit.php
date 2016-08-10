@@ -14,6 +14,8 @@ if (!defined('CAS_App::PLUGIN_VERSION')) {
 
 final class CAS_Sidebar_Edit {
 
+	private $_tour_manager;
+
 	/**
 	 * Constructor
 	 *
@@ -21,7 +23,7 @@ final class CAS_Sidebar_Edit {
 	 */
 	public function __construct() {
 
-		new CASPointerManager();
+		$this->_tour_manager = new WP_Pointer_Tour(WPCACore::PREFIX.'cas_tour');
 
 		add_action('delete_post',
 			array($this,'remove_sidebar_widgets'));
@@ -147,11 +149,82 @@ final class CAS_Sidebar_Edit {
 	}
 
 	/**
+	 * Set pointers for tour and enqueue script
+	 *
+	 * @since  3.3
+	 * @return void
+	 */
+	private function create_pointers() {
+		$this->_tour_manager->set_pointers(array(
+			array(
+				'content'   => sprintf( '<h3>%s</h3>%s',
+					__( "Get Started in 3 Easy Steps", "content-aware-sidebars" ),
+					wpautop(__( "You've just installed or updated Content Aware Sidebars. Awesome!\n\nYou can display sidebars on any page or in any context. If that is new to you, this 3 step interactive guide will show you just how easy it is.", "content-aware-sidebars" ) )),
+				'ref_id'    => '#titlediv',
+				'position'  => array(
+					'edge'      => 'top',
+					'align'     => 'center'
+				),
+				'pointerWidth' => 400,
+				'next' => __("Start Quick Tour","content-aware-sidebars"),
+				'dismiss' => __("I know how to use it","content-aware-sidebars")
+			),
+			array(
+				'content'   => sprintf( '<h3>%s</h3><p>%s</p>',
+					"1. ".__( 'Select Content Type', "content-aware-sidebars" ),
+					wpautop(__( "With this dropdown you can select on what conditions the sidebar should be displayed.\n\nContent Aware Sidebars has built-in support for many types of content and even other plugins!\n\nSelect something to continue the tour. You can change it later.", "content-aware-sidebars" ) )),
+				'ref_id'    => '.cas-group-new',
+				'position'  => array(
+					'edge'      => 'top',
+					'align'     => 'center'
+				),
+				'prev' => false,
+				'next' => ".js-wpca-add-or",
+				'nextEvent' => "change"
+			),
+			array(
+				'content'   => sprintf( '<h3>%s</h3><p>%s</p>',
+					"2. ".__( 'Condition Groups', "content-aware-sidebars" ),
+					wpautop(__( "Click on the input field and select the content you want.\n\nIf you can't find the right content in the list, type something to search.\n\n You can add several types of content to the same group, try e.g. \"All Posts\" and an Author to target all posts written by that author. Awesome!\n\nRemember to save the changes on each group.", "content-aware-sidebars" ) )),
+				'ref_id'    => '#cas-groups > ul',
+				'position'  => array(
+					'edge'      => 'top',
+					'align'     => 'center'
+				)
+			),
+			array(
+				'content'   => sprintf( '<h3>%s</h3><p>%s</p>',
+					"3. ".__( 'Options, options', "content-aware-sidebars" ),
+					wpautop(__( "Should the sidebar be displayed on singular pages and/or archives?\n\nShould it merge with another sidebar or replace it? Maybe you want to insert it manually in your content with a shortcode.\n\nSchedule the sidebar just like you do with posts and pages, or make it visible only for logged-in users.\n\n You are in control.", "content-aware-sidebars" ) )),
+				'ref_id'    => '#cas-options',
+				'position'  => array(
+					'edge'      => 'right',
+					'align'     => 'top'
+				)
+			),
+			array(
+				'content'   => sprintf( '<h3>%s</h3><p>%s</p>',
+					__( 'Help and Support', "content-aware-sidebars" ),
+					wpautop(__( "That's it! Now you can start creating sidebars and display them on your own conditions.\n\nIf you need more help, click on the \"Help\" tab here.", "content-aware-sidebars" ) )),
+				'ref_id'    => '#contextual-help-link-wrap',
+				'position'  => array(
+					'edge'      => 'top',
+					'align'     => 'right'
+				),
+				'dismiss' => __("Finish Tour","content-aware-sidebars")
+			)
+		));
+		$this->_tour_manager->enqueue_scripts();
+	}
+
+	/**
 	 * Meta boxes for sidebar edit
 	 * @global object $post
 	 * @return void 
 	 */
 	public function create_meta_boxes($post) {
+
+		$this->create_pointers();
 
 		CAS_App::instance()->manager()->populate_metadata();
 
@@ -249,7 +322,7 @@ final class CAS_Sidebar_Edit {
 	public function admin_notice_review() {
 		$has_reviewed = get_user_option(WPCACore::PREFIX."cas_review");
 		if($has_reviewed === false) {
-			$tour_taken = get_user_option(WPCACore::PREFIX.CASPointerManager::KEY_TOUR);
+			$tour_taken = $this->_tour_manager->get_user_option();
 			if($tour_taken && (time() - $tour_taken) >= WEEK_IN_SECONDS*2) {
 				echo '<div class="update-nag notice js-cas-notice-review">';
 				echo '<p>'.sprintf("If you like Content Aware Sidebars, please support future development with a %sreview on WordPress.org%s. Thank you.",
