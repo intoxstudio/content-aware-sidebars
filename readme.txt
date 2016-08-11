@@ -4,7 +4,7 @@ Donate link:
 Tags: sidebar, sidebars, custom sidebars, page sidebars, replace sidebar, create sidebars, replace widget area, bbpress, buddypress, polylang, pods, conditional
 Requires at least: 3.9
 Tested up to: 4.6
-Stable tag: 3.2.4
+Stable tag: 3.3
 License: GPLv3
 
 Display custom sidebars on any post, page, category etc. Supports bbPress, BuddyPress, WooCommerce, Easy Digital Downloads and more.
@@ -21,7 +21,7 @@ No coding required!
 ####Create unlimited sidebars
 
 * Easy-to-use Sidebar Manager
-* **[NEW]** Set sidebars directly when editing a post
+* **[NEW]** Create or select sidebars directly when editing a post
 * Works with any theme
 * Automatic support for Custom Post Types and Taxonomies
 * Merge or replace theme sidebars
@@ -134,13 +134,18 @@ Do you want to contribute and see your name here?
 = 3.3 =
 
 * Added: manage widgets for draft sidebars
-* Added: quick select sidebars on post type editor screen
+* Added: quick select and create sidebars on post type editor screen
 * Added: ability to add widgets to draft sidebars
 * Added: expand/collapse all sidebars on widgets screen
 * Added: view sidebar status on widgets screen
 * Added: order sidebars by title on widgets screen
-* Added: dialog on unsaved changes in sidebar editor
+* Added: dialog on unsaved condition changes in sidebar editor
+* Added: ux design improvements
+* Added: more focus on pro features, upgrade box moved to bottom
 * Fixed: error in wpml config (props Chouby)
+* Fixed: updated review notice description
+* Fixed: select2 dropdowns styling more robust to external changes
+* Fixed: minor performance improvements
 
 **Professional Plan:**
 

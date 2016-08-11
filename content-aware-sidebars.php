@@ -8,8 +8,8 @@
 /*
 Plugin Name: Content Aware Sidebars
 Plugin URI: http://www.intox.dk/en/plugin/content-aware-sidebars-en/
-Description: Manage and show sidebars according to the content being viewed.
-Version: 3.2.4
+Description: Unlimited custom sidebars for any post, page, category etc.
+Version: 3.3
 Author: Joachim Jensen, Intox Studio
 Author URI: http://www.intox.dk/
 Text Domain: content-aware-sidebars
