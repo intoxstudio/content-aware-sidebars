@@ -33,7 +33,7 @@
 					// 	return currentSearchTerm;
 					// },
 					createSearchChoice:function(term, data) {
-						if (term && $(data).filter(function() {
+						if (CAS.canCreate && term && $(data).filter(function() {
 						  return this.text.localeCompare(term) === 0;
 						}).length === 0) {
 						  return {

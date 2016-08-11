@@ -225,11 +225,18 @@ class CAS_Post_Type_Sidebar {
 			WPCACore::VERSION
 		);
 		wp_enqueue_script('cas/sidebars/suggest', plugins_url('/js/suggest-sidebars.min.js', dirname(__FILE__)), array('select2'), CAS_App::PLUGIN_VERSION, true);
-		wp_localize_script('cas/sidebars/suggest', 'CAS', array(
+
+		$labels = array(
+			'canCreate' => current_user_can(CAS_App::CAPABILITY),
 			'createNew' => __('Create New'),
-			'labelNew' => __('New'),
-			'notFound' => __('Type to Add New Sidebar')
-		));
+			'labelNew' => __('New')
+		);
+		if($lables['canCreate']) {
+			$labels['notFound'] = __('Type to Add New Sidebar');
+		} else {
+			$labels['notFound'] = __('No sidebars found');
+		}
+		wp_localize_script('cas/sidebars/suggest', 'CAS', $labels);
 
 		$post_type = get_post_type_object($post->post_type);
 		$content = array(
