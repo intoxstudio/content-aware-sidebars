@@ -367,10 +367,12 @@ final class CAS_Sidebar_Edit {
 			$tour_taken = $this->_tour_manager->get_user_option();
 			if($tour_taken && (time() - $tour_taken) >= WEEK_IN_SECONDS*2) {
 				echo '<div class="update-nag notice js-cas-notice-review">';
-				echo '<p>'.sprintf("If you like Content Aware Sidebars, please support future development with a %sreview on WordPress.org%s. Thank you.",
-				'<a target="_blank" href="https://wordpress.org/support/view/plugin-reviews/content-aware-sidebars?filter=5#postform">',
-				'</a>').'</p>';
-				echo '<p><a target="_blank" class="button-primary" href="https://wordpress.org/support/view/plugin-reviews/content-aware-sidebars?filter=5#postform">'.__("Review Plugin","content-aware-sidebars").'</a> <button class="button-secondary">'.__("Not Today","content-aware-sidebars").'</button></p>';
+				echo '<p>'.__('You have used this plugin for some time now. I hope you like it!','content-aware-sidebars').'</p>';
+				echo '<p>'.sprintf("Please spend 2 minutes to support it with a %sreview on WordPress.org%s. Thank you.",
+				'<strong><a target="_blank" href="https://wordpress.org/support/view/plugin-reviews/content-aware-sidebars?filter=5#postform">',
+				'</a></strong>').'</p>';
+				echo '<br><p>- '.__('Joachim Jensen, developer of Content Aware Sidebars','content-aware-sidebars').'</p>';
+				echo '<p><a target="_blank" class="button-primary" href="https://wordpress.org/support/view/plugin-reviews/content-aware-sidebars?filter=5#postform">'.__("Review Plugin","content-aware-sidebars").'</a> <button class="button-secondary">'.__("I don't like it","content-aware-sidebars").'</button></p>';
 				echo '</div>';
 			}
 		}
@@ -387,8 +389,9 @@ final class CAS_Sidebar_Edit {
 		?>
 <ul>
   <li><span class="dashicons dashicons-yes"></span> <?php _e('Priority Email Support','content-aware-sidebars'); ?></li>
-  <li><span class="dashicons dashicons-yes"></span> <?php _e('Premium Features','content-aware-sidebars'); ?></li>
-  <li><span class="dashicons dashicons-yes"></span> <?php _e('White Label - No Branding','content-aware-sidebars'); ?></li>
+  <li><span class="dashicons dashicons-yes"></span> <?php _e('Sidebars on URLs + wildcards','content-aware-sidebars'); ?></li>
+  <li><span class="dashicons dashicons-yes"></span> <?php _e('Widget Revisions','content-aware-sidebars'); ?></li>
+  <li><span class="dashicons dashicons-yes"></span> <?php _e('and more...','content-aware-sidebars'); ?></li>
 </ul>
 <div style="text-align: center; margin: 0px auto;">
 	<a href="<?php echo esc_url(cas_fs()->get_upgrade_url()); ?>" class="button button-large"><?php _e('Upgrade Now!','content-aware-sidebars'); ?></a>
