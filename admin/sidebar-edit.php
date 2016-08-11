@@ -37,11 +37,15 @@ final class CAS_Sidebar_Edit {
 		add_action('wp_ajax_cas_dismiss_review_notice',
 			array($this,'ajax_review_clicked'));
 
-	if ( cas_fs()->is_not_paying() )  {
-		add_action('wpca/meta_box/after',array($this,"show_review_link"));
-	}
+		add_action('wpca/meta_box/before',
+			array($this,"show_description"));
 
-
+		if ( cas_fs()->is_not_paying() )  {
+			add_action('wpca/meta_box/after',
+				array($this,"show_review_link"));
+			add_filter("wpca/modules/list",
+				array($this,'add_to_module_list',99);
+		}
 
 		add_filter('post_updated_messages',
 			array($this,'sidebar_updated_messages'));
@@ -49,6 +53,40 @@ final class CAS_Sidebar_Edit {
 			array($this,'sidebar_updated_bulk_messages'), 10, 2 );
 	}
 
+	/**
+	 * Show extra elements in content type list
+	 *
+	 * @since 3.3
+	 * @param array  $list
+	 */
+	public function add_to_module_list($list) {
+		if(get_post_type() == CAS_App::TYPE_SIDEBAR) {
+			$list[''] = 'URLs (Available in Pro)';
+		}
+		return $list;
+	}
+
+	/**
+	 * Render conditons description
+	 *
+	 * @since  3.3
+	 * @param  string  $post_type
+	 * @return void
+	 */
+	public function show_description($post_type) {
+		if($post_type == CAS_App::TYPE_SIDEBAR) {
+			_e('Display this sidebar only on content that meets the following conditions:');
+			echo '<p></p>';
+		}
+	}
+
+	/**
+	 * Render support description
+	 *
+	 * @since  3.3
+	 * @param  string  $post_type
+	 * @return void
+	 */
 	public function show_review_link($post_type) {
 		if($post_type == CAS_App::TYPE_SIDEBAR) {
 			echo '<div style="text-align:left;">';
@@ -120,7 +158,7 @@ final class CAS_Sidebar_Edit {
 		// Names of whitelisted meta boxes
 		$whitelist = array(
 			'cas-plugin-links' => 'cas-plugin-links',
-			'cas-upgrade'   => 'cas-upgrade',
+			'cas-upgrade-pro'   => 'cas-upgrade-pro',
 			'cas-news'      => 'cas-news',
 			'cas-support'   => 'cas-support',
 			'cas-groups'    => 'cas-groups',
@@ -245,11 +283,11 @@ final class CAS_Sidebar_Edit {
 		if ( cas_fs()->is_not_paying() ) {
 
 			$boxes[] = array(
-				'id'       => 'cas-upgrade',
+				'id'       => 'cas-upgrade-pro',
 				'title'    => __('Content Aware Sidebars PRO', "content-aware-sidebars"),
 				'callback' => 'meta_box_upgrade',
 				'context'  => 'side',
-				'priority' => 'default'
+				'priority' => 'low'
 			);
 
 			// $boxes[] = array(
