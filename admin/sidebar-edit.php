@@ -44,7 +44,7 @@ final class CAS_Sidebar_Edit {
 			add_action('wpca/meta_box/after',
 				array($this,"show_review_link"));
 			add_filter("wpca/modules/list",
-				array($this,'add_to_module_list',99);
+				array($this,'add_to_module_list'),99);
 		}
 
 		add_filter('post_updated_messages',
