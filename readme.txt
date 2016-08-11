@@ -1,30 +1,32 @@
 === Plugin Name ===
-Contributors: intoxstudio, freemius
+Contributors: intoxstudio, devinstitute, freemius
 Donate link:
-Tags: sidebar, sidebars, custom sidebars, dynamic sidebar, replace sidebar, create sidebars, replace widget area, bbpress, buddypress, polylang, wpml, pods
+Tags: sidebar, sidebars, custom sidebars, page sidebars, replace sidebar, create sidebars, replace widget area, bbpress, buddypress, polylang, pods, conditional
 Requires at least: 3.9
 Tested up to: 4.6
 Stable tag: 3.2.4
 License: GPLv3
 
-Display custom sidebars conditionally. Posts, pages, categories, bbPress, WooCommerce, Easy Digital Downloads etc. Fast and powerful. 
+Display custom sidebars on any post, page, category etc. Supports bbPress, BuddyPress, WooCommerce, Easy Digital Downloads and more.
 
 == Description ==
 
-Manage an infinite number of sidebars.
-Boost on-site SEO with better Calls to Action by controlling what content or context your sidebars should be displayed on.
-The sidebar manager makes it incredibly easy for anyone to create custom sidebars in any theme without the need of code.
+Boost on-site SEO, upsell your products or add better-converting CTAs by displaying different sidebars for different contexts. Create post sidebars, page sidebars, category sidebars and more.
+The sidebar manager makes it incredibly easy for anyone to create custom sidebars in any theme.
 
 Developed with scalability and performance in mind, Content Aware Sidebars is the only plugin of its kind that will never slow down your site no matter the size.
 
-####Lots of awesome Features
+No coding required!
 
-* Easy-to-use Sidebar Manager for unlimited sidebars
-* Theme agnostic, no coding required
-* Manage widgets in the Customizer
+####Create unlimited sidebars
+
+* Easy-to-use Sidebar Manager
+* **[NEW]** Set sidebars directly when editing a post
+* Works with any theme
 * Automatic support for Custom Post Types and Taxonomies
-* Sidebars can merge with or replace a host sidebar
-* Schedule sidebars for later publishing
+* Merge or replace theme sidebars
+* Draft and schedule sidebars for later publishing
+* Enhanced widget manager
 * Optional Template Tag to display custom sidebars anywhere in your theme
 * Optional Shortcode to display custom sidebars anywhere in your content
 * Comes in 38 languages ([help translate!](https://www.transifex.com/projects/p/content-aware-sidebars/))
@@ -47,11 +49,11 @@ Developed with scalability and performance in mind, Content Aware Sidebars is th
 * bbPress User Profiles
 * BuddyPress Member Pages
 * Languages (qTranslate, Polylang, Transposh, WPML)
-* **[NEW]** Pods Pages
+* Pods Pages
 
 Combine conditions in any way you like, e.g. display a sidebar on posts in Category X by author Y.
 
-Negate conditions, e.g. display a sidebar on pages except Page X.
+Negate conditions, e.g. display a sidebar on all pages except Page X.
 
 ####Integrated Support for Popular Plugins
 
@@ -77,8 +79,8 @@ Negate conditions, e.g. display a sidebar on pages except Page X.
 
 ####For more information
 
-* [Documentation](http://www.intox.dk/en/plugin/content-aware-sidebars-en/)
-* [Follow development on Github](https://github.com/intoxstudio/content-aware-sidebars)
+* [Plugin on DEV Institute](http://dev.institute/wordpress/sidebars-pro)
+* [Github](https://github.com/intoxstudio/content-aware-sidebars)
 * [Intox Studio on Facebook](https://www.facebook.com/intoxstudio)
 * [Intox Studio on Twitter](https://twitter.com/intoxstudio)
 
@@ -128,6 +130,21 @@ Do you want to contribute and see your name here?
 == Changelog ==
 
 [View development on GitHub](https://github.com/intoxstudio/content-aware-sidebars)
+
+= 3.3 =
+
+* Added: manage widgets for draft sidebars
+* Added: quick select sidebars on post type editor screen
+* Added: ability to add widgets to draft sidebars
+* Added: expand/collapse all sidebars on widgets screen
+* Added: view sidebar status on widgets screen
+* Added: order sidebars by title on widgets screen
+* Added: dialog on unsaved changes in sidebar editor
+* Fixed: error in wpml config (props Chouby)
+
+**Professional Plan:**
+
+* Added: set sidebars to published or draft on widgets screen
 
 = 3.2.4 =
 
