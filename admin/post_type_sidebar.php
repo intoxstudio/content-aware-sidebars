@@ -18,27 +18,11 @@ class CAS_Post_Type_Sidebar {
 
 	protected $_theme_sidebars = array();
 
-	/**
-	 * Sidebar cache for post types
-	 * @var array
-	 */
-	protected $_sidebars_for_content = array();
-
 	public function __construct(){
 		add_action("admin_init",
 			array($this,"initiate"));
-		add_action('after_setup_theme',function() {
-			if(is_admin()) {
-				global $wp_registered_sidebars;
-				foreach($wp_registered_sidebars as $sidebar) {
-					$this->_theme_sidebars[$sidebar['id']] = array(
-						'label' => $sidebar['name'],
-						'options' => array(),
-						'select' => array()
-					);
-				}
-			}
-		},98);
+		add_action('widgets_init',
+			array($this,'get_theme_sidebars'),98);
 	}
 
 	public function initiate() {
@@ -49,6 +33,25 @@ class CAS_Post_Type_Sidebar {
 					array($this,'create_meta_boxes'));
 				add_action("save_post_".$post_type->name,
 					array($this,"save_post_sidebars"),10,2);
+			}
+		}
+	}
+
+	/**
+	 * Gather theme sidebars for later use
+	 *
+	 * @since  3.3
+	 * @return void
+	 */
+	public function get_theme_sidebars() {
+		if(is_admin()) {
+			global $wp_registered_sidebars;
+			foreach($wp_registered_sidebars as $sidebar) {
+				$this->_theme_sidebars[$sidebar['id']] = array(
+					'label' => $sidebar['name'],
+					'options' => array(),
+					'select' => array()
+				);
 			}
 		}
 	}
@@ -231,7 +234,7 @@ class CAS_Post_Type_Sidebar {
 			'createNew' => __('Create New'),
 			'labelNew' => __('New')
 		);
-		if($lables['canCreate']) {
+		if($labels['canCreate']) {
 			$labels['notFound'] = __('Type to Add New Sidebar');
 		} else {
 			$labels['notFound'] = __('No sidebars found');
