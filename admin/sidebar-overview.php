@@ -118,7 +118,10 @@ final class CAS_Sidebar_Overview {
 	 */
 	public function sidebar_row_actions($actions, $post) {
 		if ($post->post_type == CAS_App::TYPE_SIDEBAR && $post->post_status != 'trash') {
-			$new_actions['mng_widgets'] = '<a href="widgets.php" title="' . esc_attr__('Manage Widgets', "content-aware-sidebars") . '">' . __('Manage Widgets', "content-aware-sidebars") . '</a>';
+			$link = admin_url('post.php?post='.$sidebar->ID);
+
+			//$new_actions['mng_widgets'] = '<a href="widgets.php" title="' . esc_attr__('Manage Widgets', "content-aware-sidebars") . '">' . __('Manage Widgets', "content-aware-sidebars") . '</a>';
+			$new_actions['widget_revisions'] = '<a href="'.add_query_arg('action','cas-revisions',$link).'" title="' . esc_attr__('Widget Revisions', "content-aware-sidebars") . '">' . __('Widget Revisions', "content-aware-sidebars") . '</a>';
 			//Append new actions just before trash action
 			array_splice($actions, -1, 0, $new_actions);
 			unset($actions["inline hide-if-no-js"]);
@@ -227,7 +230,8 @@ final class CAS_Sidebar_Overview {
 	 */
 	protected function column_widgets($column_name,$post_id) {
 		$sidebars_widgets = wp_get_sidebars_widgets();
-		return isset($sidebars_widgets[CAS_App::SIDEBAR_PREFIX . $post_id]) ? count($sidebars_widgets[CAS_App::SIDEBAR_PREFIX . $post_id]) : 0;
+		$count =  isset($sidebars_widgets[CAS_App::SIDEBAR_PREFIX . $post_id]) ? count($sidebars_widgets[CAS_App::SIDEBAR_PREFIX . $post_id]) : 0;
+		return '<a href="'.admin_url('widgets.php').'" title="' . esc_attr__('Manage Widgets', "content-aware-sidebars") . '">' .$count . '</a>';
 
 	}
 
