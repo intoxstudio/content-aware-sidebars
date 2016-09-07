@@ -311,6 +311,7 @@ class CAS_Post_Type_Sidebar {
 				INNER JOIN $wpdb->postmeta meta ON meta.post_id = groups.ID
 				WHERE sidebars.post_status <> 'trash'
 				AND sidebars.post_type = '".CAS_App::TYPE_SIDEBAR."'
+				AND groups.post_status = '".WPCACore::STATUS_PUBLISHED."'
 				AND meta.meta_key = '".WPCACore::PREFIX.self::MODULE_NAME."'
 				AND meta.meta_value IN (".implode(",", $posts).")
 				ORDER BY sidebars.post_title ASC"
