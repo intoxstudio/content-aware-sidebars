@@ -144,6 +144,8 @@
 
 	};
 
-	$(document).ready(function(){ cas_widgets.init(); });
+	$(document).ready(function(){
+		cas_widgets.init();
+	});
 
 })(jQuery);

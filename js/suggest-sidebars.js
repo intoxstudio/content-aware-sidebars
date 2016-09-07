@@ -9,10 +9,41 @@
 
 	var cas_sidebars = {
 
+		init: function() {
+			this.suggestSidebars();
+			this.toggleSidebarInputs();
+		},
+
+		/**
+		 * Toggle more sidebar inputs
+		 *
+		 * @since  3.3.1
+		 * @return {void}
+		 */
+		toggleSidebarInputs: function() {
+			$('.js-cas-more').click(function(e) {
+				e.preventDefault();
+				var $this = $(this),
+					$toggle = $($this.data('toggle')),
+					$icon = $this.children(":first");
+				if($icon.hasClass('dashicons-arrow-down-alt2')) {
+					$icon
+					.addClass('dashicons-arrow-up-alt2')
+					.removeClass('dashicons-arrow-down-alt2');
+					$toggle.slideDown();
+				} else {
+					$icon
+					.addClass('dashicons-arrow-down-alt2')
+					.removeClass('dashicons-arrow-up-alt2');
+					$toggle.slideUp();
+				}
+			});
+		},
+
 		/**
 		 * Add search suggest for sidebars
 		 *
-		 * @since 3.5
+		 * @since 3.3
 		 */
 		suggestSidebars: function() {
 			var $elem = $('.js-cas-sidebars');
@@ -23,9 +54,9 @@
 					dropdownCssClass: 'cas-select2',
 					minimumInputLength: 0,
 					closeOnSelect: true,//does not work properly on false
-					allowClear:true,
+					allowClear:false,
 					multiple: true,
-					maximumSelectionSize: 1,
+					//maximumSelectionSize: 1,
 					data:$this.data('sidebars'),
 					width:"100%",
 					//tokenSeparators: ['|'],
@@ -54,21 +85,11 @@
 					}
 				});
 			});
-			// .on("select2-selecting",function(e) {
-			// 	$elem.data("forceOpen",true);
-			// })
-			// .on("select2-close",function(e) {
-			// 	if($elem.data("forceOpen")) {
-			// 		e.preventDefault();
-			// 		$elem.select2("open");
-			// 		$elem.data("forceOpen",false);
-			// 	}
-			// });
-
 		}
-
 	};
 
-	$(document).ready(function(){ cas_sidebars.suggestSidebars(); });
+	$(document).ready(function(){
+		cas_sidebars.init();
+	});
 
 })(jQuery);
