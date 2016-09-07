@@ -88,10 +88,15 @@ final class CAS_Sidebar_Edit {
 	 * @return void
 	 */
 	public function show_review_link($post_type) {
+		//$url = cas_fs()->get_upgrade_url();
+		$url = 'https://dev.institute/wordpress/sidebars-pro/pricing/?utm_source=plugin&utm_medium=referral&utm_content=bottomlink&utm_campaign=upgrade';
 		if($post_type == CAS_App::TYPE_SIDEBAR) {
-			echo '<div style="text-align:left;">';
+			echo '<div style="overflow: hidden; padding: 2px 0px;">';
+			echo '<div style="float:right;"><a href="'.esc_url($url).'" class="button button-cas-upgrade button-small" target="_blank">'.__('Upgrade to Pro','content-aware-sidebars').'</a></div>';
+			echo '<div style="line-height:24px;">';
 			echo '<span class="cas-heart">❤</span> ';
 			printf(__('Like it? %1$sSupport the plugin with a %2$s Review%3$s','content-aware-sidebars'),'<b><a target="_blank" href="https://wordpress.org/support/view/plugin-reviews/content-aware-sidebars?filter=5#postform">','5★','</a></b>');
+			echo '</div>';
 			echo '</div>';
 		}
 	}
@@ -167,7 +172,6 @@ final class CAS_Sidebar_Edit {
 			'submitdiv'     => 'submitdiv',
 			'revisionsdiv'  => 'revisionsdiv',
 			'slugdiv'       => 'slugdiv',
-			'revisiontest'  => 'revisiontest'
 		);
 
 		// Loop through context (normal,advanced,side)
@@ -282,21 +286,21 @@ final class CAS_Sidebar_Edit {
 
 		if ( cas_fs()->is_not_paying() ) {
 
-			$boxes[] = array(
-				'id'       => 'cas-upgrade-pro',
-				'title'    => __('Content Aware Sidebars PRO', "content-aware-sidebars"),
-				'callback' => 'meta_box_upgrade',
-				'context'  => 'side',
-				'priority' => 'low'
-			);
-
 			// $boxes[] = array(
-			// 	'id'       => 'cas-plugin-links',
-			// 	'title'    => __('Content Aware Sidebars', "content-aware-sidebars"),
-			// 	'callback' => 'meta_box_support',
+			// 	'id'       => 'cas-upgrade-pro',
+			// 	'title'    => __('Content Aware Sidebars PRO', "content-aware-sidebars"),
+			// 	'callback' => 'meta_box_upgrade',
 			// 	'context'  => 'side',
-			// 	'priority' => 'high'
+			// 	'priority' => 'low'
 			// );
+
+			$boxes[] = array(
+				'id'       => 'cas-plugin-links',
+				'title'    => __('Content Aware Sidebars', "content-aware-sidebars"),
+				'callback' => 'meta_box_support',
+				'context'  => 'side',
+				'priority' => 'default'
+			);
 		}
 			//News
 			// array(
@@ -426,7 +430,8 @@ final class CAS_Sidebar_Edit {
 		echo '<span>';
 		echo '<strong>'.__('Visibility').'</strong>';
 		echo '<p><label for="visibility" class="screen-reader-text">'.__('Visibility').'</label>';
-		echo '<div><input style="width:250px;" type="hidden" name="visibility" class="js-cas-visibility" value="'.implode(",", $visibility->get_data($post->ID,true,false)).'" /></div>';
+
+		echo '<div><select style="width:250px;" class="js-cas-visibility" multiple="multiple"  name="visibility[]" data-value="'.implode(",", $visibility->get_data($post->ID,true,false)).'"></select></div>';
 		
 		echo '</p></span>';
 
@@ -466,12 +471,12 @@ final class CAS_Sidebar_Edit {
 ?>
 			<div style="overflow:hidden;">
 				<ul>
-					<li><a href="https://wordpress.org/support/view/plugin-reviews/content-aware-sidebars?rate=5#postform" target="_blank"><?php _e('Give a review on WordPress.org',"content-aware-sidebars"); ?></a></li>
+					<li><a href="<?php echo esc_url(cas_fs()->get_upgrade_url()); ?>"><?php _e('Priority Email Support',"content-aware-sidebars"); ?></a></li>
+					<li><a href="https://wordpress.org/support/plugin/content-aware-sidebars/" target="_blank"><?php _e('Forum Support',"content-aware-sidebars"); ?></a></li>
 <?php if($locale != "en_US") : ?>
 					<li><a href="https://www.transifex.com/projects/p/content-aware-sidebars/" target="_blank"><?php _e('Translate the plugin into your language',"content-aware-sidebars"); ?></a></li>
 <?php endif; ?>
 					<li><a href="http://www.intox.dk/en/plugin/content-aware-sidebars-en/faq/" target="_blank"><?php _e('Read the FAQ',"content-aware-sidebars"); ?></a></li>
-					<li><a href="https://wordpress.org/support/plugin/content-aware-sidebars/" target="_blank"><?php _e('Get Support',"content-aware-sidebars"); ?></a></li>
 				</ul>
 			</div>
 		<?php
@@ -622,7 +627,7 @@ final class CAS_Sidebar_Edit {
 			$revision_id = key( $revisions );
  ?>
 			<div class="misc-pub-section misc-pub-revisions">
-				<?php printf( __( 'Revisions: %s' ), '<b>' . number_format_i18n( $revision_count ) . '</b>' ); ?>
+				<?php printf( __( 'Widget Revisions: %s' ), '<b>' . number_format_i18n( $revision_count ) . '</b>' ); ?>
 				<a class="hide-if-no-js" href="<?php echo esc_url( get_edit_post_link( $revision_id ) ); ?>"><span aria-hidden="true"><?php _ex( 'Browse', 'revisions' ); ?></span> <span class="screen-reader-text"><?php _e( 'Browse revisions' ); ?></span></a>
 			</div>
 			<?php
@@ -631,8 +636,7 @@ final class CAS_Sidebar_Edit {
 	elseif ( $post->post_status != 'auto-draft' && cas_fs()->is_not_paying() ) {
 ?>
 		<div class="misc-pub-section misc-pub-revisions">
-			<?php printf( __( 'Revisions: %s' ), '<b>'.__('Disabled').'</b>' ); ?>
-			<a href="<?php echo esc_url(cas_fs()->get_upgrade_url()); ?>"><?php _e( 'Upgrade'); ?></a>
+			<?php printf( __( 'Widget Revisions: %s' ), '<b><a href="'.esc_url(cas_fs()->get_upgrade_url()).'">'.__( 'Enable').'</a></b>' ); ?>
 		</div>
 		<?php
 	}

@@ -53,29 +53,32 @@
 		suggestVisibility: function() {
 			var $elem = $('.js-cas-visibility');
 			$elem.select2({
-				containerCssClass:'cas-select2',
-				dropdownCssClass: 'cas-select2',
+				theme:'wpca',
 				placeholder: CASAdmin.allVisibility,
 				minimumInputLength: 0,
 				closeOnSelect: true,//does not work properly on false
-				allowClear:true,
-				multiple: true,
-				width:"resolve",
+				allowClear:false,
+				//multiple: true,
+				//width:"resolve",
 				nextSearchTerm: function(selectedObject, currentSearchTerm) {
 					return currentSearchTerm;
 				},
 				data: CASAdmin.visibility
 			})
-			.on("select2-selecting",function(e) {
+			.on("select2:selecting",function(e) {
 				$elem.data("forceOpen",true);
 			})
-			.on("select2-close",function(e) {
+			.on("select2:close",function(e) {
 				if($elem.data("forceOpen")) {
 					e.preventDefault();
 					$elem.select2("open");
 					$elem.data("forceOpen",false);
 				}
 			});
+			//select3.5 compat for setting value by id
+			if($elem.data('value')) {
+				$elem.val($elem.data('value').split(',')).trigger('change');
+			}
 		},
 
 		/**
@@ -87,7 +90,7 @@
 		 */
 		reviewNoticeHandler: function() {
 			$notice = $(".js-cas-notice-review");
-			$("#wpbody-content").on("click","a, button", function(e) {
+			$notice.on("click","a, button", function(e) {
 				$this = $(this);
 				$.ajax({
 					url: ajaxurl,
@@ -110,6 +113,8 @@
 		}
 	};
 
-	$(document).ready(function(){ cas_options.init(); });
+	$(document).ready(function(){
+		cas_options.init();
+	});
 
 })(jQuery);
