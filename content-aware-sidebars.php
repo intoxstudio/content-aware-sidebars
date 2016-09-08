@@ -7,11 +7,11 @@
  */
 /*
 Plugin Name: Content Aware Sidebars
-Plugin URI: http://www.intox.dk/en/plugin/content-aware-sidebars-en/
+Plugin URI: https://dev.institute/wordpress/sidebars-pro/
 Description: Unlimited custom sidebars for any post, page, category etc.
 Version: 3.3
-Author: Joachim Jensen, Intox Studio
-Author URI: http://www.intox.dk/
+Author: Joachim Jensen
+Author URI: https://dev.institute
 Text Domain: content-aware-sidebars
 Domain Path: /lang/
 License: GPLv3
