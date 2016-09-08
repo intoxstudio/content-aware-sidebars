@@ -779,11 +779,6 @@ final class CAS_Sidebar_Edit {
 			$new = isset($_POST[$field->get_id()]) ? $_POST[$field->get_id()] : '';
 			$old = $field->get_data($post_id,false,$single);
 
-			//TODO: make this more flexible
-			if($field->get_id() == "visibility") {
-				$new = $new ? explode(",", $new) : array(); 
-			}
-
 			//TODO: package update/delete in meta class
 			if($single) {
 				if ($new != '' && $new != $old) {
