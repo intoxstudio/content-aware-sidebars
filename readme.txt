@@ -4,7 +4,7 @@ Donate link:
 Tags: sidebar, sidebars, custom sidebars, page sidebars, replace sidebar, create sidebars, replace widget area, bbpress, buddypress, polylang, pods, conditional
 Requires at least: 3.9
 Tested up to: 4.6
-Stable tag: 3.3
+Stable tag: 3.3.1
 License: GPLv3
 
 Display custom sidebars on any post, page, category etc. Supports bbPress, BuddyPress, WooCommerce, Easy Digital Downloads and more.
@@ -144,6 +144,7 @@ Do you want to contribute and see your name here?
 * Added: re-enabled info box on sidebar edit screen
 * Added: freemius sdk updated
 * Fixed: decoding of taxonomy term names in conditions
+* Fixed: order of content in conditions dropdowns
 * Fixed: yoast seo compatibility on post edit screens
 * Fixed: negated post conditions were included in sidebar quick select
 * Removed: upgrade box on sidebar edit screen
@@ -153,6 +154,7 @@ Do you want to contribute and see your name here?
 * Fixed: improved widget revision ux
 * Fixed: select dates would in some cases not be displayed correct in conditions
 * Fixed: widget revisions could in some cases contain wrong or malformed data
+* Fixed: backwards compat in widget revision ui for versions before wp4.5
 
 = 3.3 =
 
