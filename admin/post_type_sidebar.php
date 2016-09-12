@@ -259,7 +259,7 @@ class CAS_Post_Type_Sidebar {
 			echo '<input id="ca_sidebars_'.$id.'" class="js-cas-sidebars" type="text" name="sidebars['.$id.']" value="'.implode(",", $sidebar['select']).'" placeholder="'.__('Default').'" data-sidebars=\''.json_encode(array_values($sidebar['options'])).'\'  /></div>';
 			$i++;
 		}
-		if($i >= $limit) {
+		if($i > $limit) {
 			echo '</div>';
 			echo '<div style="text-align:center;"><button class="js-cas-more button button-small" data-toggle=".cas-more"><span class="dashicons dashicons-arrow-down-alt2"></span></button></div>';
 		}
