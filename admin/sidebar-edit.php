@@ -776,17 +776,19 @@ final class CAS_Sidebar_Edit {
 		// Update metadata
 		foreach (CAS_App::instance()->manager()->metadata()->get_all() as $field) {
 			$single = $field->get_input_type()!="multi";
-			$new = isset($_POST[$field->get_id()]) ? $_POST[$field->get_id()] : '';
+			//$new = isset($_POST[$field->get_id()]) ? $_POST[$field->get_id()] : '';
 			$old = $field->get_data($post_id,false,$single);
 
 			//TODO: package update/delete in meta class
 			if($single) {
+				$new = isset($_POST[$field->get_id()]) ? $_POST[$field->get_id()] : '';
 				if ($new != '' && $new != $old) {
 					$field->update($post_id,$new);
 				} elseif ($new == '' && $old != '') {
 					$field->delete($post_id,$old);
 				}
 			} else {
+				$new = isset($_POST[$field->get_id()]) ? $_POST[$field->get_id()] : array();
 				$old = array_flip($old);
 				foreach ($new as $meta) {
 					if(isset($old[$meta])) {
