@@ -12,12 +12,12 @@ if (!defined('CAS_App::PLUGIN_VERSION')) {
 	exit;
 }
 
-$cas_db_updater = new WP_DB_Updater("cas_db_version",CAS_App::PLUGIN_VERSION);
-$cas_db_updater->register_version_update("0.8","cas_update_to_08");
-$cas_db_updater->register_version_update("1.1","cas_update_to_11");
-$cas_db_updater->register_version_update("2.0","cas_update_to_20");
-$cas_db_updater->register_version_update("3.0","cas_update_to_30");
-$cas_db_updater->register_version_update("3.1","cas_update_to_31");
+$cas_db_updater = new WP_DB_Updater('cas_db_version',CAS_App::PLUGIN_VERSION);
+$cas_db_updater->register_version_update('0.8','cas_update_to_08');
+$cas_db_updater->register_version_update('1.1','cas_update_to_11');
+$cas_db_updater->register_version_update('2.0','cas_update_to_20');
+$cas_db_updater->register_version_update('3.0','cas_update_to_30');
+$cas_db_updater->register_version_update('3.1','cas_update_to_31');
 
 /**
  * Version 3.0 -> 3.1
@@ -85,8 +85,8 @@ function cas_update_to_30() {
 				WHERE meta_key = '_cas_".$old_key."'
 			");
 			switch($new_key) {
-				case "author":
-				case "page_template":
+				case 'author':
+				case 'page_template':
 					$wpdb->query("
 						UPDATE $wpdb->postmeta 
 						SET meta_value = '".$new_key."' 
@@ -94,8 +94,8 @@ function cas_update_to_30() {
 						AND meta_value = '".$old_key."'
 					");
 					break;
-				case "post_type":
-				case "taxonomy":
+				case 'post_type':
+				case 'taxonomy':
 					$wpdb->query("
 						UPDATE $wpdb->postmeta 
 						SET meta_value = REPLACE(meta_value, '_cas_sub_', '_ca_sub_') 

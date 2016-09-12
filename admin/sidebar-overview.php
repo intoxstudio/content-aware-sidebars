@@ -54,7 +54,7 @@ final class CAS_Sidebar_Overview {
 	public function admin_column_headers($columns) {
 		$new_columns = array();
 		foreach ($this->columns as $id => $column) {
-			$new_columns[$id] = isset($column["title"]) ? $column["title"] : $columns[$id];
+			$new_columns[$id] = isset($column['title']) ? $column['title'] : $columns[$id];
 		}
 		return $new_columns;
 	}
@@ -68,7 +68,7 @@ final class CAS_Sidebar_Overview {
 	 */
 	public function admin_column_sortable_headers($columns) {
 		foreach ($this->columns as $id => $column) {
-			if($column["sortable"]) {
+			if($column['sortable']) {
 				$columns[$id] = $id;
 			}
 		}
@@ -83,8 +83,8 @@ final class CAS_Sidebar_Overview {
 	 * @return array 
 	 */
 	public function admin_column_orderby($vars) {
-		$orderby = isset($vars['orderby']) ? $vars["orderby"] : "";
-		if (isset($this->columns[$orderby]) && $this->columns[$orderby]["sortable"]) {
+		$orderby = isset($vars['orderby']) ? $vars['orderby'] : '';
+		if (isset($this->columns[$orderby]) && $this->columns[$orderby]['sortable']) {
 			$vars = array_merge($vars, array(
 				'meta_key' => WPCACore::PREFIX . $orderby,
 				'orderby'  => 'meta_value'
@@ -102,7 +102,7 @@ final class CAS_Sidebar_Overview {
 	 * @return void
 	 */
 	public function admin_column_rows($column_name, $post_id) {
-		$method_name = "column_".$column_name;
+		$method_name = 'column_'.$column_name;
 		if(method_exists($this, $method_name)) {
 			echo $this->$method_name($column_name, $post_id);
 		}
@@ -120,11 +120,11 @@ final class CAS_Sidebar_Overview {
 		if ($post->post_type == CAS_App::TYPE_SIDEBAR && $post->post_status != 'trash') {
 			$link = admin_url('post.php?post='.$post->ID);
 
-			//$new_actions['mng_widgets'] = '<a href="widgets.php" title="' . esc_attr__('Manage Widgets', "content-aware-sidebars") . '">' . __('Manage Widgets', "content-aware-sidebars") . '</a>';
-			$new_actions['widget_revisions'] = '<a href="'.add_query_arg('action','cas-revisions',$link).'" title="' . esc_attr__('Widget Revisions', "content-aware-sidebars") . '">' . __('Widget Revisions', "content-aware-sidebars") . '</a>';
+			//$new_actions['mng_widgets'] = '<a href="widgets.php" title="' . esc_attr__('Manage Widgets', 'content-aware-sidebars') . '">' . __('Manage Widgets', 'content-aware-sidebars') . '</a>';
+			$new_actions['widget_revisions'] = '<a href="'.add_query_arg('action','cas-revisions',$link).'" title="' . esc_attr__('Widget Revisions', 'content-aware-sidebars') . '">' . __('Widget Revisions', 'content-aware-sidebars') . '</a>';
 			//Append new actions just before trash action
 			array_splice($actions, -1, 0, $new_actions);
-			unset($actions["inline hide-if-no-js"]);
+			unset($actions['inline hide-if-no-js']);
 		}
 		return $actions;
 	}
@@ -139,25 +139,25 @@ final class CAS_Sidebar_Overview {
 		CAS_App::instance()->manager()->populate_metadata();
 		$this->columns = array(
 			'cb'        => array(
-				"sortable" => false
+				'sortable' => false
 			),
 			'title'     => array(
-				"sortable" => false
+				'sortable' => false
 			),
 			'handle'    => array(
-				"title"    => _x('Handle','option', "content-aware-sidebars"),
-				"sortable" => true
+				'title'    => _x('Handle','option', 'content-aware-sidebars'),
+				'sortable' => true
 			),
 			'widgets'   => array(
-				"title"    => __('Widgets'),
-				"sortable" => false
+				'title'    => __('Widgets'),
+				'sortable' => false
 			),
 			'visibility' => array(
-				"title"    => __('Visibility',"content-aware-sidebars"),
-				"sortable" => false
+				'title'    => __('Visibility','content-aware-sidebars'),
+				'sortable' => false
 			),
 			'date'      => array(
-				"sortable" => false
+				'sortable' => false
 			)
 		);
 	}
@@ -173,20 +173,20 @@ final class CAS_Sidebar_Overview {
 	protected function column_handle($column_name,$post_id) {
 		$metadata = CAS_App::instance()->manager()->metadata()->get($column_name);
 		
-		$return = "";
+		$return = '';
 		if($metadata) {
 			$return = $metadata->get_list_data($post_id);
 			if($metadata->get_data($post_id) != 2) {
 				$host = CAS_App::instance()->manager()->metadata()->get('host')->get_list_data($post_id);
-				$return .= ": " . ($host ? $host : '<span style="color:red;">' . __('Please update Host Sidebar', "content-aware-sidebars") . '</span>');
+				$return .= ': ' . ($host ? $host : '<span style="color:red;">' . __('Please update Host Sidebar', 'content-aware-sidebars') . '</span>');
 			
 			}
 			if($metadata->get_data($post_id) != 3) {
-				$pos = CAS_App::instance()->manager()->metadata()->get("merge_pos")->get_data($post_id,true);
-				$pos_icon = $pos ? "up" : "down";
+				$pos = CAS_App::instance()->manager()->metadata()->get('merge_pos')->get_data($post_id,true);
+				$pos_icon = $pos ? 'up' : 'down';
 				$pos_title = array(
-					__("Add sidebar at the top during merge","content-aware-sidebars"),
-					__("Add sidebar at the bottom during merge","content-aware-sidebars")
+					__('Add sidebar at the top during merge','content-aware-sidebars'),
+					__('Add sidebar at the bottom during merge','content-aware-sidebars')
 				);
 				$return .= '<span title="'.$pos_title[$pos].'" class="dashicons dashicons-arrow-'.$pos_icon.'-alt"></span>';
 			}
@@ -214,10 +214,10 @@ final class CAS_Sidebar_Overview {
 						$data[$k] = $list[$v];
 					}
 				}
-				return implode(", ", $data);
+				return implode(', ', $data);
 			}
 		}
-		return __("All Users","content-aware-sidebars");
+		return __('All Users','content-aware-sidebars');
 	}
 
 	/**
@@ -231,7 +231,7 @@ final class CAS_Sidebar_Overview {
 	protected function column_widgets($column_name,$post_id) {
 		$sidebars_widgets = wp_get_sidebars_widgets();
 		$count =  isset($sidebars_widgets[CAS_App::SIDEBAR_PREFIX . $post_id]) ? count($sidebars_widgets[CAS_App::SIDEBAR_PREFIX . $post_id]) : 0;
-		return '<a href="'.admin_url('widgets.php').'" title="' . esc_attr__('Manage Widgets', "content-aware-sidebars") . '">' .$count . '</a>';
+		return '<a href="'.admin_url('widgets.php').'" title="' . esc_attr__('Manage Widgets', 'content-aware-sidebars') . '">' .$count . '</a>';
 
 	}
 

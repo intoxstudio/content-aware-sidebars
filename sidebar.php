@@ -102,7 +102,7 @@ final class CAS_Sidebar_Manager {
 					</label>
 				</div>
 
-				<a title="<?php esc_attr_e("Edit Sidebar") ?>" class="dashicons dashicons-admin-generic cas-sidebar-link" href="<?php echo add_query_arg('action','edit',$link); ?>"></a><a title="<?php esc_attr_e("Revisions") ?>" class="cas-sidebar-link" href="<?php echo add_query_arg('action','cas-revisions',$link); ?>"><i class="dashicons dashicons-backup"></i> <?php _e("Revisions") ?></a>
+				<a title="<?php esc_attr_e('Edit Sidebar','content-aware-sidebars') ?>" class="dashicons dashicons-admin-generic cas-sidebar-link" href="<?php echo add_query_arg('action','edit',$link); ?>"></a><a title="<?php esc_attr_e('Revisions') ?>" class="cas-sidebar-link" href="<?php echo add_query_arg('action','cas-revisions',$link); ?>"><i class="dashicons dashicons-backup"></i> <?php _e('Revisions') ?></a>
 				</div>
 			<?php
 		}
@@ -139,56 +139,56 @@ final class CAS_Sidebar_Manager {
 		$this->metadata
 		->add(new WPCAMeta(
 			'visibility',
-			__('Visibility',"content-aware-sidebars"),
+			__('Visibility','content-aware-sidebars'),
 			array(),
 			'multi',
 			array(
-				-1 => __('Logged-in Users', "content-aware-sidebars")
+				-1 => __('Logged-in Users', 'content-aware-sidebars')
 			)
 		),'visibility')
 		->add(new WPCAMeta(
 			'exposure',
-			__('Exposure', "content-aware-sidebars"),
+			__('Exposure', 'content-aware-sidebars'),
 			1,
 			'select',
 			array(
-				__('Singular', "content-aware-sidebars"),
-				__('Singular & Archive', "content-aware-sidebars"),
-				__('Archive', "content-aware-sidebars")
+				__('Singular', 'content-aware-sidebars'),
+				__('Singular & Archive', 'content-aware-sidebars'),
+				__('Archive', 'content-aware-sidebars')
 			)
 		),'exposure')
 		->add(new WPCAMeta(
 			'handle',
-			_x('Handle','option', "content-aware-sidebars"),
+			_x('Handle','option', 'content-aware-sidebars'),
 			0,
 			'select',
 			array(
-				0 => __('Replace', "content-aware-sidebars"),
-				1 => __('Merge', "content-aware-sidebars"),
-				2 => __('Manual', "content-aware-sidebars"),
-				3 => __('Forced replace',"content-aware-sidebars")
+				0 => __('Replace', 'content-aware-sidebars'),
+				1 => __('Merge', 'content-aware-sidebars'),
+				2 => __('Manual', 'content-aware-sidebars'),
+				3 => __('Forced replace','content-aware-sidebars')
 			),
-			__('Replace host sidebar, merge with it or add sidebar manually.', "content-aware-sidebars")
+			__('Replace host sidebar, merge with it or add sidebar manually.', 'content-aware-sidebars')
 		),'handle')
 		->add(new WPCAMeta(
 			'host',
-			__('Host Sidebar', "content-aware-sidebars"),
+			__('Host Sidebar', 'content-aware-sidebars'),
 			'sidebar-1',
 			'select',
 			$sidebar_list
 		),'host')
 		->add(new WPCAMeta(
 			'merge_pos',
-			__('Merge Position', "content-aware-sidebars"),
+			__('Merge Position', 'content-aware-sidebars'),
 			1,
 			'select',
 			array(
-				__('Top', "content-aware-sidebars"),
-				__('Bottom', "content-aware-sidebars")
+				__('Top', 'content-aware-sidebars'),
+				__('Bottom', 'content-aware-sidebars')
 			),
-			__('Place sidebar on top or bottom of host when merging.', "content-aware-sidebars")
+			__('Place sidebar on top or bottom of host when merging.', 'content-aware-sidebars')
 		),'merge_pos');
-		apply_filters("cas/metadata/init",$this->metadata);
+		apply_filters('cas/metadata/init',$this->metadata);
 	}
 
 	/**
@@ -206,7 +206,7 @@ final class CAS_Sidebar_Manager {
 				unset($sidebar_list[CAS_App::SIDEBAR_PREFIX.get_the_ID()]);
 				$this->metadata()->get('host')->set_input_list($sidebar_list);
 			}
-			apply_filters("cas/metadata/populate",$this->metadata);
+			apply_filters('cas/metadata/populate',$this->metadata);
 		}
 		
 	}
@@ -222,20 +222,20 @@ final class CAS_Sidebar_Manager {
 		// Register the sidebar type
 		register_post_type(CAS_App::TYPE_SIDEBAR,array(
 			'labels'        => array(
-				'name'               => __('Sidebars', "content-aware-sidebars"),
-				'singular_name'      => __('Sidebar', "content-aware-sidebars"),
-				'add_new'            => _x('Add New', 'sidebar', "content-aware-sidebars"),
-				'add_new_item'       => __('Add New Sidebar', "content-aware-sidebars"),
-				'edit_item'          => __('Edit Sidebar', "content-aware-sidebars"),
-				'new_item'           => __('New Sidebar', "content-aware-sidebars"),
-				'all_items'          => __('All Sidebars', "content-aware-sidebars"),
-				'view_item'          => __('View Sidebar', "content-aware-sidebars"),
-				'search_items'       => __('Search Sidebars', "content-aware-sidebars"),
-				'not_found'          => __('No sidebars found', "content-aware-sidebars"),
-				'not_found_in_trash' => __('No sidebars found in Trash', "content-aware-sidebars"),
+				'name'               => __('Sidebars', 'content-aware-sidebars'),
+				'singular_name'      => __('Sidebar', 'content-aware-sidebars'),
+				'add_new'            => _x('Add New', 'sidebar', 'content-aware-sidebars'),
+				'add_new_item'       => __('Add New Sidebar', 'content-aware-sidebars'),
+				'edit_item'          => __('Edit Sidebar', 'content-aware-sidebars'),
+				'new_item'           => __('New Sidebar', 'content-aware-sidebars'),
+				'all_items'          => __('All Sidebars', 'content-aware-sidebars'),
+				'view_item'          => __('View Sidebar', 'content-aware-sidebars'),
+				'search_items'       => __('Search Sidebars', 'content-aware-sidebars'),
+				'not_found'          => __('No sidebars found', 'content-aware-sidebars'),
+				'not_found_in_trash' => __('No sidebars found in Trash', 'content-aware-sidebars'),
 				//wp-content-aware-engine specific
-				'ca_title'           => __('Sidebar Conditions',"content-aware-sidebars"),
-				'ca_not_found'       => __('No content. Please add at least one condition group to make the sidebar content aware.',"content-aware-sidebars")
+				'ca_title'           => __('Sidebar Conditions','content-aware-sidebars'),
+				'ca_not_found'       => __('No content. Please add at least one condition group to make the sidebar content aware.','content-aware-sidebars')
 			),
 			'capabilities'  => array(
 				'edit_post'          => CAS_App::CAPABILITY,
@@ -295,33 +295,33 @@ final class CAS_Sidebar_Manager {
 		foreach($this->sidebars as $post) {
 
 			$sidebar_args = array(
-				"name"        => $post->post_title ? $post->post_title : __('(no title)'),
-				"description" => $this->metadata()->get('handle')->get_list_data($post->ID,true),
-				"id"          => CAS_App::SIDEBAR_PREFIX.$post->ID
+				'name'        => $post->post_title ? $post->post_title : __('(no title)'),
+				'description' => $this->metadata()->get('handle')->get_list_data($post->ID,true),
+				'id'          => CAS_App::SIDEBAR_PREFIX.$post->ID
 			);
 
-			if(!$sidebar_args["description"]) {
+			if(!$sidebar_args['description']) {
 				continue;
 			}
 
-			$sidebar_args["before_widget"] = '<li id="%1$s" class="widget-container %2$s">';
-			$sidebar_args["after_widget"] = '</li>';
-			$sidebar_args["before_title"] = '<h4 class="widget-title">';
-			$sidebar_args["after_title"] = '</h4>';
+			$sidebar_args['before_widget'] = '<li id="%1$s" class="widget-container %2$s">';
+			$sidebar_args['after_widget'] = '</li>';
+			$sidebar_args['before_title'] = '<h4 class="widget-title">';
+			$sidebar_args['after_title'] = '</h4>';
 
 			if ($this->metadata()->get('handle')->get_data($post->ID) != 2) {
 				$host = $this->metadata()->get('host')->get_list_data($post->ID,false);
-				$sidebar_args["description"] .= ": " . ($host ? $host :  __('Please update Host Sidebar', "content-aware-sidebars") );
+				$sidebar_args['description'] .= ': ' . ($host ? $host :  __('Please update Host Sidebar', 'content-aware-sidebars') );
 
 				//Set style from host to fix when content aware sidebar
 				//is called directly by other sidebar managers
 				global $wp_registered_sidebars;
 				$host_id = $this->metadata()->get('host')->get_data($post->ID);
 				if(isset($wp_registered_sidebars[$host_id])) {
-					$sidebar_args["before_widget"] = $wp_registered_sidebars[$host_id]["before_widget"];
-					$sidebar_args["after_widget"] = $wp_registered_sidebars[$host_id]["after_widget"];
-					$sidebar_args["before_title"] = $wp_registered_sidebars[$host_id]["before_title"];
-					$sidebar_args["after_title"] = $wp_registered_sidebars[$host_id]["after_title"];
+					$sidebar_args['before_widget'] = $wp_registered_sidebars[$host_id]['before_widget'];
+					$sidebar_args['after_widget'] = $wp_registered_sidebars[$host_id]['after_widget'];
+					$sidebar_args['before_title'] = $wp_registered_sidebars[$host_id]['before_title'];
+					$sidebar_args['after_title'] = $wp_registered_sidebars[$host_id]['after_title'];
 				}
 			}
 			register_sidebar($sidebar_args);
@@ -341,7 +341,7 @@ final class CAS_Sidebar_Manager {
 		if ($posts) {
 			//temporary filter until WPCACore allows filtering
 			$user_visibility = is_user_logged_in() ? array(-1) : array();
-			$user_visibility = apply_filters("cas/user_visibility",$user_visibility);
+			$user_visibility = apply_filters('cas/user_visibility',$user_visibility);
 			foreach ($posts as $post) {
 
 				$id = CAS_App::SIDEBAR_PREFIX . $post->ID;

@@ -6,7 +6,7 @@
  * @copyright 2016 by Joachim Jensen
  */
 
-if (!defined('CAS_App::DOMAIN')) {
+if (!defined('CAS_App::PLUGIN_VERSION')) {
 	header('Status: 403 Forbidden');
 	header('HTTP/1.1 403 Forbidden');
 	exit;
@@ -14,13 +14,13 @@ if (!defined('CAS_App::DOMAIN')) {
 
 class CAS_Post_Type_Sidebar {
 
-	const MODULE_NAME = "post_type";
+	const MODULE_NAME = 'post_type';
 
 	protected static $_theme_sidebars = array();
 
 	public function __construct(){
-		add_action("admin_init",
-			array(__CLASS__,"initiate"));
+		add_action('admin_init',
+			array(__CLASS__,'initiate'));
 		add_action('widgets_init',
 			array(__CLASS__,'get_theme_sidebars'),98);
 	}
@@ -31,8 +31,8 @@ class CAS_Post_Type_Sidebar {
 			foreach ($module->_post_types()->get_all() as $post_type) {
 				add_action('add_meta_boxes_'.$post_type->name,
 					array(__CLASS__,'create_meta_boxes'));
-				add_action("save_post_".$post_type->name,
-					array(__CLASS__,"save_post_sidebars"),10,2);
+				add_action('save_post_'.$post_type->name,
+					array(__CLASS__,'save_post_sidebars'),10,2);
 				add_action('admin_enqueue_scripts',
 					array(__CLASS__,'enqueue_scripts'),8);
 			}
@@ -86,7 +86,7 @@ class CAS_Post_Type_Sidebar {
 			return;
 
 		$meta_key = WPCACore::PREFIX . self::MODULE_NAME;
-		$new = isset($_POST['sidebars']) ? $_POST["sidebars"] : array();
+		$new = isset($_POST['sidebars']) ? $_POST['sidebars'] : array();
 
 		$relations = array();
 		foreach(self::_get_content_sidebars(array($post_id)) as $relation) {
@@ -96,7 +96,7 @@ class CAS_Post_Type_Sidebar {
 		$user_can_create_sidebar = current_user_can(CAS_App::CAPABILITY);
 
 		foreach ($new as $host => $sidebar_id_string) {
-			$sidebar_ids = explode(",", $sidebar_id_string);
+			$sidebar_ids = explode(',', $sidebar_id_string);
 			foreach ($sidebar_ids as $sidebar_id) {
 				//Post has sidebar already
 				if(isset($relations[$sidebar_id])) {
@@ -108,11 +108,11 @@ class CAS_Post_Type_Sidebar {
 					
 					//New sidebar
 					//check permissions here
-					if($sidebar_id[0] == "_") {
+					if($sidebar_id[0] == '_') {
 						if($user_can_create_sidebar) {
 							$id = wp_insert_post(array(
-								'post_title'  => str_replace("_",",",substr($sidebar_id,1)),
-								'post_status' => "draft", 
+								'post_title'  => str_replace('_',',',substr($sidebar_id,1)),
+								'post_status' => 'draft', 
 								'post_type'   => CAS_App::TYPE_SIDEBAR
 							));
 							if($id) {
@@ -128,7 +128,7 @@ class CAS_Post_Type_Sidebar {
 							'posts_per_page'   => 1,
 							'meta_key'         => $meta_key,
 							'meta_value'       => $post->post_type,
-							'meta_compare'     => "!=",
+							'meta_compare'     => '!=',
 							'post_parent'      => $id,
 							'post_type'        => WPCACore::TYPE_CONDITION_GROUP,
 							'post_status'      => WPCACore::STATUS_PUBLISHED
@@ -142,7 +142,7 @@ class CAS_Post_Type_Sidebar {
 
 					if($condition_group_id) {
 						add_post_meta($condition_group_id, $meta_key, $post_id);
-						//add_post_meta($condition_group_id, $meta_key."_direct", 1);
+						//add_post_meta($condition_group_id, $meta_key.'_direct', 1);
 					}
 				}
 			}
@@ -203,8 +203,8 @@ class CAS_Post_Type_Sidebar {
 			$host_id = $host_meta->get_data($sidebar->ID);
 			if(isset(self::$_theme_sidebars[$host_id])) {
 				self::$_theme_sidebars[$host_id]['options'][$sidebar->ID] = array(
-					"id" => $sidebar->ID,
-					"text" => $sidebar->post_title.$module->_post_states($sidebar)
+					'id' => $sidebar->ID,
+					'text' => $sidebar->post_title.$module->_post_states($sidebar)
 				);
 			}
 			if(isset($post_sidebars[$sidebar->ID])) {
@@ -264,9 +264,9 @@ class CAS_Post_Type_Sidebar {
 			echo '<div style="text-align:center;"><button class="js-cas-more button button-small" data-toggle=".cas-more"><span class="dashicons dashicons-arrow-down-alt2"></span></button></div>';
 		}
 
-		echo '<p class="howto">'.sprintf(__("Note: Selected Sidebars are displayed on this %s specifically.",'content-aware-sidebars'),strtolower($post_type->labels->singular_name))." ";
+		echo '<p class="howto">'.sprintf(__('Note: Selected Sidebars are displayed on this %s specifically.','content-aware-sidebars'),strtolower($post_type->labels->singular_name)).' ';
 
-		echo sprintf(__("Display sidebars per %s etc. with the %s.",'content-aware-sidebars'),strtolower(implode(", ", $content)),$link)."</p>";
+		echo sprintf(__('Display sidebars per %s etc. with the %s.','content-aware-sidebars'),strtolower(implode(', ', $content)),$link).'</p>';
 	}
 
 	public static function enqueue_scripts($hook) {

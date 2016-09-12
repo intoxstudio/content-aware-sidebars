@@ -30,11 +30,6 @@ final class CAS_App {
 	const TYPE_SIDEBAR         = 'sidebar';
 
 	/**
-	 * Language domain
-	 */
-	const DOMAIN               = 'content-aware-sidebars';
-
-	/**
 	 * Capability to manage sidebars
 	 */
 	const CAPABILITY           = 'edit_theme_options';
@@ -61,8 +56,8 @@ final class CAS_App {
 
 	public function __construct() {
 
-		//__('Manage and show sidebars according to the content being viewed.',"content-aware-sidebars");
-		//__('Content Aware Sidebars',"content-aware-sidebars");
+		//__('Manage and show sidebars according to the content being viewed.','content-aware-sidebars');
+		//__('Content Aware Sidebars','content-aware-sidebars');
 
 		$this->_manager = new CAS_Sidebar_Manager();
 
@@ -87,7 +82,7 @@ final class CAS_App {
 
 		if(is_admin()) {
 			add_action('plugins_loaded',
-				array($this,"redirect_revision_link"));
+				array($this,'redirect_revision_link'));
 			add_action('admin_enqueue_scripts',
 				array($this,'load_admin_scripts'));
 		}
@@ -106,7 +101,7 @@ final class CAS_App {
 				array($this,'plugin_action_links'), 10, 4 );
 			if ( cas_fs()->is_not_paying() )  {
 				add_filter('admin_footer_text',
-					array($this,"admin_footer_text"),99);
+					array($this,'admin_footer_text'),99);
 			}
 		}
 	}
@@ -118,7 +113,7 @@ final class CAS_App {
 	 * @return void 
 	 */
 	public function load_textdomain() {
-		load_plugin_textdomain("content-aware-sidebars", false, dirname(plugin_basename(__FILE__)).'/lang/');
+		load_plugin_textdomain('content-aware-sidebars', false, dirname(plugin_basename(__FILE__)).'/lang/');
 	}
 
 	/**
@@ -130,8 +125,8 @@ final class CAS_App {
 	 */
 	public function admin_footer_text($text) {
 		$screen = get_current_screen();
-		if($screen->post_type == self::TYPE_SIDEBAR || $screen->id == "widgets") {
-			$text .= " ".sprintf("Please support future development of %sContent Aware Sidebars%s with a %s%s review on WordPress.org%s",
+		if($screen->post_type == self::TYPE_SIDEBAR || $screen->id == 'widgets') {
+			$text .= ' '.sprintf('Please support future development of %sContent Aware Sidebars%s with a %s%s review on WordPress.org%s',
 				'<a target="_blank" href="http://www.intox.dk/plugin/content-aware-sidebars/">',
 				'</a>',
 				'<a target="_blank" href="https://wordpress.org/support/view/plugin-reviews/content-aware-sidebars?filter=5#postform">',
@@ -153,14 +148,14 @@ final class CAS_App {
 	public function plugin_action_links($actions, $plugin_file, $plugin_data, $context) {
 
 		$new_actions = array(
-			'<a href="http://www.intox.dk/en/plugin/content-aware-sidebars-en/faq/" target="_blank">'.__('FAQ',"content-aware-sidebars").'</a>',
-			'<a href="https://wordpress.org/support/plugin/content-aware-sidebars" target="_blank">'.__('Get Support',"content-aware-sidebars").'</a>'
+			'<a href="http://www.intox.dk/en/plugin/content-aware-sidebars-en/faq/" target="_blank">'.__('FAQ','content-aware-sidebars').'</a>',
+			'<a href="https://wordpress.org/support/plugin/content-aware-sidebars" target="_blank">'.__('Get Support','content-aware-sidebars').'</a>'
 		);
 
 		global $cas_fs;
 
 		if ( $cas_fs->is_not_paying() )  {
-			$new_actions[] = '<a href="'.$cas_fs->get_upgrade_url().'">'.__('Upgrade',"content-aware-sidebars").'</a>';
+			$new_actions[] = '<a href="'.$cas_fs->get_upgrade_url().'">'.__('Upgrade','content-aware-sidebars').'</a>';
 		}
 
 		return array_merge($new_actions,$actions);
@@ -174,9 +169,9 @@ final class CAS_App {
 	 */
 	public function redirect_revision_link() {
 		global $pagenow;
-		if($pagenow == "post.php" 
-			&& isset($_GET["action"],$_GET["post"]) 
-			&& $_GET["action"] == "cas-revisions") {
+		if($pagenow == 'post.php' 
+			&& isset($_GET['action'],$_GET['post']) 
+			&& $_GET['action'] == 'cas-revisions') {
 			wp_safe_redirect(cas_fs()->get_upgrade_url());
 			exit;
 		}
@@ -203,8 +198,8 @@ final class CAS_App {
 				$visibility = array();
 				foreach ($this->_manager->metadata()->get('visibility')->get_input_list() as $k => $v) {
 					$visibility[] = array(
-						"id"   => $k,
-						"text" => $v
+						'id'   => $k,
+						'text' => $v
 					);
 				}
 
@@ -218,7 +213,7 @@ final class CAS_App {
 
 				wp_enqueue_script('cas/admin/edit');
 				wp_localize_script( 'cas/admin/edit', 'CASAdmin', array(
-					'allVisibility'  => __("All Users","content-aware-sidebars"),
+					'allVisibility'  => __('All Users','content-aware-sidebars'),
 					'visibility' => $visibility
 				));
 				wp_enqueue_style('cas/admin/style');
@@ -238,8 +233,8 @@ final class CAS_App {
 				'addNew'         => $sidebar->labels->add_new_item,
 				'collapse'       => __('Collapse','content-aware-sidebars'),
 				'expand'         => __('Expand','content-aware-sidebars'),
-				'filterSidebars' => __("Filter Sidebars","content-aware-sidebars"),
-				'filterWidgets'  => __("Filter Widgets", "content-aware-sidebars")
+				'filterSidebars' => __('Filter Sidebars','content-aware-sidebars'),
+				'filterWidgets'  => __('Filter Widgets', 'content-aware-sidebars')
 			));
 
 		}

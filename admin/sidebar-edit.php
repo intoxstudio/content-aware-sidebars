@@ -38,12 +38,12 @@ final class CAS_Sidebar_Edit {
 			array($this,'ajax_review_clicked'));
 
 		add_action('wpca/meta_box/before',
-			array($this,"show_description"));
+			array($this,'show_description'));
 
 		if ( cas_fs()->is_not_paying() )  {
 			add_action('wpca/meta_box/after',
-				array($this,"show_review_link"));
-			add_filter("wpca/modules/list",
+				array($this,'show_review_link'));
+			add_filter('wpca/modules/list',
 				array($this,'add_to_module_list'),99);
 		}
 
@@ -61,7 +61,7 @@ final class CAS_Sidebar_Edit {
 	 */
 	public function add_to_module_list($list) {
 		if(get_post_type() == CAS_App::TYPE_SIDEBAR) {
-			$list[''] = 'URLs (Available in Pro)';
+			$list[''] = __('URLs (Available in Pro)','content-aware-sidebars');
 		}
 		return $list;
 	}
@@ -108,21 +108,21 @@ final class CAS_Sidebar_Edit {
 	 * @return array           
 	 */
 	public function sidebar_updated_messages( $messages ) {
-		$manage_widgets = sprintf(' <a href="%1$s">%2$s</a>','widgets.php',__('Manage widgets',"content-aware-sidebars"));
+		$manage_widgets = sprintf(' <a href="%1$s">%2$s</a>','widgets.php',__('Manage widgets','content-aware-sidebars'));
 		$messages[CAS_App::TYPE_SIDEBAR] = array(
 			0 => '',
-			1 => __('Sidebar updated.',"content-aware-sidebars").$manage_widgets,
+			1 => __('Sidebar updated.','content-aware-sidebars').$manage_widgets,
 			2 => '',
 			3 => '',
-			4 => __('Sidebar updated.',"content-aware-sidebars"),
+			4 => __('Sidebar updated.','content-aware-sidebars'),
 			5 => '',
-			6 => __('Sidebar published.',"content-aware-sidebars").$manage_widgets,
-			7 => __('Sidebar saved.',"content-aware-sidebars"),
-			8 => __('Sidebar submitted.',"content-aware-sidebars").$manage_widgets,
-			9 => sprintf(__('Sidebar scheduled for: <strong>%1$s</strong>.',"content-aware-sidebars"),
+			6 => __('Sidebar published.','content-aware-sidebars').$manage_widgets,
+			7 => __('Sidebar saved.','content-aware-sidebars'),
+			8 => __('Sidebar submitted.','content-aware-sidebars').$manage_widgets,
+			9 => sprintf(__('Sidebar scheduled for: <strong>%1$s</strong>.','content-aware-sidebars'),
 				// translators: Publish box date format, see http://php.net/date
 				date_i18n(__('M j, Y @ G:i'),strtotime(get_the_ID()))).$manage_widgets,
-			10 => __('Sidebar draft updated.',"content-aware-sidebars"),
+			10 => __('Sidebar draft updated.','content-aware-sidebars'),
 		);
 		return $messages;
 	}
@@ -136,7 +136,7 @@ final class CAS_Sidebar_Edit {
 	 * @return array
 	 */
 	public function sidebar_updated_bulk_messages( $messages, $counts ) {
-		$manage_widgets = sprintf(' <a href="%1$s">%2$s</a>','widgets.php',__('Manage widgets',"content-aware-sidebars"));
+		$manage_widgets = sprintf(' <a href="%1$s">%2$s</a>','widgets.php',__('Manage widgets','content-aware-sidebars'));
 		$messages[CAS_App::TYPE_SIDEBAR] = array(
 			'updated'   => _n( '%s sidebar updated.', '%s sidebars updated.', $counts['updated'] ).$manage_widgets,
 			'locked'    => _n( '%s sidebar not updated, somebody is editing it.', '%s sidebars not updated, somebody is editing them.', $counts['locked'] ),
@@ -204,34 +204,34 @@ final class CAS_Sidebar_Edit {
 		$this->_tour_manager->set_pointers(array(
 			array(
 				'content'   => sprintf( '<h3>%s</h3>%s',
-					__( "Get Started in 3 Easy Steps", "content-aware-sidebars" ),
-					wpautop(__( "You've just installed or updated Content Aware Sidebars. Awesome!\n\nYou can display sidebars on any page or in any context. If that is new to you, this 3 step interactive guide will show you just how easy it is.", "content-aware-sidebars" ) )),
+					__( 'Get Started in 3 Easy Steps', 'content-aware-sidebars' ),
+					wpautop(__( "You've just installed or updated Content Aware Sidebars. Awesome!\n\nYou can display sidebars on any page or in any context. If that is new to you, this 3 step interactive guide will show you just how easy it is.", 'content-aware-sidebars' ) )),
 				'ref_id'    => '#titlediv',
 				'position'  => array(
 					'edge'      => 'top',
 					'align'     => 'center'
 				),
 				'pointerWidth' => 400,
-				'next' => __("Start Quick Tour","content-aware-sidebars"),
-				'dismiss' => __("I know how to use it","content-aware-sidebars")
+				'next' => __('Start Quick Tour','content-aware-sidebars'),
+				'dismiss' => __('I know how to use it','content-aware-sidebars')
 			),
 			array(
 				'content'   => sprintf( '<h3>%s</h3><p>%s</p>',
-					"1. ".__( 'Select Content Type', "content-aware-sidebars" ),
-					wpautop(__( "With this dropdown you can select on what conditions the sidebar should be displayed.\n\nContent Aware Sidebars has built-in support for many types of content and even other plugins!\n\nSelect something to continue the tour. You can change it later.", "content-aware-sidebars" ) )),
+					'1. '.__( 'Select Content Type', 'content-aware-sidebars' ),
+					wpautop(__( "With this dropdown you can select on what conditions the sidebar should be displayed.\n\nContent Aware Sidebars has built-in support for many types of content and even other plugins!\n\nSelect something to continue the tour. You can change it later.", 'content-aware-sidebars' ) )),
 				'ref_id'    => '.cas-group-new',
 				'position'  => array(
 					'edge'      => 'top',
 					'align'     => 'center'
 				),
 				'prev' => false,
-				'next' => ".js-wpca-add-or",
-				'nextEvent' => "change"
+				'next' => '.js-wpca-add-or',
+				'nextEvent' => 'change'
 			),
 			array(
 				'content'   => sprintf( '<h3>%s</h3><p>%s</p>',
-					"2. ".__( 'Condition Groups', "content-aware-sidebars" ),
-					wpautop(__( "Click on the input field and select the content you want.\n\nIf you can't find the right content in the list, type something to search.\n\n You can add several types of content to the same group, try e.g. \"All Posts\" and an Author to target all posts written by that author. Awesome!\n\nRemember to save the changes on each group.", "content-aware-sidebars" ) )),
+					'2. '.__( 'Condition Groups', 'content-aware-sidebars' ),
+					wpautop(__( "Click on the input field and select the content you want.\n\nIf you can't find the right content in the list, type something to search.\n\n You can add several types of content to the same group, try e.g. \"All Posts\" and an Author to target all posts written by that author. Awesome!\n\nRemember to save the changes on each group.", 'content-aware-sidebars' ) )),
 				'ref_id'    => '#cas-groups > ul',
 				'position'  => array(
 					'edge'      => 'top',
@@ -240,8 +240,8 @@ final class CAS_Sidebar_Edit {
 			),
 			array(
 				'content'   => sprintf( '<h3>%s</h3><p>%s</p>',
-					"3. ".__( 'Options, options', "content-aware-sidebars" ),
-					wpautop(__( "Should the sidebar be displayed on singular pages and/or archives?\n\nShould it merge with another sidebar or replace it? Maybe you want to insert it manually in your content with a shortcode.\n\nSchedule the sidebar just like you do with posts and pages, or make it visible only for logged-in users.\n\n You are in control.", "content-aware-sidebars" ) )),
+					'3. '.__( 'Options, options', 'content-aware-sidebars' ),
+					wpautop(__( "Should the sidebar be displayed on singular pages and/or archives?\n\nShould it merge with another sidebar or replace it? Maybe you want to insert it manually in your content with a shortcode.\n\nSchedule the sidebar just like you do with posts and pages, or make it visible only for logged-in users.\n\n You are in control.", 'content-aware-sidebars' ) )),
 				'ref_id'    => '#cas-options',
 				'position'  => array(
 					'edge'      => 'right',
@@ -250,14 +250,14 @@ final class CAS_Sidebar_Edit {
 			),
 			array(
 				'content'   => sprintf( '<h3>%s</h3><p>%s</p>',
-					__( 'Help and Support', "content-aware-sidebars" ),
-					wpautop(__( "That's it! Now you can start creating sidebars and display them on your own conditions.\n\nIf you need more help, click on the \"Help\" tab here.", "content-aware-sidebars" ) )),
+					__( 'Help and Support', 'content-aware-sidebars' ),
+					wpautop(__( "That's it! Now you can start creating sidebars and display them on your own conditions.\n\nIf you need more help, click on the \"Help\" tab here.", 'content-aware-sidebars' ) )),
 				'ref_id'    => '#contextual-help-link-wrap',
 				'position'  => array(
 					'edge'      => 'top',
 					'align'     => 'right'
 				),
-				'dismiss' => __("Finish Tour","content-aware-sidebars")
+				'dismiss' => __('Finish Tour','content-aware-sidebars')
 			)
 		));
 		$this->_tour_manager->enqueue_scripts();
@@ -288,7 +288,7 @@ final class CAS_Sidebar_Edit {
 
 			// $boxes[] = array(
 			// 	'id'       => 'cas-upgrade-pro',
-			// 	'title'    => __('Content Aware Sidebars PRO', "content-aware-sidebars"),
+			// 	'title'    => __('Content Aware Sidebars PRO', 'content-aware-sidebars'),
 			// 	'callback' => 'meta_box_upgrade',
 			// 	'context'  => 'side',
 			// 	'priority' => 'low'
@@ -296,7 +296,7 @@ final class CAS_Sidebar_Edit {
 
 			$boxes[] = array(
 				'id'       => 'cas-plugin-links',
-				'title'    => __('Content Aware Sidebars', "content-aware-sidebars"),
+				'title'    => __('Content Aware Sidebars', 'content-aware-sidebars'),
 				'callback' => 'meta_box_support',
 				'context'  => 'side',
 				'priority' => 'default'
@@ -305,7 +305,7 @@ final class CAS_Sidebar_Edit {
 			//News
 			// array(
 			// 	'id'       => 'cas-news',
-			// 	'title'    => __('Get a free Content Aware Sidebars Premium Bundle', "content-aware-sidebars"),
+			// 	'title'    => __('Get a free Content Aware Sidebars Premium Bundle', 'content-aware-sidebars'),
 			// 	'callback' => 'meta_box_news',
 			// 	'context'  => 'normal',
 			// 	'priority' => 'high'
@@ -313,7 +313,7 @@ final class CAS_Sidebar_Edit {
 			//About
 			// array(
 			// 	'id'       => 'cas-support',
-			// 	'title'    => __('Support the Author of Content Aware Sidebars', "content-aware-sidebars"),
+			// 	'title'    => __('Support the Author of Content Aware Sidebars', 'content-aware-sidebars'),
 			// 	'callback' => 'meta_box_author_words',
 			// 	'context'  => 'normal',
 			// 	'priority' => 'high'
@@ -322,7 +322,7 @@ final class CAS_Sidebar_Edit {
 			
 		$boxes[] = array(
 			'id'       => 'cas-options',
-			'title'    => __('Options', "content-aware-sidebars"),
+			'title'    => __('Options', 'content-aware-sidebars'),
 			'callback' => 'meta_box_options',
 			'context'  => 'side',
 			'priority' => 'default'
@@ -344,18 +344,18 @@ final class CAS_Sidebar_Edit {
 
 		$screen->add_help_tab( array( 
 			'id'      => WPCACore::PREFIX.'help',
-			'title'   => __('Condition Groups',"content-aware-sidebars"),
-			'content' => '<p>'.__('Each created condition group describe some specific content (conditions) that the current sidebar should be displayed with.',"content-aware-sidebars").'</p>'.
+			'title'   => __('Condition Groups','content-aware-sidebars'),
+			'content' => '<p>'.__('Each created condition group describe some specific content (conditions) that the current sidebar should be displayed with.','content-aware-sidebars').'</p>'.
 				'<p>'.__('Content added to a condition group uses logical conjunction, while condition groups themselves use logical disjunction. '.
-				'This means that content added to a group should be associated, as they are treated as such, and that the groups do not interfere with each other. Thus it is possible to have both extremely focused and at the same time distinct conditions.',"content-aware-sidebars").'</p>',
+				'This means that content added to a group should be associated, as they are treated as such, and that the groups do not interfere with each other. Thus it is possible to have both extremely focused and at the same time distinct conditions.','content-aware-sidebars').'</p>',
 		) );
 		$screen->set_help_sidebar( '<h4>'.__('More Information').'</h4>'.
-			'<p><a href="http://www.intox.dk/en/plugin/content-aware-sidebars-en/faq/" target="_blank">'.__('FAQ',"content-aware-sidebars").'</a></p>'.
-			'<p><a href="http://wordpress.org/support/plugin/content-aware-sidebars" target="_blank">'.__('Forum Support',"content-aware-sidebars").'</a></p>'
+			'<p><a href="http://www.intox.dk/en/plugin/content-aware-sidebars-en/faq/" target="_blank">'.__('FAQ','content-aware-sidebars').'</a></p>'.
+			'<p><a href="http://wordpress.org/support/plugin/content-aware-sidebars" target="_blank">'.__('Forum Support','content-aware-sidebars').'</a></p>'
 		);
 
 		if ( cas_fs()->is_not_paying() )  {
-			add_action( 'admin_notices', array($this,"admin_notice_review"));
+			add_action( 'admin_notices', array($this,'admin_notice_review'));
 		}
 	}
 
@@ -366,17 +366,17 @@ final class CAS_Sidebar_Edit {
 	 * @return void
 	 */
 	public function admin_notice_review() {
-		$has_reviewed = get_user_option(WPCACore::PREFIX."cas_review");
+		$has_reviewed = get_user_option(WPCACore::PREFIX.'cas_review');
 		if($has_reviewed === false) {
 			$tour_taken = $this->_tour_manager->get_user_option();
 			if($tour_taken && (time() - $tour_taken) >= WEEK_IN_SECONDS*2) {
 				echo '<div class="update-nag notice js-cas-notice-review">';
 				echo '<p>'.__('You have used this plugin for some time now. I hope you like it!','content-aware-sidebars').'</p>';
-				echo '<p>'.sprintf("Please spend 2 minutes to support it with a %sreview on WordPress.org%s. Thank you.",
+				echo '<p>'.sprintf('Please spend 2 minutes to support it with a %sreview on WordPress.org%s. Thank you.',
 				'<strong><a target="_blank" href="https://wordpress.org/support/view/plugin-reviews/content-aware-sidebars?filter=5#postform">',
 				'</a></strong>').'</p>';
 				echo '<br><p>- '.__('Joachim Jensen, developer of Content Aware Sidebars','content-aware-sidebars').'</p>';
-				echo '<p><a target="_blank" class="button-primary" href="https://wordpress.org/support/view/plugin-reviews/content-aware-sidebars?filter=5#postform">'.__("Review Plugin","content-aware-sidebars").'</a> <button class="button-secondary">'.__("I don't like it","content-aware-sidebars").'</button></p>';
+				echo '<p><a target="_blank" class="button-primary" href="https://wordpress.org/support/view/plugin-reviews/content-aware-sidebars?filter=5#postform">'.__('Review Plugin','content-aware-sidebars').'</a> <button class="button-secondary">'.__("I don't like it",'content-aware-sidebars').'</button></p>';
 				echo '</div>';
 			}
 		}
@@ -412,7 +412,7 @@ final class CAS_Sidebar_Edit {
 ?>
 		<div style="overflow:hidden;">
 			<div style="float:left;width:40%;overflow:hidden">
-				<a target="_blank" href="https://www.transifex.com/projects/p/content-aware-sidebars/" class="button button-primary" style="width:100%;text-align:center;margin-bottom:10px;"><?php _e('Translate Now',"content-aware-sidebars"); ?></a>
+				<a target="_blank" href="https://www.transifex.com/projects/p/content-aware-sidebars/" class="button button-primary" style="width:100%;text-align:center;margin-bottom:10px;"><?php _e('Translate Now','content-aware-sidebars'); ?></a>
 			</div>
 
 		</div>
@@ -425,7 +425,7 @@ final class CAS_Sidebar_Edit {
 	 */
 	public function meta_box_options($post) {
 
-		$visibility = CAS_App::instance()->manager()->metadata()->get("visibility");
+		$visibility = CAS_App::instance()->manager()->metadata()->get('visibility');
 
 		echo '<span>';
 		echo '<strong>'.__('Visibility').'</strong>';
@@ -471,12 +471,12 @@ final class CAS_Sidebar_Edit {
 ?>
 			<div style="overflow:hidden;">
 				<ul>
-					<li><a href="<?php echo esc_url(cas_fs()->get_upgrade_url()); ?>"><?php _e('Priority Email Support',"content-aware-sidebars"); ?></a></li>
-					<li><a href="https://wordpress.org/support/plugin/content-aware-sidebars/" target="_blank"><?php _e('Forum Support',"content-aware-sidebars"); ?></a></li>
+					<li><a href="<?php echo esc_url(cas_fs()->get_upgrade_url()); ?>"><?php _e('Priority Email Support','content-aware-sidebars'); ?></a></li>
+					<li><a href="https://wordpress.org/support/plugin/content-aware-sidebars/" target="_blank"><?php _e('Forum Support','content-aware-sidebars'); ?></a></li>
 <?php if($locale != "en_US") : ?>
-					<li><a href="https://www.transifex.com/projects/p/content-aware-sidebars/" target="_blank"><?php _e('Translate the plugin into your language',"content-aware-sidebars"); ?></a></li>
+					<li><a href="https://www.transifex.com/projects/p/content-aware-sidebars/" target="_blank"><?php _e('Translate the plugin into your language','content-aware-sidebars'); ?></a></li>
 <?php endif; ?>
-					<li><a href="http://www.intox.dk/en/plugin/content-aware-sidebars-en/faq/" target="_blank"><?php _e('Read the FAQ',"content-aware-sidebars"); ?></a></li>
+					<li><a href="http://www.intox.dk/en/plugin/content-aware-sidebars-en/faq/" target="_blank"><?php _e('Read the FAQ','content-aware-sidebars'); ?></a></li>
 				</ul>
 			</div>
 		<?php
@@ -490,9 +490,9 @@ final class CAS_Sidebar_Edit {
 ?>
 			<div style="overflow:hidden;">
 				<div style="float:left;width:40%;border-left:#ebebeb 1px solid;border-right:#ebebeb 1px solid;box-sizing:border-box;-moz-box-sizing:border-box;">
-					<p><strong><?php _e('Or you could:',"content-aware-sidebars"); ?></strong></p>
+					<p><strong><?php _e('Or you could:','content-aware-sidebars'); ?></strong></p>
 					<ul>
-						<li><a href="http://wordpress.org/extend/plugins/content-aware-sidebars/" target="_blank"><?php _e('Translate the plugin into your language',"content-aware-sidebars"); ?></a></li>
+						<li><a href="http://wordpress.org/extend/plugins/content-aware-sidebars/" target="_blank"><?php _e('Translate the plugin into your language','content-aware-sidebars'); ?></a></li>
 					</ul>
 				</div>
 				<div style="float:left;width:20%;">
@@ -707,12 +707,12 @@ final class CAS_Sidebar_Edit {
 	 * @return void
 	 */
 	public function ajax_review_clicked() {
-		$dismiss = isset($_POST["dismiss"]) ? (int)$_POST["dismiss"] : 0;
+		$dismiss = isset($_POST['dismiss']) ? (int)$_POST['dismiss'] : 0;
 		if(!$dismiss) {
 			$dismiss = time();
 		}
 
-		echo json_encode(update_user_option(get_current_user_id(),WPCACore::PREFIX."cas_review", $dismiss));
+		echo json_encode(update_user_option(get_current_user_id(),WPCACore::PREFIX.'cas_review', $dismiss));
 		die();
 	}
 
