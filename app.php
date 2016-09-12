@@ -148,7 +148,7 @@ final class CAS_App {
 	public function plugin_action_links($actions, $plugin_file, $plugin_data, $context) {
 
 		$new_actions = array(
-			'<a href="http://www.intox.dk/en/plugin/content-aware-sidebars-en/faq/" target="_blank">'.__('FAQ','content-aware-sidebars').'</a>',
+			'<a href="https://dev.institute/wordpress/sidebars-pro/faq/?utm_source=plugin&utm_medium=referral&utm_content=plugin-list&utm_campaign=cas" target="_blank">'.__('FAQ','content-aware-sidebars').'</a>',
 			'<a href="https://wordpress.org/support/plugin/content-aware-sidebars" target="_blank">'.__('Get Support','content-aware-sidebars').'</a>'
 		);
 

@@ -89,7 +89,7 @@ final class CAS_Sidebar_Edit {
 	 */
 	public function show_review_link($post_type) {
 		//$url = cas_fs()->get_upgrade_url();
-		$url = 'https://dev.institute/wordpress/sidebars-pro/pricing/?utm_source=plugin&utm_medium=referral&utm_content=bottomlink&utm_campaign=upgrade';
+		$url = 'https://dev.institute/wordpress/sidebars-pro/pricing/?utm_source=plugin&utm_medium=referral&utm_content=upgrade-bottom&utm_campaign=cas';
 		if($post_type == CAS_App::TYPE_SIDEBAR) {
 			echo '<div style="overflow: hidden; padding: 2px 0px;">';
 			echo '<div style="float:right;"><a href="'.esc_url($url).'" class="button button-cas-upgrade button-small" target="_blank">'.__('Upgrade to Pro','content-aware-sidebars').'</a></div>';
@@ -350,7 +350,7 @@ final class CAS_Sidebar_Edit {
 				'This means that content added to a group should be associated, as they are treated as such, and that the groups do not interfere with each other. Thus it is possible to have both extremely focused and at the same time distinct conditions.','content-aware-sidebars').'</p>',
 		) );
 		$screen->set_help_sidebar( '<h4>'.__('More Information').'</h4>'.
-			'<p><a href="http://www.intox.dk/en/plugin/content-aware-sidebars-en/faq/" target="_blank">'.__('FAQ','content-aware-sidebars').'</a></p>'.
+			'<p><a href="https://dev.institute/wordpress/sidebars-pro/faq/?utm_source=plugin&utm_medium=referral&utm_content=help-tab&utm_campaign=cas" target="_blank">'.__('FAQ','content-aware-sidebars').'</a></p>'.
 			'<p><a href="http://wordpress.org/support/plugin/content-aware-sidebars" target="_blank">'.__('Forum Support','content-aware-sidebars').'</a></p>'
 		);
 
@@ -476,7 +476,7 @@ final class CAS_Sidebar_Edit {
 <?php if($locale != "en_US") : ?>
 					<li><a href="https://www.transifex.com/projects/p/content-aware-sidebars/" target="_blank"><?php _e('Translate the plugin into your language','content-aware-sidebars'); ?></a></li>
 <?php endif; ?>
-					<li><a href="http://www.intox.dk/en/plugin/content-aware-sidebars-en/faq/" target="_blank"><?php _e('Read the FAQ','content-aware-sidebars'); ?></a></li>
+					<li><a href="https://dev.institute/wordpress/sidebars-pro/faq/?utm_source=plugin&amp;utm_medium=referral&amp;utm_content=info-box&amp;utm_campaign=cas" target="_blank"><?php _e('Read the FAQ','content-aware-sidebars'); ?></a></li>
 				</ul>
 			</div>
 		<?php
