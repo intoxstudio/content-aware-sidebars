@@ -195,6 +195,35 @@ final class CAS_App {
 			//Sidebar editor
 			if ($current_screen->base == 'post') {
 
+				//Other plugins add buggy scripts
+				//causing the screen to stop working
+				//temporary as we move forward...
+				$script_whitelist = array(
+					'common',
+					'admin-bar',
+					'autosave',
+					'post',
+					'utils',
+					'svg-painter',
+					'wp-auth-check',
+					'bp-confirm',
+					'suggest',
+					'heartbeat',
+					'jquery',
+					'yoast-seo-admin-global-script',
+					'select2',
+					'backbone',
+					'backbone.trackit',
+					'_ca_condition-groups',
+				);
+				global $wp_scripts;
+				$script_whitelist = array_flip($script_whitelist);
+				foreach ($wp_scripts->queue as $script) {
+					if(!isset($script_whitelist[$script])) {
+						wp_dequeue_script($script);
+					}
+				}
+
 				$visibility = array();
 				foreach ($this->_manager->metadata()->get('visibility')->get_input_list() as $k => $v) {
 					$visibility[] = array(
