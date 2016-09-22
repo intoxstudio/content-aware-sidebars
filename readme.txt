@@ -4,7 +4,7 @@ Donate link:
 Tags: sidebar, sidebars, custom sidebars, page sidebars, replace sidebar, create sidebars, replace widget area, bbpress, buddypress, polylang, pods, conditional
 Requires at least: 3.9
 Tested up to: 4.6
-Stable tag: 3.3.2
+Stable tag: 3.3.3
 License: GPLv3
 
 Display custom sidebars on any post, page, category etc. Supports bbPress, BuddyPress, WooCommerce, Easy Digital Downloads and more.
@@ -59,7 +59,7 @@ Negate conditions, e.g. display a sidebar on all pages except Page X.
 
 * bbPress
 * BuddyPress
-* Easy Digital Downloads
+* [Easy Digital Downloads](https://dev.institute/wordpress/sidebars-pro/easy-digital-downloads/?utm_source=readme&utm_medium=referral&utm_content=integration&utm_campaign=cas)
 * qTranslate X
 * Pods
 * Polylang
@@ -130,6 +130,15 @@ Do you want to contribute and see your name here?
 == Changelog ==
 
 [View development on GitHub](https://github.com/intoxstudio/content-aware-sidebars)
+
+= 3.3.3 =
+
+* Added: counter-measure against plugins that add buggy scripts
+* Fixed: saving sidebars in quick select would in some cases trigger warning
+
+**Pro Plan:**
+
+* Fixed: include draft sidebars when syncing widgets across themes
 
 = 3.3.2 =
 
