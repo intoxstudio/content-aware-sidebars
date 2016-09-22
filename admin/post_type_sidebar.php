@@ -67,7 +67,7 @@ class CAS_Post_Type_Sidebar {
 	 * @param  WP_Post  $post
 	 * @return void
 	 */
-	public function save_post_sidebars($post_id, $post) {
+	public static function save_post_sidebars($post_id, $post) {
 
 		// Save button pressed
 		if (!isset($_POST['original_publish']) && !isset($_POST['save_post']))
