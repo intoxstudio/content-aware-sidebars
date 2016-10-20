@@ -61,6 +61,10 @@ final class CAS_App {
 
 		$this->_manager = new CAS_Sidebar_Manager();
 
+		if(is_admin()) {
+			new CAS_Admin_Screen_Widgets();
+		}
+
 		$this->add_actions();
 		$this->add_filters();
 
@@ -250,22 +254,6 @@ final class CAS_App {
 			} else if ($hook == 'edit.php') {
 				wp_enqueue_style('cas/admin/style');
 			}			
-		} else if($current_screen->base == 'widgets') {
-			wp_register_style('cas/admin/style', plugins_url('/css/style.css', __FILE__), array(), CAS_App::PLUGIN_VERSION);
-			wp_enqueue_style('cas/admin/style');
-
-			$sidebar = get_post_type_object(CAS_App::TYPE_SIDEBAR);
-
-			wp_register_script('cas/admin/widgets', plugins_url('/js/widgets.min.js', __FILE__), array('jquery'), CAS_App::PLUGIN_VERSION, true);
-			wp_enqueue_script('cas/admin/widgets');
-			wp_localize_script( 'cas/admin/widgets', 'CASAdmin', array(
-				'addNew'         => $sidebar->labels->add_new_item,
-				'collapse'       => __('Collapse','content-aware-sidebars'),
-				'expand'         => __('Expand','content-aware-sidebars'),
-				'filterSidebars' => __('Filter Sidebars','content-aware-sidebars'),
-				'filterWidgets'  => __('Filter Widgets', 'content-aware-sidebars')
-			));
-
 		}
 
 	}
