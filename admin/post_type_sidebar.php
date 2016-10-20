@@ -112,7 +112,7 @@ class CAS_Post_Type_Sidebar {
 						if($user_can_create_sidebar) {
 							$id = wp_insert_post(array(
 								'post_title'  => str_replace('_',',',substr($sidebar_id,1)),
-								'post_status' => 'draft', 
+								'post_status' => CAS_App::STATUS_INACTIVE, 
 								'post_type'   => CAS_App::TYPE_SIDEBAR
 							));
 							if($id) {

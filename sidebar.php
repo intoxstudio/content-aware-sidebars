@@ -165,9 +165,10 @@ final class CAS_Sidebar_Manager {
 		if($this->metadata) {
 			// Remove ability to set self to host
 			if(get_the_ID()) {
-				$sidebar_list = $this->metadata()->get('host')->get_input_list();
+				$host_meta = $this->metadata()->get('host');
+				$sidebar_list = $host_meta->get_input_list();
 				unset($sidebar_list[CAS_App::SIDEBAR_PREFIX.get_the_ID()]);
-				$this->metadata()->get('host')->set_input_list($sidebar_list);
+				$host_meta->set_input_list($sidebar_list);
 			}
 			apply_filters('cas/metadata/populate',$this->metadata);
 		}
@@ -231,7 +232,11 @@ final class CAS_Sidebar_Manager {
 		$sidebars = get_posts(array(
 			'numberposts' => -1,
 			'post_type'   => CAS_App::TYPE_SIDEBAR,
-			'post_status' => array('publish','future','draft'),
+			'post_status' => array(
+				CAS_App::STATUS_ACTIVE,
+				CAS_App::STATUS_INACTIVE,
+				CAS_App::STATUS_SCHEDULED
+			),
 			'orderby'     => 'title',
 			'order'       => 'ASC'
 		));
@@ -259,9 +264,11 @@ final class CAS_Sidebar_Manager {
 		//Now reregister sidebars with proper content
 		foreach($this->sidebars as $post) {
 
+			$handle_meta = $this->metadata()->get('handle');
+
 			$sidebar_args = array(
 				'name'        => $post->post_title ? $post->post_title : __('(no title)'),
-				'description' => $this->metadata()->get('handle')->get_list_data($post->ID,true),
+				'description' => $handle_meta->get_list_data($post->ID,true),
 				'id'          => CAS_App::SIDEBAR_PREFIX.$post->ID
 			);
 
@@ -274,14 +281,15 @@ final class CAS_Sidebar_Manager {
 			$sidebar_args['before_title'] = '<h4 class="widget-title">';
 			$sidebar_args['after_title'] = '</h4>';
 
-			if ($this->metadata()->get('handle')->get_data($post->ID) != 2) {
-				$host = $this->metadata()->get('host')->get_list_data($post->ID,false);
+			if ($handle_meta->get_data($post->ID) != 2) {
+				$host_meta = $this->metadata()->get('host');
+				$host = $host_meta->get_list_data($post->ID,false);
 				$sidebar_args['description'] .= ': ' . ($host ? $host :  __('Please update Host Sidebar', 'content-aware-sidebars') );
 
 				//Set style from host to fix when content aware sidebar
 				//is called directly by other sidebar managers
 				global $wp_registered_sidebars;
-				$host_id = $this->metadata()->get('host')->get_data($post->ID);
+				$host_id = $host_meta->get_data($post->ID);
 				if(isset($wp_registered_sidebars[$host_id])) {
 					$sidebar_args['before_widget'] = $wp_registered_sidebars[$host_id]['before_widget'];
 					$sidebar_args['after_widget'] = $wp_registered_sidebars[$host_id]['after_widget'];

@@ -44,16 +44,17 @@ class CAS_Admin_Screen_Widgets extends CAS_Admin {
 	 */
 	public function render_sidebar_controls($index) {
 		//trashed custom sidebars not included
-		if(isset(CAS_App::instance()->_manager->sidebars[$index])) {
-			$sidebar = CAS_App::instance()->_manager->sidebars[$index];
+		$sidebars = CAS_App::instance()->_manager->sidebars;
+		if(isset($sidebars[$index])) {
+			$sidebar = $sidebars[$index];
 			$link = admin_url('post.php?post='.$sidebar->ID);
 			$edit_link = admin_url('admin.php?page=wpcas&sidebar_id='.$sidebar->ID);
 
 			switch($sidebar->post_status) {
-				case 'publish':
+				case CAS_App::STATUS_ACTIVE:
 					$status = __('Active');
 					break;
-				case 'future':
+				case CAS_App::STATUS_SCHEDULED:
 					$status = __('Scheduled');
 					break;
 				default:
@@ -62,7 +63,7 @@ class CAS_Admin_Screen_Widgets extends CAS_Admin {
 			?>
 				<div class="cas-settings">
 				<div class="sidebar-status">
-					<input type="checkbox" class="sidebar-status-input sidebar-status-<?php echo $sidebar->post_status; ?>" id="cas-status-<?php echo $sidebar->ID; ?>" value="<?php echo $sidebar->ID; ?>" <?php checked($sidebar->post_status, 'publish') ?> disabled="disabled">
+					<input type="checkbox" class="sidebar-status-input sidebar-status-<?php echo $sidebar->post_status; ?>" id="cas-status-<?php echo $sidebar->ID; ?>" value="<?php echo $sidebar->ID; ?>" <?php checked($sidebar->post_status, CAS_App::STATUS_ACTIVE) ?> disabled="disabled">
 					<label title="<?php echo $status; ?>" class="sidebar-status-label" for="cas-status-<?php echo $sidebar->ID; ?>">
 					</label>
 				</div>
