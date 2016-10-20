@@ -77,17 +77,6 @@ if(!class_exists('CAS_App')) {
 		CAS_App::instance()->manager()->manual_sidebar($args);
 	}
 
-	/**
-	 * Template wrapper to display content aware sidebars
-	 *
-	 * @deprecated 3.0           ca_display_sidebar()
-	 * @param      array|string  $args 
-	 * @return     void 
-	 */
-	function display_ca_sidebar($args = array()) {
-		_deprecated_function( __FUNCTION__, '3.0', 'ca_display_sidebar()' );
-		ca_display_sidebar($args);
-	}
 }
 
 
