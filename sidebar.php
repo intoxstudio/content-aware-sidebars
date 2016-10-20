@@ -41,8 +41,8 @@ final class CAS_Sidebar_Manager {
 			new CAS_Post_Type_Sidebar();
 		}
 
-		add_action('sidebars_widgets',
-			array($this,'replace_sidebar'));
+		add_action('wpca/loaded',
+			array($this,'late_init'));
 		add_action('wp_head',
 			array($this,'sidebar_notify_theme_customizer'));
 		add_action('init',
@@ -58,6 +58,17 @@ final class CAS_Sidebar_Manager {
 
 	}
 
+	/**
+	 * Initialize after WPCA has been loaded
+	 * Makes sure the SDK can be used in actions/filters
+	 * forcefully called earlier
+	 *
+	 * @since  3.4
+	 * @return void
+	 */
+	public function late_init() {
+		add_action('sidebars_widgets',
+			array($this,'replace_sidebar'));
 	}
 
 	/**
@@ -242,6 +253,8 @@ final class CAS_Sidebar_Manager {
 	 * @return void
 	 */
 	public function update_sidebars() {
+
+		//TODO: check if this is necessary anymore or merge to 1 method
 
 		//Now reregister sidebars with proper content
 		foreach($this->sidebars as $post) {
