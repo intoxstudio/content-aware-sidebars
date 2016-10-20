@@ -53,6 +53,7 @@ if(!class_exists('CAS_App')) {
 		require($cas_dir_path.'lib/wp-db-updater/wp-db-updater.php');
 		require($cas_dir_path.'lib/wp-pointer-tour/wp-pointer-tour.php');
 		require($cas_dir_path.'admin/db-updates.php');
+		require($cas_dir_path.'admin/admin.php');
 		require($cas_dir_path.'admin/post_type_sidebar.php');
 		require($cas_dir_path.'admin/sidebar-overview.php');
 		require($cas_dir_path.'admin/sidebar-edit.php');
