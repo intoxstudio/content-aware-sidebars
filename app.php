@@ -30,9 +30,23 @@ final class CAS_App {
 	const TYPE_SIDEBAR         = 'sidebar';
 
 	/**
+	 * Sidebar statuses
+	 */
+	const STATUS_ACTIVE    = 'publish';
+	const STATUS_INACTIVE  = 'draft';
+	const STATUS_SCHEDULED = 'future';
+
+	/**
 	 * Capability to manage sidebars
 	 */
 	const CAPABILITY           = 'edit_theme_options';
+
+	const BASE_SCREEN          = 'wpcas';
+
+	/**
+	 * Prefix for metadata keys
+	 */
+	const META_PREFIX          = '_ca_';
 
 	private $manager;
 
