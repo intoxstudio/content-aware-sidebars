@@ -12,227 +12,282 @@ if (!defined('CAS_App::PLUGIN_VERSION')) {
 	exit;
 }
 
-final class CAS_Sidebar_Overview {
+final class CAS_Sidebar_Overview extends CAS_Admin {
 
 	/**
-	 * Column definitions
-	 * @var array
+	 * Sidebar table
+	 * @var CAS_Sidebar_List_Table
 	 */
-	protected $columns = array();
+	public $table;
 
-	/**
-	 * Constructor
-	 *
-	 * @since 3.1
-	 */
 	public function __construct() {
+		parent::__construct();
 
-		add_action('load-edit.php',
-			array($this,'init_columns'));
-
-		add_action('manage_'.CAS_App::TYPE_SIDEBAR.'_posts_custom_column',
-			array($this,'admin_column_rows'),10,2);
-
-		add_filter('request',
-			array($this,'admin_column_orderby'));
-		add_filter('manage_'.CAS_App::TYPE_SIDEBAR.'_posts_columns',
-			array($this,'admin_column_headers'),99);
-		add_filter('manage_edit-'.CAS_App::TYPE_SIDEBAR.'_sortable_columns',
-			array($this,'admin_column_sortable_headers'));
-		add_filter('post_row_actions',
-			array($this,'sidebar_row_actions'),10,2);
-	}
-
-
-	/**
-	 * Add admin column headers
-	 *
-	 * @since  3.1
-	 * @param  array $columns 
-	 * @return array          
-	 */
-	public function admin_column_headers($columns) {
-		$new_columns = array();
-		foreach ($this->columns as $id => $column) {
-			$new_columns[$id] = isset($column['title']) ? $column['title'] : $columns[$id];
-		}
-		return $new_columns;
-	}
-		
-	/**
-	 * Make some columns sortable
-	 *
-	 * @since  3.1
-	 * @param  array $columns 
-	 * @return array
-	 */
-	public function admin_column_sortable_headers($columns) {
-		foreach ($this->columns as $id => $column) {
-			if($column['sortable']) {
-				$columns[$id] = $id;
-			}
-		}
-		return $columns;
-	}
-	
-	/**
-	 * Manage custom column sorting
-	 *
-	 * @since  3.1
-	 * @param  array $vars 
-	 * @return array 
-	 */
-	public function admin_column_orderby($vars) {
-		$orderby = isset($vars['orderby']) ? $vars['orderby'] : '';
-		if (isset($this->columns[$orderby]) && $this->columns[$orderby]['sortable']) {
-			$vars = array_merge($vars, array(
-				'meta_key' => WPCACore::PREFIX . $orderby,
-				'orderby'  => 'meta_value'
-			));
-		}
-		return $vars;
-	}
-	
-	/**
-	 * Render columns rows
-	 *
-	 * @since  3.1
-	 * @param  string $column_name 
-	 * @param  int $post_id
-	 * @return void
-	 */
-	public function admin_column_rows($column_name, $post_id) {
-		$method_name = 'column_'.$column_name;
-		if(method_exists($this, $method_name)) {
-			echo $this->$method_name($column_name, $post_id);
+		if(is_admin()) {
+			add_filter('set-screen-option',
+				array($this,'set_screen_option'), 10, 3);
 		}
 	}
 
 	/**
-	 * Add admin rows actions
+	 * Setup admin menus and get current screen
 	 *
-	 * @since  3.1
-	 * @param  array   $actions
-	 * @param  WP_Post $post
-	 * @return array
+	 * @since  3.4
+	 * @return string
 	 */
-	public function sidebar_row_actions($actions, $post) {
-		if ($post->post_type == CAS_App::TYPE_SIDEBAR && $post->post_status != 'trash') {
-			$link = admin_url('post.php?post='.$post->ID);
+	public function get_screen() {
+		global $_wp_last_object_menu;
 
-			//$new_actions['mng_widgets'] = '<a href="widgets.php" title="' . esc_attr__('Manage Widgets', 'content-aware-sidebars') . '">' . __('Manage Widgets', 'content-aware-sidebars') . '</a>';
-			$new_actions['widget_revisions'] = '<a href="'.add_query_arg('action','cas-revisions',$link).'" title="' . esc_attr__('Widget Revisions', 'content-aware-sidebars') . '">' . __('Widget Revisions', 'content-aware-sidebars') . '</a>';
-			//Append new actions just before trash action
-			array_splice($actions, -1, 0, $new_actions);
-			unset($actions['inline hide-if-no-js']);
-		}
-		return $actions;
-	}
+		$post_type_object = get_post_type_object(CAS_App::TYPE_SIDEBAR);
 
-	/**
-	 * Initiate column definitions
-	 *
-	 * @since  3.1
-	 * @return void
-	 */
-	public function init_columns() {
-		CAS_App::instance()->manager()->populate_metadata();
-		$this->columns = array(
-			'cb'        => array(
-				'sortable' => false
-			),
-			'title'     => array(
-				'sortable' => false
-			),
-			'handle'    => array(
-				'title'    => _x('Handle','option', 'content-aware-sidebars'),
-				'sortable' => true
-			),
-			'widgets'   => array(
-				'title'    => __('Widgets'),
-				'sortable' => false
-			),
-			'visibility' => array(
-				'title'    => __('Visibility','content-aware-sidebars'),
-				'sortable' => false
-			),
-			'date'      => array(
-				'sortable' => false
-			)
+		add_menu_page( 
+			$post_type_object->labels->name,
+			$post_type_object->labels->name,
+			$post_type_object->cap->edit_posts,
+			CAS_App::BASE_SCREEN,
+			array($this,'render_screen'),
+			$post_type_object->menu_icon,
+			++$_wp_last_object_menu
+		);
+
+		return add_submenu_page(
+			CAS_App::BASE_SCREEN,
+			$post_type_object->labels->name,
+			$post_type_object->labels->all_items,
+			$post_type_object->cap->edit_posts,
+			CAS_App::BASE_SCREEN,
+			array($this,'render_screen')
 		);
 	}
 
 	/**
-	 * Display handle column
+	 * Prepare screen load
 	 *
-	 * @since  3.1
-	 * @param  string  $column_name
-	 * @param  int     $post_id
-	 * @return string
+	 * @since  3.4
+	 * @return void
 	 */
-	protected function column_handle($column_name,$post_id) {
-		$metadata = CAS_App::instance()->manager()->metadata()->get($column_name);
+	public function prepare_screen() {
 		
-		$return = '';
-		if($metadata) {
-			$return = $metadata->get_list_data($post_id);
-			if($metadata->get_data($post_id) != 2) {
-				$host = CAS_App::instance()->manager()->metadata()->get('host')->get_list_data($post_id);
-				$return .= ': ' . ($host ? $host : '<span style="color:red;">' . __('Please update Host Sidebar', 'content-aware-sidebars') . '</span>');
-			
-			}
-			if($metadata->get_data($post_id) != 3) {
-				$pos = CAS_App::instance()->manager()->metadata()->get('merge_pos')->get_data($post_id,true);
-				$pos_icon = $pos ? 'up' : 'down';
-				$pos_title = array(
-					__('Add sidebar at the top during merge','content-aware-sidebars'),
-					__('Add sidebar at the bottom during merge','content-aware-sidebars')
-				);
-				$return .= '<span title="'.$pos_title[$pos].'" class="dashicons dashicons-arrow-'.$pos_icon.'-alt"></span>';
-			}
-			
+		$post_type_object = get_post_type_object(CAS_App::TYPE_SIDEBAR);
+		if ( ! current_user_can( $post_type_object->cap->edit_posts ) ) {
+			wp_die(
+				'<h1>' . __( 'Cheatin&#8217; uh?' ) . '</h1>' .
+				'<p>' . __( 'You are not allowed to edit posts in this post type.' ) . '</p>',
+				403
+			);
 		}
-		return $return;
+
+		add_screen_option( 'per_page', array(
+			'default' => 20,
+			'option'  => 'cas_sidebars_per_page'
+		));
+
+		$this->table = new CAS_Sidebar_List_Table();
+		$this->process_actions();//todo:add func to table to actions
+		$this->table->prepare_items();
+
 	}
 
 	/**
-	 * Display visibility column
+	 * Render screen
 	 *
-	 * @since  3.2
-	 * @param  string  $column_name
-	 * @param  int     $post_id
-	 * @return string
+	 * @since  3.4
+	 * @return void
 	 */
-	protected function column_visibility($column_name,$post_id) {
-		$metadata = CAS_App::instance()->manager()->metadata()->get($column_name);
-		if($metadata) {
-			$data = $metadata->get_data($post_id,true,false);
-			if($data) {
-				$list = $metadata->get_input_list();
-				foreach ($data as $k => $v) {
-					if(isset($list[$v])) {
-						$data[$k] = $list[$v];
+	public function render_screen() {
+		$post_type_object = get_post_type_object(CAS_App::TYPE_SIDEBAR);
+
+		echo '<div class="wrap">';
+		echo '<h1>';
+		echo esc_html( $post_type_object->labels->name );
+		
+		if ( current_user_can( $post_type_object->cap->create_posts ) ) {
+			echo ' <a href="' . esc_url( admin_url( 'admin.php?page=wpcas-edit' ) ) . '" class="page-title-action">' . esc_html( $post_type_object->labels->add_new ) . '</a>';
+		}
+		if ( isset( $_REQUEST['s'] ) && strlen( $_REQUEST['s'] ) ) {
+			/* translators: %s: search keywords */
+			printf( ' <span class="subtitle">' . __( 'Search results for &#8220;%s&#8221;' ) . '</span>', get_search_query() );
+		}
+
+		echo '</h1>';
+
+		$this->bulk_messages();
+
+		$_SERVER['REQUEST_URI'] = remove_query_arg( array( 'locked', 'skipped', 'deleted', 'trashed', 'untrashed' ), $_SERVER['REQUEST_URI'] );
+
+		$this->table->views();
+
+		echo '<form id="posts-filter" method="get">';
+
+		$this->table->search_box( $post_type_object->labels->search_items, 'post' );
+
+		echo '<input type="hidden" name="page" value="wpcas" />';
+		echo '<input type="hidden" name="post_status" class="post_status_page" value="'.(!empty($_REQUEST['post_status']) ? esc_attr($_REQUEST['post_status']) : 'all').'" />';
+
+		$this->table->display(); 
+
+		echo '</form></div>';
+	}
+
+	/**
+	 * Process actions
+	 *
+	 * @since  3.4
+	 * @return void
+	 */
+	public function process_actions() {
+
+		$post_type = CAS_App::TYPE_SIDEBAR;
+		$doaction = $this->table->current_action();
+
+		if ( $doaction ) {
+
+			check_admin_referer('bulk-sidebars');
+
+			$sendback = remove_query_arg( array('trashed', 'untrashed', 'deleted', 'locked', 'ids'), wp_get_referer() );
+
+			$sendback = add_query_arg( 'paged', $pagenum, $sendback );
+
+			if ( 'delete_all' == $doaction ) {
+				global $wpdb;
+				$post_ids = $wpdb->get_col( $wpdb->prepare( "SELECT ID FROM $wpdb->posts WHERE post_type=%s AND post_status = %s", CAS_App::TYPE_SIDEBAR, 'trash' ) );
+				
+				$doaction = 'delete';
+			} elseif ( isset( $_REQUEST['ids'] ) ) {
+				$post_ids = explode( ',', $_REQUEST['ids'] );
+			} elseif ( !empty( $_REQUEST['post'] ) ) {
+				$post_ids = array_map('intval', $_REQUEST['post']);
+			}
+
+			if ( !isset( $post_ids ) ) {
+				wp_redirect( $sendback );
+				exit;
+			}
+
+			switch ( $doaction ) {
+				case 'trash':
+					$trashed = $locked = 0;
+
+					foreach ( (array) $post_ids as $post_id ) {
+						if ( !current_user_can( 'delete_post', $post_id) )
+							wp_die( __('You are not allowed to move this item to the Trash.') );
+
+						if ( wp_check_post_lock( $post_id ) ) {
+							$locked++;
+							continue;
+						}
+
+						if ( !wp_trash_post($post_id) )
+							wp_die( __('Error in moving to Trash.') );
+
+						$trashed++;
 					}
-				}
-				return implode(', ', $data);
+
+					$sendback = add_query_arg( array('trashed' => $trashed, 'ids' => join(',', $post_ids), 'locked' => $locked ), $sendback );
+					break;
+				case 'untrash':
+					$untrashed = 0;
+					foreach ( (array) $post_ids as $post_id ) {
+						if ( !current_user_can( 'delete_post', $post_id) )
+							wp_die( __('You are not allowed to restore this item from the Trash.') );
+
+						if ( !wp_untrash_post($post_id) )
+							wp_die( __('Error in restoring from Trash.') );
+
+						$untrashed++;
+					}
+					$sendback = add_query_arg('untrashed', $untrashed, $sendback);
+					break;
+				case 'delete':
+					$deleted = 0;
+					foreach ( (array) $post_ids as $post_id ) {
+						$post_del = get_post($post_id);
+
+						if ( !current_user_can( 'delete_post', $post_id ) )
+							wp_die( __('You are not allowed to delete this item.') );
+
+						if ( !wp_delete_post($post_id) )
+							wp_die( __('Error in deleting.') );
+						
+						$deleted++;
+					}
+					$sendback = add_query_arg('deleted', $deleted, $sendback);
+					break;
 			}
+
+			$sendback = remove_query_arg( array('action', 'action2', 'post_status', 'post', 'bulk_edit'), $sendback );
+
+			wp_safe_redirect($sendback);
+			exit;
+		} elseif ( ! empty($_REQUEST['_wp_http_referer']) ) {
+			wp_safe_redirect( remove_query_arg( array('_wp_http_referer', '_wpnonce'), wp_unslash($_SERVER['REQUEST_URI']) ) );
+			exit;
 		}
-		return __('All Users','content-aware-sidebars');
+
 	}
 
 	/**
-	 * Display widgets column
+	 * Set screen options on save
 	 *
-	 * @since  3.1
-	 * @param  string  $column_name
-	 * @param  int     $post_id
-	 * @return int
+	 * @since 3.4
+	 * @param string  $status
+	 * @param string  $option
+	 * @param string  $value
 	 */
-	protected function column_widgets($column_name,$post_id) {
-		$sidebars_widgets = wp_get_sidebars_widgets();
-		$count =  isset($sidebars_widgets[CAS_App::SIDEBAR_PREFIX . $post_id]) ? count($sidebars_widgets[CAS_App::SIDEBAR_PREFIX . $post_id]) : 0;
-		return '<a href="'.admin_url('widgets.php').'" title="' . esc_attr__('Manage Widgets', 'content-aware-sidebars') . '">' .$count . '</a>';
+	public function set_screen_option($status, $option, $value) {
+		if ($option == 'cas_sidebars_per_page') {
+			return $value;
+		}
+		return $status;
+	}
 
+	public function bulk_messages() {
+
+		$bulk_counts = array(
+			'updated'   => isset($_REQUEST['updated'] )? absint( $_REQUEST['updated'] ) : 0,
+			'locked'    => isset($_REQUEST['locked'] ) ? absint( $_REQUEST['locked'] ) : 0,
+			'deleted'   => isset($_REQUEST['deleted'] ) ? absint( $_REQUEST['deleted'] ) : 0,
+			'trashed'   => isset($_REQUEST['trashed'] ) ? absint( $_REQUEST['trashed'] ) : 0,
+			'untrashed' => isset($_REQUEST['untrashed'] ) ? absint( $_REQUEST['untrashed'] ) : 0
+		);
+
+		$manage_widgets = sprintf(' <a href="%1$s">%2$s</a>','widgets.php',__('Manage widgets','content-aware-sidebars'));
+
+		$bulk_messages = array(
+			'updated'   => _n( '%s sidebar updated.', '%s sidebars updated.', $bulk_counts['updated'], 'content-aware-sidebars').$manage_widgets,
+			'locked'    => _n( '%s sidebar not updated, somebody is editing it.', '%s sidebars not updated, somebody is editing them.', $bulk_counts['locked'], 'content-aware-sidebars'),
+			'deleted'   => _n( '%s sidebar permanently deleted.', '%s sidebars permanently deleted.', $bulk_counts['deleted'], 'content-aware-sidebars'),
+			'trashed'   => _n( '%s sidebar moved to the Trash.', '%s sidebars moved to the Trash.', $bulk_counts['trashed'], 'content-aware-sidebars'),
+			'untrashed' => _n( '%s sidebar restored from the Trash.', '%s sidebars restored from the Trash.', $bulk_counts['untrashed'], 'content-aware-sidebars'),
+		);
+
+		$bulk_counts = array_filter( $bulk_counts );
+
+		$messages = array();
+		foreach ( $bulk_counts as $message => $count ) {
+			if ( isset( $bulk_messages[ $message ] ) )
+				$messages[] = sprintf( $bulk_messages[ $message ], number_format_i18n( $count ) );
+
+			if ( $message == 'trashed' && isset( $_REQUEST['ids'] ) ) {
+				$ids = preg_replace( '/[^0-9,]/', '', $_REQUEST['ids'] );
+				$messages[] = '<a href="' . esc_url( wp_nonce_url( "admin.php?page=wpcas&doaction=undo&action=untrash&ids=$ids", "bulk-sidebars" ) ) . '">' . __('Undo') . '</a>';
+			}
+		}
+
+		if ( $messages )
+			echo '<div id="message" class="updated notice is-dismissible"><p>' . join( ' ', $messages ) . '</p></div>';
+	}
+
+	/**
+	 * Register and enqueue scripts styles
+	 * for screen
+	 *
+	 * @since 3.4
+	 */
+	public function add_scripts_styles() {
+		wp_register_style('cas/admin/style', plugins_url('../css/style.css', __FILE__), array(), CAS_App::PLUGIN_VERSION);
+
+		wp_enqueue_style('cas/admin/style');
 	}
 
 }
