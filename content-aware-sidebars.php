@@ -46,7 +46,7 @@ if(!class_exists('CAS_App')) {
 	// Load dependencies
 	$cas_dir_path = plugin_dir_path( __FILE__ );
 
-	require($cas_dir_path.'lib/wp-content-aware-engine/core.php');
+	require($cas_dir_path.'lib/wp-content-aware-engine/bootstrap.php');
 	require($cas_dir_path.'app.php');
 
 	if(is_admin()) {
