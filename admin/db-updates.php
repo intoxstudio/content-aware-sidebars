@@ -12,8 +12,7 @@ if (!defined('CAS_App::PLUGIN_VERSION')) {
 	exit;
 }
 
-$cas_db_updater = new WP_DB_Updater('cas_db_version',CAS_App::PLUGIN_VERSION);
-$cas_db_updater->register_version_update('0.8','cas_update_to_08');
+$cas_db_updater = new WP_DB_Updater('cas_db_version',CAS_App::PLUGIN_VERSION, true);
 $cas_db_updater->register_version_update('1.1','cas_update_to_11');
 $cas_db_updater->register_version_update('2.0','cas_update_to_20');
 $cas_db_updater->register_version_update('3.0','cas_update_to_30');
@@ -217,53 +216,6 @@ function cas_update_to_11() {
 		}
 	}
 	
-	return true;
-}
-
-/**
- * Version 0 -> 0.8
- * Introduces database version management, adds preficed keys to metadata
- * 
- * @global object $wpdb
- * @return boolean 
- */
-function cas_update_to_08() {
-	global $wpdb;
-	
-	$metadata = array(
-		'post_types',
-		'taxonomies',
-		'authors',
-		'page_templates',
-		'static',
-		'exposure',
-		'handle',
-		'host',
-		'merge-pos'
-	);
-
-	// Get all sidebars
-	$posts = $wpdb->get_col($wpdb->prepare("
-		SELECT ID 
-		FROM $wpdb->posts 
-		WHERE post_type = %s
-	",'sidebar'));
-
-	//Check if there is any
-	if(!empty($posts)) {
-		//Update the meta keys
-		foreach($metadata as $meta) {
-			$wpdb->query("
-				UPDATE $wpdb->postmeta 
-				SET meta_key = '_cas_".$meta."' 
-				WHERE meta_key = '".$meta."' 
-				AND post_id IN(".implode(',',$posts).")
-			");
-		}
-		// Clear cache for new meta keys
-		wp_cache_flush();
-	}
-
 	return true;
 }
 
