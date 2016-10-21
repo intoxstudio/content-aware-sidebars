@@ -936,7 +936,7 @@ final class CAS_Sidebar_Edit extends CAS_Admin {
 
 	<div class="cas-save">
 
-	<div id="publishing-action">
+	<div class="wpca-pull-right">
 	<?php
 	if ( $post->post_status == 'auto-draft' ) {
 		submit_button( __( 'Save' ), 'primary button-large', 'publish', false );
@@ -944,12 +944,10 @@ final class CAS_Sidebar_Edit extends CAS_Admin {
 		submit_button( __( 'Update' ), 'primary button-large', 'save', false );
 	} ?>
 	</div>
-
 	</div>
-
-	<div class="cas-overview-actions">
-
-	<span class="dashicons dashicons-post-status"></span> <?php _e("Status:"); ?>
+	<ul class="cas-overview-actions">
+	<li><span class="dashicons dashicons-post-status"></span> <?php _e("Status:"); ?>
+	<strong>
 	<?php
 
 	/* translators: Publish box date format, see http://php.net/date */
@@ -973,7 +971,7 @@ final class CAS_Sidebar_Edit extends CAS_Admin {
 	}
 
 	printf($stamp,$date);
-	echo '<a class="js-nav-link" href="#top#section-schedule">'.__('Edit').'</a>';
+	echo '</strong> <a class="js-nav-link" href="#top#section-schedule">'.__('Edit').'</a>';
 
 	if ( post_type_supports($post->post_type, 'revisions') ) {
 		$revisions = wp_get_post_revisions( $post->ID );
@@ -981,22 +979,23 @@ final class CAS_Sidebar_Edit extends CAS_Admin {
 		reset( $revisions ); // Reset pointer for key()
 		$revision_id = key( $revisions );
  ?>
-			<div class="misc-pub-section misc-pub-revisions">
+			<li><span class="dashicons dashicons-backup"></span>
 				<?php printf( __( 'Widget Revisions: %s' ), '<b>' . number_format_i18n( $revision_count ) . '</b>' ); ?>
 				<a class="hide-if-no-js" href="<?php echo esc_url( get_edit_post_link( $revision_id ) ); ?>" title="<?php esc_attr_e( 'Browse revisions' ); ?>"><?php _ex( 'Browse', 'revisions' ); ?></a>
-			</div>
+			</li>
 			<?php
 		
 	} elseif (cas_fs()->is_not_paying() ) {
 ?>
-		<div class="misc-pub-section misc-pub-revisions">
-			<?php printf( __( 'Widget Revisions: %s' ), '<b><a href="'.esc_url(cas_fs()->get_upgrade_url()).'">'.__( 'Enable').'</a></b>' ); ?>
-		</div>
+		<li><span class="dashicons dashicons-backup"></span>
+			<?php printf( __( 'Widget Revisions: %s' ), '<b>0</b>' );
+			echo ' <b><a href="'.esc_url(cas_fs()->get_upgrade_url()).'">'.__( 'Enable').'</a></b>'; ?>
+		</li>
 		<?php
 	}
 ?>
 
-	</div>
+	</ul>
 
 	<?php
 	}
