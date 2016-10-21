@@ -211,13 +211,21 @@ final class CAS_Sidebar_Manager {
 				'publish_posts'      => CAS_App::CAPABILITY,
 				'read_private_posts' => CAS_App::CAPABILITY
 			),
-			'show_ui'       => true,
-			'show_in_menu'  => true,
-			'query_var'     => false,
-			'rewrite'       => false,
-			'menu_position' => 25.099, //less probable to be overwritten
-			'supports'      => array('title','page-attributes'),
-			'menu_icon'     => 'dashicons-welcome-widgets-menus'
+			'public'              => false,
+			'hierarchical'        => false,
+			'exclude_from_search' => true,
+			'publicly_queryable'  => false,
+			'show_ui'             => false,
+			'show_in_menu'        => false,
+			'show_in_nav_menus'   => false,
+			'show_in_admin_bar'   => false,
+			'has_archive'         => false,
+			'rewrite'             => false,
+			'query_var'           => false,
+			'supports'            => array('title','page-attributes'),
+			'menu_icon'           => 'dashicons-welcome-widgets-menus',
+			'can_export'          => false,
+			'delete_with_user'    => false
 		));
 
 		WPCACore::post_types()->add(CAS_App::TYPE_SIDEBAR);

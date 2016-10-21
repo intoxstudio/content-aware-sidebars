@@ -12,45 +12,41 @@ if (!defined('CAS_App::PLUGIN_VERSION')) {
 	exit;
 }
 
-final class CAS_Sidebar_Edit {
-
-	private $_tour_manager;
+final class CAS_Sidebar_Edit extends CAS_Admin {
 
 	/**
-	 * Constructor
-	 *
-	 * @since 3.1
+	 * Intro tour manager
+	 * @var WP_Pointer_Tour
 	 */
-	public function __construct() {
+	private $_tour_manager;
 
-		$this->_tour_manager = new WP_Pointer_Tour(WPCACore::PREFIX.'cas_tour');
+	public function __construct() {
+		parent::__construct();
+
+		$this->_tour_manager = new WP_Pointer_Tour(CAS_App::META_PREFIX.'cas_tour');
 
 		add_action('delete_post',
 			array($this,'remove_sidebar_widgets'));
 		add_action('save_post_'.CAS_App::TYPE_SIDEBAR,
 			array($this,'save_post'),10,2);
-		add_action('add_meta_boxes_'.CAS_App::TYPE_SIDEBAR,
-			array($this,'create_meta_boxes'));
-		add_action('in_admin_header',
-			array($this,'meta_box_whitelist'),99);
-
-		add_action('wp_ajax_cas_dismiss_review_notice',
-			array($this,'ajax_review_clicked'));
-
 		add_action('wpca/meta_box/before',
 			array($this,'show_description'));
+		add_action('cas/admin/add_meta_boxes',
+			array($this,'create_meta_boxes'));
+
+		add_filter( 'get_edit_post_link',
+			array($this,'get_edit_post_link'), 10, 3 );
+		add_filter( 'get_delete_post_link',
+			array($this,'get_delete_post_link'), 10, 3 );
 
 		if ( cas_fs()->is_not_paying() )  {
+			add_action('wp_ajax_cas_dismiss_review_notice',
+				array($this,'ajax_review_clicked'));
 			add_action('wpca/meta_box/after',
 				array($this,'show_review_link'));
 			add_filter('wpca/modules/list',
 				array($this,'add_to_module_list'),99);
 		}
-
-		add_filter('post_updated_messages',
-			array($this,'sidebar_updated_messages'));
-		add_filter('bulk_post_updated_messages',
-			array($this,'sidebar_updated_bulk_messages'), 10, 2 );
 	}
 
 	/**
@@ -61,7 +57,7 @@ final class CAS_Sidebar_Edit {
 	 */
 	public function add_to_module_list($list) {
 		if(get_post_type() == CAS_App::TYPE_SIDEBAR) {
-			$list[''] = __('URLs (Available in Pro)','content-aware-sidebars');
+			$list[''] = __('URLs (Pro Feature)','content-aware-sidebars');
 		}
 		return $list;
 	}
@@ -102,92 +98,514 @@ final class CAS_Sidebar_Edit {
 	}
 
 	/**
+	 * Set up admin menu and get current screen
+	 *
+	 * @since  3.4
+	 * @return string
+	 */
+	public function get_screen() {
+		$post_type_object = get_post_type_object(CAS_App::TYPE_SIDEBAR);
+		return add_submenu_page(
+			CAS_App::BASE_SCREEN,
+			$post_type_object->labels->add_new_item,
+			$post_type_object->labels->add_new,
+			$post_type_object->cap->edit_posts,
+			CAS_App::BASE_SCREEN.'-edit',
+			array($this,'render_screen')
+		);
+	}
+
+	/**
+	 * Prepare screen load
+	 *
+	 * @since  3.4
+	 * @return void
+	 */
+	public function prepare_screen() {
+
+		global $nav_tabs, $post, $title, $active_post_lock;
+
+		$post_type = CAS_App::TYPE_SIDEBAR;
+		$post_type_object = get_post_type_object( $post_type );
+		$post_id = isset($_REQUEST['sidebar_id']) ? $_REQUEST['sidebar_id'] : 0;
+
+		//process actions
+		$this->process_actions($post_id);
+
+		if ( is_multisite() ) {
+			add_action( 'admin_footer', '_admin_notice_post_locked' );
+		} else {
+			$check_users = get_users( array( 'fields' => 'ID', 'number' => 2 ) );
+			if ( count( $check_users ) > 1 )
+				add_action( 'admin_footer', '_admin_notice_post_locked' );
+			unset( $check_users );
+		}
+
+		wp_enqueue_script('post');
+
+		if ( wp_is_mobile() ) {
+			wp_enqueue_script( 'jquery-touch-punch' );
+		}
+
+		add_thickbox();
+
+		// Add the local autosave notice HTML
+		//add_action( 'admin_footer', '_local_storage_notice' );
+
+		/**
+		 * Edit mode
+		 */
+		if($post_id) {
+			$post = get_post($post_id, OBJECT, 'edit');
+
+			if ( ! $post )
+				wp_die( __( 'You attempted to edit an item that doesn&#8217;t exist. Perhaps it was deleted?' ) );
+			if ( ! current_user_can( 'edit_post', $post_id ) )
+				wp_die( __( 'Sorry, you are not allowed to edit this item.' ) );
+			if ( 'trash' == $post->post_status )
+				wp_die( __( 'You can&#8217;t edit this item because it is in the Trash. Please restore it and try again.' ) );
+
+			if ( ! empty( $_GET['get-post-lock'] ) ) {
+				check_admin_referer( 'lock-post_' . $post_id );
+				wp_set_post_lock( $post_id );
+				wp_redirect( get_edit_post_link( $post_id, 'url' ) );
+				exit();
+			}
+
+			if ( ! wp_check_post_lock( $post->ID ) ) {
+				$active_post_lock = wp_set_post_lock( $post->ID );
+				//wp_enqueue_script('autosave');
+			}
+
+			$title = $post_type_object->labels->edit_item;
+
+		/**
+		 * New Mode
+		 */
+		} else {
+
+			if ( ! current_user_can( $post_type_object->cap->edit_posts ) || ! current_user_can( $post_type_object->cap->create_posts ) ) {
+				wp_die(
+					'<h1>' . __( 'Cheatin&#8217; uh?' ) . '</h1>' .
+					'<p>' . __( 'Sorry, you are not allowed to create posts as this user.' ) . '</p>',
+					403
+				);
+			}
+
+			//wp_enqueue_script( 'autosave' );
+
+			$post = get_default_post_to_edit( $post_type, true );
+
+			$title = $post_type_object->labels->add_new_item;
+
+		}
+
+		$nav_tabs = array(
+			'conditions' => __('Conditions','content-aware-sidebars'),
+			'schedule'   => __('Schedule'),
+			'advanced'   => __('Advanced')
+		);
+		$nav_tabs = apply_filters('cas/admin/nav-tabs', $nav_tabs);
+
+		do_action( 'cas/admin/add_meta_boxes', $post );
+
+		// foreach ($nav_tabs as $id => $label) {
+		// 	do_action( 'do_meta_boxes', CAS_App::BASE_SCREEN.'-edit', 'section-'.$id, $post );
+		// }
+		//do_action( 'do_meta_boxes', CAS_App::BASE_SCREEN.'-edit', 'normal', $post );
+		//do_action( 'do_meta_boxes', CAS_App::BASE_SCREEN.'-edit', 'side', $post );
+
+		$screen = get_current_screen();
+
+		$screen->add_help_tab( array( 
+			'id'      => CAS_App::META_PREFIX.'help',
+			'title'   => __('Condition Groups','content-aware-sidebars'),
+			'content' => '<p>'.__('Each created condition group describe some specific content (conditions) that the current sidebar should be displayed with.','content-aware-sidebars').'</p>'.
+				'<p>'.__('Content added to a condition group uses logical conjunction, while condition groups themselves use logical disjunction. '.
+				'This means that content added to a group should be associated, as they are treated as such, and that the groups do not interfere with each other. Thus it is possible to have both extremely focused and at the same time distinct conditions.','content-aware-sidebars').'</p>',
+		) );
+		$screen->set_help_sidebar( '<h4>'.__('More Information').'</h4>'.
+			'<p><a href="https://dev.institute/wordpress/sidebars-pro/faq/?utm_source=plugin&utm_medium=referral&utm_content=help-tab&utm_campaign=cas" target="_blank">'.__('FAQ','content-aware-sidebars').'</a></p>'.
+			'<p><a href="http://wordpress.org/support/plugin/content-aware-sidebars" target="_blank">'.__('Forum Support','content-aware-sidebars').'</a></p>'
+		);
+
+		if ( cas_fs()->is_not_paying() )  {
+			add_action( 'admin_notices', array($this,'admin_notice_review'));
+		}
+
+	}
+
+	/**
+	 * Process actions
+	 *
+	 * @since  3.4
+	 * @param  int  $post_id
+	 * @return void
+	 */
+	public function process_actions($post_id) {
+		$action = isset($_REQUEST['action']) ? $_REQUEST['action'] : '';
+		if ( isset( $_POST['deletepost'] ) )
+			$action = 'delete';
+
+		if($action && $post_id) {
+			//wp_reset_vars( array( 'action' ) );
+			$sendback = wp_get_referer();
+			$sendback = remove_query_arg(
+				array('action','trashed', 'untrashed', 'deleted', 'ids'), 
+				$sendback
+			);
+
+			$post = get_post( $post_id );
+			if ( ! $post ) {
+				wp_die( __( 'The item no longer exists.' ) );
+			}
+
+			switch($action) {
+				case 'editpost':
+					check_admin_referer('update-post_' . $post_id);
+
+					$post_id = $this->update_sidebar_type();
+
+					// Session cookie flag that the post was saved
+					if ( isset( $_COOKIE['wp-saving-post'] ) && $_COOKIE['wp-saving-post'] === $post_id . '-check' ) {
+						setcookie( 'wp-saving-post', $post_id . '-saved', time() + DAY_IN_SECONDS, ADMIN_COOKIE_PATH, COOKIE_DOMAIN, is_ssl() );
+					}
+
+					$status = get_post_status( $post_id );
+					if(isset($_POST['original_post_status']) && $_POST['original_post_status'] == $status) {
+						$message = 1;
+					} else {
+						switch ( $status ) {
+							case CAS_App::STATUS_SCHEDULED:
+								//gets scheduled
+								$message = 9;
+								break;
+							case CAS_App::STATUS_INACTIVE:
+								//gets deactivated
+								$message = 10;
+								break;
+							case CAS_App::STATUS_ACTIVE:
+								//gets activated
+								$message = 6;
+								break;
+							default:
+								$message = 1;
+						}
+					}
+
+					$sendback = add_query_arg(array(
+						'sidebar_id' => $post_id,
+						'message'    => $message,
+						'page'       => 'wpcas-edit'
+					), $sendback);
+					wp_safe_redirect($sendback);
+					exit();
+				case 'trash':
+					check_admin_referer('trash-post_' . $post_id);
+
+					if ( ! current_user_can( 'delete_post', $post_id ) )
+						wp_die( __( 'Sorry, you are not allowed to move this item to the Trash.' ) );
+
+					if ( $user_id = wp_check_post_lock( $post_id ) ) {
+						$user = get_userdata( $user_id );
+						wp_die( sprintf( __( 'You cannot move this item to the Trash. %s is currently editing.' ), $user->display_name ) );
+					}
+
+					if ( ! wp_trash_post( $post_id ) )
+						wp_die( __( 'Error in moving to Trash.' ) );
+
+					$sendback = remove_query_arg('sidebar_id',$sendback);
+
+					wp_safe_redirect(add_query_arg(
+						array(
+							'page'    => 'wpcas',
+							'trashed' => 1,
+							'ids'     => $post_id
+						), $sendback ));
+					exit();
+				case 'untrash':
+					check_admin_referer('untrash-post_' . $post_id);
+
+					if ( ! current_user_can( 'delete_post', $post_id ) )
+						wp_die( __( 'Sorry, you are not allowed to restore this item from the Trash.' ) );
+
+					if ( ! wp_untrash_post( $post_id ) )
+						wp_die( __( 'Error in restoring from Trash.' ) );
+
+					wp_safe_redirect( add_query_arg('untrashed', 1, $sendback) );
+					exit();
+				case 'delete':
+					check_admin_referer('delete-post_' . $post_id);
+
+					if ( ! current_user_can( 'delete_post', $post_id ) )
+						wp_die( __( 'Sorry, you are not allowed to delete this item.' ) );
+
+					if ( ! wp_delete_post( $post_id, true ) )
+						wp_die( __( 'Error in deleting.' ) );
+
+					$sendback = remove_query_arg('sidebar_id',$sendback);
+					wp_safe_redirect( add_query_arg(array(
+						'page' => 'wpcas',
+						'deleted' => 1
+					), $sendback ));
+					exit();
+				default:
+					do_action('cas/admin/action', $action, $post_id);
+					break;
+			}
+		}
+	}
+
+	/**
+	 * Render screen
+	 *
+	 * @since  3.4
+	 * @return void
+	 */
+	public function render_screen() {
+
+		global $nav_tabs, $post, $title, $active_post_lock;
+
+		$post_ID = $post->ID;
+		$post_type_object = get_post_type_object( $post->post_type );
+
+		$messages = $this->sidebar_updated_messages();
+		$message = false;
+		if ( isset($_GET['message']) ) {
+			$_GET['message'] = absint( $_GET['message'] );
+			if ( isset($messages[$_GET['message']]) )
+				$message = $messages[$_GET['message']];
+		}
+
+		$notice = false;
+		$form_extra = '';
+		if ( 'auto-draft' == $post->post_status ) {
+			if (isset($_REQUEST['sidebar_id']) ) {
+				$post->post_title = '';
+			}
+			//$autosave = false;
+			$form_extra .= "<input type='hidden' id='auto_draft' name='auto_draft' value='1' />";
+		}
+		// else {
+		// 	$autosave = wp_get_post_autosave( $post_ID );
+		// }
+
+		// Detect if there exists an autosave newer than the post and if that autosave is different than the post
+		// if ( $autosave && mysql2date( 'U', $autosave->post_modified_gmt, false ) > mysql2date( 'U', $post->post_modified_gmt, false ) ) {
+		// 	foreach ( _wp_post_revision_fields( $post ) as $autosave_field => $_autosave_field ) {
+		// 		if ( normalize_whitespace( $autosave->$autosave_field ) != normalize_whitespace( $post->$autosave_field ) ) {
+		// 			$notice = sprintf( __( 'There is an autosave of this post that is more recent than the version below. <a href="%s">View the autosave</a>' ), get_edit_post_link( $autosave->ID ) );
+		// 			break;
+		// 		}
+		// 	}
+		// 	// If this autosave isn't different from the current post, begone.
+		// 	if ( ! $notice )
+		// 		wp_delete_post_revision( $autosave->ID );
+		// 	unset($autosave_field, $_autosave_field);
+		// }
+		
+
+		echo '<div class="wrap">';
+		echo '<h1>';
+		echo esc_html( $title );
+		if ( isset($_REQUEST['sidebar_id']) && current_user_can( $post_type_object->cap->create_posts ) ) {
+			echo ' <a href="' . esc_url( admin_url( 'admin.php?page=wpcas-edit' ) ) . '" class="page-title-action">' . esc_html( $post_type_object->labels->add_new ) . '</a>';
+		}
+		echo '</h1>';
+		if ( $message ) {
+			echo '<div id="message" class="updated notice notice-success is-dismissible"><p>'.$message.'</p></div>';
+		} 
+		echo '<form name="post" action="admin.php?page=wpcas-edit" method="post" id="post">';
+		$referer = wp_get_referer();
+		wp_nonce_field('update-post_' . $post_ID);
+		echo '<input type="hidden" id="user-id" name="user_ID" value="'.(int)get_current_user_id().'" />';
+		echo '<input type="hidden" id="hiddenaction" name="action" value="editpost" />';
+		echo '<input type="hidden" id="post_author" name="post_author" value="'.esc_attr($post->post_author).'" />';
+		echo '<input type="hidden" id="original_post_status" name="original_post_status" value="'.esc_attr( $post->post_status).'" />';
+		echo '<input type="hidden" id="referredby" name="referredby" value="'.($referer ? esc_url( $referer ) : '').'" />';
+		echo '<input type="hidden" id="post_ID" name="sidebar_id" value="'.esc_attr($post_ID).'" />';
+		if ( ! empty( $active_post_lock ) ) {
+			echo '<input type="hidden" id="active_post_lock" value="'.esc_attr(implode( ':', $active_post_lock )).'" />';
+		}
+		if ( get_post_status( $post ) != CAS_App::STATUS_INACTIVE) {
+			wp_original_referer_field(true, 'previous');
+		}
+		echo $form_extra;
+
+		wp_nonce_field( 'meta-box-order', 'meta-box-order-nonce', false );
+		wp_nonce_field( 'closedpostboxes', 'closedpostboxesnonce', false );
+
+		echo '<div id="poststuff">';
+		echo '<div id="post-body" class="metabox-holder columns-'.(1 == get_current_screen()->get_columns() ? '1' : '2').'">';
+		echo '<div id="post-body-content">';
+		echo '<div id="titlediv">';
+		echo '<div id="titlewrap">';
+		echo '<label class="screen-reader-text" id="title-prompt-text" for="title">'.__( 'Enter title here' ).'</label>';
+		echo '<input type="text" name="post_title" size="30" value="'.esc_attr( $post->post_title ).'" id="title" spellcheck="true" autocomplete="off" />';
+		echo '</div></div>';
+		$this->render_section_nav($nav_tabs);
+		echo '</div>';
+		$this->render_sections($nav_tabs,$post,$post->post_type);
+		echo '</div>';
+		echo '<br class="clear" />';
+		echo '</div></form></div>';
+
+		if ( cas_fs()->is_not_paying() ) {
+			$this->render_upgrade_modal();
+		}
+	}
+
+	/**
+	 * Render tab navigation
+	 *
+	 * @since  3.4
+	 * @param  array  $tabs
+	 * @return void
+	 */
+	public function render_section_nav($tabs) {
+		echo '<h2 class="nav-tab-wrapper js-cas-tabs hide-if-no-js " style="padding-bottom:0;">';
+		foreach ($tabs as $id => $label) {
+			echo '<a class="js-nav-link nav-tab" href="#top#section-'.$id.'">'.$label.'</a>';
+		}
+		echo '</h2>';
+	}
+
+	/**
+	 * Render meta box sections
+	 *
+	 * @since  3.4
+	 * @param  array    $tabs
+	 * @param  WP_Post  $post
+	 * @param  string   $post_type
+	 * @return void
+	 */
+	public function render_sections($tabs, $post, $post_type) {
+		echo '<div id="postbox-container-1" class="postbox-container">';
+		do_meta_boxes(CAS_App::BASE_SCREEN.'-edit', 'side', $post);
+		echo '</div>';
+		echo '<div id="postbox-container-2" class="postbox-container">';
+		foreach ($tabs as $id => $label) {
+			$name = 'section-'.$id;
+			echo '<div id="'.$name.'" class="cas-section">';
+			do_meta_boxes(CAS_App::BASE_SCREEN.'-edit', $name, $post);
+			echo '</div>';
+		}
+		//boxes across sections
+		do_meta_boxes(CAS_App::BASE_SCREEN.'-edit', 'normal', $post);
+		echo '</div>';
+	}
+
+	/**
+	 * Update sidebar post type
+	 *
+	 * @since  3.4
+	 * @return int
+	 */
+	public function update_sidebar_type() {
+		global $wpdb;
+ 
+		$post_ID = (int) $_POST['sidebar_id'];
+		$post = get_post( $post_ID );
+		$post_data['post_type'] = CAS_App::TYPE_SIDEBAR;
+		$post_data['ID'] = (int) $post_ID;
+		$post_data['post_title'] = $_POST['post_title'];
+		$post_data['comment_status'] = 'closed';
+		$post_data['ping_status'] = 'closed';
+		$post_data['post_author'] = get_current_user_id();
+
+		$ptype = get_post_type_object($post_data['post_type']);
+
+		if ( !current_user_can( 'edit_post', $post_ID ) ) {
+				wp_die( __('Sorry, you are not allowed to edit this post.' ));
+		} elseif (! current_user_can( $ptype->cap->create_posts ) ) {
+				return new WP_Error( 'edit_others_posts', __( 'Sorry, you are not allowed to create posts as this user.' ) );
+		} elseif ( $post_data['post_author'] != $_POST['post_author'] 
+			 && ! current_user_can( $ptype->cap->edit_others_posts ) ) {
+			return new WP_Error( 'edit_others_posts', __( 'Sorry, you are not allowed to create posts as this user.' ) );
+		}
+	 
+		if ( isset($_POST['post_status']) ) {
+			 $post_data['post_status'] = CAS_App::STATUS_ACTIVE;
+			//if sidebar has been future before, we need to reset date
+			if($_POST['post_status'] != $_POST['original_post_status']) {
+				$post_data['post_date'] = current_time( 'mysql' );
+			}
+		} elseif($_POST['sidebar_activate']) {
+			$post_data['post_status'] = CAS_App::STATUS_SCHEDULED;
+			$post_data['post_date'] = $_POST['sidebar_activate'];
+		} else {
+			$post_data['post_status'] = CAS_App::STATUS_INACTIVE;
+		}
+
+		if($post_data['post_status'] != CAS_App::STATUS_INACTIVE 
+			&& $_POST['sidebar_deactivate']) {
+			$this->reschedule_deactivation($post_ID,$_POST['sidebar_deactivate']);
+		} else {
+			$this->reschedule_deactivation($post_ID);
+		}
+
+		if(isset($post_data['post_date'])) {
+			$post_data['post_date_gmt'] = get_gmt_from_date( $post_data['post_date'] );
+		}
+	 
+		if ( post_type_supports( CAS_App::TYPE_SIDEBAR, 'revisions' ) ) {
+			$revisions = wp_get_post_revisions( $post_ID, array(
+				'order'          => 'ASC',
+				'posts_per_page' => 1
+			));
+			$revision = current( $revisions );
+			// Check if the revisions have been upgraded
+			if ( $revisions && _wp_get_post_revision_version( $revision ) < 1 )
+				_wp_upgrade_revisions_of_post( $post, wp_get_post_revisions( $post_ID ) );
+		}
+	 
+		update_post_meta( $post_ID, '_edit_last', $post_data['post_author'] );
+		$success = wp_update_post( $post_data );
+		wp_set_post_lock( $post_ID );
+
+		return $post_ID;
+	}
+
+	/**
+	 * Handle schedule for deactivation
+	 *
+	 * @since  3.4
+	 * @param  int    $post_id
+	 * @param  string $time
+	 * @return void
+	 */
+	public function reschedule_deactivation($post_id, $time = false) {
+		$name = 'cas/event/deactivate';
+		if (wp_next_scheduled($name,array($post_id)) !== false) {
+			wp_clear_scheduled_hook($name,array($post_id));
+		}
+
+		if($time) {
+			//Requires to be in GMT
+			$utime = get_gmt_from_date($time,'U');
+			wp_schedule_single_event($utime,$name,array($post_id));
+			update_post_meta($post_id, CAS_App::META_PREFIX.'deactivate_time',$time);
+		} else {
+			delete_post_meta($post_id, CAS_App::META_PREFIX.'deactivate_time');
+		}
+	}
+
+	/**
 	 * Create update messages
 	 * 
 	 * @param  array  $messages 
 	 * @return array           
 	 */
-	public function sidebar_updated_messages( $messages ) {
+	public function sidebar_updated_messages() {
 		$manage_widgets = sprintf(' <a href="%1$s">%2$s</a>','widgets.php',__('Manage widgets','content-aware-sidebars'));
-		$messages[CAS_App::TYPE_SIDEBAR] = array(
-			0 => '',
+		return array(
 			1 => __('Sidebar updated.','content-aware-sidebars').$manage_widgets,
-			2 => '',
-			3 => '',
-			4 => __('Sidebar updated.','content-aware-sidebars'),
-			5 => '',
-			6 => __('Sidebar published.','content-aware-sidebars').$manage_widgets,
-			7 => __('Sidebar saved.','content-aware-sidebars'),
-			8 => __('Sidebar submitted.','content-aware-sidebars').$manage_widgets,
+			6 => __('Sidebar activated.','content-aware-sidebars').$manage_widgets,
 			9 => sprintf(__('Sidebar scheduled for: <strong>%1$s</strong>.','content-aware-sidebars'),
 				// translators: Publish box date format, see http://php.net/date
 				date_i18n(__('M j, Y @ G:i'),strtotime(get_the_ID()))).$manage_widgets,
-			10 => __('Sidebar draft updated.','content-aware-sidebars'),
+			10 => __('Sidebar deactivated.','content-aware-sidebars').$manage_widgets,
 		);
-		return $messages;
-	}
-
-	/**
-	 * Create bulk update messages
-	 *
-	 * @since  3.0
-	 * @param  array  $messages
-	 * @param  array  $counts
-	 * @return array
-	 */
-	public function sidebar_updated_bulk_messages( $messages, $counts ) {
-		$manage_widgets = sprintf(' <a href="%1$s">%2$s</a>','widgets.php',__('Manage widgets','content-aware-sidebars'));
-		$messages[CAS_App::TYPE_SIDEBAR] = array(
-			'updated'   => _n( '%s sidebar updated.', '%s sidebars updated.', $counts['updated'] ).$manage_widgets,
-			'locked'    => _n( '%s sidebar not updated, somebody is editing it.', '%s sidebars not updated, somebody is editing them.', $counts['locked'] ),
-			'deleted'   => _n( '%s sidebar permanently deleted.', '%s sidebars permanently deleted.', $counts['deleted'] ),
-			'trashed'   => _n( '%s sidebar moved to the Trash.', '%s sidebars moved to the Trash.', $counts['trashed'] ),
-			'untrashed' => _n( '%s sidebar restored from the Trash.', '%s sidebars restored from the Trash.', $counts['untrashed'] ),
-		);
-		return $messages;
-	}
-
-	/**
-	 * Remove unwanted meta boxes
-	 * @return void 
-	 */
-	public function meta_box_whitelist() {
-		global $wp_meta_boxes;
-
-		$screen = get_current_screen();
-
-		// Post type not set on all pages in WP3.1
-		if(!(isset($screen->post_type) && $screen->post_type == CAS_App::TYPE_SIDEBAR && $screen->base == 'post'))
-			return;
-
-		// Names of whitelisted meta boxes
-		$whitelist = array(
-			'cas-plugin-links' => 'cas-plugin-links',
-			'cas-upgrade-pro'   => 'cas-upgrade-pro',
-			'cas-news'      => 'cas-news',
-			'cas-support'   => 'cas-support',
-			'cas-groups'    => 'cas-groups',
-			'cas-rules'     => 'cas-rules',
-			'cas-options'   => 'cas-options',
-			'submitdiv'     => 'submitdiv',
-			'revisionsdiv'  => 'revisionsdiv',
-			'slugdiv'       => 'slugdiv',
-		);
-
-		// Loop through context (normal,advanced,side)
-		foreach($wp_meta_boxes[CAS_App::TYPE_SIDEBAR] as $context_k => $context_v) {
-			// Loop through priority (high,core,default,low)
-			foreach($context_v as $priority_k => $priority_v) {
-				// Loop through boxes
-				foreach($priority_v as $box_k => $box_v) {
-					// If box is not whitelisted, remove it
-					if(!isset($whitelist[$box_k])) {
-						$wp_meta_boxes[CAS_App::TYPE_SIDEBAR][$context_k][$priority_k][$box_k] = false;
-						//unset($whitelist[$box_k]);
-					}
-				}
-			}
-		}
 	}
 
 	/**
@@ -271,11 +689,9 @@ final class CAS_Sidebar_Edit {
 	public function create_meta_boxes($post) {
 
 		$this->create_pointers();
-
 		CAS_App::instance()->manager()->populate_metadata();
 
 		$boxes = array();
-
 		$boxes[] = array(
 			'id'       => 'submitdiv',
 			'title'    => __('Publish'),
@@ -283,17 +699,22 @@ final class CAS_Sidebar_Edit {
 			'context'  => 'side',
 			'priority' => 'high'
 		);
+		$boxes[] = array(
+			'id'       => 'cas-status',
+			'title'    => __('Sidebar Status', 'content-aware-sidebars'),
+			'callback' => 'meta_box_status',
+			'context'  => 'section-schedule',
+			'priority' => 'default'
+		);
+		$boxes[] = array(
+			'id'       => 'cas-advanced',
+			'title'    => __('Advanced', 'content-aware-sidebars'),
+			'callback' => 'meta_box_advanced',
+			'context'  => 'section-advanced',
+			'priority' => 'default'
+		);
 
 		if ( cas_fs()->is_not_paying() ) {
-
-			// $boxes[] = array(
-			// 	'id'       => 'cas-upgrade-pro',
-			// 	'title'    => __('Content Aware Sidebars PRO', 'content-aware-sidebars'),
-			// 	'callback' => 'meta_box_upgrade',
-			// 	'context'  => 'side',
-			// 	'priority' => 'low'
-			// );
-
 			$boxes[] = array(
 				'id'       => 'cas-plugin-links',
 				'title'    => __('Content Aware Sidebars', 'content-aware-sidebars'),
@@ -301,25 +722,16 @@ final class CAS_Sidebar_Edit {
 				'context'  => 'side',
 				'priority' => 'default'
 			);
+			$boxes[] = array(
+				'id'       => 'cas-schedule',
+				'title'    => __('Time Schedule', 'content-aware-sidebars'),
+				'callback' => 'meta_box_schedule',
+				'context'  => 'section-schedule',
+				'priority' => 'default'
+			);
 		}
-			//News
-			// array(
-			// 	'id'       => 'cas-news',
-			// 	'title'    => __('Get a free Content Aware Sidebars Premium Bundle', 'content-aware-sidebars'),
-			// 	'callback' => 'meta_box_news',
-			// 	'context'  => 'normal',
-			// 	'priority' => 'high'
-			// ),
-			//About
-			// array(
-			// 	'id'       => 'cas-support',
-			// 	'title'    => __('Support the Author of Content Aware Sidebars', 'content-aware-sidebars'),
-			// 	'callback' => 'meta_box_author_words',
-			// 	'context'  => 'normal',
-			// 	'priority' => 'high'
-			// ),
-			//Options
-			
+
+		//Options
 		$boxes[] = array(
 			'id'       => 'cas-options',
 			'title'    => __('Options', 'content-aware-sidebars'),
@@ -334,29 +746,20 @@ final class CAS_Sidebar_Edit {
 				$box['id'],
 				$box['title'],
 				array($this, $box['callback']),
-				CAS_App::TYPE_SIDEBAR,
+				CAS_App::BASE_SCREEN.'-edit',
 				$box['context'],
 				$box['priority']
 			);
 		}
 
-		$screen = get_current_screen();
-
-		$screen->add_help_tab( array( 
-			'id'      => WPCACore::PREFIX.'help',
-			'title'   => __('Condition Groups','content-aware-sidebars'),
-			'content' => '<p>'.__('Each created condition group describe some specific content (conditions) that the current sidebar should be displayed with.','content-aware-sidebars').'</p>'.
-				'<p>'.__('Content added to a condition group uses logical conjunction, while condition groups themselves use logical disjunction. '.
-				'This means that content added to a group should be associated, as they are treated as such, and that the groups do not interfere with each other. Thus it is possible to have both extremely focused and at the same time distinct conditions.','content-aware-sidebars').'</p>',
-		) );
-		$screen->set_help_sidebar( '<h4>'.__('More Information').'</h4>'.
-			'<p><a href="https://dev.institute/wordpress/sidebars-pro/faq/?utm_source=plugin&utm_medium=referral&utm_content=help-tab&utm_campaign=cas" target="_blank">'.__('FAQ','content-aware-sidebars').'</a></p>'.
-			'<p><a href="http://wordpress.org/support/plugin/content-aware-sidebars" target="_blank">'.__('Forum Support','content-aware-sidebars').'</a></p>'
-		);
-
-		if ( cas_fs()->is_not_paying() )  {
-			add_action( 'admin_notices', array($this,'admin_notice_review'));
+		add_action('admin_enqueue_scripts',
+			array('WPCACore','enqueue_scripts_styles'),9);
+		//todo: refactor add of meta box
+		//with new bootstrapper, legacy core might be loaded
+		if(method_exists('WPCACore', 'render_group_meta_box')) {
+			WPCACore::render_group_meta_box($post,CAS_App::BASE_SCREEN.'-edit','section-conditions','default');
 		}
+
 	}
 
 	/**
@@ -366,7 +769,7 @@ final class CAS_Sidebar_Edit {
 	 * @return void
 	 */
 	public function admin_notice_review() {
-		$has_reviewed = get_user_option(WPCACore::PREFIX.'cas_review');
+		$has_reviewed = get_user_option(CAS_App::META_PREFIX.'cas_review');
 		if($has_reviewed === false) {
 			$tour_taken = $this->_tour_manager->get_user_option();
 			if($tour_taken && (time() - $tour_taken) >= WEEK_IN_SECONDS*2) {
@@ -382,41 +785,79 @@ final class CAS_Sidebar_Edit {
 		}
 	}
 
-	/**
-	 * Meta box for upgrade notice
-	 *
-	 * @since  3.2
-	 * @param  WP_Post  $post
-	 * @return void
-	 */
-	public function meta_box_upgrade($post) {
-		?>
-<ul>
-  <li><span class="dashicons dashicons-yes"></span> <?php _e('Priority Email Support','content-aware-sidebars'); ?></li>
-  <li><span class="dashicons dashicons-yes"></span> <?php _e('Sidebars on URLs + wildcards','content-aware-sidebars'); ?></li>
-  <li><span class="dashicons dashicons-yes"></span> <?php _e('Widget Revisions','content-aware-sidebars'); ?></li>
-  <li><span class="dashicons dashicons-yes"></span> <?php _e('and more...','content-aware-sidebars'); ?></li>
-</ul>
-<div style="text-align: center; margin: 0px auto;">
-	<a href="<?php echo esc_url(cas_fs()->get_upgrade_url()); ?>" class="button button-large"><?php _e('Upgrade Now!','content-aware-sidebars'); ?></a>
-</div>
-		<?php
+	public function meta_box_status($post) {
+		$activate_date = $post->post_status == CAS_App::STATUS_SCHEDULED ? $post->post_date : '';
+		$deactivate_date = get_post_meta($post->ID, CAS_App::META_PREFIX.'deactivate_time',true);
+
+		echo '<table class="form-table cas-form-table" width="100%"><tbody>';
+		echo '<tr><td scope="row">'.__("Status",'content-aware-sidebars').'</td>';
+		echo '<td>';
+		echo '<label class="cae-toggle">';
+		echo '<input class="js-cas-status" type="checkbox" name="post_status" value="'.CAS_App::STATUS_ACTIVE.'" '.checked( in_array($post->post_status,array(CAS_App::STATUS_ACTIVE,'auto-draft')),true,false).' />';
+		echo '<div class="cae-toggle-bar"></div></label>';
+		echo '</td></tr>';
+
+		echo '<tr><td scope="row">'.__("Activate",'content-aware-sidebars').'</td>';
+		echo '<td>';
+		echo '<span class="js-cas-activation">';
+		echo '<input type="text" name="sidebar_activate" value="'.$activate_date.'" data-input placeholder="'.esc_attr__('Select date','content-aware-sidebars').'">';
+		echo '<a class="button button-small" data-toggle><i class="dashicons dashicons-calendar"></i></a>';
+		echo '<a class="button button-small" data-clear><span class="dashicons dashicons-no-alt"></span></a>';
+		echo '</span>';
+		echo '</td></tr>';
+
+		echo '<tr><td scope="row">'.__("Deactivate",'content-aware-sidebars').'</td>';
+		echo '<td>';
+		echo '<span class="js-cas-expiry">';
+		echo '<input type="text" name="sidebar_deactivate" value="'.$deactivate_date.'" data-input placeholder="'.esc_attr__('Never','content-aware-sidebars').'">';
+		echo '<a class="button button-small" data-toggle><i class="dashicons dashicons-calendar"></i></a>';
+		echo '<a class="button button-small" data-clear><span class="dashicons dashicons-no-alt"></span></a>';
+		echo '</span>';
+		echo '</td></tr>';
+
+		echo '</tbody></table>';
+
 	}
 
-	/**
-	 * Meta box for news
-	 * @version 2.5
-	 * @return  void
-	 */
-	public function meta_box_news() {
-?>
-		<div style="overflow:hidden;">
-			<div style="float:left;width:40%;overflow:hidden">
-				<a target="_blank" href="https://www.transifex.com/projects/p/content-aware-sidebars/" class="button button-primary" style="width:100%;text-align:center;margin-bottom:10px;"><?php _e('Translate Now','content-aware-sidebars'); ?></a>
-			</div>
+	public function meta_box_schedule($post) {
+		global $wp_locale;
 
-		</div>
-<?php
+		echo '<p>'.__('Display sidebar only in given time ranges on select days.').' <span class="cas-pro-label">Pro</span></p>';
+		echo '<div>';
+
+		$i = $start = get_option('start_of_week',0);
+		$count = count($wp_locale->weekday);
+		$days = array_values($wp_locale->weekday);
+		do {
+			echo '<div>';
+			echo '<label>';
+			echo '<input type="checkbox" class="js-cas-pro-notice" data-url="'.$i.'" /> '.ucfirst($days[$i]).' (8:00 - 17:00)';
+			echo '</label>';
+			echo '<div class="cas-schedule-slide ui-slider ui-slider-horizontal ui-state-disabled ui-slider-disabled">';
+			echo '<div class="ui-slider-range" style="left: 30%; width: 40%;"></div>';
+			echo '<span class="ui-slider-handle ui-state-default" style="left: 30%;"></span>';
+			echo '<span class="ui-slider-handle ui-state-default" style="left: 70%;"></span>';
+			echo '</div>';
+			echo '</div>';
+			$i = ($i + 1) % $count;
+		} while($i != $start);
+		echo '</div>';
+	}
+
+	public function meta_box_advanced($post) {
+		echo '<div>';
+		echo '<strong>'.__('Order').'</strong>';
+		echo '<p><label for="menu_order" class="screen-reader-text">'.__('Order').'</label>';
+		echo '<input type="number" value="'.$post->menu_order.'" id="menu_order" size="4" name="menu_order"></p></div>';
+
+		if ( current_user_can( "delete_post", $post->ID ) ) {
+			if ( !EMPTY_TRASH_DAYS )
+				$delete_text = __('Delete Permanently');
+			else
+				$delete_text = __('Move to Trash');
+
+			echo '<a class="submitdelete deletion" href="'.get_delete_post_link($post->ID).'">'.$delete_text.'</a>';
+		} 
 	}
 
 	/**
@@ -426,9 +867,9 @@ final class CAS_Sidebar_Edit {
 	public function meta_box_options($post) {
 
 		$columns = array(
-			'handle' => 'handle,host',
-			'merge_pos',
-			'exposure'
+			'handle',
+			'host',
+			'merge_pos'
 		);
 
 		foreach ($columns as $key => $value) {
@@ -454,10 +895,6 @@ final class CAS_Sidebar_Edit {
 		
 		echo '</p></span>';
 
-		echo '<span>';
-		echo '<strong>'.__('Order').'</strong>';
-		echo '<p><label for="menu_order" class="screen-reader-text">'.__('Order').'</label>';
-		echo '<input type="number" value="'.$post->menu_order.'" id="menu_order" size="4" name="menu_order"></p></span>';
 	}
 
 	/**
@@ -481,30 +918,6 @@ final class CAS_Sidebar_Edit {
 			</div>
 		<?php
 	}
-
-	/**
-	 * Meta box for author words
-	 * @return void 
-	 */
-	public function meta_box_author_words() {
-?>
-			<div style="overflow:hidden;">
-				<div style="float:left;width:40%;border-left:#ebebeb 1px solid;border-right:#ebebeb 1px solid;box-sizing:border-box;-moz-box-sizing:border-box;">
-					<p><strong><?php _e('Or you could:','content-aware-sidebars'); ?></strong></p>
-					<ul>
-						<li><a href="http://wordpress.org/extend/plugins/content-aware-sidebars/" target="_blank"><?php _e('Translate the plugin into your language','content-aware-sidebars'); ?></a></li>
-					</ul>
-				</div>
-				<div style="float:left;width:20%;">
-					<p><a href="https://twitter.com/intoxstudio" class="twitter-follow-button" data-show-count="false">Follow @intoxstudio</a>
-						<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script></p>
-					<p>
-						<iframe src="//www.facebook.com/plugins/like.php?href=https%3A%2F%2Fwww.facebook.com%2Fintoxstudio&amp;width=450&amp;height=21&amp;colorscheme=light&amp;layout=button_count&amp;action=like&amp;show_faces=false&amp;send=false&amp;appId=436031373100972" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:450px; height:21px;" allowTransparency="true"></iframe>
-					</p>
-				</div>
-			</div>
-		<?php
-	}
 	
 	/**
 	 * Meta box to submit form fields
@@ -518,186 +931,99 @@ final class CAS_Sidebar_Edit {
 	 * @return void
 	 */
 	public function meta_box_submit( $post, $args = array() ) {
-		global $action;
 
-		$post_type_object = get_post_type_object($post->post_type);
-		$can_publish = current_user_can($post_type_object->cap->publish_posts);
-	?>
-	<div class="submitbox" id="submitpost">
+?>
 
-	<div id="minor-publishing">
+	<div class="cas-save">
 
-	<?php // Hidden submit button early on so that the browser chooses the right button when form is submitted with Return key ?>
-	<div style="display:none;">
-	<?php submit_button( __( 'Save' ), 'button', 'save' ); ?>
+	<div id="publishing-action">
+	<?php
+	if ( $post->post_status == 'auto-draft' ) {
+		submit_button( __( 'Save' ), 'primary button-large', 'publish', false );
+	} else {
+		submit_button( __( 'Update' ), 'primary button-large', 'save', false );
+	} ?>
 	</div>
 
-	<div id="minor-publishing-actions">
-	<div id="save-action">
-	<?php if ( 'publish' != $post->post_status && 'future' != $post->post_status && 'pending' != $post->post_status ) { ?>
-	<input type="submit" name="save" id="save-post" value="<?php esc_attr_e('Save Draft'); ?>" class="button" />
-	<span class="spinner"></span>
-	<?php } elseif ( 'pending' == $post->post_status && $can_publish ) { ?>
-	<input type="submit" name="save" id="save-post" value="<?php esc_attr_e('Save as Pending'); ?>" class="button" />
-	<span class="spinner"></span>
-	<?php } ?>
-	</div>
-	<?php
-	?>
-	<div class="clear"></div>
-	</div><!-- #minor-publishing-actions -->
-
-	<div id="misc-publishing-actions">
-
-	<div class="misc-pub-section misc-pub-post-status"><label for="post_status"><?php _e('Status:') ?></label>
-	<span id="post-status-display">
-	<?php
-	switch ( $post->post_status ) {
-		case 'private':
-		case 'publish':
-			_e('Published');
-			break;
-		case 'future':
-			_e('Scheduled');
-			break;
-		case 'pending':
-			_e('Pending Review');
-			break;
-		case 'draft':
-		case 'auto-draft':
-			_e('Draft');
-			break;
-	}
-	?>
-	</span>
-	<?php if ( 'publish' == $post->post_status || 'private' == $post->post_status || $can_publish ) { ?>
-	<a href="#post_status" class="edit-post-status hide-if-no-js"><span aria-hidden="true"><?php _e( 'Edit' ); ?></span> <span class="screen-reader-text"><?php _e( 'Edit status' ); ?></span></a>
-
-	<div id="post-status-select" class="hide-if-js">
-	<input type="hidden" name="hidden_post_status" id="hidden_post_status" value="<?php echo esc_attr( ('auto-draft' == $post->post_status ) ? 'draft' : $post->post_status); ?>" />
-	<select name='post_status' id='post_status'>
-	<?php if ( 'publish' == $post->post_status || 'private' == $post->post_status ) : ?>
-	<option<?php selected( $post->post_status, $post->post_status ); ?> value='publish'><?php _e('Published') ?></option>
-	<?php elseif ( 'future' == $post->post_status ) : ?>
-	<option<?php selected( $post->post_status, 'future' ); ?> value='future'><?php _e('Scheduled') ?></option>
-	<?php endif; ?>
-	<option<?php selected( $post->post_status, 'pending' ); ?> value='pending'><?php _e('Pending Review') ?></option>
-	<?php if ( 'auto-draft' == $post->post_status ) : ?>
-	<option<?php selected( $post->post_status, 'auto-draft' ); ?> value='draft'><?php _e('Draft') ?></option>
-	<?php else : ?>
-	<option<?php selected( $post->post_status, 'draft' ); ?> value='draft'><?php _e('Draft') ?></option>
-	<?php endif; ?>
-	</select>
-	 <a href="#post_status" class="save-post-status hide-if-no-js button"><?php _e('OK'); ?></a>
-	 <a href="#post_status" class="cancel-post-status hide-if-no-js button-cancel"><?php _e('Cancel'); ?></a>
 	</div>
 
-	<?php } ?>
-	</div><!-- .misc-pub-section -->
+	<div class="cas-overview-actions">
 
+	<span class="dashicons dashicons-post-status"></span> <?php _e("Status:"); ?>
 	<?php
+
 	/* translators: Publish box date format, see http://php.net/date */
-	$datef = __( 'M j, Y @ H:i' );
-	if ( 0 != $post->ID ) {
-		if ( 'future' == $post->post_status ) { // scheduled for publishing at a future date
-			$stamp = __('Scheduled for: <b>%1$s</b>');
-		} elseif ( 'publish' == $post->post_status || 'private' == $post->post_status ) { // already published
-			$stamp = __('Published on: <b>%1$s</b>');
-		} elseif ( '0000-00-00 00:00:00' == $post->post_date_gmt ) { // draft, 1 or more saves, no date specified
-			$stamp = __('Publish <b>immediately</b>');
-		} elseif ( time() < strtotime( $post->post_date_gmt . ' +0000' ) ) { // draft, 1 or more saves, future date specified
-			$stamp = __('Schedule for: <b>%1$s</b>');
-		} else { // draft, 1 or more saves, date specified
-			$stamp = __('Publish on: <b>%1$s</b>');
-		}
-		$date = date_i18n( $datef, strtotime( $post->post_date ) );
-	} else { // draft (no saves, and thus no date specified)
-		$stamp = __('Publish <b>immediately</b>');
-		$date = date_i18n( $datef, strtotime( current_time('mysql') ) );
+	$datef = __( 'M j, Y' );
+	$date = date_i18n( $datef, strtotime( $post->post_date ) );
+
+	switch ($post->post_status) {
+		case CAS_App::STATUS_SCHEDULED:
+			$stamp = __('Activates on <b>%1$s</b>');
+			break;
+		case CAS_App::STATUS_ACTIVE:
+			$stamp = __('Active');
+			break;
+		case CAS_App::STATUS_INACTIVE:
+			$stamp = __('Inactive');
+			break;
+		default:
+			$stamp = __('New');
+			$date = date_i18n( $datef, strtotime( current_time('mysql') ) );
+			break;
 	}
 
+	printf($stamp,$date);
+	echo '<a class="js-nav-link" href="#top#section-schedule">'.__('Edit').'</a>';
 
-	if ( post_type_supports($post->post_type, 'revisions') && 'auto-draft' != $post->post_status ) {
+	if ( post_type_supports($post->post_type, 'revisions') ) {
 		$revisions = wp_get_post_revisions( $post->ID );
 		$revision_count = count($revisions);
-
-		// We should aim to show the revisions metabox only when there are revisions.
-		if ( $revision_count > 1 ) {
-			reset( $revisions ); // Reset pointer for key()
-			$revision_id = key( $revisions );
+		reset( $revisions ); // Reset pointer for key()
+		$revision_id = key( $revisions );
  ?>
 			<div class="misc-pub-section misc-pub-revisions">
 				<?php printf( __( 'Widget Revisions: %s' ), '<b>' . number_format_i18n( $revision_count ) . '</b>' ); ?>
-				<a class="hide-if-no-js" href="<?php echo esc_url( get_edit_post_link( $revision_id ) ); ?>"><span aria-hidden="true"><?php _ex( 'Browse', 'revisions' ); ?></span> <span class="screen-reader-text"><?php _e( 'Browse revisions' ); ?></span></a>
+				<a class="hide-if-no-js" href="<?php echo esc_url( get_edit_post_link( $revision_id ) ); ?>" title="<?php esc_attr_e( 'Browse revisions' ); ?>"><?php _ex( 'Browse', 'revisions' ); ?></a>
 			</div>
 			<?php
-		}
-	}
-	elseif ( $post->post_status != 'auto-draft' && cas_fs()->is_not_paying() ) {
+		
+	} elseif (cas_fs()->is_not_paying() ) {
 ?>
 		<div class="misc-pub-section misc-pub-revisions">
 			<?php printf( __( 'Widget Revisions: %s' ), '<b><a href="'.esc_url(cas_fs()->get_upgrade_url()).'">'.__( 'Enable').'</a></b>' ); ?>
 		</div>
 		<?php
 	}
+?>
 
-	if ( $can_publish ) : // Contributors don't get to choose the date of publish ?>
-	<div class="misc-pub-section curtime misc-pub-curtime">
-		<span id="timestamp">
-		<?php printf($stamp, $date); ?></span>
-		<a href="#edit_timestamp" class="edit-timestamp hide-if-no-js"><span aria-hidden="true"><?php _e( 'Edit' ); ?></span> <span class="screen-reader-text"><?php _e( 'Edit date and time' ); ?></span></a>
-		<fieldset id="timestampdiv" class="hide-if-js">
-		<legend class="screen-reader-text"><?php _e( 'Date and time' ); ?></legend>
-		<?php touch_time( ( $action === 'edit' ), 1 ); ?>
-		</fieldset>
-	</div><?php // /misc-pub-section ?>
-	<?php endif; ?>
-
-	</div>
-	<div class="clear"></div>
-	</div>
-
-	<div id="major-publishing-actions">
-	<div id="delete-action">
-	<?php
-	if ( current_user_can( "delete_post", $post->ID ) ) {
-		if ( !EMPTY_TRASH_DAYS )
-			$delete_text = __('Delete Permanently');
-		else
-			$delete_text = __('Move to Trash');
-		?>
-	<a class="submitdelete deletion" href="<?php echo get_delete_post_link($post->ID); ?>"><?php echo $delete_text; ?></a><?php
-	} ?>
-	</div>
-
-	<div id="publishing-action">
-	<span class="spinner"></span>
-	<?php
-	if ( !in_array( $post->post_status, array('publish', 'future', 'private') ) || 0 == $post->ID ) {
-		if ( $can_publish ) :
-			if ( !empty($post->post_date_gmt) && time() < strtotime( $post->post_date_gmt . ' +0000' ) ) : ?>
-			<input name="original_publish" type="hidden" id="original_publish" value="<?php esc_attr_e('Schedule') ?>" />
-			<?php submit_button( __( 'Schedule' ), 'primary button-large', 'publish', false ); ?>
-	<?php	else : ?>
-			<input name="original_publish" type="hidden" id="original_publish" value="<?php esc_attr_e('Publish') ?>" />
-			<?php submit_button( __( 'Publish' ), 'primary button-large', 'publish', false ); ?>
-	<?php	endif;
-		else : ?>
-			<input name="original_publish" type="hidden" id="original_publish" value="<?php esc_attr_e('Submit for Review') ?>" />
-			<?php submit_button( __( 'Submit for Review' ), 'primary button-large', 'publish', false ); ?>
-	<?php
-		endif;
-	} else { ?>
-			<input name="original_publish" type="hidden" id="original_publish" value="<?php esc_attr_e('Update') ?>" />
-			<input name="save" type="submit" class="button button-primary button-large" id="publish" value="<?php esc_attr_e( 'Update' ) ?>" />
-	<?php
-	} ?>
-	</div>
-	<div class="clear"></div>
-	</div>
 	</div>
 
 	<?php
+	}
+
+	/**
+	 * Render plugin upgrade modal
+	 *
+	 * @since  3.4
+	 * @return void
+	 */
+	public function render_upgrade_modal() {
+		$features = array(
+			__('Extra condition types','content-aware-sidebars'),
+			__('Widget Revisions','content-aware-sidebars'),
+			__('Visibility for roles','content-aware-sidebars'),
+			__('Time Schedule','content-aware-sidebars'),
+			__('Sync widgets across themes','content-aware-sidebars')
+		);
+		echo '<a style="display:none;" class="thickbox js-cas-pro-popup" href="#TB_inline?width=400&amp;height=220&amp;inlineId=pro-popup-notice" title="'.__('Buy Content Aware Sidebars Pro','content-aware-sidebars').'"></a>';
+		echo '<div id="pro-popup-notice" style="display:none;">';
+		echo '<img style="margin-top:15px;" class="alignright" src="https://ps.w.org/content-aware-sidebars/assets/icon-256x256.png" width="128" height="128" />';
+		echo '
+		<h2>'.__('Get All Features With Content Aware Sidebars Pro','content-aware-sidebars').'</h2>';
+		echo '<p>'.sprintf(__('Power up your sidebars with: %s and more.','content-aware-sidebars'),strtolower(implode(', ', $features))).'</p>';
+		echo '<p>'.__('You can upgrade right here from the administration panel by clicking below. Updates and email support included.','content-aware-sidebars').'</p>';
+		echo '<p><a class="button-primary" target="_blank" href="'.esc_url(cas_fs()->get_upgrade_url()).'">Buy Now</a> <a href="" class="button-secondary js-cas-pro-read-more" target="_blank" href="">Read More</a></p>';
+		echo '</div>';
 	}
 
 	/**
@@ -712,7 +1038,7 @@ final class CAS_Sidebar_Edit {
 			$dismiss = time();
 		}
 
-		echo json_encode(update_user_option(get_current_user_id(),WPCACore::PREFIX.'cas_review', $dismiss));
+		echo json_encode(update_user_option(get_current_user_id(),CAS_App::META_PREFIX.'cas_review', $dismiss));
 		die();
 	}
 
@@ -756,11 +1082,8 @@ final class CAS_Sidebar_Edit {
 	 */
 	public function save_post($post_id,$post) {
 
-		// Save button pressed
-		if (!isset($_POST['original_publish']) && !isset($_POST['save_post']))
-			return;
-
 		//Verify nonce, check_admin_referer dies on false
+		//TODO: check other nonce instead
 		if(!(isset($_POST[WPCACore::NONCE]) 
 			&& wp_verify_nonce($_POST[WPCACore::NONCE], WPCACore::PREFIX.$post_id)))
 			return;
@@ -794,7 +1117,7 @@ final class CAS_Sidebar_Edit {
 					if(isset($old[$meta])) {
 						unset($old[$meta]);
 					} else {
-						add_post_meta($post_id, WPCACore::PREFIX.$field->get_id(), $meta);
+						add_post_meta($post_id, CAS_App::META_PREFIX.$field->get_id(), $meta);
 					}
 				}
 				foreach ($old as $meta => $v) {
@@ -839,6 +1162,107 @@ final class CAS_Sidebar_Edit {
 		// Remove sidebar
 		unset($sidebars_widgets[$id]);
 		wp_set_sidebars_widgets($sidebars_widgets);
+	}
+
+	/**
+	 * Get sidebar edit link
+	 * TODO: Consider changing post type _edit_link instead
+	 *
+	 * @since  3.4
+	 * @param  string  $link
+	 * @param  int     $post_id
+	 * @param  string  $context
+	 * @return string
+	 */
+	public function get_edit_post_link($link, $post_id, $context) {
+		$post = get_post($post_id);
+		if($post->post_type == CAS_App::TYPE_SIDEBAR) {
+			$sep = '&';
+			if($context == 'display') {
+				$sep = '&amp;';
+			}
+			$link = admin_url('admin.php?page=wpcas-edit'.$sep.'sidebar_id='.$post_id);
+		}
+		return $link;
+	}
+
+	/**
+	 * Get sidebar delete link
+	 * TODO: Consider changing post type _edit_link instead
+	 *
+	 * @since  3.4
+	 * @param  string   $link
+	 * @param  int      $post_id
+	 * @param  boolean  $force_delete
+	 * @return string
+	 */
+	public function get_delete_post_link($link, $post_id, $force_delete) {
+		$post = get_post($post_id);
+		if($post->post_type == CAS_App::TYPE_SIDEBAR) {
+
+			$action = ( $force_delete || !EMPTY_TRASH_DAYS ) ? 'delete' : 'trash';
+
+			$link = add_query_arg(
+				'action',
+				$action,
+				admin_url('admin.php?page=wpcas-edit&sidebar_id='.$post_id)
+			);
+			$link = wp_nonce_url( $link, "$action-post_{$post_id}" );
+		}
+		return $link;
+	}
+
+	/**
+	 * Register and enqueue scripts styles
+	 * for screen
+	 *
+	 * @since 3.4
+	 */
+	public function add_scripts_styles() {
+
+		wp_register_script('flatpickr', plugins_url('../js/flatpickr.min.js', __FILE__), array(), '2.0', false);
+
+		wp_register_script('cas/admin/edit', plugins_url('../js/cas_admin.js', __FILE__), array('jquery','flatpickr'), CAS_App::PLUGIN_VERSION, false);
+		
+		wp_register_style('flatpickr', plugins_url('../css/flatpickr.dark.min.css', __FILE__), array(), '2.0');			
+		wp_register_style('cas/admin/style', plugins_url('../css/style.css', __FILE__), array('flatpickr'), CAS_App::PLUGIN_VERSION);
+
+		$visibility = array();
+		foreach (CAS_App::instance()->_manager->metadata()->get('visibility')->get_input_list() as $k => $v) {
+			$visibility[] = array(
+				'id'   => $k,
+				'text' => $v
+			);
+		}
+
+		if(cas_fs()->is_not_paying()) {
+			$visibility[] = array(
+				'id' => 'pro',
+				'text' => __('User Roles available in Pro','content-aware-sidebars'),
+				'disabled' => true
+			);
+		}
+
+		global $wp_locale;
+
+		wp_enqueue_script('cas/admin/edit');
+		wp_localize_script( 'cas/admin/edit', 'CASAdmin', array(
+			'allVisibility'  => __('All Users','content-aware-sidebars'),
+			'visibility' => $visibility,
+			'weekdays' => array(
+				'shorthand' => array_values($wp_locale->weekday_abbrev),
+				'longhand' => array_values($wp_locale->weekday)
+			),
+			'months' => array(
+				'shorthand' => array_values($wp_locale->month_abbrev),
+				'longhand' => array_values($wp_locale->month)
+			),
+			'weekStart' => get_option('start_of_week',0),
+			'dateFormat' => __( 'F j, Y' ) //default long date
+		));
+
+		wp_enqueue_style('cas/admin/style');
+
 	}
 
 }

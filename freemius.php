@@ -28,7 +28,7 @@ function cas_fs() {
 			'has_addons'        => false,
 			'has_paid_plans'    => true,
 			'menu'              => array(
-				'slug'       => 'edit.php?post_type=sidebar',
+				'slug'       => 'wpcas',
 				'support'    => false
 			)
 		) );

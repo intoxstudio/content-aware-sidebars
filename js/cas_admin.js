@@ -9,14 +9,142 @@
 
 	var cas_options = {
 
-		sidebarID: $('#current_sidebar').val(),
+		current_section: 0,
+		sections: [],
 
 		init: function() {
 
+			this.upgradeNoticeHandler();
+			this.tabController();
 			this.addHandleListener();
 			this.reviewNoticeHandler();
 			this.suggestVisibility();
+			this.initSidebarActivation();
 
+		},
+
+		upgradeNoticeHandler: function() {
+			$('.js-cas-pro-notice').on('click',function(e) {
+				e.preventDefault();
+				$('.js-cas-pro-read-more').attr('href',$(this).data('url'));
+				$('.js-cas-pro-popup').trigger('click');
+			});
+		},
+
+		initSidebarActivation: function() {
+			Flatpickr.l10n.weekdays = CASAdmin.weekdays;
+			Flatpickr.l10n.months = CASAdmin.months;
+			Flatpickr.l10n.firstDayOfWeek = CASAdmin.weekStart;
+
+			var config = {
+					wrap: true,
+					clickOpens: true,
+					enableTime: true,
+					time_24hr: true,
+					allowInput: true,
+					enableSeconds: true,
+					altInput: true,
+					altFormat: CASAdmin.dateFormat + ' @ H:i:S'
+				},
+				$activate = $('.js-cas-activation'),
+				$deactivate = $('.js-cas-expiry'), 
+				activate = $activate.flatpickr(config),
+				deactivate = $deactivate.flatpickr(config);
+			
+			activate.config.onChange = function(dateObj, dateStr, instance) {
+				deactivate.set("minDate", dateStr != '' ? new Date(dateObj).fp_incr(1) : null);
+				var $toggle = $('.js-cas-status');
+				if(dateStr != '') {
+					$toggle.prop('checked',false);
+				} else if(!$toggle.is(':checked')) {
+					deactivate.clear();
+				}
+			};
+
+			deactivate.config.onChange = function(dateObj, dateStr, instance) {
+				activate.set("maxDate", new Date(dateObj).fp_incr(-1));
+			};
+
+			$('.js-cas-status').on('change',function(e) {
+				var $this = $(this),
+					isActive = $this.is(':checked');
+
+				if(isActive) {
+					activate.clear();
+				} else if(!activate.selectedDates.length) {
+					deactivate.clear();
+				}
+			});
+		},
+
+		/**
+		 * Initiate tabs dynamically
+		 *
+		 * @since  3.4
+		 * @return {void}
+		 */
+		initTabSections: function() {
+			$(".js-cas-tabs").find(".nav-tab").each(function() {
+				var start = this.href.lastIndexOf("#");
+				if(start >= 0) {
+					var section = this.href.substr(start);
+					cas_options.sections.push(section);
+					$(section).hide();
+					//.find("input, select").attr("disabled",true);
+				}
+			});
+		},
+
+		/**
+		 * Manage tab clicks
+		 *
+		 * @since  3.4
+		 * @return {void}
+		 */
+		tabController: function() {
+			this.initTabSections();
+			this.setCurrentSection(window.location.hash);
+			$("#poststuff")
+			.on("click",".js-nav-link",function(e) {
+				cas_options.setCurrentSection(this.href);
+			});
+		},
+
+		/**
+		 * Find section index based on
+		 * hash in a URL string
+		 *
+		 * @since  3.4
+		 * @param  {string} url
+		 * @return {int}
+		 */
+		findSectionByURL: function(url) {
+			var section = this.sections.indexOf(url.substring(url.lastIndexOf("#")));
+			return section >= 0 ? section : null;
+		},
+
+		/**
+		 * Set and display current section and tab
+		 * hide previous current section
+		 *
+		 * @since 3.4
+		 * @param {string} url
+		 */
+		setCurrentSection: function(url) {
+			var section = this.findSectionByURL(url) || 0,
+				$tabs = $(".js-cas-tabs").find(".nav-tab");
+			if($tabs.eq(section).is(":visible")) {
+				$(this.sections[this.current_section])
+				.hide();
+				//.find("input, select").attr("disabled",true);
+				this.current_section = section;
+				$(this.sections[this.current_section])
+				.show();
+				//.find("input, select").attr("disabled",false);
+
+				$tabs.removeClass("nav-tab-active");
+				$tabs.eq(this.current_section).addClass("nav-tab-active");
+			}
 		},
 
 		/**
@@ -27,11 +155,11 @@
 		 * @since  2.1
 		 */
 		addHandleListener: function() {
-			var host = $("select[name='host']");
-			var code = $('<p>Shortcode:</p><code>[ca-sidebar id='+this.sidebarID+']</code>'+
-				'<p>Template Tag:</p><code>ca_display_sidebar();</code>');
+			var host = $("span.host");
+			var code = $('<div><p>Shortcode:</p><code>[ca-sidebar id='+$('#current_sidebar').val()+']</code>'+
+				'<p>Template Tag:</p><code>ca_display_sidebar();</code></div>');
 			var merge_pos = $('span.merge-pos');
-			host.parent().append(code);
+			host.after(code);
 			$("select[name='handle']").change(function(){
 				var handle = $(this);
 				host.attr("disabled", handle.val() == 2);

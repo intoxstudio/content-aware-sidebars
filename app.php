@@ -41,6 +41,9 @@ final class CAS_App {
 	 */
 	const CAPABILITY           = 'edit_theme_options';
 
+	/**
+	 * Base admin screen name
+	 */
 	const BASE_SCREEN          = 'wpcas';
 
 	/**
@@ -97,12 +100,12 @@ final class CAS_App {
 	protected function add_actions() {
 		add_action('init',
 			array($this,'load_textdomain'));
+		add_action('admin_bar_menu',
+			array($this,'admin_bar_menu'),99);
 
 		if(is_admin()) {
 			add_action('plugins_loaded',
 				array($this,'redirect_revision_link'));
-			add_action('admin_enqueue_scripts',
-				array($this,'load_admin_scripts'));
 		}
 	}
 
@@ -132,6 +135,26 @@ final class CAS_App {
 	 */
 	public function load_textdomain() {
 		load_plugin_textdomain('content-aware-sidebars', false, dirname(plugin_basename(__FILE__)).'/lang/');
+	}
+
+	/**
+	 * Add admin bar link to create sidebars
+	 *
+	 * @since  3.4
+	 * @param  [type]  $wp_admin_bar
+	 * @return void
+	 */
+	public function admin_bar_menu($wp_admin_bar) {
+		$post_type = get_post_type_object(self::TYPE_SIDEBAR);
+		if (current_user_can( $post_type->cap->create_posts ) ) {
+			$wp_admin_bar->add_menu( array(
+				'parent'    => 'new-content',
+				'id'        => self::BASE_SCREEN,
+				'title'     => $post_type->labels->singular_name,
+				'href'      => admin_url( 'admin.php?page=wpcas-edit' )
+			) );
+		}
+		
 	}
 
 	/**
@@ -193,83 +216,6 @@ final class CAS_App {
 			wp_safe_redirect(cas_fs()->get_upgrade_url());
 			exit;
 		}
-	}
-
-	/**
-	 * Load scripts and styles for administration
-	 * @param  string $hook 
-	 * @return void 
-	 */
-	public function load_admin_scripts($hook) {
-
-		$current_screen = get_current_screen();
-
-		if($current_screen->post_type == CAS_App::TYPE_SIDEBAR) {
-			
-			wp_register_script('cas/admin/edit', plugins_url('/js/cas_admin.min.js', __FILE__), array('jquery'), CAS_App::PLUGIN_VERSION, true);
-			
-			wp_register_style('cas/admin/style', plugins_url('/css/style.css', __FILE__), array(), CAS_App::PLUGIN_VERSION);
-
-			//Sidebar editor
-			if ($current_screen->base == 'post') {
-
-				//Other plugins add buggy scripts
-				//causing the screen to stop working
-				//temporary as we move forward...
-				$script_whitelist = array(
-					'common',
-					'admin-bar',
-					'autosave',
-					'post',
-					'utils',
-					'svg-painter',
-					'wp-auth-check',
-					'bp-confirm',
-					'suggest',
-					'heartbeat',
-					'jquery',
-					'yoast-seo-admin-global-script',
-					'select2',
-					'backbone',
-					'backbone.trackit',
-					'_ca_condition-groups',
-				);
-				global $wp_scripts;
-				$script_whitelist = array_flip($script_whitelist);
-				foreach ($wp_scripts->queue as $script) {
-					if(!isset($script_whitelist[$script])) {
-						wp_dequeue_script($script);
-					}
-				}
-
-				$visibility = array();
-				foreach ($this->_manager->metadata()->get('visibility')->get_input_list() as $k => $v) {
-					$visibility[] = array(
-						'id'   => $k,
-						'text' => $v
-					);
-				}
-
-				if(cas_fs()->is_not_paying()) {
-					$visibility[] = array(
-						'id' => 'pro',
-						'text' => __('User Roles available in Pro','content-aware-sidebars'),
-						'disabled' => true
-					);
-				}
-
-				wp_enqueue_script('cas/admin/edit');
-				wp_localize_script( 'cas/admin/edit', 'CASAdmin', array(
-					'allVisibility'  => __('All Users','content-aware-sidebars'),
-					'visibility' => $visibility
-				));
-				wp_enqueue_style('cas/admin/style');
-			//Sidebar overview
-			} else if ($hook == 'edit.php') {
-				wp_enqueue_style('cas/admin/style');
-			}			
-		}
-
 	}
 
 }
