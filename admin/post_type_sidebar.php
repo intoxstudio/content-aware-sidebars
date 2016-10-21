@@ -86,7 +86,7 @@ class CAS_Post_Type_Sidebar {
 			return;
 
 		$meta_key = WPCACore::PREFIX . self::MODULE_NAME;
-		$new = isset($_POST['sidebars']) ? $_POST['sidebars'] : array();
+		$new = isset($_POST['cas_sidebars']) ? $_POST['cas_sidebars'] : array();
 
 		$relations = array();
 		foreach(self::_get_content_sidebars(array($post_id)) as $relation) {
@@ -256,7 +256,7 @@ class CAS_Post_Type_Sidebar {
 
 			echo '<div><label style="display:block;padding:8px 0 4px;font-weight:bold;" for="ca_sidebars_'.$id.'">'.$sidebar['label'].'</label>';
 
-			echo '<input id="ca_sidebars_'.$id.'" class="js-cas-sidebars" type="text" name="sidebars['.$id.']" value="'.implode(",", $sidebar['select']).'" placeholder="'.__('Default').'" data-sidebars=\''.json_encode(array_values($sidebar['options'])).'\'  /></div>';
+			echo '<input id="ca_sidebars_'.$id.'" class="js-cas-sidebars" type="text" name="cas_sidebars['.$id.']" value="'.implode(",", $sidebar['select']).'" placeholder="'.__('Default').'" data-sidebars=\''.json_encode(array_values($sidebar['options'])).'\'  /></div>';
 			$i++;
 		}
 		if($i > $limit) {
