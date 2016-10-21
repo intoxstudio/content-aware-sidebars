@@ -102,6 +102,8 @@ final class CAS_App {
 			array($this,'load_textdomain'));
 		add_action('admin_bar_menu',
 			array($this,'admin_bar_menu'),99);
+		add_action('cas/event/deactivate',
+			array($this,'scheduled_deactivation'));
 
 		if(is_admin()) {
 			add_action('plugins_loaded',
@@ -200,6 +202,23 @@ final class CAS_App {
 		}
 
 		return array_merge($new_actions,$actions);
+	}
+
+	/**
+	 * Callback for scheduled deactivation
+	 *
+	 * @since  3.4
+	 * @param  int   $post_id
+	 * @return void
+	 */
+	public function scheduled_deactivation($post_id) {
+		$success = wp_update_post(array(
+			'ID'          => $post_id,
+			'post_status' => self::STATUS_INACTIVE
+		));
+		if($success) {
+			delete_post_meta($post_id, self::META_PREFIX.'deactivate_time');
+		}
 	}
 
 	/**
