@@ -1,3 +1,33 @@
+= 3.0.1 =
+
+* Added: wp4.4 compatibility
+
+= 3.0 =
+
+* Added: plugin rewritten with wp-content-aware-engine to take care of everything related to conditional content
+* Added: migrate existing sidebar data to wp-content-aware-engine standards
+* Added: negation of condition groups
+* Added: new api to add modules
+* Added: new action and filter hooks
+* Added: intro tour
+* Added: ca_display_sidebar deprecates display_ca_sidebar
+* Added: filter for sidebars on widgets screen
+* Added: add sidebar from widgets screen
+* Added: filter for available widgets on widgets screen
+* Added: more simple information meta box
+* Added: gui improvements in sidebar editor
+* Added: bulk update messages translatable
+* Added: draft post status included in post type lists
+* Added: arabic, bulgarian, croatian, czech, estonian, french (canada), greek, hebrew, indonesian, japanese, persian, vietnamese translations
+* Fixed: uninstall script cleans residual data better
+* Fixed: posts page and front page excluded from page post type list
+* Fixed: updated translations
+* Fixed: finnish translation included properly
+* Fixed: minimum requirement wp3.8
+* Removed: all action and filter hooks (moved to wp-content-aware-engine under new names)
+* Removed: deprecated icons
+* Removed: screenshots
+
 = 2.6.3 =
 
 * Fixed: sidebars would not be displayed on front page

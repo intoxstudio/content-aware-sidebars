@@ -4,12 +4,14 @@ Donate link:
 Tags: sidebar, sidebars, custom sidebars, page sidebars, replace sidebar, create sidebars, replace widget area, bbpress, buddypress, polylang, pods, conditional
 Requires at least: 3.9
 Tested up to: 4.6
-Stable tag: 3.3.3
+Stable tag: 3.4
 License: GPLv3
 
 Display custom sidebars on any post, page, category etc. Supports bbPress, BuddyPress, WooCommerce, Easy Digital Downloads and more.
 
 == Description ==
+
+#### The Best Sidebar Plugin for WordPress
 
 Boost on-site SEO, upsell your products or add better-converting CTAs by displaying different sidebars for different contexts. Create post sidebars, page sidebars, category sidebars and more.
 The sidebar manager makes it incredibly easy for anyone to create custom sidebars in any theme.
@@ -18,14 +20,14 @@ Developed with scalability and performance in mind, Content Aware Sidebars is th
 
 No coding required!
 
-####Create unlimited sidebars
+####Create unlimited sidebars and widget areas
 
 * Easy-to-use Sidebar Manager
 * **[NEW]** Create or select sidebars directly when editing a post
-* Works with any theme
+* Merge with, replace and hide sidebars in any theme
 * Automatic support for Custom Post Types and Taxonomies
-* Merge or replace theme sidebars
-* Draft and schedule sidebars for later publishing
+* Schedule sidebars for later activation
+* **[NEW]** Schedule sidebars for later deactivation
 * Enhanced widget manager
 * Optional Template Tag to display custom sidebars anywhere in your theme
 * Optional Shortcode to display custom sidebars anywhere in your content
@@ -60,12 +62,12 @@ Negate conditions, e.g. display a sidebar on all pages except Page X.
 * bbPress
 * BuddyPress
 * [Easy Digital Downloads](https://dev.institute/wordpress/sidebars-pro/easy-digital-downloads/?utm_source=readme&utm_medium=referral&utm_content=integration&utm_campaign=cas)
-* qTranslate X
+* [qTranslate X](https://dev.institute/wordpress/sidebars-pro/multilingual-plugins/?utm_source=readme&utm_medium=referral&utm_content=integration&utm_campaign=cas)
 * Pods
-* Polylang
-* Transposh Translation Filter
+* [Polylang](https://dev.institute/wordpress/sidebars-pro/multilingual-plugins/?utm_source=readme&utm_medium=referral&utm_content=integration&utm_campaign=cas)
+* [Transposh Translation Filter](https://dev.institute/wordpress/sidebars-pro/multilingual-plugins/?utm_source=readme&utm_medium=referral&utm_content=integration&utm_campaign=cas)
 * [WooCommerce](https://dev.institute/wordpress/sidebars-pro/woocommerce/?utm_source=readme&utm_medium=referral&utm_content=integration&utm_campaign=cas)
-* [WPML](https://wpml.org/plugin/content-aware-sidebars/)
+* [WPML](https://dev.institute/wordpress/sidebars-pro/multilingual-plugins/?utm_source=readme&utm_medium=referral&utm_content=integration&utm_campaign=cas)
 
 > ####Content Aware Sidebars Pro
 >
@@ -75,8 +77,9 @@ Negate conditions, e.g. display a sidebar on all pages except Page X.
 > * Widget Revisions
 > * Display sidebars on URLs + wildcards
 > * Display sidebars on content from any day, month, year
+> * Display sidebars in select time ranges on given days
 > * Sidebar Visibility for Roles and Guests
-> * 1-click Sidebar Draft and Publish
+> * 1-click Sidebar Activation
 > * Sync Widgets on Theme Switch
 > * [and more...](https://dev.institute/wordpress/sidebars-pro/pricing/?utm_source=readme&utm_medium=referral&utm_content=more&utm_campaign=cas)
 >
@@ -122,14 +125,32 @@ Do you want to contribute and see your name here?
 
 == Upgrade Notice ==
 
-= 3.0 = 
+= 3.4 = 
 
 * Content Aware Sidebars data in your database will be updated automatically. It is highly recommended to backup this data before updating the plugin.
-* Minimum WordPress version compatibility is now 3.8.
+* Data from version 0.8 and below will not be updated during this process.
 
 == Changelog ==
 
 [View development on GitHub](https://github.com/intoxstudio/content-aware-sidebars)
+
+= 3.4 =
+
+* Added: sidebar list and editor screens completely rewritten for performance and extensibility
+* Added: ability to schedule sidebar deactivation
+* Added: exposure moved to condition groups, now called singulars or archives
+* Added: freemius sdk updated
+* Added: data update process will no longer be triggered on new installs
+* Added: sidebar status now active/inactive instead of publish/draft
+* Added: always load latest version of wp-content-aware-engine
+* Fixed: sidebar quick select compatibility with other sidebar managers
+
+**Pro Plan:**
+
+* Added: display sidebars in time ranges on given days
+* Fixed: initial widget revision could in some cases be malformed
+* Fixed: bug when adding url and date conditions
+* Fixed: bug with license activation if user had opted out of freemius
 
 = 3.3.3 =
 
@@ -268,35 +289,5 @@ Do you want to contribute and see your name here?
 * Fixed: bug making attachments not selectable
 * Fixed: bumped versions for integrated plugins
 * Removed: qtranslate module
-
-= 3.0.1 =
-
-* Added: wp4.4 compatibility
-
-= 3.0 =
-
-* Added: plugin rewritten with wp-content-aware-engine to take care of everything related to conditional content
-* Added: migrate existing sidebar data to wp-content-aware-engine standards
-* Added: negation of condition groups
-* Added: new api to add modules
-* Added: new action and filter hooks
-* Added: intro tour
-* Added: ca_display_sidebar deprecates display_ca_sidebar
-* Added: filter for sidebars on widgets screen
-* Added: add sidebar from widgets screen
-* Added: filter for available widgets on widgets screen
-* Added: more simple information meta box
-* Added: gui improvements in sidebar editor
-* Added: bulk update messages translatable
-* Added: draft post status included in post type lists
-* Added: arabic, bulgarian, croatian, czech, estonian, french (canada), greek, hebrew, indonesian, japanese, persian, vietnamese translations
-* Fixed: uninstall script cleans residual data better
-* Fixed: posts page and front page excluded from page post type list
-* Fixed: updated translations
-* Fixed: finnish translation included properly
-* Fixed: minimum requirement wp3.8
-* Removed: all action and filter hooks (moved to wp-content-aware-engine under new names)
-* Removed: deprecated icons
-* Removed: screenshots
 
 See changelog.txt for previous changes.
