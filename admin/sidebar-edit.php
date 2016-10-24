@@ -403,15 +403,22 @@ final class CAS_Sidebar_Edit extends CAS_Admin {
 		// 		wp_delete_post_revision( $autosave->ID );
 		// 	unset($autosave_field, $_autosave_field);
 		// }
-		
+
+		//Not only for decoration
+		//Older wp versions inject updated message after first h2
+		if (version_compare(get_bloginfo('version'), '4.3', '<')) {
+			$tag = 'h2';
+		} else {
+			$tag = 'h1';
+		}
 
 		echo '<div class="wrap">';
-		echo '<h1>';
+		echo '<'.$tag.'>';
 		echo esc_html( $title );
 		if ( isset($_REQUEST['sidebar_id']) && current_user_can( $post_type_object->cap->create_posts ) ) {
-			echo ' <a href="' . esc_url( admin_url( 'admin.php?page=wpcas-edit' ) ) . '" class="page-title-action">' . esc_html( $post_type_object->labels->add_new ) . '</a>';
+			echo ' <a href="' . esc_url( admin_url( 'admin.php?page=wpcas-edit' ) ) . '" class="page-title-action add-new-h2">' . esc_html( $post_type_object->labels->add_new ) . '</a>';
 		}
-		echo '</h1>';
+		echo '</'.$tag.'>';
 		if ( $message ) {
 			echo '<div id="message" class="updated notice notice-success is-dismissible"><p>'.$message.'</p></div>';
 		} 
@@ -851,12 +858,14 @@ final class CAS_Sidebar_Edit extends CAS_Admin {
 		echo '<input type="number" value="'.$post->menu_order.'" id="menu_order" size="4" name="menu_order"></p></div>';
 
 		if ( current_user_can( "delete_post", $post->ID ) ) {
+			echo '<div style="overflow:hidden;">';
 			if ( !EMPTY_TRASH_DAYS )
 				$delete_text = __('Delete Permanently');
 			else
 				$delete_text = __('Move to Trash');
 
-			echo '<a class="submitdelete deletion" href="'.get_delete_post_link($post->ID).'">'.$delete_text.'</a>';
+			echo '<a class="wpca-pull-right cas-delete" href="'.get_delete_post_link($post->ID).'">'.$delete_text.'</a>';
+			echo '</div>';
 		} 
 	}
 
@@ -1016,11 +1025,12 @@ final class CAS_Sidebar_Edit extends CAS_Admin {
 		);
 		echo '<a style="display:none;" class="thickbox js-cas-pro-popup" href="#TB_inline?width=400&amp;height=220&amp;inlineId=pro-popup-notice" title="'.__('Buy Content Aware Sidebars Pro','content-aware-sidebars').'"></a>';
 		echo '<div id="pro-popup-notice" style="display:none;">';
-		echo '<img style="margin-top:15px;" class="alignright" src="https://ps.w.org/content-aware-sidebars/assets/icon-256x256.png" width="128" height="128" />';
+		echo '<img style="margin-top:15px;" class="alignright" src="'.plugins_url('../css/icon.png', __FILE__).'" width="128" height="128" />';
 		echo '
 		<h2>'.__('Get All Features With Content Aware Sidebars Pro','content-aware-sidebars').'</h2>';
 		echo '<p>'.sprintf(__('Power up your sidebars with: %s and more.','content-aware-sidebars'),strtolower(implode(', ', $features))).'</p>';
-		echo '<p>'.__('You can upgrade right here from the administration panel by clicking below. Updates and email support included.','content-aware-sidebars').'</p>';
+		echo '<p>'.__('You can upgrade without leaving the admin panel by clicking below.','content-aware-sidebars');
+		echo '<br />'.__('Free updates and email support included.','content-aware-sidebars').'</p>';
 		echo '<p><a class="button-primary" target="_blank" href="'.esc_url(cas_fs()->get_upgrade_url()).'">Buy Now</a> <a href="" class="button-secondary js-cas-pro-read-more" target="_blank" href="">Read More</a></p>';
 		echo '</div>';
 	}

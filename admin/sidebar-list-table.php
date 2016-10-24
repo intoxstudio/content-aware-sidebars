@@ -302,7 +302,7 @@ class CAS_Sidebar_List_Table extends WP_List_Table {
 		$posts_columns = array();
 		$posts_columns['cb'] = '<input type="checkbox" />';
 		$posts_columns['title'] = _x( 'Title', 'column name' );
-		$posts_columns['handle'] = _x('Handle','option', "content-aware-sidebars");
+		$posts_columns['handle'] = _x('Action','option', "content-aware-sidebars");
 		$posts_columns['widgets'] = __('Widgets');
 		$posts_columns['visibility'] = __('Visibility',"content-aware-sidebars");
 		$posts_columns['status'] = __( 'Status' );
@@ -335,6 +335,16 @@ class CAS_Sidebar_List_Table extends WP_List_Table {
 		return 'title';
 	}
 
+	/**
+	 * Get classes for rows
+	 * Older WP versions do not add striped
+	 *
+	 * @since  3.4
+	 * @return array
+	 */
+	public function get_table_classes() {
+		return array( 'widefat', 'fixed', 'striped', $this->_args['plural'] );
+	}
 
 	/**
 	 * Render checkbox column
@@ -363,10 +373,9 @@ class CAS_Sidebar_List_Table extends WP_List_Table {
 	 * @param  string   $primary
 	 * @return void
 	 */
-	protected function _column_title( $post, $classes, $data, $primary ) {
+	protected function _column_title( $post, $classes, $data, $primary) {
 		echo '<td class="' . $classes . ' page-title" ', $data, '>';
 		echo $this->column_title( $post );
-		echo $this->handle_row_actions( $post, 'title', $primary );
 		echo '</td>';
 	}
 
@@ -412,7 +421,7 @@ class CAS_Sidebar_List_Table extends WP_List_Table {
 			echo '<div class="locked-info"><span class="locked-avatar">' . $locked_avatar . '</span> <span class="locked-text">' . $locked_text . "</span></div>\n";
 		}
 
-		get_inline_data( $post );
+		echo $this->handle_row_actions( $post, 'title', 'title' );
 	}
 
 	/**

@@ -97,19 +97,27 @@ final class CAS_Sidebar_Overview extends CAS_Admin {
 	public function render_screen() {
 		$post_type_object = get_post_type_object(CAS_App::TYPE_SIDEBAR);
 
+		//Not only for decoration
+		//Older wp versions inject updated message after first h2
+		if (version_compare(get_bloginfo('version'), '4.3', '<')) {
+			$tag = 'h2';
+		} else {
+			$tag = 'h1';
+		}
+
 		echo '<div class="wrap">';
-		echo '<h1>';
+		echo '<'.$tag.'>';
 		echo esc_html( $post_type_object->labels->name );
 		
 		if ( current_user_can( $post_type_object->cap->create_posts ) ) {
-			echo ' <a href="' . esc_url( admin_url( 'admin.php?page=wpcas-edit' ) ) . '" class="page-title-action">' . esc_html( $post_type_object->labels->add_new ) . '</a>';
+			echo ' <a href="' . esc_url( admin_url( 'admin.php?page=wpcas-edit' ) ) . '" class="add-new-h2 page-title-action">' . esc_html( $post_type_object->labels->add_new ) . '</a>';
 		}
 		if ( isset( $_REQUEST['s'] ) && strlen( $_REQUEST['s'] ) ) {
 			/* translators: %s: search keywords */
 			printf( ' <span class="subtitle">' . __( 'Search results for &#8220;%s&#8221;' ) . '</span>', get_search_query() );
 		}
 
-		echo '</h1>';
+		echo '</'.$tag.'>';
 
 		$this->bulk_messages();
 
