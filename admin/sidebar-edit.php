@@ -369,7 +369,7 @@ final class CAS_Sidebar_Edit extends CAS_Admin {
 		$post_ID = $post->ID;
 		$post_type_object = get_post_type_object( $post->post_type );
 
-		$messages = $this->sidebar_updated_messages();
+		$messages = $this->sidebar_updated_messages($post);
 		$message = false;
 		if ( isset($_GET['message']) ) {
 			$_GET['message'] = absint( $_GET['message'] );
@@ -596,14 +596,14 @@ final class CAS_Sidebar_Edit extends CAS_Admin {
 	 * @param  array  $messages 
 	 * @return array           
 	 */
-	public function sidebar_updated_messages() {
+	public function sidebar_updated_messages($post) {
 		$manage_widgets = sprintf(' <a href="%1$s">%2$s</a>','widgets.php',__('Manage widgets','content-aware-sidebars'));
 		return array(
 			1 => __('Sidebar updated.','content-aware-sidebars').$manage_widgets,
 			6 => __('Sidebar activated.','content-aware-sidebars').$manage_widgets,
 			9 => sprintf(__('Sidebar scheduled for: <strong>%1$s</strong>.','content-aware-sidebars'),
 				// translators: Publish box date format, see http://php.net/date
-				date_i18n(__('M j, Y @ G:i'),strtotime(get_the_ID()))).$manage_widgets,
+				date_i18n(__('M j, Y @ G:i'),strtotime($post->post_date))).$manage_widgets,
 			10 => __('Sidebar deactivated.','content-aware-sidebars').$manage_widgets,
 		);
 	}
