@@ -108,19 +108,8 @@ final class CAS_Sidebar_Manager {
 			array(
 				-1 => __('Logged-in Users', 'content-aware-sidebars')
 			)
-		),'visibility');
-		// ->add(new WPCAMeta(
-		// 	'exposure',
-		// 	__('Exposure', 'content-aware-sidebars'),
-		// 	1,
-		// 	'select',
-		// 	array(
-		// 		__('Singular', 'content-aware-sidebars'),
-		// 		__('Singular & Archive', 'content-aware-sidebars'),
-		// 		__('Archive', 'content-aware-sidebars')
-		// 	)
-		// ),'exposure')
-		$this->metadata->add(new WPCAMeta(
+		),'visibility')
+		->add(new WPCAMeta(
 			'handle',
 			_x('Action','option', 'content-aware-sidebars'),
 			0,
@@ -135,7 +124,7 @@ final class CAS_Sidebar_Manager {
 		),'handle')
 		->add(new WPCAMeta(
 			'host',
-			__('Host Sidebar', 'content-aware-sidebars'),
+			__('Target Sidebar', 'content-aware-sidebars'),
 			'sidebar-1',
 			'select',
 			$sidebar_list

@@ -659,7 +659,7 @@ final class CAS_Sidebar_Edit extends CAS_Admin {
 			array(
 				'content'   => sprintf( '<h3>%s</h3><p>%s</p>',
 					'3. '.__( 'Options, options', 'content-aware-sidebars' ),
-					wpautop(__( "Should the sidebar be displayed on singular pages and/or archives?\n\nShould it merge with another sidebar or replace it? Maybe you want to insert it manually in your content with a shortcode.\n\nSchedule the sidebar just like you do with posts and pages, or make it visible only for logged-in users.\n\n You are in control.", 'content-aware-sidebars' ) )),
+					wpautop(__( "Should the sidebar merge with a target sidebar or replace it? Maybe you want to insert it in your content with a shortcode.\n\nDisplay the sidebar for everyone or make it visible only for logged-in users.\n\n You are in control.", 'content-aware-sidebars' ) )),
 				'ref_id'    => '#cas-options',
 				'position'  => array(
 					'edge'      => 'right',
@@ -831,7 +831,7 @@ final class CAS_Sidebar_Edit extends CAS_Admin {
 		do {
 			echo '<div>';
 			echo '<label>';
-			echo '<input type="checkbox" class="js-cas-pro-notice" data-url="'.$i.'" /> '.ucfirst($days[$i]).' (8:00 - 17:00)';
+			echo '<input type="checkbox" class="js-cas-pro-notice" data-url="https://dev.institute/wordpress/sidebars-pro/pricing/?utm_source=plugin&utm_medium=popup&utm_content=time-schedule&utm_campaign=cas" /> '.ucfirst($days[$i]).' (8:00 - 17:00)';
 			echo '</label>';
 			echo '<div class="cas-schedule-slide ui-slider ui-slider-horizontal ui-state-disabled ui-slider-disabled">';
 			echo '<div class="ui-slider-range" style="left: 30%; width: 40%;"></div>';
