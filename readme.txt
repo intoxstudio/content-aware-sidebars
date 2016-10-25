@@ -144,6 +144,7 @@ Do you want to contribute and see your name here?
 * Added: sidebar status now active/inactive instead of publish/draft
 * Added: always load latest version of wp-content-aware-engine
 * Fixed: sidebar quick select compatibility with other sidebar managers
+* Removed: deprecated function display_ca_sidebar (use ca_display_sidebar)
 
 **Pro Plan:**
 
