@@ -48,7 +48,7 @@ class CAS_Admin_Screen_Widgets extends CAS_Admin {
 		if(isset($sidebars[$index])) {
 			$sidebar = $sidebars[$index];
 			$link = admin_url('post.php?post='.$sidebar->ID);
-			$edit_link = admin_url('admin.php?page=wpcas&sidebar_id='.$sidebar->ID);
+			$edit_link = admin_url('admin.php?page=wpcas-edit&sidebar_id='.$sidebar->ID);
 
 			switch($sidebar->post_status) {
 				case CAS_App::STATUS_ACTIVE:
