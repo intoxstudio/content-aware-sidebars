@@ -519,6 +519,7 @@ final class CAS_Sidebar_Edit extends CAS_Admin {
 		$post_data['comment_status'] = 'closed';
 		$post_data['ping_status'] = 'closed';
 		$post_data['post_author'] = get_current_user_id();
+		$post_data['menu_order'] = intval($_POST['menu_order']);
 
 		$ptype = get_post_type_object($post_data['post_type']);
 
