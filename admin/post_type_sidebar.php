@@ -204,7 +204,7 @@ class CAS_Post_Type_Sidebar {
 			if(isset(self::$_theme_sidebars[$host_id])) {
 				self::$_theme_sidebars[$host_id]['options'][$sidebar->ID] = array(
 					'id' => $sidebar->ID,
-					'text' => $sidebar->post_title.$module->_post_states($sidebar)
+					'text' => $sidebar->post_title.self::sidebar_states($sidebar)
 				);
 			}
 			if(isset($post_sidebars[$sidebar->ID])) {
@@ -267,6 +267,28 @@ class CAS_Post_Type_Sidebar {
 		echo '<p class="howto">'.sprintf(__('Note: Selected Sidebars are displayed on this %s specifically.','content-aware-sidebars'),strtolower($post_type->labels->singular_name)).' ';
 
 		echo sprintf(__('Display sidebars per %s etc. with the %s.','content-aware-sidebars'),strtolower(implode(', ', $content)),$link).'</p>';
+	}
+
+	/**
+	 * Get sidebar status for display
+	 *
+	 * @since  3.4.1
+	 * @param  WP_Post  $post
+	 * @return string
+	 */
+	public static function sidebar_states($post) {
+		switch ($post->post_status) {
+			case CAS_App::STATUS_ACTIVE:
+				$status = '';
+				break;
+			case CAS_App::STATUS_SCHEDULED;
+				$status = ' ('.__( 'Scheduled' ).')';
+				break;
+			default:
+				$status = ' ('.__( 'Inactive' ).')';
+				break;
+		}
+		return $status;
 	}
 
 	public static function enqueue_scripts($hook) {
