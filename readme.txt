@@ -3,8 +3,8 @@ Contributors: intoxstudio, devinstitute, freemius
 Donate link:
 Tags: sidebar, sidebars, custom sidebars, page sidebars, replace sidebar, create sidebars, replace widget area, bbpress, buddypress, polylang, pods, conditional
 Requires at least: 3.9
-Tested up to: 4.6
-Stable tag: 3.4
+Tested up to: 4.7
+Stable tag: 3.4.1
 License: GPLv3
 
 Display custom sidebars on any post, page, category etc. Supports bbPress, BuddyPress, WooCommerce, Easy Digital Downloads and more.
@@ -53,17 +53,17 @@ No coding required!
 * Languages (qTranslate, Polylang, Transposh, WPML)
 * Pods Pages
 
-Combine conditions in any way you like, e.g. display a sidebar on posts in Category X by author Y.
+Mix conditions in any way you like, e.g. display a sidebar on posts in Category X by author Y.
 
 Negate conditions, e.g. display a sidebar on all pages except Page X.
 
 ####Sidebar Integrations and Support
 
-* bbPress
-* BuddyPress
+* [bbPress](https://dev.institute/wordpress/sidebars-pro/bbpress/?utm_source=readme&utm_medium=referral&utm_content=integration&utm_campaign=cas)
+* [BuddyPress](https://dev.institute/wordpress/sidebars-pro/buddypress/?utm_source=readme&utm_medium=referral&utm_content=integration&utm_campaign=cas)
 * [Easy Digital Downloads](https://dev.institute/wordpress/sidebars-pro/easy-digital-downloads/?utm_source=readme&utm_medium=referral&utm_content=integration&utm_campaign=cas)
 * [qTranslate X](https://dev.institute/wordpress/sidebars-pro/multilingual-plugins/?utm_source=readme&utm_medium=referral&utm_content=integration&utm_campaign=cas)
-* Pods
+* [Pods](https://dev.institute/wordpress/sidebars-pro/pods/?utm_source=readme&utm_medium=referral&utm_content=integration&utm_campaign=cas)
 * [Polylang](https://dev.institute/wordpress/sidebars-pro/multilingual-plugins/?utm_source=readme&utm_medium=referral&utm_content=integration&utm_campaign=cas)
 * [Transposh Translation Filter](https://dev.institute/wordpress/sidebars-pro/multilingual-plugins/?utm_source=readme&utm_medium=referral&utm_content=integration&utm_campaign=cas)
 * [WooCommerce](https://dev.institute/wordpress/sidebars-pro/woocommerce/?utm_source=readme&utm_medium=referral&utm_content=integration&utm_campaign=cas)
@@ -81,14 +81,14 @@ Negate conditions, e.g. display a sidebar on all pages except Page X.
 > * Sidebar Visibility for Roles and Guests
 > * 1-click Sidebar Activation
 > * Sync Widgets on Theme Switch
-> * [and more...](https://dev.institute/wordpress/sidebars-pro/pricing/?utm_source=readme&utm_medium=referral&utm_content=more&utm_campaign=cas)
+> * [and more...](https://dev.institute/wordpress/sidebars-pro/features/?utm_source=readme&utm_medium=referral&utm_content=more&utm_campaign=cas)
 >
 > Install the free version and upgrade at any time directly from the admin panel via [Freemius](http://freemius.com/)!
 
 ####More Information
 
+* [Documentation](https://dev.institute/docs/content-aware-sidebars/?utm_source=readme&utm_medium=referral&utm_content=info&utm_campaign=cas)
 * [Github](https://github.com/intoxstudio/content-aware-sidebars)
-* [Facebook](https://www.facebook.com/intoxstudio)
 * [Twitter](https://twitter.com/intoxstudio)
 
 == Installation ==
@@ -98,12 +98,14 @@ Negate conditions, e.g. display a sidebar on all pages except Page X.
 1. Create your first sidebar under the menu *Sidebars > Add New*
 1. Add widgets to the sidebar like any other sidebar
 
+[Click here to get started with Content Aware Sidebars.](https://dev.institute/docs/content-aware-sidebars/getting-started/?utm_source=readme&utm_medium=referral&utm_content=install&utm_campaign=cas)
+
 * Optional: Insert Template Tag `<?php ca_display_sidebar( $args ); ?>` in your theme for manually handled sidebars
 * Optional: Insert Shortcode `[ca-sidebar id=]` in a post or page for manually handled sidebars
 
 == Frequently Asked Questions ==
 
-[Click here to view the FAQs for Content Aware Sidebars](https://dev.institute/wordpress/sidebars-pro/faq/?utm_source=readme&utm_medium=referral&utm_content=faq&utm_campaign=cas).
+[Click here to view the FAQs for Content Aware Sidebars.](https://dev.institute/docs/content-aware-sidebars/faq/?utm_source=readme&utm_medium=referral&utm_content=faq&utm_campaign=cas)
 
 == Translations ==
 
@@ -121,7 +123,7 @@ Do you want to contribute and see your name here?
 
 == Screenshots ==
 
-[Click here to view the latest screenshots and examples of Content Aware Sidebars](https://dev.institute/wordpress/sidebars-pro/?utm_source=readme&utm_medium=referral&utm_content=screenshots&utm_campaign=cas).
+[Click here to view the latest screenshots and examples of Content Aware Sidebars.](https://dev.institute/wordpress/sidebars-pro/?utm_source=readme&utm_medium=referral&utm_content=screenshots&utm_campaign=cas)
 
 == Upgrade Notice ==
 
@@ -133,6 +135,20 @@ Do you want to contribute and see your name here?
 == Changelog ==
 
 [View development on GitHub](https://github.com/intoxstudio/content-aware-sidebars)
+
+= 3.4.1 =
+
+* Added: ability to target all buddypress profile sections
+* Added: freemius opt-in message made more clear
+* Added: links to docs
+* Added: wordpress 4.7 support
+* Fixed: sidebar order not being saved
+* Fixed: "Automatically add new children of a selected ancestor" not working for post types
+* Fixed: sidebar edit links on widgets screen
+
+**Pro Plan:**
+
+* Fixed: buddypress groups condition not selectable on new sidebars
 
 = 3.4 =
 
