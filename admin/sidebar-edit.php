@@ -225,7 +225,7 @@ final class CAS_Sidebar_Edit extends CAS_Admin {
 				'This means that content added to a group should be associated, as they are treated as such, and that the groups do not interfere with each other. Thus it is possible to have both extremely focused and at the same time distinct conditions.','content-aware-sidebars').'</p>',
 		) );
 		$screen->set_help_sidebar( '<h4>'.__('More Information').'</h4>'.
-			'<p><a href="https://dev.institute/wordpress/sidebars-pro/faq/?utm_source=plugin&utm_medium=referral&utm_content=help-tab&utm_campaign=cas" target="_blank">'.__('FAQ','content-aware-sidebars').'</a></p>'.
+			'<p><a href="https://dev.institute/docs/content-aware-sidebars/faq/?utm_source=plugin&utm_medium=referral&utm_content=help-tab&utm_campaign=cas" target="_blank">'.__('FAQ','content-aware-sidebars').'</a></p>'.
 			'<p><a href="http://wordpress.org/support/plugin/content-aware-sidebars" target="_blank">'.__('Forum Support','content-aware-sidebars').'</a></p>'
 		);
 
@@ -917,12 +917,14 @@ final class CAS_Sidebar_Edit extends CAS_Admin {
 ?>
 			<div style="overflow:hidden;">
 				<ul>
-					<li><a href="<?php echo esc_url(cas_fs()->get_upgrade_url()); ?>"><?php _e('Priority Email Support','content-aware-sidebars'); ?></a></li>
-					<li><a href="https://wordpress.org/support/plugin/content-aware-sidebars/" target="_blank"><?php _e('Forum Support','content-aware-sidebars'); ?></a></li>
 <?php if($locale != "en_US") : ?>
 					<li><a href="https://www.transifex.com/projects/p/content-aware-sidebars/" target="_blank"><?php _e('Translate the plugin into your language','content-aware-sidebars'); ?></a></li>
 <?php endif; ?>
-					<li><a href="https://dev.institute/wordpress/sidebars-pro/faq/?utm_source=plugin&amp;utm_medium=referral&amp;utm_content=info-box&amp;utm_campaign=cas" target="_blank"><?php _e('Read the FAQ','content-aware-sidebars'); ?></a></li>
+					<li><a href="https://dev.institute/docs/content-aware-sidebars/?utm_source=plugin&amp;utm_medium=referral&amp;utm_content=info-box&amp;utm_campaign=cas" target="_blank"><?php _e('Documentation','content-aware-sidebars'); ?></a></li>
+					<li><a href="https://dev.institute/docs/content-aware-sidebars/getting-started/?utm_source=plugin&amp;utm_medium=referral&amp;utm_content=info-box&amp;utm_campaign=cas" target="_blank"><?php _e('Get Started','content-aware-sidebars'); ?></a></li>
+					<li><a href="https://dev.institute/docs/content-aware-sidebars/faq/?utm_source=plugin&amp;utm_medium=referral&amp;utm_content=info-box&amp;utm_campaign=cas" target="_blank"><?php _e('FAQ','content-aware-sidebars'); ?></a></li>
+					<!--<li><a href="<?php echo esc_url(cas_fs()->get_upgrade_url()); ?>"><?php _e('Priority Email Support','content-aware-sidebars'); ?></a></li>-->
+					<li><a href="https://wordpress.org/support/plugin/content-aware-sidebars/" target="_blank"><?php _e('Forum Support','content-aware-sidebars'); ?></a></li>
 				</ul>
 			</div>
 		<?php
