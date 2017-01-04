@@ -15,7 +15,6 @@
 		init: function() {
 			this.tabController();
 			this.addHandleListener();
-			this.reviewNoticeHandler();
 			this.suggestVisibility();
 			this.initSidebarActivation();
 
@@ -197,37 +196,6 @@
 			if($elem.data('value')) {
 				$elem.val($elem.data('value').toString().split(',')).trigger('change');
 			}
-		},
-
-		/**
-		 * Handle clicks on review notice
-		 * Sends dismiss event to backend
-		 *
-		 * @since  3.1
-		 * @return {void}
-		 */
-		reviewNoticeHandler: function() {
-			$notice = $(".js-cas-notice-review");
-			$notice.on("click","a, button", function(e) {
-				$this = $(this);
-				$.ajax({
-					url: ajaxurl,
-					data:{
-						'action': 'cas_dismiss_review_notice',
-						'dismiss': $this.attr("href") ? 1 : 0
-					},
-					dataType: 'JSON',
-					type: 'POST',
-					success:function(data){
-						$notice.fadeOut(400,function() {
-							$notice.remove();
-						});
-					},
-					error: function(xhr, desc, e) {
-						console.log(xhr.responseText);
-					}
-				});
-			});
 		}
 	};
 

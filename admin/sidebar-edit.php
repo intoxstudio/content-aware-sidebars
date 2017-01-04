@@ -39,15 +39,18 @@ final class CAS_Sidebar_Edit extends CAS_Admin {
 		add_filter( 'get_delete_post_link',
 			array($this,'get_delete_post_link'), 10, 3 );
 
-		if ( cas_fs()->is_not_paying() )  {
+		if (cas_fs()->is_not_paying() )  {
 			add_action('wp_ajax_cas_dismiss_review_notice',
 				array($this,'ajax_review_clicked'));
 			add_action('wpca/meta_box/after',
 				array($this,'show_review_link'));
 			add_filter('wpca/modules/list',
 				array($this,'add_to_module_list'),99);
+			add_action( 'all_admin_notices',
+				array($this,'admin_notice_review'));
 			add_action( 'admin_enqueue_scripts',
 				array($this,'add_general_scripts_styles')
+			);
 		}
 	}
 
@@ -228,10 +231,6 @@ final class CAS_Sidebar_Edit extends CAS_Admin {
 			'<p><a href="https://dev.institute/docs/content-aware-sidebars/faq/?utm_source=plugin&utm_medium=referral&utm_content=help-tab&utm_campaign=cas" target="_blank">'.__('FAQ','content-aware-sidebars').'</a></p>'.
 			'<p><a href="http://wordpress.org/support/plugin/content-aware-sidebars" target="_blank">'.__('Forum Support','content-aware-sidebars').'</a></p>'
 		);
-
-		if ( cas_fs()->is_not_paying() )  {
-			add_action( 'admin_notices', array($this,'admin_notice_review'));
-		}
 
 	}
 
@@ -776,14 +775,22 @@ final class CAS_Sidebar_Edit extends CAS_Admin {
 		$has_reviewed = get_user_option(CAS_App::META_PREFIX.'cas_review');
 		if($has_reviewed === false) {
 			$tour_taken = $this->_tour_manager->get_user_option();
-			if($tour_taken && (time() - $tour_taken) >= WEEK_IN_SECONDS*2) {
-				echo '<div class="update-nag notice js-cas-notice-review">';
-				echo '<p>'.__('You have used this plugin for some time now. I hope you like it!','content-aware-sidebars').'</p>';
-				echo '<p>'.sprintf('Please spend 2 minutes to support it with a %sreview on WordPress.org%s. Thank you.',
-				'<strong><a target="_blank" href="https://wordpress.org/support/view/plugin-reviews/content-aware-sidebars?filter=5#postform">',
-				'</a></strong>').'</p>';
-				echo '<br><p>- '.__('Joachim Jensen, developer of Content Aware Sidebars','content-aware-sidebars').'</p>';
-				echo '<p><a target="_blank" class="button-primary" href="https://wordpress.org/support/view/plugin-reviews/content-aware-sidebars?filter=5#postform">'.__('Review Plugin','content-aware-sidebars').'</a> <button class="button-secondary">'.__("I don't like it",'content-aware-sidebars').'</button></p>';
+			if($tour_taken && (time() - $tour_taken) >= WEEK_IN_SECONDS) {
+				$current_user = wp_get_current_user();
+
+				echo '<div class="notice notice-success js-cas-notice-review">';
+				echo '<p>';
+				printf(__("Hey %s, it's Joachim from %s. You have used this free plugin for some time now, and I hope you like it!",'content-aware-sidebars'),
+					'<strong>'.$current_user->display_name.'</strong>',
+					'<strong>Content Aware Sidebars</strong>'
+				);
+				echo '<br>';
+				printf(__("I have spent countless hours developing it, and it would mean a lot to me if you %ssupport it with a quick review on WordPress.org.%s",'content-aware-sidebars'),
+					'<strong><a target="_blank" href="https://wordpress.org/support/view/plugin-reviews/content-aware-sidebars?filter=5#postform">',
+					'</a></strong>'
+				);
+				echo '</p>';
+				echo '<p><a target="_blank" class="button-primary" href="https://wordpress.org/support/view/plugin-reviews/content-aware-sidebars?filter=5#postform">'.__('Review Content Aware Sidebars','content-aware-sidebars').'</a> <button class="button-secondary">'.__("No thanks",'content-aware-sidebars').'</button></p>';
 				echo '</div>';
 			}
 		}
