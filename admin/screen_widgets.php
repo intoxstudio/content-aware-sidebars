@@ -63,12 +63,12 @@ class CAS_Admin_Screen_Widgets extends CAS_Admin {
 			?>
 				<div class="cas-settings">
 				<div class="sidebar-status">
-					<input type="checkbox" class="sidebar-status-input sidebar-status-<?php echo $sidebar->post_status; ?>" id="cas-status-<?php echo $sidebar->ID; ?>" value="<?php echo $sidebar->ID; ?>" <?php checked($sidebar->post_status, CAS_App::STATUS_ACTIVE) ?> disabled="disabled">
+					<input type="checkbox" class="js-cas-pro-notice sidebar-status-input sidebar-status-<?php echo $sidebar->post_status; ?>" id="cas-status-<?php echo $sidebar->ID; ?>" value="<?php echo $sidebar->ID; ?>" data-url="https://dev.institute/wordpress/sidebars-pro/pricing/?utm_source=plugin&utm_medium=popup&utm_content=sidebar-status&utm_campaign=cas" <?php checked($sidebar->post_status, CAS_App::STATUS_ACTIVE) ?>>
 					<label title="<?php echo $status; ?>" class="sidebar-status-label" for="cas-status-<?php echo $sidebar->ID; ?>">
 					</label>
 				</div>
 
-				<a title="<?php esc_attr_e('Edit Sidebar','content-aware-sidebars') ?>" class="dashicons dashicons-admin-generic cas-sidebar-link" href="<?php echo $edit_link; ?>"></a><a title="<?php esc_attr_e('Revisions') ?>" class="cas-sidebar-link" href="<?php echo add_query_arg('action','cas-revisions',$link); ?>"><i class="dashicons dashicons-backup"></i> <?php _e('Revisions') ?></a>
+				<a title="<?php esc_attr_e('Edit Sidebar','content-aware-sidebars') ?>" class="dashicons dashicons-admin-generic cas-sidebar-link" href="<?php echo $edit_link; ?>"></a><a title="<?php esc_attr_e('Revisions') ?>" class="js-cas-pro-notice cas-sidebar-link" data-url="https://dev.institute/wordpress/sidebars-pro/pricing/?utm_source=plugin&utm_medium=popup&utm_content=widget-revisions&utm_campaign=cas" href="<?php echo add_query_arg('action','cas-revisions',$link); ?>"><i class="dashicons dashicons-backup"></i> <?php _e('Revisions') ?></a>
 				</div>
 			<?php
 		}
