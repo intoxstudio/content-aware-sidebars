@@ -13,22 +13,12 @@
 		sections: [],
 
 		init: function() {
-
-			this.upgradeNoticeHandler();
 			this.tabController();
 			this.addHandleListener();
 			this.reviewNoticeHandler();
 			this.suggestVisibility();
 			this.initSidebarActivation();
 
-		},
-
-		upgradeNoticeHandler: function() {
-			$('.js-cas-pro-notice').on('click',function(e) {
-				e.preventDefault();
-				$('.js-cas-pro-read-more').attr('href',$(this).data('url'));
-				$('.js-cas-pro-popup').trigger('click');
-			});
 		},
 
 		initSidebarActivation: function() {

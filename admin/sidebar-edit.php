@@ -46,6 +46,8 @@ final class CAS_Sidebar_Edit extends CAS_Admin {
 				array($this,'show_review_link'));
 			add_filter('wpca/modules/list',
 				array($this,'add_to_module_list'),99);
+			add_action( 'admin_enqueue_scripts',
+				array($this,'add_general_scripts_styles')
 		}
 	}
 
@@ -146,8 +148,6 @@ final class CAS_Sidebar_Edit extends CAS_Admin {
 		if ( wp_is_mobile() ) {
 			wp_enqueue_script( 'jquery-touch-punch' );
 		}
-
-		add_thickbox();
 
 		// Add the local autosave notice HTML
 		//add_action( 'admin_footer', '_local_storage_notice' );
@@ -456,10 +456,6 @@ final class CAS_Sidebar_Edit extends CAS_Admin {
 		echo '</div>';
 		echo '<br class="clear" />';
 		echo '</div></form></div>';
-
-		if ( cas_fs()->is_not_paying() ) {
-			$this->render_upgrade_modal();
-		}
 	}
 
 	/**
@@ -1013,32 +1009,6 @@ final class CAS_Sidebar_Edit extends CAS_Admin {
 	}
 
 	/**
-	 * Render plugin upgrade modal
-	 *
-	 * @since  3.4
-	 * @return void
-	 */
-	public function render_upgrade_modal() {
-		$features = array(
-			__('Extra condition types','content-aware-sidebars'),
-			__('Widget Revisions','content-aware-sidebars'),
-			__('Visibility for roles','content-aware-sidebars'),
-			__('Time Schedule','content-aware-sidebars'),
-			__('Sync widgets across themes','content-aware-sidebars')
-		);
-		echo '<a style="display:none;" class="thickbox js-cas-pro-popup" href="#TB_inline?width=400&amp;height=220&amp;inlineId=pro-popup-notice" title="'.__('Buy Content Aware Sidebars Pro','content-aware-sidebars').'"></a>';
-		echo '<div id="pro-popup-notice" style="display:none;">';
-		echo '<img style="margin-top:15px;" class="alignright" src="'.plugins_url('../css/icon.png', __FILE__).'" width="128" height="128" />';
-		echo '
-		<h2>'.__('Get All Features With Content Aware Sidebars Pro','content-aware-sidebars').'</h2>';
-		echo '<p>'.sprintf(__('Power up your sidebars with: %s and more.','content-aware-sidebars'),strtolower(implode(', ', $features))).'</p>';
-		echo '<p>'.__('You can upgrade without leaving the admin panel by clicking below.','content-aware-sidebars');
-		echo '<br />'.__('Free updates and email support included.','content-aware-sidebars').'</p>';
-		echo '<p><a class="button-primary" target="_blank" href="'.esc_url(cas_fs()->get_upgrade_url()).'">Buy Now</a> <a href="" class="button-secondary js-cas-pro-read-more" target="_blank" href="">Read More</a></p>';
-		echo '</div>';
-	}
-
-	/**
 	 * Set review flag for user
 	 *
 	 * @since  3.1
@@ -1222,6 +1192,16 @@ final class CAS_Sidebar_Edit extends CAS_Admin {
 			$link = wp_nonce_url( $link, "$action-post_{$post_id}" );
 		}
 		return $link;
+	}
+
+	/**
+	 * Add general scripts to admin screens
+	 *
+	 * @since 3.4.1
+	 */
+	public function add_general_scripts_styles() {
+		wp_register_script('cas/admin/general', plugins_url('../js/general.js', __FILE__), array('jquery'), CAS_App::PLUGIN_VERSION, true);
+		wp_enqueue_script('cas/admin/general');
 	}
 
 	/**
