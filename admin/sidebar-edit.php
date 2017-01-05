@@ -812,8 +812,8 @@ final class CAS_Sidebar_Edit extends CAS_Admin {
 		echo '<td>';
 		echo '<span class="js-cas-activation">';
 		echo '<input type="text" name="sidebar_activate" value="'.$activate_date.'" data-input placeholder="'.esc_attr__('Select date','content-aware-sidebars').'">';
-		echo '<a class="button button-small" data-toggle><i class="dashicons dashicons-calendar"></i></a>';
-		echo '<a class="button button-small" data-clear><span class="dashicons dashicons-no-alt"></span></a>';
+		echo '<button type="button" class="button button-small" data-toggle><span class="dashicons dashicons-calendar"></span></button>';
+		echo '<button type="button" class="button button-small" data-clear><span class="dashicons dashicons-no-alt"></span></button>';
 		echo '</span>';
 		echo '</td></tr>';
 
@@ -821,8 +821,8 @@ final class CAS_Sidebar_Edit extends CAS_Admin {
 		echo '<td>';
 		echo '<span class="js-cas-expiry">';
 		echo '<input type="text" name="sidebar_deactivate" value="'.$deactivate_date.'" data-input placeholder="'.esc_attr__('Never','content-aware-sidebars').'">';
-		echo '<a class="button button-small" data-toggle><i class="dashicons dashicons-calendar"></i></a>';
-		echo '<a class="button button-small" data-clear><span class="dashicons dashicons-no-alt"></span></a>';
+		echo '<button type="button" class="button button-small" data-toggle><span class="dashicons dashicons-calendar"></span></button>';
+		echo '<button type="button" class="button button-small" data-clear><span class="dashicons dashicons-no-alt"></span></button>';
 		echo '</span>';
 		echo '</td></tr>';
 
@@ -833,7 +833,7 @@ final class CAS_Sidebar_Edit extends CAS_Admin {
 	public function meta_box_schedule($post) {
 		global $wp_locale;
 
-		echo '<p>'.__('Display sidebar only in given time ranges on select days.').' <span class="cas-pro-label">Pro</span></p>';
+		echo '<p>'.__('Display sidebar only in given time ranges on select days.').' <span class="cas-pro-label">'.__('Pro','content-aware-sidebars').'</span></p>';
 		echo '<div>';
 
 		$i = $start = get_option('start_of_week',0);
@@ -1219,11 +1219,11 @@ final class CAS_Sidebar_Edit extends CAS_Admin {
 	 */
 	public function add_scripts_styles() {
 
-		wp_register_script('flatpickr', plugins_url('../js/flatpickr.min.js', __FILE__), array(), '2.0', false);
+		wp_register_script('flatpickr', plugins_url('../js/flatpickr.min.js', __FILE__), array(), '2.2.8', false);
 
-		wp_register_script('cas/admin/edit', plugins_url('../js/cas_admin.js', __FILE__), array('jquery','flatpickr'), CAS_App::PLUGIN_VERSION, false);
+		wp_register_script('cas/admin/edit', plugins_url('../js/cas_admin.min.js', __FILE__), array('jquery','flatpickr'), CAS_App::PLUGIN_VERSION, false);
 		
-		wp_register_style('flatpickr', plugins_url('../css/flatpickr.dark.min.css', __FILE__), array(), '2.0');			
+		wp_register_style('flatpickr', plugins_url('../css/flatpickr.dark.min.css', __FILE__), array(), '2.2.8');			
 		wp_register_style('cas/admin/style', plugins_url('../css/style.css', __FILE__), array('flatpickr'), CAS_App::PLUGIN_VERSION);
 
 		$visibility = array();
