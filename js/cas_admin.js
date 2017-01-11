@@ -2,7 +2,7 @@
  * @package Content Aware Sidebars
  * @author Joachim Jensen <jv@intox.dk>
  * @license GPLv3
- * @copyright 2016 by Joachim Jensen
+ * @copyright 2017 by Joachim Jensen
  */
 
 (function($) {
@@ -17,33 +17,35 @@
 			this.addHandleListener();
 			this.suggestVisibility();
 			this.initSidebarActivation();
-
 		},
 
 		initSidebarActivation: function() {
-			Flatpickr.l10n.weekdays = CASAdmin.weekdays;
-			Flatpickr.l10n.months = CASAdmin.months;
-			Flatpickr.l10n.firstDayOfWeek = CASAdmin.weekStart;
+			Flatpickr.l10ns.default.weekdays = CASAdmin.weekdays;
+			Flatpickr.l10ns.default.months = CASAdmin.months;
+			Flatpickr.l10ns.default.firstDayOfWeek = CASAdmin.weekStart;
 
 			var config = {
-					wrap: true,
-					clickOpens: true,
-					enableTime: true,
-					time_24hr: true,
-					allowInput: true,
-					enableSeconds: true,
-					altInput: true,
-					altFormat: CASAdmin.dateFormat + ' @ H:i:S'
-				},
-				$activate = $('.js-cas-activation'),
-				$deactivate = $('.js-cas-expiry'), 
-				activate = $activate.flatpickr(config),
-				deactivate = $deactivate.flatpickr(config);
-			
+				wrap: true,
+				clickOpens: true,
+				enableTime: true,
+				time_24hr: true,
+				allowInput: true,
+				enableSeconds: true,
+				altInput: true,
+				altFormat: CASAdmin.dateFormat + ' @ H:i:S',
+				minDate: null,
+				maxDate: null
+			},
+			activate = flatpickr('.js-cas-activation',config),
+			deactivate = flatpickr('.js-cas-expiry',config),
+			$toggle = $('.js-cas-status');
+		
 			activate.config.onChange = function(dateObj, dateStr, instance) {
-				deactivate.set("minDate", dateStr != '' ? new Date(dateObj).fp_incr(1) : null);
-				var $toggle = $('.js-cas-status');
-				if(dateStr != '') {
+				console.log("activate");
+				if(dateStr || deactivate.config.minDate) {
+					deactivate.set("minDate", dateStr ? new Date(dateObj).fp_incr(1) : null);
+				}
+				if(dateStr) {
 					$toggle.prop('checked',false);
 				} else if(!$toggle.is(':checked')) {
 					deactivate.clear();
@@ -51,14 +53,14 @@
 			};
 
 			deactivate.config.onChange = function(dateObj, dateStr, instance) {
-				activate.set("maxDate", new Date(dateObj).fp_incr(-1));
+				console.log("deactivate");
+				if(dateStr || activate.config.maxDate) {
+					activate.set("maxDate", dateStr ? new Date(dateObj).fp_incr(-1) : null);
+				}
 			};
 
-			$('.js-cas-status').on('change',function(e) {
-				var $this = $(this),
-					isActive = $this.is(':checked');
-
-				if(isActive) {
+			$toggle.on('change',function(e) {
+				if($(this).is(':checked')) {
 					activate.clear();
 				} else if(!activate.selectedDates.length) {
 					deactivate.clear();
