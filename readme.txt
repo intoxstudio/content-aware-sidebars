@@ -4,7 +4,7 @@ Donate link:
 Tags: sidebar, sidebars, custom sidebars, page sidebars, replace sidebar, create sidebars, replace widget area, bbpress, buddypress, polylang, pods, conditional
 Requires at least: 3.9
 Tested up to: 4.7
-Stable tag: 3.4.1
+Stable tag: 3.4.2
 License: GPLv3
 
 Display custom sidebars on any post, page, category etc. Supports bbPress, BuddyPress, WooCommerce, Easy Digital Downloads and more.
@@ -50,7 +50,7 @@ No coding required!
 * Front Page
 * bbPress User Profiles
 * BuddyPress Member Pages
-* Languages (qTranslate, Polylang, Transposh, WPML)
+* Languages (qTranslate X, Polylang, Transposh, WPML)
 * Pods Pages
 
 Mix conditions in any way you like, e.g. display a sidebar on posts in Category X by author Y.
@@ -135,6 +135,12 @@ Do you want to contribute and see your name here?
 == Changelog ==
 
 [View development on GitHub](https://github.com/intoxstudio/content-aware-sidebars)
+
+= 3.4.2 =
+
+* Added: freemius sdk updated
+* Fixed: sidebar editor now works properly in IE browser
+* Fixed: UI improvements
 
 = 3.4.1 =
 
