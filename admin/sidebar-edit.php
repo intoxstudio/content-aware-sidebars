@@ -778,7 +778,8 @@ final class CAS_Sidebar_Edit extends CAS_Admin {
 			if($tour_taken && (time() - $tour_taken) >= WEEK_IN_SECONDS) {
 				$current_user = wp_get_current_user();
 
-				echo '<div class="notice notice-success js-cas-notice-review">';
+				//updated class for wp4.0 and below
+				echo '<div class="notice notice-success updated js-cas-notice-review">';
 				echo '<p>';
 				printf(__("Hey %s, it's Joachim from %s. You have used this free plugin for some time now, and I hope you like it!",'content-aware-sidebars'),
 					'<strong>'.$current_user->display_name.'</strong>',
