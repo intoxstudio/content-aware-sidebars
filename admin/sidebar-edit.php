@@ -34,6 +34,8 @@ final class CAS_Sidebar_Edit extends CAS_Admin {
 		add_action('cas/admin/add_meta_boxes',
 			array($this,'create_meta_boxes'));
 
+		add_filter('wp_insert_post_data',
+			array($this,'add_duplicate_title_suffix'),99,2);
 		add_filter( 'get_edit_post_link',
 			array($this,'get_edit_post_link'), 10, 3 );
 		add_filter( 'get_delete_post_link',
@@ -1116,6 +1118,36 @@ final class CAS_Sidebar_Edit extends CAS_Admin {
 			}
 
 		}
+	}
+
+	/**
+	 * Add suffix when creating sidebar with existing name
+	 * Does not stop duplicate titles on update
+	 *
+	 * @since  3.4.3
+	 * @param  array  $insert_data
+	 * @param  array  $data
+	 * @return array
+	 */
+	public function add_duplicate_title_suffix($insert_data, $data) {
+		if($data['post_type'] == CAS_App::TYPE_SIDEBAR && !$data['ID']) {
+			$sidebars = CAS_App::instance()->manager()->sidebars;
+			$sidebar_titles = array();
+			foreach ($sidebars as $sidebar) {
+				$sidebar_titles[$sidebar->post_title] = 1;
+			}
+			//if title exists, add a suffix
+			$i = 0;
+			$title = wp_unslash($insert_data['post_title']);
+			$new_title = $title;
+			while(isset($sidebar_titles[$new_title])) {
+				$new_title = $title.' ('.++$i.')';
+			}
+			if($i) {
+				$insert_data['post_title'] = wp_slash($new_title);
+			}
+		}
+		return $insert_data;
 	}
 
 	/**
