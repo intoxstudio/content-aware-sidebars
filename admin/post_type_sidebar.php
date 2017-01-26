@@ -111,7 +111,7 @@ class CAS_Post_Type_Sidebar {
 					if($sidebar_id[0] == '_') {
 						if($user_can_create_sidebar) {
 							$id = wp_insert_post(array(
-								'post_title'  => str_replace('_',',',substr($sidebar_id,1)),
+								'post_title'  => str_replace('__',',',substr($sidebar_id,1)),
 								'post_status' => CAS_App::STATUS_INACTIVE, 
 								'post_type'   => CAS_App::TYPE_SIDEBAR
 							));
@@ -202,7 +202,7 @@ class CAS_Post_Type_Sidebar {
 		foreach ($sidebars as $sidebar) {
 			$host_id = $host_meta->get_data($sidebar->ID);
 			if(isset(self::$_theme_sidebars[$host_id])) {
-				self::$_theme_sidebars[$host_id]['options'][$sidebar->ID] = array(
+				self::$_theme_sidebars[$host_id]['options'][] = array(
 					'id' => $sidebar->ID,
 					'text' => $sidebar->post_title.self::sidebar_states($sidebar)
 				);
@@ -222,6 +222,7 @@ class CAS_Post_Type_Sidebar {
 		} else {
 			$labels['notFound'] = __('No sidebars found');
 		}
+		$labels['sidebars'] = self::$_theme_sidebars;
 		wp_localize_script('cas/sidebars/suggest', 'CAS', $labels);
 
 		$post_type = get_post_type_object($post->post_type);
@@ -242,10 +243,6 @@ class CAS_Post_Type_Sidebar {
 		}
 		$content[] = __('Archive Page','content-aware-sidebars');
 
-		$content = array_slice($content, 0, 3);
-
-		$link = '<a href="'.admin_url('edit.php?post_type='.CAS_App::TYPE_SIDEBAR).'">'.__('Sidebar Manager').'</a>';
-
 		$i = 0;
 		$limit = 3;
 		foreach (self::$_theme_sidebars as $id => $sidebar) {
@@ -256,7 +253,7 @@ class CAS_Post_Type_Sidebar {
 
 			echo '<div><label style="display:block;padding:8px 0 4px;font-weight:bold;" for="ca_sidebars_'.$id.'">'.$sidebar['label'].'</label>';
 
-			echo '<input id="ca_sidebars_'.$id.'" class="js-cas-sidebars" type="text" name="cas_sidebars['.$id.']" value="'.implode(",", $sidebar['select']).'" placeholder="'.__('Default').'" data-sidebars=\''.json_encode(array_values($sidebar['options'])).'\'  /></div>';
+			echo '<input id="ca_sidebars_'.$id.'" class="js-cas-sidebars" type="text" name="cas_sidebars['.$id.']" value="'.implode(",", $sidebar['select']).'" placeholder="'.__('Default').'" /></div>';
 			$i++;
 		}
 		if($i > $limit) {
@@ -266,6 +263,8 @@ class CAS_Post_Type_Sidebar {
 
 		echo '<p class="howto">'.sprintf(__('Note: Selected Sidebars are displayed on this %s specifically.','content-aware-sidebars'),strtolower($post_type->labels->singular_name)).' ';
 
+		$content = array_slice($content, 0, 3);
+		$link = '<a href="'.admin_url('admin.php?page=wpcas').'">'.__('Sidebar Manager').'</a>';
 		echo sprintf(__('Display sidebars per %s etc. with the %s.','content-aware-sidebars'),strtolower(implode(', ', $content)),$link).'</p>';
 	}
 

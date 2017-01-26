@@ -46,10 +46,11 @@
 		 * @since 3.3
 		 */
 		suggestSidebars: function() {
-			var $elem = $('.js-cas-sidebars');
-			$elem.each(function() {
-				$this = $(this);
-				$this.select2({
+			var hostSidebar;
+			for(hostSidebar in CAS.sidebars) {
+				$elem = $('#ca_sidebars_'+hostSidebar);
+				console.log(CAS.sidebars[hostSidebar]['options']);
+				$elem.select2({
 					containerCssClass:'cas-select2',
 					dropdownCssClass: 'cas-select2',
 					minimumInputLength: 0,
@@ -57,18 +58,19 @@
 					allowClear:false,
 					multiple: true,
 					//maximumSelectionSize: 1,
-					data:$this.data('sidebars'),
+					data:CAS.sidebars[hostSidebar]['options'],
 					width:"100%",
+					createSearchChoicePosition:'bottom',
 					//tokenSeparators: ['|'],
 					// nextSearchTerm: function(selectedObject, currentSearchTerm) {
 					// 	return currentSearchTerm;
 					// },
 					createSearchChoice:function(term, data) {
-						if (CAS.canCreate && term && $(data).filter(function() {
+						if (CAS.canCreate && term/* && $(data).filter(function() {
 						  return this.text.localeCompare(term) === 0;
-						}).length === 0) {
+						}).length === 0*/) {
 						  return {
-							id: '_'+term.replace(",","_"),
+							id: '_'+term.replace(",","__"),
 							text: term
 						  };
 						}
@@ -84,7 +86,7 @@
 						return CAS.notFound;
 					}
 				});
-			});
+			}
 		}
 	};
 
