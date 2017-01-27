@@ -4,7 +4,7 @@ Donate link:
 Tags: sidebar, sidebars, custom sidebars, page sidebars, replace sidebar, create sidebars, replace widget area, bbpress, buddypress, polylang, pods, conditional
 Requires at least: 3.9
 Tested up to: 4.7
-Stable tag: 3.4.2
+Stable tag: 3.4.3
 License: GPLv3
 
 Display custom sidebars on any post, page, category etc. Supports bbPress, BuddyPress, WooCommerce, Easy Digital Downloads and more.
@@ -135,6 +135,13 @@ Do you want to contribute and see your name here?
 == Changelog ==
 
 [View development on GitHub](https://github.com/intoxstudio/content-aware-sidebars)
+
+= 3.4.3 =
+
+* Added: preparation for automatic translation packages
+* Added: prevent adding duplicate sidebar titles
+* Fixed: sidebar quick select would in rare cases not show sidebars
+* Fixed: UI improvements
 
 = 3.4.2 =
 

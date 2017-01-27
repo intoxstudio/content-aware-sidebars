@@ -17,7 +17,7 @@ final class CAS_App {
 	/**
 	 * Plugin version
 	 */
-	const PLUGIN_VERSION       = '3.4.2';
+	const PLUGIN_VERSION       = '3.4.3';
 
 	/**
 	 * Prefix for sidebar id
