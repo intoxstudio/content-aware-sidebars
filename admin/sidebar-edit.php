@@ -164,11 +164,11 @@ final class CAS_Sidebar_Edit extends CAS_Admin {
 			$post = get_post($post_id, OBJECT, 'edit');
 
 			if ( ! $post )
-				wp_die( __( 'You attempted to edit an item that doesn&#8217;t exist. Perhaps it was deleted?' ) );
+				wp_die( __( 'The sidebar no longer exists.' ) );
 			if ( ! current_user_can( 'edit_post', $post_id ) )
-				wp_die( __( 'Sorry, you are not allowed to edit this item.' ) );
+				wp_die( __( 'You are not allowed to edit this sidebar.' ) );
 			if ( 'trash' == $post->post_status )
-				wp_die( __( 'You can&#8217;t edit this item because it is in the Trash. Please restore it and try again.' ) );
+				wp_die( __( 'You cannot edit this sidebar because it is in the Trash. Please restore it and try again.' ) );
 
 			if ( ! empty( $_GET['get-post-lock'] ) ) {
 				check_admin_referer( 'lock-post_' . $post_id );
@@ -191,8 +191,7 @@ final class CAS_Sidebar_Edit extends CAS_Admin {
 
 			if ( ! current_user_can( $post_type_object->cap->edit_posts ) || ! current_user_can( $post_type_object->cap->create_posts ) ) {
 				wp_die(
-					'<h1>' . __( 'Cheatin&#8217; uh?' ) . '</h1>' .
-					'<p>' . __( 'Sorry, you are not allowed to create posts as this user.' ) . '</p>',
+					'<p>' . __( 'You are not allowed to create sidebars.', 'content-aware-sidebars' ) . '</p>',
 					403
 				);
 			}
@@ -258,7 +257,7 @@ final class CAS_Sidebar_Edit extends CAS_Admin {
 
 			$post = get_post( $post_id );
 			if ( ! $post ) {
-				wp_die( __( 'The item no longer exists.' ) );
+				wp_die( __( 'The sidebar no longer exists.', 'content-aware-sidebars' ) );
 			}
 
 			switch($action) {
@@ -305,11 +304,11 @@ final class CAS_Sidebar_Edit extends CAS_Admin {
 					check_admin_referer('trash-post_' . $post_id);
 
 					if ( ! current_user_can( 'delete_post', $post_id ) )
-						wp_die( __( 'Sorry, you are not allowed to move this item to the Trash.' ) );
+						wp_die( __( 'You are not allowed to move this sidebar to the Trash.', 'content-aware-sidebars' ) );
 
 					if ( $user_id = wp_check_post_lock( $post_id ) ) {
 						$user = get_userdata( $user_id );
-						wp_die( sprintf( __( 'You cannot move this item to the Trash. %s is currently editing.' ), $user->display_name ) );
+						wp_die( sprintf( __( 'You cannot move this sidebar to the Trash. %s is currently editing.', 'content-aware-sidebars' ), $user->display_name ) );
 					}
 
 					if ( ! wp_trash_post( $post_id ) )
@@ -328,7 +327,7 @@ final class CAS_Sidebar_Edit extends CAS_Admin {
 					check_admin_referer('untrash-post_' . $post_id);
 
 					if ( ! current_user_can( 'delete_post', $post_id ) )
-						wp_die( __( 'Sorry, you are not allowed to restore this item from the Trash.' ) );
+						wp_die( __( 'You are not allowed to restore this sidebar from the Trash.', 'content-aware-sidebars' ) );
 
 					if ( ! wp_untrash_post( $post_id ) )
 						wp_die( __( 'Error in restoring from Trash.' ) );
@@ -339,7 +338,7 @@ final class CAS_Sidebar_Edit extends CAS_Admin {
 					check_admin_referer('delete-post_' . $post_id);
 
 					if ( ! current_user_can( 'delete_post', $post_id ) )
-						wp_die( __( 'Sorry, you are not allowed to delete this item.' ) );
+						wp_die( __( 'You are not allowed to delete this sidebar.', 'content-aware-sidebars' ) );
 
 					if ( ! wp_delete_post( $post_id, true ) )
 						wp_die( __( 'Error in deleting.' ) );
@@ -521,12 +520,12 @@ final class CAS_Sidebar_Edit extends CAS_Admin {
 		$ptype = get_post_type_object($post_data['post_type']);
 
 		if ( !current_user_can( 'edit_post', $post_ID ) ) {
-				wp_die( __('Sorry, you are not allowed to edit this post.' ));
+				wp_die( __('You are not allowed to edit this sidebar.', 'content-aware-sidebars' ));
 		} elseif (! current_user_can( $ptype->cap->create_posts ) ) {
-				return new WP_Error( 'edit_others_posts', __( 'Sorry, you are not allowed to create posts as this user.' ) );
+				return new WP_Error( 'edit_others_posts', __( 'You are not allowed to create sidebars.', 'content-aware-sidebars' ) );
 		} elseif ( $post_data['post_author'] != $_POST['post_author'] 
 			 && ! current_user_can( $ptype->cap->edit_others_posts ) ) {
-			return new WP_Error( 'edit_others_posts', __( 'Sorry, you are not allowed to create posts as this user.' ) );
+			return new WP_Error( 'edit_others_posts', __( 'You are not allowed to edit this sidebar.', 'content-aware-sidebars' ) );
 		}
 	 
 		if ( isset($_POST['post_status']) ) {
@@ -998,7 +997,7 @@ final class CAS_Sidebar_Edit extends CAS_Admin {
 		$revision_id = key( $revisions );
  ?>
 			<li><span class="dashicons dashicons-backup"></span>
-				<?php printf( __( 'Widget Revisions: %s' ), '<b>' . number_format_i18n( $revision_count ) . '</b>' ); ?>
+				<?php printf( __( 'Widget Revisions: %s', 'content-aware-sidebars' ), '<b>' . number_format_i18n( $revision_count ) . '</b>' ); ?>
 				<a class="hide-if-no-js" href="<?php echo esc_url( get_edit_post_link( $revision_id ) ); ?>" title="<?php esc_attr_e( 'Browse revisions' ); ?>"><?php _ex( 'Browse', 'revisions' ); ?></a>
 			</li>
 			<?php
@@ -1006,7 +1005,7 @@ final class CAS_Sidebar_Edit extends CAS_Admin {
 	} elseif (cas_fs()->is_not_paying() ) {
 ?>
 		<li><span class="dashicons dashicons-backup"></span>
-			<?php printf( __( 'Widget Revisions: %s' ), '<b>0</b>' );
+			<?php printf( __( 'Widget Revisions: %s', 'content-aware-sidebars' ), '<b>0</b>' );
 			echo ' <b><a href="'.esc_url(cas_fs()->get_upgrade_url()).'">'.__( 'Enable').'</a></b>'; ?>
 		</li>
 		<?php

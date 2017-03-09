@@ -513,7 +513,9 @@ class CAS_Sidebar_List_Table extends WP_List_Table {
 				echo '<strong>'.__( 'Active' ).'</strong>';
 				$deactivate_date = get_post_meta($post->ID, CAS_App::META_PREFIX.'deactivate_time',true);
 				if($deactivate_date) {
+					// translators: Sidebar status date format, see http://php.net/date
 					$h_time = mysql2date( __( 'Y/m/d' ), $deactivate_date );
+					// translators: Sidebar status date and time format, see http://php.net/date
 					$t_time = mysql2date( __( 'Y/m/d g:i:s a' ), $deactivate_date );
 					echo '<br />'.sprintf(__('Until %s','content-aware-sidebars'),'<abbr title="' . $t_time . '">' . $h_time . '</abbr>');
 				}

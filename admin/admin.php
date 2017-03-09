@@ -93,12 +93,12 @@ abstract class CAS_Admin {
 			__('Time Schedule','content-aware-sidebars'),
 			__('Sync widgets across themes','content-aware-sidebars')
 		);
-		echo '<a style="display:none;" class="thickbox js-cas-pro-popup" href="#TB_inline?width=630&amp;height=230&amp;inlineId=pro-popup-notice" title="'.__('Buy Content Aware Sidebars Pro','content-aware-sidebars').'"></a>';
+		echo '<a style="display:none;" class="thickbox js-cas-pro-popup" href="#TB_inline&amp;width=630&amp;height=230&amp;inlineId=pro-popup-notice" title="'.__('Buy Content Aware Sidebars Pro','content-aware-sidebars').'"></a>';
 		echo '<div id="pro-popup-notice" style="display:none;">';
 		echo '<img style="margin-top:15px;" class="alignright" src="'.plugins_url('../css/icon.png', __FILE__).'" width="128" height="128" />';
 		echo '
 		<h2>'.__('Get All Features With Content Aware Sidebars Pro','content-aware-sidebars').'</h2>';
-		echo '<p>'.sprintf(__('Power up your sidebars with: %s and more.','content-aware-sidebars'),strtolower(implode(', ', $features))).'</p>';
+		echo '<p>'.sprintf(__('Enhance your sidebars and widget areas with: %s and more.','content-aware-sidebars'),strtolower(implode(', ', $features))).'</p>';
 		echo '<p>'.__('You can upgrade without leaving the admin panel by clicking below.','content-aware-sidebars');
 		echo '<br />'.__('Free updates and email support included.','content-aware-sidebars').'</p>';
 		echo '<p><a class="button-primary" target="_blank" href="'.esc_url(cas_fs()->get_upgrade_url()).'">'.__('Buy Now','content-aware-sidebars').'</a> <a href="" class="button-secondary js-cas-pro-read-more" target="_blank" href="">'.__('Read More','content-aware-sidebars').'</a></p>';
