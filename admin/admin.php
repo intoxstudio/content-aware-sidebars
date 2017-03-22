@@ -21,8 +21,13 @@ abstract class CAS_Admin {
 	protected $_screen;
 
 	public function __construct() {
-		add_action('admin_menu',
-			array($this,'add_menu'),99);
+		if(is_admin()) {
+			add_action('admin_menu',
+				array($this,'add_menu'),99);
+			$this->admin_hooks();
+		} else {
+			$this->frontend_hooks();
+		}
 	}
 
 	/**
@@ -39,6 +44,23 @@ abstract class CAS_Admin {
 		add_action('load-'.$this->_screen,
 			array($this,'prepare_upgrade_modal'));
 	}
+
+	/**
+	 * Add filters and actions for admin dashboard
+	 * e.g. AJAX calls
+	 *
+	 * @since  3.5
+	 * @return void
+	 */
+	abstract public function admin_hooks();
+
+	/**
+	 * Add filters and actions for frontend
+	 *
+	 * @since  3.5
+	 * @return void
+	 */
+	abstract public function frontend_hooks();
 
 	/**
 	 * Get current screen
@@ -93,7 +115,7 @@ abstract class CAS_Admin {
 			__('Time Schedule','content-aware-sidebars'),
 			__('Sync widgets across themes','content-aware-sidebars')
 		);
-		echo '<a style="display:none;" class="thickbox js-cas-pro-popup" href="#TB_inline&amp;width=630&amp;height=230&amp;inlineId=pro-popup-notice" title="'.__('Buy Content Aware Sidebars Pro','content-aware-sidebars').'"></a>';
+		echo '<a style="display:none;" class="thickbox js-cas-pro-popup" href="#TB_inline?width=600&amp;height=235&amp;inlineId=pro-popup-notice" title="'.__('Content Aware Sidebars Pro','content-aware-sidebars').'"></a>';
 		echo '<div id="pro-popup-notice" style="display:none;">';
 		echo '<img style="margin-top:15px;" class="alignright" src="'.plugins_url('../css/icon.png', __FILE__).'" width="128" height="128" />';
 		echo '
@@ -101,7 +123,7 @@ abstract class CAS_Admin {
 		echo '<p>'.sprintf(__('Enhance your sidebars and widget areas with: %s and more.','content-aware-sidebars'),strtolower(implode(', ', $features))).'</p>';
 		echo '<p>'.__('You can upgrade without leaving the admin panel by clicking below.','content-aware-sidebars');
 		echo '<br />'.__('Free updates and email support included.','content-aware-sidebars').'</p>';
-		echo '<p><a class="button-primary" target="_blank" href="'.esc_url(cas_fs()->get_upgrade_url()).'">'.__('Buy Now','content-aware-sidebars').'</a> <a href="" class="button-secondary js-cas-pro-read-more" target="_blank" href="">'.__('Read More','content-aware-sidebars').'</a></p>';
+		echo '<p><a class="button-primary" target="_blank" href="'.esc_url(cas_fs()->get_upgrade_url()).'">'.__('Upgrade Now','content-aware-sidebars').'</a> <a href="" class="button-secondary js-cas-pro-read-more" target="_blank" href="">'.__('Read More','content-aware-sidebars').'</a></p>';
 		echo '</div>';
 	}
 
