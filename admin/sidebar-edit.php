@@ -20,9 +20,14 @@ final class CAS_Sidebar_Edit extends CAS_Admin {
 	 */
 	private $_tour_manager;
 
-	public function __construct() {
-		parent::__construct();
-
+	/**
+	 * Add filters and actions for admin dashboard
+	 * e.g. AJAX calls
+	 *
+	 * @since  3.5
+	 * @return void
+	 */
+	public function admin_hooks() {
 		$this->_tour_manager = new WP_Pointer_Tour(CAS_App::META_PREFIX.'cas_tour');
 
 		add_action('delete_post',
@@ -57,6 +62,16 @@ final class CAS_Sidebar_Edit extends CAS_Admin {
 	}
 
 	/**
+	 * Add filters and actions for frontend
+	 *
+	 * @since  3.5
+	 * @return void
+	 */
+	public function frontend_hooks() {
+
+	}
+
+	/**
 	 * Show extra elements in content type list
 	 *
 	 * @since 3.3
@@ -64,7 +79,10 @@ final class CAS_Sidebar_Edit extends CAS_Admin {
 	 */
 	public function add_to_module_list($list) {
 		if(get_post_type() == CAS_App::TYPE_SIDEBAR) {
-			$list[''] = __('URLs (Pro Feature)','content-aware-sidebars');
+			$list[''] = array(
+				'name' =>__('URLs (Pro Feature)','content-aware-sidebars'),
+				'default_value' => ''
+			);
 		}
 		return $list;
 	}
@@ -369,9 +387,9 @@ final class CAS_Sidebar_Edit extends CAS_Admin {
 		$post_ID = $post->ID;
 		$post_type_object = get_post_type_object( $post->post_type );
 
-		$messages = $this->sidebar_updated_messages($post);
 		$message = false;
 		if ( isset($_GET['message']) ) {
+			$messages = $this->sidebar_updated_messages($post);
 			$_GET['message'] = absint( $_GET['message'] );
 			if ( isset($messages[$_GET['message']]) )
 				$message = $messages[$_GET['message']];

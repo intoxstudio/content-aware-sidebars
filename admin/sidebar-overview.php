@@ -20,13 +20,26 @@ final class CAS_Sidebar_Overview extends CAS_Admin {
 	 */
 	public $table;
 
-	public function __construct() {
-		parent::__construct();
+	/**
+	 * Add filters and actions for admin dashboard
+	 * e.g. AJAX calls
+	 *
+	 * @since  3.5
+	 * @return void
+	 */
+	public function admin_hooks() {
+		add_filter('set-screen-option',
+			array($this,'set_screen_option'), 10, 3);
+	}
 
-		if(is_admin()) {
-			add_filter('set-screen-option',
-				array($this,'set_screen_option'), 10, 3);
-		}
+	/**
+	 * Add filters and actions for frontend
+	 *
+	 * @since  3.5
+	 * @return void
+	 */
+	public function frontend_hooks() {
+
 	}
 
 	/**
