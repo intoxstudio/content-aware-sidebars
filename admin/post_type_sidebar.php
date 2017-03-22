@@ -33,9 +33,9 @@ class CAS_Post_Type_Sidebar {
 					array(__CLASS__,'create_meta_boxes'));
 				add_action('save_post_'.$post_type->name,
 					array(__CLASS__,'save_post_sidebars'),10,2);
-				add_action('admin_enqueue_scripts',
-					array(__CLASS__,'enqueue_scripts'),8);
 			}
+			add_action('admin_enqueue_scripts',
+				array(__CLASS__,'enqueue_scripts'),8);
 		}
 	}
 

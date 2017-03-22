@@ -23,7 +23,43 @@
 
 			this.addSidebarToolbar();
 			this.addWidgetSearch();
+			this.toggleSidebarStatus();
 
+		},
+
+		/**
+		 * Initiate
+		 *
+		 * @since  3.3
+		 * @return {void}
+		 */
+		toggleSidebarStatus: function() {
+			$(".widget-liquid-right").on('change','.sidebar-status-input',function(e) {
+				var $this = $(this),
+					status = $this.is(':checked');
+
+				if(!($this.hasClass('sidebar-status-future') && !confirm(CASAdmin.enableConfirm))) {
+					$.post(
+					    ajaxurl, 
+					    {
+							'action'    : 'cas_sidebar_status',
+							'sidebar_id': $this.val(),
+							'status'    : status
+					    }, 
+					    function(response){
+					    	if(response.success) {
+					    		//change title attr
+					    		$this.next().attr('title',response.data.title);
+					    		$this.removeClass('sidebar-status-future');
+					    	} else {
+					    		$this.attr('checked',!status);
+					    	}
+					    }
+					);
+				} else {
+					$this.attr('checked',!status);
+				}
+			});
 		},
 		/**
 		 * Add search input for widgets
@@ -45,7 +81,7 @@
 			var that = this,
 				filterTimer,
 				cachedFilter = "";
-			this.$widgetContainer.on('keyup', '.js-cas-widget-filter',function(e) {
+			this.$widgetContainer.on('input', '.js-cas-widget-filter',function(e) {
 				var filter = $(this).val();
 				if(filter != cachedFilter) {
 					cachedFilter = filter;
@@ -121,7 +157,7 @@
 			var that = this,
 				filterTimer,
 				cachedFilter = "";
-			this.$sidebarContainer.on('keyup', '.js-cas-filter',function(e) {
+			this.$sidebarContainer.on('input', '.js-cas-filter',function(e) {
 				var filter = $(this).val();
 				if(filter != cachedFilter) {
 					cachedFilter = filter;
