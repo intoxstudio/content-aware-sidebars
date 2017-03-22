@@ -73,9 +73,6 @@ final class CAS_App {
 
 	public function __construct() {
 
-		//__('Manage and show sidebars according to the content being viewed.','content-aware-sidebars');
-		//__('Content Aware Sidebars','content-aware-sidebars');
-
 		$this->_manager = new CAS_Sidebar_Manager();
 
 		if(is_admin()) {
