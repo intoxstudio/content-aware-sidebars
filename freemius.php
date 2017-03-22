@@ -21,15 +21,16 @@ function cas_fs() {
 		require_once dirname(__FILE__) . '/lib/freemius/start.php';
 
 		$cas_fs = fs_dynamic_init( array(
-			'id'                => '259',
-			'slug'              => 'content-aware-sidebars',
-			'public_key'        => 'pk_75513325effa77f024565ef74c9d6',
-			'is_premium'        => true,
-			'has_addons'        => false,
-			'has_paid_plans'    => true,
-			'menu'              => array(
-				'slug'       => 'wpcas',
-				'support'    => false
+			'id'                  => '259',
+			'slug'                => 'content-aware-sidebars',
+			'type'                => 'plugin',
+			'public_key'          => 'pk_75513325effa77f024565ef74c9d6',
+			'is_premium'          => true,
+			'has_addons'          => false,
+			'has_paid_plans'      => true,
+			'menu'                => array(
+				'slug'           => 'wpcas',
+				'support'        => false,
 			)
 		) );
 	}
@@ -39,6 +40,8 @@ function cas_fs() {
 
 // Init Freemius.
 cas_fs();
+// Signal that SDK was initiated.
+do_action( 'cas_fs_loaded' );
 
 global $cas_fs;
 
