@@ -25,6 +25,26 @@
 			this.addWidgetSearch();
 			this.toggleSidebarStatus();
 
+			var $widget_list = $('#widget-list');
+
+			$('div.widgets-sortables')
+			.on('sortstart',function(e,ui) {
+				console.log("YO");
+				$widget_list.css('overflow-y','visible');
+			})
+			.on('sortstop',function(e,ui) {
+				$widget_list.css('overflow-y','auto');
+			});
+
+			
+			$('#widget-list').children('.widget')
+			.on('dragstart',function(e,ui) {
+				$widget_list.css('overflow-y','visible');
+			})
+			.on('dragstop',function(e,ui) {
+				$widget_list.css('overflow-y','auto');
+			});
+
 		},
 
 		/**
@@ -113,8 +133,8 @@
 			var box = '<div class="wp-filter cas-filter-sidebar">'+
 			'<a href="admin.php?page=wpcas-edit" class="button button-primary">'+CASAdmin.addNew+'</a>'+
 			'<input type="search" class="js-cas-filter" placeholder="'+CASAdmin.filterSidebars+'...">'+
-			'<a href="#" class="js-sidebars-toggle sidebars-toggle" data-toggle="0">'+CASAdmin.collapse+'</a>'+
-			'<a href="#" class="js-sidebars-toggle sidebars-toggle" data-toggle="1">'+CASAdmin.expand+'</a>'+
+			'<a href="#" title="'+CASAdmin.collapse+'" class="js-sidebars-toggle sidebars-toggle" data-toggle="0"><span class="dashicons dashicons-arrow-up-alt2"></span></a>'+
+			'<a href="#" title="'+CASAdmin.expand+'" class="js-sidebars-toggle sidebars-toggle" data-toggle="1"><span class="dashicons dashicons-arrow-down-alt2"></span></a>'+
 			'</div>';
 
 			this.$sidebarContainer.prepend(box);
