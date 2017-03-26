@@ -80,7 +80,7 @@ function cas_fs_upgrade() {
 			if($upgrade_flag) {
 				//upgrade
 				update_option($flag,$upgrade_flag);
-				require(plugin_dir_path( __FILE__ ).'/lib/content-aware-premium/upgrade.php');
+				do_action('cas/plugin_upgraded');
 			}
 		}
 	}
