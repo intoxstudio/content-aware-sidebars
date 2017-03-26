@@ -38,11 +38,7 @@ abstract class CAS_Admin {
 	public function add_menu() {
 		$this->_screen = $this->get_screen();
 		add_action('load-'.$this->_screen,
-			array($this,'prepare_screen'));
-		add_action('load-'.$this->_screen,
-			array($this,'add_scripts_styles'));
-		add_action('load-'.$this->_screen,
-			array($this,'prepare_upgrade_modal'));
+			array($this,'load_screen'));
 	}
 
 	/**
@@ -79,6 +75,14 @@ abstract class CAS_Admin {
 	abstract public function prepare_screen();
 
 	/**
+	 * Authorize user for screen
+	 *
+	 * @since  3.5
+	 * @return boolean
+	 */
+	abstract public function authorize_user();
+
+	/**
 	 * Register and enqueue scripts styles
 	 * for screen
 	 *
@@ -92,7 +96,16 @@ abstract class CAS_Admin {
 	 * @since  3.4.1
 	 * @return void
 	 */
-	public function prepare_upgrade_modal() {
+	public function load_screen() {
+		if(!$this->authorize_user()) {
+			wp_die(
+				'<p>' . __( 'You do not have access to this screen.', 'content-aware-sidebars' ) . '</p>',
+				403
+			);
+		}
+		$this->prepare_screen();
+		add_action('admin_enqueue_scripts',
+			array($this,'add_scripts_styles'),11);
 		if ( cas_fs()->is_not_paying() ) {
 			add_thickbox();
 			//enqueue scripts here
