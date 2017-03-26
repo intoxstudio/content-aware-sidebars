@@ -378,7 +378,7 @@ final class CAS_Sidebar_Edit extends CAS_Admin {
 					), $sendback ));
 					exit();
 				default:
-					do_action('cas/admin/action', $action, $post_id);
+					do_action('cas/admin/action', $action, $post);
 					break;
 			}
 		}
