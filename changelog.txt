@@ -1,3 +1,30 @@
+= 3.1.2 =
+
+* Added: wordpress 4.5 support
+* Added: module javascript more extensible
+* Fixed: styling for autocomplete input fields
+* Fixed: updated translations
+
+= 3.1.1 =
+
+* Added: pods pages module, props @sc0ttkclark @herold
+* Fixed: better compat when other themes or plugins load breaking scripts
+
+= 3.1 =
+
+* Added: completely rewritten sidebar editor ui
+* Added: refactored plugin into more logical abstractions
+* Added: wp-db-updater now handles database updates
+* Added: tour reflects new sidebar editor ui
+* Added: review notice after 2 weeks use
+* Added: admin footer text on relevant pages
+* Added: minified some scripts
+* Added: qtranslate x module
+* Fixed: sidebar and widget filtering for wp4.4+
+* Fixed: bug making attachments not selectable
+* Fixed: bumped versions for integrated plugins
+* Removed: qtranslate module
+
 = 3.0.1 =
 
 * Added: wp4.4 compatibility
