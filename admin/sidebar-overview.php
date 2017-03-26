@@ -73,6 +73,18 @@ final class CAS_Sidebar_Overview extends CAS_Admin {
 		);
 	}
 
+
+	/**
+	 * Authorize user for screen
+	 *
+	 * @since  3.5
+	 * @return boolean
+	 */
+	public function authorize_user() {
+		$post_type_object = get_post_type_object(CAS_App::TYPE_SIDEBAR);
+		return current_user_can( $post_type_object->cap->edit_posts );
+	}
+
 	/**
 	 * Prepare screen load
 	 *
@@ -80,14 +92,6 @@ final class CAS_Sidebar_Overview extends CAS_Admin {
 	 * @return void
 	 */
 	public function prepare_screen() {
-		
-		$post_type_object = get_post_type_object(CAS_App::TYPE_SIDEBAR);
-		if ( ! current_user_can( $post_type_object->cap->edit_posts ) ) {
-			wp_die(
-				'<p>' . __( 'You are not allowed to edit sidebars.', 'content-aware-sidebars' ) . '</p>',
-				403
-			);
-		}
 
 		add_screen_option( 'per_page', array(
 			'default' => 20,

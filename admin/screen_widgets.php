@@ -25,6 +25,16 @@ class CAS_Admin_Screen_Widgets extends CAS_Admin {
 	}
 
 	/**
+	 * Authorize user for screen
+	 *
+	 * @since  3.5
+	 * @return boolean
+	 */
+	public function authorize_user() {
+		return true;
+	}
+
+	/**
 	 * Prepare screen load
 	 *
 	 * @since  3.4
