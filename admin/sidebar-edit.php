@@ -563,9 +563,11 @@ final class CAS_Sidebar_Edit extends CAS_Admin {
 				$post_data['post_date'] = current_time( 'mysql' );
 			}
 		} elseif($_POST['sidebar_activate']) {
+			$_POST['post_status'] = CAS_App::STATUS_SCHEDULED; //yoast seo expects this
 			$post_data['post_status'] = CAS_App::STATUS_SCHEDULED;
 			$post_data['post_date'] = $_POST['sidebar_activate'];
 		} else {
+			$_POST['post_status'] = CAS_App::STATUS_INACTIVE;
 			$post_data['post_status'] = CAS_App::STATUS_INACTIVE;
 		}
 
