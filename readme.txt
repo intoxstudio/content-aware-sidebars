@@ -1,38 +1,39 @@
-=== Plugin Name ===
+=== Content Aware Sidebars - Widget Area Control ===
 Contributors: intoxstudio, devinstitute, freemius
-Donate link:
-Tags: sidebar, sidebars, custom sidebars, page sidebars, replace sidebar, create sidebars, replace widget area, bbpress, buddypress, polylang, pods, conditional
-Requires at least: 3.9
+Donate link: #
+Tags: sidebar, sidebars, custom sidebars, page sidebars, replace sidebar, create sidebars, create widget area, bbpress, buddypress, polylang, pods, sidebar manager
+Requires at least: 4.0
 Tested up to: 4.7
-Stable tag: 3.4.3
+Stable tag: 3.5
 License: GPLv3
 
 Display custom sidebars on any post, page, category etc. Supports bbPress, BuddyPress, WooCommerce, Easy Digital Downloads and more.
 
 == Description ==
 
-#### The Best Sidebar Plugin for WordPress
+**Display tailored sidebars and widget areas on any post, page or custom post type on your WordPress site. No coding required!**
 
-With Content Aware Sidebars you can create post sidebars, page sidebars, category sidebars, or any custom sidebar you need. Use it to boost on-site SEO, upsell your products or get better-converting Call-to-Actions by displaying different sidebars on different conditions.
+Use Content Aware Sidebars to boost on-site SEO, upsell your products or get better-converting Call-to-Actions by displaying different sidebars on different conditions. The Sidebar Manager makes it incredibly easy to create and manage widget areas in any theme.
 
-The sidebar manager makes it incredibly easy for you to create tailored widget areas in any theme. Developed with scalability and performance in mind, Content Aware Sidebars is the only plugin of its kind that will never slow down your site no matter the size.
-
-No coding required!
+Content Aware Sidebars is built to scale and will never slow down your site no matter the size.
 
 ####Create Unlimited Sidebars and Widget Areas
 
-* Easy-to-use Sidebar Manager
+* All-in-one Sidebar Manager
 * Create or select sidebars directly when editing a post or page
 * Merge with, replace and hide sidebars in any theme
 * Activate and deactivate sidebars on schedule
 * Sidebar Visibility for All or Logged-in Users
-* Enhanced Widgets Admin Screen
-* Automatic support for Custom Post Types and Taxonomies
+* Enhanced Widgets Admin Screen with sidebar and widget search
 * Optional Template Tag to display custom sidebars anywhere in your theme
 * Optional Shortcode to display custom sidebars anywhere in your content
 * Multilingual and Translation Ready ([help translate!](https://translate.wordpress.org/projects/wp-plugins/content-aware-sidebars))
 
 ####Display Different Sidebars on Any Content
+
+Create post sidebars, page sidebars, category sidebars, or any custom sidebar you need. Content Aware Sidebars even allows you to combine conditions in any way you like very efficiently. This means that you e.g. can display a custom sidebar on all posts in Category X written by author Y.
+
+For each widget area you create, you can select the following conditions:
 
 * Singulars, eg. each post, page, or custom post type
 * Content with select taxonomies, eg. categories or tags
@@ -51,9 +52,9 @@ No coding required!
 * Languages (qTranslate X, Polylang, Transposh, WPML)
 * Pods Pages
 
-Content Aware Sidebars is the only plugin that allows you to combine conditions in any way you like, so you can display a custom sidebar on all posts in Category X written by author Y. It is also possible to negate the conditions, e.g. to display a sidebar on all pages except Page X.
-
 ####Plugin Integrations and Support
+
+Content Aware Sidebars automatically supports Custom Post Types and Taxonomies created by any plugin or theme. Moreover, it comes with built-in support for some of the most popular WordPress plugins.
 
 * [bbPress](https://dev.institute/wordpress/sidebars-pro/bbpress/?utm_source=readme&utm_medium=referral&utm_content=integration&utm_campaign=cas)
 * [BuddyPress](https://dev.institute/wordpress/sidebars-pro/buddypress/?utm_source=readme&utm_medium=referral&utm_content=integration&utm_campaign=cas)
@@ -75,8 +76,9 @@ Content Aware Sidebars is the only plugin that allows you to combine conditions 
 > * Display sidebars on content from any day, month, year
 > * Display sidebars in select time ranges on given days
 > * Sidebar Visibility for Roles and Guests
-> * 1-click Sidebar Activation
-> * Sync Widgets on Theme Switch
+> * Duplicate Sidebars & Sidebar Conditions
+> * Disable Widgets
+> * Sync Sidebar Widgets on Theme Switch
 > * [and more...](https://dev.institute/wordpress/sidebars-pro/features/?utm_source=readme&utm_medium=referral&utm_content=more&utm_campaign=cas)
 >
 > You can upgrade at any time directly and securely from your Admin Dashboard via [Freemius](http://freemius.com/)!
@@ -101,22 +103,63 @@ Content Aware Sidebars is the only plugin that allows you to combine conditions 
 
 == Frequently Asked Questions ==
 
-[Click here to view the FAQs for Content Aware Sidebars.](https://dev.institute/docs/content-aware-sidebars/faq/?utm_source=readme&utm_medium=referral&utm_content=faq&utm_campaign=cas)
+= Will this plugin work with my theme? =
+
+Yes!
+
+If your theme already has sidebars and widget areas, you can create new custom sidebars to replace, merge with or hide those on certain conditions.
+
+If it doesn't, it is still possible to display custom sidebars using the function ca_display_sidebar() in your theme or using the shortcode [ca-sidebar] in your content.
+
+= Can I really display sidebars and widget areas on any content? =
+
+Yep.
+
+In the Sidebar Editor, you can select on what conditions your sidebar should be displayed. You can also select sidebars directly when you're editing a post or page.
+
+[Click here to read more about sidebar conditions](https://dev.institute/docs/content-aware-sidebars/getting-started/display-sidebar-simple/?utm_source=readme&utm_medium=referral&utm_content=faq&utm_campaign=cas).
+
+= I have other questions, can you help? =
+
+Of course!
+
+[Click here to view the Documentation and FAQ](https://dev.institute/docs/content-aware-sidebars/?utm_source=readme&utm_medium=referral&utm_content=faq&utm_campaign=cas) or [click here to view the Support Forums](https://dev.institute/docs/content-aware-sidebars/?utm_source=readme&utm_medium=referral&utm_content=faq&utm_campaign=cas)
 
 == Screenshots ==
 
-[Click here to view the latest screenshots and examples of Content Aware Sidebars.](https://dev.institute/wordpress/sidebars-pro/?utm_source=readme&utm_medium=referral&utm_content=screenshots&utm_campaign=cas)
+1. Easily create custom sidebars and display them on any content
+1. See your widget areas at a glance in the Sidebar Manager
+1. Filter widgets and sidebars in the Enhanced Widget Manager
 
 == Upgrade Notice ==
 
-= 3.4 = 
+= 3.5 = 
 
 * Content Aware Sidebars data in your database will be updated automatically. It is highly recommended to backup this data before updating the plugin.
 * Data from version 0.8 and below will not be updated during this process.
 
 == Changelog ==
 
-[View development on GitHub](https://github.com/intoxstudio/content-aware-sidebars)
+[Follow development on GitHub](https://github.com/intoxstudio/content-aware-sidebars)
+
+= 3.5 =
+
+[View Release Notes](https://dev.institute/content-aware-sidebars-version-3-5-released/?utm_source=readme&utm_medium=referral&utm_content=changelog&utm_campaign=cas)
+
+* Added: 1-click sidebar activation
+* Added: improved design on widgets screen
+* Added: autosave conditions
+* Added: simplify option to autoselect conditions
+* Added: UI improvements
+* Added: minimum requirement wordpress 4.0
+* Added: freemius sdk updated
+* Added: actions and filters for developers
+
+**Pro Plan:**
+
+* Added: duplicate sidebars and conditions
+* Added: disable widgets
+* Fixed: improved upgrade routine
 
 = 3.4.3 =
 
@@ -274,32 +317,5 @@ Content Aware Sidebars is the only plugin that allows you to combine conditions 
 * Added: sidebar column for post type overviews
 * Added: widget synchronization across themes
 * Added: white label admin screens
-
-= 3.1.2 =
-
-* Added: wordpress 4.5 support
-* Added: module javascript more extensible
-* Fixed: styling for autocomplete input fields
-* Fixed: updated translations
-
-= 3.1.1 =
-
-* Added: pods pages module, props @sc0ttkclark @herold
-* Fixed: better compat when other themes or plugins load breaking scripts
-
-= 3.1 =
-
-* Added: completely rewritten sidebar editor ui
-* Added: refactored plugin into more logical abstractions
-* Added: wp-db-updater now handles database updates
-* Added: tour reflects new sidebar editor ui
-* Added: review notice after 2 weeks use
-* Added: admin footer text on relevant pages
-* Added: minified some scripts
-* Added: qtranslate x module
-* Fixed: sidebar and widget filtering for wp4.4+
-* Fixed: bug making attachments not selectable
-* Fixed: bumped versions for integrated plugins
-* Removed: qtranslate module
 
 See changelog.txt for previous changes.
