@@ -803,12 +803,12 @@ final class CAS_Sidebar_Edit extends CAS_Admin {
 	 * @return void
 	 */
 	public function admin_notice_review() {
+
 		$has_reviewed = get_user_option(CAS_App::META_PREFIX.'cas_review');
 		if($has_reviewed === false) {
-			$tour_taken = $this->_tour_manager->get_user_option();
+			$tour_taken = (int) $this->_tour_manager->get_user_option();
 			if($tour_taken && (time() - $tour_taken) >= WEEK_IN_SECONDS) {
 				$current_user = wp_get_current_user();
-
 				//updated class for wp4.0 and below
 				echo '<div class="notice notice-success updated js-cas-notice-review">';
 				echo '<p>';
