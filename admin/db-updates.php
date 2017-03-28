@@ -18,6 +18,39 @@ $cas_db_updater->register_version_update('2.0','cas_update_to_20');
 $cas_db_updater->register_version_update('3.0','cas_update_to_30');
 $cas_db_updater->register_version_update('3.1','cas_update_to_31');
 $cas_db_updater->register_version_update('3.4','cas_update_to_34');
+$cas_db_updater->register_version_update('3.5','cas_update_to_35');
+
+/**
+ * Update to version 3.5
+ * Simplify auto select option
+ * Remove old review data
+ *
+ * @since  3.5
+ * @return boolean
+ */
+function cas_update_to_35() {
+	global $wpdb;
+
+	$group_ids = $wpdb->get_col("SELECT post_id FROM $wpdb->postmeta WHERE meta_value LIKE '_ca_sub_%'");
+	foreach ($group_ids as $group_id) {
+		add_post_meta($group_id,'_ca_autoselect',1,true);
+	}
+
+	$wpdb->query("
+		DELETE FROM $wpdb->postmeta 
+		WHERE meta_value = '_ca_sub_%'
+	");
+
+	$wpdb->query("
+		DELETE FROM $wpdb->usermeta 
+		WHERE meta_key = 'wp__ca_cas_review' 
+		AND meta_value != '1' 
+		AND CAST(meta_value AS DECIMAL) <= 1459468800
+	");
+
+	return true;
+}
+
 
 /**
  * Version 3.3.3 -> 3.4
