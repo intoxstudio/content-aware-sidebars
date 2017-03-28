@@ -71,21 +71,24 @@ function cas_fs_upgrade() {
 	global $cas_fs;
 	$flag = 'cas_pro';
 	$upgrade_flag = (int)$cas_fs->can_use_premium_code();
-	if($upgrade_flag != get_option($flag,0)) {
+	
+	if($upgrade_flag != (int)get_option($flag,0)) {
 		if(!$upgrade_flag) {
 			//downgrade
 			update_option($flag,$upgrade_flag);
 		}
 		if($cas_fs->is__premium_only()) {
+			//because upgrade script is behind paywall
+			//we need to fire this early, triggers on second page load after upgrade
 			if($upgrade_flag) {
 				//upgrade
+				//listen to update_option_cas_pro
 				update_option($flag,$upgrade_flag);
-				do_action('cas/plugin_upgraded');
 			}
 		}
 	}
 }
-add_action('admin_footer','cas_fs_upgrade',99);
+add_action('admin_init','cas_fs_upgrade',999);
 
 function cas_fs_uninstall() {
 	require(plugin_dir_path( __FILE__ ).'/cas_uninstall.php');
