@@ -4,7 +4,7 @@ Donate link: #
 Tags: sidebar, sidebars, custom sidebars, page sidebars, replace sidebar, create sidebars, create widget area, bbpress, buddypress, polylang, pods, sidebar manager
 Requires at least: 4.0
 Tested up to: 4.7
-Stable tag: 3.5
+Stable tag: 3.5.1
 License: GPLv3
 
 Display custom sidebars on any post, page, category etc. Supports bbPress, BuddyPress, WooCommerce, Easy Digital Downloads and more.
@@ -133,7 +133,7 @@ Of course!
 
 == Upgrade Notice ==
 
-= 3.5 = 
+= 3.5.1 = 
 
 * Content Aware Sidebars data in your database will be updated automatically. It is highly recommended to backup this data before updating the plugin.
 * Data from version 0.8 and below will not be updated during this process.
@@ -142,9 +142,13 @@ Of course!
 
 [Follow development on GitHub](https://github.com/intoxstudio/content-aware-sidebars)
 
-= 3.5 =
+= 3.5.1 =
 
 [View Release Notes](https://dev.institute/content-aware-sidebars-version-3-5-released/?utm_source=readme&utm_medium=referral&utm_content=changelog&utm_campaign=cas)
+
+* Fixed: database upgrade script
+
+= 3.5 =
 
 * Added: 1-click sidebar activation
 * Added: improved design on widgets screen
