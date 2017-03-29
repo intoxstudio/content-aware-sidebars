@@ -116,7 +116,7 @@ final class CAS_Sidebar_Edit extends CAS_Admin {
 			echo '<div style="float:right;"><a href="'.esc_url($url).'" class="button button-cas-upgrade button-small" target="_blank">'.__('Upgrade to Pro','content-aware-sidebars').'</a></div>';
 			echo '<div style="line-height:24px;">';
 			echo '<span class="cas-heart">❤</span> ';
-			printf(__('Like it? %1$sSupport the plugin with a %2$s Review%3$s','content-aware-sidebars'),'<b><a target="_blank" href="https://wordpress.org/support/view/plugin-reviews/content-aware-sidebars?filter=5#postform">','5★','</a></b>');
+			printf(__('Like it? %1$sSupport the plugin with a %2$s Review%3$s','content-aware-sidebars'),'<b><a target="_blank" href="https://wordpress.org/support/plugin/content-aware-sidebars/reviews/?rate=5#new-post">','5★','</a></b>');
 			echo '</div>';
 			echo '</div>';
 		}
@@ -818,11 +818,11 @@ final class CAS_Sidebar_Edit extends CAS_Admin {
 				);
 				echo '<br>';
 				printf(__("I have spent countless hours developing it, and it would mean a lot to me if you %ssupport it with a quick review on WordPress.org.%s",'content-aware-sidebars'),
-					'<strong><a target="_blank" href="https://wordpress.org/support/view/plugin-reviews/content-aware-sidebars?filter=5#postform">',
+					'<strong><a target="_blank" href="https://wordpress.org/support/plugin/content-aware-sidebars/reviews/?rate=5#new-post">',
 					'</a></strong>'
 				);
 				echo '</p>';
-				echo '<p><a target="_blank" class="button-primary" href="https://wordpress.org/support/view/plugin-reviews/content-aware-sidebars?filter=5#postform">'.__('Review Content Aware Sidebars','content-aware-sidebars').'</a> <button class="button-secondary">'.__("No thanks",'content-aware-sidebars').'</button></p>';
+				echo '<p><a target="_blank" class="button-primary" href="https://wordpress.org/support/plugin/content-aware-sidebars/reviews/?rate=5#new-post">'.__('Review Content Aware Sidebars','content-aware-sidebars').'</a> <button class="button-secondary">'.__("No thanks",'content-aware-sidebars').'</button></p>';
 				echo '</div>';
 			}
 		}
@@ -954,7 +954,7 @@ final class CAS_Sidebar_Edit extends CAS_Admin {
 			<div style="overflow:hidden;">
 				<ul>
 <?php if($locale != "en_US") : ?>
-					<li><a href="https://www.transifex.com/projects/p/content-aware-sidebars/" target="_blank"><?php _e('Translate the plugin into your language','content-aware-sidebars'); ?></a></li>
+					<li><a href="https://translate.wordpress.org/projects/wp-plugins/content-aware-sidebars" target="_blank"><?php _e('Translate the plugin into your language','content-aware-sidebars'); ?></a></li>
 <?php endif; ?>
 					<li><a href="https://dev.institute/docs/content-aware-sidebars/?utm_source=plugin&amp;utm_medium=referral&amp;utm_content=info-box&amp;utm_campaign=cas" target="_blank"><?php _e('Documentation','content-aware-sidebars'); ?></a></li>
 					<li><a href="https://dev.institute/docs/content-aware-sidebars/getting-started/?utm_source=plugin&amp;utm_medium=referral&amp;utm_content=info-box&amp;utm_campaign=cas" target="_blank"><?php _e('Get Started','content-aware-sidebars'); ?></a></li>
