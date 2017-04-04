@@ -35,7 +35,9 @@ class CAS_Post_Type_Sidebar {
 					array(__CLASS__,'save_post_sidebars'),10,2);
 			}
 			add_action('admin_enqueue_scripts',
-				array(__CLASS__,'enqueue_scripts'),8);
+				array(__CLASS__,'register_scripts'),8);
+			add_action('admin_enqueue_scripts',
+				array(__CLASS__,'enqueue_scripts'),11);
 		}
 	}
 
@@ -52,8 +54,7 @@ class CAS_Post_Type_Sidebar {
 				//todo: check for cas id, issue after switching themes
 				self::$_theme_sidebars[$sidebar['id']] = array(
 					'label' => $sidebar['name'],
-					'options' => array(),
-					'select' => array()
+					'options' => array()
 				);
 			}
 		}
@@ -96,7 +97,8 @@ class CAS_Post_Type_Sidebar {
 		$user_can_create_sidebar = current_user_can(CAS_App::CAPABILITY);
 
 		foreach ($new as $host => $sidebar_id_string) {
-			$sidebar_ids = explode(',', $sidebar_id_string);
+			//$sidebar_ids = explode(',', $sidebar_id_string);
+			$sidebar_ids = $sidebar_id_string;
 			foreach ($sidebar_ids as $sidebar_id) {
 				//Post has sidebar already
 				if(isset($relations[$sidebar_id])) {
@@ -202,13 +204,13 @@ class CAS_Post_Type_Sidebar {
 		foreach ($sidebars as $sidebar) {
 			$host_id = $host_meta->get_data($sidebar->ID);
 			if(isset(self::$_theme_sidebars[$host_id])) {
-				self::$_theme_sidebars[$host_id]['options'][] = array(
+				self::$_theme_sidebars[$host_id]['options'][$sidebar->ID] = array(
 					'id' => $sidebar->ID,
 					'text' => $sidebar->post_title.self::sidebar_states($sidebar)
 				);
 			}
 			if(isset($post_sidebars[$sidebar->ID])) {
-				self::$_theme_sidebars[$host_id]['select'][$sidebar->ID] = $sidebar->ID;
+				self::$_theme_sidebars[$host_id]['options'][$sidebar->ID]['select'] = 1;
 			}
 		}
 
@@ -218,11 +220,10 @@ class CAS_Post_Type_Sidebar {
 			'labelNew' => __('New','content-aware-sidebars')
 		);
 		if($labels['canCreate']) {
-			$labels['notFound'] = __('Type to Add New Sidebar');
+			$labels['notFound'] = __('Type to Add New Sidebar','content-aware-sidebars');
 		} else {
-			$labels['notFound'] = __('No sidebars found');
+			$labels['notFound'] = __('No sidebars found','content-aware-sidebars');
 		}
-		$labels['sidebars'] = self::$_theme_sidebars;
 		wp_localize_script('cas/sidebars/suggest', 'CAS', $labels);
 
 		$post_type = get_post_type_object($post->post_type);
@@ -253,7 +254,14 @@ class CAS_Post_Type_Sidebar {
 
 			echo '<div><label style="display:block;padding:8px 0 4px;font-weight:bold;" for="ca_sidebars_'.$id.'">'.$sidebar['label'].'</label>';
 
-			echo '<input id="ca_sidebars_'.$id.'" class="js-cas-sidebars" type="text" name="cas_sidebars['.$id.']" value="'.implode(",", $sidebar['select']).'" placeholder="'.__('Default').'" /></div>';
+			echo '<select style="width:100%;" id="ca_sidebars_'.$id.'" class="js-cas-sidebars" name="cas_sidebars['.$id.'][]" multiple data-placeholder="'.__('Default').'">';
+			foreach ($sidebar['options'] as $sidebar) {
+				echo '<option value="'.$sidebar['id'].'" '.selected(isset($sidebar['select']),true,false).'>'.$sidebar['text'].'</option>';
+			}
+			if($labels['canCreate']) {
+				echo '<option value="0" disabled="disabled">'.__('Type to Add New Sidebar','content-aware-sidebars').'</option>';
+			}
+			echo '</select></div>';
 			$i++;
 		}
 		if($i > $limit) {
@@ -290,28 +298,45 @@ class CAS_Post_Type_Sidebar {
 		return $status;
 	}
 
+	/**
+	 * Register scripts and styles
+	 * We register early to make sure our select2 comes first
+	 *
+	 * @since  3.5.2
+	 * @param  string  $hook
+	 * @return void
+	 */
+	public static function register_scripts($hook) {
+		$screen = get_current_screen();
+		$module = WPCACore::modules()->get(self::MODULE_NAME);
+
+		if($screen->base == 'post' && $module->_post_types()->has($screen->post_type)) {
+			wp_register_script(
+				'select2',
+				plugins_url('../lib/wp-content-aware-engine/assets/js/select2.min.js', __FILE__),
+				array('jquery'),
+				'4.0.3',
+				false
+			);
+			wp_register_script('cas/sidebars/suggest', plugins_url('/js/suggest-sidebars.min.js', dirname(__FILE__)), array('select2'), CAS_App::PLUGIN_VERSION, true);
+		}
+	}
+
+	/**
+	 * Enqueue scripts and styles
+	 * We enqueue later to make sure our CSS takes precedence
+	 *
+	 * @since  3.5.2
+	 * @param  string  $hook
+	 * @return void
+	 */
 	public static function enqueue_scripts($hook) {
 		$screen = get_current_screen();
 		$module = WPCACore::modules()->get(self::MODULE_NAME);
 
 		if($screen->base == 'post' && $module->_post_types()->has($screen->post_type)) {
-			//we keep a select2 3.5 version because
-			//some plugins (woocommerce) depend on it
-			$select2 = 'select2';
-			wp_register_script(
-				$select2,
-				plugins_url('/js/select2.min.js',dirname(__FILE__)),
-				array('jquery'),
-				'3.5.4',
-				false
-			);
-			wp_enqueue_style(
-				WPCACore::PREFIX.'select2',
-				plugins_url('/css/select2/select2.css', dirname(__FILE__)),
-				array(),
-				'3.5.4'
-			);
-			wp_enqueue_script('cas/sidebars/suggest', plugins_url('/js/suggest-sidebars.js', dirname(__FILE__)), array($select2), CAS_App::PLUGIN_VERSION, true);
+			wp_enqueue_style(CAS_App::META_PREFIX.'condition-groups');
+			wp_enqueue_script('cas/sidebars/suggest');
 		}
 	}
 

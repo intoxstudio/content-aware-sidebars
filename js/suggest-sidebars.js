@@ -46,47 +46,40 @@
 		 * @since 3.3
 		 */
 		suggestSidebars: function() {
-			var hostSidebar;
-			for(hostSidebar in CAS.sidebars) {
-				$elem = $('#ca_sidebars_'+hostSidebar);
-				console.log(CAS.sidebars[hostSidebar]['options']);
-				$elem.select2({
-					containerCssClass:'cas-select2',
-					dropdownCssClass: 'cas-select2',
+			var $elem = $('.js-cas-sidebars');
+			$elem.each(function() {
+				$(this).select2({
+					theme:'wpca',
 					minimumInputLength: 0,
 					closeOnSelect: true,//does not work properly on false
 					allowClear:false,
-					multiple: true,
-					//maximumSelectionSize: 1,
-					data:CAS.sidebars[hostSidebar]['options'],
+					//maximumSelectionLength: 0,
 					width:"100%",
-					createSearchChoicePosition:'bottom',
-					//tokenSeparators: ['|'],
-					// nextSearchTerm: function(selectedObject, currentSearchTerm) {
-					// 	return currentSearchTerm;
-					// },
-					createSearchChoice:function(term, data) {
-						if (CAS.canCreate && term/* && $(data).filter(function() {
-						  return this.text.localeCompare(term) === 0;
-						}).length === 0*/) {
-						  return {
-							id: '_'+term.replace(",","__"),
-							text: term
-						  };
+					multiple:true,//define here to make node work without js
+					tags: CAS.canCreate,
+					escapeMarkup:function (m) {return m;},
+					createTag: function (params) {
+						var term = $.trim(params.term);
+						if (term === '') {
+							return null;
 						}
-						return null;
+						return {
+							id: '_'+term.replace(",","__"),
+							text: term,
+							new:true
+						}
 					},
-					formatSelection: function(term) {
-						return (term.id > 0 ? "" : "<b>("+CAS.labelNew+")</b> ") + term.text;
+					templateSelection: function(term) {
+						return (term.new ? "<b>("+CAS.labelNew+")</b> " : "") + term.text;
 					},
-					formatResult: function(term) {
-						return (term.id > 0 ? "" : "<b>"+CAS.createNew+":</b> ") + term.text;
+					templateResult: function(term) {
+						return (term.new ? "<b>"+CAS.createNew+":</b> " : "") + term.text;
 					},
-					formatNoMatches: function(term) {
+					templateNoMatches: function(term) {
 						return CAS.notFound;
 					}
 				});
-			}
+			});
 		}
 	};
 
