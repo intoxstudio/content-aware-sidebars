@@ -1,7 +1,7 @@
-=== Content Aware Sidebars - Widget Area Control ===
+=== Content Aware Sidebars - Unlimited Widget Areas ===
 Contributors: intoxstudio, devinstitute, freemius
 Donate link: #
-Tags: sidebar, sidebars, custom sidebars, page sidebars, replace sidebar, create sidebars, create widget area, bbpress, buddypress, polylang, pods, sidebar manager
+Tags: custom sidebars, page sidebar, replace sidebar, create sidebars, create widget area, bbpress, buddypress, polylang, pods, sidebar manager
 Requires at least: 4.0
 Tested up to: 4.7
 Stable tag: 3.5.1
@@ -15,7 +15,7 @@ Display custom sidebars on any post, page, category etc. Supports bbPress, Buddy
 
 Use Content Aware Sidebars to boost on-site SEO, upsell your products or get better-converting Call-to-Actions by displaying different sidebars on different conditions. The Sidebar Manager makes it incredibly easy to create and manage widget areas in any theme.
 
-Content Aware Sidebars is built to scale and will never slow down your site no matter the size.
+The Content Aware Sidebars plugin is built to scale and will never slow down your site no matter the size.
 
 ####Create Unlimited Sidebars and Widget Areas
 
@@ -29,9 +29,9 @@ Content Aware Sidebars is built to scale and will never slow down your site no m
 * Optional Shortcode to display custom sidebars anywhere in your content
 * Multilingual and Translation Ready ([help translate!](https://translate.wordpress.org/projects/wp-plugins/content-aware-sidebars))
 
-####Display Different Sidebars on Any Content
+####Display Different Sidebars on Any Page
 
-Create post sidebars, page sidebars, category sidebars, or any custom sidebar you need. Content Aware Sidebars even allows you to combine conditions in any way you like very efficiently. This means that you e.g. can display a custom sidebar on all posts in Category X written by author Y.
+Create a post sidebar, page sidebar, category sidebar, or any custom sidebar you need. Content Aware Sidebars even allows you to combine conditions in any way you like very efficiently. This means that you e.g. can display a custom sidebar on all posts in Category X written by author Y.
 
 For each widget area you create, you can select the following conditions:
 
@@ -52,9 +52,9 @@ For each widget area you create, you can select the following conditions:
 * Languages (qTranslate X, Polylang, Transposh, WPML)
 * Pods Pages
 
-####Plugin Integrations and Support
+####Sidebar Plugin Integrations and Support
 
-Content Aware Sidebars automatically supports Custom Post Types and Taxonomies created by any plugin or theme. Moreover, it comes with built-in support for some of the most popular WordPress plugins.
+Content Aware Sidebars automatically supports Custom Post Types and Taxonomies created by any plugin or theme. Moreover, it comes with built-in support for some of the most popular WordPress plugins. This means that you e.g. can create WooCommerce sidebars for select products or BuddyPress sidebars for your member sections!
 
 * [bbPress](https://dev.institute/wordpress/sidebars-pro/bbpress/?utm_source=readme&utm_medium=referral&utm_content=integration&utm_campaign=cas)
 * [BuddyPress](https://dev.institute/wordpress/sidebars-pro/buddypress/?utm_source=readme&utm_medium=referral&utm_content=integration&utm_campaign=cas)
@@ -66,22 +66,22 @@ Content Aware Sidebars automatically supports Custom Post Types and Taxonomies c
 * [WooCommerce](https://dev.institute/wordpress/sidebars-pro/woocommerce/?utm_source=readme&utm_medium=referral&utm_content=integration&utm_campaign=cas)
 * [WPML](https://dev.institute/wordpress/sidebars-pro/multilingual-plugins/?utm_source=readme&utm_medium=referral&utm_content=integration&utm_campaign=cas)
 
-> ####Content Aware Sidebars Pro
->
-> [Complete control for your custom sidebars](https://dev.institute/wordpress/sidebars-pro/?utm_source=readme&utm_medium=referral&utm_content=title&utm_campaign=cas):
->
-> * Priority Email Support
-> * Automatic Widgets Backup
-> * Display sidebars on URLs + wildcards
-> * Display sidebars on content from any day, month, year
-> * Display sidebars in select time ranges on given days
-> * Sidebar Visibility for Roles and Guests
-> * Duplicate Sidebars & Sidebar Conditions
-> * Disable Widgets
-> * Sync Sidebar Widgets on Theme Switch
-> * [and more...](https://dev.institute/wordpress/sidebars-pro/features/?utm_source=readme&utm_medium=referral&utm_content=more&utm_campaign=cas)
->
-> You can upgrade at any time directly and securely from your Admin Dashboard via [Freemius](http://freemius.com/)!
+####Premium Widget Area Manager - Content Aware Sidebars Pro
+
+[Complete control for your custom sidebars](https://dev.institute/wordpress/sidebars-pro/?utm_source=readme&utm_medium=referral&utm_content=title&utm_campaign=cas):
+
+* Priority Email Support
+* Automatic Widgets Backup
+* Display sidebars on URLs + wildcards
+* Display sidebars on content from any day, month, year
+* Display sidebars in select time ranges on given days
+* Sidebar Visibility for Roles and Guests
+* Duplicate Sidebars & Sidebar Conditions
+* Disable Widgets
+* Sync Sidebar Widgets on Theme Switch
+* [and more...](https://dev.institute/wordpress/sidebars-pro/features/?utm_source=readme&utm_medium=referral&utm_content=more&utm_campaign=cas)
+
+You can upgrade at any time securely from your Admin Dashboard via [Freemius](http://freemius.com/)!
 
 ####More Information
 
@@ -91,10 +91,11 @@ Content Aware Sidebars automatically supports Custom Post Types and Taxonomies c
 
 == Installation ==
 
-1. Unzip and upload the `content-aware-sidebars` folder to your `/wp-content/plugins/` directory via FTP or install the plugin through *Plugins* in the administration 
-1. Activate the plugin through *Plugins* in the administration
-1. Create your first sidebar under the menu *Sidebars > Add New*
-1. Add widgets to the sidebar like any other sidebar
+1. Unzip and upload the `content-aware-sidebars` folder to your `/wp-content/plugins/` directory via FTP or install the plugin in *Plugins* in the Admin Dashboard 
+1. Activate the sidebar plugin in *Plugins* in the Admin Dashboard
+1. Create your first custom sidebar under the menu *Sidebars > Add New*
+1. Add widgets to the new sidebar like any other sidebar
+1. That's it!
 
 [Click here to get started with Content Aware Sidebars.](https://dev.institute/docs/content-aware-sidebars/getting-started/?utm_source=readme&utm_medium=referral&utm_content=install&utm_campaign=cas)
 
@@ -103,32 +104,35 @@ Content Aware Sidebars automatically supports Custom Post Types and Taxonomies c
 
 == Frequently Asked Questions ==
 
-= Will this plugin work with my theme? =
+= Will this sidebar plugin work with my theme? =
 
 Yes!
 
-If your theme already has sidebars and widget areas, you can create new custom sidebars to replace, merge with or hide those on certain conditions.
+If your theme already has WordPress sidebars and widget areas, you can create new custom sidebars to replace, merge with or hide those on certain conditions.
 
-If it doesn't, it is still possible to display custom sidebars using the function ca_display_sidebar() in your theme or using the shortcode [ca-sidebar] in your content.
+If it doesn't, it is still possible to display custom sidebars using the function ca_display_sidebar() in your theme or using the sidebar shortcode [ca-sidebar] in your content.
 
-= Can I really display sidebars and widget areas on any content? =
+= Can I really display sidebars and widget areas on any page? =
 
 Yep.
 
-In the Sidebar Editor, you can select on what conditions your sidebar should be displayed. You can also select sidebars directly when you're editing a post or page.
+In the Sidebar Editor, you can select on what conditions your sidebar should be displayed. Create a sidebar for each page, a sidebar for posts in a category, or any sidebar you need.
+You can also select sidebars directly when you're editing a post or page.
 
 [Click here to read more about sidebar conditions](https://dev.institute/docs/content-aware-sidebars/getting-started/display-sidebar-simple/?utm_source=readme&utm_medium=referral&utm_content=faq&utm_campaign=cas).
 
 = I have other questions, can you help? =
 
-Of course!
+Of course! Just use the links below:
 
-[Click here to view the Documentation and FAQ](https://dev.institute/docs/content-aware-sidebars/?utm_source=readme&utm_medium=referral&utm_content=faq&utm_campaign=cas) or [click here to view the Support Forums](https://dev.institute/docs/content-aware-sidebars/?utm_source=readme&utm_medium=referral&utm_content=faq&utm_campaign=cas)
+* [Getting Started with Content Aware Sidebars](https://dev.institute/docs/content-aware-sidebars/getting-started/?utm_source=readme&utm_medium=referral&utm_content=faq&utm_campaign=cas)
+* [Documentation and FAQ](https://dev.institute/docs/content-aware-sidebars/?utm_source=readme&utm_medium=referral&utm_content=faq&utm_campaign=cas)
+* [Support Forums](https://wordpress.org/support/plugin/content-aware-sidebars)
 
 == Screenshots ==
 
 1. Easily create custom sidebars and display them on any content
-1. See your widget areas at a glance in the Sidebar Manager
+1. See your widget areas at a glance in the easy Sidebar Manager
 1. Filter widgets and sidebars in the Enhanced Widget Manager
 
 == Upgrade Notice ==
