@@ -786,8 +786,6 @@ final class CAS_Sidebar_Edit extends CAS_Admin {
 			);
 		}
 
-		add_action('admin_enqueue_scripts',
-			array('WPCACore','enqueue_scripts_styles'),9);
 		//todo: refactor add of meta box
 		//with new bootstrapper, legacy core might be loaded
 		if(method_exists('WPCACore', 'render_group_meta_box')) {
@@ -1281,6 +1279,8 @@ final class CAS_Sidebar_Edit extends CAS_Admin {
 	 */
 	public function add_scripts_styles() {
 
+		WPCACore::enqueue_scripts_styles('');
+
 		wp_register_script('flatpickr', plugins_url('../js/flatpickr.min.js', __FILE__), array(), '2.3.4', false);
 
 		wp_register_script('cas/admin/edit', plugins_url('../js/cas_admin.min.js', __FILE__), array('jquery','flatpickr'), CAS_App::PLUGIN_VERSION, false);
@@ -1323,6 +1323,11 @@ final class CAS_Sidebar_Edit extends CAS_Admin {
 		));
 
 		wp_enqueue_style('cas/admin/style');
+
+		//badgeos compat
+		//todo: check that developers respond with a fix soon
+		wp_register_script('badgeos-select2', '');
+		wp_register_style( 'badgeos-select2-css', '');
 
 	}
 
