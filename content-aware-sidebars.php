@@ -9,7 +9,7 @@
 Plugin Name: Content Aware Sidebars
 Plugin URI: https://dev.institute/wordpress/sidebars-pro/
 Description: Unlimited custom sidebars and widget areas for any post, page, category etc.
-Version: 3.5.1
+Version: 3.5.2
 Author: Joachim Jensen
 Author URI: https://dev.institute
 Text Domain: content-aware-sidebars

@@ -1,10 +1,10 @@
 === Content Aware Sidebars - Unlimited Widget Areas ===
 Contributors: intoxstudio, devinstitute, freemius
 Donate link: #
-Tags: custom sidebars, page sidebar, replace sidebar, create sidebars, create widget area, bbpress, buddypress, polylang, pods, sidebar manager
+Tags: custom sidebars, page sidebar, replace sidebar, create sidebars, create widget area, bbpress, buddypress, polylang, pods, sidebar manager, sidebar
 Requires at least: 4.0
 Tested up to: 4.7
-Stable tag: 3.5.1
+Stable tag: 3.5.2
 License: GPLv3
 
 Display custom sidebars on any post, page, category etc. Supports bbPress, BuddyPress, WooCommerce, Easy Digital Downloads and more.
@@ -24,7 +24,7 @@ The Content Aware Sidebars plugin is built to scale and will never slow down you
 * Merge with, replace and hide sidebars in any theme
 * Activate and deactivate sidebars on schedule
 * Sidebar Visibility for All or Logged-in Users
-* Enhanced Widgets Admin Screen with sidebar and widget search
+* Enhanced Widget Manager with sidebar and widget search
 * Optional Template Tag to display custom sidebars anywhere in your theme
 * Optional Shortcode to display custom sidebars anywhere in your content
 * Multilingual and Translation Ready ([help translate!](https://translate.wordpress.org/projects/wp-plugins/content-aware-sidebars))
@@ -33,7 +33,7 @@ The Content Aware Sidebars plugin is built to scale and will never slow down you
 
 Create a post sidebar, page sidebar, category sidebar, or any custom sidebar you need. Content Aware Sidebars even allows you to combine conditions in any way you like very efficiently. This means that you e.g. can display a custom sidebar on all posts in Category X written by author Y.
 
-For each widget area you create, you can select the following conditions:
+For each widget area you create, you can use the following conditions:
 
 * Singulars, eg. each post, page, or custom post type
 * Content with select taxonomies, eg. categories or tags
@@ -123,7 +123,7 @@ You can also select sidebars directly when you're editing a post or page.
 
 = I have other questions, can you help? =
 
-Of course! Just use the links below:
+Of course! Check out the links below:
 
 * [Getting Started with Content Aware Sidebars](https://dev.institute/docs/content-aware-sidebars/getting-started/?utm_source=readme&utm_medium=referral&utm_content=faq&utm_campaign=cas)
 * [Documentation and FAQ](https://dev.institute/docs/content-aware-sidebars/?utm_source=readme&utm_medium=referral&utm_content=faq&utm_campaign=cas)
@@ -146,9 +146,15 @@ Of course! Just use the links below:
 
 [Follow development on GitHub](https://github.com/intoxstudio/content-aware-sidebars)
 
-= 3.5.1 =
+= 3.5.2 =
 
 [View Release Notes](https://dev.institute/content-aware-sidebars-version-3-5-released/?utm_source=readme&utm_medium=referral&utm_content=changelog&utm_campaign=cas)
+
+* Added: woocommerce 3.0 compat
+* Added: badgeos compat
+* Added: UI improvements in widget manager
+
+= 3.5.1 =
 
 * Fixed: database upgrade script
 
