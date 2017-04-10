@@ -25,29 +25,6 @@
 			this.addWidgetSearch();
 			this.toggleSidebarStatus();
 
-			// var $widget_list = $('.widget-liquid-left');
-
-			// $('div.widgets-sortables')
-			// .on('sortstart',function(e,ui) {
-			// 	console.log("start");
-			// 	$widget_list.css('overflow-y','hidden');
-			// })
-			// .on('sortstop',function(e,ui) {
-			// 	console.log("stop");
-			// 	$widget_list.css('overflow-y','auto');
-			// });
-
-			
-			// $widget_list.children('.widget')
-			// .on('dragstart',function(e,ui) {
-			// 	console.log("start 2");
-			// 	$widget_list.css('overflow-y','hidden');
-			// })
-			// .on('dragstop',function(e,ui) {
-			// 	console.log("stop 2");
-			// 	$widget_list.css('overflow-y','auto');
-			// });
-
 		},
 
 		/**
