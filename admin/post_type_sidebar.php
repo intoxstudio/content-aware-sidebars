@@ -254,7 +254,7 @@ class CAS_Post_Type_Sidebar {
 
 			echo '<div><label style="display:block;padding:8px 0 4px;font-weight:bold;" for="ca_sidebars_'.$id.'">'.$sidebar['label'].'</label>';
 
-			echo '<select style="width:100%;" id="ca_sidebars_'.$id.'" class="js-cas-sidebars" name="cas_sidebars['.$id.'][]" multiple data-placeholder="'.__('Default').'">';
+			echo '<select style="width:100%;" id="ca_sidebars_'.$id.'" class="js-cas-sidebars" name="cas_sidebars['.$id.'][]" multiple data-tags="'.$labels['canCreate'].'" data-placeholder="'.__('Default').'">';
 			foreach ($sidebar['options'] as $sidebar) {
 				echo '<option value="'.$sidebar['id'].'" '.selected(isset($sidebar['select']),true,false).'>'.$sidebar['text'].'</option>';
 			}

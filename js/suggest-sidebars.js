@@ -55,8 +55,8 @@
 					allowClear:false,
 					//maximumSelectionLength: 0,
 					width:"100%",
-					multiple:true,//define here to make node work without js
-					tags: CAS.canCreate,
+					//multiple:true,//defined in html for 3.5 compat
+					//tags: CAS.canCreate, defined in html for 3.5 compat
 					escapeMarkup:function (m) {return m;},
 					createTag: function (params) {
 						var term = $.trim(params.term);
