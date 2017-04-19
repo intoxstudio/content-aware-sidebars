@@ -25,6 +25,8 @@
 			this.addWidgetSearch();
 			this.toggleSidebarStatus();
 
+			$('#available-widgets .widget').draggable('option','scroll',false);
+
 		},
 
 		/**
