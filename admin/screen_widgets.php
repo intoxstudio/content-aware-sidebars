@@ -128,13 +128,13 @@ class CAS_Admin_Screen_Widgets extends CAS_Admin {
 
 			switch($sidebar->post_status) {
 				case CAS_App::STATUS_ACTIVE:
-					$status = __('Active');
+					$status = __('Active','content-aware-sidebars');
 					break;
 				case CAS_App::STATUS_SCHEDULED:
 					$status = __('Scheduled');
 					break;
 				default:
-					$status = __('Inactive');
+					$status = __('Inactive','content-aware-sidebars');
 			}
 			?>
 				<div class="cas-settings">

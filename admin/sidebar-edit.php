@@ -96,7 +96,7 @@ final class CAS_Sidebar_Edit extends CAS_Admin {
 	 */
 	public function show_description($post_type) {
 		if($post_type == CAS_App::TYPE_SIDEBAR) {
-			_e('Display this sidebar only on content that meets the following conditions:');
+			_e('Display this sidebar only on content that meets the following conditions:','content-aware-sidebars');
 			echo '<p></p>';
 		}
 	}
@@ -683,7 +683,7 @@ final class CAS_Sidebar_Edit extends CAS_Admin {
 			array(
 				'content'   => sprintf( '<h3>%s</h3><p>%s</p>',
 					'2. '.__( 'Condition Groups', 'content-aware-sidebars' ),
-					wpautop(__( "Click on the input field and select the content you want.\n\nIf you can't find the right content in the list, type something to search.\n\n You can add several types of content to the same group, try e.g. \"All Posts\" and an Author to target all posts written by that author. Awesome!\n\nRemember to save the changes on each group.", 'content-aware-sidebars' ) )),
+					wpautop(__( "Click on the input field and select the content you want.\n\nIf you can't find the right content in the list, type something to search.\n\n You can add several types of content to the same group, try e.g. \"All Posts\" and an Author to target all posts written by that author. Awesome!", 'content-aware-sidebars' ) )),
 				'ref_id'    => '#cas-groups > ul',
 				'position'  => array(
 					'edge'      => 'top',
@@ -863,7 +863,7 @@ final class CAS_Sidebar_Edit extends CAS_Admin {
 	public function meta_box_schedule($post) {
 		global $wp_locale;
 
-		echo '<p>'.__('Display sidebar only in given time ranges on select days.').' <span class="cas-pro-label">'.__('Pro','content-aware-sidebars').'</span></p>';
+		echo '<p>'.__('Display sidebar only in given time ranges on select days.','content-aware-sidebars').' <span class="cas-pro-label">'.__('Pro','content-aware-sidebars').'</span></p>';
 		echo '<div>';
 
 		$i = $start = get_option('start_of_week',0);
@@ -931,8 +931,8 @@ final class CAS_Sidebar_Edit extends CAS_Admin {
 		$visibility = CAS_App::instance()->manager()->metadata()->get('visibility');
 
 		echo '<span>';
-		echo '<strong>'.__('Visibility').'</strong>';
-		echo '<p><label for="visibility" class="screen-reader-text">'.__('Visibility').'</label>';
+		echo '<strong>'.__('Visibility','content-aware-sidebars').'</strong>';
+		echo '<p><label for="visibility" class="screen-reader-text">'.__('Visibility','content-aware-sidebars').'</label>';
 
 		echo '<div><select style="width:250px;" class="js-cas-visibility" multiple="multiple"  name="visibility[]" data-value="'.implode(",", $visibility->get_data($post->ID,true,false)).'"></select></div>';
 		
@@ -996,21 +996,21 @@ final class CAS_Sidebar_Edit extends CAS_Admin {
 	<?php
 
 	/* translators: Publish box date format, see http://php.net/date */
-	$datef = __( 'M j, Y' );
+	$datef = __( 'M j, Y');
 	$date = date_i18n( $datef, strtotime( $post->post_date ) );
 
 	switch ($post->post_status) {
 		case CAS_App::STATUS_SCHEDULED:
-			$stamp = __('Activates on <b>%1$s</b>');
+			$stamp = __('Activates on <b>%1$s</b>','content-aware-sidebars');
 			break;
 		case CAS_App::STATUS_ACTIVE:
-			$stamp = __('Active');
+			$stamp = __('Active','content-aware-sidebars');
 			break;
 		case CAS_App::STATUS_INACTIVE:
-			$stamp = __('Inactive');
+			$stamp = __('Inactive','content-aware-sidebars');
 			break;
 		default:
-			$stamp = __('New');
+			$stamp = __('New','content-aware-sidebars');
 			$date = date_i18n( $datef, strtotime( current_time('mysql') ) );
 			break;
 	}
@@ -1034,7 +1034,7 @@ final class CAS_Sidebar_Edit extends CAS_Admin {
 ?>
 		<li><span class="dashicons dashicons-backup"></span>
 			<?php printf( __( 'Widget Revisions: %s', 'content-aware-sidebars' ), '<b>0</b>' );
-			echo ' <b><a href="'.esc_url(cas_fs()->get_upgrade_url()).'">'.__( 'Enable').'</a></b>'; ?>
+			echo ' <b><a href="'.esc_url(cas_fs()->get_upgrade_url()).'">'.__( 'Enable','content-aware-sidebars').'</a></b>'; ?>
 		</li>
 		<?php
 	}
