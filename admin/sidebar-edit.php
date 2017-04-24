@@ -81,6 +81,7 @@ final class CAS_Sidebar_Edit extends CAS_Admin {
 		if(get_post_type() == CAS_App::TYPE_SIDEBAR) {
 			$list[''] = array(
 				'name' =>__('URLs (Pro Feature)','content-aware-sidebars'),
+				'placeholder' => '',
 				'default_value' => ''
 			);
 		}
