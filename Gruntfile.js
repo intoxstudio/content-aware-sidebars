@@ -23,7 +23,12 @@ module.exports = function(grunt) {
 			development: {
 				options: {
 					paths: ["css"],
-					cleancss: true,
+					compress: false,
+					ieCompat: false,
+					plugins: [
+						new (require('less-plugin-autoprefix'))({browsers: ["last 2 versions"]}),
+						new (require('less-plugin-clean-css'))({advanced:true})
+					]
 				},
 				files: {
 					"css/style.css": "css/style.less"
