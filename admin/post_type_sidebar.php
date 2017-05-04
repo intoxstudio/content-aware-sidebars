@@ -150,7 +150,16 @@ class CAS_Post_Type_Sidebar {
 
 		//remove old relations
 		//todo: sanity check if post is added to several groups?
+		$sidebars = CAS_App::instance()->manager()->sidebars;
+		$host_meta = CAS_App::instance()->manager()->metadata()->get('host');
 		foreach ($relations as $sidebar_id => $group_id) {
+			if(isset($sidebars['ca-sidebar-'.$sidebar_id])) {
+				$host_id = $host_meta->get_data($sidebar_id);
+				if(!isset(self::$_theme_sidebars[$host_id])) {
+					continue;
+				}
+			}
+
 			//group with no post_type meta will be removed
 			//even if it has other meta (unlikely)
 			$group_meta = get_post_meta($group_id, $meta_key);
@@ -206,9 +215,9 @@ class CAS_Post_Type_Sidebar {
 					'id' => $sidebar->ID,
 					'text' => $sidebar->post_title.self::sidebar_states($sidebar)
 				);
-			}
-			if(isset($post_sidebars[$sidebar->ID])) {
-				self::$_theme_sidebars[$host_id]['options'][$sidebar->ID]['select'] = 1;
+				if(isset($post_sidebars[$sidebar->ID])) {
+					self::$_theme_sidebars[$host_id]['options'][$sidebar->ID]['select'] = 1;
+				}
 			}
 		}
 
