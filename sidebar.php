@@ -32,13 +32,6 @@ final class CAS_Sidebar_Manager {
 	 */
 	public function __construct() {
 
-		if(is_admin()) {
-
-			new CAS_Sidebar_Overview();
-			new CAS_Sidebar_Edit();
-			new CAS_Post_Type_Sidebar();
-		}
-
 		add_action('wpca/loaded',
 			array($this,'late_init'));
 		add_action('wp_head',

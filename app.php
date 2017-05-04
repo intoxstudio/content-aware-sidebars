@@ -32,9 +32,9 @@ final class CAS_App {
 	/**
 	 * Sidebar statuses
 	 */
-	const STATUS_ACTIVE    = 'publish';
-	const STATUS_INACTIVE  = 'draft';
-	const STATUS_SCHEDULED = 'future';
+	const STATUS_ACTIVE        = 'publish';
+	const STATUS_INACTIVE      = 'draft';
+	const STATUS_SCHEDULED     = 'future';
 
 	/**
 	 * Capability to manage sidebars
@@ -76,6 +76,9 @@ final class CAS_App {
 		$this->_manager = new CAS_Sidebar_Manager();
 
 		if(is_admin()) {
+			new CAS_Sidebar_Overview();
+			new CAS_Sidebar_Edit();
+			new CAS_Post_Type_Sidebar();
 			new CAS_Admin_Screen_Widgets();
 		}
 
@@ -164,7 +167,6 @@ final class CAS_App {
 	public function plugin_action_links($actions, $plugin_file, $plugin_data, $context) {
 
 		$new_actions = array(
-			'<a href="https://dev.institute/wordpress/sidebars-pro/faq/?utm_source=plugin&utm_medium=referral&utm_content=plugin-list&utm_campaign=cas" target="_blank">'.__('FAQ','content-aware-sidebars').'</a>',
 			'<a href="https://wordpress.org/support/plugin/content-aware-sidebars" target="_blank">'.__('Get Support','content-aware-sidebars').'</a>'
 		);
 
