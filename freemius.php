@@ -62,8 +62,8 @@ function cas_fs_connect_message_update(
 	);
 }
 
-$cas_fs->add_filter('connect_message_on_update', 'cas_fs_connect_message_update', 10, 6);
-$cas_fs->add_filter('connect_message', 'cas_fs_connect_message_update', 10, 6);
+// $cas_fs->add_filter('connect_message_on_update', 'cas_fs_connect_message_update', 10, 6);
+// $cas_fs->add_filter('connect_message', 'cas_fs_connect_message_update', 10, 6);
 
 function cas_fs_upgrade() {
 	global $cas_fs;
