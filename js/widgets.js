@@ -25,7 +25,14 @@
 			this.addWidgetSearch();
 			this.toggleSidebarStatus();
 
-			$('#available-widgets .widget').draggable('option','scroll',false);
+			this.$widgetContainer.find('.widget').draggable('option','scroll',false);
+
+			var that = this,
+				$inactiveSidebars = $('#widgets-left .inactive-sidebar');
+			$inactiveSidebars.toggle(this.$widgetContainer.hasClass('closed'));
+			this.$widgetContainer.find('.sidebar-name').click(function(e) {
+				$inactiveSidebars.toggle(that.$widgetContainer.hasClass('closed'));
+			});
 
 		},
 
