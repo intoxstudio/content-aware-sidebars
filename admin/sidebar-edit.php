@@ -728,21 +728,21 @@ final class CAS_Sidebar_Edit extends CAS_Admin {
 		$boxes[] = array(
 			'id'       => 'submitdiv',
 			'title'    => __('Publish'),
-			'view'     => 'meta_box_submit',
+			'view'     => 'submit',
 			'context'  => 'side',
 			'priority' => 'high'
 		);
 		$boxes[] = array(
 			'id'       => 'cas-status',
 			'title'    => __('Sidebar Status', 'content-aware-sidebars'),
-			'view'     => 'meta_box_status',
+			'view'     => 'status',
 			'context'  => 'section-schedule',
 			'priority' => 'default'
 		);
 		$boxes[] = array(
 			'id'       => 'cas-advanced',
 			'title'    => __('Advanced', 'content-aware-sidebars'),
-			'view'     => 'meta_box_advanced',
+			'view'     => 'advanced',
 			'context'  => 'section-advanced',
 			'priority' => 'default'
 		);
@@ -755,14 +755,14 @@ final class CAS_Sidebar_Edit extends CAS_Admin {
 			$boxes[] = array(
 				'id'       => 'cas-plugin-links',
 				'title'    => __('Content Aware Sidebars', 'content-aware-sidebars'),
-				'view'     => 'meta_box_support',
+				'view'     => 'support',
 				'context'  => 'side',
 				'priority' => 'default'
 			);
 			$boxes[] = array(
 				'id'       => 'cas-schedule',
 				'title'    => __('Time Schedule', 'content-aware-sidebars'),
-				'view'     => 'meta_box_schedule',
+				'view'     => 'schedule',
 				'context'  => 'section-schedule',
 				'priority' => 'default'
 			);
@@ -780,7 +780,7 @@ final class CAS_Sidebar_Edit extends CAS_Admin {
 		//Add meta boxes
 		foreach($boxes as $box) {
 			if(isset($box['view'])) {
-				$view = $template = WPCAView::make($path.$box['view'].'.php',array(
+				$view = $template = WPCAView::make($path.'meta_box_'.$box['view'].'.php',array(
 					'post'=> $post
 				));
 				$callback = array($view,'render');
