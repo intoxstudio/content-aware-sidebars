@@ -7,8 +7,6 @@
  */
 
 if (!defined('ABSPATH')) {
-	header('Status: 403 Forbidden');
-	header('HTTP/1.1 403 Forbidden');
 	exit;
 }
 
@@ -25,10 +23,9 @@ class CAS_Sidebar_List_Table extends WP_List_Table {
 	private $is_trash;
 
 	public function __construct( $args = array() ) {
-		$post_type_object = get_post_type_object(CAS_App::TYPE_SIDEBAR);
 		parent::__construct(array(
-			'singular' => $post_type_object->labels->singular_name,
-			'plural'   => $post_type_object->labels->name, 
+			'singular' => 'sidebar',
+			'plural'   => 'sidebars', 
 			'ajax'     => false,
 			'screen'   => isset( $args['screen'] ) ? $args['screen'] : null
 		));
@@ -444,21 +441,30 @@ class CAS_Sidebar_List_Table extends WP_List_Table {
 		$return = "";
 		if($metadata) {
 			$return = $metadata->get_list_data($post->ID);
-			if($metadata->get_data($post->ID) != 2) {
-				$host = CAS_App::instance()->manager()->metadata()->get('host')->get_list_data($post->ID);
-				$return .= ": " . ($host ? $host : '<span style="color:red;">' . __('Please update Host Sidebar', "content-aware-sidebars") . '</span>');
-			
+			switch($metadata->get_data($post->ID)) {
+				case 0:
+				case 1:
+				case 3:
+					$host = CAS_App::instance()->manager()->metadata()->get('host')->get_list_data($post->ID);
+					$return .= ": " . ($host ? $host : '<span style="color:red;">' . __('Please update Host Sidebar', "content-aware-sidebars") . '</span>');
+					if($metadata->get_data($post->ID) != 3) {
+						$pos = CAS_App::instance()->manager()->metadata()->get("merge_pos")->get_data($post->ID,true);
+						$pos_icon = $pos ? "up" : "down";
+						$pos_title = array(
+							__("Add sidebar at the top during merge","content-aware-sidebars"),
+							__("Add sidebar at the bottom during merge","content-aware-sidebars")
+						);
+						$return .= '<span title="'.$pos_title[$pos].'" class="dashicons dashicons-arrow-'.$pos_icon.'-alt"></span>';
+					}
+					break;
+				case 2:
+					$return = "<input type='text' value='[ca-sidebar id=\"$post->ID\"]' readonly>";
+					break;
+				case 4:
+					break;
+				default:
+					break;
 			}
-			if($metadata->get_data($post->ID) != 3) {
-				$pos = CAS_App::instance()->manager()->metadata()->get("merge_pos")->get_data($post->ID,true);
-				$pos_icon = $pos ? "up" : "down";
-				$pos_title = array(
-					__("Add sidebar at the top during merge","content-aware-sidebars"),
-					__("Add sidebar at the bottom during merge","content-aware-sidebars")
-				);
-				$return .= '<span title="'.$pos_title[$pos].'" class="dashicons dashicons-arrow-'.$pos_icon.'-alt"></span>';
-			}
-			
 		}
 		echo $return;
 	}
