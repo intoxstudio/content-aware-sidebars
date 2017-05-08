@@ -64,8 +64,14 @@ final class CAS_Sidebar_Manager {
 	 * @return void
 	 */
 	public function late_init() {
-		add_action('sidebars_widgets',
-			array($this,'replace_sidebar'));
+		if(!is_admin()) {
+			add_filter('sidebars_widgets',
+				array($this,'replace_sidebar'));
+			add_action( 'dynamic_sidebar_before',
+				array($this,'render_sidebar_before'),9,2);
+			add_action( 'dynamic_sidebar_after',
+				array($this,'render_sidebar_after'),99,2);
+		}
 	}
 
 	/**
@@ -107,8 +113,8 @@ final class CAS_Sidebar_Manager {
 			array(
 				0 => __('Replace', 'content-aware-sidebars'),
 				1 => __('Merge', 'content-aware-sidebars'),
+				3 => __('Forced replace','content-aware-sidebars'),
 				2 => __('Shortcode / Template Tag', 'content-aware-sidebars'),
-				3 => __('Forced replace','content-aware-sidebars')
 			),
 			__('Replace host sidebar, merge with it or add sidebar manually.', 'content-aware-sidebars')
 		),'handle')
@@ -403,8 +409,8 @@ final class CAS_Sidebar_Manager {
 		// Grab args or defaults
 		$args = wp_parse_args($args, array(
 			'include' => '',
-			'before'  => '<div id="sidebar" class="widget-area"><ul class="xoxo">',
-			'after'   => '</ul></div>'
+			'before'  => '',
+			'after'   => ''
 		));
 		extract($args, EXTR_SKIP);
 
@@ -465,6 +471,36 @@ final class CAS_Sidebar_Manager {
 		ob_start();
 		dynamic_sidebar($id);
 		return ob_get_clean();
+	}
+
+	/**
+	 * Render html if present before sidebar
+	 *
+	 * @since  3.6
+	 * @param  string   $i
+	 * @param  boolean  $has_widgets
+	 * @return void
+	 */
+	public function render_sidebar_before($i,$has_widgets) {
+		global $wp_registered_sidebars;
+		if($has_widgets && isset($wp_registered_sidebars[$i]['before_sidebar'])) {
+			echo $wp_registered_sidebars[$i]['before_sidebar'];
+		}
+	}
+
+	/**
+	 * Render html if present after sidebar
+	 *
+	 * @since  3.6
+	 * @param  string   $i
+	 * @param  boolean  $has_widgets
+	 * @return void
+	 */
+	public function render_sidebar_after($i,$has_widgets) {
+		global $wp_registered_sidebars;
+		if($has_widgets && isset($wp_registered_sidebars[$i]['after_sidebar'])) {
+			echo $wp_registered_sidebars[$i]['after_sidebar'];
+		}
 	}
 
 	/**
