@@ -17,6 +17,11 @@
 			this.addHandleListener();
 			this.suggestVisibility();
 			this.initSidebarActivation();
+
+			$('.js-cas-html').on('change',function(e) {
+				var $this = $(this);
+				$($this.data('target')).attr('disabled',!$this.is(':checked'));
+			}).trigger('change');
 		},
 
 		initSidebarActivation: function() {
@@ -81,7 +86,6 @@
 					var section = this.href.substr(start);
 					cas_options.sections.push(section);
 					$(section).hide();
-					//.find("input, select").attr("disabled",true);
 				}
 			});
 		},
