@@ -41,6 +41,8 @@ class CAS_Admin_Screen_Widgets extends CAS_Admin {
 	public function prepare_screen() {
 		add_action( 'dynamic_sidebar_before',
 			array($this,'render_sidebar_controls'));
+		add_filter( 'admin_body_class',
+			array($this,'widget_manager_class'));
 
 		global $wp_registered_sidebars;
 
@@ -129,6 +131,20 @@ class CAS_Admin_Screen_Widgets extends CAS_Admin {
 		//$data['message'] = sprintf(__('Status set to %s'),$data['title']);
 
 		wp_send_json_success($data);
+	}
+
+	/**
+	 * Add body class to enable widget manager
+	 *
+	 * @since  3.6
+	 * @param  string  $classes
+	 * @return string
+	 */
+	public function widget_manager_class($classes) {
+		if(version_compare(get_bloginfo('version'), '4.7', '>=')) {
+			$classes .= ' cas-widget-manager ';
+		}
+		return $classes;
 	}
 
 	/**
