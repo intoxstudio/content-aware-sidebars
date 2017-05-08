@@ -11,7 +11,6 @@
 
 		$sidebarContainer: $(".widget-liquid-right"),
 		$widgetContainer: $('#available-widgets'),
-		$widgets:null,
 
 		/**
 		 * Initiate
@@ -24,20 +23,31 @@
 			this.addSidebarToolbar();
 			this.addWidgetSearch();
 			this.toggleSidebarStatus();
-
-			this.$widgetContainer.find('.widget').draggable('option','scroll',false);
-
-			var that = this,
-				$inactiveSidebars = $('#widgets-left .inactive-sidebar');
-			$inactiveSidebars.toggle(this.$widgetContainer.hasClass('closed'));
-			this.$widgetContainer.find('.sidebar-name').click(function(e) {
-				$inactiveSidebars.toggle(that.$widgetContainer.hasClass('closed'));
-			});
+			this.enhancedWidgetManager();
 
 		},
 
 		/**
-		 * Initiate
+		 * Enable enhanced widget manager
+		 *
+		 * @since  3.6
+		 * @return {void}
+		 */
+		enhancedWidgetManager: function() {
+			if($('body').hasClass('cas-widget-manager')) {
+				this.$widgetContainer.find('.widget').draggable('option','scroll',false);
+
+				var that = this,
+					$inactiveSidebars = $('#widgets-left .inactive-sidebar');
+				$inactiveSidebars.toggle(this.$widgetContainer.hasClass('closed'));
+				this.$widgetContainer.find('.sidebar-name').click(function(e) {
+					$inactiveSidebars.toggle(that.$widgetContainer.hasClass('closed'));
+				});
+			}
+		},
+
+		/**
+		 * Call backend on 1-click activation
 		 *
 		 * @since  3.3
 		 * @return {void}
@@ -76,9 +86,9 @@
 		 * @since 3.0
 		 */
 		addWidgetSearch: function() {
-			this.$widgets = $(".widget",this.$widgetContainer).get().reverse();
+			var $widgets = $(".widget",this.$widgetContainer).get().reverse();
 			$(".sidebar-description",this.$widgetContainer).prepend('<input type="search" class="js-cas-widget-filter cas-filter-widget" placeholder="'+CASAdmin.filterWidgets+'...">');
-			this.searchWidgetListener();
+			this.searchWidgetListener($widgets);
 		},
 		/**
 		 * Listen to widget filter
@@ -86,7 +96,7 @@
 		 * @since  3.0
 		 * @return {void}
 		 */
-		searchWidgetListener: function() {
+		searchWidgetListener: function($widgets) {
 			var that = this,
 				filterTimer,
 				cachedFilter = "";
@@ -98,7 +108,7 @@
 						clearTimeout(filterTimer);
 					}
 					filterTimer = setTimeout(function(){
-						$(that.$widgets).each(function(key,widget) {
+						$($widgets).each(function(key,widget) {
 							var $widget = $(widget);
 							if ($widget.find(".widget-title :nth-child(1)").text().search(new RegExp(filter, "i")) < 0) {
 								$widget.fadeOut();
