@@ -25,6 +25,12 @@ final class CAS_Sidebar_Manager {
 	public $sidebars = array();
 
 	/**
+	 * Cache replaced sidebars
+	 * @var array
+	 */
+	protected $replaced_sidebars = array();
+
+	/**
 	 * @var array
 	 * Constructor
 	 *
@@ -319,6 +325,11 @@ final class CAS_Sidebar_Manager {
 	 */
 	public function replace_sidebar($sidebars_widgets) {
 
+		//customizer requires sidebars_widgets filter. cache for repeat calls
+		if($this->replaced_sidebars) {
+			return $this->replaced_sidebars;
+		}
+
 		$posts = WPCACore::get_posts(CAS_App::TYPE_SIDEBAR);
 
 		if ($posts) {
@@ -375,6 +386,7 @@ final class CAS_Sidebar_Manager {
 					}
 				}
 			}
+			$this->replaced_sidebars = $sidebars_widgets;
 		}
 		return $sidebars_widgets;
 	}
