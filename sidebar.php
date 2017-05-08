@@ -114,7 +114,7 @@ final class CAS_Sidebar_Manager {
 				0 => __('Replace', 'content-aware-sidebars'),
 				1 => __('Merge', 'content-aware-sidebars'),
 				3 => __('Forced replace','content-aware-sidebars'),
-				2 => __('Shortcode / Template Tag', 'content-aware-sidebars'),
+				2 => __('Shortcode / Template Tag', 'content-aware-sidebars')
 			),
 			__('Replace host sidebar, merge with it or add sidebar manually.', 'content-aware-sidebars')
 		),'handle')
@@ -142,7 +142,7 @@ final class CAS_Sidebar_Manager {
 			array(),
 			'select',
 			array('')
-		),'html')
+		),'html');
 		apply_filters('cas/metadata/init',$this->metadata);
 	}
 
