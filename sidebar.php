@@ -41,7 +41,7 @@ final class CAS_Sidebar_Manager {
 		add_action('widgets_init',
 			array($this,'create_sidebars'),99);
 		add_action('wp_loaded',
-			array($this,'update_sidebars'),99);
+			array($this,'set_sidebar_styles'),99);
 
 		add_shortcode( 'ca-sidebar',
 			array($this,'sidebar_shortcode'));
@@ -123,7 +123,14 @@ final class CAS_Sidebar_Manager {
 				__('Bottom', 'content-aware-sidebars')
 			),
 			__('Place sidebar on top or bottom of host when merging.', 'content-aware-sidebars')
-		),'merge_pos');
+		),'merge_pos')
+		->add(new WPCAMeta(
+			'html',
+			__('HTML', 'content-aware-sidebars'),
+			array(),
+			'select',
+			array('')
+		),'html')
 		apply_filters('cas/metadata/init',$this->metadata);
 	}
 
@@ -235,58 +242,72 @@ final class CAS_Sidebar_Manager {
 			$this->sidebars[CAS_App::SIDEBAR_PREFIX.$post->ID] = $post;
 			register_sidebar( array(
 				'name' => $post->post_title ? $post->post_title : __('(no title)'),
-				'id'   => CAS_App::SIDEBAR_PREFIX.$post->ID
+				'id'   => CAS_App::SIDEBAR_PREFIX.$post->ID,
+				'before_sidebar' => '',
+				'after_sidebar' => ''
 			));
 		}
 	}
 	
 	/**
-	 * Update the created sidebars with metadata
-	 * 
-	 * @since  [since]
-	 * @return void
+	 * Set styles of created sidebars
+	 *
+	 * @since 3.6
 	 */
-	public function update_sidebars() {
+	public function set_sidebar_styles() {
+		global $wp_registered_sidebars;
 
-		//TODO: check if this is necessary anymore or merge to 1 method
+		//todo: only for manual
+		$default_styles = array(
+			'before_widget' => '<li id="%1$s" class="widget-container %2$s">',
+			'after_widget'  => '</li>',
+			'before_title'  => '<h4 class="widget-title">',
+			'after_title'   => '</h4>'
+		);
+		$has_host = array(0=>1,1=>1,3=>1);
+		$metadata = $this->metadata();
 
-		//Now reregister sidebars with proper content
 		foreach($this->sidebars as $post) {
+			$id = CAS_App::SIDEBAR_PREFIX.$post->ID;
+			$html = $metadata->get('html')->get_data($post->ID);
 
-			$handle_meta = $this->metadata()->get('handle');
+			$args = $default_styles;
 
-			$sidebar_args = array(
-				'name'        => $post->post_title ? $post->post_title : __('(no title)'),
-				'description' => $handle_meta->get_list_data($post->ID,true),
-				'id'          => CAS_App::SIDEBAR_PREFIX.$post->ID
-			);
-
-			if(!$sidebar_args['description']) {
-				continue;
-			}
-
-			$sidebar_args['before_widget'] = '<li id="%1$s" class="widget-container %2$s">';
-			$sidebar_args['after_widget'] = '</li>';
-			$sidebar_args['before_title'] = '<h4 class="widget-title">';
-			$sidebar_args['after_title'] = '</h4>';
-
-			if ($handle_meta->get_data($post->ID) != 2) {
-				$host_meta = $this->metadata()->get('host');
-				$host = $host_meta->get_list_data($post->ID,false);
-				$sidebar_args['description'] .= ': ' . ($host ? $host :  __('Please update Host Sidebar', 'content-aware-sidebars') );
-
+			if (isset($has_host[$metadata->get('handle')->get_data($post->ID)])) {
 				//Set style from host to fix when content aware sidebar
 				//is called directly by other sidebar managers
-				global $wp_registered_sidebars;
-				$host_id = $host_meta->get_data($post->ID);
+				$host_id = $metadata->get('host')->get_data($post->ID);
 				if(isset($wp_registered_sidebars[$host_id])) {
-					$sidebar_args['before_widget'] = $wp_registered_sidebars[$host_id]['before_widget'];
-					$sidebar_args['after_widget'] = $wp_registered_sidebars[$host_id]['after_widget'];
-					$sidebar_args['before_title'] = $wp_registered_sidebars[$host_id]['before_title'];
-					$sidebar_args['after_title'] = $wp_registered_sidebars[$host_id]['after_title'];
+					foreach (array(
+						'before_widget',
+						'after_widget',
+						'before_title',
+						'after_title'
+					) as $pos) {
+						$args[$pos] = $wp_registered_sidebars[$host_id][$pos];
+					}
 				}
 			}
-			register_sidebar($sidebar_args);
+
+			//Set user styles
+			foreach (array(
+				'widget',
+				'title',
+				'sidebar'
+			) as $pos) {
+				if(isset($html[$pos],$html[$pos.'_class'])) {
+					$e = esc_html($html[$pos]);
+					$class = esc_html($html[$pos.'_class']);
+					$i = '';
+					if($pos == 'widget') {
+						$i = ' id="%1$s"';
+					}
+					$args['before_'.$pos] = '<'.$e.$i.' class="'.$class.'">';
+					$args['after_'.$pos] = "</$e>";
+				}
+			}
+
+			$wp_registered_sidebars[$id] = array_merge($wp_registered_sidebars[$id],$args);
 		}
 	}
 
@@ -301,38 +322,58 @@ final class CAS_Sidebar_Manager {
 		$posts = WPCACore::get_posts(CAS_App::TYPE_SIDEBAR);
 
 		if ($posts) {
+			global $wp_registered_sidebars;
+
+			$metadata = $this->metadata();
+
 			//temporary filter until WPCACore allows filtering
 			$user_visibility = is_user_logged_in() ? array(-1) : array();
 			$user_visibility = apply_filters('cas/user_visibility',$user_visibility);
 			foreach ($posts as $post) {
 
 				$id = CAS_App::SIDEBAR_PREFIX . $post->ID;
-				$visibility = $this->metadata()->get('visibility')->get_data($post->ID,true,false);
-				$host = $this->metadata()->get('host')->get_data($post->ID);
+				$visibility = $metadata->get('visibility')->get_data($post->ID,true,false);
+				$host = $metadata->get('host')->get_data($post->ID);
 
 				// Check visibility
-				if($visibility && !array_intersect($visibility,$user_visibility))
+				if($visibility && !array_intersect($visibility,$user_visibility)) {
 					continue;
+				}
 
 				// Check for correct handling and if host exist
-				if ( $post->handle == 2 || !isset($sidebars_widgets[$host]))
+				if ( $post->handle == 2 || !isset($sidebars_widgets[$host])) {
 					continue;
+				}
 
 				// Sidebar might not have any widgets. Get it anyway!
-				if (!isset($sidebars_widgets[$id]))
+				if (!isset($sidebars_widgets[$id])) {
 					$sidebars_widgets[$id] = array();
+				}
 
 				// If handle is merge or if handle is replace and host has already been replaced
 				if ($post->handle == 1 || ($post->handle == 0 && isset($handled_already[$host]))) {
-					if ($this->metadata()->get('merge_pos')->get_data($post->ID))
+					if ($metadata->get('merge_pos')->get_data($post->ID)) {
 						$sidebars_widgets[$host] = array_merge($sidebars_widgets[$host], $sidebars_widgets[$id]);
-					else
+					} else {
 						$sidebars_widgets[$host] = array_merge($sidebars_widgets[$id], $sidebars_widgets[$host]);
+					}
 				} else {
 					$sidebars_widgets[$host] = $sidebars_widgets[$id];
 					$handled_already[$host] = 1;
 				}
-				
+
+				if(isset($wp_registered_sidebars[$host],$wp_registered_sidebars[$id])) {
+					foreach (array(
+						'before_widget',
+						'after_widget',
+						'before_title',
+						'after_title',
+						'before_sidebar',
+						'after_sidebar'
+					) as $pos) {
+						$wp_registered_sidebars[$host][$pos] = $wp_registered_sidebars[$id][$pos];
+					}
+				}
 			}
 		}
 		return $sidebars_widgets;

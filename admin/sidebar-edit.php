@@ -229,6 +229,7 @@ final class CAS_Sidebar_Edit extends CAS_Admin {
 		$nav_tabs = array(
 			'conditions' => __('Conditions','content-aware-sidebars'),
 			'schedule'   => __('Schedule'),
+			'design'     => __('Design'),
 			'advanced'   => __('Advanced')
 		);
 		$nav_tabs = apply_filters('cas/admin/nav-tabs', $nav_tabs);
@@ -737,6 +738,13 @@ final class CAS_Sidebar_Edit extends CAS_Admin {
 			'title'    => __('Sidebar Status', 'content-aware-sidebars'),
 			'view'     => 'status',
 			'context'  => 'section-schedule',
+			'priority' => 'default'
+		);
+		$boxes[] = array(
+			'id'       => 'cas-widget-html',
+			'title'    => __('Layout', 'content-aware-sidebars'),
+			'view'     => 'html',
+			'context'  => 'section-design',
 			'priority' => 'default'
 		);
 		$boxes[] = array(
