@@ -1,719 +1,1021 @@
-# Copyright (C) 2012 Content Aware Sidebars
-# This file is distributed under the same license as the Content Aware Sidebars package.
-# Translators:
-# Artur Kusznieruk <artur.kusznieruk@wp.pl>, 2015
-# Justyna Luty-Urbanek <kontakt@greenspiracje.pl>, 2015
-# ibushi <marta.jasiuk@gmail.com>, 2015
-# Nikolay Vasilyev <nk.vasiliev@gmail.com>, 2015
+# Translation of Plugins - Content Aware Sidebars - Widget Area Control - Development (trunk) in Polish
+# This file is distributed under the same license as the Plugins - Content Aware Sidebars - Widget Area Control - Development (trunk) package.
 msgid ""
 msgstr ""
-"Project-Id-Version: Content Aware Sidebars\n"
-"Report-Msgid-Bugs-To: http://wordpress.org/tag/content-aware-sidebars\n"
-"POT-Creation-Date: 2015-10-01 16:11-0800\n"
-"PO-Revision-Date: 2016-03-07 00:18+0000\n"
-"Last-Translator: Joachim Jensen <jv@intox.dk>\n"
-"Language-Team: Polish (Poland) (http://www.transifex.com/intoxstudio/content-aware-sidebars/language/pl_PL/)\n"
+"PO-Revision-Date: 2016-02-03 01:23:57+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: pl_PL\n"
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: Poedit 1.7.6\n"
-"X-Poedit-Basepath: .\n"
-"X-Poedit-KeywordsList: __;_e;__ngettext:1,2;_n:1,2;__ngettext_noop:1,2;_n_noop:1,2;_c,_nc:4c,1,2;_x:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2;_ex:1,2c;esc_attr__;esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c\n"
-"X-Poedit-SearchPath-0: .\n"
-"X-Poedit-SearchPath-1: ..\n"
-"X-Poedit-SearchPathExcluded-0: ../node_modules\n"
-"X-Poedit-SearchPathExcluded-1: ../lib/wp-content-aware-engine/node_modules\n"
-"X-Poedit-SourceCharset: UTF-8\n"
-"X-Textdomain-Support: yes\n"
+"X-Generator: GlotPress/2.4.0-alpha\n"
+"Language: pl\n"
+"Project-Id-Version: Plugins - Content Aware Sidebars - Widget Area Control - Development (trunk)\n"
 
-#: ../content-aware-sidebars.php:95
-msgid "Manage and show sidebars according to the content being viewed."
-msgstr "Zarządzaj i pokaż paski boczne zależnie od zawartości."
-
-#: ../content-aware-sidebars.php:96 ../content-aware-sidebars.php:748
-msgid "Content Aware Sidebars"
-msgstr "Paski boczne"
-
-#: ../content-aware-sidebars.php:97
-msgid "Import"
-msgstr "Importuj"
-
-#: ../content-aware-sidebars.php:178 ../content-aware-sidebars.php:801
-msgid "FAQ"
-msgstr "FAQ"
-
-#: ../content-aware-sidebars.php:256
-msgid "Exposure"
-msgstr "Ekspozycja"
-
-#: ../content-aware-sidebars.php:260
-msgid "Singular"
-msgstr "Pojedynczy"
-
-#: ../content-aware-sidebars.php:261
-msgid "Singular & Archive"
-msgstr "Pojedynczy & Archiwum"
-
-#: ../content-aware-sidebars.php:262
-msgid "Archive"
-msgstr "Archiwum"
-
-#: ../content-aware-sidebars.php:267 ../content-aware-sidebars.php:471
-msgctxt "option"
-msgid "Handle"
-msgstr "Opcje"
-
-#: ../content-aware-sidebars.php:271
-msgid "Replace"
-msgstr "Zastąp"
-
-#: ../content-aware-sidebars.php:272
-msgid "Merge"
-msgstr "Scal"
-
-#: ../content-aware-sidebars.php:273
-msgid "Manual"
-msgstr "Instrukcja"
-
-#: ../content-aware-sidebars.php:274
-msgid "Forced replace"
-msgstr "Wymuszona zamiana"
-
-#: ../content-aware-sidebars.php:276
-msgid "Replace host sidebar, merge with it or add sidebar manually."
-msgstr "Zastąp Główny pasek boczny, scal go lub dodaj pasek boczny ręcznie."
-
-#: ../content-aware-sidebars.php:280
-msgid "Host Sidebar"
-msgstr "Główny Pasek boczny"
-
-#: ../content-aware-sidebars.php:287
-msgid "Merge Position"
+#. Description of the plugin/theme
+msgid "Unlimited custom sidebars and widget areas for any post, page, category etc."
 msgstr ""
 
-#: ../content-aware-sidebars.php:291
-msgid "Top"
-msgstr "Góra"
+#: lib/wp-content-aware-engine/view/group_template.php:54
+msgid "Settings"
+msgstr ""
 
-#: ../content-aware-sidebars.php:292
-msgid "Bottom"
-msgstr "Dół"
+#: lib/wp-content-aware-engine/core.php:705
+msgid "Auto-select new children of selected items"
+msgstr ""
 
-#: ../content-aware-sidebars.php:294
-msgid "Place sidebar on top or bottom of host when merging."
-msgstr "Umieść pasek boczny na górze lub dole głównego paska podczas scalania."
+#: admin/sidebar-list-table.php:605
+msgid "Duplicate"
+msgstr ""
 
-#: ../content-aware-sidebars.php:309
-msgid "Sidebars"
-msgstr "Paski boczne"
+#. translators: %s: sidebar title
+#: admin/sidebar-list-table.php:604
+msgid "Duplicate %s"
+msgstr ""
 
-#: ../content-aware-sidebars.php:310
-msgid "Sidebar"
-msgstr "Pasek boczny"
+#: admin/sidebar-edit.php:369
+msgid "You are not allowed to delete this sidebar."
+msgstr ""
 
-#: ../content-aware-sidebars.php:311
-msgctxt "sidebar"
-msgid "Add New"
-msgstr "Dodaj nowy"
+#: admin/sidebar-edit.php:335
+msgid "You are not allowed to move this sidebar to the Trash."
+msgstr ""
 
-#: ../content-aware-sidebars.php:312
-msgid "Add New Sidebar"
-msgstr "Dodaj nowy Pasek boczny"
+#: admin/sidebar-edit.php:222 admin/sidebar-edit.php:553
+msgid "You are not allowed to create sidebars."
+msgstr ""
 
-#: ../content-aware-sidebars.php:313
-msgid "Edit Sidebar"
-msgstr "Edytuj Pasek boczny"
+#: admin/sidebar-edit.php:197 admin/sidebar-edit.php:551
+#: admin/sidebar-edit.php:556
+msgid "You are not allowed to edit this sidebar."
+msgstr ""
 
-#: ../content-aware-sidebars.php:314
-msgid "New Sidebar"
-msgstr "Nowy pasek boczny"
+#: admin/admin.php:136
+msgid "Enhance your sidebars and widget areas with: %s and more."
+msgstr ""
 
-#: ../content-aware-sidebars.php:315
-msgid "All Sidebars"
-msgstr "Wszystkie Paski boczne"
+#: admin/admin.php:102
+msgid "You do not have access to this screen."
+msgstr ""
 
-#: ../content-aware-sidebars.php:316
-msgid "View Sidebar"
-msgstr "Zobacz pasek boczny"
+#: admin/screen_widgets.php:171
+msgid "This sidebar is already scheduled to be activated. Do you want to activate it now?"
+msgstr ""
 
-#: ../content-aware-sidebars.php:317
-msgid "Search Sidebars"
-msgstr "Szukaj Pasków bocznych"
+#: admin/sidebar-edit.php:866
+msgid "Pro"
+msgstr ""
 
-#: ../content-aware-sidebars.php:318
-msgid "No sidebars found"
-msgstr "Nie znaleziono pasków bocznych"
+#: admin/sidebar-edit.php:823
+msgid "No thanks"
+msgstr ""
 
-#: ../content-aware-sidebars.php:319
-msgid "No sidebars found in Trash"
-msgstr "Nie znaleziono pasków w koszu"
+#: admin/sidebar-edit.php:823
+msgid "Review Content Aware Sidebars"
+msgstr ""
 
-#: ../content-aware-sidebars.php:321
-msgid "Display sidebar with"
-msgstr "Wyświetl pasek boczny z"
+#: admin/sidebar-edit.php:818
+msgid "I have spent countless hours developing it, and it would mean a lot to me if you %ssupport it with a quick review on WordPress.org.%s"
+msgstr ""
 
-#: ../content-aware-sidebars.php:322
-msgid ""
-"No content. Please add at least one condition group to make the sidebar "
-"content aware."
-msgstr "Brak zawartości. Dodaj chociaż jedną grupę, aby pasek działał."
+#: admin/sidebar-edit.php:813
+msgid "Hey %s, it's Joachim from %s. You have used this free plugin for some time now, and I hope you like it!"
+msgstr ""
 
-#: ../content-aware-sidebars.php:353 ../content-aware-sidebars.php:381
-msgid "Manage widgets"
-msgstr "Zarządzaj widgetami"
+#: admin/admin.php:139
+msgid "Read More"
+msgstr ""
 
-#: ../content-aware-sidebars.php:356 ../content-aware-sidebars.php:359
-msgid "Sidebar updated."
-msgstr "Pasek boczny zaktualizowany."
+#: lib/wp-content-aware-engine/module/bp_member.php:37
+msgid "All Sections"
+msgstr ""
 
-#: ../content-aware-sidebars.php:361
-msgid "Sidebar published."
-msgstr "Pasek boczny opublikowany."
+#: lib/wp-content-aware-engine/module/bp_member.php:35
+msgid "BuddyPress Profiles"
+msgstr ""
 
-#: ../content-aware-sidebars.php:362
-msgid "Sidebar saved."
-msgstr "Pasek boczny zapisany."
+#: admin/sidebar-edit.php:957
+msgid "Documentation"
+msgstr ""
 
-#: ../content-aware-sidebars.php:363
-msgid "Sidebar submitted."
-msgstr "Pasek boczny wysłany."
+#: sidebar.php:127
+msgid "Target Sidebar"
+msgstr ""
 
-#: ../content-aware-sidebars.php:364
-#, php-format
-msgid "Sidebar scheduled for: <strong>%1$s</strong>."
-msgstr "Plan paska bocznego na: <strong>%1$s</strong>."
+#: sidebar.php:120
+msgid "Shortcode / Template Tag"
+msgstr ""
+
+#: admin/sidebar-overview.php:292
+msgid "Undo"
+msgstr ""
+
+#: admin/sidebar-overview.php:231
+msgid "You are not allowed to delete this item."
+msgstr ""
+
+#: admin/sidebar-overview.php:216
+msgid "You are not allowed to restore this item from the Trash."
+msgstr ""
+
+#: admin/sidebar-overview.php:197
+msgid "You are not allowed to move this item to the Trash."
+msgstr ""
+
+#. translators: %s: search keywords
+#: admin/sidebar-overview.php:133
+msgid "Search results for &#8220;%s&#8221;"
+msgstr ""
+
+#. translators: %s: post title
+#: admin/sidebar-list-table.php:635
+msgid "Delete &#8220;%s&#8221; permanently"
+msgstr ""
+
+#: admin/sidebar-list-table.php:627
+msgctxt "verb"
+msgid "Trash"
+msgstr ""
+
+#. translators: %s: post title
+#: admin/sidebar-list-table.php:626
+msgid "Move &#8220;%s&#8221; to the Trash"
+msgstr ""
+
+#. translators: %s: post title
+#: admin/sidebar-list-table.php:618
+msgid "Restore &#8220;%s&#8221; from the Trash"
+msgstr ""
+
+#. translators: %s: sidebar title
+#: admin/sidebar-list-table.php:597
+msgid "Edit &#8220;%s&#8221;"
+msgstr ""
+
+#: admin/sidebar-list-table.php:532
+msgid "Missed schedule"
+msgstr ""
+
+#: admin/sidebar-list-table.php:520
+msgid "Until %s"
+msgstr ""
+
+#. translators: Sidebar status date and time format, see http://php.net/date
+#: admin/sidebar-list-table.php:519 admin/sidebar-list-table.php:525
+msgid "Y/m/d g:i:s a"
+msgstr ""
+
+#. translators: Sidebar status date format, see http://php.net/date
+#: admin/sidebar-list-table.php:517 admin/sidebar-list-table.php:529
+msgid "Y/m/d"
+msgstr ""
+
+#: admin/sidebar-list-table.php:422
+msgid "%s is currently editing"
+msgstr ""
+
+#. translators: %s: post title
+#: admin/sidebar-list-table.php:407
+msgid "&#8220;%s&#8221; (Edit)"
+msgstr ""
+
+#: admin/sidebar-list-table.php:365
+msgid "Select %s"
+msgstr ""
+
+#: admin/sidebar-list-table.php:311 sidebar.php:114
+msgctxt "option"
+msgid "Action"
+msgstr ""
+
+#: admin/sidebar-list-table.php:310
+msgctxt "column name"
+msgid "Title"
+msgstr ""
+
+#: admin/sidebar-list-table.php:282
+msgid "Empty Trash"
+msgstr ""
+
+#: admin/sidebar-list-table.php:255 admin/sidebar-list-table.php:619
+msgid "Restore"
+msgstr ""
+
+#: admin/sidebar-list-table.php:207
+msgid "Inactive <span class=\"count\">(%s)</span>"
+msgid_plural "Inactive <span class=\"count\">(%s)</span>"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+
+#: admin/sidebar-list-table.php:206
+msgid "Active <span class=\"count\">(%s)</span>"
+msgid_plural "Active <span class=\"count\">(%s)</span>"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+
+#: admin/sidebar-list-table.php:193
+msgctxt "sidebars"
+msgid "All <span class=\"count\">(%s)</span>"
+msgid_plural "All <span class=\"count\">(%s)</span>"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+
+#: admin/sidebar-edit.php:1322
+msgid "F j, Y"
+msgstr ""
+
+#: admin/admin.php:138
+msgid "Free updates and email support included."
+msgstr ""
+
+#: admin/admin.php:137
+msgid "You can upgrade without leaving the admin panel by clicking below."
+msgstr ""
+
+#: admin/admin.php:135
+msgid "Get All Features With Content Aware Sidebars Pro"
+msgstr ""
+
+#: admin/admin.php:129
+msgid "Sync widgets across themes"
+msgstr ""
+
+#: admin/admin.php:127
+msgid "Visibility for roles"
+msgstr ""
+
+#: admin/admin.php:125
+msgid "Extra condition types"
+msgstr ""
+
+#: admin/sidebar-edit.php:1004
+msgid "Activates on <b>%1$s</b>"
+msgstr ""
 
 #. translators: Publish box date format, see http://php.net/date
-#: ../content-aware-sidebars.php:366
-msgid "M j, Y @ G:i"
-msgstr "M j, Y @ G:i"
+#: admin/sidebar-edit.php:999
+msgid "M j, Y"
+msgstr ""
 
-#: ../content-aware-sidebars.php:367
-msgid "Sidebar draft updated."
-msgstr "Szkic paska bocznego zaktualizowany."
+#: admin/sidebar-edit.php:866
+msgid "Display sidebar only in given time ranges on select days."
+msgstr ""
 
-#: ../content-aware-sidebars.php:383
-#, php-format
-msgid "%s sidebar updated."
-msgid_plural "%s sidebars updated."
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+#: admin/sidebar-edit.php:853
+msgid "Never"
+msgstr ""
 
-#: ../content-aware-sidebars.php:384
-#, php-format
-msgid "%s sidebar not updated, somebody is editing it."
-msgid_plural "%s sidebars not updated, somebody is editing them."
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+#: admin/sidebar-edit.php:844
+msgid "Select date"
+msgstr ""
 
-#: ../content-aware-sidebars.php:385
-#, php-format
-msgid "%s sidebar permanently deleted."
-msgid_plural "%s sidebars permanently deleted."
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+#: admin/sidebar-edit.php:834 admin/sidebar-list-table.php:314
+msgid "Status"
+msgstr ""
 
-#: ../content-aware-sidebars.php:386
-#, php-format
-msgid "%s sidebar moved to the Trash."
-msgid_plural "%s sidebars moved to the Trash."
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+#: admin/admin.php:128 admin/sidebar-edit.php:761
+msgid "Time Schedule"
+msgstr ""
 
-#: ../content-aware-sidebars.php:387
-#, php-format
-msgid "%s sidebar restored from the Trash."
-msgid_plural "%s sidebars restored from the Trash."
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+#: admin/sidebar-edit.php:738
+msgid "Sidebar Status"
+msgstr ""
 
-#: ../content-aware-sidebars.php:444 ../content-aware-sidebars.php:535
-msgid "Please update Host Sidebar"
-msgstr "Zaktualizuj Główny pasek boczny"
-
-#: ../content-aware-sidebars.php:472
-msgid "Merge position"
-msgstr "Pozycja scalenia"
-
-#: ../content-aware-sidebars.php:473
-msgid "Widgets"
-msgstr "Widgety"
-
-#: ../content-aware-sidebars.php:586
-msgid "Manage Widgets"
-msgstr "Zarządzaj Widgetami"
-
-#: ../content-aware-sidebars.php:756
-msgid "Get a free Content Aware Sidebars Premium Bundle"
-msgstr "Otrzymaj darmowy Pakiet Premium Content Aware Sidebars"
-
-#: ../content-aware-sidebars.php:772
-msgid "Options"
-msgstr "Opcje"
-
-#: ../content-aware-sidebars.php:795
-#: ../lib/wp-content-aware-engine/core.php:203
-#: ../lib/wp-content-aware-engine/view/meta_box.php:20 ../pointers.php:82
-msgid "Condition Groups"
-msgstr "Stan Grup"
-
-#: ../content-aware-sidebars.php:796
+#: admin/sidebar-edit.php:696
 msgid ""
-"Each created condition group describe some specific content (conditions) "
-"that the current sidebar should be displayed with."
-msgstr "Każdy stan grupy opisuje pewną specyficzną zawartość (stan), który obecny pasek boczny powinien wyświetlić."
-
-#: ../content-aware-sidebars.php:797
-msgid ""
-"Content added to a condition group uses logical conjunction, while condition"
-" groups themselves use logical disjunction. This means that content added to"
-" a group should be associated, as they are treated as such, and that the "
-"groups do not interfere with each other. Thus it is possible to have both "
-"extremely focused and at the same time distinct conditions."
-msgstr "Zawartość dodana do stanu grup używa logicznej koniunkcji, podczas gdy stan grup używa logicznej alternatywy. To znaczy, że zawartość do grupy powinna być powiązana, a grupy nie oddziałują między sobą. "
-
-#: ../content-aware-sidebars.php:800
-msgid "More Information"
-msgstr "Więcej informacji"
-
-#: ../content-aware-sidebars.php:802 ../content-aware-sidebars.php:885
-msgid "Get Support"
-msgstr "Uzyskaj pomoc"
-
-#: ../content-aware-sidebars.php:816
-msgid ""
-"Translate Content Aware Sidebars into your language and become a BETA tester"
-" of the upcoming Premium Bundle*!"
-msgstr "Przetłumacz wtyczkę na swój język i zostań BETA testerem nadchodzącego Pakietu Premium*!"
-
-#: ../content-aware-sidebars.php:817
-msgid "Translate Now"
-msgstr "Przetłumacz Teraz"
-
-#: ../content-aware-sidebars.php:818
-msgid "Get Premium Bundle"
-msgstr "Otrzymaj Pakiet Premium"
-
-#: ../content-aware-sidebars.php:819
-msgid ""
-"Single-site use. BETA implies it is not recommended for production sites."
-msgstr "Tylko do użytku na stronach testowych. BETA oznacza, iż nie poleca się używania wtyczki na stronach ogólnodostępnych."
-
-#: ../content-aware-sidebars.php:822
-msgid "Partial Feature List"
-msgstr "Częściowa lista funkcji"
-
-#: ../content-aware-sidebars.php:824
-msgid "Select and create sidebars in the Post Editing Screens"
-msgstr "Wybieraj i twórz Paski boczne na stronach Edycji Wpisów"
-
-#: ../content-aware-sidebars.php:825
-msgid "Display sidebars with URLs using wildcards"
-msgstr "Wyświetlaj Paski boczne z linkami używając wieloznaczników"
-
-#: ../content-aware-sidebars.php:826
-msgid "Display sidebars with User Roles"
-msgstr "Wyświetlaj Paski boczne na stronie Ról Użytkowników"
-
-#: ../content-aware-sidebars.php:827
-msgid "Display sidebars with BuddyPress User Groups"
-msgstr "Wyświetlaj Paski boczne na stronach Grup BuddyPress"
-
-#: ../content-aware-sidebars.php:828
-msgid "Sidebars column in Post Type and Taxonomy Overview Screens"
-msgstr "Kolumna Paska bocznego w widokach Typów Wpisów i Przeglądzie Taksonomii"
-
-#: ../content-aware-sidebars.php:864 ../content-aware-sidebars.php:865
-msgid "Order"
-msgstr "Starszy"
-
-#: ../content-aware-sidebars.php:880
-msgid "Give a review on WordPress.org"
-msgstr ""
-
-#: ../content-aware-sidebars.php:882 ../content-aware-sidebars.php:912
-msgid "Translate the plugin into your language"
-msgstr "Przetłumacz wtyczkę na swój język"
-
-#: ../content-aware-sidebars.php:884
-msgid "Read the FAQ"
-msgstr ""
-
-#: ../content-aware-sidebars.php:899
-msgid ""
-"If you love this plugin, please consider donating to support future "
-"development."
-msgstr "Jeśli podoba Ci się ta wtyczka, rozważ wsparcie finansowe przyszłych wersji."
-
-#: ../content-aware-sidebars.php:908
-msgid "Or you could:"
-msgstr "Lub możesz:"
-
-#: ../content-aware-sidebars.php:910
-msgid "Rate the plugin on WordPress.org"
-msgstr "Oceń tę wtyczkę na WordPress.org"
-
-#: ../content-aware-sidebars.php:911
-msgid "Link to the plugin page"
-msgstr "Link do strony wtyczny"
-
-#: ../content-aware-sidebars.php:1045
-msgid "Filter Sidebars"
-msgstr "Filtruj paski boczne"
-
-#: ../content-aware-sidebars.php:1046
-msgid "Filter Widgets"
-msgstr ""
-
-#: ../lib/wp-content-aware-engine/core.php:204
-msgid "Condition Group"
-msgstr "Stan Grupy"
-
-#: ../lib/wp-content-aware-engine/core.php:205
-msgctxt "group"
-msgid "Add New"
-msgstr "Dodaj nową"
-
-#: ../lib/wp-content-aware-engine/core.php:206
-#: ../lib/wp-content-aware-engine/view/meta_box.php:21
-#: ../lib/wp-content-aware-engine/view/meta_box.php:65
-msgid "Add New Group"
-msgstr "Dodaj nową Grupę"
-
-#: ../lib/wp-content-aware-engine/core.php:207
-#: ../lib/wp-content-aware-engine/core.php:626
-#: ../lib/wp-content-aware-engine/view/meta_box.php:38
-msgctxt "group"
-msgid "Edit"
-msgstr "Edytuj"
-
-#: ../lib/wp-content-aware-engine/core.php:212
-#: ../lib/wp-content-aware-engine/core.php:440
-msgid "No Groups found"
-msgstr "Nie znaleziono żadnych grup"
-
-#: ../lib/wp-content-aware-engine/core.php:224
-msgctxt "condition group"
-msgid "Negated"
-msgstr ""
-
-#: ../lib/wp-content-aware-engine/core.php:447
-msgid "Content"
-msgstr "Zawartość"
-
-#: ../lib/wp-content-aware-engine/core.php:525
-#: ../lib/wp-content-aware-engine/core.php:573
-#: ../lib/wp-content-aware-engine/core.php:578
-msgid "Unauthorized request"
-msgstr "Nieuprawnione wnioski"
-
-#: ../lib/wp-content-aware-engine/core.php:531
-msgid "Condition group cannot be empty"
-msgstr "Stan grupy nie może być pusty"
-
-#: ../lib/wp-content-aware-engine/core.php:550
-msgid "Condition group saved"
-msgstr "Stan grupy zapisany"
-
-#: ../lib/wp-content-aware-engine/core.php:583
-msgid "Condition group could not be removed"
-msgstr "Stan grupy nie może zostać usunięty"
-
-#: ../lib/wp-content-aware-engine/core.php:588
-msgid "Condition group removed"
-msgstr "Stan grupy usunięty"
-
-#: ../lib/wp-content-aware-engine/core.php:622
-#: ../lib/wp-content-aware-engine/view/meta_box.php:35
-msgid "Save"
-msgstr "Zapisz"
-
-#: ../lib/wp-content-aware-engine/core.php:623
-#: ../lib/wp-content-aware-engine/view/meta_box.php:35
-msgid "Cancel"
-msgstr "Anuluj"
-
-#: ../lib/wp-content-aware-engine/core.php:624
-#: ../lib/wp-content-aware-engine/view/meta_box.php:56
-msgid "Or"
-msgstr "Lub"
-
-#: ../lib/wp-content-aware-engine/core.php:625
-#: ../lib/wp-content-aware-engine/module/post_type.php:172
-#: ../lib/wp-content-aware-engine/module/taxonomy.php:228
-#: ../lib/wp-content-aware-engine/view/module/group.php:11
-msgid "And"
-msgstr ""
-
-#: ../lib/wp-content-aware-engine/core.php:627
-#: ../lib/wp-content-aware-engine/view/meta_box.php:38
-msgid "Remove"
-msgstr "Usuń"
-
-#: ../lib/wp-content-aware-engine/core.php:628
-msgid "Remove this group and its contents permanently?"
-msgstr "Usunąć tę grupę i jej zawartość?"
-
-#: ../lib/wp-content-aware-engine/core.php:629
-msgid "No results found."
-msgstr "Nic nie znaleziono."
-
-#: ../lib/wp-content-aware-engine/core.php:630
-msgid ""
-"The current group has unsaved changes. Do you want to continue and discard "
-"these changes?"
-msgstr "Obecna grupa ma niezapisane zmiany. Chcesz kontynuować i je odrzucić?"
-
-#: ../lib/wp-content-aware-engine/core.php:632
-#: ../lib/wp-content-aware-engine/view/meta_box.php:45
-msgid "Negate group"
-msgstr ""
-
-#: ../lib/wp-content-aware-engine/core.php:633
-#: ../lib/wp-content-aware-engine/view/meta_box.php:49
-msgid "Target all but this context"
-msgstr ""
-
-#: ../lib/wp-content-aware-engine/core.php:634
-#: ../lib/wp-content-aware-engine/view/meta_box.php:49
-msgid "Target this context"
-msgstr ""
-
-#: ../lib/wp-content-aware-engine/module/author.php:30
-msgid "Authors"
-msgstr "Autorzy"
-
-#: ../lib/wp-content-aware-engine/module/base.php:134
-#, php-format
-msgid "Display with All %s"
-msgstr "Wyświetl z wszystkimi %s"
-
-#: ../lib/wp-content-aware-engine/module/base.php:141
-#: ../lib/wp-content-aware-engine/module/bp_member.php:139
-#: ../lib/wp-content-aware-engine/module/post_type.php:278
-#: ../lib/wp-content-aware-engine/module/taxonomy.php:302
-msgid "View All"
-msgstr "Zobacz wszystkie"
-
-#: ../lib/wp-content-aware-engine/module/base.php:148
-#: ../lib/wp-content-aware-engine/module/base.php:151
-#: ../lib/wp-content-aware-engine/module/post_type.php:284
-#: ../lib/wp-content-aware-engine/module/post_type.php:287
-#: ../lib/wp-content-aware-engine/module/taxonomy.php:308
-#: ../lib/wp-content-aware-engine/module/taxonomy.php:311
-msgid "Search"
-msgstr "Szukaj"
-
-#: ../lib/wp-content-aware-engine/module/bbpress.php:31
-msgid "bbPress User Profiles"
-msgstr "Profile Użytkowników Formu"
-
-#: ../lib/wp-content-aware-engine/module/bp_member.php:29
-msgid "BuddyPress Members"
-msgstr "Członkowie BuddyPress"
-
-#: ../lib/wp-content-aware-engine/module/bp_member.php:148
-#: ../lib/wp-content-aware-engine/module/taxonomy.php:321
-#: ../lib/wp-content-aware-engine/view/module/meta_box.php:24
-msgid "Add to Group"
-msgstr "Dodaj do Grupy"
-
-#: ../lib/wp-content-aware-engine/module/date.php:31
-msgid "Dates"
-msgstr "Daty"
-
-#: ../lib/wp-content-aware-engine/module/date.php:70
-msgid "Date Archives"
-msgstr "Archiwum wg dat"
-
-#: ../lib/wp-content-aware-engine/module/page_template.php:30
-msgid "Page Templates"
-msgstr "Szablony strony"
-
-#: ../lib/wp-content-aware-engine/module/polylang.php:29
-#: ../lib/wp-content-aware-engine/module/qtranslate.php:29
-#: ../lib/wp-content-aware-engine/module/transposh.php:29
-#: ../lib/wp-content-aware-engine/module/wpml.php:29
-msgid "Languages"
-msgstr "Języki"
-
-#: ../lib/wp-content-aware-engine/module/post_type.php:37
-msgid "Post Types"
-msgstr "Typy wpisów"
-
-#: ../lib/wp-content-aware-engine/module/post_type.php:177
-#: ../lib/wp-content-aware-engine/module/taxonomy.php:233
-#: ../lib/wp-content-aware-engine/module/taxonomy.php:276
-msgid "Automatically select new children of a selected ancestor"
-msgstr "Automatycznie wybierz nowe potomstwo wybranego Rodzica"
-
-#: ../lib/wp-content-aware-engine/module/post_type.php:245
-msgid "Automatically add new children of a selected ancestor"
-msgstr ""
-
-#: ../lib/wp-content-aware-engine/module/post_type.php:250
-#, php-format
-msgid "%s Archives"
-msgstr ""
-
-#: ../lib/wp-content-aware-engine/module/post_type.php:251
-msgid "Blog Page"
-msgstr ""
-
-#: ../lib/wp-content-aware-engine/module/post_type.php:258
-#: ../lib/wp-content-aware-engine/module/taxonomy.php:284
-msgid "No items."
-msgstr "Brak pozycji."
-
-#: ../lib/wp-content-aware-engine/module/post_type.php:273
-msgid "Most Recent"
-msgstr "Najnowsze"
-
-#: ../lib/wp-content-aware-engine/module/static.php:31
-msgid "Static Pages"
-msgstr "Strona statyczna"
-
-#: ../lib/wp-content-aware-engine/module/static.php:44
-msgid "Front Page"
-msgstr "Strona główna"
-
-#: ../lib/wp-content-aware-engine/module/static.php:45
-msgid "Search Results"
-msgstr "Wyniki wyszukiwania"
-
-#: ../lib/wp-content-aware-engine/module/static.php:46
-msgid "404 Page"
-msgstr "Strona błędu 404"
-
-#: ../lib/wp-content-aware-engine/module/taxonomy.php:44
-msgid "Taxonomies"
-msgstr "Taksonomie"
-
-#: ../lib/wp-content-aware-engine/module/taxonomy.php:297
-msgid "Most Used"
-msgstr "Najczęściej używane"
-
-#: ../lib/wp-content-aware-engine/posttypemanager.php:63
-msgid "Conditional Content"
-msgstr ""
-
-#: ../lib/wp-content-aware-engine/view/meta_box.php:24
-msgid ""
-"Click to edit a group or create a new one. Select content on the left to add"
-" it. In each group, you can combine different types of associated content."
-msgstr "Kliknij by edytować Grupę lub stworzyć nową. Wybierz zawartość po lewej do dodania. Dla każdej z grup możesz połączyć różne typy zawartości."
-
-#: ../lib/wp-content-aware-engine/view/module/group.php:17
-#, php-format
-msgid "All %s"
-msgstr "Wszystkie %s"
-
-#: ../lib/wp-content-aware-engine/walker.php:175
-msgid "Password protected"
-msgstr ""
-
-#: ../lib/wp-content-aware-engine/walker.php:177
-msgid "Private"
-msgstr ""
-
-#: ../lib/wp-content-aware-engine/walker.php:179
-msgid "Draft"
-msgstr ""
-
-#. translators: post state
-#: ../lib/wp-content-aware-engine/walker.php:182
-msgctxt "post state"
-msgid "Pending"
-msgstr ""
-
-#: ../lib/wp-content-aware-engine/walker.php:184
-msgid "Sticky"
-msgstr ""
-
-#: ../lib/wp-content-aware-engine/walker.php:186
-msgid "Scheduled"
-msgstr ""
-
-#: ../pointers.php:68
-msgid "Get started"
-msgstr ""
-
-#: ../pointers.php:69
-msgid ""
-"You've just installed Content Aware Sidebars!\n"
+"Should the sidebar merge with a target sidebar or replace it? Maybe you want to insert it in your content with a shortcode.\n"
 "\n"
-"It gives you a lot of options, so this screen might look overwhelming at first. Don't worry.\n"
-"\n"
-"Click Start Tour to view a quick introduction and learn how to display a sidebar exactly where and when you want it to."
-msgstr ""
-
-#: ../pointers.php:76
-msgid "Start Tour"
-msgstr ""
-
-#: ../pointers.php:78
-msgid "Not now"
-msgstr "Nie teraz"
-
-#: ../pointers.php:83
-msgid ""
-"To make a sidebar contextual, you start by creating a condition group.\n"
-"\n"
-"Condition groups are isolated from each other, meaning that a sidebar can have very different conditions.\n"
-"\n"
-"Negating a group means that the sidebar will be displayed on all but those conditions."
-msgstr ""
-
-#: ../pointers.php:92
-msgid "Content and contexts"
-msgstr ""
-
-#: ../pointers.php:93
-msgid ""
-"Here you'll find all the content on your site that Content Aware Sidebars supports out of the box.\n"
-"\n"
-"Simply select the content you want the sidebar to be displayed with and add it to a group.\n"
-"\n"
-"You can even combine associated content in one group; try selecting \"All Posts\", a Category and an Author. Awesome!"
-msgstr ""
-
-#: ../pointers.php:102
-msgid "Options, options"
-msgstr "Opcje, opcje"
-
-#: ../pointers.php:103
-msgid ""
-"Should the sidebar be displayed on singular pages and/or archives?\n"
-"\n"
-"Should it merge with another sidebar or replace it? Maybe you want to insert it manually in your content with a shortcode.\n"
-"\n"
-"Schedule the sidebar just like you do with posts and pages, or make it private so that it is only visible for logged-in users.\n"
+"Display the sidebar for everyone or make it visible only for logged-in users.\n"
 "\n"
 " You are in control."
 msgstr ""
 
-#: ../pointers.php:112
-msgid "Help and Support"
-msgstr "Pomoc i wsparcie"
+#: admin/sidebar-edit.php:641
+msgid "Sidebar deactivated."
+msgstr ""
 
-#: ../pointers.php:113
+#: admin/sidebar-edit.php:637
+msgid "Sidebar activated."
+msgstr ""
+
+#: admin/sidebar-edit.php:478
+msgid "Enter title here"
+msgstr ""
+
+#: admin/sidebar-edit.php:372 admin/sidebar-overview.php:234
+msgid "Error in deleting."
+msgstr ""
+
+#: admin/sidebar-edit.php:361 admin/sidebar-overview.php:219
+msgid "Error in restoring from Trash."
+msgstr ""
+
+#: admin/sidebar-edit.php:358
+msgid "You are not allowed to restore this sidebar from the Trash."
+msgstr ""
+
+#: admin/sidebar-edit.php:343 admin/sidebar-overview.php:205
+msgid "Error in moving to Trash."
+msgstr ""
+
+#: admin/sidebar-edit.php:339
+msgid "You cannot move this sidebar to the Trash. %s is currently editing."
+msgstr ""
+
+#: admin/sidebar-edit.php:195 admin/sidebar-edit.php:288
+msgid "The sidebar no longer exists."
+msgstr ""
+
+#: admin/sidebar-edit.php:238 admin/sidebar-edit.php:745
+msgid "Advanced"
+msgstr ""
+
+#: admin/sidebar-edit.php:236
+msgid "Conditions"
+msgstr ""
+
+#: admin/sidebar-edit.php:199
+msgid "You cannot edit this sidebar because it is in the Trash. Please restore it and try again."
+msgstr ""
+
+#: admin/sidebar-edit.php:83
+msgid "URLs (Pro Feature)"
+msgstr ""
+
+#: admin/post_type_sidebar.php:295 admin/screen_widgets.php:108
+#: admin/screen_widgets.php:137 admin/sidebar-edit.php:1010
+#: admin/sidebar-list-table.php:539
+msgid "Inactive"
+msgstr ""
+
+#: admin/screen_widgets.php:108 admin/screen_widgets.php:131
+#: admin/sidebar-edit.php:1007 admin/sidebar-list-table.php:513
+msgid "Active"
+msgstr ""
+
+#. Author URI of the plugin/theme
+msgid "https://dev.institute"
+msgstr ""
+
+#. Author of the plugin/theme
+msgid "Joachim Jensen"
+msgstr ""
+
+#. Plugin URI of the plugin/theme
+msgid "https://dev.institute/wordpress/sidebars-pro/"
+msgstr ""
+
+#: admin/sidebar-edit.php:1037
+msgid "Enable"
+msgstr ""
+
+#: admin/sidebar-edit.php:1028 admin/sidebar-edit.php:1036
+msgid "Widget Revisions: %s"
+msgstr ""
+
+#: admin/sidebar-edit.php:116
+msgid "Upgrade to Pro"
+msgstr ""
+
+#: sidebar.php:245 sidebar.php:267
+msgid "(no title)"
+msgstr ""
+
+#: lib/wp-pointer-tour/wp-pointer-tour.php:164
+msgid "Previous"
+msgstr ""
+
+#: admin/screen_widgets.php:168
+msgid "Expand"
+msgstr ""
+
+#: admin/screen_widgets.php:167
+msgid "Collapse"
+msgstr ""
+
+#: admin/sidebar-edit.php:1302
+msgid "User Roles available in Pro"
+msgstr ""
+
+#: admin/admin.php:126 admin/sidebar-list-table.php:609
+msgid "Widget Revisions"
+msgstr ""
+
+#: admin/sidebar-edit.php:99
+msgid "Display this sidebar only on content that meets the following conditions:"
+msgstr ""
+
+#: admin/post_type_sidebar.php:276
+msgid "Display sidebars per %s etc. with the %s."
+msgstr ""
+
+#: admin/post_type_sidebar.php:272
+msgid "Note: Selected Sidebars are displayed on this %s specifically."
+msgstr ""
+
+#: admin/post_type_sidebar.php:257
+msgid "Default"
+msgstr ""
+
+#: admin/post_type_sidebar.php:275
+msgid "Sidebar Manager"
+msgstr ""
+
+#: admin/post_type_sidebar.php:245
+msgid "Archive Page"
+msgstr ""
+
+#: admin/post_type_sidebar.php:237
+msgid "Page Template"
+msgstr ""
+
+#: admin/post_type_sidebar.php:234
+msgid "Child Page"
+msgstr ""
+
+#: admin/post_type_sidebar.php:231
+msgid "Author"
+msgstr ""
+
+#: admin/post_type_sidebar.php:223 admin/post_type_sidebar.php:262
+msgid "Type to Add New Sidebar"
+msgstr ""
+
+#: admin/post_type_sidebar.php:219
+msgid "Create New"
+msgstr ""
+
+#: admin/post_type_sidebar.php:177
+msgid "Sidebars - Quick Select"
+msgstr ""
+
+#: admin/sidebar-edit.php:712
+msgid "Finish Tour"
+msgstr ""
+
+#: admin/sidebar-edit.php:686
+msgid ""
+"Click on the input field and select the content you want.\n"
+"\n"
+"If you can't find the right content in the list, type something to search.\n"
+"\n"
+" You can add several types of content to the same group, try e.g. \"All Posts\" and an Author to target all posts written by that author. Awesome!\n"
+"\n"
+"Remember to save the changes on each group."
+msgstr ""
+
+#: admin/sidebar-edit.php:668
+msgid "I know how to use it"
+msgstr ""
+
+#: admin/sidebar-edit.php:660
+msgid ""
+"You've just installed or updated Content Aware Sidebars. Awesome!\n"
+"\n"
+"You can display sidebars on any page or in any context. If that is new to you, this 3 step interactive guide will show you just how easy it is."
+msgstr ""
+
+#: admin/sidebar-edit.php:659
+msgid "Get Started in 3 Easy Steps"
+msgstr ""
+
+#: lib/wp-content-aware-engine/module/bbpress.php:32
+msgid "All Profiles"
+msgstr ""
+
+#: lib/wp-content-aware-engine/module/author.php:30
+msgid "All Authors"
+msgstr ""
+
+#: sidebar.php:190
+msgid "Sidebar Conditions"
+msgstr ""
+
+#: sidebar.php:109
+msgid "Logged-in Users"
+msgstr ""
+
+#: lib/wp-content-aware-engine/view/group_template.php:11
+msgid "Not"
+msgstr ""
+
+#: admin/sidebar-edit.php:850
+msgid "Deactivate"
+msgstr ""
+
+#: admin/sidebar-edit.php:841
+msgid "Activate"
+msgstr ""
+
+#: admin/post_type_sidebar.php:220 admin/sidebar-edit.php:1013
+msgid "New"
+msgstr ""
+
+#: freemius.php:58
+msgid "Please help us improve %2$s by securely sharing some usage data with %5$s. If you skip this, that's okay! %2$s will still work just fine."
+msgstr ""
+
+#: admin/screen_widgets.php:147
+msgid "Revisions"
+msgstr ""
+
+#: admin/sidebar-edit.php:1311 admin/sidebar-list-table.php:500
+msgid "All Users"
+msgstr ""
+
+#: admin/sidebar-list-table.php:456
+msgid "Add sidebar at the bottom during merge"
+msgstr ""
+
+#: admin/sidebar-list-table.php:455
+msgid "Add sidebar at the top during merge"
+msgstr ""
+
+#: admin/sidebar-edit.php:989
+msgid "Update"
+msgstr ""
+
+#: admin/sidebar-edit.php:237
+msgid "Schedule"
+msgstr ""
+
+#: admin/sidebar-edit.php:899 admin/sidebar-list-table.php:263
+msgid "Move to Trash"
+msgstr ""
+
+#: admin/sidebar-edit.php:897 admin/sidebar-list-table.php:261
+#: admin/sidebar-list-table.php:636
+msgid "Delete Permanently"
+msgstr ""
+
+#: app.php:174
+msgid "Upgrade"
+msgstr ""
+
+#: admin/sidebar-edit.php:1029
+msgid "Browse revisions"
+msgstr ""
+
+#: admin/sidebar-edit.php:1029
+msgctxt "revisions"
+msgid "Browse"
+msgstr ""
+
+#: admin/sidebar-edit.php:1019 admin/sidebar-list-table.php:598
+msgid "Edit"
+msgstr ""
+
+#: admin/sidebar-edit.php:994
+msgid "Status:"
+msgstr ""
+
+#: admin/sidebar-edit.php:934 admin/sidebar-edit.php:935
+#: admin/sidebar-list-table.php:313 sidebar.php:105
+msgid "Visibility"
+msgstr ""
+
+#: admin/admin.php:139
+msgid "Upgrade Now"
+msgstr ""
+
+#: admin/sidebar-edit.php:960
+msgid "Priority Email Support"
+msgstr ""
+
+#: admin/sidebar-edit.php:261 admin/sidebar-edit.php:961
+msgid "Forum Support"
+msgstr ""
+
+#: admin/admin.php:131
+msgid "Content Aware Sidebars Pro"
+msgstr ""
+
+#: admin/sidebar-edit.php:731
+msgid "Publish"
+msgstr ""
+
+#: admin/sidebar-edit.php:119
+msgid "Like it? %1$sSupport the plugin with a %2$s Review%3$s"
+msgstr ""
+
+#: lib/wp-content-aware-engine/view/group_template.php:51
+msgid "Save Changes"
+msgstr "Zachowaj zmiany"
+
+#: lib/wp-content-aware-engine/module/pods.php:30
+msgid "All Pods Pages"
+msgstr ""
+
+#: lib/wp-content-aware-engine/module/pods.php:29
+msgid "Pods Pages"
+msgstr ""
+
+#: admin/sidebar-edit.php:673
+msgid ""
+"With this dropdown you can select on what conditions the sidebar should be displayed.\n"
+"\n"
+"Content Aware Sidebars has built-in support for many types of content and even other plugins!\n"
+"\n"
+"Select something to continue the tour. You can change it later."
+msgstr ""
+
+#: admin/sidebar-edit.php:672
+msgid "Select Content Type"
+msgstr ""
+
+#: admin/sidebar-edit.php:667
+msgid "Start Quick Tour"
+msgstr ""
+
+#: lib/wp-content-aware-engine/view/group_template.php:43
+msgid "Negate conditions"
+msgstr ""
+
+#: lib/wp-content-aware-engine/view/group_template.php:18
+#: lib/wp-content-aware-engine/view/meta_box.php:18
+msgid "Select content type"
+msgstr "Wybierz typ zawartości"
+
+#: lib/wp-content-aware-engine/module/page_template.php:36
+msgid "All Templates"
+msgstr ""
+
+#: lib/wp-content-aware-engine/core.php:805
+msgid "Searching"
+msgstr ""
+
+#: lib/wp-content-aware-engine/core.php:648
+msgid "Conditions updated"
+msgstr ""
+
+#: lib/wp-content-aware-engine/core.php:625
+msgid "Could not delete conditions"
+msgstr ""
+
+#: lib/wp-content-aware-engine/core.php:531
+msgid "Conditional Logic"
+msgstr ""
+
+#: lib/wp-pointer-tour/wp-pointer-tour.php:165
+msgid "Next"
+msgstr "Następny"
+
+#: lib/wp-pointer-tour/wp-pointer-tour.php:163
+msgid "Close"
+msgstr "Zamknij"
+
+#: admin/sidebar-edit.php:706
 msgid ""
 "That's it! Now you can start creating sidebars and display them on your own conditions.\n"
 "\n"
 "If you need more help, click on the \"Help\" tab here."
 msgstr ""
 
-#: ../pointers.php:142
-msgid "Close"
-msgstr "Zamknij"
+#: admin/sidebar-edit.php:705
+msgid "Help and Support"
+msgstr "Pomoc i wsparcie"
 
-#: ../pointers.php:143
-msgid "Next"
-msgstr "Następny"
+#: admin/sidebar-edit.php:695
+msgid "Options, options"
+msgstr "Opcje, opcje"
+
+#: admin/sidebar-edit.php:958
+msgid "Get Started"
+msgstr ""
+
+#: admin/post_type_sidebar.php:292 admin/screen_widgets.php:134
+#: admin/sidebar-list-table.php:534
+#: lib/wp-content-aware-engine/module/post_type.php:319
+#: lib/wp-content-aware-engine/walker.php:185
+msgid "Scheduled"
+msgstr ""
+
+#: lib/wp-content-aware-engine/module/post_type.php:317
+#: lib/wp-content-aware-engine/walker.php:183
+msgid "Sticky"
+msgstr ""
+
+#. translators: post state
+#: lib/wp-content-aware-engine/module/post_type.php:315
+#: lib/wp-content-aware-engine/walker.php:181
+msgctxt "post state"
+msgid "Pending"
+msgstr ""
+
+#: lib/wp-content-aware-engine/module/post_type.php:312
+#: lib/wp-content-aware-engine/walker.php:178
+msgid "Draft"
+msgstr ""
+
+#: lib/wp-content-aware-engine/module/post_type.php:310
+#: lib/wp-content-aware-engine/walker.php:176
+msgid "Private"
+msgstr ""
+
+#: lib/wp-content-aware-engine/module/post_type.php:308
+#: lib/wp-content-aware-engine/walker.php:174
+msgid "Password protected"
+msgstr ""
+
+#: lib/wp-content-aware-engine/module/taxonomy.php:49
+msgid "Taxonomies"
+msgstr "Taksonomie"
+
+#: lib/wp-content-aware-engine/module/static.php:50
+msgid "404 Page"
+msgstr "Strona błędu 404"
+
+#: lib/wp-content-aware-engine/module/static.php:49
+msgid "Search Results"
+msgstr "Wyniki wyszukiwania"
+
+#: lib/wp-content-aware-engine/module/static.php:48
+msgid "Front Page"
+msgstr "Strona główna"
+
+#: lib/wp-content-aware-engine/module/static.php:36
+msgid "Static Pages"
+msgstr "Strona statyczna"
+
+#: lib/wp-content-aware-engine/module/post_type.php:284
+msgid "Blog Page"
+msgstr ""
+
+#: lib/wp-content-aware-engine/module/post_type.php:283
+#: lib/wp-content-aware-engine/module/taxonomy.php:288
+msgid "%s Archives"
+msgstr ""
+
+#: lib/wp-content-aware-engine/module/post_type.php:42
+msgid "Post Types"
+msgstr "Typy wpisów"
+
+#: lib/wp-content-aware-engine/module/polylang.php:29
+#: lib/wp-content-aware-engine/module/qtranslate.php:29
+#: lib/wp-content-aware-engine/module/transposh.php:29
+#: lib/wp-content-aware-engine/module/wpml.php:29
+msgid "Languages"
+msgstr "Języki"
+
+#: lib/wp-content-aware-engine/module/page_template.php:35
+msgid "Page Templates"
+msgstr "Szablony strony"
+
+#: lib/wp-content-aware-engine/module/date.php:32
+msgid "Date Archives"
+msgstr "Archiwum wg dat"
+
+#: lib/wp-content-aware-engine/module/date.php:30
+msgid "Dates"
+msgstr "Daty"
+
+#: lib/wp-content-aware-engine/module/bbpress.php:31
+msgid "bbPress User Profiles"
+msgstr "Profile Użytkowników Formu"
+
+#: lib/wp-content-aware-engine/module/author.php:29
+msgid "Authors"
+msgstr "Autorzy"
+
+#: lib/wp-content-aware-engine/core.php:807
+msgid "Target all but this context"
+msgstr ""
+
+#: lib/wp-content-aware-engine/core.php:808
+msgid "Conditions have unsaved changes. Do you want to continue and discard these changes?"
+msgstr ""
+
+#: lib/wp-content-aware-engine/core.php:806
+msgid "No results found."
+msgstr "Nic nie znaleziono."
+
+#: lib/wp-content-aware-engine/view/module/condition_post_type_template.php:16
+#: lib/wp-content-aware-engine/view/module/condition_taxonomy_template.php:16
+#: lib/wp-content-aware-engine/view/module/condition_template.php:16
+msgid "And"
+msgstr ""
+
+#: lib/wp-content-aware-engine/view/group_template.php:10
+#: lib/wp-content-aware-engine/view/meta_box.php:14
+msgid "Or"
+msgstr "Lub"
+
+#: admin/sidebar-edit.php:987
+msgid "Save"
+msgstr "Zapisz"
+
+#: lib/wp-content-aware-engine/core.php:617
+msgid "Unauthorized request"
+msgstr "Nieuprawnione wnioski"
+
+#: lib/wp-content-aware-engine/core.php:248
+msgctxt "condition status"
+msgid "Negated"
+msgstr ""
+
+#: lib/wp-content-aware-engine/core.php:228
+msgid "Condition Group"
+msgstr "Stan Grupy"
+
+#: admin/screen_widgets.php:170
+msgid "Filter Widgets"
+msgstr ""
+
+#: admin/screen_widgets.php:169
+msgid "Filter Sidebars"
+msgstr "Filtruj paski boczne"
+
+#: admin/sidebar-edit.php:955
+msgid "Translate the plugin into your language"
+msgstr "Przetłumacz wtyczkę na swój język"
+
+#: admin/sidebar-edit.php:890 admin/sidebar-edit.php:891
+msgid "Order"
+msgstr "Starszy"
+
+#: app.php:168
+msgid "Get Support"
+msgstr "Uzyskaj pomoc"
+
+#: admin/sidebar-edit.php:259
+msgid "More Information"
+msgstr "Więcej informacji"
+
+#: admin/sidebar-edit.php:255
+msgid "Each created condition group describe some specific content (conditions) that the current sidebar should be displayed with."
+msgstr "Każdy stan grupy opisuje pewną specyficzną zawartość (stan), który obecny pasek boczny powinien wyświetlić."
+
+#: admin/sidebar-edit.php:254 admin/sidebar-edit.php:685
+#: lib/wp-content-aware-engine/core.php:227
+msgid "Condition Groups"
+msgstr "Stan Grup"
+
+#: admin/sidebar-edit.php:771
+msgid "Options"
+msgstr "Opcje"
+
+#. #-#-#-#-#  tmp-content-aware-sidebars.pot (Content Aware Sidebars 3.5.2) 
+#. #-#-#-#-#
+#. Plugin Name of the plugin/theme
+#: admin/sidebar-edit.php:754
+msgid "Content Aware Sidebars"
+msgstr "Paski boczne"
+
+#: admin/sidebar-list-table.php:475
+msgid "Manage Widgets"
+msgstr "Zarządzaj Widgetami"
+
+#: admin/sidebar-list-table.php:312
+msgid "Widgets"
+msgstr "Widgety"
+
+#: admin/sidebar-list-table.php:448 sidebar.php:284
+msgid "Please update Host Sidebar"
+msgstr "Zaktualizuj Główny pasek boczny"
+
+#: admin/sidebar-overview.php:277
+msgid "%s sidebar restored from the Trash."
+msgid_plural "%s sidebars restored from the Trash."
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+
+#: admin/sidebar-overview.php:276
+msgid "%s sidebar moved to the Trash."
+msgid_plural "%s sidebars moved to the Trash."
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+
+#: admin/sidebar-overview.php:275
+msgid "%s sidebar permanently deleted."
+msgid_plural "%s sidebars permanently deleted."
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+
+#: admin/sidebar-overview.php:274
+msgid "%s sidebar not updated, somebody is editing it."
+msgid_plural "%s sidebars not updated, somebody is editing them."
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+
+#: admin/sidebar-overview.php:273
+msgid "%s sidebar updated."
+msgid_plural "%s sidebars updated."
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+
+#. translators: Publish box date format, see http://php.net/date
+#: admin/sidebar-edit.php:640
+msgid "M j, Y @ G:i"
+msgstr "M j, Y @ G:i"
+
+#: admin/sidebar-edit.php:638
+msgid "Sidebar scheduled for: <strong>%1$s</strong>."
+msgstr "Plan paska bocznego na: <strong>%1$s</strong>."
+
+#: admin/sidebar-edit.php:636
+msgid "Sidebar updated."
+msgstr "Pasek boczny zaktualizowany."
+
+#: admin/sidebar-edit.php:634 admin/sidebar-overview.php:270
+msgid "Manage widgets"
+msgstr "Zarządzaj widgetami"
+
+#: sidebar.php:191
+msgid "No content. Please add at least one condition group to make the sidebar content aware."
+msgstr "Brak zawartości. Dodaj chociaż jedną grupę, aby pasek działał."
+
+#: sidebar.php:188
+msgid "No sidebars found in Trash"
+msgstr "Nie znaleziono pasków w koszu"
+
+#: admin/post_type_sidebar.php:225 sidebar.php:187
+msgid "No sidebars found"
+msgstr "Nie znaleziono pasków bocznych"
+
+#: sidebar.php:186
+msgid "Search Sidebars"
+msgstr "Szukaj Pasków bocznych"
+
+#: sidebar.php:185
+msgid "View Sidebar"
+msgstr "Zobacz pasek boczny"
+
+#: sidebar.php:184
+msgid "All Sidebars"
+msgstr "Wszystkie Paski boczne"
+
+#: sidebar.php:183
+msgid "New Sidebar"
+msgstr "Nowy pasek boczny"
+
+#: admin/screen_widgets.php:147 sidebar.php:182
+msgid "Edit Sidebar"
+msgstr "Edytuj Pasek boczny"
+
+#: sidebar.php:181
+msgid "Add New Sidebar"
+msgstr "Dodaj nowy Pasek boczny"
+
+#: sidebar.php:180
+msgctxt "sidebar"
+msgid "Add New"
+msgstr "Dodaj nowy"
+
+#: sidebar.php:179
+msgid "Sidebar"
+msgstr "Pasek boczny"
+
+#: sidebar.php:178
+msgid "Sidebars"
+msgstr "Paski boczne"
+
+#: sidebar.php:141
+msgid "Place sidebar on top or bottom of host when merging."
+msgstr "Umieść pasek boczny na górze lub dole głównego paska podczas scalania."
+
+#: sidebar.php:139
+msgid "Bottom"
+msgstr "Dół"
+
+#: sidebar.php:138
+msgid "Top"
+msgstr "Góra"
+
+#: sidebar.php:134
+msgid "Merge Position"
+msgstr ""
+
+#: sidebar.php:123
+msgid "Replace host sidebar, merge with it or add sidebar manually."
+msgstr "Zastąp Główny pasek boczny, scal go lub dodaj pasek boczny ręcznie."
+
+#: sidebar.php:121
+msgid "Forced replace"
+msgstr "Wymuszona zamiana"
+
+#: sidebar.php:119
+msgid "Merge"
+msgstr "Scal"
+
+#: sidebar.php:118
+msgid "Replace"
+msgstr "Zastąp"
+
+#: lib/wp-content-aware-engine/view/group_template.php:37
+msgid "Archives"
+msgstr ""
+
+#: lib/wp-content-aware-engine/view/group_template.php:31
+msgid "Singulars"
+msgstr ""
+
+#: admin/sidebar-edit.php:260 admin/sidebar-edit.php:959 app.php:167
+msgid "FAQ"
+msgstr "FAQ"

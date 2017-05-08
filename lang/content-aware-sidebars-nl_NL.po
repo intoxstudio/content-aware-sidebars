@@ -1,712 +1,1013 @@
-# Copyright (C) 2012 Content Aware Sidebars
-# This file is distributed under the same license as the Content Aware Sidebars package.
-# Translators:
-# Dennis Beckers <transifex@dennisbeckers.nl>, 2014
-# 7GRAFIX <info@7grafix.be>, 2015
+# Translation of Plugins - Content Aware Sidebars - Widget Area Control - Development (trunk) in Dutch
+# This file is distributed under the same license as the Plugins - Content Aware Sidebars - Widget Area Control - Development (trunk) package.
 msgid ""
 msgstr ""
-"Project-Id-Version: Content Aware Sidebars\n"
-"Report-Msgid-Bugs-To: http://wordpress.org/tag/content-aware-sidebars\n"
-"POT-Creation-Date: 2015-10-01 16:11-0800\n"
-"PO-Revision-Date: 2016-03-07 00:18+0000\n"
-"Last-Translator: Joachim Jensen <jv@intox.dk>\n"
-"Language-Team: Dutch (Netherlands) (http://www.transifex.com/intoxstudio/content-aware-sidebars/language/nl_NL/)\n"
+"PO-Revision-Date: 2017-04-02 18:04:01+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: nl_NL\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 1.7.6\n"
-"X-Poedit-Basepath: .\n"
-"X-Poedit-KeywordsList: __;_e;__ngettext:1,2;_n:1,2;__ngettext_noop:1,2;_n_noop:1,2;_c,_nc:4c,1,2;_x:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2;_ex:1,2c;esc_attr__;esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c\n"
-"X-Poedit-SearchPath-0: .\n"
-"X-Poedit-SearchPath-1: ..\n"
-"X-Poedit-SearchPathExcluded-0: ../node_modules\n"
-"X-Poedit-SearchPathExcluded-1: ../lib/wp-content-aware-engine/node_modules\n"
-"X-Poedit-SourceCharset: UTF-8\n"
-"X-Textdomain-Support: yes\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: GlotPress/2.4.0-alpha\n"
+"Language: nl\n"
+"Project-Id-Version: Plugins - Content Aware Sidebars - Widget Area Control - Development (trunk)\n"
 
-#: ../content-aware-sidebars.php:95
-msgid "Manage and show sidebars according to the content being viewed."
-msgstr "Manage en laat sidebars zien afhankelijk van de inhoud die getoond wordt."
+#. Description of the plugin/theme
+msgid "Unlimited custom sidebars and widget areas for any post, page, category etc."
+msgstr ""
 
-#: ../content-aware-sidebars.php:96 ../content-aware-sidebars.php:748
-msgid "Content Aware Sidebars"
-msgstr "Inhouds-afhankelijke Sidebars"
+#: lib/wp-content-aware-engine/view/group_template.php:54
+msgid "Settings"
+msgstr "Instellingen"
 
-#: ../content-aware-sidebars.php:97
-msgid "Import"
-msgstr "Importeren"
+#: lib/wp-content-aware-engine/core.php:705
+msgid "Auto-select new children of selected items"
+msgstr ""
 
-#: ../content-aware-sidebars.php:178 ../content-aware-sidebars.php:801
-msgid "FAQ"
-msgstr "FAQ"
+#: admin/sidebar-list-table.php:605
+msgid "Duplicate"
+msgstr ""
 
-#: ../content-aware-sidebars.php:256
-msgid "Exposure"
-msgstr "Exposure"
+#. translators: %s: sidebar title
+#: admin/sidebar-list-table.php:604
+msgid "Duplicate %s"
+msgstr ""
 
-#: ../content-aware-sidebars.php:260
-msgid "Singular"
-msgstr "Singular"
+#: admin/sidebar-edit.php:369
+msgid "You are not allowed to delete this sidebar."
+msgstr ""
 
-#: ../content-aware-sidebars.php:261
-msgid "Singular & Archive"
-msgstr "Singular & Archief"
+#: admin/sidebar-edit.php:335
+msgid "You are not allowed to move this sidebar to the Trash."
+msgstr ""
 
-#: ../content-aware-sidebars.php:262
-msgid "Archive"
-msgstr "Archief"
+#: admin/sidebar-edit.php:222 admin/sidebar-edit.php:553
+msgid "You are not allowed to create sidebars."
+msgstr ""
 
-#: ../content-aware-sidebars.php:267 ../content-aware-sidebars.php:471
+#: admin/sidebar-edit.php:197 admin/sidebar-edit.php:551
+#: admin/sidebar-edit.php:556
+msgid "You are not allowed to edit this sidebar."
+msgstr ""
+
+#: admin/admin.php:136
+msgid "Enhance your sidebars and widget areas with: %s and more."
+msgstr ""
+
+#: admin/admin.php:102
+msgid "You do not have access to this screen."
+msgstr "Je hebt geen toegang tot dit scherm"
+
+#: admin/screen_widgets.php:171
+msgid "This sidebar is already scheduled to be activated. Do you want to activate it now?"
+msgstr ""
+
+#: admin/sidebar-edit.php:866
+msgid "Pro"
+msgstr "Pro"
+
+#: admin/sidebar-edit.php:823
+msgid "No thanks"
+msgstr "Nee bedankt"
+
+#: admin/sidebar-edit.php:823
+msgid "Review Content Aware Sidebars"
+msgstr ""
+
+#: admin/sidebar-edit.php:818
+msgid "I have spent countless hours developing it, and it would mean a lot to me if you %ssupport it with a quick review on WordPress.org.%s"
+msgstr ""
+
+#: admin/sidebar-edit.php:813
+msgid "Hey %s, it's Joachim from %s. You have used this free plugin for some time now, and I hope you like it!"
+msgstr ""
+
+#: admin/admin.php:139
+msgid "Read More"
+msgstr "Lees meer"
+
+#: lib/wp-content-aware-engine/module/bp_member.php:37
+msgid "All Sections"
+msgstr ""
+
+#: lib/wp-content-aware-engine/module/bp_member.php:35
+msgid "BuddyPress Profiles"
+msgstr ""
+
+#: admin/sidebar-edit.php:957
+msgid "Documentation"
+msgstr "Documentatie"
+
+#: sidebar.php:127
+msgid "Target Sidebar"
+msgstr ""
+
+#: sidebar.php:120
+msgid "Shortcode / Template Tag"
+msgstr ""
+
+#: admin/sidebar-overview.php:292
+msgid "Undo"
+msgstr "Ongedaan maken"
+
+#: admin/sidebar-overview.php:231
+msgid "You are not allowed to delete this item."
+msgstr ""
+
+#: admin/sidebar-overview.php:216
+msgid "You are not allowed to restore this item from the Trash."
+msgstr ""
+
+#: admin/sidebar-overview.php:197
+msgid "You are not allowed to move this item to the Trash."
+msgstr ""
+
+#. translators: %s: search keywords
+#: admin/sidebar-overview.php:133
+msgid "Search results for &#8220;%s&#8221;"
+msgstr "Zoekresultaten voor &#8220;%s&#8221;"
+
+#. translators: %s: post title
+#: admin/sidebar-list-table.php:635
+msgid "Delete &#8220;%s&#8221; permanently"
+msgstr "&#8220;%s&#8221; permanent verwijderen"
+
+#: admin/sidebar-list-table.php:627
+msgctxt "verb"
+msgid "Trash"
+msgstr "Prullenbak"
+
+#. translators: %s: post title
+#: admin/sidebar-list-table.php:626
+msgid "Move &#8220;%s&#8221; to the Trash"
+msgstr "&#8220;%s&#8221; naar prullenbak verplaatsen"
+
+#. translators: %s: post title
+#: admin/sidebar-list-table.php:618
+msgid "Restore &#8220;%s&#8221; from the Trash"
+msgstr "&#8220;%s&#8221; herstellen vanuit de prullenbak"
+
+#. translators: %s: sidebar title
+#: admin/sidebar-list-table.php:597
+msgid "Edit &#8220;%s&#8221;"
+msgstr "Bewerk &#8220;%s&#8221;"
+
+#: admin/sidebar-list-table.php:532
+msgid "Missed schedule"
+msgstr "Planning mislukt"
+
+#: admin/sidebar-list-table.php:520
+msgid "Until %s"
+msgstr "Tot %s"
+
+#. translators: Sidebar status date and time format, see http://php.net/date
+#: admin/sidebar-list-table.php:519 admin/sidebar-list-table.php:525
+msgid "Y/m/d g:i:s a"
+msgstr "j F Y g:i:s"
+
+#. translators: Sidebar status date format, see http://php.net/date
+#: admin/sidebar-list-table.php:517 admin/sidebar-list-table.php:529
+msgid "Y/m/d"
+msgstr "j F Y"
+
+#: admin/sidebar-list-table.php:422
+msgid "%s is currently editing"
+msgstr "%s is aan het bewerken"
+
+#. translators: %s: post title
+#: admin/sidebar-list-table.php:407
+msgid "&#8220;%s&#8221; (Edit)"
+msgstr "&#8220;%s&#8221; (bewerken)"
+
+#: admin/sidebar-list-table.php:365
+msgid "Select %s"
+msgstr "%s selecteren"
+
+#: admin/sidebar-list-table.php:311 sidebar.php:114
 msgctxt "option"
-msgid "Handle"
-msgstr "Lokatie"
+msgid "Action"
+msgstr ""
 
-#: ../content-aware-sidebars.php:271
-msgid "Replace"
-msgstr "Vervang"
+#: admin/sidebar-list-table.php:310
+msgctxt "column name"
+msgid "Title"
+msgstr "Titel"
 
-#: ../content-aware-sidebars.php:272
-msgid "Merge"
-msgstr "Samenvoegen"
+#: admin/sidebar-list-table.php:282
+msgid "Empty Trash"
+msgstr "Prullenbak leegmaken"
 
-#: ../content-aware-sidebars.php:273
-msgid "Manual"
-msgstr "Handmatig"
+#: admin/sidebar-list-table.php:255 admin/sidebar-list-table.php:619
+msgid "Restore"
+msgstr "Herstellen"
 
-#: ../content-aware-sidebars.php:274
-msgid "Forced replace"
-msgstr "Geforceerde vervanging"
+#: admin/sidebar-list-table.php:207
+msgid "Inactive <span class=\"count\">(%s)</span>"
+msgid_plural "Inactive <span class=\"count\">(%s)</span>"
+msgstr[0] "Inactief <span class=\"count\">(%s)</span>"
+msgstr[1] "Inactief <span class=\"count\">(%s)</span>"
 
-#: ../content-aware-sidebars.php:276
-msgid "Replace host sidebar, merge with it or add sidebar manually."
-msgstr "Vervang host sidebar, voeg daarmee samen of voeg sidebar met de hand toe."
+#: admin/sidebar-list-table.php:206
+msgid "Active <span class=\"count\">(%s)</span>"
+msgid_plural "Active <span class=\"count\">(%s)</span>"
+msgstr[0] "Actief <span class=\"count\">(%s)</span>"
+msgstr[1] "Actief <span class=\"count\">(%s)</span>"
 
-#: ../content-aware-sidebars.php:280
-msgid "Host Sidebar"
-msgstr "Host Sidebar"
+#: admin/sidebar-list-table.php:193
+msgctxt "sidebars"
+msgid "All <span class=\"count\">(%s)</span>"
+msgid_plural "All <span class=\"count\">(%s)</span>"
+msgstr[0] ""
+msgstr[1] ""
 
-#: ../content-aware-sidebars.php:287
-msgid "Merge Position"
-msgstr "Positie samenvoegen"
+#: admin/sidebar-edit.php:1322
+msgid "F j, Y"
+msgstr "j F Y"
 
-#: ../content-aware-sidebars.php:291
-msgid "Top"
-msgstr "Top"
+#: admin/admin.php:138
+msgid "Free updates and email support included."
+msgstr ""
 
-#: ../content-aware-sidebars.php:292
-msgid "Bottom"
-msgstr "Onderkant"
+#: admin/admin.php:137
+msgid "You can upgrade without leaving the admin panel by clicking below."
+msgstr ""
 
-#: ../content-aware-sidebars.php:294
-msgid "Place sidebar on top or bottom of host when merging."
-msgstr "Plaats sidebar bovenaan of onderaan host om samen te voegen"
+#: admin/admin.php:135
+msgid "Get All Features With Content Aware Sidebars Pro"
+msgstr ""
 
-#: ../content-aware-sidebars.php:309
-msgid "Sidebars"
-msgstr "Sidebars"
+#: admin/admin.php:129
+msgid "Sync widgets across themes"
+msgstr ""
 
-#: ../content-aware-sidebars.php:310
-msgid "Sidebar"
-msgstr "Sidebar"
+#: admin/admin.php:127
+msgid "Visibility for roles"
+msgstr ""
 
-#: ../content-aware-sidebars.php:311
-msgctxt "sidebar"
-msgid "Add New"
-msgstr "Voeg toe"
+#: admin/admin.php:125
+msgid "Extra condition types"
+msgstr ""
 
-#: ../content-aware-sidebars.php:312
-msgid "Add New Sidebar"
-msgstr "Voeg nieuwe Sidebar toe"
-
-#: ../content-aware-sidebars.php:313
-msgid "Edit Sidebar"
-msgstr "Bewerk Sidebar"
-
-#: ../content-aware-sidebars.php:314
-msgid "New Sidebar"
-msgstr "Nieuwe Sidebar"
-
-#: ../content-aware-sidebars.php:315
-msgid "All Sidebars"
-msgstr "Alle Sidebars"
-
-#: ../content-aware-sidebars.php:316
-msgid "View Sidebar"
-msgstr "Bekijk Sidebar"
-
-#: ../content-aware-sidebars.php:317
-msgid "Search Sidebars"
-msgstr "Zoek Sidebars"
-
-#: ../content-aware-sidebars.php:318
-msgid "No sidebars found"
-msgstr "Geen sidebars gevonden"
-
-#: ../content-aware-sidebars.php:319
-msgid "No sidebars found in Trash"
-msgstr "Geen sidebars gevonden in Prullenbak"
-
-#: ../content-aware-sidebars.php:321
-msgid "Display sidebar with"
-msgstr "Laat sidebar zien met"
-
-#: ../content-aware-sidebars.php:322
-msgid ""
-"No content. Please add at least one condition group to make the sidebar "
-"content aware."
-msgstr "Geen inhoud. Voeg tenminste één conditiegroep toe."
-
-#: ../content-aware-sidebars.php:353 ../content-aware-sidebars.php:381
-msgid "Manage widgets"
-msgstr "Stel widgets in"
-
-#: ../content-aware-sidebars.php:356 ../content-aware-sidebars.php:359
-msgid "Sidebar updated."
-msgstr "Sidebar bijgewerkt."
-
-#: ../content-aware-sidebars.php:361
-msgid "Sidebar published."
-msgstr "Sidebar gepubliceerd."
-
-#: ../content-aware-sidebars.php:362
-msgid "Sidebar saved."
-msgstr "Sidebar opgeslagen."
-
-#: ../content-aware-sidebars.php:363
-msgid "Sidebar submitted."
-msgstr "Sidebar ingediend."
-
-#: ../content-aware-sidebars.php:364
-#, php-format
-msgid "Sidebar scheduled for: <strong>%1$s</strong>."
-msgstr "Sidebar geplanned voor: <strong>%1$s<strong>"
+#: admin/sidebar-edit.php:1004
+msgid "Activates on <b>%1$s</b>"
+msgstr ""
 
 #. translators: Publish box date format, see http://php.net/date
-#: ../content-aware-sidebars.php:366
-msgid "M j, Y @ G:i"
-msgstr "M j, Y @ G:i"
+#: admin/sidebar-edit.php:999
+msgid "M j, Y"
+msgstr ""
 
-#: ../content-aware-sidebars.php:367
-msgid "Sidebar draft updated."
-msgstr "Concept Sidebar opgeslagen."
+#: admin/sidebar-edit.php:866
+msgid "Display sidebar only in given time ranges on select days."
+msgstr ""
 
-#: ../content-aware-sidebars.php:383
-#, php-format
-msgid "%s sidebar updated."
-msgid_plural "%s sidebars updated."
-msgstr[0] ""
-msgstr[1] ""
+#: admin/sidebar-edit.php:853
+msgid "Never"
+msgstr "Nooit"
 
-#: ../content-aware-sidebars.php:384
-#, php-format
-msgid "%s sidebar not updated, somebody is editing it."
-msgid_plural "%s sidebars not updated, somebody is editing them."
-msgstr[0] ""
-msgstr[1] ""
+#: admin/sidebar-edit.php:844
+msgid "Select date"
+msgstr "Selecteer datum"
 
-#: ../content-aware-sidebars.php:385
-#, php-format
-msgid "%s sidebar permanently deleted."
-msgid_plural "%s sidebars permanently deleted."
-msgstr[0] ""
-msgstr[1] ""
+#: admin/sidebar-edit.php:834 admin/sidebar-list-table.php:314
+msgid "Status"
+msgstr "Status"
 
-#: ../content-aware-sidebars.php:386
-#, php-format
-msgid "%s sidebar moved to the Trash."
-msgid_plural "%s sidebars moved to the Trash."
-msgstr[0] ""
-msgstr[1] ""
+#: admin/admin.php:128 admin/sidebar-edit.php:761
+msgid "Time Schedule"
+msgstr ""
 
-#: ../content-aware-sidebars.php:387
-#, php-format
-msgid "%s sidebar restored from the Trash."
-msgid_plural "%s sidebars restored from the Trash."
-msgstr[0] ""
-msgstr[1] ""
+#: admin/sidebar-edit.php:738
+msgid "Sidebar Status"
+msgstr ""
 
-#: ../content-aware-sidebars.php:444 ../content-aware-sidebars.php:535
-msgid "Please update Host Sidebar"
-msgstr "Update de Host Sidebar aub"
-
-#: ../content-aware-sidebars.php:472
-msgid "Merge position"
-msgstr "Voeg posities samen"
-
-#: ../content-aware-sidebars.php:473
-msgid "Widgets"
-msgstr "Widgets"
-
-#: ../content-aware-sidebars.php:586
-msgid "Manage Widgets"
-msgstr "Beheer Widgets"
-
-#: ../content-aware-sidebars.php:756
-msgid "Get a free Content Aware Sidebars Premium Bundle"
-msgstr "Krijg een gratis Content Aware Sidebars Premium bundel"
-
-#: ../content-aware-sidebars.php:772
-msgid "Options"
-msgstr "Opties"
-
-#: ../content-aware-sidebars.php:795
-#: ../lib/wp-content-aware-engine/core.php:203
-#: ../lib/wp-content-aware-engine/view/meta_box.php:20 ../pointers.php:82
-msgid "Condition Groups"
-msgstr "Conditiegroepen"
-
-#: ../content-aware-sidebars.php:796
+#: admin/sidebar-edit.php:696
 msgid ""
-"Each created condition group describe some specific content (conditions) "
-"that the current sidebar should be displayed with."
-msgstr "Elke gemaakte conditiegroep beschrijft een specifieke inhoud (conditie) die met de huidige sidebar weergegeven moet worden  "
-
-#: ../content-aware-sidebars.php:797
-msgid ""
-"Content added to a condition group uses logical conjunction, while condition"
-" groups themselves use logical disjunction. This means that content added to"
-" a group should be associated, as they are treated as such, and that the "
-"groups do not interfere with each other. Thus it is possible to have both "
-"extremely focused and at the same time distinct conditions."
-msgstr "Inhoud toegevoegd aan een conditiegroep gebruikt logische combinaties, terwijl conditiegroepen zelf logische disjunctie gebruiken. Dit betekent dat inhoudt die aan een groep toegevoegd is geassocieerd moet zijn, en ze als zodat behandeld worden, en dat de groepen niet interfereren met elkaar. Het is dus mogelijk om tegelijkertijd extreem gerichte als verschillende condities te hebben."
-
-#: ../content-aware-sidebars.php:800
-msgid "More Information"
-msgstr "Meer informatie"
-
-#: ../content-aware-sidebars.php:802 ../content-aware-sidebars.php:885
-msgid "Get Support"
-msgstr "Krijg ondersteuning"
-
-#: ../content-aware-sidebars.php:816
-msgid ""
-"Translate Content Aware Sidebars into your language and become a BETA tester"
-" of the upcoming Premium Bundle*!"
-msgstr ""
-
-#: ../content-aware-sidebars.php:817
-msgid "Translate Now"
-msgstr "Nu vertalen"
-
-#: ../content-aware-sidebars.php:818
-msgid "Get Premium Bundle"
-msgstr ""
-
-#: ../content-aware-sidebars.php:819
-msgid ""
-"Single-site use. BETA implies it is not recommended for production sites."
-msgstr ""
-
-#: ../content-aware-sidebars.php:822
-msgid "Partial Feature List"
-msgstr ""
-
-#: ../content-aware-sidebars.php:824
-msgid "Select and create sidebars in the Post Editing Screens"
-msgstr ""
-
-#: ../content-aware-sidebars.php:825
-msgid "Display sidebars with URLs using wildcards"
-msgstr ""
-
-#: ../content-aware-sidebars.php:826
-msgid "Display sidebars with User Roles"
-msgstr ""
-
-#: ../content-aware-sidebars.php:827
-msgid "Display sidebars with BuddyPress User Groups"
-msgstr ""
-
-#: ../content-aware-sidebars.php:828
-msgid "Sidebars column in Post Type and Taxonomy Overview Screens"
-msgstr ""
-
-#: ../content-aware-sidebars.php:864 ../content-aware-sidebars.php:865
-msgid "Order"
-msgstr "Bestel"
-
-#: ../content-aware-sidebars.php:880
-msgid "Give a review on WordPress.org"
-msgstr ""
-
-#: ../content-aware-sidebars.php:882 ../content-aware-sidebars.php:912
-msgid "Translate the plugin into your language"
-msgstr "Vertaal deze plugin naar uw taal"
-
-#: ../content-aware-sidebars.php:884
-msgid "Read the FAQ"
-msgstr ""
-
-#: ../content-aware-sidebars.php:899
-msgid ""
-"If you love this plugin, please consider donating to support future "
-"development."
-msgstr "Als deze plugin je bevalt, overweeg dan te doneren om toekomstige ontwikkelingen te ondersteunen."
-
-#: ../content-aware-sidebars.php:908
-msgid "Or you could:"
-msgstr "Of je kan:"
-
-#: ../content-aware-sidebars.php:910
-msgid "Rate the plugin on WordPress.org"
-msgstr "Beoordeel deze plugin op Wordpress.org"
-
-#: ../content-aware-sidebars.php:911
-msgid "Link to the plugin page"
-msgstr "Link naar de plugin pagina"
-
-#: ../content-aware-sidebars.php:1045
-msgid "Filter Sidebars"
-msgstr "Filter zijbalken"
-
-#: ../content-aware-sidebars.php:1046
-msgid "Filter Widgets"
-msgstr ""
-
-#: ../lib/wp-content-aware-engine/core.php:204
-msgid "Condition Group"
-msgstr "Conditiegroep"
-
-#: ../lib/wp-content-aware-engine/core.php:205
-msgctxt "group"
-msgid "Add New"
-msgstr "Voeg nieuwe toe"
-
-#: ../lib/wp-content-aware-engine/core.php:206
-#: ../lib/wp-content-aware-engine/view/meta_box.php:21
-#: ../lib/wp-content-aware-engine/view/meta_box.php:65
-msgid "Add New Group"
-msgstr "Voeg nieuwe groep toe"
-
-#: ../lib/wp-content-aware-engine/core.php:207
-#: ../lib/wp-content-aware-engine/core.php:626
-#: ../lib/wp-content-aware-engine/view/meta_box.php:38
-msgctxt "group"
-msgid "Edit"
-msgstr "Bewerk"
-
-#: ../lib/wp-content-aware-engine/core.php:212
-#: ../lib/wp-content-aware-engine/core.php:440
-msgid "No Groups found"
-msgstr "Geen groepen gevonden"
-
-#: ../lib/wp-content-aware-engine/core.php:224
-msgctxt "condition group"
-msgid "Negated"
-msgstr ""
-
-#: ../lib/wp-content-aware-engine/core.php:447
-msgid "Content"
-msgstr "Inhoud"
-
-#: ../lib/wp-content-aware-engine/core.php:525
-#: ../lib/wp-content-aware-engine/core.php:573
-#: ../lib/wp-content-aware-engine/core.php:578
-msgid "Unauthorized request"
-msgstr "Ongeautoriseerd verzoek"
-
-#: ../lib/wp-content-aware-engine/core.php:531
-msgid "Condition group cannot be empty"
-msgstr "Conditiegroep kan niet leeg zijn."
-
-#: ../lib/wp-content-aware-engine/core.php:550
-msgid "Condition group saved"
-msgstr "Conditiegroup opgeslagen"
-
-#: ../lib/wp-content-aware-engine/core.php:583
-msgid "Condition group could not be removed"
-msgstr "Conditiegroep kon niet worden verwijderd"
-
-#: ../lib/wp-content-aware-engine/core.php:588
-msgid "Condition group removed"
-msgstr "Conditiegroep verwijderd"
-
-#: ../lib/wp-content-aware-engine/core.php:622
-#: ../lib/wp-content-aware-engine/view/meta_box.php:35
-msgid "Save"
-msgstr "Opslaan"
-
-#: ../lib/wp-content-aware-engine/core.php:623
-#: ../lib/wp-content-aware-engine/view/meta_box.php:35
-msgid "Cancel"
-msgstr "Afbreken"
-
-#: ../lib/wp-content-aware-engine/core.php:624
-#: ../lib/wp-content-aware-engine/view/meta_box.php:56
-msgid "Or"
-msgstr "Of"
-
-#: ../lib/wp-content-aware-engine/core.php:625
-#: ../lib/wp-content-aware-engine/module/post_type.php:172
-#: ../lib/wp-content-aware-engine/module/taxonomy.php:228
-#: ../lib/wp-content-aware-engine/view/module/group.php:11
-msgid "And"
-msgstr ""
-
-#: ../lib/wp-content-aware-engine/core.php:627
-#: ../lib/wp-content-aware-engine/view/meta_box.php:38
-msgid "Remove"
-msgstr "Verwijderen"
-
-#: ../lib/wp-content-aware-engine/core.php:628
-msgid "Remove this group and its contents permanently?"
-msgstr "Verwijder deze groep en de inhoud permanent?"
-
-#: ../lib/wp-content-aware-engine/core.php:629
-msgid "No results found."
-msgstr "Geen resultaten gevonden."
-
-#: ../lib/wp-content-aware-engine/core.php:630
-msgid ""
-"The current group has unsaved changes. Do you want to continue and discard "
-"these changes?"
-msgstr "De veranderingen in de huidige groep zijn nog niet opgeslagen. Wilt u doorgaan en deze veranderingen ongedaan maken? "
-
-#: ../lib/wp-content-aware-engine/core.php:632
-#: ../lib/wp-content-aware-engine/view/meta_box.php:45
-msgid "Negate group"
-msgstr ""
-
-#: ../lib/wp-content-aware-engine/core.php:633
-#: ../lib/wp-content-aware-engine/view/meta_box.php:49
-msgid "Target all but this context"
-msgstr ""
-
-#: ../lib/wp-content-aware-engine/core.php:634
-#: ../lib/wp-content-aware-engine/view/meta_box.php:49
-msgid "Target this context"
-msgstr ""
-
-#: ../lib/wp-content-aware-engine/module/author.php:30
-msgid "Authors"
-msgstr "Auteurs"
-
-#: ../lib/wp-content-aware-engine/module/base.php:134
-#, php-format
-msgid "Display with All %s"
-msgstr "Laat zien met alle %s"
-
-#: ../lib/wp-content-aware-engine/module/base.php:141
-#: ../lib/wp-content-aware-engine/module/bp_member.php:139
-#: ../lib/wp-content-aware-engine/module/post_type.php:278
-#: ../lib/wp-content-aware-engine/module/taxonomy.php:302
-msgid "View All"
-msgstr "Bekijk allemaal"
-
-#: ../lib/wp-content-aware-engine/module/base.php:148
-#: ../lib/wp-content-aware-engine/module/base.php:151
-#: ../lib/wp-content-aware-engine/module/post_type.php:284
-#: ../lib/wp-content-aware-engine/module/post_type.php:287
-#: ../lib/wp-content-aware-engine/module/taxonomy.php:308
-#: ../lib/wp-content-aware-engine/module/taxonomy.php:311
-msgid "Search"
-msgstr "Zoeken"
-
-#: ../lib/wp-content-aware-engine/module/bbpress.php:31
-msgid "bbPress User Profiles"
-msgstr "bbPress Gebruikersprofielen"
-
-#: ../lib/wp-content-aware-engine/module/bp_member.php:29
-msgid "BuddyPress Members"
-msgstr "BuddyPress Leden"
-
-#: ../lib/wp-content-aware-engine/module/bp_member.php:148
-#: ../lib/wp-content-aware-engine/module/taxonomy.php:321
-#: ../lib/wp-content-aware-engine/view/module/meta_box.php:24
-msgid "Add to Group"
-msgstr "Voeg toe aan groep"
-
-#: ../lib/wp-content-aware-engine/module/date.php:31
-msgid "Dates"
-msgstr "Datums"
-
-#: ../lib/wp-content-aware-engine/module/date.php:70
-msgid "Date Archives"
-msgstr "Datum archieven"
-
-#: ../lib/wp-content-aware-engine/module/page_template.php:30
-msgid "Page Templates"
-msgstr "Pagina templates"
-
-#: ../lib/wp-content-aware-engine/module/polylang.php:29
-#: ../lib/wp-content-aware-engine/module/qtranslate.php:29
-#: ../lib/wp-content-aware-engine/module/transposh.php:29
-#: ../lib/wp-content-aware-engine/module/wpml.php:29
-msgid "Languages"
-msgstr "Talen"
-
-#: ../lib/wp-content-aware-engine/module/post_type.php:37
-msgid "Post Types"
-msgstr "Post typen"
-
-#: ../lib/wp-content-aware-engine/module/post_type.php:177
-#: ../lib/wp-content-aware-engine/module/taxonomy.php:233
-#: ../lib/wp-content-aware-engine/module/taxonomy.php:276
-msgid "Automatically select new children of a selected ancestor"
-msgstr "Automatisch selecte van nieuwe kinderen van een geselecteerde voorouder"
-
-#: ../lib/wp-content-aware-engine/module/post_type.php:245
-msgid "Automatically add new children of a selected ancestor"
-msgstr ""
-
-#: ../lib/wp-content-aware-engine/module/post_type.php:250
-#, php-format
-msgid "%s Archives"
-msgstr "%s Archieven"
-
-#: ../lib/wp-content-aware-engine/module/post_type.php:251
-msgid "Blog Page"
-msgstr "Blog pagina"
-
-#: ../lib/wp-content-aware-engine/module/post_type.php:258
-#: ../lib/wp-content-aware-engine/module/taxonomy.php:284
-msgid "No items."
-msgstr "Geen items."
-
-#: ../lib/wp-content-aware-engine/module/post_type.php:273
-msgid "Most Recent"
-msgstr "Meest recent"
-
-#: ../lib/wp-content-aware-engine/module/static.php:31
-msgid "Static Pages"
-msgstr "Statische pagina's"
-
-#: ../lib/wp-content-aware-engine/module/static.php:44
-msgid "Front Page"
-msgstr "Hoofdpagina"
-
-#: ../lib/wp-content-aware-engine/module/static.php:45
-msgid "Search Results"
-msgstr "Zoekresultaten"
-
-#: ../lib/wp-content-aware-engine/module/static.php:46
-msgid "404 Page"
-msgstr "404 Pagina"
-
-#: ../lib/wp-content-aware-engine/module/taxonomy.php:44
-msgid "Taxonomies"
-msgstr "Taxonomieën"
-
-#: ../lib/wp-content-aware-engine/module/taxonomy.php:297
-msgid "Most Used"
-msgstr "Meest gebruikt"
-
-#: ../lib/wp-content-aware-engine/posttypemanager.php:63
-msgid "Conditional Content"
-msgstr ""
-
-#: ../lib/wp-content-aware-engine/view/meta_box.php:24
-msgid ""
-"Click to edit a group or create a new one. Select content on the left to add"
-" it. In each group, you can combine different types of associated content."
-msgstr "Klik om een groep te bewerken of een nieuwe te maken. Selecteer inhoud aan de linkerkant om deze toe te voegen. In elke group kunt u verschillende soorten geassocieerde inhoud combineren."
-
-#: ../lib/wp-content-aware-engine/view/module/group.php:17
-#, php-format
-msgid "All %s"
-msgstr "Alle %s"
-
-#: ../lib/wp-content-aware-engine/walker.php:175
-msgid "Password protected"
-msgstr ""
-
-#: ../lib/wp-content-aware-engine/walker.php:177
-msgid "Private"
-msgstr ""
-
-#: ../lib/wp-content-aware-engine/walker.php:179
-msgid "Draft"
-msgstr ""
-
-#. translators: post state
-#: ../lib/wp-content-aware-engine/walker.php:182
-msgctxt "post state"
-msgid "Pending"
-msgstr ""
-
-#: ../lib/wp-content-aware-engine/walker.php:184
-msgid "Sticky"
-msgstr ""
-
-#: ../lib/wp-content-aware-engine/walker.php:186
-msgid "Scheduled"
-msgstr ""
-
-#: ../pointers.php:68
-msgid "Get started"
-msgstr "Nu starten"
-
-#: ../pointers.php:69
-msgid ""
-"You've just installed Content Aware Sidebars!\n"
+"Should the sidebar merge with a target sidebar or replace it? Maybe you want to insert it in your content with a shortcode.\n"
 "\n"
-"It gives you a lot of options, so this screen might look overwhelming at first. Don't worry.\n"
-"\n"
-"Click Start Tour to view a quick introduction and learn how to display a sidebar exactly where and when you want it to."
-msgstr ""
-
-#: ../pointers.php:76
-msgid "Start Tour"
-msgstr "Start rondleiding"
-
-#: ../pointers.php:78
-msgid "Not now"
-msgstr "Nu niet"
-
-#: ../pointers.php:83
-msgid ""
-"To make a sidebar contextual, you start by creating a condition group.\n"
-"\n"
-"Condition groups are isolated from each other, meaning that a sidebar can have very different conditions.\n"
-"\n"
-"Negating a group means that the sidebar will be displayed on all but those conditions."
-msgstr ""
-
-#: ../pointers.php:92
-msgid "Content and contexts"
-msgstr ""
-
-#: ../pointers.php:93
-msgid ""
-"Here you'll find all the content on your site that Content Aware Sidebars supports out of the box.\n"
-"\n"
-"Simply select the content you want the sidebar to be displayed with and add it to a group.\n"
-"\n"
-"You can even combine associated content in one group; try selecting \"All Posts\", a Category and an Author. Awesome!"
-msgstr ""
-
-#: ../pointers.php:102
-msgid "Options, options"
-msgstr ""
-
-#: ../pointers.php:103
-msgid ""
-"Should the sidebar be displayed on singular pages and/or archives?\n"
-"\n"
-"Should it merge with another sidebar or replace it? Maybe you want to insert it manually in your content with a shortcode.\n"
-"\n"
-"Schedule the sidebar just like you do with posts and pages, or make it private so that it is only visible for logged-in users.\n"
+"Display the sidebar for everyone or make it visible only for logged-in users.\n"
 "\n"
 " You are in control."
 msgstr ""
 
-#: ../pointers.php:112
-msgid "Help and Support"
+#: admin/sidebar-edit.php:641
+msgid "Sidebar deactivated."
+msgstr "Sidebar uitgeschakeld"
+
+#: admin/sidebar-edit.php:637
+msgid "Sidebar activated."
+msgstr "Sidebar geactiveerd"
+
+#: admin/sidebar-edit.php:478
+msgid "Enter title here"
+msgstr "Titel hier invoeren"
+
+#: admin/sidebar-edit.php:372 admin/sidebar-overview.php:234
+msgid "Error in deleting."
+msgstr "Fout tijdens het verwijderen."
+
+#: admin/sidebar-edit.php:361 admin/sidebar-overview.php:219
+msgid "Error in restoring from Trash."
+msgstr "Fout tijdens herstellen vanuit de prullenbak."
+
+#: admin/sidebar-edit.php:358
+msgid "You are not allowed to restore this sidebar from the Trash."
+msgstr "Je hebt geen toestemming om deze sidebar te herstellen uit de prullenbak."
+
+#: admin/sidebar-edit.php:343 admin/sidebar-overview.php:205
+msgid "Error in moving to Trash."
+msgstr "Fout tijdens verplaatsen naar de prullenbak."
+
+#: admin/sidebar-edit.php:339
+msgid "You cannot move this sidebar to the Trash. %s is currently editing."
+msgstr "Je kunt deze sidebar niet verplaatsen naar de prullenbak. %s is hem nu aan het bewerken."
+
+#: admin/sidebar-edit.php:195 admin/sidebar-edit.php:288
+msgid "The sidebar no longer exists."
+msgstr "De Sidebar bestaat niet meer."
+
+#: admin/sidebar-edit.php:238 admin/sidebar-edit.php:745
+msgid "Advanced"
+msgstr "Geavanceerd"
+
+#: admin/sidebar-edit.php:236
+msgid "Conditions"
+msgstr "Condities"
+
+#: admin/sidebar-edit.php:199
+msgid "You cannot edit this sidebar because it is in the Trash. Please restore it and try again."
+msgstr "Niet mogelijk om deze sidebar te bewerken omdat het in de prullenbak zit. Herstel het en probeer het opnieuw."
+
+#: admin/sidebar-edit.php:83
+msgid "URLs (Pro Feature)"
 msgstr ""
 
-#: ../pointers.php:113
+#: admin/post_type_sidebar.php:295 admin/screen_widgets.php:108
+#: admin/screen_widgets.php:137 admin/sidebar-edit.php:1010
+#: admin/sidebar-list-table.php:539
+msgid "Inactive"
+msgstr "Inactief"
+
+#: admin/screen_widgets.php:108 admin/screen_widgets.php:131
+#: admin/sidebar-edit.php:1007 admin/sidebar-list-table.php:513
+msgid "Active"
+msgstr "Actief"
+
+#. Author URI of the plugin/theme
+msgid "https://dev.institute"
+msgstr "https://dev.institute"
+
+#. Author of the plugin/theme
+msgid "Joachim Jensen"
+msgstr "Joachim Jensen"
+
+#. Plugin URI of the plugin/theme
+msgid "https://dev.institute/wordpress/sidebars-pro/"
+msgstr "https://dev.institute/wordpress/sidebars-pro/"
+
+#: admin/sidebar-edit.php:1037
+msgid "Enable"
+msgstr "Inschakelen"
+
+#: admin/sidebar-edit.php:1028 admin/sidebar-edit.php:1036
+msgid "Widget Revisions: %s"
+msgstr ""
+
+#: admin/sidebar-edit.php:116
+msgid "Upgrade to Pro"
+msgstr ""
+
+#: sidebar.php:245 sidebar.php:267
+msgid "(no title)"
+msgstr "(geen titel)"
+
+#: lib/wp-pointer-tour/wp-pointer-tour.php:164
+msgid "Previous"
+msgstr "Vorige"
+
+#: admin/screen_widgets.php:168
+msgid "Expand"
+msgstr "Uitklappen"
+
+#: admin/screen_widgets.php:167
+msgid "Collapse"
+msgstr "Inklappen"
+
+#: admin/sidebar-edit.php:1302
+msgid "User Roles available in Pro"
+msgstr ""
+
+#: admin/admin.php:126 admin/sidebar-list-table.php:609
+msgid "Widget Revisions"
+msgstr ""
+
+#: admin/sidebar-edit.php:99
+msgid "Display this sidebar only on content that meets the following conditions:"
+msgstr ""
+
+#: admin/post_type_sidebar.php:276
+msgid "Display sidebars per %s etc. with the %s."
+msgstr ""
+
+#: admin/post_type_sidebar.php:272
+msgid "Note: Selected Sidebars are displayed on this %s specifically."
+msgstr ""
+
+#: admin/post_type_sidebar.php:257
+msgid "Default"
+msgstr "Standaard"
+
+#: admin/post_type_sidebar.php:275
+msgid "Sidebar Manager"
+msgstr "Sidebar beheer"
+
+#: admin/post_type_sidebar.php:245
+msgid "Archive Page"
+msgstr ""
+
+#: admin/post_type_sidebar.php:237
+msgid "Page Template"
+msgstr ""
+
+#: admin/post_type_sidebar.php:234
+msgid "Child Page"
+msgstr ""
+
+#: admin/post_type_sidebar.php:231
+msgid "Author"
+msgstr "Auteur"
+
+#: admin/post_type_sidebar.php:223 admin/post_type_sidebar.php:262
+msgid "Type to Add New Sidebar"
+msgstr ""
+
+#: admin/post_type_sidebar.php:219
+msgid "Create New"
+msgstr "Nieuwe aanmaken"
+
+#: admin/post_type_sidebar.php:177
+msgid "Sidebars - Quick Select"
+msgstr ""
+
+#: admin/sidebar-edit.php:712
+msgid "Finish Tour"
+msgstr "Rondleiding beëindigen"
+
+#: admin/sidebar-edit.php:686
+msgid ""
+"Click on the input field and select the content you want.\n"
+"\n"
+"If you can't find the right content in the list, type something to search.\n"
+"\n"
+" You can add several types of content to the same group, try e.g. \"All Posts\" and an Author to target all posts written by that author. Awesome!\n"
+"\n"
+"Remember to save the changes on each group."
+msgstr ""
+
+#: admin/sidebar-edit.php:668
+msgid "I know how to use it"
+msgstr "Ik weet hoe het werkt"
+
+#: admin/sidebar-edit.php:660
+msgid ""
+"You've just installed or updated Content Aware Sidebars. Awesome!\n"
+"\n"
+"You can display sidebars on any page or in any context. If that is new to you, this 3 step interactive guide will show you just how easy it is."
+msgstr ""
+
+#: admin/sidebar-edit.php:659
+msgid "Get Started in 3 Easy Steps"
+msgstr "Beginnen in 3 eenvoudige stappen"
+
+#: lib/wp-content-aware-engine/module/bbpress.php:32
+msgid "All Profiles"
+msgstr ""
+
+#: lib/wp-content-aware-engine/module/author.php:30
+msgid "All Authors"
+msgstr ""
+
+#: sidebar.php:190
+msgid "Sidebar Conditions"
+msgstr ""
+
+#: sidebar.php:109
+msgid "Logged-in Users"
+msgstr ""
+
+#: lib/wp-content-aware-engine/view/group_template.php:11
+msgid "Not"
+msgstr ""
+
+#: admin/sidebar-edit.php:850
+msgid "Deactivate"
+msgstr "Deactiveren"
+
+#: admin/sidebar-edit.php:841
+msgid "Activate"
+msgstr "Activeren"
+
+#: admin/post_type_sidebar.php:220 admin/sidebar-edit.php:1013
+msgid "New"
+msgstr "Nieuw"
+
+#: freemius.php:58
+msgid "Please help us improve %2$s by securely sharing some usage data with %5$s. If you skip this, that's okay! %2$s will still work just fine."
+msgstr ""
+
+#: admin/screen_widgets.php:147
+msgid "Revisions"
+msgstr "Revisies"
+
+#: admin/sidebar-edit.php:1311 admin/sidebar-list-table.php:500
+msgid "All Users"
+msgstr "Alle gebruikers"
+
+#: admin/sidebar-list-table.php:456
+msgid "Add sidebar at the bottom during merge"
+msgstr ""
+
+#: admin/sidebar-list-table.php:455
+msgid "Add sidebar at the top during merge"
+msgstr ""
+
+#: admin/sidebar-edit.php:989
+msgid "Update"
+msgstr "Bijwerken"
+
+#: admin/sidebar-edit.php:237
+msgid "Schedule"
+msgstr "Inplannen"
+
+#: admin/sidebar-edit.php:899 admin/sidebar-list-table.php:263
+msgid "Move to Trash"
+msgstr "Naar prullenbak"
+
+#: admin/sidebar-edit.php:897 admin/sidebar-list-table.php:261
+#: admin/sidebar-list-table.php:636
+msgid "Delete Permanently"
+msgstr "Permanent verwijderen"
+
+#: app.php:174
+msgid "Upgrade"
+msgstr "Opwaarderen"
+
+#: admin/sidebar-edit.php:1029
+msgid "Browse revisions"
+msgstr "Revisies tonen"
+
+#: admin/sidebar-edit.php:1029
+msgctxt "revisions"
+msgid "Browse"
+msgstr "Bladeren"
+
+#: admin/sidebar-edit.php:1019 admin/sidebar-list-table.php:598
+msgid "Edit"
+msgstr "Bewerken"
+
+#: admin/sidebar-edit.php:994
+msgid "Status:"
+msgstr "Status:"
+
+#: admin/sidebar-edit.php:934 admin/sidebar-edit.php:935
+#: admin/sidebar-list-table.php:313 sidebar.php:105
+msgid "Visibility"
+msgstr "Zichtbaarheid"
+
+#: admin/admin.php:139
+msgid "Upgrade Now"
+msgstr "Nu opwaarderen"
+
+#: admin/sidebar-edit.php:960
+msgid "Priority Email Support"
+msgstr ""
+
+#: admin/sidebar-edit.php:261 admin/sidebar-edit.php:961
+msgid "Forum Support"
+msgstr "Forum ondersteuning"
+
+#: admin/admin.php:131
+msgid "Content Aware Sidebars Pro"
+msgstr ""
+
+#: admin/sidebar-edit.php:731
+msgid "Publish"
+msgstr "Publiceren"
+
+#: admin/sidebar-edit.php:119
+msgid "Like it? %1$sSupport the plugin with a %2$s Review%3$s"
+msgstr ""
+
+#: lib/wp-content-aware-engine/view/group_template.php:51
+msgid "Save Changes"
+msgstr "Wijzigingen opslaan"
+
+#: lib/wp-content-aware-engine/module/pods.php:30
+msgid "All Pods Pages"
+msgstr ""
+
+#: lib/wp-content-aware-engine/module/pods.php:29
+msgid "Pods Pages"
+msgstr ""
+
+#: admin/sidebar-edit.php:673
+msgid ""
+"With this dropdown you can select on what conditions the sidebar should be displayed.\n"
+"\n"
+"Content Aware Sidebars has built-in support for many types of content and even other plugins!\n"
+"\n"
+"Select something to continue the tour. You can change it later."
+msgstr ""
+
+#: admin/sidebar-edit.php:672
+msgid "Select Content Type"
+msgstr ""
+
+#: admin/sidebar-edit.php:667
+msgid "Start Quick Tour"
+msgstr "Start korte rondleiding"
+
+#: lib/wp-content-aware-engine/view/group_template.php:43
+msgid "Negate conditions"
+msgstr ""
+
+#: lib/wp-content-aware-engine/view/group_template.php:18
+#: lib/wp-content-aware-engine/view/meta_box.php:18
+msgid "Select content type"
+msgstr ""
+
+#: lib/wp-content-aware-engine/module/page_template.php:36
+msgid "All Templates"
+msgstr ""
+
+#: lib/wp-content-aware-engine/core.php:805
+msgid "Searching"
+msgstr "Zoeken"
+
+#: lib/wp-content-aware-engine/core.php:648
+msgid "Conditions updated"
+msgstr "Condities bijgewerkt"
+
+#: lib/wp-content-aware-engine/core.php:625
+msgid "Could not delete conditions"
+msgstr "Kan condities niet verwijderen"
+
+#: lib/wp-content-aware-engine/core.php:531
+msgid "Conditional Logic"
+msgstr "Conditionele logica"
+
+#: lib/wp-pointer-tour/wp-pointer-tour.php:165
+msgid "Next"
+msgstr "Volgende"
+
+#: lib/wp-pointer-tour/wp-pointer-tour.php:163
+msgid "Close"
+msgstr "Sluiten"
+
+#: admin/sidebar-edit.php:706
 msgid ""
 "That's it! Now you can start creating sidebars and display them on your own conditions.\n"
 "\n"
 "If you need more help, click on the \"Help\" tab here."
 msgstr ""
 
-#: ../pointers.php:142
-msgid "Close"
-msgstr "Sluiten"
+#: admin/sidebar-edit.php:705
+msgid "Help and Support"
+msgstr "Hulp en support"
 
-#: ../pointers.php:143
-msgid "Next"
-msgstr "Volgende"
+#: admin/sidebar-edit.php:695
+msgid "Options, options"
+msgstr ""
+
+#: admin/sidebar-edit.php:958
+msgid "Get Started"
+msgstr "Aan de slag"
+
+#: admin/post_type_sidebar.php:292 admin/screen_widgets.php:134
+#: admin/sidebar-list-table.php:534
+#: lib/wp-content-aware-engine/module/post_type.php:319
+#: lib/wp-content-aware-engine/walker.php:185
+msgid "Scheduled"
+msgstr "Gepland"
+
+#: lib/wp-content-aware-engine/module/post_type.php:317
+#: lib/wp-content-aware-engine/walker.php:183
+msgid "Sticky"
+msgstr "Sticky"
+
+#. translators: post state
+#: lib/wp-content-aware-engine/module/post_type.php:315
+#: lib/wp-content-aware-engine/walker.php:181
+msgctxt "post state"
+msgid "Pending"
+msgstr ""
+
+#: lib/wp-content-aware-engine/module/post_type.php:312
+#: lib/wp-content-aware-engine/walker.php:178
+msgid "Draft"
+msgstr "Concept"
+
+#: lib/wp-content-aware-engine/module/post_type.php:310
+#: lib/wp-content-aware-engine/walker.php:176
+msgid "Private"
+msgstr "Priv&#233;"
+
+#: lib/wp-content-aware-engine/module/post_type.php:308
+#: lib/wp-content-aware-engine/walker.php:174
+msgid "Password protected"
+msgstr "Beschermd met wachtwoord"
+
+#: lib/wp-content-aware-engine/module/taxonomy.php:49
+msgid "Taxonomies"
+msgstr "Taxonomieën"
+
+#: lib/wp-content-aware-engine/module/static.php:50
+msgid "404 Page"
+msgstr "404 Pagina"
+
+#: lib/wp-content-aware-engine/module/static.php:49
+msgid "Search Results"
+msgstr "Zoekresultaten"
+
+#: lib/wp-content-aware-engine/module/static.php:48
+msgid "Front Page"
+msgstr "Voorpagina"
+
+#: lib/wp-content-aware-engine/module/static.php:36
+msgid "Static Pages"
+msgstr "Statische pagina's"
+
+#: lib/wp-content-aware-engine/module/post_type.php:284
+msgid "Blog Page"
+msgstr "Blog pagina"
+
+#: lib/wp-content-aware-engine/module/post_type.php:283
+#: lib/wp-content-aware-engine/module/taxonomy.php:288
+msgid "%s Archives"
+msgstr "%s Archieven"
+
+#: lib/wp-content-aware-engine/module/post_type.php:42
+msgid "Post Types"
+msgstr "Post typen"
+
+#: lib/wp-content-aware-engine/module/polylang.php:29
+#: lib/wp-content-aware-engine/module/qtranslate.php:29
+#: lib/wp-content-aware-engine/module/transposh.php:29
+#: lib/wp-content-aware-engine/module/wpml.php:29
+msgid "Languages"
+msgstr "Talen"
+
+#: lib/wp-content-aware-engine/module/page_template.php:35
+msgid "Page Templates"
+msgstr "Pagina templates"
+
+#: lib/wp-content-aware-engine/module/date.php:32
+msgid "Date Archives"
+msgstr "Datum archieven"
+
+#: lib/wp-content-aware-engine/module/date.php:30
+msgid "Dates"
+msgstr "Datums"
+
+#: lib/wp-content-aware-engine/module/bbpress.php:31
+msgid "bbPress User Profiles"
+msgstr "bbPress Gebruikersprofielen"
+
+#: lib/wp-content-aware-engine/module/author.php:29
+msgid "Authors"
+msgstr "Auteurs"
+
+#: lib/wp-content-aware-engine/core.php:807
+msgid "Target all but this context"
+msgstr ""
+
+#: lib/wp-content-aware-engine/core.php:808
+msgid "Conditions have unsaved changes. Do you want to continue and discard these changes?"
+msgstr ""
+
+#: lib/wp-content-aware-engine/core.php:806
+msgid "No results found."
+msgstr "Niets gevonden."
+
+#: lib/wp-content-aware-engine/view/module/condition_post_type_template.php:16
+#: lib/wp-content-aware-engine/view/module/condition_taxonomy_template.php:16
+#: lib/wp-content-aware-engine/view/module/condition_template.php:16
+msgid "And"
+msgstr ""
+
+#: lib/wp-content-aware-engine/view/group_template.php:10
+#: lib/wp-content-aware-engine/view/meta_box.php:14
+msgid "Or"
+msgstr "Of"
+
+#: admin/sidebar-edit.php:987
+msgid "Save"
+msgstr "Opslaan"
+
+#: lib/wp-content-aware-engine/core.php:617
+msgid "Unauthorized request"
+msgstr "Ongeautoriseerd verzoek"
+
+#: lib/wp-content-aware-engine/core.php:248
+msgctxt "condition status"
+msgid "Negated"
+msgstr ""
+
+#: lib/wp-content-aware-engine/core.php:228
+msgid "Condition Group"
+msgstr "Conditiegroep"
+
+#: admin/screen_widgets.php:170
+msgid "Filter Widgets"
+msgstr ""
+
+#: admin/screen_widgets.php:169
+msgid "Filter Sidebars"
+msgstr "Filter zijbalken"
+
+#: admin/sidebar-edit.php:955
+msgid "Translate the plugin into your language"
+msgstr "Vertaal deze plugin naar uw taal"
+
+#: admin/sidebar-edit.php:890 admin/sidebar-edit.php:891
+msgid "Order"
+msgstr "Volgorde"
+
+#: app.php:168
+msgid "Get Support"
+msgstr "Krijg ondersteuning"
+
+#: admin/sidebar-edit.php:259
+msgid "More Information"
+msgstr "Meer informatie"
+
+#: admin/sidebar-edit.php:255
+msgid "Each created condition group describe some specific content (conditions) that the current sidebar should be displayed with."
+msgstr "Elke gemaakte conditiegroep beschrijft een specifieke inhoud (conditie) die met de huidige sidebar weergegeven moet worden  "
+
+#: admin/sidebar-edit.php:254 admin/sidebar-edit.php:685
+#: lib/wp-content-aware-engine/core.php:227
+msgid "Condition Groups"
+msgstr "Conditiegroepen"
+
+#: admin/sidebar-edit.php:771
+msgid "Options"
+msgstr "Opties"
+
+#. #-#-#-#-#  tmp-content-aware-sidebars.pot (Content Aware Sidebars 3.5.2) 
+#. #-#-#-#-#
+#. Plugin Name of the plugin/theme
+#: admin/sidebar-edit.php:754
+msgid "Content Aware Sidebars"
+msgstr "Inhouds-afhankelijke Sidebars"
+
+#: admin/sidebar-list-table.php:475
+msgid "Manage Widgets"
+msgstr "Beheer Widgets"
+
+#: admin/sidebar-list-table.php:312
+msgid "Widgets"
+msgstr "Widgets"
+
+#: admin/sidebar-list-table.php:448 sidebar.php:284
+msgid "Please update Host Sidebar"
+msgstr "Update de Host Sidebar aub"
+
+#: admin/sidebar-overview.php:277
+msgid "%s sidebar restored from the Trash."
+msgid_plural "%s sidebars restored from the Trash."
+msgstr[0] ""
+msgstr[1] ""
+
+#: admin/sidebar-overview.php:276
+msgid "%s sidebar moved to the Trash."
+msgid_plural "%s sidebars moved to the Trash."
+msgstr[0] ""
+msgstr[1] ""
+
+#: admin/sidebar-overview.php:275
+msgid "%s sidebar permanently deleted."
+msgid_plural "%s sidebars permanently deleted."
+msgstr[0] ""
+msgstr[1] ""
+
+#: admin/sidebar-overview.php:274
+msgid "%s sidebar not updated, somebody is editing it."
+msgid_plural "%s sidebars not updated, somebody is editing them."
+msgstr[0] ""
+msgstr[1] ""
+
+#: admin/sidebar-overview.php:273
+msgid "%s sidebar updated."
+msgid_plural "%s sidebars updated."
+msgstr[0] ""
+msgstr[1] ""
+
+#. translators: Publish box date format, see http://php.net/date
+#: admin/sidebar-edit.php:640
+msgid "M j, Y @ G:i"
+msgstr "M j, Y @ G:i"
+
+#: admin/sidebar-edit.php:638
+msgid "Sidebar scheduled for: <strong>%1$s</strong>."
+msgstr "Sidebar geplanned voor: <strong>%1$s<strong>"
+
+#: admin/sidebar-edit.php:636
+msgid "Sidebar updated."
+msgstr "Sidebar bijgewerkt."
+
+#: admin/sidebar-edit.php:634 admin/sidebar-overview.php:270
+msgid "Manage widgets"
+msgstr "Widgets beheren"
+
+#: sidebar.php:191
+msgid "No content. Please add at least one condition group to make the sidebar content aware."
+msgstr "Geen inhoud. Voeg tenminste één conditiegroep toe."
+
+#: sidebar.php:188
+msgid "No sidebars found in Trash"
+msgstr "Geen sidebars gevonden in Prullenbak"
+
+#: admin/post_type_sidebar.php:225 sidebar.php:187
+msgid "No sidebars found"
+msgstr "Geen sidebars gevonden"
+
+#: sidebar.php:186
+msgid "Search Sidebars"
+msgstr "Zoek Sidebars"
+
+#: sidebar.php:185
+msgid "View Sidebar"
+msgstr "Bekijk Sidebar"
+
+#: sidebar.php:184
+msgid "All Sidebars"
+msgstr "Alle Sidebars"
+
+#: sidebar.php:183
+msgid "New Sidebar"
+msgstr "Nieuwe Sidebar"
+
+#: admin/screen_widgets.php:147 sidebar.php:182
+msgid "Edit Sidebar"
+msgstr "Bewerk Sidebar"
+
+#: sidebar.php:181
+msgid "Add New Sidebar"
+msgstr "Voeg nieuwe Sidebar toe"
+
+#: sidebar.php:180
+msgctxt "sidebar"
+msgid "Add New"
+msgstr "Voeg toe"
+
+#: sidebar.php:179
+msgid "Sidebar"
+msgstr "Sidebar"
+
+#: sidebar.php:178
+msgid "Sidebars"
+msgstr "Sidebars"
+
+#: sidebar.php:141
+msgid "Place sidebar on top or bottom of host when merging."
+msgstr "Plaats sidebar bovenaan of onderaan host om samen te voegen"
+
+#: sidebar.php:139
+msgid "Bottom"
+msgstr "Onderkant"
+
+#: sidebar.php:138
+msgid "Top"
+msgstr "Bovenkant"
+
+#: sidebar.php:134
+msgid "Merge Position"
+msgstr "Positie samenvoegen"
+
+#: sidebar.php:123
+msgid "Replace host sidebar, merge with it or add sidebar manually."
+msgstr "Vervang host sidebar, voeg daarmee samen of voeg sidebar met de hand toe."
+
+#: sidebar.php:121
+msgid "Forced replace"
+msgstr "Geforceerde vervanging"
+
+#: sidebar.php:119
+msgid "Merge"
+msgstr "Samenvoegen"
+
+#: sidebar.php:118
+msgid "Replace"
+msgstr "Vervangen"
+
+#: lib/wp-content-aware-engine/view/group_template.php:37
+msgid "Archives"
+msgstr "Archief"
+
+#: lib/wp-content-aware-engine/view/group_template.php:31
+msgid "Singulars"
+msgstr "Enkelvoudige berichten"
+
+#: admin/sidebar-edit.php:260 admin/sidebar-edit.php:959 app.php:167
+msgid "FAQ"
+msgstr "FAQ"
