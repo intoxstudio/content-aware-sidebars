@@ -81,13 +81,6 @@ final class CAS_Sidebar_Manager {
 	 * @return void 
 	 */
 	private function init_metadata() {
-		global $wp_registered_sidebars;
-
-		// List of sidebars
-		$sidebar_list = array();
-		foreach($wp_registered_sidebars as $sidebar) {
-			$sidebar_list[$sidebar['id']] = $sidebar['name'];
-		}
 
 		$this->metadata = new WPCAObjectManager();
 		$this->metadata
@@ -118,7 +111,7 @@ final class CAS_Sidebar_Manager {
 			__('Target Sidebar', 'content-aware-sidebars'),
 			'sidebar-1',
 			'select',
-			$sidebar_list
+			array()
 		),'host')
 		->add(new WPCAMeta(
 			'merge_pos',
@@ -143,13 +136,21 @@ final class CAS_Sidebar_Manager {
 	 */
 	public function populate_metadata() {
 		if($this->metadata) {
+
+			global $wp_registered_sidebars;
+
+			// List of sidebars
+			$sidebar_list = array();
+			foreach($wp_registered_sidebars as $sidebar) {
+				$sidebar_list[$sidebar['id']] = $sidebar['name'];
+			}
+
 			// Remove ability to set self to host
 			if(get_the_ID()) {
-				$host_meta = $this->metadata()->get('host');
-				$sidebar_list = $host_meta->get_input_list();
 				unset($sidebar_list[CAS_App::SIDEBAR_PREFIX.get_the_ID()]);
-				$host_meta->set_input_list($sidebar_list);
 			}
+			$this->metadata->get('host')->set_input_list($sidebar_list);
+
 			apply_filters('cas/metadata/populate',$this->metadata);
 		}
 		
