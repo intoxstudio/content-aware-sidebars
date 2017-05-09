@@ -31,6 +31,12 @@ final class CAS_Sidebar_Manager {
 	protected $replaced_sidebars = array();
 
 	/**
+	 * Sidebar replacement map
+	 * @var array
+	 */
+	protected $replace_map = array();
+
+	/**
 	 * @var array
 	 * Constructor
 	 *
@@ -253,10 +259,10 @@ final class CAS_Sidebar_Manager {
 		foreach($sidebars as $post) {
 			$this->sidebars[CAS_App::SIDEBAR_PREFIX.$post->ID] = $post;
 			register_sidebar( array(
-				'name' => $post->post_title ? $post->post_title : __('(no title)'),
-				'id'   => CAS_App::SIDEBAR_PREFIX.$post->ID,
+				'name'           => $post->post_title ? $post->post_title : __('(no title)'),
+				'id'             => CAS_App::SIDEBAR_PREFIX.$post->ID,
 				'before_sidebar' => '',
-				'after_sidebar' => ''
+				'after_sidebar'  => ''
 			));
 		}
 	}
@@ -281,7 +287,6 @@ final class CAS_Sidebar_Manager {
 
 		foreach($this->sidebars as $post) {
 			$id = CAS_App::SIDEBAR_PREFIX.$post->ID;
-			$html = $metadata->get('html')->get_data($post->ID);
 
 			$args = $default_styles;
 
@@ -294,28 +299,14 @@ final class CAS_Sidebar_Manager {
 						'before_widget',
 						'after_widget',
 						'before_title',
-						'after_title'
+						'after_title',
+						'before_sidebar',
+						'after_sidebar'
 					) as $pos) {
-						$args[$pos] = $wp_registered_sidebars[$host_id][$pos];
+						if(isset($wp_registered_sidebars[$host_id][$pos])) {
+							$args[$pos] = $wp_registered_sidebars[$host_id][$pos];
+						}
 					}
-				}
-			}
-
-			//Set user styles
-			foreach (array(
-				'widget',
-				'title',
-				'sidebar'
-			) as $pos) {
-				if(isset($html[$pos],$html[$pos.'_class'])) {
-					$e = esc_html($html[$pos]);
-					$class = esc_html($html[$pos.'_class']);
-					$i = '';
-					if($pos == 'widget') {
-						$i = ' id="%1$s"';
-					}
-					$args['before_'.$pos] = '<'.$e.$i.' class="'.$class.'">';
-					$args['after_'.$pos] = "</$e>";
 				}
 			}
 
@@ -379,18 +370,9 @@ final class CAS_Sidebar_Manager {
 					$handled_already[$host] = 1;
 				}
 
-				if(isset($wp_registered_sidebars[$host],$wp_registered_sidebars[$id])) {
-					foreach (array(
-						'before_widget',
-						'after_widget',
-						'before_title',
-						'after_title',
-						'before_sidebar',
-						'after_sidebar'
-					) as $pos) {
-						$wp_registered_sidebars[$host][$pos] = $wp_registered_sidebars[$id][$pos];
-					}
-				}
+				//last replacement will take priority
+				//todo: extend to work for widgets too
+				$this->replace_map[$host] = $id;
 			}
 			$this->replaced_sidebars = $sidebars_widgets;
 		}
@@ -462,15 +444,57 @@ final class CAS_Sidebar_Manager {
 	 * @param   string    $content
 	 * @return  string
 	 */
-	public function sidebar_shortcode( $atts, $content = null ) {
+	public function sidebar_shortcode( $atts, $content = '' ) {
 		$a = shortcode_atts( array(
 			'id' => 0,
 		), $atts );
 		
 		$id = CAS_App::SIDEBAR_PREFIX.esc_attr($a['id']);
-		ob_start();
-		dynamic_sidebar($id);
-		return ob_get_clean();
+
+		//if sidebar is in replacement map, shortcode is called wrongly
+		if(!isset($this->replace_map[$id])) {
+			ob_start();
+			dynamic_sidebar($id);
+			$content = ob_get_clean();
+		}
+		return $content;
+	}
+
+	/**
+	 * Get styles from nested sidebars
+	 *
+	 * @since  3.6
+	 * @param  string  $i
+	 * @param  array   $styles
+	 * @return array
+	 */
+	public function get_sidebar_styles($i,$styles) {
+		if(isset($this->replace_map[$i])) {
+			$styles = $this->get_sidebar_styles($this->replace_map[$i],$styles);
+		}
+
+		if(isset($this->sidebars[$i])) {
+			$html = $this->metadata()->get('html')->get_data($this->sidebars[$i]->ID);
+			//Set user styles
+			foreach (array(
+				'widget',
+				'title',
+				'sidebar'
+			) as $pos) {
+				if(isset($html[$pos],$html[$pos.'_class'])) {
+					$e = esc_html($html[$pos]);
+					$class = esc_html($html[$pos.'_class']);
+					$id = '';
+					if($pos == 'widget') {
+						$id = ' id="%1$s"';
+					}
+					$styles['before_'.$pos] = '<'.$e.$id.' class="'.$class.'">';
+					$styles['after_'.$pos] = "</$e>";
+				}
+			}
+		}
+
+		return $styles;
 	}
 
 	/**
@@ -483,6 +507,10 @@ final class CAS_Sidebar_Manager {
 	 */
 	public function render_sidebar_before($i,$has_widgets) {
 		global $wp_registered_sidebars;
+
+		//Get nested styles
+		$wp_registered_sidebars[$i] = $this->get_sidebar_styles($i,$wp_registered_sidebars[$i]);
+
 		if($has_widgets && isset($wp_registered_sidebars[$i]['before_sidebar'])) {
 			echo $wp_registered_sidebars[$i]['before_sidebar'];
 		}

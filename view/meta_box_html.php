@@ -6,7 +6,7 @@
  * @copyright 2017 by Joachim Jensen
  */
 
-$data = CAS_App::instance()->manager()->metadata()->get('html')->get_data($post->ID);
+$data = CAS_App::instance()->manager()->metadata()->get('html')->get_data($post->ID,true);
 
 $data_default = array_merge(array(
 	'sidebar'       => '',
