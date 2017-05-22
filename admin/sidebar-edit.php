@@ -96,27 +96,6 @@ final class CAS_Sidebar_Edit extends CAS_Admin {
 	}
 
 	/**
-	 * Render support description
-	 *
-	 * @since  3.3
-	 * @param  string  $post_type
-	 * @return void
-	 */
-	public function show_review_link($post_type) {
-		//$url = cas_fs()->get_upgrade_url();
-		$url = 'https://dev.institute/wordpress/sidebars-pro/pricing/?utm_source=plugin&utm_medium=referral&utm_content=upgrade-bottom&utm_campaign=cas';
-		if($post_type == CAS_App::TYPE_SIDEBAR) {
-			echo '<div style="overflow: hidden; padding: 2px 0px;">';
-			echo '<div style="float:right;"><a href="'.esc_url($url).'" class="button button-cas-upgrade button-small" target="_blank">'.__('Upgrade to Pro','content-aware-sidebars').'</a></div>';
-			echo '<div style="line-height:24px;">';
-			echo '<span class="cas-heart">❤</span> ';
-			printf(__('Like it? %1$sSupport the plugin with a %2$s Review%3$s','content-aware-sidebars'),'<b><a target="_blank" href="https://wordpress.org/support/plugin/content-aware-sidebars/reviews/?rate=5#new-post">','5★','</a></b>');
-			echo '</div>';
-			echo '</div>';
-		}
-	}
-
-	/**
 	 * Set up admin menu and get current screen
 	 *
 	 * @since  3.4
@@ -817,7 +796,6 @@ final class CAS_Sidebar_Edit extends CAS_Admin {
 	 * Admin notice for Plugin Review
 	 *
 	 * @since  3.1
-	 * @param  [type]  $tour_manager
 	 * @return void
 	 */
 	public function admin_notice_review() {
