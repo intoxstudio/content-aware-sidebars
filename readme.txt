@@ -3,8 +3,8 @@ Contributors: intoxstudio, devinstitute, freemius
 Donate link: #
 Tags: custom sidebars, page sidebar, replace sidebar, create sidebars, create widget area, bbpress, buddypress, polylang, pods, sidebar manager, sidebar
 Requires at least: 4.0
-Tested up to: 4.7
-Stable tag: 3.5.2
+Tested up to: 4.8
+Stable tag: 3.6
 License: GPLv3
 
 Display custom sidebars on any post, page, category etc. Supports bbPress, BuddyPress, WooCommerce, Easy Digital Downloads and more.
@@ -25,6 +25,7 @@ The Content Aware Sidebars plugin is built to scale and will never slow down you
 * Activate and deactivate sidebars on schedule
 * Sidebar Visibility for All or Logged-in Users
 * Enhanced Widget Manager with sidebar and widget search
+* Change markup of widget areas
 * Optional Template Tag to display custom sidebars anywhere in your theme
 * Optional Shortcode to display custom sidebars anywhere in your content
 * Multilingual and Translation Ready ([help translate!](https://translate.wordpress.org/projects/wp-plugins/content-aware-sidebars))
@@ -76,6 +77,7 @@ Content Aware Sidebars automatically supports Custom Post Types and Taxonomies c
 * Display sidebars on content from any day, month, year
 * Display sidebars in select time ranges on given days
 * Sidebar Visibility for Roles and Guests
+* Widget to use sidebars as reusable blocks
 * Duplicate Sidebars & Sidebar Conditions
 * Disable Widgets
 * Sync Sidebar Widgets on Theme Switch
@@ -145,6 +147,28 @@ Of course! Check out the links below:
 == Changelog ==
 
 [Follow development on GitHub](https://github.com/intoxstudio/content-aware-sidebars)
+
+= 3.6 =
+
+[View Release Notes](https://dev.institute/style-widget-areas-content-aware-sidebars-3-6/?utm_source=readme&utm_medium=referral&utm_content=changelog&utm_campaign=cas)
+
+* Added: ability to wrap sidebar in html
+* Added: ability to change widget html
+* Added: danish and german translations now use automatic language packs
+* Added: performance and memory improvements
+* Added: UI improvements
+* Added: wordpress 4.8 support
+* Fixed: widget manager could behave unexpectedly in cases with many inactive widget areas
+* Fixed: sidebars quick select could cause nested sidebars to be removed from posts
+* Fixed: sidebar bulk messages
+* Updated: wp-content-aware-engine
+* Updated: freemius sdk
+
+*Pro Plan:*
+
+* Added: widget to insert widgets from other sidebars
+* Added: 1-click automatic install on checkout
+* Fixed: avoid auto-draft sidebar adding extra revision 
 
 = 3.5.2 =
 
