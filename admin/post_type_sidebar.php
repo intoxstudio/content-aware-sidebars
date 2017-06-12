@@ -13,6 +13,7 @@ if (!defined('ABSPATH')) {
 class CAS_Post_Type_Sidebar {
 
 	const MODULE_NAME = 'post_type';
+	const NONCE       = '_cas_nonce';
 
 	protected static $_theme_sidebars = array();
 
@@ -68,9 +69,10 @@ class CAS_Post_Type_Sidebar {
 	 */
 	public static function save_post_sidebars($post_id, $post) {
 
-		// Save button pressed
-		if (!isset($_POST['original_publish']) && !isset($_POST['save_post']))
+		if(!(isset($_POST[self::NONCE])
+			&& wp_verify_nonce($_POST[self::NONCE], self::NONCE.$post_id))) {
 			return;
+		}
 		
 		// Check post permissions
 		if (!current_user_can('edit_post', $post_id))
@@ -223,7 +225,8 @@ class CAS_Post_Type_Sidebar {
 			'sidebars' => self::$_theme_sidebars,
 			'limit'    => 3,
 			'content'  => $content,
-			'singular' => $post_type->labels->singular_name
+			'singular' => $post_type->labels->singular_name,
+			'nonce'    => wp_nonce_field(self::NONCE.$post->ID, self::NONCE, false, false)
 		));
 
 		add_meta_box(

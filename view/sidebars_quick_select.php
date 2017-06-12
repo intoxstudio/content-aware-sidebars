@@ -8,6 +8,7 @@
 
 $i = 0;
 $user_can = current_user_can(CAS_App::CAPABILITY);
+echo $nonce;
 foreach ($sidebars as $id => $sidebar) :
 	if($i == $limit) : ?>
 		<div class="cas-more" style="display:none;">
