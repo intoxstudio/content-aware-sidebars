@@ -12,9 +12,9 @@ $data_default = array_merge(array(
 	'sidebar'       => '',
 	'sidebar_class' => '',
 	'widget'        => '',
-	'widget_class'  => '',
+	'widget_class'  => 'widget %2$s',
 	'title'         => '',
-	'title_class'   => ''
+	'title_class'   => 'widget-title'
 ),$data);
 
 $sidebar_opts = array(
@@ -45,7 +45,7 @@ $widget_title_opts = array(
 				<div class="cae-toggle-bar"></div>
 			</label>
 			<code style="display:inline-block;">
-				<<select name="html[sidebar]" class="js-cas-html-sidebar">
+				<<select style="width:80px;" name="html[sidebar]" class="js-cas-html-sidebar">
 				<?php foreach($sidebar_opts as $k => $v) {
 					echo '<option value="'.$k.'"'.selected($data_default['sidebar'],$k,false).'>'.$v.'</option>';
 				}
@@ -63,7 +63,7 @@ $widget_title_opts = array(
 				<div class="cae-toggle-bar"></div>
 			</label>
 			<code style="display:inline-block;">
-				<<select name="html[widget]" class="js-cas-html-widget">
+				<<select style="width:80px;" name="html[widget]" class="js-cas-html-widget">
 				<?php foreach($widget_opts as $k => $v) {
 					echo '<option value="'.$k.'"'.selected($data_default['widget'],$k,false).'>'.$v.'</option>';
 				}
@@ -81,7 +81,7 @@ $widget_title_opts = array(
 				<div class="cae-toggle-bar"></div>
 			</label>
 			<code style="display:inline-block;">
-				<<select name="html[title]" class="js-cas-html-widget-title">
+				<<select style="width:80px;" name="html[title]" class="js-cas-html-widget-title">
 				<?php foreach($widget_title_opts as $k => $v) {
 					echo '<option value="'.$k.'"'.selected($data_default['title'],$k,false).'>'.$v.'</option>';
 				}
