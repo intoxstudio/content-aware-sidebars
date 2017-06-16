@@ -4,7 +4,7 @@ Donate link: #
 Tags: custom sidebars, page sidebar, replace sidebar, create sidebars, create widget area, bbpress, buddypress, polylang, pods, sidebar manager, sidebar
 Requires at least: 4.0
 Tested up to: 4.8
-Stable tag: 3.6
+Stable tag: 3.6.1
 License: GPLv3
 
 Display custom sidebars on any post, page, category etc. Supports bbPress, BuddyPress, WooCommerce, Easy Digital Downloads and more.
@@ -148,9 +148,19 @@ Of course! Check out the links below:
 
 [Follow development on GitHub](https://github.com/intoxstudio/content-aware-sidebars)
 
-= 3.6 =
+= 3.6.1 =
 
 [View Release Notes](https://dev.institute/style-widget-areas-content-aware-sidebars-3-6/?utm_source=readme&utm_medium=referral&utm_content=changelog&utm_campaign=cas)
+
+* Fixed: UI improvements
+* Fixed: better plugin compatibility for sidebars quick select
+
+**Pro Plan:**
+
+* Fixed: unable to disable widgets
+* Fixed: javascript would in rare cases not be loaded correctly in sidebar editor
+
+= 3.6 =
 
 * Added: ability to wrap sidebar in html
 * Added: ability to change widget html
@@ -164,7 +174,7 @@ Of course! Check out the links below:
 * Updated: wp-content-aware-engine
 * Updated: freemius sdk
 
-*Pro Plan:*
+**Pro Plan:**
 
 * Added: widget to insert widgets from other sidebars
 * Added: 1-click automatic install on checkout
