@@ -21,5 +21,5 @@
 	'</a></strong>'
 ); ?>
 </p>
-<p><a target="_blank" class="button-primary" href="https://wordpress.org/support/plugin/content-aware-sidebars/reviews/?rate=5#new-post"><?php _e('Review Content Aware Sidebars','content-aware-sidebars'); ?>'</a> <button class="button-secondary"><?php _e("No thanks",'content-aware-sidebars'); ?>'</button></p>
+<p><a target="_blank" class="button-primary" href="https://wordpress.org/support/plugin/content-aware-sidebars/reviews/?rate=5#new-post"><?php _e('Review Content Aware Sidebars','content-aware-sidebars'); ?></a> <button class="button-secondary"><?php _e("No thanks",'content-aware-sidebars'); ?></button></p>
 </div>

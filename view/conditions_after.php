@@ -10,7 +10,7 @@ $cas_fs = cas_fs();
 $url = 'https://dev.institute/wordpress/sidebars-pro/pricing/?utm_source=plugin&utm_medium=referral&utm_content=conditions-bottom&utm_campaign=cas';
 ?>
 <div style="overflow: hidden; padding: 2px 0px;">
-	<div style="float:right;">
+	<div class="wpca-pull-right">
 		<a href="<?php echo esc_url($cas_fs->get_upgrade_url()); ?>" class="button button-cas-upgrade button-small" target="_blank"><?php _e('Upgrade to Pro','content-aware-sidebars'); ?></a>
 	</div>
 	<div style="line-height:24px;">
