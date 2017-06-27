@@ -1082,7 +1082,7 @@ final class CAS_Sidebar_Edit extends CAS_Admin {
 
 		WPCACore::enqueue_scripts_styles('');
 
-		wp_register_script('flatpickr', plugins_url('../js/flatpickr.min.js', __FILE__), array(), '2.3.4', false);
+		wp_register_script('flatpickr', plugins_url('../js/flatpickr.min.js', __FILE__), array(), '3.0.6', false);
 
 		wp_register_script('cas/admin/edit', plugins_url('../js/cas_admin.min.js', __FILE__), array('jquery','flatpickr'), CAS_App::PLUGIN_VERSION, false);
 		

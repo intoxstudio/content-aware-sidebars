@@ -25,11 +25,11 @@
 		},
 
 		initSidebarActivation: function() {
-			Flatpickr.l10ns.default.weekdays = CASAdmin.weekdays;
-			Flatpickr.l10ns.default.months = CASAdmin.months;
-			Flatpickr.l10ns.default.firstDayOfWeek = CASAdmin.weekStart;
+			flatpickr.l10ns.default.weekdays = CASAdmin.weekdays;
+			flatpickr.l10ns.default.months = CASAdmin.months;
+			flatpickr.l10ns.default.firstDayOfWeek = CASAdmin.weekStart;
 
-			var config = {
+			var activate = flatpickr('.js-cas-activation',{
 				wrap: true,
 				clickOpens: true,
 				enableTime: true,
@@ -38,31 +38,35 @@
 				enableSeconds: true,
 				altInput: true,
 				altFormat: CASAdmin.dateFormat + ' @ H:i:S',
-				minDate: null,
-				maxDate: null
-			},
-			activate = flatpickr('.js-cas-activation',config),
-			deactivate = flatpickr('.js-cas-expiry',config),
+				onChange: function(dateObj, dateStr, instance) {
+					console.log("activate");
+					if(dateStr || deactivate.config.minDate) {
+						deactivate.set("minDate", dateStr ? new Date(dateObj).fp_incr(1) : null);
+					}
+					if(dateStr) {
+						$toggle.prop('checked',false);
+					} else if(!$toggle.is(':checked')) {
+						deactivate.clear();
+					}
+				}
+			}),
+			deactivate = flatpickr('.js-cas-expiry',{
+				wrap: true,
+				clickOpens: true,
+				enableTime: true,
+				time_24hr: true,
+				allowInput: true,
+				enableSeconds: true,
+				altInput: true,
+				altFormat: CASAdmin.dateFormat + ' @ H:i:S',
+				onChange: function(dateObj, dateStr, instance) {
+					console.log("deactivate");
+					if(dateStr || activate.config.maxDate) {
+						activate.set("maxDate", dateStr ? new Date(dateObj).fp_incr(-1) : null);
+					}
+				}
+			}),
 			$toggle = $('.js-cas-status');
-		
-			activate.config.onChange = function(dateObj, dateStr, instance) {
-				console.log("activate");
-				if(dateStr || deactivate.config.minDate) {
-					deactivate.set("minDate", dateStr ? new Date(dateObj).fp_incr(1) : null);
-				}
-				if(dateStr) {
-					$toggle.prop('checked',false);
-				} else if(!$toggle.is(':checked')) {
-					deactivate.clear();
-				}
-			};
-
-			deactivate.config.onChange = function(dateObj, dateStr, instance) {
-				console.log("deactivate");
-				if(dateStr || activate.config.maxDate) {
-					activate.set("maxDate", dateStr ? new Date(dateObj).fp_incr(-1) : null);
-				}
-			};
 
 			$toggle.on('change',function(e) {
 				if($(this).is(':checked')) {
