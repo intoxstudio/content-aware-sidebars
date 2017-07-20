@@ -327,6 +327,10 @@ final class CAS_Sidebar_Manager {
 			return $this->replaced_sidebars;
 		}
 
+		if(is_singular() && post_password_required()) {
+			return $sidebars_widgets;
+		}
+
 		$posts = WPCACore::get_posts(CAS_App::TYPE_SIDEBAR);
 
 		if ($posts) {
