@@ -364,6 +364,11 @@ final class CAS_Sidebar_Manager {
 
 				// If handle is merge or if handle is replace and host has already been replaced
 				if ($post->handle == 1 || ($post->handle == 0 && isset($handled_already[$host]))) {
+					//do not merge forced replace
+					//todo: maybe reverse order of fetched sidebars instead?
+					if(isset($handled_already[$host]) && $handled_already[$host] == 3) {
+						continue;
+					}
 					if ($metadata->get('merge_pos')->get_data($post->ID)) {
 						$sidebars_widgets[$host] = array_merge($sidebars_widgets[$host], $sidebars_widgets[$id]);
 					} else {
@@ -371,7 +376,7 @@ final class CAS_Sidebar_Manager {
 					}
 				} else {
 					$sidebars_widgets[$host] = $sidebars_widgets[$id];
-					$handled_already[$host] = 1;
+					$handled_already[$host] = $post->handle;
 				}
 
 				//last replacement will take priority
