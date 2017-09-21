@@ -18,7 +18,7 @@ $days = array_values($wp_locale->weekday);
 <?php do { ?>
 	<div>
 		<label>
-			<input type="checkbox" class="js-cas-pro-notice" data-url="https://dev.institute/wordpress/sidebars-pro/pricing/?utm_source=plugin&utm_medium=popup&utm_content=time-schedule&utm_campaign=cas" /> <?php echo ucfirst($days[$i]); ?> (8:00 - 17:00)
+			<input type="checkbox" class="js-cas-pro-notice" data-url="https://dev.institute/wordpress-sidebars/pricing/?utm_source=plugin&utm_medium=popup&utm_content=time-schedule&utm_campaign=cas" /> <?php echo ucfirst($days[$i]); ?> (8:00 - 17:00)
 		</label>
 		<div class="cas-schedule-slide ui-slider ui-slider-horizontal ui-state-disabled ui-slider-disabled">
 		<div class="ui-slider-range" style="left: 30%; width: 40%;"></div>

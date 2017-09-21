@@ -57,19 +57,19 @@ For each widget area you create, you can use the following conditions:
 
 Content Aware Sidebars automatically supports Custom Post Types and Taxonomies created by any plugin or theme. Moreover, it comes with built-in support for some of the most popular WordPress plugins. This means that you e.g. can create WooCommerce sidebars for select products or BuddyPress sidebars for your member sections!
 
-* [bbPress](https://dev.institute/wordpress/sidebars-pro/bbpress/?utm_source=readme&utm_medium=referral&utm_content=integration&utm_campaign=cas)
-* [BuddyPress](https://dev.institute/wordpress/sidebars-pro/buddypress/?utm_source=readme&utm_medium=referral&utm_content=integration&utm_campaign=cas)
-* [Easy Digital Downloads](https://dev.institute/wordpress/sidebars-pro/easy-digital-downloads/?utm_source=readme&utm_medium=referral&utm_content=integration&utm_campaign=cas)
-* [qTranslate X](https://dev.institute/wordpress/sidebars-pro/multilingual-plugins/?utm_source=readme&utm_medium=referral&utm_content=integration&utm_campaign=cas)
-* [Pods](https://dev.institute/wordpress/sidebars-pro/pods/?utm_source=readme&utm_medium=referral&utm_content=integration&utm_campaign=cas)
-* [Polylang](https://dev.institute/wordpress/sidebars-pro/multilingual-plugins/?utm_source=readme&utm_medium=referral&utm_content=integration&utm_campaign=cas)
-* [Transposh Translation Filter](https://dev.institute/wordpress/sidebars-pro/multilingual-plugins/?utm_source=readme&utm_medium=referral&utm_content=integration&utm_campaign=cas)
-* [WooCommerce](https://dev.institute/wordpress/sidebars-pro/woocommerce/?utm_source=readme&utm_medium=referral&utm_content=integration&utm_campaign=cas)
-* [WPML](https://dev.institute/wordpress/sidebars-pro/multilingual-plugins/?utm_source=readme&utm_medium=referral&utm_content=integration&utm_campaign=cas)
+* [bbPress](https://dev.institute/wordpress-sidebars/bbpress/?utm_source=readme&utm_medium=referral&utm_content=integration&utm_campaign=cas)
+* [BuddyPress](https://dev.institute/wordpress-sidebars/buddypress/?utm_source=readme&utm_medium=referral&utm_content=integration&utm_campaign=cas)
+* [Easy Digital Downloads](https://dev.institute/wordpress-sidebars/easy-digital-downloads/?utm_source=readme&utm_medium=referral&utm_content=integration&utm_campaign=cas)
+* [qTranslate X](https://dev.institute/wordpress-sidebars/multilingual-plugins/?utm_source=readme&utm_medium=referral&utm_content=integration&utm_campaign=cas)
+* [Pods](https://dev.institute/wordpress-sidebars/pods/?utm_source=readme&utm_medium=referral&utm_content=integration&utm_campaign=cas)
+* [Polylang](https://dev.institute/wordpress-sidebars/multilingual-plugins/?utm_source=readme&utm_medium=referral&utm_content=integration&utm_campaign=cas)
+* [Transposh Translation Filter](https://dev.institute/wordpress-sidebars/multilingual-plugins/?utm_source=readme&utm_medium=referral&utm_content=integration&utm_campaign=cas)
+* [WooCommerce](https://dev.institute/wordpress-sidebars/woocommerce/?utm_source=readme&utm_medium=referral&utm_content=integration&utm_campaign=cas)
+* [WPML](https://dev.institute/wordpress-sidebars/multilingual-plugins/?utm_source=readme&utm_medium=referral&utm_content=integration&utm_campaign=cas)
 
 ####Premium Widget Area Manager - Content Aware Sidebars Pro
 
-[Complete control for your custom sidebars](https://dev.institute/wordpress/sidebars-pro/?utm_source=readme&utm_medium=referral&utm_content=title&utm_campaign=cas):
+[Complete control for your custom sidebars](https://dev.institute/wordpress-sidebars/?utm_source=readme&utm_medium=referral&utm_content=title&utm_campaign=cas):
 
 * Priority Email Support
 * Automatic Widgets Backup
@@ -81,7 +81,7 @@ Content Aware Sidebars automatically supports Custom Post Types and Taxonomies c
 * Duplicate Sidebars & Sidebar Conditions
 * Disable Widgets
 * Sync Sidebar Widgets on Theme Switch
-* [and more...](https://dev.institute/wordpress/sidebars-pro/features/?utm_source=readme&utm_medium=referral&utm_content=more&utm_campaign=cas)
+* [and more...](https://dev.institute/wordpress-sidebars/features/?utm_source=readme&utm_medium=referral&utm_content=more&utm_campaign=cas)
 
 You can upgrade at any time securely from your Admin Dashboard via [Freemius](http://freemius.com/)!
 

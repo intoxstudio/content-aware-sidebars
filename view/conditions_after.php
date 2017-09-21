@@ -7,7 +7,7 @@
  */
 
 $cas_fs = cas_fs();
-$url = 'https://dev.institute/wordpress/sidebars-pro/pricing/?utm_source=plugin&utm_medium=referral&utm_content=conditions-bottom&utm_campaign=cas';
+$url = 'https://dev.institute/wordpress-sidebars/pricing/?utm_source=plugin&utm_medium=referral&utm_content=conditions-bottom&utm_campaign=cas';
 ?>
 <div style="overflow: hidden; padding: 2px 0px;">
 	<div class="wpca-pull-right">

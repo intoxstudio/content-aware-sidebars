@@ -180,7 +180,7 @@ class CAS_Admin_Screen_Widgets extends CAS_Admin {
 					</label>
 				</div>
 
-				<a title="<?php esc_attr_e('Edit Sidebar','content-aware-sidebars') ?>" class="dashicons dashicons-admin-generic cas-sidebar-link" href="<?php echo $edit_link; ?>"></a><a title="<?php esc_attr_e('Revisions') ?>" class="js-cas-pro-notice cas-sidebar-link" data-url="https://dev.institute/wordpress/sidebars-pro/pricing/?utm_source=plugin&utm_medium=popup&utm_content=widget-revisions&utm_campaign=cas" href="<?php echo add_query_arg('action','cas-revisions',$link); ?>"><i class="dashicons dashicons-backup"></i> <?php _e('Revisions') ?></a>
+				<a title="<?php esc_attr_e('Edit Sidebar','content-aware-sidebars') ?>" class="dashicons dashicons-admin-generic cas-sidebar-link" href="<?php echo $edit_link; ?>"></a><a title="<?php esc_attr_e('Revisions') ?>" class="js-cas-pro-notice cas-sidebar-link" data-url="https://dev.institute/wordpress-sidebars/pricing/?utm_source=plugin&utm_medium=popup&utm_content=widget-revisions&utm_campaign=cas" href="<?php echo add_query_arg('action','cas-revisions',$link); ?>"><i class="dashicons dashicons-backup"></i> <?php _e('Revisions') ?></a>
 				</div>
 			<?php
 		}
