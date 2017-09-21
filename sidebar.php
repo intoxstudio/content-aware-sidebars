@@ -73,6 +73,8 @@ final class CAS_Sidebar_Manager {
 		if(!is_admin()) {
 			add_filter('sidebars_widgets',
 				array($this,'replace_sidebar'));
+			add_filter('wpca/posts/sidebar',
+				array($this,'filter_visibility'));
 			add_action( 'dynamic_sidebar_before',
 				array($this,'render_sidebar_before'),9,2);
 			add_action( 'dynamic_sidebar_after',
@@ -337,23 +339,15 @@ final class CAS_Sidebar_Manager {
 			global $wp_registered_sidebars;
 
 			$metadata = $this->metadata();
+			$has_host = array(0=>1,1=>1,3=>1);
 
-			//temporary filter until WPCACore allows filtering
-			$user_visibility = is_user_logged_in() ? array(-1) : array();
-			$user_visibility = apply_filters('cas/user_visibility',$user_visibility);
 			foreach ($posts as $post) {
 
 				$id = CAS_App::SIDEBAR_PREFIX . $post->ID;
-				$visibility = $metadata->get('visibility')->get_data($post->ID,true,false);
 				$host = $metadata->get('host')->get_data($post->ID);
 
-				// Check visibility
-				if($visibility && !array_intersect($visibility,$user_visibility)) {
-					continue;
-				}
-
 				// Check for correct handling and if host exist
-				if ( $post->handle == 2 || !isset($sidebars_widgets[$host])) {
+				if (!isset($has_host[$post->handle]) || !isset($sidebars_widgets[$host])) {
 					continue;
 				}
 
@@ -461,6 +455,7 @@ final class CAS_Sidebar_Manager {
 		$id = CAS_App::SIDEBAR_PREFIX.esc_attr($a['id']);
 
 		//if sidebar is in replacement map, shortcode is called wrongly
+		//todo: check for handle instead?
 		if(!isset($this->replace_map[$id])) {
 			ob_start();
 			dynamic_sidebar($id);
@@ -538,6 +533,33 @@ final class CAS_Sidebar_Manager {
 		if($has_widgets && isset($wp_registered_sidebars[$i]['after_sidebar'])) {
 			echo $wp_registered_sidebars[$i]['after_sidebar'];
 		}
+	}
+
+	/**
+	 * Filter out sidebars based on current user
+	 *
+	 * @since  3.7
+	 * @param  array  $sidebars
+	 * @return array
+	 */
+	public function filter_visibility($sidebars) {
+		if($sidebars) {
+			$metadata = $this->metadata()->get('visibility');
+
+			//temporary filter until WPCACore allows filtering
+			$user_visibility = is_user_logged_in() ? array(-1) : array();
+			$user_visibility = apply_filters('cas/user_visibility',$user_visibility);
+			foreach ($sidebars as $id => $sidebar) {
+
+				$visibility = $metadata->get_data($id,true,false);
+
+				// Check visibility
+				if($visibility && !array_intersect($visibility,$user_visibility)) {
+					unset($sidebars[$id]);
+				}
+			}
+		}
+		return $sidebars;
 	}
 
 	/**
