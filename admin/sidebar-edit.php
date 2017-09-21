@@ -1032,6 +1032,11 @@ final class CAS_Sidebar_Edit extends CAS_Admin {
 				$sep = '&amp;';
 			}
 			$link = admin_url('admin.php?page=wpcas-edit'.$sep.'sidebar_id='.$post_id);
+
+			//load page in all languages for wpml
+			if(defined('ICL_SITEPRESS_VERSION')) {
+				$link .= $sep.'lang=all';
+			}
 		}
 		return $link;
 	}
