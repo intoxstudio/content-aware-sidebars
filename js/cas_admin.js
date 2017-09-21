@@ -155,7 +155,7 @@
 		 */
 		addHandleListener: function() {
 			var host = $("span.host");
-			var code = $('<div><p>Shortcode:</p><code>[ca-sidebar id='+$('#current_sidebar').val()+']</code>'+
+			var code = $('<div><p>Shortcode:</p><code>[ca-sidebar id='+$('#post_ID').val()+']</code>'+
 				'<p>Template Tag:</p><code>ca_display_sidebar();</code></div>');
 			var merge_pos = $('span.merge-pos');
 			host.after(code);
