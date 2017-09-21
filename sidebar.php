@@ -472,30 +472,17 @@ final class CAS_Sidebar_Manager {
 	 * @param  array   $styles
 	 * @return array
 	 */
-	public function get_sidebar_styles($i,$styles) {
-		if(isset($this->replace_map[$i])) {
-			$styles = $this->get_sidebar_styles($this->replace_map[$i],$styles);
-		}
+	public function get_sidebar_styles($i) {
+		$styles = array();
 
-		if(isset($this->sidebars[$i])) {
-			$html = $this->metadata()->get('html')->get_data($this->sidebars[$i]->ID);
-			//Set user styles
-			foreach (array(
-				'widget',
-				'title',
-				'sidebar'
-			) as $pos) {
-				if(isset($html[$pos],$html[$pos.'_class'])) {
-					$e = esc_html($html[$pos]);
-					$class = esc_html($html[$pos.'_class']);
-					$id = '';
-					if($pos == 'widget') {
-						$id = ' id="%1$s"';
-					}
-					$styles['before_'.$pos] = '<'.$e.$id.' class="'.$class.'">';
-					$styles['after_'.$pos] = "</$e>";
-				}
+		$metadata = $this->metadata()->get('html');
+		while($i) {
+			if(isset($this->sidebars[$i])) {
+				$styles = array_merge($styles,$metadata->get_data($this->sidebars[$i]->ID));
+				$styles['widget_id'] = '%1$s';
+				$styles['sidebar_id'] = 'cas-sidebar-'.$this->sidebars[$i]->ID;
 			}
+			$i = isset($this->replace_map[$i]) ? $this->replace_map[$i] : false;
 		}
 
 		return $styles;
@@ -513,7 +500,28 @@ final class CAS_Sidebar_Manager {
 		global $wp_registered_sidebars;
 
 		//Get nested styles
-		$wp_registered_sidebars[$i] = $this->get_sidebar_styles($i,$wp_registered_sidebars[$i]);
+		$html = $this->get_sidebar_styles($i);
+		if($html) {
+			$styles = $wp_registered_sidebars[$i];
+			//Set user styles
+			foreach (array(
+				'widget',
+				'title',
+				'sidebar'
+			) as $pos) {
+				if(isset($html[$pos],$html[$pos.'_class'])) {
+					$e = esc_html($html[$pos]);
+					$class = esc_html($html[$pos.'_class']);
+					$id = '';
+					if(isset($html[$pos.'_id'])) {
+						$id = ' id="'.$html[$pos.'_id'].'"';
+					}
+					$styles['before_'.$pos] = '<'.$e.$id.' class="'.$class.'">';
+					$styles['after_'.$pos] = "</$e>";
+				}
+			}
+			$wp_registered_sidebars[$i] = $styles;
+		}
 
 		if($has_widgets && isset($wp_registered_sidebars[$i]['before_sidebar'])) {
 			echo $wp_registered_sidebars[$i]['before_sidebar'];
