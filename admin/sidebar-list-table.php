@@ -436,19 +436,19 @@ class CAS_Sidebar_List_Table extends WP_List_Table {
 	 * @return void
 	 */
 	public function column_handle($post) {
-		$metadata = CAS_App::instance()->manager()->metadata()->get("handle");
+		$metadata = CAS_App::instance()->manager()->metadata();
+		$action = $metadata->get("handle");
 		
-		$return = "";
-		if($metadata) {
-			$return = $metadata->get_list_data($post->ID);
-			switch($metadata->get_data($post->ID)) {
+		if($action) {
+			switch($action->get_data($post->ID)) {
 				case 0:
 				case 1:
 				case 3:
-					$host = CAS_App::instance()->manager()->metadata()->get('host')->get_list_data($post->ID);
+					$return = $action->get_list_data($post->ID);
+					$host = $metadata->get('host')->get_list_data($post->ID);
 					$return .= ": " . ($host ? $host : '<span style="color:red;">' . __('Please update Host Sidebar', "content-aware-sidebars") . '</span>');
-					if($metadata->get_data($post->ID) != 3) {
-						$pos = CAS_App::instance()->manager()->metadata()->get("merge_pos")->get_data($post->ID,true);
+					if($action->get_data($post->ID) != 3) {
+						$pos = $metadata->get("merge_pos")->get_data($post->ID,true);
 						$pos_icon = $pos ? "up" : "down";
 						$pos_title = array(
 							__("Add sidebar at the top during merge","content-aware-sidebars"),
@@ -456,17 +456,16 @@ class CAS_Sidebar_List_Table extends WP_List_Table {
 						);
 						$return .= '<span title="'.$pos_title[$pos].'" class="dashicons dashicons-arrow-'.$pos_icon.'-alt"></span>';
 					}
+					echo $return;
 					break;
 				case 2:
-					$return = "<input type='text' value='[ca-sidebar id=\"$post->ID\"]' readonly>";
-					break;
-				case 4:
+					echo "<input type='text' value='[ca-sidebar id=\"$post->ID\"]' readonly />";
 					break;
 				default:
+					do_action('cas/admin/columns/action',$post,$action);
 					break;
 			}
 		}
-		echo $return;
 	}
 
 	/**
@@ -479,7 +478,7 @@ class CAS_Sidebar_List_Table extends WP_List_Table {
 	public function column_widgets($post) {
 		$sidebars_widgets = wp_get_sidebars_widgets();
 		$count =  isset($sidebars_widgets[CAS_App::SIDEBAR_PREFIX . $post->ID]) ? count($sidebars_widgets[CAS_App::SIDEBAR_PREFIX . $post->ID]) : 0;
-		return '<a href="'.admin_url('widgets.php').'" title="' . esc_attr__('Manage Widgets', 'content-aware-sidebars') . '">' .$count . '</a>';
+		echo '<a href="'.admin_url('widgets.php').'" title="' . esc_attr__('Manage Widgets', 'content-aware-sidebars') . '">' .$count . '</a>';
 	}
 
 	/**
@@ -557,7 +556,7 @@ class CAS_Sidebar_List_Table extends WP_List_Table {
 	 * @return void
 	 */
 	public function column_default( $post, $column_name ) {
-		do_action('cas/admin/columns/render',$post,$column_name);
+		do_action('cas/admin/columns/default',$post,$column_name);
 	}
 
 	/**
