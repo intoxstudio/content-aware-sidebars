@@ -478,9 +478,12 @@ final class CAS_Sidebar_Manager {
 		$metadata = $this->metadata()->get('html');
 		while($i) {
 			if(isset($this->sidebars[$i])) {
-				$styles = array_merge($styles,$metadata->get_data($this->sidebars[$i]->ID));
-				$styles['widget_id'] = '%1$s';
-				$styles['sidebar_id'] = 'cas-sidebar-'.$this->sidebars[$i]->ID;
+				$style = $metadata->get_data($this->sidebars[$i]->ID);
+				if($style) {
+					$styles = array_merge($styles,$style);
+					$styles['widget_id'] = '%1$s';
+					$styles['sidebar_id'] = 'cas-sidebar-'.$this->sidebars[$i]->ID;
+				}
 			}
 			$i = isset($this->replace_map[$i]) ? $this->replace_map[$i] : false;
 		}
