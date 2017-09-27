@@ -122,7 +122,7 @@ final class CAS_Sidebar_Manager {
 				0 => __('Replace', 'content-aware-sidebars'),
 				1 => __('Merge', 'content-aware-sidebars'),
 				3 => __('Forced replace','content-aware-sidebars'),
-				2 => __('Shortcode / Template Tag', 'content-aware-sidebars')
+				2 => __('Shortcode')
 			),
 			__('Replace host sidebar, merge with it or add sidebar manually.', 'content-aware-sidebars')
 		),'handle')
