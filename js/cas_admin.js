@@ -14,7 +14,7 @@
 
 		init: function() {
 			this.tabController();
-			this.addHandleListener();
+			this.actionOptionHandler();
 			this.suggestVisibility();
 			this.initSidebarActivation();
 
@@ -147,34 +147,30 @@
 		},
 
 		/**
-		 * The value of Handle selection will control the
-		 * accessibility of the host sidebar selection
-		 * If Handling is manual, selection of host sidebar will be disabled
-		 * 
-		 * @since  2.1
+		 * Selection of handle will control the
+		 * accessibility of options dependent on its value
+		 *
+		 * @since  3.7
+		 * @return {void}
 		 */
-		addHandleListener: function() {
-			var host = $("span.host");
-			var code = $('<div><p>Shortcode:</p><code>[ca-sidebar id='+$('#post_ID').val()+']</code>'+
-				'<p>Template Tag:</p><code>ca_display_sidebar();</code></div>');
-			var merge_pos = $('span.merge-pos');
-			host.after(code);
-			$("select[name='handle']").change(function(){
-				var handle = $(this);
-				host.attr("disabled", handle.val() == 2);
-				if(handle.val() == 2) {
-					host.hide();
-					code.show();
-				} else {
-					host.show();
-					code.hide();
-				}
-				if(handle.val() == 3) {
-					merge_pos.hide();
-				} else {
-					merge_pos.show();
-				}
-			}).change(); //fire change event on page load
+		actionOptionHandler: function() {
+			var $options = $('#cas-options'),
+				$actions = $options.find('.js-cas-action');
+			$options.on('change','.js-cas-handle',function(){
+				var action = $(this);
+
+				// $actions.each(function(i,ui) {
+				// 	var $this = $(this),
+				// 	show = $this.hasClass('js-cas-action-'+action.val());
+				// 	$this.toggle(show).find('input,select').attr('disabled',!show);
+				// });
+
+				var $show = $actions.filter('.js-cas-action-'+action.val());
+				$actions.not($show).hide().find('input,select').attr('disabled',true);
+				$show.fadeIn('fast').find('input,select').attr('disabled',false);
+
+			});
+			$options.find('.js-cas-handle').trigger('change');
 		},
 
 		suggestVisibility: function() {

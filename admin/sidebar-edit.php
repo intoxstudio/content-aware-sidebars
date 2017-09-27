@@ -814,36 +814,17 @@ final class CAS_Sidebar_Edit extends CAS_Admin {
 	 * @return void
 	 */
 	public function meta_box_options($post) {
-
-		$columns = array(
-			'handle',
-			'host',
-			'merge_pos'
+		$this->_form_field('handle');
+		$this->_form_field('host',
+			'js-cas-action js-cas-action-0 js-cas-action-1 js-cas-action-3'
 		);
 
-		foreach ($columns as $key => $value) {
+		echo "<div class='js-cas-action js-cas-action-2'><strong>".__('Shortcode')."</strong><p><input type='text' readonly value='[ca-sidebar id=\"$post->ID\"]' /></p></div>";
 
-			$id = is_numeric($key) ? $value : $key;
+		do_action('cas/sidebar/options',$post);
 
-			echo '<span class="'.$id.'"><strong>' . CAS_App::instance()->manager()->metadata()->get($id)->get_title() . '</strong>';
-			echo '<p>';
-			$values = explode(',', $value);
-			foreach ($values as $val) {
-				$this->_form_field($val);
-			}
-			echo '</p></span>';
-		}
-
-		$visibility = CAS_App::instance()->manager()->metadata()->get('visibility');
-
-		echo '<span>';
-		echo '<strong>'.__('Visibility','content-aware-sidebars').'</strong>';
-		echo '<p><label for="visibility" class="screen-reader-text">'.__('Visibility','content-aware-sidebars').'</label>';
-
-		echo '<div><select style="width:250px;" class="js-cas-visibility" multiple="multiple"  name="visibility[]" data-value="'.implode(",", $visibility->get_data($post->ID,true,false)).'"></select></div>';
-		
-		echo '</p></span>';
-
+		$this->_form_field('merge_pos');
+		$this->_form_field('visibility');
 	}
 
 	/**
@@ -868,14 +849,16 @@ final class CAS_Sidebar_Edit extends CAS_Admin {
 	 * @param  array $setting 
 	 * @return void 
 	 */
-	private function _form_field($setting) {
+	private function _form_field($id,$class = '') {
 
-		$setting = CAS_App::instance()->manager()->metadata()->get($setting);
-		$current = $setting->get_data(get_the_ID(),true);
+		$setting = CAS_App::instance()->manager()->metadata()->get($id);
+		$current = $setting->get_data(get_the_ID(),true,$setting->get_input_type() != 'multi');
 
+		echo '<div class="'.$class.'"><strong>' . $setting->get_title() . '</strong>';
+		echo '<p>';
 		switch ($setting->get_input_type()) {
 			case 'select' :
-				echo '<select style="width:250px;" name="' . $setting->get_id() . '">' . "\n";
+				echo '<select style="width:250px;" name="' . $id . '" class="js-cas-'.$id.'">' . "\n";
 				foreach ($setting->get_input_list() as $key => $value) {
 					echo '<option value="' . $key . '"' . selected($current,$key,false) . '>' . $value . '</option>' . "\n";
 				}
@@ -884,15 +867,19 @@ final class CAS_Sidebar_Edit extends CAS_Admin {
 			case 'checkbox' :
 				echo '<ul>' . "\n";
 				foreach ($setting->get_input_list() as $key => $value) {
-					echo '<li><label><input type="checkbox" name="' . $setting->get_id() . '[]" value="' . $key . '"' . (in_array($key, $current) ? ' checked="checked"' : '') . ' /> ' . $value . '</label></li>' . "\n";
+					echo '<li><label><input type="checkbox" name="' . $id . '[]" class="js-cas-'.$id.'" value="' . $key . '"' . (in_array($key, $current) ? ' checked="checked"' : '') . ' /> ' . $value . '</label></li>' . "\n";
 				}
 				echo '</ul>' . "\n";
 				break;
+			case 'multi' :
+				echo '<div><select style="width:250px;" class="js-cas-'.$id.'" multiple="multiple"  name="' . $id . '[]" data-value="'.implode(",", $current).'"></select></div>';
+				break;
 			case 'text' :
 			default :
-				echo '<input style="width:200px;" type="text" name="' . $setting->get_id() . '" value="' . $current . '" />' . "\n";
+				echo '<input style="width:200px;" type="text" name="' . $id . '" value="' . $current . '" />' . "\n";
 				break;
 		}
+		echo '</p></div>';
 	}
 		
 	/**
