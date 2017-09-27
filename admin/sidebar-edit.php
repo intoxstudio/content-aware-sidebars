@@ -416,8 +416,13 @@ final class CAS_Sidebar_Edit extends CAS_Admin {
 		echo '<div class="wrap">';
 		echo '<'.$tag.'>';
 		echo esc_html( $title );
-		if ( isset($_REQUEST['sidebar_id']) && current_user_can( $post_type_object->cap->create_posts ) ) {
-			echo ' <a href="' . esc_url( admin_url( 'admin.php?page=wpcas-edit' ) ) . '" class="page-title-action add-new-h2">' . esc_html( $post_type_object->labels->add_new ) . '</a>';
+		if ( isset($_REQUEST['sidebar_id']) ) {
+			if(current_user_can( $post_type_object->cap->create_posts ) ) {
+				echo ' <a href="' . esc_url( admin_url( 'admin.php?page=wpcas-edit' ) ) . '" class="page-title-action add-new-h2">' . esc_html( $post_type_object->labels->add_new ) . '</a>';
+			}
+			if ( current_user_can( 'manage_widgets' ) ) {
+				echo ' <a href="' . esc_url( admin_url( 'widgets.php' ) ) . '" class="page-title-action add-new-h2">' . __('Manage Widgets','content-aware-sidebars') . '</a>';
+			}
 		}
 		echo '</'.$tag.'>';
 		if ( $message ) {
