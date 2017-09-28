@@ -140,24 +140,6 @@ final class CAS_Sidebar_Edit extends CAS_Admin {
 		//process actions
 		$this->process_actions($post_id);
 
-		if ( is_multisite() ) {
-			add_action( 'admin_footer', '_admin_notice_post_locked' );
-		} else {
-			$check_users = get_users( array( 'fields' => 'ID', 'number' => 2 ) );
-			if ( count( $check_users ) > 1 )
-				add_action( 'admin_footer', '_admin_notice_post_locked' );
-			unset( $check_users );
-		}
-
-		wp_enqueue_script('post');
-
-		if ( wp_is_mobile() ) {
-			wp_enqueue_script( 'jquery-touch-punch' );
-		}
-
-		// Add the local autosave notice HTML
-		//add_action( 'admin_footer', '_local_storage_notice' );
-
 		/**
 		 * Edit mode
 		 */
@@ -246,8 +228,9 @@ final class CAS_Sidebar_Edit extends CAS_Admin {
 	 */
 	public function process_actions($post_id) {
 		$action = isset($_REQUEST['action']) ? $_REQUEST['action'] : '';
-		if ( isset( $_POST['deletepost'] ) )
+		if ( isset( $_POST['deletepost'] ) ) {
 			$action = 'delete';
+		}
 
 		if($action && $post_id) {
 			//wp_reset_vars( array( 'action' ) );
@@ -262,9 +245,10 @@ final class CAS_Sidebar_Edit extends CAS_Admin {
 				wp_die( __( 'The sidebar no longer exists.', 'content-aware-sidebars' ) );
 			}
 
+			check_admin_referer($action . '-post_' . $post_id);
+
 			switch($action) {
-				case 'editpost':
-					check_admin_referer('update-post_' . $post_id);
+				case 'update':
 
 					$post_id = $this->update_sidebar_type();
 
@@ -303,7 +287,6 @@ final class CAS_Sidebar_Edit extends CAS_Admin {
 					wp_safe_redirect($sendback);
 					exit();
 				case 'trash':
-					check_admin_referer('trash-post_' . $post_id);
 
 					if ( ! current_user_can( 'delete_post', $post_id ) )
 						wp_die( __( 'You are not allowed to move this sidebar to the Trash.', 'content-aware-sidebars' ) );
@@ -326,7 +309,6 @@ final class CAS_Sidebar_Edit extends CAS_Admin {
 						), $sendback ));
 					exit();
 				case 'untrash':
-					check_admin_referer('untrash-post_' . $post_id);
 
 					if ( ! current_user_can( 'delete_post', $post_id ) )
 						wp_die( __( 'You are not allowed to restore this sidebar from the Trash.', 'content-aware-sidebars' ) );
@@ -337,7 +319,6 @@ final class CAS_Sidebar_Edit extends CAS_Admin {
 					wp_safe_redirect( add_query_arg('untrashed', 1, $sendback) );
 					exit();
 				case 'delete':
-					check_admin_referer('delete-post_' . $post_id);
 
 					if ( ! current_user_can( 'delete_post', $post_id ) )
 						wp_die( __( 'You are not allowed to delete this sidebar.', 'content-aware-sidebars' ) );
@@ -369,14 +350,6 @@ final class CAS_Sidebar_Edit extends CAS_Admin {
 		global $nav_tabs, $post, $title, $active_post_lock;
 
 		$post_type_object = get_post_type_object( $post->post_type );
-
-		$message = false;
-		if ( isset($_GET['message']) ) {
-			$messages = $this->sidebar_updated_messages($post);
-			$_GET['message'] = absint( $_GET['message'] );
-			if ( isset($messages[$_GET['message']]) )
-				$message = $messages[$_GET['message']];
-		}
 
 		$notice = false;
 		$form_extra = '';
@@ -420,19 +393,19 @@ final class CAS_Sidebar_Edit extends CAS_Admin {
 			if(current_user_can( $post_type_object->cap->create_posts ) ) {
 				echo ' <a href="' . esc_url( admin_url( 'admin.php?page=wpcas-edit' ) ) . '" class="page-title-action add-new-h2">' . esc_html( $post_type_object->labels->add_new ) . '</a>';
 			}
-			if ( current_user_can( 'manage_widgets' ) ) {
+			if ( current_user_can( 'edit_theme_options' ) ) {
 				echo ' <a href="' . esc_url( admin_url( 'widgets.php' ) ) . '" class="page-title-action add-new-h2">' . __('Manage Widgets','content-aware-sidebars') . '</a>';
 			}
 		}
 		echo '</'.$tag.'>';
-		if ( $message ) {
-			echo '<div id="message" class="updated notice notice-success is-dismissible"><p>'.$message.'</p></div>';
-		} 
+
+		$this->sidebar_updated_messages($post);
+
 		echo '<form name="post" action="admin.php?page=wpcas-edit" method="post" id="post">';
 		$referer = wp_get_referer();
 		wp_nonce_field('update-post_' . $post->ID);
 		echo '<input type="hidden" id="user-id" name="user_ID" value="'.(int)get_current_user_id().'" />';
-		echo '<input type="hidden" id="hiddenaction" name="action" value="editpost" />';
+		echo '<input type="hidden" id="hiddenaction" name="action" value="update" />';
 		echo '<input type="hidden" id="post_author" name="post_author" value="'.esc_attr($post->post_author).'" />';
 		echo '<input type="hidden" id="original_post_status" name="original_post_status" value="'.esc_attr( $post->post_status).'" />';
 		echo '<input type="hidden" id="referredby" name="referredby" value="'.($referer ? esc_url( $referer ) : '').'" />';
@@ -610,7 +583,7 @@ final class CAS_Sidebar_Edit extends CAS_Admin {
 	 */
 	public function sidebar_updated_messages($post) {
 		$manage_widgets = sprintf(' <a href="%1$s">%2$s</a>','widgets.php',__('Manage widgets','content-aware-sidebars'));
-		return array(
+		$messages = array(
 			1 => __('Sidebar updated.','content-aware-sidebars').$manage_widgets,
 			6 => __('Sidebar activated.','content-aware-sidebars').$manage_widgets,
 			9 => sprintf(__('Sidebar scheduled for: <strong>%1$s</strong>.','content-aware-sidebars'),
@@ -618,6 +591,15 @@ final class CAS_Sidebar_Edit extends CAS_Admin {
 				date_i18n(__('M j, Y @ G:i'),strtotime($post->post_date))).$manage_widgets,
 			10 => __('Sidebar deactivated.','content-aware-sidebars').$manage_widgets,
 		);
+		$messages = apply_filters('cas/admin/messages',$messages,$post);
+
+		if ( isset($_GET['message']) ) {
+			$_GET['message'] = absint( $_GET['message'] );
+			if ( isset($messages[$_GET['message']]) ) {
+				echo '<div id="message" class="updated notice notice-success is-dismissible"><p>'.$messages[$_GET['message']].'</p></div>';
+			}
+		}
+
 	}
 
 	/**
@@ -1051,6 +1033,24 @@ final class CAS_Sidebar_Edit extends CAS_Admin {
 	 * @since 3.4
 	 */
 	public function add_scripts_styles() {
+
+		if ( is_multisite() ) {
+			add_action( 'admin_footer', '_admin_notice_post_locked' );
+		} else {
+			$check_users = get_users( array( 'fields' => 'ID', 'number' => 2 ) );
+			if ( count( $check_users ) > 1 )
+				add_action( 'admin_footer', '_admin_notice_post_locked' );
+			unset( $check_users );
+		}
+
+		wp_enqueue_script('post');
+
+		if ( wp_is_mobile() ) {
+			wp_enqueue_script( 'jquery-touch-punch' );
+		}
+
+		// Add the local autosave notice HTML
+		//add_action( 'admin_footer', '_local_storage_notice' );
 
 		WPCACore::enqueue_scripts_styles('');
 
