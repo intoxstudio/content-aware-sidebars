@@ -20,23 +20,46 @@ class CAS_Post_Type_Sidebar {
 	public function __construct(){
 		add_action('admin_init',
 			array(__CLASS__,'initiate'));
-		add_action('widgets_init',
-			array(__CLASS__,'get_theme_sidebars'),98);
 	}
 
+	/**
+	 * Backwards compat for users disabling quick select
+	 * with remove_action('admin_init',...)
+	 *
+	 * @since  3.7
+	 * @return void
+	 */
 	public static function initiate() {
-		$module = WPCACore::modules()->get(self::MODULE_NAME);
-		if(self::$_theme_sidebars && $module) {
-			foreach ($module->_post_types()->get_all() as $post_type) {
-				add_action('add_meta_boxes_'.$post_type->name,
-					array(__CLASS__,'create_meta_boxes'));
-				add_action('save_post_'.$post_type->name,
-					array(__CLASS__,'save_post_sidebars'),10,2);
+		add_action('current_screen',
+			array(__CLASS__,'load_screen'));
+	}
+
+	/**
+	 * Load Quick Select on post screen
+	 *
+	 * @since  3.7
+	 * @param  WP_Screen  $screen
+	 * @return void
+	 */
+	public static function load_screen($screen) {
+
+		//We are on the post edit screen
+		if($screen->base == 'post' && $screen->post_type) {
+			$module = WPCACore::types()->get(CAS_App::TYPE_SIDEBAR)->get(self::MODULE_NAME);
+			if($module) {
+				$post_types = $module->post_types();
+				self::get_theme_sidebars();
+				if(isset($post_types[$screen->post_type]) && self::$_theme_sidebars) {
+					add_action('add_meta_boxes_'.$screen->post_type,
+						array(__CLASS__,'create_meta_boxes'));
+					add_action('save_post_'.$screen->post_type,
+						array(__CLASS__,'save_post_sidebars'),10,2);
+					add_action('admin_enqueue_scripts',
+						array(__CLASS__,'register_scripts'),8);
+					add_action('admin_enqueue_scripts',
+						array(__CLASS__,'enqueue_scripts'),11);
+				}
 			}
-			add_action('admin_enqueue_scripts',
-				array(__CLASS__,'register_scripts'),8);
-			add_action('admin_enqueue_scripts',
-				array(__CLASS__,'enqueue_scripts'),11);
 		}
 	}
 
@@ -47,10 +70,12 @@ class CAS_Post_Type_Sidebar {
 	 * @return void
 	 */
 	public static function get_theme_sidebars() {
-		if(is_admin()) {
-			global $wp_registered_sidebars;
-			foreach($wp_registered_sidebars as $sidebar) {
-				//todo: check for cas id, issue after switching themes
+		global $wp_registered_sidebars;
+
+		$cas_sidebars = CAS_App::instance()->manager()->sidebars;
+
+		foreach($wp_registered_sidebars as $sidebar) {
+			if(!isset($cas_sidebars[$sidebar['id']])) {
 				self::$_theme_sidebars[$sidebar['id']] = array(
 					'label' => $sidebar['name'],
 					'options' => array()
@@ -153,7 +178,7 @@ class CAS_Post_Type_Sidebar {
 		$sidebars = CAS_App::instance()->manager()->sidebars;
 		$host_meta = CAS_App::instance()->manager()->metadata()->get('host');
 		foreach ($relations as $sidebar_id => $group_id) {
-			if(isset($sidebars['ca-sidebar-'.$sidebar_id])) {
+			if(isset($sidebars[CAS_App::SIDEBAR_PREFIX.$sidebar_id])) {
 				$host_id = $host_meta->get_data($sidebar_id);
 				if(!isset(self::$_theme_sidebars[$host_id])) {
 					continue;
@@ -186,7 +211,6 @@ class CAS_Post_Type_Sidebar {
 		}
 
 		$manager = CAS_App::instance()->manager();
-
 		$host_meta = $manager->metadata()->get('host');
 		foreach ($manager->sidebars as $sidebar) {
 			$host_id = $host_meta->get_data($sidebar->ID);
@@ -270,19 +294,15 @@ class CAS_Post_Type_Sidebar {
 	 * @return void
 	 */
 	public static function register_scripts($hook) {
-		$screen = get_current_screen();
-		$module = WPCACore::modules()->get(self::MODULE_NAME);
 
-		if($screen->base == 'post' && $module->_post_types()->has($screen->post_type)) {
-			wp_register_script(
-				'select2',
-				plugins_url('../lib/wp-content-aware-engine/assets/js/select2.min.js', __FILE__),
-				array('jquery'),
-				'4.0.3',
-				false
-			);
-			wp_register_script('cas/sidebars/suggest', plugins_url('/js/suggest-sidebars.min.js', dirname(__FILE__)), array('select2'), CAS_App::PLUGIN_VERSION, true);
-		}
+		wp_register_script(
+			'select2',
+			plugins_url('../lib/wp-content-aware-engine/assets/js/select2.min.js', __FILE__),
+			array('jquery'),
+			'4.0.3',
+			false
+		);
+		wp_register_script('cas/sidebars/suggest', plugins_url('/js/suggest-sidebars.min.js', dirname(__FILE__)), array('select2'), CAS_App::PLUGIN_VERSION, true);
 	}
 
 	/**
@@ -294,24 +314,19 @@ class CAS_Post_Type_Sidebar {
 	 * @return void
 	 */
 	public static function enqueue_scripts($hook) {
-		$screen = get_current_screen();
-		$module = WPCACore::modules()->get(self::MODULE_NAME);
+		wp_enqueue_style(CAS_App::META_PREFIX.'condition-groups');
+		wp_enqueue_script('cas/sidebars/suggest');
 
-		if($screen->base == 'post' && $module->_post_types()->has($screen->post_type)) {
-			wp_enqueue_style(CAS_App::META_PREFIX.'condition-groups');
-			wp_enqueue_script('cas/sidebars/suggest');
-
-			$labels = array(
-				'createNew' => __('Create New','content-aware-sidebars'),
-				'labelNew'  => __('New','content-aware-sidebars')
-			);
-			if(current_user_can(CAS_App::CAPABILITY)) {
-				$labels['notFound'] = __('Type to Add New Sidebar','content-aware-sidebars');
-			} else {
-				$labels['notFound'] = __('No sidebars found','content-aware-sidebars');
-			}
-			wp_localize_script('cas/sidebars/suggest', 'CAS', $labels);
+		$labels = array(
+			'createNew' => __('Create New','content-aware-sidebars'),
+			'labelNew'  => __('New','content-aware-sidebars')
+		);
+		if(current_user_can(CAS_App::CAPABILITY)) {
+			$labels['notFound'] = __('Type to Add New Sidebar','content-aware-sidebars');
+		} else {
+			$labels['notFound'] = __('No sidebars found','content-aware-sidebars');
 		}
+		wp_localize_script('cas/sidebars/suggest', 'CAS', $labels);
 	}
 
 	/**

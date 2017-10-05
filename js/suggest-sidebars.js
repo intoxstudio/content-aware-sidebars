@@ -64,7 +64,7 @@
 							return null;
 						}
 						return {
-							id: '_'+term.replace(",","__"),
+							id: '_'+term.replace(/,/g,"__"),
 							text: term,
 							new:true
 						}
