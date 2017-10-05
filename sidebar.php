@@ -73,7 +73,7 @@ final class CAS_Sidebar_Manager {
 			add_filter('sidebars_widgets',
 				array($this,'replace_sidebar'));
 			add_filter('wpca/posts/sidebar',
-				array($this,'filter_password_protection'));
+				array(__CLASS__,'filter_password_protection'));
 			add_filter('wpca/posts/sidebar',
 				array($this,'filter_visibility'));
 			add_action( 'dynamic_sidebar_before',
@@ -288,8 +288,7 @@ final class CAS_Sidebar_Manager {
 		$has_host = array(0=>1,1=>1,3=>1);
 		$metadata = $this->metadata();
 
-		foreach($this->sidebars as $post) {
-			$id = CAS_App::SIDEBAR_PREFIX.$post->ID;
+		foreach($this->sidebars as $id => $post) {
 
 			$args = $default_styles;
 
@@ -550,7 +549,7 @@ final class CAS_Sidebar_Manager {
 	 * @param  array  $sidebars
 	 * @return array
 	 */
-	public function filter_password_protection($sidebars) {
+	public static function filter_password_protection($sidebars) {
 		if(is_singular() && post_password_required()) {
 			return array();
 		}

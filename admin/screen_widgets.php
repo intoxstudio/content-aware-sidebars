@@ -51,8 +51,7 @@ class CAS_Admin_Screen_Widgets extends CAS_Admin {
 
 		$has_host = array(0=>1,1=>1,3=>1);
 
-		foreach($manager->sidebars as $post) {
-			$id = CAS_App::SIDEBAR_PREFIX.$post->ID;
+		foreach($manager->sidebars as $id => $post) {
 			$handle_meta = $manager->metadata()->get('handle');
 
 			$args = array();
