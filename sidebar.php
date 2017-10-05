@@ -237,7 +237,7 @@ final class CAS_Sidebar_Manager {
 			'delete_with_user'    => false
 		));
 
-		WPCACore::post_types()->add(CAS_App::TYPE_SIDEBAR);
+		WPCACore::types()->add(CAS_App::TYPE_SIDEBAR);
 	}
 
 	/**

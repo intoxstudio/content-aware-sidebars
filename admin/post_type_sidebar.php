@@ -10,7 +10,7 @@ if (!defined('ABSPATH')) {
 	exit;
 }
 
-class CAS_Post_Type_Sidebar {
+class CAS_Quick_Select {
 
 	const MODULE_NAME = 'post_type';
 	const NONCE       = '_cas_nonce';
@@ -18,20 +18,7 @@ class CAS_Post_Type_Sidebar {
 	protected static $_theme_sidebars = array();
 
 	public function __construct(){
-		add_action('admin_init',
-			array(__CLASS__,'initiate'));
-	}
-
-	/**
-	 * Backwards compat for users disabling quick select
-	 * with remove_action('admin_init',...)
-	 *
-	 * @since  3.7
-	 * @return void
-	 */
-	public static function initiate() {
-		add_action('current_screen',
-			array(__CLASS__,'load_screen'));
+		new CAS_Post_Type_Sidebar();
 	}
 
 	/**
@@ -114,11 +101,7 @@ class CAS_Post_Type_Sidebar {
 		$meta_key = WPCACore::PREFIX . self::MODULE_NAME;
 		$new = isset($_POST['cas_sidebars']) ? $_POST['cas_sidebars'] : array();
 
-		$relations = array();
-		foreach(self::_get_content_sidebars(array($post_id)) as $relation) {
-			$relations[$relation->ID] = $relation->group_id;
-		}
-
+		$relations = self::_get_content_sidebars($post);
 		$user_can_create_sidebar = current_user_can(CAS_App::CAPABILITY);
 
 		foreach ($new as $host => $sidebar_ids) {
@@ -205,10 +188,7 @@ class CAS_Post_Type_Sidebar {
 	 */
 	public static function create_meta_boxes($post) {
 
-		$post_sidebars = array();
-		foreach(self::_get_content_sidebars(array($post->ID)) as $sidebar) {
-			$post_sidebars[$sidebar->ID] = $sidebar->ID;
-		}
+		$post_sidebars = self::_get_content_sidebars($post);
 
 		$manager = CAS_App::instance()->manager();
 		$host_meta = $manager->metadata()->get('host');
@@ -333,28 +313,57 @@ class CAS_Post_Type_Sidebar {
 	 * Get sidebars for select post types
 	 *
 	 * @since  3.3
-	 * @param  array  $posts
+	 * @param  WP_Post  $post
 	 * @return array
 	 */
-	protected static function _get_content_sidebars($posts = null) {
-		if(is_array($posts) && $posts) {
+	protected static function _get_content_sidebars($post) {
+		$sidebars = array();
+		if($post) {
 			global $wpdb;
-			return $wpdb->get_results(
-				"SELECT meta.meta_value, sidebars.ID, sidebars.post_title, groups.ID as group_id
-				FROM $wpdb->posts sidebars
-				INNER JOIN $wpdb->posts groups ON groups.post_parent = sidebars.ID
-				INNER JOIN $wpdb->postmeta meta ON meta.post_id = groups.ID
-				WHERE sidebars.post_status <> 'trash'
-				AND sidebars.post_type = '".CAS_App::TYPE_SIDEBAR."'
-				AND groups.post_status = '".WPCACore::STATUS_PUBLISHED."'
-				AND meta.meta_key = '".WPCACore::PREFIX.self::MODULE_NAME."'
-				AND meta.meta_value IN (".implode(",", $posts).")
-				ORDER BY sidebars.post_title ASC"
-			);
+			$query = $wpdb->get_results($wpdb->prepare( 
+				"SELECT s.ID, g.ID as group_id
+				FROM $wpdb->posts s
+				INNER JOIN $wpdb->posts g ON g.post_parent = s.ID
+				INNER JOIN $wpdb->postmeta gm ON gm.post_id = g.ID AND gm.meta_key = '".WPCACore::PREFIX.self::MODULE_NAME."'
+				WHERE s.post_status <> 'trash'
+				AND s.post_type = '".CAS_App::TYPE_SIDEBAR."'
+				AND g.post_status = '".WPCACore::STATUS_PUBLISHED."'
+				AND gm.meta_value = %d
+				ORDER BY s.post_title ASC", 
+				$post->ID
+			));
+			if($query) {
+				foreach ($query as $sidebar) {
+					$sidebars[$sidebar->ID] = $sidebar->group_id;
+				}
+			}
 		}
-		return false;
+		return $sidebars;
 	}
 
+}
+
+/**
+ * @deprecated 3.7
+ */
+class CAS_Post_Type_Sidebar {
+
+	public function __construct() {
+		add_action('admin_init',
+			array(__CLASS__,'initiate'));
+	}
+
+	/**
+	 * Backwards compat for users disabling quick select
+	 * with remove_action('admin_init',...)
+	 *
+	 * @since  3.7
+	 * @return void
+	 */
+	public static function initiate() {
+		add_action('current_screen',
+			array('CAS_Quick_Select','load_screen'));
+	}
 }
 
 //eol
