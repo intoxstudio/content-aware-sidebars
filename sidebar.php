@@ -58,7 +58,6 @@ final class CAS_Sidebar_Manager {
 		add_shortcode( 'ca-sidebar',
 			array($this,'sidebar_shortcode'));
 
-
 	}
 
 	/**
@@ -73,6 +72,8 @@ final class CAS_Sidebar_Manager {
 		if(!is_admin()) {
 			add_filter('sidebars_widgets',
 				array($this,'replace_sidebar'));
+			add_filter('wpca/posts/sidebar',
+				array($this,'filter_password_protection'));
 			add_filter('wpca/posts/sidebar',
 				array($this,'filter_visibility'));
 			add_action( 'dynamic_sidebar_before',
@@ -329,10 +330,6 @@ final class CAS_Sidebar_Manager {
 			return $this->replaced_sidebars;
 		}
 
-		if(is_singular() && post_password_required()) {
-			return $sidebars_widgets;
-		}
-
 		$posts = WPCACore::get_posts(CAS_App::TYPE_SIDEBAR);
 
 		if ($posts) {
@@ -467,7 +464,7 @@ final class CAS_Sidebar_Manager {
 	/**
 	 * Get styles from nested sidebars
 	 *
-	 * @since  3.6
+	 * @since  3.7
 	 * @param  string  $i
 	 * @param  array   $styles
 	 * @return array
@@ -482,7 +479,7 @@ final class CAS_Sidebar_Manager {
 				if($style) {
 					$styles = array_merge($styles,$style);
 					$styles['widget_id'] = '%1$s';
-					$styles['sidebar_id'] = 'cas-sidebar-'.$this->sidebars[$i]->ID;
+					$styles['sidebar_id'] = CAS_App::SIDEBAR_PREFIX.$this->sidebars[$i]->ID;
 				}
 			}
 			$i = isset($this->replace_map[$i]) ? $this->replace_map[$i] : false;
@@ -544,6 +541,20 @@ final class CAS_Sidebar_Manager {
 		if($has_widgets && isset($wp_registered_sidebars[$i]['after_sidebar'])) {
 			echo $wp_registered_sidebars[$i]['after_sidebar'];
 		}
+	}
+
+	/**
+	 * Filter out all sidebars if post is password protected
+	 *
+	 * @since  3.7
+	 * @param  array  $sidebars
+	 * @return array
+	 */
+	public function filter_password_protection($sidebars) {
+		if(is_singular() && post_password_required()) {
+			return array();
+		}
+		return $sidebars;
 	}
 
 	/**
