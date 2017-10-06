@@ -453,9 +453,11 @@ final class CAS_Sidebar_Manager {
 		//if sidebar is in replacement map, shortcode is called wrongly
 		//todo: check for handle instead?
 		if(!isset($this->replace_map[$id])) {
-			ob_start();
-			dynamic_sidebar($id);
-			$content = ob_get_clean();
+			if(is_active_sidebar($id)) {
+				ob_start();
+				dynamic_sidebar($id);
+				$content = ob_get_clean();
+			}
 		}
 		return $content;
 	}
