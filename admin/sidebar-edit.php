@@ -394,7 +394,7 @@ final class CAS_Sidebar_Edit extends CAS_Admin {
 				echo ' <a href="' . esc_url( admin_url( 'admin.php?page=wpcas-edit' ) ) . '" class="page-title-action add-new-h2">' . esc_html( $post_type_object->labels->add_new ) . '</a>';
 			}
 			if ( current_user_can( 'edit_theme_options' ) ) {
-				echo ' <a href="' . esc_url( admin_url( 'widgets.php' ) ) . '" class="page-title-action add-new-h2">' . __('Manage Widgets','content-aware-sidebars') . '</a>';
+				echo ' <a href="' . esc_url( admin_url( 'widgets.php#'.CAS_App::SIDEBAR_PREFIX.$post->ID ) ) . '" class="page-title-action add-new-h2">' . __('Manage Widgets','content-aware-sidebars') . '</a>';
 			}
 		}
 		echo '</'.$tag.'>';
@@ -582,7 +582,7 @@ final class CAS_Sidebar_Edit extends CAS_Admin {
 	 * @return array           
 	 */
 	public function sidebar_updated_messages($post) {
-		$manage_widgets = sprintf(' <a href="%1$s">%2$s</a>','widgets.php',__('Manage widgets','content-aware-sidebars'));
+		$manage_widgets = sprintf(' <a href="%1$s">%2$s</a>',esc_url( admin_url( 'widgets.php#'.CAS_App::SIDEBAR_PREFIX.$post->ID ) ),__('Manage widgets','content-aware-sidebars'));
 		$messages = array(
 			1 => __('Sidebar updated.','content-aware-sidebars').$manage_widgets,
 			6 => __('Sidebar activated.','content-aware-sidebars').$manage_widgets,
