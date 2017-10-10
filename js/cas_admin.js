@@ -18,6 +18,8 @@
 			this.suggestVisibility();
 			this.initSidebarActivation();
 
+			$('.js-color-field').wpColorPicker();
+
 			$('.js-cas-html').on('change',function(e) {
 				var $this = $(this);
 				$($this.data('target')).attr('disabled',!$this.is(':checked'));

@@ -708,7 +708,7 @@ final class CAS_Sidebar_Edit extends CAS_Admin {
 		);
 		$boxes[] = array(
 			'id'       => 'cas-widget-html',
-			'title'    => __('Layout', 'content-aware-sidebars'),
+			'title'    => __('Styles', 'content-aware-sidebars'),
 			'view'     => 'html',
 			'context'  => 'section-design',
 			'priority' => 'default'
@@ -735,9 +735,16 @@ final class CAS_Sidebar_Edit extends CAS_Admin {
 			);
 			$boxes[] = array(
 				'id'       => 'cas-schedule',
-				'title'    => __('Time Schedule', 'content-aware-sidebars'),
+				'title'    => __('Time Schedule', 'content-aware-sidebars').' <span class="cas-pro-label">'.__('Pro','content-aware-sidebars').'</span>',
 				'view'     => 'schedule',
 				'context'  => 'section-schedule',
+				'priority' => 'default'
+			);
+			$boxes[] = array(
+				'id'       => 'cas-design',
+				'title'    => __('Design', 'content-aware-sidebars').' <span class="cas-pro-label">'.__('Pro','content-aware-sidebars').'</span>',
+				'view'     => 'design',
+				'context'  => 'section-design',
 				'priority' => 'default'
 			);
 		}
@@ -1056,7 +1063,7 @@ final class CAS_Sidebar_Edit extends CAS_Admin {
 
 		wp_register_script('flatpickr', plugins_url('../js/flatpickr.min.js', __FILE__), array(), '3.0.6', false);
 
-		wp_register_script('cas/admin/edit', plugins_url('../js/cas_admin.min.js', __FILE__), array('jquery','flatpickr'), CAS_App::PLUGIN_VERSION, false);
+		wp_register_script('cas/admin/edit', plugins_url('../js/cas_admin.min.js', __FILE__), array('jquery','flatpickr','wp-color-picker'), CAS_App::PLUGIN_VERSION, false);
 		
 		wp_register_style('flatpickr', plugins_url('../css/flatpickr.dark.min.css', __FILE__), array(), '2.3.4');
 		wp_register_style('cas/admin/style', plugins_url('../css/style.css', __FILE__), array('flatpickr'), CAS_App::PLUGIN_VERSION);

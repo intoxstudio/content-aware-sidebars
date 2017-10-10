@@ -35,7 +35,6 @@ $widget_title_opts = array(
 
 ?>
 
-<p><?php _e('By default styling will be inherited from the Target Sidebar.','content-aware-sidebars'); ?></p>
 <table class="form-table cas-form-table" width="100%"><tbody>
 	<tr>
 		<td scope="row"><?php _e('Sidebar'); ?></td>
@@ -92,3 +91,4 @@ $widget_title_opts = array(
 		</td>
 	</tr>
 </tbody></table>
+<p><?php _e('By default styling will be inherited from the Target Sidebar.','content-aware-sidebars'); ?></p>

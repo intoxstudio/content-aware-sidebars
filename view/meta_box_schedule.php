@@ -13,7 +13,7 @@ $days = array_values($wp_locale->weekday);
 
 ?>
 
-<p><?php _e('Display sidebar only in given time ranges on select days.','content-aware-sidebars'); ?> <span class="cas-pro-label"><?php _e('Pro','content-aware-sidebars'); ?></span></p>
+<p><?php _e('Display sidebar only in given time ranges on select days.','content-aware-sidebars'); ?></p>
 <div>
 <?php do { ?>
 	<div>
