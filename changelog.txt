@@ -1,3 +1,59 @@
+= 3.2.4 =
+
+* Added: infinite scroll for content in sidebar editor
+* Added: guard when activating both free and pro version, uninstall cleanup not run if one is active
+* Added: support for buddypress 2.6 members
+* Added: wordpress 4.6 support
+* Fixed: option to select all authors and bbpress profiles
+* Fixed: simplified introduction tour
+* Fixed: uninstall cleanup for users not on freemius
+
+**Pro Plan:**
+
+* Fixed: load buddypress group module correctly
+* Fixed: search for buddypress groups
+
+= 3.2.3 =
+
+* Fixed: wp function is_user_logged_in would in some cases not be defined in time
+
+= 3.2.2 =
+
+* Fixed: pages with no custom sidebars could cause malformed sql query
+
+= 3.2.1 =
+
+* Fixed: quick edit link removed from other post types
+
+= 3.2 =
+
+* Added: performance improvements
+* Added: drastically reduced database queries when checking taxonomies
+* Added: visibility option for all and logged-in users
+* Added: visibility column in sidebar overview
+* Added: combined handle and merge position columns
+* Added: freemius integration
+* Added: wp filters to add and populate metadata
+* Added: minimum requirement wp3.9
+* Fixed: improved sidebar editor ux
+* Fixed: display correct template tag for manual handled sidebars in editor
+* Fixed: wpml config
+* Removed: sidebar quick edit
+* Removed: ability to set private post status (in favor of visibility option)
+* Removed: donation link from readme
+
+**Pro Plan:**
+
+* Added: sidebar and widget revisions
+* Added: extended visibility for roles and guests
+* Added: condition for URLs + wildcards
+* Added: condition for content from any day, month, year
+* Added: condition for buddypress groups
+* Added: sidebar meta box for post types
+* Added: sidebar column for post type overviews
+* Added: widget synchronization across themes
+* Added: white label admin screens
+
 = 3.1.2 =
 
 * Added: wordpress 4.5 support
