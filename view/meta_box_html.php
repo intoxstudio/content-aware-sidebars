@@ -18,8 +18,8 @@ $data_default = array_merge(array(
 ),$data);
 
 $sidebar_opts = array(
-	'aside' => 'aside',
 	'div'   => 'div',
+	'aside' => 'aside',
 	'ul'    => 'ul'
 );
 $widget_opts = array(

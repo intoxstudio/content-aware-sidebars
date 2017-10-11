@@ -476,7 +476,7 @@ final class CAS_Sidebar_Manager {
 		$metadata = $this->metadata()->get('html');
 		while($i) {
 			if(isset($this->sidebars[$i])) {
-				$style = $metadata->get_data($this->sidebars[$i]->ID);
+				$style = apply_filters('cas/sidebar/html',$metadata->get_data($this->sidebars[$i]->ID),$this->sidebars[$i]->ID);
 				if($style) {
 					$styles = array_merge($styles,$style);
 					$styles['widget_id'] = '%1$s';
