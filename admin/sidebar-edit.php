@@ -579,7 +579,7 @@ final class CAS_Sidebar_Edit extends CAS_Admin {
 	 * Create update messages
 	 * 
 	 * @param  array  $messages 
-	 * @return array           
+	 * @return array
 	 */
 	public function sidebar_updated_messages($post) {
 		$manage_widgets = sprintf(' <a href="%1$s">%2$s</a>',esc_url( admin_url( 'widgets.php#'.CAS_App::SIDEBAR_PREFIX.$post->ID ) ),__('Manage widgets','content-aware-sidebars'));
@@ -817,7 +817,9 @@ final class CAS_Sidebar_Edit extends CAS_Admin {
 
 		do_action('cas/sidebar/options',$post);
 
-		$this->_form_field('merge_pos');
+		$this->_form_field('merge_pos',
+			'js-cas-action js-cas-action-0 js-cas-action-1'
+		);
 		$this->_form_field('visibility');
 	}
 
@@ -990,7 +992,7 @@ final class CAS_Sidebar_Edit extends CAS_Admin {
 			$link = admin_url('admin.php?page=wpcas-edit'.$sep.'sidebar_id='.$post_id);
 
 			//load page in all languages for wpml
-			if(defined('ICL_SITEPRESS_VERSION')) {
+			if(defined('ICL_SITEPRESS_VERSION') || defined('POLYLANG_VERSION')) {
 				$link .= $sep.'lang=all';
 			}
 		}
@@ -1045,9 +1047,9 @@ final class CAS_Sidebar_Edit extends CAS_Admin {
 			add_action( 'admin_footer', '_admin_notice_post_locked' );
 		} else {
 			$check_users = get_users( array( 'fields' => 'ID', 'number' => 2 ) );
-			if ( count( $check_users ) > 1 )
+			if ( count( $check_users ) > 1 ) {
 				add_action( 'admin_footer', '_admin_notice_post_locked' );
-			unset( $check_users );
+			}
 		}
 
 		wp_enqueue_script('post');
@@ -1065,7 +1067,7 @@ final class CAS_Sidebar_Edit extends CAS_Admin {
 
 		wp_register_script('cas/admin/edit', plugins_url('../js/cas_admin.min.js', __FILE__), array('jquery','flatpickr','wp-color-picker'), CAS_App::PLUGIN_VERSION, false);
 		
-		wp_register_style('flatpickr', plugins_url('../css/flatpickr.dark.min.css', __FILE__), array(), '2.3.4');
+		wp_register_style('flatpickr', plugins_url('../css/flatpickr.dark.min.css', __FILE__), array(), '3.0.6');
 		wp_register_style('cas/admin/style', plugins_url('../css/style.css', __FILE__), array('flatpickr'), CAS_App::PLUGIN_VERSION);
 
 		$visibility = array();
