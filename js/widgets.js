@@ -40,7 +40,8 @@
 					$openSidebar = $sidebars.has(window.location.hash);
 
 				if($openSidebar.length) {
-					$openSidebar.add($sidebars.first()).find('.handlediv').trigger('click');
+					//.sidebar-name-arrow is used in older wp versions
+					$openSidebar.add($sidebars.first()).find('.handlediv,.sidebar-name-arrow').trigger('click');
 				}
 			}
 		},
