@@ -74,7 +74,7 @@ Content Aware Sidebars automatically supports Custom Post Types and Taxonomies c
 ####Highlighted Premium Features
 
 * **Sidebar Designer:** Add widget columns and edit colors, backgrounds, paddings, etc.
-* **Infuse Sidebars:** Intelligently insert widget areas anywhere in any theme without coding
+* **Insert Sidebars:** Intelligently insert widget areas in theme hooks without coding
 * **Automatic Widgets Backup:** Easily restore any changed or deleted widgets
 * **Sidebar Visibility:** Extended visibility for User Roles and Guests
 * **Time Schedule**: Display widget areas only in select time ranges on given days
@@ -180,7 +180,7 @@ Of course! Check out the links below:
 
 **Pro Plan:**
 
-* Added: infuse sidebars in theme locations and wp action hooks
+* Added: insert sidebars in theme locations and wp action hooks
 * Added: design and add columns to sidebars and widgets
 * Fixed: improve sidebar revisioning and compatibility with older wordpress versions
 * Fixed: allow saving and restoring empty sidebar revisions

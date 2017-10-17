@@ -123,7 +123,7 @@ abstract class CAS_Admin {
 		__('Sync widgets across themes','content-aware-sidebars');
 		$features = array(
 			__('Extra Display Conditions','content-aware-sidebars'),
-			__('Infuse Sidebars','content-aware-sidebars'),
+			__('Insert Sidebars in Theme Hooks','content-aware-sidebars'),
 			__('Design Sidebars','content-aware-sidebars'),
 			__('Widget Revisions','content-aware-sidebars'),
 			__('Visibility for roles','content-aware-sidebars'),

@@ -478,7 +478,7 @@ class CAS_Sidebar_List_Table extends WP_List_Table {
 	public function column_widgets($post) {
 		$sidebars_widgets = wp_get_sidebars_widgets();
 		$count =  isset($sidebars_widgets[CAS_App::SIDEBAR_PREFIX . $post->ID]) ? count($sidebars_widgets[CAS_App::SIDEBAR_PREFIX . $post->ID]) : 0;
-		echo '<a href="'.admin_url('widgets.php').'" title="' . esc_attr__('Manage Widgets', 'content-aware-sidebars') . '">' .$count . '</a>';
+		echo '<a href="'.admin_url('widgets.php#'.CAS_App::SIDEBAR_PREFIX.$post->ID).'" title="' . esc_attr__('Manage Widgets', 'content-aware-sidebars') . '">' .$count . '</a>';
 	}
 
 	/**
