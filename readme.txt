@@ -2,10 +2,10 @@
 Contributors: intoxstudio, devinstitute, freemius
 Donate link: #
 Tags: custom sidebars, page sidebar, hide sidebar, display widgets, widget area, bbpress, buddypress, polylang, pods, sidebar manager, sidebar
-Requires at least: 4.0
+Requires at least: 4.1
 Requires PHP: 5.2.4
 Tested up to: 4.8
-Stable tag: 3.6.2
+Stable tag: 3.7
 License: GPLv3
 
 Display widget areas and custom sidebars on any post, page, category etc. Supports bbPress, BuddyPress, WooCommerce, WPML, and more.
@@ -14,13 +14,13 @@ Display widget areas and custom sidebars on any post, page, category etc. Suppor
 
 **The Fastest and Most Powerful WordPress Sidebar Plugin yet. Create tailored widget areas for any post, page, or custom post type in seconds. No coding required!**
 
-Content Aware Sidebars is packed with features and used to boost on-site SEO, upsell products, and to optimize conversion rates by displaying different sidebars on different conditions.
+Content Aware Sidebars is packed with features and is being used to boost on-site SEO, upsell products, and to optimize conversion rates by displaying different sidebars on different conditions.
 
 ####Add Unlimited Sidebars and Widget Areas
 
 Replace your theme sidebars on different conditions, or insert sidebars with shortcodes. With the All-in-one Sidebar Manager, you can easily activate and deactivate widget areas, and you can even schedule them for specific times. 
 
-Sidebars - Quick Select&copy; lets you add or select widget areas instantly when editing a post or page.
+Sidebars - Quick Select&copy; lets you add or select widget areas directly when editing a post or page.
 
 ####Customize Your Widget Areas Your Way
 
@@ -30,13 +30,13 @@ Sidebar Visibility lets you elegantly hide any widget area for logged-out users.
 
 ####The Most User-friendly Widget Manager
 
-If you have more than just a few widgets and widget areas, you will love the enhanced widget manager. When adding new widgets to sidebars, Live Search will find widgets in seconds, and the smart split-screen gives you a much better overview.
+If you have more than just a few widgets and widget areas, you will love the Enhanced Widget Manager. When adding new widgets to sidebars, Live Search will find widgets in seconds, and the smart split-screen gives you a much better overview.
 
-1-Click Sidebar Activation&copy; lets you activate or deactivate a widget area directly from the Widgets admin panel.
+1-Click Sidebar Activation&copy; lets you activate or deactivate a widget areas instantly.
 
 ####Show or Hide Sidebars on Any Page (Yes, any)
 
-Create a post sidebar, a page sidebar, a category sidebar, or any custom sidebar you need. You can even combine conditions in any way you like, so you can display widgets and custom sidebars on all posts in a select category and written by a specific author.
+Create a post sidebar, a page sidebar, a category sidebar, or any custom sidebar you need, without confusing widget logic code. You can even combine conditions in any way you like, so you can display widgets and custom sidebars on all posts in a select category and written by a specific author.
 
 Display your widget areas on any of these conditions:
 
@@ -132,7 +132,7 @@ Many users already mix Content Aware Sidebars with popular page builder plugins 
 
 Yep.
 
-In the Sidebar Editor, you can select where, when and to whom your sidebar should be displayed. Create a sidebar for each page, a sidebar for posts in a category, or any sidebar you need.
+In the Sidebar Editor, you can select where, when and to whom your sidebar should be displayed. Create a sidebar for each page, a sidebar for posts in a category, or any sidebar you need, without confusing widget logic code.
 
 You can also select sidebars directly when you're editing a post or page.
 
@@ -163,14 +163,14 @@ Of course! Check out the links below:
 
 = 3.7 =
 
-[View Release Notes](https://dev.institute/style-widget-areas-content-aware-sidebars-3-6/?utm_source=readme&utm_medium=referral&utm_content=changelog&utm_campaign=cas)
+[View Release Notes](https://dev.institute/blog/design-insert-widget-areas-content-aware-sidebars-3-7/?utm_source=readme&utm_medium=referral&utm_content=changelog&utm_campaign=cas)
 
 * Added: visibility for sidebars inserted with shortcodes
 * Added: icon navigation to custom sidebars on widgets screen
 * Added: quick select uses less memory and has better theme sidebar recognition
 * Added: sidebars can be displayed on password protected content with removal of filter
 * Added: manage widgets links will now open specific sidebar by default
-* Added: better wpml compatibility when editing sidebars
+* Added: better wpml and polylang compatibility when editing sidebars
 * Added: performance and memory improvements
 * Added: UI improvements
 * Added: minimum requirement wordpress 4.1
@@ -182,6 +182,7 @@ Of course! Check out the links below:
 
 * Added: insert sidebars in theme locations and wp action hooks
 * Added: design and add columns to sidebars and widgets
+* Added: url condition automatically trims domain name
 * Fixed: improve sidebar revisioning and compatibility with older wordpress versions
 * Fixed: allow saving and restoring empty sidebar revisions
 * Fixed: show message for successful revision restore
