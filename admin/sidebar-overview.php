@@ -169,6 +169,8 @@ final class CAS_Sidebar_Overview extends CAS_Admin {
 
 			check_admin_referer('bulk-sidebars');
 
+			$pagenum = $this->table->get_pagenum();
+
 			$sendback = remove_query_arg( array('trashed', 'untrashed', 'deleted', 'locked', 'ids'), wp_get_referer() );
 
 			$sendback = add_query_arg( 'paged', $pagenum, $sendback );
