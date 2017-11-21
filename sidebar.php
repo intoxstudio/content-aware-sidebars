@@ -76,6 +76,8 @@ final class CAS_Sidebar_Manager {
 				array(__CLASS__,'filter_password_protection'));
 			add_filter('wpca/posts/sidebar',
 				array($this,'filter_visibility'));
+			add_filter('cas/shortcode/display',
+				array($this,'filter_shortcode_visibility'),10,2);
 			add_action( 'dynamic_sidebar_before',
 				array($this,'render_sidebar_before'),9,2);
 			add_action( 'dynamic_sidebar_after',
@@ -452,8 +454,9 @@ final class CAS_Sidebar_Manager {
 
 		//if sidebar is in replacement map, shortcode is called wrongly
 		//todo: check for handle instead?
-		if(isset($this->sidebars[$id]) && $this->sidebars[$id]->post_status == CAS_App::STATUS_ACTIVE && !isset($this->replace_map[$id]) && is_active_sidebar($id)) {
+		if(isset($this->sidebars[$id]) && $this->sidebars[$id]->post_status == CAS_App::STATUS_ACTIVE && !isset($this->replace_map[$id]) && is_active_sidebar($id) && apply_filters('cas/shortcode/display',true,$a['id'])) {
 			ob_start();
+			do_action('cas/shortcode/before',$a['id']);
 			dynamic_sidebar($id);
 			$content = ob_get_clean();
 		}
@@ -581,6 +584,32 @@ final class CAS_Sidebar_Manager {
 			}
 		}
 		return $sidebars;
+	}
+
+	/**
+	 * Filter shortcode sidebar based on current user
+	 *
+	 * @since  3.7.1
+	 * @param  boolean  $retval
+	 * @param  int  $id
+	 * @return boolean
+	 */
+	public function filter_shortcode_visibility($retval,$id) {
+		if($retval) {
+			$metadata = $this->metadata()->get('visibility');
+
+			//temporary filter until WPCACore allows filtering
+			$user_visibility = is_user_logged_in() ? array(-1) : array();
+			$user_visibility = apply_filters('cas/user_visibility',$user_visibility);
+
+			$visibility = $metadata->get_data($id,true,false);
+
+			// Check visibility
+			if($visibility && !array_intersect($visibility,$user_visibility)) {
+				$retval = false;
+			}
+		}
+		return $retval;
 	}
 
 	/**
