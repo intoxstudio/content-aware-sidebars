@@ -1,11 +1,11 @@
 === Content Aware Sidebars - Unlimited Widget Areas ===
 Contributors: intoxstudio, devinstitute, freemius
 Donate link: #
-Tags: custom sidebars, page sidebar, hide sidebar, display widgets, widget area, bbpress, buddypress, polylang, pods, sidebar manager, sidebar
+Tags: custom sidebars, sidebar, hide sidebar, display widgets, widget, bbpress, buddypress, sidebar manager
 Requires at least: 4.1
 Requires PHP: 5.2.4
-Tested up to: 4.8
-Stable tag: 3.7
+Tested up to: 4.9
+Stable tag: 3.7.1
 License: GPLv3
 
 Display widget areas and custom sidebars on any post, page, category etc. Supports bbPress, BuddyPress, WooCommerce, WPML, and more.
@@ -161,9 +161,20 @@ Of course! Check out the links below:
 
 == Changelog ==
 
-= 3.7 =
+= 3.7.1 = 
 
 [View Release Notes](https://dev.institute/blog/design-insert-widget-areas-content-aware-sidebars-3-7/?utm_source=readme&utm_medium=referral&utm_content=changelog&utm_campaign=cas)
+
+* Added: display only active shortcode sidebars
+* Added: UI improvements
+* Added: wordpress 4.9 support
+* Fixed: visibility for sidebars inserted with shortcodes
+
+**Pro Plan:**
+
+* Added: time schedule for shortcode sidebars 
+
+= 3.7 =
 
 * Added: visibility for sidebars inserted with shortcodes
 * Added: icon navigation to custom sidebars on widgets screen
