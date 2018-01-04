@@ -10,19 +10,6 @@ if (!defined('ABSPATH')) {
 	exit;
 }
 
-//<wp4.5 compatibility
-if(!function_exists('wp_get_raw_referer')) {
-	function wp_get_raw_referer() {
-		if ( ! empty( $_REQUEST['_wp_http_referer'] ) ) {
-			return wp_unslash( $_REQUEST['_wp_http_referer'] );
-		} else if ( ! empty( $_SERVER['HTTP_REFERER'] ) ) {
-			return wp_unslash( $_SERVER['HTTP_REFERER'] );
-		}
-	 
-		return false;
-	}
-}
-
 // Create a helper function for easy SDK access.
 function cas_fs() {
 	global $cas_fs;
@@ -37,12 +24,14 @@ function cas_fs() {
 			'type'                => 'plugin',
 			'public_key'          => 'pk_75513325effa77f024565ef74c9d6',
 			'is_premium'          => true,
-			'has_addons'          => false,
+			'has_addons'          => true,
 			'has_paid_plans'      => true,
+			'has_affiliation'     => 'selected',
 			'menu'                => array(
 				'slug'           => 'wpcas',
 				'support'        => false,
-			)
+				'affiliation'    => false
+			),
 		) );
 	}
 
@@ -65,7 +54,7 @@ function cas_fs_connect_message_update(
 	$freemius_link
 ) {
 	return sprintf(
-		__fs( 'hey-x' ) . '<br>' .
+		__( 'Hey %1$s' ) . ',<br>' .
 		__( 'Please help us improve %2$s by securely sharing some usage data with %5$s. If you skip this, that\'s okay! %2$s will still work just fine.', 'content-aware-sidebars' ),
 		$user_first_name,
 		'<b>' . $plugin_title . '</b>',
@@ -75,8 +64,10 @@ function cas_fs_connect_message_update(
 	);
 }
 
-// $cas_fs->add_filter('connect_message_on_update', 'cas_fs_connect_message_update', 10, 6);
-// $cas_fs->add_filter('connect_message', 'cas_fs_connect_message_update', 10, 6);
+$cas_fs->add_filter('connect_message_on_update', 'cas_fs_connect_message_update', 10, 6);
+$cas_fs->add_filter('connect_message', 'cas_fs_connect_message_update', 10, 6);
+
+$cas_fs->add_filter('show_affiliate_program_notice','__return_false');
 
 function cas_fs_upgrade() {
 	global $cas_fs;
