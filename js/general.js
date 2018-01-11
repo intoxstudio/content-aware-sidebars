@@ -37,7 +37,7 @@
 					url: ajaxurl,
 					data:{
 						'action': 'cas_dismiss_review_notice',
-						'dismiss': $this.attr("href") ? 1 : 0
+						'dismiss': $this.data("cas-rating") ? 1 : 0
 					},
 					dataType: 'JSON',
 					type: 'POST',
