@@ -18,7 +18,7 @@
 			this.suggestVisibility();
 			this.initSidebarActivation();
 
-			$('.js-color-field').wpColorPicker();
+			$('.js-cas-color-field').wpColorPicker();
 
 			$('.js-cas-html').on('change',function(e) {
 				var $this = $(this);

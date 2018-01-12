@@ -43,7 +43,7 @@ $url = 'https://dev.institute/wordpress-sidebars/pricing/?utm_source=plugin&utm_
 	<tr>
 		<td scope="row"><?php _e('Background Color','content-aware-sidebars'); ?></td>
 		<td>
-			<input type="text" class="js-color-field" value="" readonly />
+			<input type="text" class="js-cas-color-field" value="" readonly />
 		</td>
 	</tr>
 	<tr>
@@ -64,7 +64,7 @@ $url = 'https://dev.institute/wordpress-sidebars/pricing/?utm_source=plugin&utm_
 	<tr>
 		<td scope="row"><?php _e('Border Color','content-aware-sidebars'); ?></td>
 		<td>
-			<input type="text" class="js-color-field" value="" readonly />
+			<input type="text" class="js-cas-color-field" value="" readonly />
 		</td>
 	</tr>
 	<tr>
@@ -74,25 +74,25 @@ $url = 'https://dev.institute/wordpress-sidebars/pricing/?utm_source=plugin&utm_
 	<tr>
 		<td scope="row"><?php _e('Text Color','content-aware-sidebars'); ?></td>
 		<td>
-			<input type="text" class="js-color-field" value="" readonly />
+			<input type="text" class="js-cas-color-field" value="" readonly />
 		</td>
 	</tr>
 	<tr>
 		<td scope="row"><?php _e('Title Color','content-aware-sidebars'); ?></td>
 		<td>
-			<input type="text" class="js-color-field" value="" readonly />
+			<input type="text" class="js-cas-color-field" value="" readonly />
 		</td>
 	</tr>
 	<tr>
 		<td scope="row"><?php _e('Link Color','content-aware-sidebars'); ?></td>
 		<td>
-			<input type="text" class="js-color-field" value="" readonly />
+			<input type="text" class="js-cas-color-field" value="" readonly />
 		</td>
 	</tr>
 	<tr>
 		<td scope="row"><?php _e('Link Hover Color','content-aware-sidebars'); ?></td>
 		<td>
-			<input type="text" class="js-color-field" value="" readonly />
+			<input type="text" class="js-cas-color-field" value="" readonly />
 		</td>
 	</tr>
 </tbody></table>
