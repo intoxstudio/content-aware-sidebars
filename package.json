@@ -12,12 +12,9 @@
   },
   "homepage": "https://github.com/intoxstudio/content-aware-sidebars",
   "devDependencies": {
-    "grunt": "^1.0.0",
-    "grunt-contrib-less": "^1.4.1",
-    "grunt-contrib-watch": "^1.0.0",
-    "load-grunt-tasks": "^3.5.2",
-    "grunt-contrib-uglify": "^2.3.0",
-    "grunt-potomo": "^3.5.0",
+    "gulp": "^4.0.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-uglify": "^3.0.0",
     "less-plugin-autoprefix": "^1.5.1",
     "less-plugin-clean-css": "^1.5.1"
   }
