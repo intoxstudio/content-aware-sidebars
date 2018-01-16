@@ -1,5 +1,4 @@
 *.less
-.transifexrc
 .sublime-grunt.cache
 lib/content-aware-premium
 node_modules/
