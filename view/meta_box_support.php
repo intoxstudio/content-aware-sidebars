@@ -16,7 +16,7 @@ $locale = get_locale();
 		<!--<li><a href="<?php echo esc_url(cas_fs()->get_upgrade_url()); ?>"><?php _e('Priority Email Support','content-aware-sidebars'); ?></a></li>-->
 		<li><a href="https://wordpress.org/support/plugin/content-aware-sidebars/" target="_blank"><?php _e('Forum Support','content-aware-sidebars'); ?></a></li>
 <?php if($locale != "en_US") : ?>
-		<li><a href="https://translate.wordpress.org/projects/wp-plugins/content-aware-sidebars" target="_blank"><?php _e('Translate the plugin into your language','content-aware-sidebars'); ?></a></li>
+		<li><a href="https://dev.institute/translate-content-aware-sidebars/" target="_blank"><?php _e('Translate plugin &amp; get Pro version','content-aware-sidebars'); ?></a></li>
 <?php endif; ?>
 	</ul>
 </div>
