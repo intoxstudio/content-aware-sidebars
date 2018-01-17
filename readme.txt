@@ -5,7 +5,7 @@ Tags: custom sidebars, sidebar, hide sidebar, display widgets, widget, bbpress, 
 Requires at least: 4.1
 Requires PHP: 5.2.4
 Tested up to: 4.9
-Stable tag: 3.7.1
+Stable tag: 3.7.2
 License: GPLv3
 
 Display widget areas and custom sidebars on any post, page, category etc. Supports bbPress, BuddyPress, WooCommerce, WPML, and more.
@@ -161,9 +161,23 @@ Of course! Check out the links below:
 
 == Changelog ==
 
-= 3.7.1 = 
+= 3.7.2 =
 
 [View Release Notes](https://dev.institute/blog/design-insert-widget-areas-content-aware-sidebars-3-7/?utm_source=readme&utm_medium=referral&utm_content=changelog&utm_campaign=cas)
+
+* Added: redirect to current tab on sidebar update
+* Added: better display of hierarchical items in conditions
+* Added: UI improvements
+* Added: improved compatibility with other plugins
+* Updated: wp-content-aware-engine
+* Updated: freemius sdk
+
+**Pro Plan:**
+
+Added: list of generatepress hooks to insert widget areas in
+Fixed: url condition could in some cases not be set
+
+= 3.7.1 = 
 
 * Added: display only active shortcode sidebars
 * Added: UI improvements
@@ -245,8 +259,6 @@ Of course! Check out the links below:
 * Fixed: avoid auto-draft sidebar adding extra revision 
 
 = 3.5.2 =
-
-[View Release Notes](https://dev.institute/content-aware-sidebars-version-3-5-released/?utm_source=readme&utm_medium=referral&utm_content=changelog&utm_campaign=cas)
 
 * Added: woocommerce 3.0 compat
 * Added: badgeos compat
