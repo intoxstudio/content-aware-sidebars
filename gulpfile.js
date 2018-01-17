@@ -1,7 +1,9 @@
-var gulp = require('gulp'),
-	less = require('gulp-less'),
-	uglify = require('gulp-uglify'),
-	rename = require("gulp-rename");
+'use strict';
+const gulp = require('gulp');
+const less = require('gulp-less');
+const uglify = require('gulp-uglify');
+const rename = require("gulp-rename");
+const zip = require("gulp-zip");
 
 gulp.task('less', function (done) {
 	return gulp.src('css/style.less')
@@ -14,7 +16,7 @@ gulp.task('less', function (done) {
 		.pipe(gulp.dest('css'));
 });
 
-gulp.task('uglify', function (cb) {
+gulp.task('uglify', function () {
 	return gulp.src(['js/*.js','!js/*.min.js'])
 		.pipe(uglify({
 			compress: {
@@ -32,12 +34,20 @@ gulp.task('uglify', function (cb) {
 		.pipe(gulp.dest('js'));
 });
 
+gulp.task('zip', function() {
+	return gulp.src(['**','!{build{,/**}','!node_modules{,/**}'],{base:'../'})
+		.pipe(zip('content-aware-sidebars.zip'))
+		.pipe(gulp.dest('build'));
+});
+
 gulp.task('watch', function() {
 	gulp.watch('css/style.less', gulp.parallel('less'));
 	gulp.watch(['js/*.js','!js/*.min.js'], gulp.parallel('uglify'));
 });
 
 gulp.task('build', gulp.parallel('less','uglify'));
+
+gulp.task('deploy', gulp.serial('build','zip'));
 
 gulp.task('default', gulp.parallel('build'));
 
