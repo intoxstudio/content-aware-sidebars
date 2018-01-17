@@ -17,23 +17,34 @@ $cas_db_updater->register_version_update('3.0','cas_update_to_30');
 $cas_db_updater->register_version_update('3.1','cas_update_to_31');
 $cas_db_updater->register_version_update('3.4','cas_update_to_34');
 $cas_db_updater->register_version_update('3.5.1','cas_update_to_351');
-$cas_db_updater->register_version_update('3.6','cas_update_to_36');
+$cas_db_updater->register_version_update('3.7.2','cas_update_to_372');
 
 /**
- * Update to version 3.6
- * Remove old review data
+ * Update to version 3.7.2
  *
- * @since  3.6
+ * @since  3.7.2
  * @return boolean
  */
-function cas_update_to_36() {
+function cas_update_to_372() {
 	global $wpdb;
+
+	$time = time();
+
+	$wpdb->query("
+		UPDATE $wpdb->usermeta AS t 
+		INNER JOIN $wpdb->usermeta AS r ON t.user_id = r.user_id 
+		SET t.meta_value = '{$time}' 
+		WHERE t.meta_key = '{$wpdb->prefix}_ca_cas_tour' 
+		AND r.meta_key = '{$wpdb->prefix}_ca_cas_review' 
+		AND r.meta_value != '1' 
+		AND CAST(r.meta_value AS DECIMAL) <= 1491004800
+	");
 
 	$wpdb->query("
 		DELETE FROM $wpdb->usermeta 
-		WHERE meta_key = 'wp__ca_cas_review' 
+		WHERE meta_key = '{$wpdb->prefix}_ca_cas_review' 
 		AND meta_value != '1' 
-		AND CAST(meta_value AS DECIMAL) <= 1467331200
+		AND CAST(meta_value AS DECIMAL) <= 1491004800
 	");
 
 	return true;
