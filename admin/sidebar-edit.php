@@ -1035,7 +1035,7 @@ final class CAS_Sidebar_Edit extends CAS_Admin {
 	 * @since 3.4.1
 	 */
 	public function add_general_scripts_styles() {
-		wp_register_script('cas/admin/general', plugins_url('../js/general.js', __FILE__), array('jquery'), CAS_App::PLUGIN_VERSION, true);
+		wp_register_script('cas/admin/general', plugins_url('../js/general.min.js', __FILE__), array('jquery'), CAS_App::PLUGIN_VERSION, true);
 		wp_enqueue_script('cas/admin/general');
 	}
 
