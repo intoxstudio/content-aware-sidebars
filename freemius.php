@@ -24,7 +24,7 @@ function cas_fs() {
 			'type'                => 'plugin',
 			'public_key'          => 'pk_75513325effa77f024565ef74c9d6',
 			'is_premium'          => true,
-			'has_addons'          => true,
+			'has_addons'          => false,
 			'has_paid_plans'      => true,
 			'has_affiliation'     => 'selected',
 			'menu'                => array(

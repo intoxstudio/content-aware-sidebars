@@ -7,7 +7,7 @@
  */
 
 $cas_fs = cas_fs();
-$url = $cas_fs->addon_url('cas-totem');
+$url = 'https://dev.institute/wordpress-sidebars/pricing/?utm_source=plugin&utm_medium=referral&utm_content=conditions-bottom&utm_campaign=cas';
 ?>
 <div style="overflow: hidden; padding: 2px 0px;">
 	<div class="wpca-pull-right">
@@ -15,7 +15,7 @@ $url = $cas_fs->addon_url('cas-totem');
 	</div>
 	<div style="line-height:24px;">
 		<span class="cas-heart">❤</span> 
-		<?php printf(__('New FREE Add-On: %s'), '<b><a href="'.esc_url($url).'">'.__('Totem - Display widgets in a popup box like Intercom','content-aware-sidebars').'</a></b>'); ?>
+		<?php printf(__('Like it? %1$sGet the Business Plan today for less than %2$s per site!%3$s','content-aware-sidebars'),'<b><a target="_blank" href="'.esc_url($url).'">','$24','</a></b>'); ?>
 	</div>
 </div>
 
