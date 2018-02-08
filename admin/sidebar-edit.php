@@ -90,7 +90,7 @@ final class CAS_Sidebar_Edit extends CAS_Admin {
 	 */
 	public function show_description($post_type) {
 		if($post_type == CAS_App::TYPE_SIDEBAR) {
-			_e('Display this sidebar only on content that meets the following conditions:','content-aware-sidebars');
+			_e('Where do you want to show it?','content-aware-sidebars');
 			echo '<p></p>';
 		}
 	}

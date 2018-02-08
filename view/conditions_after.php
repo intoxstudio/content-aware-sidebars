@@ -15,7 +15,7 @@ $url = 'https://dev.institute/wordpress-sidebars/pricing/?utm_source=plugin&utm_
 	</div>
 	<div style="line-height:24px;">
 		<span class="cas-heart">❤</span> 
-		<?php printf(__('Like it? %1$sGet the Business Plan today for less than %2$s per site!%3$s','content-aware-sidebars'),'<b><a target="_blank" href="'.esc_url($url).'">','$24','</a></b>'); ?>
+		<?php printf(__('Like it? %1$sGet the Business Plan today for less than %2$s per site!%3$s','content-aware-sidebars'),'<b><a target="_blank" href="'.esc_url($url).'">','$20','</a></b>'); ?>
 	</div>
 </div>
 
