@@ -10,9 +10,9 @@ if (!defined('ABSPATH')) {
 	exit;
 }
 
-// if(!defined('WP_UNINSTALL_PLUGIN')) {
-// 	exit();
-// }
+if(!(defined('WP_UNINSTALL_PLUGIN') || defined('WP_FS__UNINSTALL_MODE'))) {
+	exit();
+}
 
 global $wpdb;
 
@@ -38,4 +38,4 @@ foreach ($sidebars as $sidebar) {
 }
 
 // Remove user meta
-$wpdb->query("DELETE FROM $wpdb->usermeta WHERE meta_key IN('metaboxhidden_sidebar','closedpostboxes_sidebar','managesidebarcolumnshidden','".$wpdb->prefix."_ca_cas_tour')");
+$wpdb->query("DELETE FROM $wpdb->usermeta WHERE meta_key IN('metaboxhidden_sidebar','closedpostboxes_sidebar','managesidebarcolumnshidden','{$wpdb->prefix}_ca_cas_tour')");
