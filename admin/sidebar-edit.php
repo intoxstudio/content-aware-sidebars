@@ -72,11 +72,18 @@ final class CAS_Sidebar_Edit extends CAS_Admin {
 	 */
 	public function add_to_module_list($list) {
 		if(get_post_type() == CAS_App::TYPE_SIDEBAR) {
-			$list[''] = array(
+			$list[] = array(
 				'name' =>__('URLs (Pro Feature)','content-aware-sidebars'),
 				'placeholder' => '',
 				'default_value' => ''
 			);
+			if(function_exists('bp_is_active')) {
+				$list[] = array(
+					'name' =>__('BuddyPress Groups (Pro Feature)','content-aware-sidebars'),
+					'placeholder' => '',
+					'default_value' => ''
+				);
+			}
 		}
 		return $list;
 	}
