@@ -37,7 +37,7 @@ gulp.task('uglify', function () {
 });
 
 gulp.task('zip', function() {
-	return gulp.src(['**','!build{,/**}','!**/node_modules{,/**}'],{base:'../'})
+	return gulp.src(['**','!fs-config.json','!**/*.less','!build{,/**}','!**/node_modules{,/**}'],{base:'../'})
 		.pipe(zip('content-aware-sidebars.zip'))
 		.pipe(gulp.dest('build'));
 });
