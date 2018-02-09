@@ -1,3 +1,58 @@
+= 3.3.3 =
+
+* Added: counter-measure against plugins that add buggy scripts
+* Fixed: saving sidebars in quick select would in some cases trigger warning
+
+**Pro Plan:**
+
+* Fixed: include draft sidebars when syncing widgets across themes
+
+= 3.3.2 =
+
+* Fixed: markup in quick select could in some cases be malformed
+* Fixed: warning when saving sidebar
+
+= 3.3.1 =
+
+* Added: ux design improvements
+* Added: ability to add more sidebars in quick select
+* Added: toggle to display more than 3 sidebar input fields in quick select
+* Added: select2 dropdowns updated to 4.0.3 on sidebar edit screen
+* Added: re-enabled info box on sidebar edit screen
+* Added: freemius sdk updated
+* Fixed: decoding of taxonomy term names in conditions
+* Fixed: order of content in conditions dropdowns
+* Fixed: yoast seo compatibility on post edit screens
+* Fixed: negated post conditions were included in sidebar quick select
+* Removed: upgrade box on sidebar edit screen
+
+**Pro Plan:**
+
+* Fixed: improved widget revision ux
+* Fixed: select dates would in some cases not be displayed correct in conditions
+* Fixed: widget revisions could in some cases contain wrong or malformed data
+* Fixed: backwards compat in widget revision ui for versions before wp4.5
+
+= 3.3 =
+
+* Added: manage widgets for draft sidebars
+* Added: quick select and create sidebars on post type editor screen
+* Added: ability to add widgets to draft sidebars
+* Added: expand/collapse all sidebars on widgets screen
+* Added: view sidebar status on widgets screen
+* Added: order sidebars by title on widgets screen
+* Added: dialog on unsaved condition changes in sidebar editor
+* Added: ux design improvements
+* Added: more focus on pro features, upgrade box moved to bottom
+* Fixed: error in wpml config (props Chouby)
+* Fixed: updated review notice description
+* Fixed: select2 dropdowns styling more robust to external changes
+* Fixed: minor performance improvements
+
+**Pro Plan:**
+
+* Added: set sidebars to published or draft on widgets screen
+
 = 3.2.4 =
 
 * Added: infinite scroll for content in sidebar editor

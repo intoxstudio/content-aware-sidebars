@@ -9,7 +9,7 @@
 Plugin Name: Content Aware Sidebars
 Plugin URI: https://dev.institute/wordpress-sidebars/
 Description: Unlimited custom sidebars and widget areas for any post, page, category etc.
-Version: 3.7.3
+Version: 3.7.4
 Author: Joachim Jensen
 Author URI: https://dev.institute
 Text Domain: content-aware-sidebars
@@ -17,7 +17,7 @@ Domain Path: /lang/
 License: GPLv3
 
 	Content Aware Sidebars Plugin
-	Copyright (C) 2011-2017 Joachim Jensen - jv@intox.dk
+	Copyright (C) 2011-2018 Joachim Jensen - jv@intox.dk
 
 	This program is free software: you can redistribute it and/or modify
 	it under the terms of the GNU General Public License as published by

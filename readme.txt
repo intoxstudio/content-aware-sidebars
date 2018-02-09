@@ -5,7 +5,7 @@ Tags: custom sidebars, sidebar, hide sidebar, display widgets, widget, bbpress, 
 Requires at least: 4.1
 Requires PHP: 5.2.4
 Tested up to: 4.9
-Stable tag: 3.7.3
+Stable tag: 3.7.4
 License: GPLv3
 
 Display widget areas and custom sidebars on any post, page, category etc. Supports bbPress, BuddyPress, WooCommerce, WPML, and more.
@@ -30,9 +30,9 @@ Sidebar Visibility lets you elegantly hide any widget area for logged-out users.
 
 ####The Most User-friendly Widget Manager
 
-If you have more than just a few widgets and widget areas, you will love the Enhanced Widget Manager. When adding new widgets to sidebars, Live Search will find widgets in seconds, and the smart split-screen gives you a much better overview.
+If you have more than just a few widgets and widget areas, you will love the Enhanced Widget Manager. When adding new widgets to sidebars, Live Search will find widgets in seconds, and the smart split-screen gives you a much better overview of your widget options.
 
-1-Click Sidebar Activation&copy; lets you activate or deactivate a widget areas instantly.
+1-Click Sidebar Activation&copy; lets you activate or deactivate widget areas instantly.
 
 ####Show or Hide Sidebars on Any Page (Yes, any)
 
@@ -51,7 +51,7 @@ Display your widget areas on any of these conditions:
 * Front Page, Search Results, 404 Not Found Page
 * bbPress Profiles, Forums & Topics
 * BuddyPress Profile Sections
-* Languages (qTranslate X, Polylang, Transposh, WPML)
+* Languages (WPML, Polylang, qTranslate X, Transposh)
 * Pods Pages
 * **Any Combination of Above**
 
@@ -161,9 +161,16 @@ Of course! Check out the links below:
 
 == Changelog ==
 
-= 3.7.3 =
+= 3.7.4 =
 
 [View Release Notes](https://dev.institute/blog/design-insert-widget-areas-content-aware-sidebars-3-7/?utm_source=readme&utm_medium=referral&utm_content=changelog&utm_campaign=cas)
+
+* Added: UI improvements
+* Fixed: some conditions could not be added on legacy php versions
+* Updated: wp-content-aware-engine
+* Updated: freemius sdk
+
+= 3.7.3 =
 
 * Updated: freemius sdk
 
@@ -334,60 +341,5 @@ Fixed: url condition could in some cases not be set
 * Fixed: initial widget revision could in some cases be malformed
 * Fixed: bug when adding url and date conditions
 * Fixed: bug with license activation if user had opted out of freemius
-
-= 3.3.3 =
-
-* Added: counter-measure against plugins that add buggy scripts
-* Fixed: saving sidebars in quick select would in some cases trigger warning
-
-**Pro Plan:**
-
-* Fixed: include draft sidebars when syncing widgets across themes
-
-= 3.3.2 =
-
-* Fixed: markup in quick select could in some cases be malformed
-* Fixed: warning when saving sidebar
-
-= 3.3.1 =
-
-* Added: ux design improvements
-* Added: ability to add more sidebars in quick select
-* Added: toggle to display more than 3 sidebar input fields in quick select
-* Added: select2 dropdowns updated to 4.0.3 on sidebar edit screen
-* Added: re-enabled info box on sidebar edit screen
-* Added: freemius sdk updated
-* Fixed: decoding of taxonomy term names in conditions
-* Fixed: order of content in conditions dropdowns
-* Fixed: yoast seo compatibility on post edit screens
-* Fixed: negated post conditions were included in sidebar quick select
-* Removed: upgrade box on sidebar edit screen
-
-**Pro Plan:**
-
-* Fixed: improved widget revision ux
-* Fixed: select dates would in some cases not be displayed correct in conditions
-* Fixed: widget revisions could in some cases contain wrong or malformed data
-* Fixed: backwards compat in widget revision ui for versions before wp4.5
-
-= 3.3 =
-
-* Added: manage widgets for draft sidebars
-* Added: quick select and create sidebars on post type editor screen
-* Added: ability to add widgets to draft sidebars
-* Added: expand/collapse all sidebars on widgets screen
-* Added: view sidebar status on widgets screen
-* Added: order sidebars by title on widgets screen
-* Added: dialog on unsaved condition changes in sidebar editor
-* Added: ux design improvements
-* Added: more focus on pro features, upgrade box moved to bottom
-* Fixed: error in wpml config (props Chouby)
-* Fixed: updated review notice description
-* Fixed: select2 dropdowns styling more robust to external changes
-* Fixed: minor performance improvements
-
-**Pro Plan:**
-
-* Added: set sidebars to published or draft on widgets screen
 
 See changelog.txt for previous changes.
