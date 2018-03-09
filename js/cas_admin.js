@@ -39,8 +39,8 @@
 				time_24hr: true,
 				allowInput: true,
 				enableSeconds: true,
-				altInput: true,
-				altFormat: CASAdmin.dateFormat + ' @ H:i:S',
+				//altInput: true,
+				//altFormat: CASAdmin.dateFormat + ' @ H:i:S',
 				onChange: function(dateObj, dateStr, instance) {
 					console.log("activate");
 					if(dateStr || deactivate.config.minDate) {
