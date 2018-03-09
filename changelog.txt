@@ -1,3 +1,120 @@
+= 3.6.2 =
+
+* Added: UI improvements
+* Added: better support for RTL languages
+* Fixed: forced replace action now always takes priority
+* Fixed: archives would in rare cases not display correct sidebar if a post was password protected
+* Fixed: special characters in translations of conditions
+* Fixed: post type conditions with no titles
+
+**Pro Plan:**
+
+* Added: changes in sidebar title no longer adds revision
+* Fixed: edit links in sidebar admin columns for post types
+
+= 3.6.1 =
+
+* Fixed: UI improvements
+* Fixed: better plugin compatibility for sidebars quick select
+
+**Pro Plan:**
+
+* Fixed: unable to disable widgets
+* Fixed: javascript would in rare cases not be loaded correctly in sidebar editor
+
+= 3.6 =
+
+* Added: ability to wrap sidebar in html
+* Added: ability to change widget html
+* Added: danish and german translations now use automatic language packs
+* Added: performance and memory improvements
+* Added: UI improvements
+* Added: wordpress 4.8 support
+* Fixed: widget manager could behave unexpectedly in cases with many inactive widget areas
+* Fixed: sidebars quick select could cause nested sidebars to be removed from posts
+* Fixed: sidebar bulk messages
+* Updated: wp-content-aware-engine
+* Updated: freemius sdk
+
+**Pro Plan:**
+
+* Added: widget to insert widgets from other sidebars
+* Added: 1-click automatic install on checkout
+* Fixed: avoid auto-draft sidebar adding extra revision 
+
+= 3.5.2 =
+
+* Added: woocommerce 3.0 compat
+* Added: badgeos compat
+* Added: UI improvements in widget manager
+
+= 3.5.1 =
+
+* Fixed: database upgrade script
+
+= 3.5 =
+
+* Added: 1-click sidebar activation
+* Added: improved design on widgets screen
+* Added: autosave conditions
+* Added: simplify option to autoselect conditions
+* Added: UI improvements
+* Added: minimum requirement wordpress 4.0
+* Added: freemius sdk updated
+* Added: actions and filters for developers
+
+**Pro Plan:**
+
+* Added: duplicate sidebars and conditions
+* Added: disable widgets
+* Fixed: improved upgrade routine
+
+= 3.4.3 =
+
+* Added: preparation for automatic translation packages
+* Added: prevent adding duplicate sidebar titles
+* Fixed: sidebar quick select would in rare cases not show sidebars
+* Fixed: UI improvements
+
+= 3.4.2 =
+
+* Added: freemius sdk updated
+* Fixed: sidebar editor now works properly in IE browser
+* Fixed: UI improvements
+
+= 3.4.1 =
+
+* Added: ability to target all buddypress profile sections
+* Added: freemius opt-in message made more clear
+* Added: links to docs
+* Added: wordpress 4.7 support
+* Fixed: sidebar order not being saved
+* Fixed: "Automatically add new children of a selected ancestor" not working for post types
+* Fixed: sidebar edit links on widgets screen
+
+**Pro Plan:**
+
+* Fixed: buddypress groups condition not selectable on new sidebars
+
+= 3.4 =
+
+* Added: sidebar list and editor screens completely rewritten for performance and extensibility
+* Added: ability to schedule sidebar deactivation
+* Added: exposure moved to condition groups, now called singulars or archives
+* Added: freemius sdk updated
+* Added: data update process will no longer be triggered on new installs
+* Added: sidebar status now active/inactive instead of publish/draft
+* Added: always load latest version of wp-content-aware-engine
+* Fixed: sidebar quick select compatibility with other sidebar managers
+* Removed: deprecated function display_ca_sidebar (use ca_display_sidebar)
+
+**Pro Plan:**
+
+* Added: display sidebars in time ranges on given days
+* Fixed: initial widget revision could in some cases be malformed
+* Fixed: bug when adding url and date conditions
+* Fixed: bug with license activation if user had opted out of freemius
+
 = 3.3.3 =
 
 * Added: counter-measure against plugins that add buggy scripts

@@ -5,7 +5,7 @@ Tags: custom sidebars, sidebar, hide sidebar, display widgets, widget, bbpress, 
 Requires at least: 4.1
 Requires PHP: 5.2.4
 Tested up to: 4.9
-Stable tag: 3.7.4
+Stable tag: 3.7.5
 License: GPLv3
 
 Display widget areas and custom sidebars on any post, page, category etc. Supports bbPress, BuddyPress, WooCommerce, WPML, and more.
@@ -14,7 +14,9 @@ Display widget areas and custom sidebars on any post, page, category etc. Suppor
 
 **The Fastest and Most Powerful WordPress Sidebar Plugin yet. Create tailored widget areas for any post, page, or custom post type in seconds. No coding required!**
 
-Content Aware Sidebars is packed with features and is being used to boost on-site SEO, upsell products, and to optimize conversion rates by displaying different sidebars on different conditions.
+Content Aware Sidebars is packed with free features and is being used to boost on-site SEO, upsell products, and to optimize conversion rates by displaying different sidebars on different conditions.
+
+Focusing on scalability, this plugin the ideal solution for sites in growth.
 
 ####Add Unlimited Sidebars and Widget Areas
 
@@ -69,20 +71,20 @@ Content Aware Sidebars automatically supports Custom Post Types and Taxonomies c
 * [WooCommerce](https://dev.institute/wordpress-sidebars/woocommerce/?utm_source=readme&utm_medium=referral&utm_content=integration&utm_campaign=cas)
 * [WPML](https://dev.institute/wordpress-sidebars/multilingual-plugins/?utm_source=readme&utm_medium=referral&utm_content=integration&utm_campaign=cas)
 
-**Content Aware Sidebars Pro - [Complete control for your custom sidebars](https://dev.institute/wordpress-sidebars/?utm_source=readme&utm_medium=referral&utm_content=title&utm_campaign=cas)**
+**Content Aware Sidebars Pro - [Complete control for your widget areas](https://dev.institute/wordpress-sidebars/?utm_source=readme&utm_medium=referral&utm_content=title&utm_campaign=cas)**
 
 ####Highlighted Premium Features
 
-* **Sidebar Designer:** Add widget columns and edit colors, backgrounds, paddings, etc.
-* **Insert Sidebars:** Intelligently insert widget areas in theme hooks without coding
+* **Design your Widget Areas:** Add widget columns and edit colors, backgrounds, paddings, etc.
+* **Widget Areas in Theme Hooks:** Intelligently insert new widget areas into your theme without coding
 * **Automatic Widgets Backup:** Easily restore any changed or deleted widgets
 * **Sidebar Visibility:** Extended visibility for User Roles and Guests
 * **Time Schedule**: Display widget areas only in select time ranges on given days
-* **Smart Widget:** Use your widget areas as reusable blocks
+* **Smart Widget:** Turn widget areas into reusable blocks and show the same widgets in different places
 * **Duplicate Sidebars:** A real time-saver when adding new similar widget areas
 * **Disable Any Widget:** Save memory and remove clutter by removing unused widgets
-* **Priority Email Support:** Get expert help directly in your inbox
-* [and so much more...](https://dev.institute/wordpress-sidebars/features/?utm_source=readme&utm_medium=referral&utm_content=more&utm_campaign=cas)
+* **First-class Email Support:** Get expert help fast and directly to your inbox
+* [and so much more...](https://dev.institute/wordpress-sidebars/pricing/?utm_source=readme&utm_medium=referral&utm_content=more&utm_campaign=cas)
 
 ####Extra Sidebar Conditions
 
@@ -128,11 +130,17 @@ Yes!
 
 Many users already mix Content Aware Sidebars with popular page builder plugins such as Elementor, SiteOrigin Page Builder, Beaver Builder, and Visual Composer.
 
+= Do I need to know widget logic code? =
+
+Nope.
+
+Content Aware Sidebars is praised by users for its unparalleled sidebar and widget visibility options. It's the only plugin that allows you to display widget areas on literally any condition without any code. 
+
 = Can I really display sidebars and widget areas on any page? =
 
 Yep.
 
-In the Sidebar Editor, you can select where, when and to whom your sidebar should be displayed. Create a sidebar for each page, a sidebar for posts in a category, or any sidebar you need, without confusing widget logic code.
+In the Sidebar Editor, you can select where, when and to whom your sidebar should be displayed. Create a sidebar for each page, a sidebar for posts in a category, or any sidebar you need, all in a user-friendly UI.
 
 You can also select sidebars directly when you're editing a post or page.
 
@@ -161,9 +169,17 @@ Of course! Check out the links below:
 
 == Changelog ==
 
-= 3.7.4 =
+= 3.7.5 =
 
 [View Release Notes](https://dev.institute/blog/design-insert-widget-areas-content-aware-sidebars-3-7/?utm_source=readme&utm_medium=referral&utm_content=changelog&utm_campaign=cas)
+
+* Added: UI improvements
+* Fixed: some hierarchical sub-items could not be selectable as conditions
+* Fixed: conditions would in some cases not be displayed properly after save
+* Updated: wp-content-aware-engine
+* Updated: freemius sdk
+
+= 3.7.4 =
 
 * Added: UI improvements
 * Fixed: some conditions could not be added on legacy php versions
@@ -224,122 +240,5 @@ Fixed: url condition could in some cases not be set
 * Fixed: show message for successful revision restore
 * Fixed: improved widget sync on theme switch
 * Removed: sidebar column in post overview list
-
-= 3.6.2 =
-
-* Added: UI improvements
-* Added: better support for RTL languages
-* Fixed: forced replace action now always takes priority
-* Fixed: archives would in rare cases not display correct sidebar if a post was password protected
-* Fixed: special characters in translations of conditions
-* Fixed: post type conditions with no titles
-
-**Pro Plan:**
-
-* Added: changes in sidebar title no longer adds revision
-* Fixed: edit links in sidebar admin columns for post types
-
-= 3.6.1 =
-
-* Fixed: UI improvements
-* Fixed: better plugin compatibility for sidebars quick select
-
-**Pro Plan:**
-
-* Fixed: unable to disable widgets
-* Fixed: javascript would in rare cases not be loaded correctly in sidebar editor
-
-= 3.6 =
-
-* Added: ability to wrap sidebar in html
-* Added: ability to change widget html
-* Added: danish and german translations now use automatic language packs
-* Added: performance and memory improvements
-* Added: UI improvements
-* Added: wordpress 4.8 support
-* Fixed: widget manager could behave unexpectedly in cases with many inactive widget areas
-* Fixed: sidebars quick select could cause nested sidebars to be removed from posts
-* Fixed: sidebar bulk messages
-* Updated: wp-content-aware-engine
-* Updated: freemius sdk
-
-**Pro Plan:**
-
-* Added: widget to insert widgets from other sidebars
-* Added: 1-click automatic install on checkout
-* Fixed: avoid auto-draft sidebar adding extra revision 
-
-= 3.5.2 =
-
-* Added: woocommerce 3.0 compat
-* Added: badgeos compat
-* Added: UI improvements in widget manager
-
-= 3.5.1 =
-
-* Fixed: database upgrade script
-
-= 3.5 =
-
-* Added: 1-click sidebar activation
-* Added: improved design on widgets screen
-* Added: autosave conditions
-* Added: simplify option to autoselect conditions
-* Added: UI improvements
-* Added: minimum requirement wordpress 4.0
-* Added: freemius sdk updated
-* Added: actions and filters for developers
-
-**Pro Plan:**
-
-* Added: duplicate sidebars and conditions
-* Added: disable widgets
-* Fixed: improved upgrade routine
-
-= 3.4.3 =
-
-* Added: preparation for automatic translation packages
-* Added: prevent adding duplicate sidebar titles
-* Fixed: sidebar quick select would in rare cases not show sidebars
-* Fixed: UI improvements
-
-= 3.4.2 =
-
-* Added: freemius sdk updated
-* Fixed: sidebar editor now works properly in IE browser
-* Fixed: UI improvements
-
-= 3.4.1 =
-
-* Added: ability to target all buddypress profile sections
-* Added: freemius opt-in message made more clear
-* Added: links to docs
-* Added: wordpress 4.7 support
-* Fixed: sidebar order not being saved
-* Fixed: "Automatically add new children of a selected ancestor" not working for post types
-* Fixed: sidebar edit links on widgets screen
-
-**Pro Plan:**
-
-* Fixed: buddypress groups condition not selectable on new sidebars
-
-= 3.4 =
-
-* Added: sidebar list and editor screens completely rewritten for performance and extensibility
-* Added: ability to schedule sidebar deactivation
-* Added: exposure moved to condition groups, now called singulars or archives
-* Added: freemius sdk updated
-* Added: data update process will no longer be triggered on new installs
-* Added: sidebar status now active/inactive instead of publish/draft
-* Added: always load latest version of wp-content-aware-engine
-* Fixed: sidebar quick select compatibility with other sidebar managers
-* Removed: deprecated function display_ca_sidebar (use ca_display_sidebar)
-
-**Pro Plan:**
-
-* Added: display sidebars in time ranges on given days
-* Fixed: initial widget revision could in some cases be malformed
-* Fixed: bug when adding url and date conditions
-* Fixed: bug with license activation if user had opted out of freemius
 
 See changelog.txt for previous changes.
