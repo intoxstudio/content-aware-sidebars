@@ -174,6 +174,7 @@ Of course! Check out the links below:
 [View Release Notes](https://dev.institute/blog/design-insert-widget-areas-content-aware-sidebars-3-7/?utm_source=readme&utm_medium=referral&utm_content=changelog&utm_campaign=cas)
 
 * Added: UI improvements
+* Added: affiliation program
 * Fixed: some hierarchical sub-items could not be selectable as conditions
 * Fixed: conditions would in some cases not be displayed properly after save
 * Updated: wp-content-aware-engine
