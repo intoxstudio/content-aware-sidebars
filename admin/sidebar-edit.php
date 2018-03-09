@@ -739,7 +739,7 @@ final class CAS_Sidebar_Edit extends CAS_Admin {
 
 			$boxes[] = array(
 				'id'       => 'cas-plugin-links',
-				'title'    => __('Content Aware Sidebars', 'content-aware-sidebars'),
+				'title'    => __('Helpful Links', 'content-aware-sidebars'),
 				'view'     => 'support',
 				'context'  => 'side',
 				'priority' => 'default'
