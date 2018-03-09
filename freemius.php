@@ -30,7 +30,7 @@ function cas_fs() {
 			'menu'                => array(
 				'slug'           => 'wpcas',
 				'support'        => false,
-				'affiliation'    => false
+				'affiliation'    => true
 			),
 		) );
 	}
