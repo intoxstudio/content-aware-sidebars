@@ -5,7 +5,7 @@ Tags: custom sidebars, sidebar, hide sidebar, display widgets, widget, bbpress, 
 Requires at least: 4.1
 Requires PHP: 5.2.4
 Tested up to: 4.9
-Stable tag: 3.7.6
+Stable tag: 3.7.7
 License: GPLv3
 
 Display widget areas and custom sidebars on any post, page, category etc. Supports bbPress, BuddyPress, WooCommerce, WPML, and more.
@@ -169,9 +169,13 @@ Of course! Check out the links below:
 
 == Changelog ==
 
-= 3.7.6 =
+= 3.7.7 =
 
 [View Release Notes](https://dev.institute/blog/design-insert-widget-areas-content-aware-sidebars-3-7/?utm_source=readme&utm_medium=referral&utm_content=changelog&utm_campaign=cas)
+
+* Updated: freemius sdk
+
+= 3.7.6 =
 
 * Fixed: javascript error introduced in v3.7.5
 
