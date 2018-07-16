@@ -10,7 +10,7 @@ if (!defined('ABSPATH')) {
 	exit;
 }
 
-$cas_db_updater = new WP_DB_Updater('cas_db_version',CAS_App::PLUGIN_VERSION, true);
+$cas_db_updater = CAS_App::instance()->get_updater();
 $cas_db_updater->register_version_update('1.1','cas_update_to_11');
 $cas_db_updater->register_version_update('2.0','cas_update_to_20');
 $cas_db_updater->register_version_update('3.0','cas_update_to_30');

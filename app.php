@@ -12,9 +12,7 @@ if (!defined('ABSPATH')) {
 
 final class CAS_App {
 
-	/**
-	 * Plugin version
-	 */
+	const PLUGIN_VERSION_KEY   = 'cas_db_version';
 	const PLUGIN_VERSION       = '3.7.7';
 
 	/**
@@ -52,6 +50,11 @@ final class CAS_App {
 	private $manager;
 
 	/**
+	 * @var WP_DB_Updater
+	 */
+	private $db_updater;
+
+	/**
 	 * Class singleton
 	 * @var CAS_App
 	 */
@@ -73,6 +76,8 @@ final class CAS_App {
 
 		$this->_manager = new CAS_Sidebar_Manager();
 
+		$this->db_updater = new WP_DB_Updater(self::PLUGIN_VERSION_KEY, self::PLUGIN_VERSION, true);
+
 		if(is_admin()) {
 			new CAS_Sidebar_Overview();
 			new CAS_Sidebar_Edit();
@@ -83,6 +88,14 @@ final class CAS_App {
 		$this->add_actions();
 		$this->add_filters();
 
+	}
+
+	/**
+	 * @since  3.7.8
+	 * @return WP_DB_Updater
+	 */
+	public function get_updater() {
+		return $this->db_updater;
 	}
 
 	public function manager() {

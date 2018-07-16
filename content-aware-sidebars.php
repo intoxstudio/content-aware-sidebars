@@ -45,12 +45,11 @@ if(!class_exists('CAS_App')) {
 	$cas_dir_path = plugin_dir_path( __FILE__ );
 
 	require($cas_dir_path.'lib/wp-content-aware-engine/bootstrap.php');
+	require($cas_dir_path.'lib/wp-db-updater/wp-db-updater.php');
 	require($cas_dir_path.'app.php');
 
 	if(is_admin()) {
-		require($cas_dir_path.'lib/wp-db-updater/wp-db-updater.php');
 		require($cas_dir_path.'lib/wp-pointer-tour/wp-pointer-tour.php');
-		require($cas_dir_path.'admin/db-updates.php');
 		require($cas_dir_path.'admin/admin.php');
 		require($cas_dir_path.'admin/quick_select.php');
 		require($cas_dir_path.'admin/sidebar-list-table.php');
@@ -61,6 +60,7 @@ if(!class_exists('CAS_App')) {
 
 	require($cas_dir_path.'sidebar.php');
 	require($cas_dir_path.'freemius.php');
+	require($cas_dir_path.'admin/db-updates.php');
 
 	// Launch plugin
 	CAS_App::instance();
