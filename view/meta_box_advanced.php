@@ -13,15 +13,22 @@ if ( !EMPTY_TRASH_DAYS ) {
 }
 
 ?>
-<div>
-	<strong><?php _e('Order'); ?></strong>
-	<p>
-		<label for="menu_order" class="screen-reader-text"><?php _e('Order'); ?></label>
-		<input type="number" value="<?php echo $post->menu_order; ?>" id="menu_order" size="4" name="menu_order">
-	</p>
-</div>
+
+<table class="form-table cas-form-table" width="100%"><tbody>
+	<tr>
+		<td scope="row"><?php _e('Order'); ?></td>
+		<td>
+			<label for="menu_order" class="screen-reader-text"><?php _e('Order'); ?></label>
+			<input type="number" value="<?php echo $post->menu_order; ?>" id="menu_order" size="4" name="menu_order">
+		</td>
+	</tr>
+
 <?php if ( current_user_can( "delete_post", $post->ID ) ) : ?>
-	<div style="overflow:hidden;">
-		<a class="wpca-pull-right cas-delete" href="<?php echo get_delete_post_link($post->ID); ?>"><?php echo $delete_text; ?></a>
-	</div>
+	<tr>
+		<td scope="row"></td>
+		<td>
+			<a class="button button-cas-upgrade" href="<?php echo get_delete_post_link($post->ID); ?>"><?php echo $delete_text; ?></a>
+		</td>
+	</tr>
 <?php endif; ?>
+</table>

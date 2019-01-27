@@ -90,20 +90,6 @@ final class CAS_Sidebar_Edit extends CAS_Admin {
 	}
 
 	/**
-	 * Render conditons description
-	 *
-	 * @since  3.3
-	 * @param  string  $post_type
-	 * @return void
-	 */
-	public function show_description($post_type) {
-		if($post_type == CAS_App::TYPE_SIDEBAR) {
-			_e('Where do you want to show it?','content-aware-sidebars');
-			echo '<p></p>';
-		}
-	}
-
-	/**
 	 * Set up admin menu and get current screen
 	 *
 	 * @since  3.4
@@ -197,34 +183,14 @@ final class CAS_Sidebar_Edit extends CAS_Admin {
 
 		$nav_tabs = array(
 			'conditions' => __('Conditions','content-aware-sidebars'),
+			'action'     => __('Action'),
 			'schedule'   => __('Schedule'),
 			'design'     => __('Design'),
-			'advanced'   => __('Advanced')
+			'advanced'   => __('Misc Options')
 		);
 		$nav_tabs = apply_filters('cas/admin/nav-tabs', $nav_tabs);
 
 		do_action( 'cas/admin/add_meta_boxes', $post );
-
-		// foreach ($nav_tabs as $id => $label) {
-		// 	do_action( 'do_meta_boxes', CAS_App::BASE_SCREEN.'-edit', 'section-'.$id, $post );
-		// }
-		//do_action( 'do_meta_boxes', CAS_App::BASE_SCREEN.'-edit', 'normal', $post );
-		//do_action( 'do_meta_boxes', CAS_App::BASE_SCREEN.'-edit', 'side', $post );
-
-		$screen = get_current_screen();
-
-		$screen->add_help_tab( array( 
-			'id'      => CAS_App::META_PREFIX.'help',
-			'title'   => __('Condition Groups','content-aware-sidebars'),
-			'content' => '<p>'.__('Each created condition group describe some specific content (conditions) that the current sidebar should be displayed with.','content-aware-sidebars').'</p>'.
-				'<p>'.__('Content added to a condition group uses logical conjunction, while condition groups themselves use logical disjunction. '.
-				'This means that content added to a group should be associated, as they are treated as such, and that the groups do not interfere with each other. Thus it is possible to have both extremely focused and at the same time distinct conditions.','content-aware-sidebars').'</p>',
-		) );
-		$screen->set_help_sidebar( '<h4>'.__('More Information').'</h4>'.
-			'<p><a href="https://dev.institute/docs/content-aware-sidebars/faq/?utm_source=plugin&utm_medium=referral&utm_content=help-tab&utm_campaign=cas" target="_blank">'.__('FAQ','content-aware-sidebars').'</a></p>'.
-			'<p><a href="http://wordpress.org/support/plugin/content-aware-sidebars" target="_blank">'.__('Forum Support','content-aware-sidebars').'</a></p>'
-		);
-
 	}
 
 	/**
@@ -358,9 +324,11 @@ final class CAS_Sidebar_Edit extends CAS_Admin {
 	 */
 	public function render_screen() {
 
-		global $nav_tabs, $post, $title, $active_post_lock;
+		global $nav_tabs, $post, $active_post_lock;
 
 		$post_type_object = get_post_type_object( $post->post_type );
+
+		$post_id = isset($_REQUEST['sidebar_id']) ? $_REQUEST['sidebar_id'] : 0;
 
 		$notice = false;
 		$form_extra = '';
@@ -397,17 +365,22 @@ final class CAS_Sidebar_Edit extends CAS_Admin {
 			$tag = 'h1';
 		}
 
+		if($post_id) {
+			$title = __('Edit');
+		} else {
+			$title = $post_type_object->labels->new_item;
+		}
+
 		echo '<div class="wrap">';
 		echo '<'.$tag.'>';
+		echo '<a href="">'.$post_type_object->labels->all_items.'</a> >';
 		echo esc_html( $title );
 		if ( isset($_REQUEST['sidebar_id']) ) {
-			if(current_user_can( $post_type_object->cap->create_posts ) ) {
-				echo ' <a href="' . esc_url( admin_url( 'admin.php?page=wpcas-edit' ) ) . '" class="page-title-action add-new-h2">' . esc_html( $post_type_object->labels->add_new ) . '</a>';
-			}
 			if ( current_user_can( 'edit_theme_options' ) ) {
 				echo ' <a href="' . esc_url( admin_url( 'widgets.php#'.CAS_App::SIDEBAR_PREFIX.$post->ID ) ) . '" class="page-title-action add-new-h2">' . __('Manage Widgets','content-aware-sidebars') . '</a>';
 			}
 		}
+
 		echo '</'.$tag.'>';
 
 		$this->sidebar_updated_messages($post);
@@ -434,7 +407,7 @@ final class CAS_Sidebar_Edit extends CAS_Admin {
 		wp_nonce_field( 'closedpostboxes', 'closedpostboxesnonce', false );
 
 		echo '<div id="poststuff">';
-		echo '<div id="post-body" class="metabox-holder columns-'.(1 == get_current_screen()->get_columns() ? '1' : '2').'">';
+		echo '<div id="post-body" class="metabox-holder columns-2">';
 		echo '<div id="post-body-content">';
 		echo '<div id="titlediv">';
 		echo '<div id="titlewrap">';
@@ -700,9 +673,6 @@ final class CAS_Sidebar_Edit extends CAS_Admin {
 
 		$cas_fs = cas_fs();
 
-		add_action('wpca/meta_box/before',
-			array($this,'show_description'));
-
 		$boxes = array();
 		$boxes[] = array(
 			'id'       => 'submitdiv',
@@ -712,8 +682,15 @@ final class CAS_Sidebar_Edit extends CAS_Admin {
 			'priority' => 'high'
 		);
 		$boxes[] = array(
+			'id'       => 'cas-options',
+			'title'    => __('How´to display', 'content-aware-sidebars'),
+			'view'     => 'action',
+			'context'  => 'section-action',
+			'priority' => 'default'
+		);
+		$boxes[] = array(
 			'id'       => 'cas-status',
-			'title'    => __('Sidebar Status', 'content-aware-sidebars'),
+			'title'    => __('Status', 'content-aware-sidebars'),
 			'view'     => 'status',
 			'context'  => 'section-schedule',
 			'priority' => 'default'
@@ -727,24 +704,21 @@ final class CAS_Sidebar_Edit extends CAS_Admin {
 		);
 		$boxes[] = array(
 			'id'       => 'cas-advanced',
-			'title'    => __('Advanced', 'content-aware-sidebars'),
+			'title'    => __('Options', 'content-aware-sidebars'),
 			'view'     => 'advanced',
 			'context'  => 'section-advanced',
 			'priority' => 'default'
 		);
+		$boxes[] = array(
+			'id'       => 'cas-plugin-links',
+			'title'    => __('Recommendations', 'content-aware-sidebars'),
+			'view'     => 'support',
+			'context'  => 'side',
+			'priority' => 'default'
+		);
 
-		if ( $cas_fs->is_not_paying() ) {
-			$view = $template = WPCAView::make($path.'conditions_after.php');
-			add_action('wpca/meta_box/after',
-				array($view,'render'));
+		if ( !$cas_fs->can_use_premium_code() ) {
 
-			$boxes[] = array(
-				'id'       => 'cas-plugin-links',
-				'title'    => __('Helpful Links', 'content-aware-sidebars'),
-				'view'     => 'support',
-				'context'  => 'side',
-				'priority' => 'default'
-			);
 			$boxes[] = array(
 				'id'       => 'cas-schedule',
 				'title'    => __('Time Schedule', 'content-aware-sidebars').' <span class="cas-pro-label">'.__('Pro','content-aware-sidebars').'</span>',
@@ -760,15 +734,6 @@ final class CAS_Sidebar_Edit extends CAS_Admin {
 				'priority' => 'default'
 			);
 		}
-
-		//Options
-		$boxes[] = array(
-			'id'       => 'cas-options',
-			'title'    => __('Options', 'content-aware-sidebars'),
-			'callback' => 'meta_box_options',
-			'context'  => 'side',
-			'priority' => 'default'
-		);
 
 		//Add meta boxes
 		foreach($boxes as $box) {
@@ -820,8 +785,8 @@ final class CAS_Sidebar_Edit extends CAS_Admin {
 	 * @return void
 	 */
 	public function meta_box_options($post) {
-		$this->_form_field('handle');
-		$this->_form_field('host',
+		CAS_Sidebar_Edit::form_field('handle');
+		CAS_Sidebar_Edit::form_field('host',
 			'js-cas-action js-cas-action-0 js-cas-action-1 js-cas-action-3'
 		);
 
@@ -829,10 +794,9 @@ final class CAS_Sidebar_Edit extends CAS_Admin {
 
 		do_action('cas/sidebar/options',$post);
 
-		$this->_form_field('merge_pos',
+		CAS_Sidebar_Edit::form_field('merge_pos',
 			'js-cas-action js-cas-action-0 js-cas-action-1'
 		);
-		$this->_form_field('visibility');
 	}
 
 	/**
@@ -857,12 +821,13 @@ final class CAS_Sidebar_Edit extends CAS_Admin {
 	 * @param  array $setting 
 	 * @return void 
 	 */
-	private function _form_field($id,$class = '') {
+	public static function form_field($id,$class = '', $icon = '') {
 
 		$setting = CAS_App::instance()->manager()->metadata()->get($id);
 		$current = $setting->get_data(get_the_ID(),true,$setting->get_input_type() != 'multi');
+		$icon = $icon ? '<span class="'.$icon.'"></span> ' : '';
 
-		echo '<div class="'.$class.'"><strong>' . $setting->get_title() . '</strong>';
+		echo '<div class="'.$class.'">'.$icon.'<strong>' . $setting->get_title() . '</strong>';
 		echo '<p>';
 		switch ($setting->get_input_type()) {
 			case 'select' :

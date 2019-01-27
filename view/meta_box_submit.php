@@ -27,33 +27,42 @@ switch ($post->post_status) {
 		break;
 }
 
+$revision_count = 0;
+if ( post_type_supports($post->post_type, 'revisions') ) {
+	$revisions = wp_get_post_revisions( $post->ID );
+	$revision_count = number_format_i18n(count($revisions));
+}
+
 ?>
 
 <div class="cas-save">
+<?php if ( isset($_REQUEST['sidebar_id']) ) : ?>
+	<a href="<?php echo add_query_arg('action','cas-revisions', admin_url('post.php?post='.$post->ID)); ?>" class="button button-secondary button-large" title="<?php _e('Widget Revisions','content-aware-sidebars'); ?>: <?php echo $revision_count; ?>">
+		<span class="dashicons dashicons-backup" style="vertical-align: text-top;"></span>
+		<span class="screen-reader-text"><?php _e('Widget Revisions','content-aware-sidebars'); ?></span>
+	</a>
+<?php endif; ?>
+
 	<div class="wpca-pull-right">
 <?php if ( $post->post_status == 'auto-draft' ) {
-	submit_button( __( 'Save' ), 'primary button-large', 'publish', false );
+	submit_button( __( 'Create' ), 'primary button-large', 'publish', false );
 } else {
-	submit_button( __( 'Update' ), 'primary button-large', 'save', false );
+	submit_button( __( 'Save' ), 'primary button-large', 'save', false );
 } ?>
 	</div>
 </div>
 <ul class="cas-overview-actions">
-	<li><span class="dashicons dashicons-post-status"></span> <?php _e("Status:"); ?>
-	<strong><?php printf($stamp,$date); ?></strong> <a class="js-nav-link" href="#top#section-schedule"><?php _e('Edit'); ?></a>
-
-<?php if ( post_type_supports($post->post_type, 'revisions') ) :
-	$revisions = wp_get_post_revisions( $post->ID );
-	$revision_id = key( $revisions );
-?>
-	<li><span class="dashicons dashicons-backup"></span>
-		<?php printf( __( 'Widget Revisions: %s', 'content-aware-sidebars' ), '<b>' . number_format_i18n(count($revisions)) . '</b>' ); ?>
-		<a class="hide-if-no-js" href="<?php echo esc_url( get_edit_post_link( $revision_id ) ); ?>" title="<?php esc_attr_e( 'Browse revisions' ); ?>"><?php _ex( 'Browse', 'revisions' ); ?></a>
+	<li style="overflow: hidden;">
+		<span class="dashicons dashicons-calendar"></span> <strong><?php _e("Status",'content-aware-sidebars'); ?></strong>
+		<div class="wpca-pull-right">
+		<a class="js-nav-link" href="#top#section-schedule"><?php _e('Schedule'); ?></a>
+		<label class="cae-toggle">
+			<input class="js-cas-status" type="checkbox" name="post_status" value="<?php echo CAS_App::STATUS_ACTIVE; ?>" <?php checked( in_array($post->post_status,array(CAS_App::STATUS_ACTIVE,'auto-draft')),true); ?> />
+			<div class="cae-toggle-bar"></div>
+		</label>
+	</div>
 	</li>
-<?php elseif ($cas_fs->is_not_paying() ) : ?>
-	<li><span class="dashicons dashicons-backup"></span>
-		<?php printf( __( 'Widget Revisions: %s', 'content-aware-sidebars' ), '<b>0</b>' ); ?>
-		<b><a href="<?php echo esc_url($cas_fs->get_upgrade_url()); ?>"><?php _e( 'Enable','content-aware-sidebars'); ?></a></b>
+	<li>
+		<?php echo CAS_Sidebar_Edit::form_field('visibility', '', 'dashicons dashicons-visibility'); ?>
 	</li>
-<?php endif; ?>
 </ul>

@@ -13,15 +13,6 @@ $deactivate_date = get_post_meta($post->ID, CAS_App::META_PREFIX.'deactivate_tim
 
 <table class="form-table cas-form-table" width="100%"><tbody>
 	<tr>
-		<td scope="row"><?php _e("Status",'content-aware-sidebars'); ?></td>
-		<td>
-			<label class="cae-toggle">
-				<input class="js-cas-status" type="checkbox" name="post_status" value="<?php echo CAS_App::STATUS_ACTIVE; ?>" <?php checked( in_array($post->post_status,array(CAS_App::STATUS_ACTIVE,'auto-draft')),true); ?> />
-				<div class="cae-toggle-bar"></div>
-			</label>
-		</td>
-	</tr>
-	<tr>
 		<td scope="row"><?php _e("Activate",'content-aware-sidebars'); ?></td>
 		<td>
 			<span class="js-cas-activation">

@@ -531,7 +531,10 @@ class CAS_Sidebar_List_Table extends WP_List_Table {
 	public function column_status( $post ) {
 		switch ($post->post_status) {
 			case CAS_App::STATUS_ACTIVE:
-				echo '<strong>'.__( 'Active','content-aware-sidebars').'</strong>';
+				$text = __( 'Active','content-aware-sidebars');
+
+				echo '<span class="cas-status cas-status-'.$post->post_status.'" title="'.$text.'"></span>';
+				echo '<span class="screen-reader-text">'.$text.'</span>';
 				$deactivate_date = get_post_meta($post->ID, CAS_App::META_PREFIX.'deactivate_time',true);
 				if($deactivate_date) {
 					// translators: Sidebar status date format, see http://php.net/date
@@ -549,15 +552,18 @@ class CAS_Sidebar_List_Table extends WP_List_Table {
 				$time_diff = time() - $time;
 				$h_time = mysql2date( __( 'Y/m/d' ), $post->post_date );
 
+				echo '<span class="cas-status cas-status-'.$post->post_status.'"></span>';
 				if ( $time_diff > 0 ) {
 					echo '<strong class="error-message">' . __( 'Missed schedule' ) . '</strong>';
 				} else {
-					_e( 'Scheduled' );
+					echo '<span class="screen-reader-text">'.__( 'Scheduled').'</span>';
 				}
 				echo '<br /><abbr title="' . $t_time . '">' . $h_time . '</abbr>';
 				break;
 			default:
-				_e( 'Inactive','content-aware-sidebars');
+				$text = __( 'Inactive','content-aware-sidebars');
+				echo '<span class="cas-status cas-status-'.$post->post_status.'" title="'.$text.'"></span>';
+				echo '<span class="screen-reader-text">'.$text.'</span>';
 				break;
 		}
 	}
