@@ -11,7 +11,7 @@ if (!defined('ABSPATH')) {
 }
 
 if(!(defined('WP_UNINSTALL_PLUGIN') || defined('WP_FS__UNINSTALL_MODE'))) {
-	exit();
+	exit;
 }
 
 global $wpdb;

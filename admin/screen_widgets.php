@@ -200,8 +200,8 @@ class CAS_Admin_Screen_Widgets extends CAS_Admin {
 			'addNew'         => $sidebar->labels->add_new_item,
 			'collapse'       => __('Collapse','content-aware-sidebars'),
 			'expand'         => __('Expand','content-aware-sidebars'),
-			'filterSidebars' => __('Filter Sidebars','content-aware-sidebars'),
-			'filterWidgets'  => __('Filter Widgets', 'content-aware-sidebars'),
+			'filterSidebars' => __('Search Sidebars','content-aware-sidebars'),
+			'filterWidgets'  => __('Search Widgets', 'content-aware-sidebars'),
 			'enableConfirm'  => __('This sidebar is already scheduled to be activated. Do you want to activate it now?', 'content-aware-sidebars')
 		));
 	}

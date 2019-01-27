@@ -53,7 +53,7 @@ final class CAS_Sidebar_Overview extends CAS_Admin {
 
 		add_menu_page( 
 			$post_type_object->labels->name,
-			$post_type_object->labels->name,
+			__('Content Aware', 'content-aware-sidebars'),
 			$post_type_object->cap->edit_posts,
 			CAS_App::BASE_SCREEN,
 			array($this,'render_screen'),

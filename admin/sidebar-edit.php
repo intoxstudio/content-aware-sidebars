@@ -42,7 +42,7 @@ final class CAS_Sidebar_Edit extends CAS_Admin {
 		add_filter( 'get_delete_post_link',
 			array($this,'get_delete_post_link'), 10, 3 );
 
-		if (cas_fs()->is_not_paying() )  {
+		if (!cas_fs()->can_use_premium_code()) {
 			add_action('wp_ajax_cas_dismiss_review_notice',
 				array($this,'ajax_review_clicked'));
 			add_filter('wpca/modules/list',
@@ -72,14 +72,15 @@ final class CAS_Sidebar_Edit extends CAS_Admin {
 	 */
 	public function add_to_module_list($list) {
 		if(get_post_type() == CAS_App::TYPE_SIDEBAR) {
+			$pro_label = __('(Pro Feature)','content-aware-sidebars');
 			$list[] = array(
-				'name' =>__('URLs (Pro Feature)','content-aware-sidebars'),
+				'name' =>__('URLs','content-aware-sidebars').' '.$pro_label,
 				'placeholder' => '',
 				'default_value' => ''
 			);
 			if(function_exists('bp_is_active')) {
 				$list[] = array(
-					'name' =>__('BuddyPress Groups (Pro Feature)','content-aware-sidebars'),
+					'name' =>__('BuddyPress Groups','content-aware-sidebars').' '.$pro_label,
 					'placeholder' => '',
 					'default_value' => ''
 				);
@@ -879,7 +880,7 @@ final class CAS_Sidebar_Edit extends CAS_Admin {
 				echo '</ul>' . "\n";
 				break;
 			case 'multi' :
-				echo '<div><select style="width:250px;" class="js-cas-'.$id.'" multiple="multiple"  name="' . $id . '[]" data-value="'.implode(",", $current).'"></select></div>';
+				echo '<div><select style="width:100%;" class="js-cas-'.$id.'" multiple="multiple"  name="' . $id . '[]" data-value="'.implode(",", $current).'"></select></div>';
 				break;
 			case 'text' :
 			default :
@@ -899,16 +900,19 @@ final class CAS_Sidebar_Edit extends CAS_Admin {
 		//Verify nonce, check_admin_referer dies on false
 		//TODO: check other nonce instead
 		if(!(isset($_POST[WPCACore::NONCE]) 
-			&& wp_verify_nonce($_POST[WPCACore::NONCE], WPCACore::PREFIX.$post_id)))
+			&& wp_verify_nonce($_POST[WPCACore::NONCE], WPCACore::PREFIX.$post_id))) {
 			return;
+		}
 
 		// Check permissions
-		if (!current_user_can(CAS_App::CAPABILITY, $post_id))
+		if (!current_user_can(CAS_App::CAPABILITY, $post_id)) {
 			return;
+		}
 
 		// Check autosave
-		if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE)
+		if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) {
 			return;
+		}
 
 		// Save metadata
 		// todo: wrap this in metadata manager?
@@ -1089,7 +1093,7 @@ final class CAS_Sidebar_Edit extends CAS_Admin {
 			);
 		}
 
-		if(cas_fs()->is_not_paying()) {
+		if(!cas_fs()->can_use_premium_code()) {
 			$visibility[] = array(
 				'id' => 'pro',
 				'text' => __('User Roles available in Pro','content-aware-sidebars'),

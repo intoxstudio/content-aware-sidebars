@@ -104,7 +104,7 @@ abstract class CAS_Admin {
 		$this->prepare_screen();
 		add_action('admin_enqueue_scripts',
 			array($this,'add_scripts_styles'),11);
-		if ( cas_fs()->is_not_paying() ) {
+		if (!cas_fs()->can_use_premium_code()) {
 			add_thickbox();
 			//enqueue scripts here
 			add_action('admin_footer',

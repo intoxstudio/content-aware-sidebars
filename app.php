@@ -132,7 +132,7 @@ final class CAS_App {
 		if(is_admin()) {
 			$file = plugin_basename( plugin_dir_path( __FILE__ )).'/content-aware-sidebars.php';
 			add_filter('plugin_action_links_'.$file,
-				array($this,'plugin_action_links'), 10, 4 );
+				array($this,'plugin_action_links'), 99, 4 );
 		}
 	}
 
@@ -182,12 +182,12 @@ final class CAS_App {
 
 		$new_actions = array();
 
-		$new_actions['docs'] = '<a href="https://dev.institute/docs/content-aware-sidebars/?utm_source=plugin&utm_medium=referral&utm_content=plugin-list&utm_campaign=cas" target="_blank">'.__('Documentation & FAQ','content-aware-sidebars').'</a>';
-		$new_actions['support'] = '<a href="'.esc_url($cas_fs->contact_url()).'">'.__('Support','content-aware-sidebars').'</a>';
+		$new_actions['docs'] = '<a href="https://dev.institute/docs/content-aware-sidebars/?utm_source=plugin&utm_medium=referral&utm_content=plugin-list&utm_campaign=cas" target="_blank">'.__('Docs & FAQ','content-aware-sidebars').'</a>';
+		$new_actions['support'] = '<a href="'.esc_url($cas_fs->contact_url()).'">'.__('Premium Support','content-aware-sidebars').'</a>';
 
-		if ( $cas_fs->is_not_paying() )  {
-			$new_actions['support'] = '<a href="https://wordpress.org/support/plugin/content-aware-sidebars" target="_blank">'.__('Support','content-aware-sidebars').'</a>';
-			$new_actions['upgrade'] = '<a href="'.esc_url($cas_fs->get_upgrade_url()).'">'.__('Upgrade','content-aware-sidebars').'</a>';
+		if ( !$cas_fs->can_use_premium_code() )  {
+			$new_actions['support'] = '<a href="'.esc_url($cas_fs->get_upgrade_url()).'">'.__('Premium Support','content-aware-sidebars').'</a>';
+			unset($actions['upgrade']);
 		}
 		unset($actions['addons']);
 
