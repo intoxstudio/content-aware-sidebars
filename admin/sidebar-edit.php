@@ -1086,18 +1086,34 @@ final class CAS_Sidebar_Edit extends CAS_Admin {
 		wp_register_style('cas/admin/style', plugins_url('../css/style.css', __FILE__), array('flatpickr','wp-color-picker'), CAS_App::PLUGIN_VERSION);
 
 		$visibility = array();
-		foreach (CAS_App::instance()->_manager->metadata()->get('visibility')->get_input_list() as $k => $v) {
-			$visibility[] = array(
-				'id'   => $k,
-				'text' => $v
+		foreach (CAS_App::instance()->_manager->metadata()->get('visibility')->get_input_list() as $category_key => $category) {
+
+			//legacy format
+			if(!is_array($category)) {
+				$visibility[] = array(
+					'id'   => $category_key,
+					'text' => $category
+				);
+				continue;
+			}
+
+			$data = array(
+				'text' => $category['label'],
+				'children' => array()
 			);
+			foreach($category['options'] as $key => $value) {
+				$data['children'][] = array(
+					'id'   => $key,
+					'text' => $value
+				);
+			}
+			$visibility[] = $data;
 		}
 
 		if(!cas_fs()->can_use_premium_code()) {
 			$visibility[] = array(
-				'id' => 'pro',
-				'text' => __('User Roles available in Pro','content-aware-sidebars'),
-				'disabled' => true
+				'text' => __('Upgrade to Pro for more options','content-aware-sidebars'),
+				'children' => array()
 			);
 		}
 

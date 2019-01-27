@@ -109,11 +109,16 @@ final class CAS_Sidebar_Manager {
 		$this->metadata
 		->add(new WPCAMeta(
 			'visibility',
-			__('Visibility','content-aware-sidebars'),
+			__('User Visibility','content-aware-sidebars'),
 			array(),
 			'multi',
 			array(
-				-1 => __('Logged-in Users', 'content-aware-sidebars')
+				'general' => array(
+					'label' => 'General',
+					'options' => array(
+						-1 => __('Logged-in', 'content-aware-sidebars')
+					)
+				)
 			)
 		),'visibility')
 		->add(new WPCAMeta(
@@ -209,7 +214,7 @@ final class CAS_Sidebar_Manager {
 				'not_found'          => __('No sidebars found', 'content-aware-sidebars'),
 				'not_found_in_trash' => __('No sidebars found in Trash', 'content-aware-sidebars'),
 				//wp-content-aware-engine specific
-				'ca_title'           => __('Sidebar Conditions','content-aware-sidebars'),
+				'ca_title'           => __('When to display','content-aware-sidebars'),
 				'ca_not_found'       => __('No content. Please add at least one condition group to make the sidebar content aware.','content-aware-sidebars')
 			),
 			'capabilities'  => array(

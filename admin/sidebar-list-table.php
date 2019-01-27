@@ -22,6 +22,8 @@ class CAS_Sidebar_List_Table extends WP_List_Table {
 	 */
 	private $is_trash;
 
+	private $visibility = array();
+
 	public function __construct( $args = array() ) {
 		parent::__construct(array(
 			'singular' => 'sidebar',
@@ -446,7 +448,7 @@ class CAS_Sidebar_List_Table extends WP_List_Table {
 				case 3:
 					$return = $action->get_list_data($post->ID);
 					$host = $metadata->get('host')->get_list_data($post->ID);
-					$return .= ": " . ($host ? $host : '<span style="color:red;">' . __('Please update Host Sidebar', "content-aware-sidebars") . '</span>');
+					$return .= ": " . ($host ? $host : '<span style="color:red;">' . __('Target not found', "content-aware-sidebars") . '</span>');
 					if($action->get_data($post->ID) == 1) {
 						$pos = $metadata->get("merge_pos")->get_data($post->ID,true);
 						$pos_icon = $pos ? "up" : "down";
@@ -493,11 +495,24 @@ class CAS_Sidebar_List_Table extends WP_List_Table {
 		if($metadata) {
 			$data = $metadata->get_data($post->ID,true,false);
 			if($data) {
-				$list = $metadata->get_input_list();
-				foreach ($data as $k => $v) {
-					if(isset($list[$v])) {
-						$data[$k] = $list[$v];
+
+				if(!$this->visibility) {
+					$visibility = $metadata->get_input_list();
+					foreach ($visibility as $key => $options) {
+						if(is_array($options)) {
+							$this->visibility = $options['options'] + $this->visibility;
+						} else {
+							$this->visibility[$key] = $options;
+						}
 					}
+				}
+
+				$list = $this->visibility;
+				foreach ($data as $k => $v) {
+					if(!isset($list[$v])) {
+						continue;
+					}
+					$data[$k] = $list[$v];
 				}
 				echo implode(", ", $data);
 				return;
