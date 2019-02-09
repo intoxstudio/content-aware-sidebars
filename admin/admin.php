@@ -123,11 +123,12 @@ abstract class CAS_Admin {
 		__('Sync widgets across themes','content-aware-sidebars');
 		$features = array(
 			__('Extra Display Conditions','content-aware-sidebars'),
-			__('Insert Sidebars in Theme Hooks','content-aware-sidebars'),
-			__('Design Sidebars','content-aware-sidebars'),
-			__('Widget Revisions','content-aware-sidebars'),
-			__('Visibility for roles','content-aware-sidebars'),
-			__('Time Schedule','content-aware-sidebars'),
+			__('Insert Widget Areas in Theme Hooks','content-aware-sidebars'),
+			__('Widget Area Designer','content-aware-sidebars'),
+			__('Automatic Widgets Backup','content-aware-sidebars'),
+			//__('Visibility for Roles','content-aware-sidebars'),
+			__('Time & Weekday Schedule','content-aware-sidebars'),
+			__('Widget Cleaner','content-aware-sidebars'),
 			__('and so much more...','content-aware-sidebars')
 		);
 		echo '<a style="display:none;" class="thickbox js-cas-pro-popup" href="#TB_inline?width=600&amp;height=350&amp;inlineId=pro-popup-notice" title="'.__('Content Aware Sidebars Pro','content-aware-sidebars').'"></a>';

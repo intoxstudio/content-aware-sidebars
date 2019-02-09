@@ -16,6 +16,7 @@
 		},
 
 		upgradeNoticeHandler: function() {
+			$('.js-cas-pro-notice.button').attr('disabled', true);
 			$('.js-cas-pro-notice').on('click',function(e) {
 				e.preventDefault();
 				$('.js-cas-pro-read-more').attr('href',$(this).data('url'));

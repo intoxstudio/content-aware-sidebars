@@ -24,14 +24,17 @@ function cas_fs() {
 			'type'                => 'plugin',
 			'public_key'          => 'pk_75513325effa77f024565ef74c9d6',
 			'is_premium'          => true,
+			'premium_suffix'      => 'Pro',
+			'has_premium_version' => true,
 			'has_addons'          => false,
 			'has_paid_plans'      => true,
 			'has_affiliation'     => 'selected',
 			'menu'                => array(
 				'slug'           => 'wpcas',
 				'support'        => false,
-				'affiliation'    => true
-			),
+				'contact'        => false,
+				'affiliation'    => false
+			)
 		) );
 	}
 

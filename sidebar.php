@@ -186,6 +186,13 @@ final class CAS_Sidebar_Manager {
 			}
 			$this->metadata->get('host')->set_input_list($sidebar_list);
 
+			if(!cas_fs()->can_use_premium_code()) {
+				$actions = $this->metadata->get('handle');
+				$action_list = $actions->get_input_list();
+				$action_list['__infuse'] = __('Infuse', 'content-aware-sidebars').' '.__('(Pro Feature)','content-aware-sidebars');
+				$actions->set_input_list($action_list);
+			}
+
 			apply_filters('cas/metadata/populate',$this->metadata);
 		}
 		
@@ -214,8 +221,7 @@ final class CAS_Sidebar_Manager {
 				'not_found'          => __('No sidebars found', 'content-aware-sidebars'),
 				'not_found_in_trash' => __('No sidebars found in Trash', 'content-aware-sidebars'),
 				//wp-content-aware-engine specific
-				'ca_title'           => __('When to display','content-aware-sidebars'),
-				'ca_not_found'       => __('No content. Please add at least one condition group to make the sidebar content aware.','content-aware-sidebars')
+				'ca_title'           => __('Where to display','content-aware-sidebars')
 			),
 			'capabilities'  => array(
 				'edit_post'          => CAS_App::CAPABILITY,

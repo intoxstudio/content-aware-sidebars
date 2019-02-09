@@ -373,7 +373,7 @@ final class CAS_Sidebar_Edit extends CAS_Admin {
 
 		echo '<div class="wrap">';
 		echo '<'.$tag.'>';
-		echo '<a href="">'.$post_type_object->labels->all_items.'</a> >';
+		echo '<a href="'.admin_url('admin.php?page=wpcas').'">'.$post_type_object->labels->all_items.'</a> &raquo; ';
 		echo esc_html( $title );
 		if ( isset($_REQUEST['sidebar_id']) ) {
 			if ( current_user_can( 'edit_theme_options' ) ) {
@@ -432,7 +432,7 @@ final class CAS_Sidebar_Edit extends CAS_Admin {
 	public function render_section_nav($tabs) {
 		echo '<h2 class="nav-tab-wrapper js-cas-tabs hide-if-no-js " style="padding-bottom:0;">';
 		foreach ($tabs as $id => $label) {
-			echo '<a class="js-nav-link nav-tab" href="#top#section-'.$id.'">'.$label.'</a>';
+			echo '<a class="js-nav-link nav-tab nav-tab-section-'.$id.'" href="#top#section-'.$id.'">'.$label.'</a>';
 		}
 		echo '</h2>';
 	}
@@ -601,8 +601,9 @@ final class CAS_Sidebar_Edit extends CAS_Admin {
 		$this->_tour_manager->set_pointers(array(
 			array(
 				'content'   => sprintf( '<h3>%s</h3>%s',
-					__( 'Get Started in 3 Easy Steps', 'content-aware-sidebars' ),
-					wpautop(__( "You've just installed or updated Content Aware Sidebars. Awesome!\n\nYou can display sidebars on any page or in any context. If that is new to you, this 3 step interactive guide will show you just how easy it is.", 'content-aware-sidebars' ) )),
+					__( 'Get Started in 60 Seconds', 'content-aware-sidebars' ),
+					'<p>'.__( "Welcome to Content Aware Sidebars!", 'content-aware-sidebars').'</p>'.
+					'<p>'.__( "This interactive guide will show you just how easy it is to create a widget area and control where, how, and when to display it.", 'content-aware-sidebars').'</p>'),
 				'ref_id'    => '#titlediv',
 				'position'  => array(
 					'edge'      => 'top',
@@ -610,51 +611,84 @@ final class CAS_Sidebar_Edit extends CAS_Admin {
 				),
 				'pointerWidth' => 400,
 				'next' => __('Start Quick Tour','content-aware-sidebars'),
-				'dismiss' => __('I know how to use it','content-aware-sidebars')
+				'dismiss' => __('Skip - I know what to do','content-aware-sidebars')
 			),
 			array(
-				'content'   => sprintf( '<h3>%s</h3><p>%s</p>',
-					'1. '.__( 'Select Content Type', 'content-aware-sidebars' ),
-					wpautop(__( "With this dropdown you can select on what conditions the sidebar should be displayed.\n\nContent Aware Sidebars has built-in support for many types of content and even other plugins!\n\nSelect something to continue the tour. You can change it later.", 'content-aware-sidebars' ) )),
+				'content'   => sprintf( '<h3>%s</h3>%s',
+					'1/5 '.__( 'Where to display', 'content-aware-sidebars' ),
+					'<p>'.__( "Choose from the extensive Display Conditions with built-in support for other plugins. You will never be asked to enter widget logic PHP code!", 'content-aware-sidebars').'</p>'.
+					'<p>'.__( "Select anything to continue the tour. You can change it later.", 'content-aware-sidebars').'</p>'),
 				'ref_id'    => '.cas-group-new',
 				'position'  => array(
 					'edge'      => 'top',
 					'align'     => 'center'
 				),
 				'prev' => false,
-				'next' => '.js-wpca-add-or',
-				'nextEvent' => 'change'
+				'next' => '.js-wpca-add-or option, .js-wpca-add-quick',
+				'nextEvent' => 'click',
+				'dismiss' => false
 			),
 			array(
-				'content'   => sprintf( '<h3>%s</h3><p>%s</p>',
-					'2. '.__( 'Condition Groups', 'content-aware-sidebars' ),
-					wpautop(__( "Click on the input field and select the content you want.\n\nIf you can't find the right content in the list, type something to search.\n\n You can add several types of content to the same group, try e.g. \"All Posts\" and an Author to target all posts written by that author. Awesome!", 'content-aware-sidebars' ) )),
+				'content'   => sprintf( '<h3>%s</h3>%s',
+					'2/5 '.__( 'Where to display', 'content-aware-sidebars' ),
+					'<p>'.__( "Click on the input field and select the content you want - just type to search. Changes are saved automatically!", 'content-aware-sidebars').'</p>'.
+					'<p>'.__( "You can add multiple content types to the same group. Try e.g. \"All Posts\" and an Author to display on all posts written by that author.", 'content-aware-sidebars' ).'</p>'.
+					'<p>'.sprintf(__('<a href="%s" target="_blank">Learn more about AND vs OR conditions</a>', 'content-aware-sidebars' ), 'https://dev.institute/docs/content-aware-sidebars/getting-started/display-sidebar-advanced/').'</p>'),
 				'ref_id'    => '#cas-groups > ul',
 				'position'  => array(
 					'edge'      => 'top',
 					'align'     => 'center'
-				)
+				),
+				'dismiss' => __('Close Tour','content-aware-sidebars')
 			),
 			array(
-				'content'   => sprintf( '<h3>%s</h3><p>%s</p>',
-					'3. '.__( 'Options, options', 'content-aware-sidebars' ),
-					wpautop(__( "Should the sidebar merge with a target sidebar or replace it? Maybe you want to insert it in your content with a shortcode.\n\nDisplay the sidebar for everyone or make it visible only for logged-in users.\n\n You are in control.", 'content-aware-sidebars' ) )),
-				'ref_id'    => '#cas-options',
+				'content'   => sprintf( '<h3>%s</h3>%s',
+					'3/5 '.__( 'How to display', 'content-aware-sidebars' ),
+					'<p>'.__( "Replace any sidebar or widget area in your theme, or add widgets by merging with them.", 'content-aware-sidebars').'</p>'.
+					'<p>'.__( "You can also use the shortcode to display widgets inside a page or post.", 'content-aware-sidebars').'</p>'),
+				'ref_id'    => '.nav-tab-wrapper.js-cas-tabs .nav-tab-section-action',
+				'position'  => array(
+					'edge'      => 'left',
+					'align'     => 'left'
+				),
+				'dismiss' => __('Close Tour','content-aware-sidebars')
+			),
+			array(
+				'content'   => sprintf( '<h3>%s</h3>%s',
+					'4/5 '.__( 'When to activate', 'content-aware-sidebars' ),
+					'<p>'.__( "Create a widget area and manage its widgets today, then publish it when you are ready.", 'content-aware-sidebars').'</p>'.
+					'<p>'.__( "To schedule automatic activation or deactivation, just pick a date and time!", 'content-aware-sidebars').'</p>'.
+					'<p>'.__( "By default, new widget areas will be activated when created.", 'content-aware-sidebars').'</p>'),
+				'ref_id'    => '.nav-tab-wrapper.js-cas-tabs .nav-tab-section-schedule',
+				'position'  => array(
+					'edge'      => 'left',
+					'align'     => 'left'
+				),
+				'dismiss' => __('Close Tour','content-aware-sidebars')
+			),
+			array(
+				'content'   => sprintf( '<h3>%s</h3>%s',
+					'5/5 '.__( 'How to look', 'content-aware-sidebars' ),
+					'<p>'.__( "Personalize the styling without writing any code!", 'content-aware-sidebars').'</p>'.
+					'<p>'.__( "You can modify the HTML and CSS classes of the widget area itself, each widget, as well as widget titles.", 'content-aware-sidebars').'</p>'),
+				'ref_id'    => '.nav-tab-wrapper.js-cas-tabs .nav-tab-section-design',
+				'position'  => array(
+					'edge'      => 'left',
+					'align'     => 'left'
+				),
+				'next' => __('Finish Tour','content-aware-sidebars')
+			),
+			array(
+				'content'   => sprintf( '<h3>%s</h3>%s',
+					__( "That's it", 'content-aware-sidebars' ),
+					'<p>'.__( 'Hit the Create button to save your first custom widget area.', 'content-aware-sidebars').'</p>'.
+					'<p>'.__( 'If you need more help, check out the links below.', 'content-aware-sidebars').'</p>'),
+				'ref_id'    => '#submitdiv',
 				'position'  => array(
 					'edge'      => 'right',
 					'align'     => 'top'
-				)
-			),
-			array(
-				'content'   => sprintf( '<h3>%s</h3><p>%s</p>',
-					__( 'Help and Support', 'content-aware-sidebars' ),
-					wpautop(__( "That's it! Now you can start creating sidebars and display them on your own conditions.\n\nIf you need more help, click on the \"Help\" tab here.", 'content-aware-sidebars' ) )),
-				'ref_id'    => '#contextual-help-link-wrap',
-				'position'  => array(
-					'edge'      => 'top',
-					'align'     => 'right'
 				),
-				'dismiss' => __('Finish Tour','content-aware-sidebars')
+				'dismiss' => __('Close','content-aware-sidebars')
 			)
 		));
 		$this->_tour_manager->enqueue_scripts();
@@ -737,18 +771,14 @@ final class CAS_Sidebar_Edit extends CAS_Admin {
 
 		//Add meta boxes
 		foreach($boxes as $box) {
-			if(isset($box['view'])) {
-				$view = $template = WPCAView::make($path.'meta_box_'.$box['view'].'.php',array(
-					'post'=> $post
-				));
-				$callback = array($view,'render');
-			} else {
-				$callback = array($this, $box['callback']);
-			}
+			$view = WPCAView::make($path.'meta_box_'.$box['view'].'.php',array(
+				'post'=> $post
+			));
+		
 			add_meta_box(
 				$box['id'],
 				$box['title'],
-				$callback,
+				array($view,'render'),
 				CAS_App::BASE_SCREEN.'-edit',
 				$box['context'],
 				$box['priority']
@@ -778,25 +808,6 @@ final class CAS_Sidebar_Edit extends CAS_Admin {
 				'current_user' => wp_get_current_user()
 			))->render();
 		}
-	}
-
-	/**
-	 * Meta box for options
-	 * @return void
-	 */
-	public function meta_box_options($post) {
-		CAS_Sidebar_Edit::form_field('handle');
-		CAS_Sidebar_Edit::form_field('host',
-			'js-cas-action js-cas-action-0 js-cas-action-1 js-cas-action-3'
-		);
-
-		echo "<div class='js-cas-action js-cas-action-2'><strong>".__('Shortcode')."</strong><p><input type='text' readonly value='[ca-sidebar id=\"$post->ID\"]' /></p></div>";
-
-		do_action('cas/sidebar/options',$post);
-
-		CAS_Sidebar_Edit::form_field('merge_pos',
-			'js-cas-action js-cas-action-0 js-cas-action-1'
-		);
 	}
 
 	/**
@@ -833,7 +844,11 @@ final class CAS_Sidebar_Edit extends CAS_Admin {
 			case 'select' :
 				echo '<select style="width:250px;" name="' . $id . '" class="js-cas-'.$id.'">' . "\n";
 				foreach ($setting->get_input_list() as $key => $value) {
-					echo '<option value="' . $key . '"' . selected($current,$key,false) . '>' . $value . '</option>' . "\n";
+					$disabled = '';
+					if(is_string($key) && strpos($key, '__') === 0) {
+						$disabled = ' disabled="disabled"';
+					}
+					echo '<option value="' . $key . '"' . selected($current,$key,false) . $disabled . '>' . $value . '</option>' . "\n";
 				}
 				echo '</select>' . "\n";
 				break;
