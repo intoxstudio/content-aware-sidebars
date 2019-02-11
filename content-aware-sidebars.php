@@ -44,43 +44,43 @@ if ( function_exists( 'cas_fs' ) ) {
 	return;
 }
 
-if(class_exists('CAS_App')) {
-	return;
-}
+if(!class_exists('CAS_App')) {
 
-// Load dependencies
-$cas_dir_path = plugin_dir_path( __FILE__ );
+	// Load dependencies
+	$cas_dir_path = plugin_dir_path( __FILE__ );
 
-require($cas_dir_path.'lib/wp-content-aware-engine/bootstrap.php');
-require($cas_dir_path.'lib/wp-db-updater/wp-db-updater.php');
-require($cas_dir_path.'app.php');
+	require($cas_dir_path.'lib/wp-content-aware-engine/bootstrap.php');
+	require($cas_dir_path.'lib/wp-db-updater/wp-db-updater.php');
+	require($cas_dir_path.'app.php');
 
-if(is_admin()) {
-	require($cas_dir_path.'lib/wp-pointer-tour/wp-pointer-tour.php');
-	require($cas_dir_path.'admin/admin.php');
-	require($cas_dir_path.'admin/quick_select.php');
-	require($cas_dir_path.'admin/sidebar-list-table.php');
-	require($cas_dir_path.'admin/sidebar-overview.php');
-	require($cas_dir_path.'admin/sidebar-edit.php');
-	require($cas_dir_path.'admin/screen_widgets.php');
-}
+	if(is_admin()) {
+		require($cas_dir_path.'lib/wp-pointer-tour/wp-pointer-tour.php');
+		require($cas_dir_path.'admin/admin.php');
+		require($cas_dir_path.'admin/quick_select.php');
+		require($cas_dir_path.'admin/sidebar-list-table.php');
+		require($cas_dir_path.'admin/sidebar-overview.php');
+		require($cas_dir_path.'admin/sidebar-edit.php');
+		require($cas_dir_path.'admin/screen_widgets.php');
+	}
 
-require($cas_dir_path.'sidebar.php');
-require($cas_dir_path.'freemius.php');
-require($cas_dir_path.'admin/db-updates.php');
+	require($cas_dir_path.'sidebar.php');
+	require($cas_dir_path.'freemius.php');
+	require($cas_dir_path.'admin/db-updates.php');
 
-// Launch plugin
-CAS_App::instance();
+	// Launch plugin
+	CAS_App::instance();
 
-/**
- * Template wrapper to display content aware sidebars
- *
- * @since  3.0
- * @param  array|string  $args 
- * @return void 
- */
-function ca_display_sidebar($args = array()) {
-	CAS_App::instance()->manager()->manual_sidebar($args);
+	/**
+	 * Template wrapper to display content aware sidebars
+	 *
+	 * @since  3.0
+	 * @param  array|string  $args 
+	 * @return void 
+	 */
+	function ca_display_sidebar($args = array()) {
+		CAS_App::instance()->manager()->manual_sidebar($args);
+	}
+
 }
 
 //eol
