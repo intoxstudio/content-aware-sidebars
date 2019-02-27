@@ -142,7 +142,7 @@ final class CAS_Sidebar_Edit extends CAS_Admin {
 
 			if ( ! $post )
 				wp_die( __( 'The sidebar no longer exists.' ) );
-			if ( ! current_user_can( 'edit_post', $post_id ) )
+			if ( ! current_user_can( $post_type_object->cap->edit_post, $post_id ) )
 				wp_die( __( 'You are not allowed to edit this sidebar.' ) );
 			if ( 'trash' == $post->post_status )
 				wp_die( __( 'You cannot edit this sidebar because it is in the Trash. Please restore it and try again.' ) );
@@ -166,7 +166,7 @@ final class CAS_Sidebar_Edit extends CAS_Admin {
 		 */
 		} else {
 
-			if ( ! current_user_can( $post_type_object->cap->edit_posts ) || ! current_user_can( $post_type_object->cap->create_posts ) ) {
+			if ( ! (current_user_can( $post_type_object->cap->edit_posts ) || current_user_can( $post_type_object->cap->create_posts )) ) {
 				wp_die(
 					'<p>' . __( 'You are not allowed to create sidebars.', 'content-aware-sidebars' ) . '</p>',
 					403
