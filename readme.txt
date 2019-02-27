@@ -4,8 +4,8 @@ Donate link: #
 Tags: custom sidebars, sidebar, hide sidebar, display widgets, widget, bbpress, buddypress, sidebar manager
 Requires at least: 4.5
 Requires PHP: 5.6
-Tested up to: 5.0
-Stable tag: 3.8
+Tested up to: 5.1
+Stable tag: 3.8.1
 License: GPLv3
 
 Display custom sidebars and widgets on any post, page, category etc. Supports bbPress, BuddyPress, WooCommerce, WPML, and more.
@@ -163,6 +163,13 @@ Of course! Check out the links below:
 * Data from version 0.8 and below will not be updated during this process.
 
 == Changelog ==
+
+= 3.8.1 =
+
+* Added: wordpress 5.1 support
+* Updated: freemius sdk - security update
+* Updated: wp-content-aware-engine library
+* Fixed: minor bugfixes
 
 = 3.8 =
 
