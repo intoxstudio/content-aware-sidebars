@@ -7,17 +7,17 @@
  */
 
 if (!defined('ABSPATH')) {
-	exit;
+    exit;
 }
 
 $cas_db_updater = CAS_App::instance()->get_updater();
-$cas_db_updater->register_version_update('1.1','cas_update_to_11');
-$cas_db_updater->register_version_update('2.0','cas_update_to_20');
-$cas_db_updater->register_version_update('3.0','cas_update_to_30');
-$cas_db_updater->register_version_update('3.1','cas_update_to_31');
-$cas_db_updater->register_version_update('3.4','cas_update_to_34');
-$cas_db_updater->register_version_update('3.5.1','cas_update_to_351');
-$cas_db_updater->register_version_update('3.8','cas_update_to_38');
+$cas_db_updater->register_version_update('1.1', 'cas_update_to_11');
+$cas_db_updater->register_version_update('2.0', 'cas_update_to_20');
+$cas_db_updater->register_version_update('3.0', 'cas_update_to_30');
+$cas_db_updater->register_version_update('3.1', 'cas_update_to_31');
+$cas_db_updater->register_version_update('3.4', 'cas_update_to_34');
+$cas_db_updater->register_version_update('3.5.1', 'cas_update_to_351');
+$cas_db_updater->register_version_update('3.8', 'cas_update_to_38');
 
 /**
  * Update to version 3.8
@@ -25,12 +25,13 @@ $cas_db_updater->register_version_update('3.8','cas_update_to_38');
  * @since  3.8
  * @return boolean
  */
-function cas_update_to_38() {
-	global $wpdb;
+function cas_update_to_38()
+{
+    global $wpdb;
 
-	$time = time();
+    $time = time();
 
-	$wpdb->query("
+    $wpdb->query("
 		UPDATE $wpdb->usermeta AS t 
 		INNER JOIN $wpdb->usermeta AS r ON t.user_id = r.user_id 
 		SET t.meta_value = '{$time}' 
@@ -40,14 +41,14 @@ function cas_update_to_38() {
 		AND CAST(r.meta_value AS DECIMAL) <= 1522540800
 	");
 
-	$wpdb->query("
+    $wpdb->query("
 		DELETE FROM $wpdb->usermeta 
 		WHERE meta_key = '{$wpdb->prefix}_ca_cas_review' 
 		AND meta_value != '1' 
 		AND CAST(meta_value AS DECIMAL) <= 1522540800
 	");
 
-	return true;
+    return true;
 }
 
 /**
@@ -57,20 +58,21 @@ function cas_update_to_38() {
  * @since  3.5.1
  * @return boolean
  */
-function cas_update_to_351() {
-	global $wpdb;
+function cas_update_to_351()
+{
+    global $wpdb;
 
-	$group_ids = $wpdb->get_col("SELECT post_id FROM $wpdb->postmeta WHERE meta_value LIKE '_ca_sub_%'");
-	foreach ($group_ids as $group_id) {
-		add_post_meta($group_id,'_ca_autoselect',1,true);
-	}
+    $group_ids = $wpdb->get_col("SELECT post_id FROM $wpdb->postmeta WHERE meta_value LIKE '_ca_sub_%'");
+    foreach ($group_ids as $group_id) {
+        add_post_meta($group_id, '_ca_autoselect', 1, true);
+    }
 
-	$wpdb->query("
+    $wpdb->query("
 		DELETE FROM $wpdb->postmeta 
 		WHERE meta_value LIKE '_ca_sub_%'
 	");
 
-	return true;
+    return true;
 }
 
 
@@ -82,10 +84,11 @@ function cas_update_to_351() {
  * @since  3.4
  * @return boolean
  */
-function cas_update_to_34() {
-	global $wpdb;
+function cas_update_to_34()
+{
+    global $wpdb;
 
-	$wpdb->query("
+    $wpdb->query("
 		UPDATE $wpdb->posts AS c
 		INNER JOIN $wpdb->posts AS s ON s.ID = c.post_parent
 		INNER JOIN $wpdb->postmeta AS e ON e.post_id = s.ID
@@ -94,14 +97,14 @@ function cas_update_to_34() {
 		AND e.meta_key = '_ca_exposure'
 	");
 
-	$wpdb->query("
+    $wpdb->query("
 		DELETE FROM $wpdb->postmeta 
 		WHERE meta_key = '_ca_exposure'
 	");
 
-	wp_cache_flush();
+    wp_cache_flush();
 
-	return true;
+    return true;
 }
 
 /**
@@ -111,13 +114,14 @@ function cas_update_to_34() {
  * @since  3.1
  * @return boolean
  */
-function cas_update_to_31() {
-	global $wpdb;
-	$wpdb->query("
+function cas_update_to_31()
+{
+    global $wpdb;
+    $wpdb->query("
 		DELETE FROM $wpdb->usermeta
 		WHERE meta_key = '{$wpdb->prefix}_ca_cas_tour'
 	");
-	return true;
+    return true;
 }
 
 /**
@@ -129,180 +133,178 @@ function cas_update_to_31() {
  * @since  3.0
  * @return boolean
  */
-function cas_update_to_30() {
-	global $wpdb;
+function cas_update_to_30()
+{
+    global $wpdb;
 
-	// Get all sidebars
-	$posts = get_posts(array(
-		'numberposts'     => -1,
-		'post_type'       => 'sidebar',
-		'post_status'     => 'publish,pending,draft,future,private,trash'
-	));
+    // Get all sidebars
+    $posts = get_posts(array(
+        'numberposts'     => -1,
+        'post_type'       => 'sidebar',
+        'post_status'     => 'publish,pending,draft,future,private,trash'
+    ));
 
-	if(!empty($posts)) {
-
-		$wpdb->query("
+    if (!empty($posts)) {
+        $wpdb->query("
 			UPDATE $wpdb->posts
 			SET post_type = 'condition_group', post_status = 'publish'
 			WHERE post_type = 'sidebar_group'
 		");
 
-		$metadata = array(
-			'post_types'     => 'post_type',
-			'taxonomies'     => 'taxonomy',
-			'authors'        => 'author',
-			'page_templates' => 'page_template',
-			'static'         => 'static',
-			'bb_profile'     => 'bb_profile',
-			'bp_member'      => 'bp_member',
-			'date'           => 'date',
-			'language'       => 'language',
-			'exposure'       => 'exposure',
-			'handle'         => 'handle',
-			'host'           => 'host',
-			'merge-pos'      => 'merge_pos'
-		);
-		
-		foreach($metadata as $old_key => $new_key) {
-			$wpdb->query("
+        $metadata = array(
+            'post_types'     => 'post_type',
+            'taxonomies'     => 'taxonomy',
+            'authors'        => 'author',
+            'page_templates' => 'page_template',
+            'static'         => 'static',
+            'bb_profile'     => 'bb_profile',
+            'bp_member'      => 'bp_member',
+            'date'           => 'date',
+            'language'       => 'language',
+            'exposure'       => 'exposure',
+            'handle'         => 'handle',
+            'host'           => 'host',
+            'merge-pos'      => 'merge_pos'
+        );
+        
+        foreach ($metadata as $old_key => $new_key) {
+            $wpdb->query("
 				UPDATE $wpdb->postmeta 
 				SET meta_key = '_ca_".$new_key."' 
 				WHERE meta_key = '_cas_".$old_key."'
 			");
-			switch($new_key) {
-				case 'author':
-				case 'page_template':
-					$wpdb->query("
+            switch ($new_key) {
+                case 'author':
+                case 'page_template':
+                    $wpdb->query("
 						UPDATE $wpdb->postmeta 
 						SET meta_value = '".$new_key."' 
 						WHERE meta_key = '_ca_".$new_key."' 
 						AND meta_value = '".$old_key."'
 					");
-					break;
-				case 'post_type':
-				case 'taxonomy':
-					$wpdb->query("
+                    break;
+                case 'post_type':
+                case 'taxonomy':
+                    $wpdb->query("
 						UPDATE $wpdb->postmeta 
 						SET meta_value = REPLACE(meta_value, '_cas_sub_', '_ca_sub_') 
 						WHERE meta_key = '_ca_".$new_key."' 
 						AND meta_value LIKE '_cas_sub_%'
 					");
-					break;
-			}
-		}
+                    break;
+            }
+        }
 
-		// Clear cache for new meta keys
-		wp_cache_flush();
-	}
+        // Clear cache for new meta keys
+        wp_cache_flush();
+    }
 
-	return true;
+    return true;
 }
 
 /**
  * Version 1.1 -> 2.0
  * Moves module data for each sidebar to a condition group
- * 
+ *
  * @author Joachim Jensen <jv@intox.dk>
  * @since  2.0
  * @return boolean
  */
-function cas_update_to_20() {
-	global $wpdb;
+function cas_update_to_20()
+{
+    global $wpdb;
 
-	$module_keys = array(
-		'static',
-		'post_types',
-		'authors',
-		'page_templates',
-		'taxonomies',
-		'language',
-		'bb_profile',
-		'bp_member'
-	);
+    $module_keys = array(
+        'static',
+        'post_types',
+        'authors',
+        'page_templates',
+        'taxonomies',
+        'language',
+        'bb_profile',
+        'bp_member'
+    );
 
-	// Get all sidebars
-	$posts = get_posts(array(
-		'numberposts'     => -1,
-		'post_type'       => 'sidebar',
-		'post_status'     => 'publish,pending,draft,future,private,trash'
-	));
-	if(!empty($posts)) {
-		foreach($posts as $post) {
+    // Get all sidebars
+    $posts = get_posts(array(
+        'numberposts'     => -1,
+        'post_type'       => 'sidebar',
+        'post_status'     => 'publish,pending,draft,future,private,trash'
+    ));
+    if (!empty($posts)) {
+        foreach ($posts as $post) {
 
-			//Create new condition group
-			$group_id = wp_insert_post(array(
-				'post_status'           => $post->post_status, 
-				'post_type'             => 'sidebar_group',
-				'post_author'           => $post->post_author,
-				'post_parent'           => $post->ID,
-			));
+            //Create new condition group
+            $group_id = wp_insert_post(array(
+                'post_status'           => $post->post_status,
+                'post_type'             => 'sidebar_group',
+                'post_author'           => $post->post_author,
+                'post_parent'           => $post->ID,
+            ));
 
-			if($group_id) {
+            if ($group_id) {
 
-				//Move module data to condition group
-				$wpdb->query("
+                //Move module data to condition group
+                $wpdb->query("
 					UPDATE $wpdb->postmeta 
 					SET post_id = '".$group_id."' 
-					WHERE meta_key IN ('_cas_".implode("','_cas_",$module_keys)."')
+					WHERE meta_key IN ('_cas_".implode("','_cas_", $module_keys)."')
 					AND post_id = '".$post->ID."'
 				");
 
-				//Move term data to condition group
-				$wpdb->query("
+                //Move term data to condition group
+                $wpdb->query("
 					UPDATE $wpdb->term_relationships 
 					SET object_id = '".$group_id."' 
 					WHERE object_id = '".$post->ID."'
 				");
+            }
+        }
+    }
 
-			}
-
-		}		
-	}
-
-	return true;
-
+    return true;
 }
 
 /**
  * Version 0.8 -> 1.1
  * Serialized metadata gets their own rows
- * 
- * @return boolean 
+ *
+ * @return boolean
  */
-function cas_update_to_11() {
-	
-	$moduledata = array(
-		'static',
-		'post_types',
-		'authors',
-		'page_templates',
-		'taxonomies',
-		'language'
-	);
-	
-	// Get all sidebars
-	$posts = get_posts(array(
-		'numberposts'     => -1,
-		'post_type'       => 'sidebar',
-		'post_status'     => 'publish,pending,draft,future,private,trash'
-	));
-	
-	if(!empty($posts)) {
-		foreach($posts as $post) {
-			foreach($moduledata as $field) {
-				// Remove old serialized data and insert it again properly
-				$old = get_post_meta($post->ID, '_cas_'.$field, true);
-				if($old != '') {
-					delete_post_meta($post->ID, '_cas_'.$field, $old);
-					foreach((array)$old as $new_single) {
-						add_post_meta($post->ID, '_cas_'.$field, $new_single);
-					}
-				}
-			}
-		}
-	}
-	
-	return true;
+function cas_update_to_11()
+{
+    $moduledata = array(
+        'static',
+        'post_types',
+        'authors',
+        'page_templates',
+        'taxonomies',
+        'language'
+    );
+    
+    // Get all sidebars
+    $posts = get_posts(array(
+        'numberposts'     => -1,
+        'post_type'       => 'sidebar',
+        'post_status'     => 'publish,pending,draft,future,private,trash'
+    ));
+    
+    if (!empty($posts)) {
+        foreach ($posts as $post) {
+            foreach ($moduledata as $field) {
+                // Remove old serialized data and insert it again properly
+                $old = get_post_meta($post->ID, '_cas_'.$field, true);
+                if ($old != '') {
+                    delete_post_meta($post->ID, '_cas_'.$field, $old);
+                    foreach ((array)$old as $new_single) {
+                        add_post_meta($post->ID, '_cas_'.$field, $new_single);
+                    }
+                }
+            }
+        }
+    }
+    
+    return true;
 }
 
 //eol

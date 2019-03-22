@@ -7,11 +7,11 @@
  */
 
 if (!defined('ABSPATH')) {
-	exit;
+    exit;
 }
 
-if(!(defined('WP_UNINSTALL_PLUGIN') || defined('WP_FS__UNINSTALL_MODE'))) {
-	exit;
+if (!(defined('WP_UNINSTALL_PLUGIN') || defined('WP_FS__UNINSTALL_MODE'))) {
+    exit;
 }
 
 global $wpdb;
@@ -22,19 +22,19 @@ delete_option('cas_pro');
 
 //Remove all sidebars, groups, meta and terms.
 $sidebars = get_posts(array(
-	'post_type'      => 'sidebar',
-	'posts_per_page' => -1
+    'post_type'      => 'sidebar',
+    'posts_per_page' => -1
 ));
 foreach ($sidebars as $sidebar) {
-	$groups = get_posts(array(
-		'post_parent'    => $sidebar->ID,
-		'post_type'      => 'condition_group',
-		'posts_per_page' => -1
-	));
-	foreach($groups as $group) {
-		wp_delete_post($group->ID,true);
-	}
-	wp_delete_post($sidebar->ID,true);
+    $groups = get_posts(array(
+        'post_parent'    => $sidebar->ID,
+        'post_type'      => 'condition_group',
+        'posts_per_page' => -1
+    ));
+    foreach ($groups as $group) {
+        wp_delete_post($group->ID, true);
+    }
+    wp_delete_post($sidebar->ID, true);
 }
 
 // Remove user meta
