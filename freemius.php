@@ -68,10 +68,15 @@ function cas_fs_connect_message_update(
     );
 }
 
+function cas_fs_get_plugin_icon()
+{
+    return dirname(__FILE__).'/assets/img/icon.png';
+}
+
 $cas_fs->add_filter('connect_message_on_update', 'cas_fs_connect_message_update', 10, 6);
 $cas_fs->add_filter('connect_message', 'cas_fs_connect_message_update', 10, 6);
-
 $cas_fs->add_filter('show_affiliate_program_notice', '__return_false');
+$cas_fs->add_filter('plugin_icon', 'cas_fs_get_plugin_icon');
 
 function cas_fs_upgrade()
 {
