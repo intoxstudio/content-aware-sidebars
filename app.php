@@ -13,7 +13,7 @@ if (!defined('ABSPATH')) {
 final class CAS_App
 {
     const PLUGIN_VERSION_KEY   = 'cas_db_version';
-    const PLUGIN_VERSION       = '3.8.1';
+    const PLUGIN_VERSION       = '3.8.2';
 
     /**
      * Prefix for sidebar id

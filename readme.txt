@@ -4,8 +4,8 @@ Donate link: #
 Tags: custom sidebars, sidebar, hide sidebar, display widgets, widget, bbpress, buddypress, sidebar manager
 Requires at least: 4.5
 Requires PHP: 5.6
-Tested up to: 5.1
-Stable tag: 3.8.1
+Tested up to: 5.2
+Stable tag: 3.8.2
 License: GPLv3
 
 Display custom sidebars and widgets on any post, page, category etc. Supports bbPress, BuddyPress, WooCommerce, WPML, and more.
@@ -163,6 +163,20 @@ Of course! Check out the links below:
 * Data from version 0.8 and below will not be updated during this process.
 
 == Changelog ==
+
+[Follow development on GitHub](https://github.com/intoxstudio/content-aware-sidebars)
+
+####Highlights
+
+= 3.8.2 = 
+
+* Added: wordpress 5.2 support
+* Updated: freemius sdk
+* Updated: ui improvements
+
+**Pro Plan:**
+
+* Added: include hidden buddypress groups in user visibility
 
 = 3.8.1 =
 
