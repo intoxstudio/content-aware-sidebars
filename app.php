@@ -203,7 +203,7 @@ final class CAS_App
         $new_actions['docs'] = '<a href="https://dev.institute/docs/content-aware-sidebars/?utm_source=plugin&utm_medium=referral&utm_content=plugin-list&utm_campaign=cas" target="_blank">'.__('Docs & FAQ', 'content-aware-sidebars').'</a>';
         $new_actions['support'] = '<a href="'.esc_url($cas_fs->contact_url()).'">'.__('Premium Support', 'content-aware-sidebars').'</a>';
 
-        if (!$cas_fs->can_use_premium_code()) {
+        if (!$cas_fs->has_active_valid_license()) {
             $new_actions['support'] = '<a href="'.esc_url($cas_fs->get_upgrade_url()).'">'.__('Premium Support', 'content-aware-sidebars').'</a>';
             unset($actions['upgrade']);
         }

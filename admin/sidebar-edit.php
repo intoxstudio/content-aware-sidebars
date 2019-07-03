@@ -447,11 +447,8 @@ final class CAS_Sidebar_Edit extends CAS_Admin
         }
         echo $form_extra;
 
-        wp_nonce_field('meta-box-order', 'meta-box-order-nonce', false);
-        wp_nonce_field('closedpostboxes', 'closedpostboxesnonce', false);
-
         echo '<div id="poststuff">';
-        echo '<div id="post-body" class="metabox-holder columns-2">';
+        echo '<div id="post-body" class="cas-metabox-holder metabox-holder columns-2">';
         echo '<div id="post-body-content">';
         echo '<div id="titlediv">';
         echo '<div id="titlewrap">';
