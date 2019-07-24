@@ -128,7 +128,7 @@ final class CAS_Sidebar_Overview extends CAS_Admin
         echo '<div class="wrap">';
         echo '<'.$tag.'>';
         echo esc_html($post_type_object->labels->name);
-        
+
         if (current_user_can($post_type_object->cap->create_posts)) {
             echo ' <a href="' . esc_url(admin_url('admin.php?page=wpcas-edit')) . '" class="add-new-h2 page-title-action">' . esc_html($post_type_object->labels->add_new) . '</a>';
         }
@@ -183,7 +183,7 @@ final class CAS_Sidebar_Overview extends CAS_Admin
             if ('delete_all' == $doaction) {
                 global $wpdb;
                 $post_ids = $wpdb->get_col($wpdb->prepare("SELECT ID FROM $wpdb->posts WHERE post_type=%s AND post_status = %s", CAS_App::TYPE_SIDEBAR, 'trash'));
-                
+
                 $doaction = 'delete';
             } elseif (isset($_REQUEST['ids'])) {
                 $post_ids = explode(',', $_REQUEST['ids']);
@@ -246,7 +246,7 @@ final class CAS_Sidebar_Overview extends CAS_Admin
                         if (!wp_delete_post($post_id)) {
                             wp_die(__('Error in deleting.'));
                         }
-                        
+
                         $deleted++;
                     }
                     $sendback = add_query_arg('deleted', $deleted, $sendback);
@@ -257,7 +257,8 @@ final class CAS_Sidebar_Overview extends CAS_Admin
 
             wp_safe_redirect($sendback);
             exit;
-        } elseif (! empty($_REQUEST['_wp_http_referer'])) {
+        }
+        if (! empty($_REQUEST['_wp_http_referer'])) {
             wp_safe_redirect(remove_query_arg(array('_wp_http_referer', '_wpnonce'), wp_unslash($_SERVER['REQUEST_URI'])));
             exit;
         }
@@ -304,7 +305,7 @@ final class CAS_Sidebar_Overview extends CAS_Admin
 
                     if ($key == 'trashed' && isset($_REQUEST['ids'])) {
                         $ids = preg_replace('/[^0-9,]/', '', $_REQUEST['ids']);
-                        $messages[] = '<a href="' . esc_url(wp_nonce_url("admin.php?page=wpcas&doaction=undo&action=untrash&ids=$ids", "bulk-sidebars")) . '">' . __('Undo') . '</a>';
+                        $messages[] = '<a href="' . esc_url(wp_nonce_url("admin.php?page=wpcas&doaction=undo&action=untrash&ids=$ids", 'bulk-sidebars')) . '">' . __('Undo') . '</a>';
                     }
                 }
             }
@@ -328,5 +329,3 @@ final class CAS_Sidebar_Overview extends CAS_Admin
         wp_enqueue_style('cas/admin/style');
     }
 }
-
-//eol

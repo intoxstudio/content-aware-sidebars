@@ -62,6 +62,12 @@ final class CAS_Sidebar_Edit extends CAS_Admin
             3
         );
 
+        add_action(
+            'admin_enqueue_scripts',
+            array($this,'add_general_scripts_styles')
+        );
+
+
         if (!cas_fs()->can_use_premium_code()) {
             add_action(
                 'wp_ajax_cas_dismiss_review_notice',
@@ -71,10 +77,6 @@ final class CAS_Sidebar_Edit extends CAS_Admin
                 'wpca/modules/list',
                 array($this,'add_to_module_list'),
                 99
-            );
-            add_action(
-                'admin_enqueue_scripts',
-                array($this,'add_general_scripts_styles')
             );
             add_action(
                 'all_admin_notices',
@@ -1096,6 +1098,10 @@ final class CAS_Sidebar_Edit extends CAS_Admin
     {
         wp_register_script('cas/admin/general', plugins_url('../js/general.min.js', __FILE__), array('jquery'), CAS_App::PLUGIN_VERSION, true);
         wp_enqueue_script('cas/admin/general');
+        wp_localize_script('cas/admin/general', 'CAS', array(
+            'showPopups' => !cas_fs()->can_use_premium_code(),
+            'enableConfirm'  => __('This sidebar is already scheduled to be activated. Do you want to activate it now?', 'content-aware-sidebars')
+        ));
     }
 
     /**

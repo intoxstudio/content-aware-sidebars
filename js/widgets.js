@@ -24,7 +24,6 @@
 			this.openSidebarByURL();
 			this.addSidebarToolbar();
 			this.addWidgetSearch();
-			this.toggleSidebarStatus();
 			this.enhancedWidgetManager();
 
 		},
@@ -67,47 +66,13 @@
 		},
 
 		/**
-		 * Call backend on 1-click activation
-		 *
-		 * @since  3.3
-		 * @return {void}
-		 */
-		toggleSidebarStatus: function() {
-			$(".widget-liquid-right").on('change','.sidebar-status-input',function(e) {
-				var $this = $(this),
-					status = $this.is(':checked');
-
-				if(!($this.hasClass('sidebar-status-future') && !confirm(CASAdmin.enableConfirm))) {
-					$.post(
-					    ajaxurl, 
-					    {
-							'action'    : 'cas_sidebar_status',
-							'sidebar_id': $this.val(),
-							'status'    : status
-					    }, 
-					    function(response){
-					    	if(response.success) {
-					    		//change title attr
-					    		$this.next().attr('title',response.data.title);
-					    		$this.removeClass('sidebar-status-future');
-					    	} else {
-					    		$this.attr('checked',!status);
-					    	}
-					    }
-					);
-				} else {
-					$this.attr('checked',!status);
-				}
-			});
-		},
-		/**
 		 * Add search input for widgets
 		 *
 		 * @since 3.0
 		 */
 		addWidgetSearch: function() {
 			var $widgets = $(".widget",this.$widgetContainer).get().reverse();
-			$(".sidebar-description",this.$widgetContainer).prepend('<input type="search" class="js-cas-widget-filter cas-filter-widget" placeholder="'+CASAdmin.filterWidgets+'...">');
+			$(".sidebar-description",this.$widgetContainer).prepend('<input type="search" class="js-cas-widget-filter cas-filter" placeholder="'+CASAdmin.filterWidgets+'...">');
 			this.searchWidgetListener($widgets);
 		},
 		/**
@@ -151,9 +116,10 @@
 
 			var box = '<div class="wp-filter cas-filter-sidebar">'+
 			'<a href="admin.php?page=wpcas-edit" class="button button-primary">'+CASAdmin.addNew+'</a>'+
-			'<input type="search" class="js-cas-filter" placeholder="'+CASAdmin.filterSidebars+'...">'+
-			'<a href="#" title="'+CASAdmin.collapse+'" class="js-sidebars-toggle sidebars-toggle" data-toggle="0"><span class="dashicons dashicons-arrow-up-alt2"></span></a>'+
-			'<a href="#" title="'+CASAdmin.expand+'" class="js-sidebars-toggle sidebars-toggle" data-toggle="1"><span class="dashicons dashicons-arrow-down-alt2"></span></a>'+
+			'<div class="sidebars-toggle"><a href="#" title="'+CASAdmin.collapse+'" class="js-sidebars-toggle" data-toggle="0"><span class="dashicons dashicons-arrow-up-alt2"></span></a>'+
+			'<a href="#" title="'+CASAdmin.expand+'" class="js-sidebars-toggle" data-toggle="1"><span class="dashicons dashicons-arrow-down-alt2"></span></a>'+
+			'</div>'+
+			'<input type="search" class="js-cas-filter cas-filter" placeholder="' + CASAdmin.filterSidebars + '...">' +
 			'</div>';
 
 			this.$sidebarContainer.prepend(box);
@@ -172,7 +138,7 @@
 				$sidebars = this.$sidebarContainer.find('.widgets-holder-wrap');
 			$('body').on('click','.js-sidebars-toggle', function(e) {
 				e.preventDefault();
-				
+
 				var open = !!$(this).data("toggle");
 
 				$sidebars
@@ -182,7 +148,7 @@
 				}
 
 				$document.triggerHandler('wp-pin-menu');
-				
+
 				//$sidebars.click();
 			})
 		},

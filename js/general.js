@@ -11,8 +11,51 @@
 	var cas_general = {
 
 		init: function() {
-			this.upgradeNoticeHandler();
-			this.reviewNoticeHandler();
+			this.toggleSidebarStatus();
+
+			if(CAS.showPopups) {
+				this.upgradeNoticeHandler();
+				this.reviewNoticeHandler();
+			}
+		},
+
+		/**
+		 * Call backend on 1-click activation
+		 *
+		 * @since  3.3
+		 * @return {void}
+		 */
+		toggleSidebarStatus: function () {
+			$(".sidebar-status").on('change', 'input.sidebar-status-input', function (e) {
+				var $this = $(this),
+					status = $this.is(':checked');
+
+				if ($this.hasClass('sidebar-status-future') && !confirm(CAS.enableConfirm)) {
+					$this.attr('checked', !status);
+					e.preventDefault();
+					return false;;
+				}
+
+				$.post(
+					ajaxurl,
+					{
+						'action': 'cas_sidebar_status',
+						'sidebar_id': $this.val(),
+						'token': $this.attr('data-nonce'),
+						'status': status
+					},
+					function (response) {
+						if (response.success) {
+							//change title attr
+							$this.next().attr('title', response.data.title);
+							$this.removeClass('sidebar-status-future');
+						} else {
+							alert(response.data);
+							$this.attr('checked', !status);
+						}
+					}
+				);
+			});
 		},
 
 		upgradeNoticeHandler: function() {

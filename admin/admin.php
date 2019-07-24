@@ -11,6 +11,8 @@ defined('ABSPATH') || exit;
 abstract class CAS_Admin
 {
 
+    const NONCE_PREFIX_1CLICK = '1click';
+
     /**
      * Screen identifier
      * @var string

@@ -453,7 +453,7 @@ class CAS_Sidebar_List_Table extends WP_List_Table
     {
         $metadata = CAS_App::instance()->manager()->metadata();
         $action = $metadata->get("handle");
-        
+
         if ($action) {
             switch ($action->get_data($post->ID)) {
                 case 0:
@@ -539,47 +539,52 @@ class CAS_Sidebar_List_Table extends WP_List_Table
      * Render sidebar status column
      *
      * @since  3.4
-     * @param  WP_Post  $post
+     * @param  WP_Post  $sidebar
      * @return void
      */
-    public function column_status($post)
+    public function column_status($sidebar)
     {
-        switch ($post->post_status) {
+        $icon = '';
+        switch ($sidebar->post_status) {
             case CAS_App::STATUS_ACTIVE:
-                $text = __('Active', 'content-aware-sidebars');
-
-                echo '<span class="cas-status cas-status-'.$post->post_status.'" title="'.$text.'"></span>';
-                echo '<span class="screen-reader-text">'.$text.'</span>';
-                $deactivate_date = get_post_meta($post->ID, CAS_App::META_PREFIX.'deactivate_time', true);
+                $status = __('Active', 'content-aware-sidebars');
+                $deactivate_date = get_post_meta($sidebar->ID, CAS_App::META_PREFIX.'deactivate_time', true);
                 if ($deactivate_date) {
-                    // translators: Sidebar status date format, see http://php.net/date
-                    $h_time = mysql2date(__('Y/m/d'), $deactivate_date);
-                    // translators: Sidebar status date and time format, see http://php.net/date
-                    $t_time = mysql2date(__('Y/m/d g:i:s a'), $deactivate_date);
-                    echo '<br />'.sprintf(__('Until %s', 'content-aware-sidebars'), '<abbr title="' . $t_time . '">' . $h_time . '</abbr>');
+                    $t_time = mysql2date(get_option('date_format'), $deactivate_date);
+
+                    $icon = sprintf(__('Until %s', 'content-aware-sidebars'), $t_time);
                 }
+
                 break;
             case CAS_App::STATUS_SCHEDULED:
+                $status = __('Scheduled');
 
-                $t_time = get_the_time(__('Y/m/d g:i:s a'), $post);
-                $time = get_post_time('G', true, $post);
+                $t_time = get_post_time(get_option('date_format'), false, $sidebar, true);
+                $time_diff = time() - get_post_time('G', true, $sidebar);
 
-                $time_diff = time() - $time;
-                $h_time = mysql2date(__('Y/m/d'), $post->post_date);
+                $icon = sprintf(__('Scheduled for %s', 'content-aware-sidebars'), $t_time);
 
-                echo '<span class="cas-status cas-status-'.$post->post_status.'"></span>';
                 if ($time_diff > 0) {
-                    echo '<strong class="error-message">' . __('Missed schedule') . '</strong>';
-                } else {
-                    echo '<span class="screen-reader-text">'.__('Scheduled').'</span>';
+                    $icon .= ' ' . __('Missed schedule') . '!';
                 }
-                echo '<br /><abbr title="' . $t_time . '">' . $h_time . '</abbr>';
+
                 break;
             default:
-                $text = __('Inactive', 'content-aware-sidebars');
-                echo '<span class="cas-status cas-status-'.$post->post_status.'" title="'.$text.'"></span>';
-                echo '<span class="screen-reader-text">'.$text.'</span>';
-                break;
+                $status = __('Inactive', 'content-aware-sidebars');
+        }
+
+        echo '<div class="sidebar-status">';
+        echo '<input type="checkbox" class="sidebar-status-input sidebar-status-'.$sidebar->post_status.'"
+            id="cas-status-'.$sidebar->ID.'" data-nonce="'.wp_create_nonce(CAS_Admin::NONCE_PREFIX_1CLICK.$sidebar->ID).'"
+            value="'.$sidebar->ID.'" '.checked($sidebar->post_status, CAS_App::STATUS_ACTIVE, false).'>';
+        echo '<label title="'.$status.'" class="sidebar-status-label" for="cas-status-'.$sidebar->ID.'">';
+        echo '</label>';
+        echo '</div>';
+
+        if($icon) {
+            echo '<span class="dashicons dashicons-clock" title="'.$icon.'">';
+            echo '</span>';
+            echo '<span class="screen-reader-text">'.$icon.'</span>';
         }
     }
 
