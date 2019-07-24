@@ -1,14 +1,12 @@
 <?php
 /**
  * @package Content Aware Sidebars
- * @author Joachim Jensen <jv@intox.dk>
+ * @author Joachim Jensen <joachim@dev.institute>
  * @license GPLv3
- * @copyright 2018 by Joachim Jensen
+ * @copyright 2019 by Joachim Jensen
  */
 
-if (!defined('ABSPATH')) {
-    exit;
-}
+defined('ABSPATH') || exit;
 
 class CAS_Quick_Select
 {
@@ -100,7 +98,7 @@ class CAS_Quick_Select
             && wp_verify_nonce($_POST[self::NONCE], self::NONCE.$post_id))) {
             return;
         }
-        
+
         // Check post permissions
         if (!current_user_can('edit_post', $post_id)) {
             return;
@@ -129,7 +127,7 @@ class CAS_Quick_Select
                 //Discard empty
                 } elseif ($sidebar_id) {
                     $condition_group_id = 0;
-                    
+
                     //New sidebar
                     //check permissions here
                     if ($sidebar_id[0] == '_') {
@@ -389,5 +387,3 @@ class CAS_Post_Type_Sidebar
         );
     }
 }
-
-//eol

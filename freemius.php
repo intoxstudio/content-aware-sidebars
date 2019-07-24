@@ -1,14 +1,12 @@
 <?php
 /**
  * @package Content Aware Sidebars
- * @author Joachim Jensen <jv@intox.dk>
+ * @author Joachim Jensen <joachim@dev.institute>
  * @license GPLv3
- * @copyright 2018 by Joachim Jensen
+ * @copyright 2019 by Joachim Jensen
  */
 
-if (!defined('ABSPATH')) {
-    exit;
-}
+defined('ABSPATH') || exit;
 
 // Create a helper function for easy SDK access.
 function cas_fs()
@@ -83,7 +81,7 @@ function cas_fs_upgrade()
     global $cas_fs;
     $flag = 'cas_pro';
     $upgrade_flag = (int)$cas_fs->can_use_premium_code();
-    
+
     if ($upgrade_flag != (int)get_option($flag, 0)) {
         if (!$upgrade_flag) {
             //downgrade
@@ -120,5 +118,3 @@ if ($cas_fs->is__premium_only()) {
         require(plugin_dir_path(__FILE__).'/lib/content-aware-premium/app.php');
     }
 }
-
-//eol

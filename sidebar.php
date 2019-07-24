@@ -1,14 +1,12 @@
 <?php
 /**
  * @package Content Aware Sidebars
- * @author Joachim Jensen <jv@intox.dk>
+ * @author Joachim Jensen <joachim@dev.institute>
  * @license GPLv3
- * @copyright 2018 by Joachim Jensen
+ * @copyright 2019 by Joachim Jensen
  */
 
-if (!defined('ABSPATH')) {
-    exit;
-}
+defined('ABSPATH') || exit;
 
 final class CAS_Sidebar_Manager
 {
@@ -240,7 +238,7 @@ final class CAS_Sidebar_Manager
      */
     public function init_sidebar_type()
     {
-        
+
         // Register the sidebar type
         register_post_type(CAS_App::TYPE_SIDEBAR, array(
             'labels'        => array(
@@ -318,7 +316,7 @@ final class CAS_Sidebar_Manager
             ));
         }
     }
-    
+
     /**
      * Set styles of created sidebars
      *
@@ -501,7 +499,7 @@ final class CAS_Sidebar_Manager
         $a = shortcode_atts(array(
             'id' => 0,
         ), $atts);
-        
+
         $id = CAS_App::SIDEBAR_PREFIX.esc_attr($a['id']);
 
         //if sidebar is in replacement map, shortcode is called wrongly
@@ -669,6 +667,7 @@ final class CAS_Sidebar_Manager
         return $retval;
     }
 
+
     /**
      * Runs is_active_sidebar for sidebars
      * Widget management in Theme Customizer
@@ -691,5 +690,3 @@ final class CAS_Sidebar_Manager
         }
     }
 }
-
-//eol

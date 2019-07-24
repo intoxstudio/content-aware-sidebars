@@ -1,9 +1,9 @@
 <?php
 /**
  * @package Content Aware Sidebars
- * @author Joachim Jensen <jv@intox.dk>
+ * @author Joachim Jensen <joachim@dev.institute>
  * @license GPLv3
- * @copyright 2018 by Joachim Jensen
+ * @copyright 2019 by Joachim Jensen
  */
 /*
 Plugin Name: Content Aware Sidebars
@@ -35,9 +35,7 @@ License: GPLv3
 * @fs_premium_only /lib/content-aware-premium/
 */
 
-if (!defined('ABSPATH')) {
-    exit;
-}
+defined('ABSPATH') || exit;
 
 if (function_exists('cas_fs')) {
     cas_fs()->set_basename(true, __FILE__);
@@ -82,5 +80,3 @@ if (!class_exists('CAS_App')) {
         CAS_App::instance()->manager()->manual_sidebar($args);
     }
 }
-
-//eol

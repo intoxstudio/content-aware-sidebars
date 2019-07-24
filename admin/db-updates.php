@@ -1,14 +1,12 @@
 <?php
 /**
  * @package Content Aware Sidebars
- * @author Joachim Jensen <jv@intox.dk>
+ * @author Joachim Jensen <joachim@dev.institute>
  * @license GPLv3
- * @copyright 2018 by Joachim Jensen
+ * @copyright 2019 by Joachim Jensen
  */
 
-if (!defined('ABSPATH')) {
-    exit;
-}
+defined('ABSPATH') || exit;
 
 $cas_db_updater = CAS_App::instance()->get_updater();
 $cas_db_updater->register_version_update('1.1', 'cas_update_to_11');
@@ -303,8 +301,6 @@ function cas_update_to_11()
             }
         }
     }
-    
+
     return true;
 }
-
-//eol
