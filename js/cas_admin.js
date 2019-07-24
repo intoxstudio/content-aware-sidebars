@@ -32,11 +32,13 @@
 			flatpickr.l10ns.default.months = CASAdmin.months;
 			flatpickr.l10ns.default.firstDayOfWeek = CASAdmin.weekStart;
 
+			var showFulltime = CASAdmin.timeFormat.toLowerCase().indexOf('a') === -1;
+
 			var activate = flatpickr('.js-cas-activation',{
 				wrap: true,
 				clickOpens: true,
 				enableTime: true,
-				time_24hr: true,
+				time_24hr: showFulltime,
 				allowInput: true,
 				enableSeconds: true,
 				//altInput: true,
@@ -57,7 +59,7 @@
 				wrap: true,
 				clickOpens: true,
 				enableTime: true,
-				time_24hr: true,
+				time_24hr: showFulltime,
 				allowInput: true,
 				enableSeconds: true,
 				//altInput: true,

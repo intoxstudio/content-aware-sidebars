@@ -1121,11 +1121,12 @@ final class CAS_Sidebar_Edit extends CAS_Admin
             }
         }
 
-        wp_enqueue_script('post');
+        wp_enqueue_script('wp-a11y');
 
         if (wp_is_mobile()) {
             wp_enqueue_script('jquery-touch-punch');
         }
+
 
         // Add the local autosave notice HTML
         //add_action( 'admin_footer', '_local_storage_notice' );
@@ -1135,7 +1136,7 @@ final class CAS_Sidebar_Edit extends CAS_Admin
         wp_register_script('flatpickr', plugins_url('../js/flatpickr.min.js', __FILE__), array(), '3.0.6', false);
 
         wp_register_script('cas/admin/edit', plugins_url('../js/cas_admin.min.js', __FILE__), array('jquery','flatpickr','wp-color-picker'), CAS_App::PLUGIN_VERSION, false);
-        
+
         wp_register_style('flatpickr', plugins_url('../css/flatpickr.dark.min.css', __FILE__), array(), '3.0.6');
         wp_register_style('cas/admin/style', plugins_url('../css/style.css', __FILE__), array('flatpickr','wp-color-picker'), CAS_App::PLUGIN_VERSION);
 
@@ -1186,6 +1187,7 @@ final class CAS_Sidebar_Edit extends CAS_Admin
                 'longhand' => array_values($wp_locale->month)
             ),
             'weekStart' => get_option('start_of_week', 0),
+            'timeFormat' => get_option('time_format'),
             'dateFormat' => __('F j, Y') //default long date
         ));
 
@@ -1197,5 +1199,3 @@ final class CAS_Sidebar_Edit extends CAS_Admin
         wp_register_style('badgeos-select2-css', '');
     }
 }
-
-//eol
