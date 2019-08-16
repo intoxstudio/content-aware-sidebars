@@ -51,8 +51,8 @@ class CAS_Sidebar_List_Table extends WP_List_Table
         $current_page = $this->get_pagenum();
 
         $args = array(
-            'post_type'              => CAS_App::TYPE_SIDEBAR,
-            'post_status'            => array(
+            'post_type'   => CAS_App::TYPE_SIDEBAR,
+            'post_status' => array(
                 CAS_App::STATUS_ACTIVE,
                 CAS_App::STATUS_INACTIVE,
                 CAS_App::STATUS_SCHEDULED
@@ -208,7 +208,7 @@ class CAS_Sidebar_List_Table extends WP_List_Table
 
         //no way to change post status per post type, replace here instead
         $label_replacement = array(
-            CAS_App::STATUS_ACTIVE => _n_noop('Active <span class="count">(%s)</span>', 'Active <span class="count">(%s)</span>', 'content-aware-sidebars'),
+            CAS_App::STATUS_ACTIVE   => _n_noop('Active <span class="count">(%s)</span>', 'Active <span class="count">(%s)</span>', 'content-aware-sidebars'),
             CAS_App::STATUS_INACTIVE => _n_noop('Inactive <span class="count">(%s)</span>', 'Inactive <span class="count">(%s)</span>', 'content-aware-sidebars')
         );
 
@@ -316,9 +316,9 @@ class CAS_Sidebar_List_Table extends WP_List_Table
         $posts_columns = array();
         $posts_columns['cb'] = '<input type="checkbox" />';
         $posts_columns['title'] = _x('Title', 'column name');
-        $posts_columns['handle'] = _x('Action', 'option', "content-aware-sidebars");
+        $posts_columns['handler'] = _x('Action', 'option', 'content-aware-sidebars');
         $posts_columns['widgets'] = __('Widgets');
-        $posts_columns['visibility'] = __('Visibility', "content-aware-sidebars");
+        $posts_columns['visibility'] = __('Visibility', 'content-aware-sidebars');
         $posts_columns['status'] = __('Status');
 
         return apply_filters('cas/admin/columns', $posts_columns);
@@ -333,9 +333,9 @@ class CAS_Sidebar_List_Table extends WP_List_Table
     public function get_sortable_columns()
     {
         $columns = array(
-            'title'    => array('title', true),
-            'status'   => 'post_status',
-            'handle'   => 'meta_handle'
+            'title'   => array('title', true),
+            'status'  => 'post_status',
+            'handler' => 'meta_handle'
         );
         return $columns;
     }
@@ -373,11 +373,13 @@ class CAS_Sidebar_List_Table extends WP_List_Table
     public function column_cb($post)
     {
         if (current_user_can('edit_post', $post->ID)): ?>
-			<label class="screen-reader-text" for="cb-select-<?php echo $post->ID; ?>"><?php
+<label class="screen-reader-text"
+    for="cb-select-<?php echo $post->ID; ?>"><?php
                 printf(__('Select %s'), _draft_or_post_title($post)); ?></label>
-			<input id="cb-select-<?php echo $post->ID; ?>" type="checkbox" name="post[]" value="<?php echo $post->ID; ?>" />
-			<div class="locked-indicator"></div>
-		<?php endif;
+<input id="cb-select-<?php echo $post->ID; ?>" type="checkbox"
+    name="post[]" value="<?php echo $post->ID; ?>" />
+<div class="locked-indicator"></div>
+<?php endif;
     }
 
     /**
@@ -406,7 +408,7 @@ class CAS_Sidebar_List_Table extends WP_List_Table
      */
     public function column_title($post)
     {
-        echo "<strong>";
+        echo '<strong>';
 
         $can_edit_post = current_user_can('edit_post', $post->ID);
         $title = _draft_or_post_title($post);
@@ -449,10 +451,10 @@ class CAS_Sidebar_List_Table extends WP_List_Table
      * @param  WP_Post  $post
      * @return void
      */
-    public function column_handle($post)
+    public function column_handler($post)
     {
         $metadata = CAS_App::instance()->manager()->metadata();
-        $action = $metadata->get("handle");
+        $action = $metadata->get('handle');
 
         if ($action) {
             switch ($action->get_data($post->ID)) {
@@ -461,13 +463,13 @@ class CAS_Sidebar_List_Table extends WP_List_Table
                 case 3:
                     $return = $action->get_list_data($post->ID);
                     $host = $metadata->get('host')->get_list_data($post->ID);
-                    $return .= ": " . ($host ? $host : '<span style="color:red;">' . __('Target not found', "content-aware-sidebars") . '</span>');
+                    $return .= ': ' . ($host ? $host : '<span style="color:red;">' . __('Target not found', 'content-aware-sidebars') . '</span>');
                     if ($action->get_data($post->ID) == 1) {
-                        $pos = $metadata->get("merge_pos")->get_data($post->ID, true);
-                        $pos_icon = $pos ? "up" : "down";
+                        $pos = $metadata->get('merge_pos')->get_data($post->ID, true);
+                        $pos_icon = $pos ? 'up' : 'down';
                         $pos_title = array(
-                            __("Add sidebar at the top during merge", "content-aware-sidebars"),
-                            __("Add sidebar at the bottom during merge", "content-aware-sidebars")
+                            __('Add sidebar at the top during merge', 'content-aware-sidebars'),
+                            __('Add sidebar at the bottom during merge', 'content-aware-sidebars')
                         );
                         $return .= '<span title="'.$pos_title[$pos].'" class="dashicons dashicons-arrow-'.$pos_icon.'-alt"></span>';
                     }
@@ -493,7 +495,7 @@ class CAS_Sidebar_List_Table extends WP_List_Table
     public function column_widgets($post)
     {
         $sidebars_widgets = wp_get_sidebars_widgets();
-        $count =  isset($sidebars_widgets[CAS_App::SIDEBAR_PREFIX . $post->ID]) ? count($sidebars_widgets[CAS_App::SIDEBAR_PREFIX . $post->ID]) : 0;
+        $count = isset($sidebars_widgets[CAS_App::SIDEBAR_PREFIX . $post->ID]) ? count($sidebars_widgets[CAS_App::SIDEBAR_PREFIX . $post->ID]) : 0;
         echo '<a href="'.admin_url('widgets.php#'.CAS_App::SIDEBAR_PREFIX.$post->ID).'" title="' . esc_attr__('Manage Widgets', 'content-aware-sidebars') . '">' .$count . '</a>';
     }
 
@@ -506,7 +508,7 @@ class CAS_Sidebar_List_Table extends WP_List_Table
      */
     public function column_visibility($post)
     {
-        $metadata = CAS_App::instance()->manager()->metadata()->get("visibility");
+        $metadata = CAS_App::instance()->manager()->metadata()->get('visibility');
         if ($metadata) {
             $data = $metadata->get_data($post->ID, true, false);
             if ($data) {
@@ -528,11 +530,11 @@ class CAS_Sidebar_List_Table extends WP_List_Table
                     }
                     $data[$k] = $list[$v];
                 }
-                echo implode(", ", $data);
+                echo implode(', ', $data);
                 return;
             }
         }
-        _e("All Users", "content-aware-sidebars");
+        _e('All Users', 'content-aware-sidebars');
     }
 
     /**
@@ -581,7 +583,7 @@ class CAS_Sidebar_List_Table extends WP_List_Table
         echo '</label>';
         echo '</div>';
 
-        if($icon) {
+        if ($icon) {
             echo '<span class="dashicons dashicons-clock" title="'.$icon.'">';
             echo '</span>';
             echo '<span class="screen-reader-text">'.$icon.'</span>';
