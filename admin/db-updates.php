@@ -30,19 +30,19 @@ function cas_update_to_38()
     $time = time();
 
     $wpdb->query("
-		UPDATE $wpdb->usermeta AS t 
-		INNER JOIN $wpdb->usermeta AS r ON t.user_id = r.user_id 
-		SET t.meta_value = '{$time}' 
-		WHERE t.meta_key = '{$wpdb->prefix}_ca_cas_tour' 
-		AND r.meta_key = '{$wpdb->prefix}_ca_cas_review' 
-		AND r.meta_value != '1' 
+		UPDATE $wpdb->usermeta AS t
+		INNER JOIN $wpdb->usermeta AS r ON t.user_id = r.user_id
+		SET t.meta_value = '{$time}'
+		WHERE t.meta_key = '{$wpdb->prefix}_ca_cas_tour'
+		AND r.meta_key = '{$wpdb->prefix}_ca_cas_review'
+		AND r.meta_value != '1'
 		AND CAST(r.meta_value AS DECIMAL) <= 1522540800
 	");
 
     $wpdb->query("
-		DELETE FROM $wpdb->usermeta 
-		WHERE meta_key = '{$wpdb->prefix}_ca_cas_review' 
-		AND meta_value != '1' 
+		DELETE FROM $wpdb->usermeta
+		WHERE meta_key = '{$wpdb->prefix}_ca_cas_review'
+		AND meta_value != '1'
 		AND CAST(meta_value AS DECIMAL) <= 1522540800
 	");
 
@@ -66,13 +66,12 @@ function cas_update_to_351()
     }
 
     $wpdb->query("
-		DELETE FROM $wpdb->postmeta 
+		DELETE FROM $wpdb->postmeta
 		WHERE meta_value LIKE '_ca_sub_%'
-	");
+    ");
 
     return true;
 }
-
 
 /**
  * Version 3.3.3 -> 3.4
@@ -96,7 +95,7 @@ function cas_update_to_34()
 	");
 
     $wpdb->query("
-		DELETE FROM $wpdb->postmeta 
+		DELETE FROM $wpdb->postmeta
 		WHERE meta_key = '_ca_exposure'
 	");
 
@@ -164,29 +163,29 @@ function cas_update_to_30()
             'host'           => 'host',
             'merge-pos'      => 'merge_pos'
         );
-        
+
         foreach ($metadata as $old_key => $new_key) {
             $wpdb->query("
-				UPDATE $wpdb->postmeta 
-				SET meta_key = '_ca_".$new_key."' 
+				UPDATE $wpdb->postmeta
+				SET meta_key = '_ca_".$new_key."'
 				WHERE meta_key = '_cas_".$old_key."'
 			");
             switch ($new_key) {
                 case 'author':
                 case 'page_template':
                     $wpdb->query("
-						UPDATE $wpdb->postmeta 
-						SET meta_value = '".$new_key."' 
-						WHERE meta_key = '_ca_".$new_key."' 
+						UPDATE $wpdb->postmeta
+						SET meta_value = '".$new_key."'
+						WHERE meta_key = '_ca_".$new_key."'
 						AND meta_value = '".$old_key."'
 					");
                     break;
                 case 'post_type':
                 case 'taxonomy':
                     $wpdb->query("
-						UPDATE $wpdb->postmeta 
-						SET meta_value = REPLACE(meta_value, '_cas_sub_', '_ca_sub_') 
-						WHERE meta_key = '_ca_".$new_key."' 
+						UPDATE $wpdb->postmeta
+						SET meta_value = REPLACE(meta_value, '_cas_sub_', '_ca_sub_')
+						WHERE meta_key = '_ca_".$new_key."'
 						AND meta_value LIKE '_cas_sub_%'
 					");
                     break;
@@ -244,16 +243,16 @@ function cas_update_to_20()
 
                 //Move module data to condition group
                 $wpdb->query("
-					UPDATE $wpdb->postmeta 
-					SET post_id = '".$group_id."' 
+					UPDATE $wpdb->postmeta
+					SET post_id = '".$group_id."'
 					WHERE meta_key IN ('_cas_".implode("','_cas_", $module_keys)."')
 					AND post_id = '".$post->ID."'
 				");
 
                 //Move term data to condition group
                 $wpdb->query("
-					UPDATE $wpdb->term_relationships 
-					SET object_id = '".$group_id."' 
+					UPDATE $wpdb->term_relationships
+					SET object_id = '".$group_id."'
 					WHERE object_id = '".$post->ID."'
 				");
             }
@@ -279,14 +278,14 @@ function cas_update_to_11()
         'taxonomies',
         'language'
     );
-    
+
     // Get all sidebars
     $posts = get_posts(array(
         'numberposts'     => -1,
         'post_type'       => 'sidebar',
         'post_status'     => 'publish,pending,draft,future,private,trash'
     ));
-    
+
     if (!empty($posts)) {
         foreach ($posts as $post) {
             foreach ($moduledata as $field) {
