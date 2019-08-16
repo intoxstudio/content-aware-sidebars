@@ -3,3 +3,4 @@ lib/content-aware-premium
 node_modules/
 build/
 fs-config.json
+.php_cs
