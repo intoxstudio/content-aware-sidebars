@@ -650,107 +650,107 @@ final class CAS_Sidebar_Edit extends CAS_Admin
 
         $this->_tour_manager->set_pointers(array(
             array(
-                'content'   => sprintf(
+                'content' => sprintf(
                     '<h3>%s</h3>%s',
                     __('Get Started in 60 Seconds', 'content-aware-sidebars'),
                     '<p>'.__('Welcome to Content Aware Sidebars!', 'content-aware-sidebars').'</p>'.
                     '<p>'.__('This interactive guide will show you just how easy it is to create a widget area and control where, how, and when to display it.', 'content-aware-sidebars').'</p>'
                 ),
-                'ref_id'    => '#titlediv',
-                'position'  => array(
-                    'edge'      => 'top',
-                    'align'     => 'center'
+                'ref_id'   => '#titlediv',
+                'position' => array(
+                    'edge'  => 'top',
+                    'align' => 'center'
                 ),
                 'pointerWidth' => 400,
-                'next' => __('Start Quick Tour', 'content-aware-sidebars'),
-                'dismiss' => __('Skip - I know what to do', 'content-aware-sidebars')
+                'next'         => __('Start Quick Tour', 'content-aware-sidebars'),
+                'dismiss'      => __('Skip - I know what to do', 'content-aware-sidebars')
             ),
             array(
-                'content'   => sprintf(
+                'content' => sprintf(
                     '<h3>%s</h3>%s',
                     '1/5 '.__('Where to display', 'content-aware-sidebars'),
                     '<p>'.__('Choose from the extensive Display Conditions with built-in support for other plugins. You will never be asked to enter widget logic PHP code!', 'content-aware-sidebars').'</p>'.
                     '<p>'.__('Select anything to continue the tour. You can change it later.', 'content-aware-sidebars').'</p>'
                 ),
-                'ref_id'    => '.cas-group-new',
-                'position'  => array(
-                    'edge'      => 'top',
-                    'align'     => 'center'
+                'ref_id'   => '.cas-group-new',
+                'position' => array(
+                    'edge'  => 'top',
+                    'align' => 'center'
                 ),
-                'prev' => false,
-                'next' => '.js-wpca-add-or option, .js-wpca-add-quick',
-                'nextEvent' => 'click',
-                'dismiss' => false
+                'prev'      => false,
+                'next'      => '.js-wpca-add-or, .js-wpca-add-quick',
+                'nextEvent' => 'select2:select click',
+                'dismiss'   => false
             ),
             array(
-                'content'   => sprintf(
+                'content' => sprintf(
                     '<h3>%s</h3>%s',
                     '2/5 '.__('Where to display', 'content-aware-sidebars'),
                     '<p>'.__('Click on the input field and select the content you want - just type to search. Changes are saved automatically!', 'content-aware-sidebars').'</p>'.
                     '<p>'.__('You can add multiple content types to the same group. Try e.g. "All Posts" and an Author to display on all posts written by that author.', 'content-aware-sidebars').'</p>'.
                     '<p>'.sprintf(__('<a href="%s" target="_blank">Learn more about AND vs OR conditions</a>', 'content-aware-sidebars'), 'https://dev.institute/docs/content-aware-sidebars/getting-started/display-sidebar-advanced/').'</p>'
                 ),
-                'ref_id'    => '#cas-groups > ul',
-                'position'  => array(
-                    'edge'      => 'top',
-                    'align'     => 'center'
+                'ref_id'   => '#cas-groups > ul',
+                'position' => array(
+                    'edge'  => 'top',
+                    'align' => 'center'
                 ),
                 'dismiss' => __('Close Tour', 'content-aware-sidebars')
             ),
             array(
-                'content'   => sprintf(
+                'content' => sprintf(
                     '<h3>%s</h3>%s',
                     '3/5 '.__('How to display', 'content-aware-sidebars'),
                     '<p>'.__('Replace any sidebar or widget area in your theme, or add widgets by merging with them.', 'content-aware-sidebars').'</p>'.
                     '<p>'.__('You can also use the shortcode to display widgets inside a page or post.', 'content-aware-sidebars').'</p>'
                 ),
-                'ref_id'    => '.nav-tab-wrapper.js-cas-tabs .nav-tab-section-action',
-                'position'  => array(
-                    'edge'      => 'left',
-                    'align'     => 'left'
+                'ref_id'   => '.nav-tab-wrapper.js-cas-tabs .nav-tab-section-action',
+                'position' => array(
+                    'edge'  => 'left',
+                    'align' => 'left'
                 ),
                 'dismiss' => __('Close Tour', 'content-aware-sidebars')
             ),
             array(
-                'content'   => sprintf(
+                'content' => sprintf(
                     '<h3>%s</h3>%s',
                     '4/5 '.__('When to activate', 'content-aware-sidebars'),
                     '<p>'.__('Create a widget area and manage its widgets today, then publish it when you are ready.', 'content-aware-sidebars').'</p>'.
                     '<p>'.__('To schedule automatic activation or deactivation, just pick a date and time!', 'content-aware-sidebars').'</p>'.
                     '<p>'.__('By default, new widget areas will be activated when created.', 'content-aware-sidebars').'</p>'
                 ),
-                'ref_id'    => '.nav-tab-wrapper.js-cas-tabs .nav-tab-section-schedule',
-                'position'  => array(
-                    'edge'      => 'left',
-                    'align'     => 'left'
+                'ref_id'   => '.nav-tab-wrapper.js-cas-tabs .nav-tab-section-schedule',
+                'position' => array(
+                    'edge'  => 'left',
+                    'align' => 'left'
                 ),
                 'dismiss' => __('Close Tour', 'content-aware-sidebars')
             ),
             array(
-                'content'   => sprintf(
+                'content' => sprintf(
                     '<h3>%s</h3>%s',
                     '5/5 '.__('How to look', 'content-aware-sidebars'),
                     '<p>'.__('Personalize the styling without writing any code!', 'content-aware-sidebars').'</p>'.
                     '<p>'.__('You can modify the HTML and CSS classes of the widget area itself, each widget, as well as widget titles.', 'content-aware-sidebars').'</p>'
                 ),
-                'ref_id'    => '.nav-tab-wrapper.js-cas-tabs .nav-tab-section-design',
-                'position'  => array(
-                    'edge'      => 'left',
-                    'align'     => 'left'
+                'ref_id'   => '.nav-tab-wrapper.js-cas-tabs .nav-tab-section-design',
+                'position' => array(
+                    'edge'  => 'left',
+                    'align' => 'left'
                 ),
                 'next' => __('Finish Tour', 'content-aware-sidebars')
             ),
             array(
-                'content'   => sprintf(
+                'content' => sprintf(
                     '<h3>%s</h3>%s',
                     __("That's it", 'content-aware-sidebars'),
                     '<p>'.__('Hit the Create button to save your first custom widget area.', 'content-aware-sidebars').'</p>'.
                     '<p>'.__('If you need more help, check out the links below.', 'content-aware-sidebars').'</p>'
                 ),
-                'ref_id'    => '#submitdiv',
-                'position'  => array(
-                    'edge'      => 'right',
-                    'align'     => 'top'
+                'ref_id'   => '#submitdiv',
+                'position' => array(
+                    'edge'  => 'right',
+                    'align' => 'top'
                 ),
                 'dismiss' => __('Close', 'content-aware-sidebars')
             )
