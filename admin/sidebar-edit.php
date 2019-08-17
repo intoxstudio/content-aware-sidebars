@@ -781,7 +781,7 @@ final class CAS_Sidebar_Edit extends CAS_Admin
         );
         $boxes[] = array(
             'id'       => 'cas-options',
-            'title'    => __('How´to display', 'content-aware-sidebars'),
+            'title'    => __('How to display', 'content-aware-sidebars'),
             'view'     => 'action',
             'context'  => 'section-action',
             'priority' => 'default'

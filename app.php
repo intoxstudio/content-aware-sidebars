@@ -10,40 +10,40 @@ defined('ABSPATH') || exit;
 
 final class CAS_App
 {
-    const PLUGIN_VERSION_KEY   = 'cas_db_version';
-    const PLUGIN_VERSION       = '3.8.2';
+    const PLUGIN_VERSION_KEY = 'cas_db_version';
+    const PLUGIN_VERSION = '3.9';
 
     /**
      * Prefix for sidebar id
      */
-    const SIDEBAR_PREFIX       = 'ca-sidebar-';
+    const SIDEBAR_PREFIX = 'ca-sidebar-';
 
     /**
      * Post Type for sidebars
      */
-    const TYPE_SIDEBAR         = 'sidebar';
+    const TYPE_SIDEBAR = 'sidebar';
 
     /**
      * Sidebar statuses
      */
-    const STATUS_ACTIVE        = 'publish';
-    const STATUS_INACTIVE      = 'draft';
-    const STATUS_SCHEDULED     = 'future';
+    const STATUS_ACTIVE = 'publish';
+    const STATUS_INACTIVE = 'draft';
+    const STATUS_SCHEDULED = 'future';
 
     /**
      * Capability to manage sidebars
      */
-    const CAPABILITY           = 'edit_theme_options';
+    const CAPABILITY = 'edit_theme_options';
 
     /**
      * Base admin screen name
      */
-    const BASE_SCREEN          = 'wpcas';
+    const BASE_SCREEN = 'wpcas';
 
     /**
      * Prefix for metadata keys
      */
-    const META_PREFIX          = '_ca_';
+    const META_PREFIX = '_ca_';
 
     private $manager;
 
@@ -174,10 +174,10 @@ final class CAS_App
         $post_type = get_post_type_object(self::TYPE_SIDEBAR);
         if (current_user_can($post_type->cap->create_posts)) {
             $wp_admin_bar->add_menu(array(
-                'parent'    => 'new-content',
-                'id'        => self::BASE_SCREEN,
-                'title'     => $post_type->labels->singular_name,
-                'href'      => admin_url('admin.php?page=wpcas-edit')
+                'parent' => 'new-content',
+                'id'     => self::BASE_SCREEN,
+                'title'  => $post_type->labels->singular_name,
+                'href'   => admin_url('admin.php?page=wpcas-edit')
             ));
         }
     }
