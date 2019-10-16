@@ -194,13 +194,9 @@ class CAS_Admin_Screen_Widgets extends CAS_Admin
      */
     public function add_scripts_styles()
     {
-        wp_enqueue_style('cas/admin/style', plugins_url('../css/style.css', __FILE__), array(), CAS_App::PLUGIN_VERSION);
-
-        $sidebar = get_post_type_object(CAS_App::TYPE_SIDEBAR);
-
         wp_enqueue_script('cas/admin/widgets', plugins_url('../js/widgets.min.js', __FILE__), array('jquery'), CAS_App::PLUGIN_VERSION, true);
         wp_localize_script('cas/admin/widgets', 'CASAdmin', array(
-            'addNew'         => $sidebar->labels->add_new_item,
+            'addNew'         => $this->get_sidebar_type()->labels->add_new_item,
             'collapse'       => __('Collapse', 'content-aware-sidebars'),
             'expand'         => __('Expand', 'content-aware-sidebars'),
             'filterSidebars' => __('Search Sidebars', 'content-aware-sidebars'),

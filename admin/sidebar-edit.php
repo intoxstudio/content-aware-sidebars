@@ -28,10 +28,6 @@ final class CAS_Sidebar_Edit extends CAS_Admin
     {
         $this->_tour_manager = new WP_Pointer_Tour(CAS_App::META_PREFIX.'cas_tour');
 
-        add_action(
-            'admin_enqueue_scripts',
-            array($this,'add_general_scripts_styles')
-        );
         $this->add_action('delete_post', 'remove_sidebar_widgets');
         $this->add_action('save_post_'.CAS_App::TYPE_SIDEBAR, 'save_post', 10, 2);
 
@@ -40,14 +36,6 @@ final class CAS_Sidebar_Edit extends CAS_Admin
         $this->add_filter('get_delete_post_link', 'get_delete_post_link', 10, 3);
 
         if (!cas_fs()->can_use_premium_code()) {
-            add_action(
-                'wp_ajax_cas_dismiss_review_notice',
-                array($this,'ajax_review_clicked')
-            );
-            add_action(
-                'all_admin_notices',
-                array($this,'admin_notice_review')
-            );
             $this->add_action('wpca/modules/init', 'add_modules');
         }
     }
@@ -812,41 +800,6 @@ final class CAS_Sidebar_Edit extends CAS_Admin
     }
 
     /**
-     * Admin notice for Plugin Review
-     *
-     * @since  3.1
-     * @return void
-     */
-    public function admin_notice_review()
-    {
-        $has_reviewed = get_user_option(CAS_App::META_PREFIX.'cas_review');
-        $tour_taken = (int) $this->_tour_manager->get_user_option();
-        if ($has_reviewed === false && $tour_taken && (time() - $tour_taken) >= WEEK_IN_SECONDS) {
-            $path = plugin_dir_path(__FILE__).'../view/';
-            $view = WPCAView::make($path.'notice_review.php', array(
-                'current_user' => wp_get_current_user()
-            ))->render();
-        }
-    }
-
-    /**
-     * Set review flag for user
-     *
-     * @since  3.1
-     * @return void
-     */
-    public function ajax_review_clicked()
-    {
-        $dismiss = isset($_POST['dismiss']) ? (int)$_POST['dismiss'] : 0;
-        if (!$dismiss) {
-            $dismiss = time();
-        }
-
-        echo json_encode(update_user_option(get_current_user_id(), CAS_App::META_PREFIX.'cas_review', $dismiss));
-        die();
-    }
-
-    /**
      * Create form field for metadata
      * @global object $post
      * @param  array $setting
@@ -1047,21 +1000,6 @@ final class CAS_Sidebar_Edit extends CAS_Admin
     }
 
     /**
-     * Add general scripts to admin screens
-     *
-     * @since 3.4.1
-     */
-    public function add_general_scripts_styles()
-    {
-        wp_register_script('cas/admin/general', plugins_url('../js/general.min.js', __FILE__), array('jquery'), CAS_App::PLUGIN_VERSION, true);
-        wp_enqueue_script('cas/admin/general');
-        wp_localize_script('cas/admin/general', 'CAS', array(
-            'showPopups'    => !cas_fs()->can_use_premium_code(),
-            'enableConfirm' => __('This sidebar is already scheduled to be activated. Do you want to activate it now?', 'content-aware-sidebars')
-        ));
-    }
-
-    /**
      * Register and enqueue scripts styles
      * for screen
      *
@@ -1093,8 +1031,9 @@ final class CAS_Sidebar_Edit extends CAS_Admin
 
         wp_register_script('cas/admin/edit', plugins_url('../js/cas_admin.min.js', __FILE__), array('jquery','flatpickr','wp-color-picker'), CAS_App::PLUGIN_VERSION, false);
 
-        wp_register_style('flatpickr', plugins_url('../css/flatpickr.dark.min.css', __FILE__), array(), '3.0.6');
-        wp_register_style('cas/admin/style', plugins_url('../css/style.css', __FILE__), array('flatpickr','wp-color-picker'), CAS_App::PLUGIN_VERSION);
+        wp_register_style('flatpickr', plugins_url('../assets/css/flatpickr.dark.min.css', __FILE__), array(), '3.0.6');
+        wp_enqueue_style('flatpickr');
+        wp_enqueue_style('wp-color-picker');
 
         $visibility = array();
         foreach (CAS_App::instance()->_manager->metadata()->get('visibility')->get_input_list() as $category_key => $category) {
@@ -1146,8 +1085,6 @@ final class CAS_Sidebar_Edit extends CAS_Admin
             'timeFormat' => get_option('time_format'),
             'dateFormat' => __('F j, Y') //default long date
         ));
-
-        wp_enqueue_style('cas/admin/style');
 
         //badgeos compat
         //todo: check that developers respond with a fix soon

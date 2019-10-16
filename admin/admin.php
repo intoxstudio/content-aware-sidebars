@@ -142,10 +142,77 @@ abstract class CAS_Admin
         $this->prepare_screen();
         $this->add_action('admin_enqueue_scripts', 'add_general_scripts_styles', 11);
         if (!cas_fs()->can_use_premium_code()) {
+            $this->add_action('all_admin_notices', 'admin_notice_review');
+        }
+
+        if (!cas_fs()->can_use_premium_code()) {
             add_thickbox();
             //enqueue scripts here
             $this->add_action('admin_footer', 'render_upgrade_modal');
         }
+    }
+
+    /**
+     * Add general scripts to admin screens
+     *
+     * @since 3.4.1
+     */
+    public function add_general_scripts_styles()
+    {
+        wp_register_script('cas/admin/general', plugins_url('../js/general.min.js', __FILE__), array('jquery'), CAS_App::PLUGIN_VERSION, true);
+        wp_enqueue_script('cas/admin/general');
+        wp_localize_script('cas/admin/general', 'CAS', array(
+            'showPopups'    => !cas_fs()->can_use_premium_code(),
+            'enableConfirm' => __('This sidebar is already scheduled to be activated. Do you want to activate it now?', 'content-aware-sidebars')
+        ));
+
+        wp_register_style('cas/admin/style', plugins_url('../assets/css/style.css', __FILE__), array(), CAS_App::PLUGIN_VERSION);
+        wp_enqueue_style('cas/admin/style');
+
+
+        $this->add_scripts_styles();
+    }
+
+
+    /**
+     * Admin notice for Plugin Review
+     *
+     * @since  3.1
+     * @return void
+     */
+    public function admin_notice_review()
+    {
+        $has_reviewed = get_user_option(CAS_App::META_PREFIX.'cas_review');
+
+        if ($has_reviewed !== false) {
+            return;
+        }
+
+        $tour_manager = new WP_Pointer_Tour(CAS_App::META_PREFIX.'cas_tour');
+        $tour_taken = (int) $tour_manager->get_user_option();
+        if ($tour_taken && (time() - $tour_taken) >= WEEK_IN_SECONDS) {
+            $path = plugin_dir_path(__FILE__).'../view/';
+            $view = WPCAView::make($path.'notice_review.php', array(
+                'current_user' => wp_get_current_user()
+            ))->render();
+        }
+    }
+
+    /**
+     * Set review flag for user
+     *
+     * @since  3.1
+     * @return void
+     */
+    public function ajax_review_clicked()
+    {
+        $dismiss = isset($_POST['dismiss']) ? (int)$_POST['dismiss'] : 0;
+        if (!$dismiss) {
+            $dismiss = time();
+        }
+
+        echo json_encode(update_user_option(get_current_user_id(), CAS_App::META_PREFIX.'cas_review', $dismiss));
+        die();
     }
 
     /**

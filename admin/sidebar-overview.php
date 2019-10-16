@@ -305,8 +305,5 @@ final class CAS_Sidebar_Overview extends CAS_Admin
      */
     public function add_scripts_styles()
     {
-        wp_register_style('cas/admin/style', plugins_url('../css/style.css', __FILE__), array(), CAS_App::PLUGIN_VERSION);
-
-        wp_enqueue_style('cas/admin/style');
     }
 }
