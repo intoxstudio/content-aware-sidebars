@@ -26,22 +26,7 @@ final class CAS_Sidebar_Overview extends CAS_Admin
      */
     public function admin_hooks()
     {
-        add_filter(
-            'set-screen-option',
-            array($this,'set_screen_option'),
-            10,
-            3
-        );
-    }
-
-    /**
-     * Add filters and actions for frontend
-     *
-     * @since  3.5
-     * @return void
-     */
-    public function frontend_hooks()
-    {
+        $this->add_filter('set-screen-option', 'set_screen_option', 10, 3);
     }
 
     /**
@@ -76,23 +61,19 @@ final class CAS_Sidebar_Overview extends CAS_Admin
         );
     }
 
-
     /**
-     * Authorize user for screen
+     * @since 3.5
      *
-     * @since  3.5
-     * @return boolean
+     * @return bool
      */
     public function authorize_user()
     {
-        $post_type_object = get_post_type_object(CAS_App::TYPE_SIDEBAR);
-        return current_user_can($post_type_object->cap->edit_posts);
+        return current_user_can($this->get_sidebar_type()->cap->edit_posts);
     }
 
     /**
-     * Prepare screen load
+     * @since 3.4
      *
-     * @since  3.4
      * @return void
      */
     public function prepare_screen()

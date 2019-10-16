@@ -29,40 +29,15 @@ final class CAS_Sidebar_Edit extends CAS_Admin
         $this->_tour_manager = new WP_Pointer_Tour(CAS_App::META_PREFIX.'cas_tour');
 
         add_action(
-            'delete_post',
-            array($this,'remove_sidebar_widgets')
-        );
-        add_action(
-            'save_post_'.CAS_App::TYPE_SIDEBAR,
-            array($this,'save_post'),
-            10,
-            2
-        );
-
-        add_filter(
-            'wp_insert_post_data',
-            array($this,'add_duplicate_title_suffix'),
-            99,
-            2
-        );
-        add_filter(
-            'get_edit_post_link',
-            array($this,'get_edit_post_link'),
-            10,
-            3
-        );
-        add_filter(
-            'get_delete_post_link',
-            array($this,'get_delete_post_link'),
-            10,
-            3
-        );
-
-        add_action(
             'admin_enqueue_scripts',
             array($this,'add_general_scripts_styles')
         );
+        $this->add_action('delete_post', 'remove_sidebar_widgets');
+        $this->add_action('save_post_'.CAS_App::TYPE_SIDEBAR, 'save_post', 10, 2);
 
+        $this->add_filter('wp_insert_post_data', 'add_duplicate_title_suffix', 99, 2);
+        $this->add_filter('get_edit_post_link', 'get_edit_post_link', 10, 3);
+        $this->add_filter('get_delete_post_link', 'get_delete_post_link', 10, 3);
 
         if (!cas_fs()->can_use_premium_code()) {
             add_action(
@@ -73,21 +48,8 @@ final class CAS_Sidebar_Edit extends CAS_Admin
                 'all_admin_notices',
                 array($this,'admin_notice_review')
             );
-            add_action(
-                'wpca/modules/init',
-                array($this,'add_modules')
-            );
+            $this->add_action('wpca/modules/init', 'add_modules');
         }
-    }
-
-    /**
-     * Add filters and actions for frontend
-     *
-     * @since  3.5
-     * @return void
-     */
-    public function frontend_hooks()
-    {
     }
 
     /**
@@ -98,7 +60,7 @@ final class CAS_Sidebar_Edit extends CAS_Admin
      */
     public function get_screen()
     {
-        $post_type_object = get_post_type_object(CAS_App::TYPE_SIDEBAR);
+        $post_type_object = $this->get_sidebar_type();
         return add_submenu_page(
             CAS_App::BASE_SCREEN,
             $post_type_object->labels->add_new_item,
@@ -110,10 +72,9 @@ final class CAS_Sidebar_Edit extends CAS_Admin
     }
 
     /**
-     * Authorize user for screen
+     * @since 3.5
      *
-     * @since  3.5
-     * @return boolean
+     * @return bool
      */
     public function authorize_user()
     {
@@ -121,31 +82,26 @@ final class CAS_Sidebar_Edit extends CAS_Admin
     }
 
     /**
-     * Prepare screen load
+     * @since 3.4
      *
-     * @since  3.4
      * @return void
      */
     public function prepare_screen()
     {
-        add_action(
-            'cas/admin/add_meta_boxes',
-            array($this,'create_meta_boxes')
-        );
+        $this->add_action('cas/admin/add_meta_boxes', 'create_meta_boxes');
 
         global $nav_tabs, $post, $title, $active_post_lock;
 
         $post_type = CAS_App::TYPE_SIDEBAR;
-        $post_type_object = get_post_type_object($post_type);
+        $post_type_object = $this->get_sidebar_type();
         $post_id = isset($_REQUEST['sidebar_id']) ? $_REQUEST['sidebar_id'] : 0;
-
-        //process actions
-        $this->process_actions($post_id);
 
         /**
          * Edit mode
          */
         if ($post_id) {
+            $this->process_actions($post_id);
+
             $post = get_post($post_id, OBJECT, 'edit');
 
             if (! $post) {
@@ -1127,7 +1083,6 @@ final class CAS_Sidebar_Edit extends CAS_Admin
         if (wp_is_mobile()) {
             wp_enqueue_script('jquery-touch-punch');
         }
-
 
         // Add the local autosave notice HTML
         //add_action( 'admin_footer', '_local_storage_notice' );

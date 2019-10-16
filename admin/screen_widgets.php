@@ -41,21 +41,15 @@ class CAS_Admin_Screen_Widgets extends CAS_Admin
      */
     public function prepare_screen()
     {
-        add_action(
-            'dynamic_sidebar_before',
-            array($this,'render_sidebar_controls')
-        );
-        add_filter(
-            'admin_body_class',
-            array($this,'widget_manager_class')
-        );
+        $this->add_action('dynamic_sidebar_before', 'render_sidebar_controls');
+        $this->add_filter('admin_body_class', 'widget_manager_class');
 
         global $wp_registered_sidebars;
 
         $manager = CAS_App::instance()->manager();
         $manager->populate_metadata();
 
-        $has_host = array(0=>1,1=>1,3=>1);
+        $has_host = array(0 => 1,1 => 1,3 => 1);
 
         foreach ($manager->sidebars as $id => $post) {
             $handle_meta = $manager->metadata()->get('handle');
@@ -81,20 +75,7 @@ class CAS_Admin_Screen_Widgets extends CAS_Admin
      */
     public function admin_hooks()
     {
-        add_action(
-            'wp_ajax_cas_sidebar_status',
-            array($this,'ajax_set_sidebar_status')
-        );
-    }
-
-    /**
-     * Add filters and actions for frontend
-     *
-     * @since  3.5
-     * @return void
-     */
-    public function frontend_hooks()
-    {
+        $this->add_action('wp_ajax_cas_sidebar_status', 'ajax_set_sidebar_status');
     }
 
     /**

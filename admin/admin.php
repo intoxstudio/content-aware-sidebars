@@ -10,7 +10,6 @@ defined('ABSPATH') || exit;
 
 abstract class CAS_Admin
 {
-
     const NONCE_PREFIX_1CLICK = '1click';
 
     /**
@@ -22,15 +21,54 @@ abstract class CAS_Admin
     public function __construct()
     {
         if (is_admin()) {
-            add_action(
-                'admin_menu',
-                array($this,'add_menu'),
-                99
-            );
+            $this->add_action('admin_menu', 'add_menu', 99);
+            $this->add_action('wp_ajax_cas_dismiss_review_notice', 'ajax_review_clicked');
             $this->admin_hooks();
-        } else {
-            $this->frontend_hooks();
         }
+    }
+
+    /**
+     * @since 3.10
+     *
+     * @return WP_Post_Type
+     */
+    protected function get_sidebar_type()
+    {
+        return get_post_type_object(CAS_App::TYPE_SIDEBAR);
+    }
+
+    /**
+     * @since 3.10
+     * @param string $tag
+     * @param string $callback
+     * @param int $priority
+     * @param int $accepted_args
+     *
+     * @return void
+     */
+    protected function add_action($tag, $callback, $priority = 10, $accepted_args = 1)
+    {
+        if (is_string($callback)) {
+            $callback = array($this, $callback);
+        }
+        add_action($tag, $callback, $priority, $accepted_args);
+    }
+
+    /**
+     * @since 3.10
+     * @param string $tag
+     * @param string $callback
+     * @param int $priority
+     * @param int $accepted_args
+     *
+     * @return void
+     */
+    protected function add_filter($tag, $callback, $priority = 10, $accepted_args = 1)
+    {
+        if (is_string($callback)) {
+            $callback = array($this, $callback);
+        }
+        add_filter($tag, $callback, $priority, $accepted_args);
     }
 
     /**
@@ -41,10 +79,7 @@ abstract class CAS_Admin
     public function add_menu()
     {
         $this->_screen = $this->get_screen();
-        add_action(
-            'load-'.$this->_screen,
-            array($this,'load_screen')
-        );
+        $this->add_action('load-'.$this->_screen, 'load_screen');
     }
 
     /**
@@ -57,14 +92,6 @@ abstract class CAS_Admin
     abstract public function admin_hooks();
 
     /**
-     * Add filters and actions for frontend
-     *
-     * @since  3.5
-     * @return void
-     */
-    abstract public function frontend_hooks();
-
-    /**
      * Get current screen
      *
      * @since  3.4
@@ -75,7 +102,8 @@ abstract class CAS_Admin
     /**
      * Prepare screen load
      *
-     * @since  3.4
+     * @since 3.4
+     *
      * @return void
      */
     abstract public function prepare_screen();
@@ -83,8 +111,9 @@ abstract class CAS_Admin
     /**
      * Authorize user for screen
      *
-     * @since  3.5
-     * @return boolean
+     * @since 3.5
+     *
+     * @return bool
      */
     abstract public function authorize_user();
 
@@ -111,18 +140,11 @@ abstract class CAS_Admin
             );
         }
         $this->prepare_screen();
-        add_action(
-            'admin_enqueue_scripts',
-            array($this,'add_scripts_styles'),
-            11
-        );
+        $this->add_action('admin_enqueue_scripts', 'add_general_scripts_styles', 11);
         if (!cas_fs()->can_use_premium_code()) {
             add_thickbox();
             //enqueue scripts here
-            add_action(
-                'admin_footer',
-                array($this,'render_upgrade_modal')
-            );
+            $this->add_action('admin_footer', 'render_upgrade_modal');
         }
     }
 
@@ -162,5 +184,3 @@ abstract class CAS_Admin
         echo '</div>';
     }
 }
-
-//
