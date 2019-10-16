@@ -11,13 +11,17 @@ defined('ABSPATH') || exit;
 class CAS_Quick_Select
 {
     const MODULE_NAME = 'post_type';
-    const NONCE       = '_cas_nonce';
+    const NONCE = '_cas_nonce';
 
     protected static $_theme_sidebars = array();
 
     public function __construct()
     {
         new CAS_Post_Type_Sidebar();
+        add_action(
+            'current_screen',
+            array(__CLASS__,'load_screen')
+        );
     }
 
     /**
@@ -29,35 +33,46 @@ class CAS_Quick_Select
      */
     public static function load_screen($screen)
     {
-
         //We are on the post edit screen
         if ($screen->base == 'post' && $screen->post_type) {
             $module = WPCACore::types()->get(CAS_App::TYPE_SIDEBAR)->get(self::MODULE_NAME);
-            if ($module) {
-                $post_types = $module->post_types();
-                self::get_theme_sidebars();
-                if (isset($post_types[$screen->post_type]) && self::$_theme_sidebars) {
-                    add_action(
-                        'add_meta_boxes_'.$screen->post_type,
-                        array(__CLASS__,'create_meta_boxes')
-                    );
-                    add_action(
-                        'save_post_'.$screen->post_type,
-                        array(__CLASS__,'save_post_sidebars'),
-                        10,
-                        2
-                    );
-                    add_action(
-                        'admin_enqueue_scripts',
-                        array(__CLASS__,'register_scripts'),
-                        8
-                    );
-                    add_action(
-                        'admin_enqueue_scripts',
-                        array(__CLASS__,'enqueue_scripts'),
-                        11
-                    );
-                }
+            if (!$module) {
+                return;
+            }
+
+            $enable = apply_filters(
+                'cas/module/quick_select',
+                has_action('admin_init', array('CAS_Post_Type_Sidebar','initiate')),
+                $screen->post_type
+            );
+
+            if (!$enable) {
+                return;
+            }
+
+            $post_types = $module->post_types();
+            self::get_theme_sidebars();
+            if (isset($post_types[$screen->post_type]) && self::$_theme_sidebars) {
+                add_action(
+                    'add_meta_boxes_'.$screen->post_type,
+                    array(__CLASS__,'create_meta_boxes')
+                );
+                add_action(
+                    'save_post_'.$screen->post_type,
+                    array(__CLASS__,'save_post_sidebars'),
+                    10,
+                    2
+                );
+                add_action(
+                    'admin_enqueue_scripts',
+                    array(__CLASS__,'register_scripts'),
+                    8
+                );
+                add_action(
+                    'admin_enqueue_scripts',
+                    array(__CLASS__,'enqueue_scripts'),
+                    11
+                );
             }
         }
     }
@@ -77,7 +92,7 @@ class CAS_Quick_Select
         foreach ($wp_registered_sidebars as $sidebar) {
             if (!isset($cas_sidebars[$sidebar['id']])) {
                 self::$_theme_sidebars[$sidebar['id']] = array(
-                    'label' => $sidebar['name'],
+                    'label'   => $sidebar['name'],
                     'options' => array()
                 );
             }
@@ -147,13 +162,13 @@ class CAS_Quick_Select
                         //Add post to group with other posts
                         $id = intval($sidebar_id);
                         $condition_groups = get_posts(array(
-                            'posts_per_page'   => 1,
-                            'meta_key'         => $meta_key,
-                            'meta_value'       => $post->post_type,
-                            'meta_compare'     => '!=',
-                            'post_parent'      => $id,
-                            'post_type'        => WPCACore::TYPE_CONDITION_GROUP,
-                            'post_status'      => WPCACore::STATUS_PUBLISHED
+                            'posts_per_page' => 1,
+                            'meta_key'       => $meta_key,
+                            'meta_value'     => $post->post_type,
+                            'meta_compare'   => '!=',
+                            'post_parent'    => $id,
+                            'post_type'      => WPCACore::TYPE_CONDITION_GROUP,
+                            'post_status'    => WPCACore::STATUS_PUBLISHED
                         ));
                         if ($condition_groups) {
                             $condition_group_id = $condition_groups[0]->ID;
@@ -202,6 +217,19 @@ class CAS_Quick_Select
      */
     public static function create_meta_boxes($post)
     {
+        $special_post_ids = array(
+            get_option('page_on_front'),
+            get_option('page_for_posts'),
+        );
+
+        if (defined('WC_VERSION')) {
+            $special_post_ids = get_option('woocommerce_shop_page_id');
+        }
+
+        if (in_array($post->ID, $special_post_ids)) {
+            return;
+        }
+
         $post_sidebars = self::_get_content_sidebars($post);
 
         $manager = CAS_App::instance()->manager();
@@ -210,7 +238,7 @@ class CAS_Quick_Select
             $host_id = $host_meta->get_data($sidebar->ID);
             if (isset(self::$_theme_sidebars[$host_id])) {
                 self::$_theme_sidebars[$host_id]['options'][$sidebar->ID] = array(
-                    'id' => $sidebar->ID,
+                    'id'   => $sidebar->ID,
                     'text' => $sidebar->post_title.self::sidebar_states($sidebar)
                 );
                 if (isset($post_sidebars[$sidebar->ID])) {
@@ -360,30 +388,20 @@ class CAS_Quick_Select
 }
 
 /**
- * @deprecated 3.7
+ * Backwards compat for users disabling quick select
+ * with remove_action('admin_init', array('CAS_Post_Type_Sidebar', 'initiate'))
+ *
+ * @deprecated  3.7
+ * @see add_filter('cas/module/quick_select', ...)
  */
 class CAS_Post_Type_Sidebar
 {
     public function __construct()
     {
-        add_action(
-            'admin_init',
-            array(__CLASS__,'initiate')
-        );
+        add_action('admin_init', array(__CLASS__,'initiate'));
     }
 
-    /**
-     * Backwards compat for users disabling quick select
-     * with remove_action('admin_init',...)
-     *
-     * @since  3.7
-     * @return void
-     */
     public static function initiate()
     {
-        add_action(
-            'current_screen',
-            array('CAS_Quick_Select','load_screen')
-        );
     }
 }
