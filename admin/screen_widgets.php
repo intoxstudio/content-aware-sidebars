@@ -59,7 +59,7 @@ class CAS_Admin_Screen_Widgets extends CAS_Admin
 
             if (isset($has_host[$handle_meta->get_data($post->ID)])) {
                 $host = $manager->metadata()->get('host')->get_list_data($post->ID, false);
-                $args['description'] .= ': ' . ($host ? $host :  __('Please update Host Sidebar', 'content-aware-sidebars'));
+                $args['description'] .= ': ' . ($host ? $host :  __('Target not found', 'content-aware-sidebars'));
             }
 
             $wp_registered_sidebars[$id] = array_merge($wp_registered_sidebars[$id], $args);
@@ -135,7 +135,8 @@ class CAS_Admin_Screen_Widgets extends CAS_Admin
      */
     public function widget_manager_class($classes)
     {
-        if (version_compare(get_bloginfo('version'), '4.7', '>=')) {
+        $enhanced_enabled = apply_filters('cas/module/widget_manager', true);
+        if ($enhanced_enabled && version_compare(get_bloginfo('version'), '4.7', '>=')) {
             $classes .= ' cas-widget-manager ';
         }
         return $classes;
