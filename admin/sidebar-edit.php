@@ -724,59 +724,48 @@ final class CAS_Sidebar_Edit extends CAS_Admin
             'priority' => 'high'
         );
         $boxes[] = array(
-            'id'       => 'cas-options',
-            'title'    => __('How to display', 'content-aware-sidebars'),
-            'view'     => 'action',
-            'context'  => 'section-action',
-            'priority' => 'default'
+            'id'      => 'cas-options',
+            'title'   => __('How to display', 'content-aware-sidebars'),
+            'view'    => 'action',
+            'context' => 'section-action',
         );
         $boxes[] = array(
-            'id'       => 'cas-status',
-            'title'    => __('Status', 'content-aware-sidebars'),
-            'view'     => 'status',
-            'context'  => 'section-schedule',
-            'priority' => 'default'
+            'id'      => 'cas-status',
+            'title'   => __('Status', 'content-aware-sidebars'),
+            'view'    => 'status',
+            'context' => 'section-schedule',
         );
         $boxes[] = array(
-            'id'       => 'cas-widget-html',
-            'title'    => __('Styles', 'content-aware-sidebars'),
-            'view'     => 'html',
-            'context'  => 'section-design',
-            'priority' => 'default'
+            'id'      => 'cas-widget-html',
+            'title'   => __('Styles', 'content-aware-sidebars'),
+            'view'    => 'html',
+            'context' => 'section-design',
         );
         $boxes[] = array(
-            'id'       => 'cas-advanced',
-            'title'    => __('Options', 'content-aware-sidebars'),
-            'view'     => 'advanced',
-            'context'  => 'section-advanced',
-            'priority' => 'default'
+            'id'      => 'cas-advanced',
+            'title'   => __('Options', 'content-aware-sidebars'),
+            'view'    => 'advanced',
+            'context' => 'section-advanced',
         );
         $boxes[] = array(
-            'id'       => 'cas-plugin-links',
-            'title'    => __('Recommendations', 'content-aware-sidebars'),
-            'view'     => 'support',
-            'context'  => 'side',
-            'priority' => 'default'
+            'id'      => 'cas-plugin-links',
+            'title'   => __('Recommendations', 'content-aware-sidebars'),
+            'view'    => 'support',
+            'context' => 'side',
+        );
+        $boxes[] = array(
+            'id'      => 'cas-schedule',
+            'title'   => __('Time Schedule', 'content-aware-sidebars').' <span class="cas-pro-label">'.__('Pro', 'content-aware-sidebars').'</span>',
+            'view'    => 'schedule',
+            'context' => 'section-schedule',
+        );
+        $boxes[] = array(
+            'id'      => 'cas-design',
+            'title'   => __('Design', 'content-aware-sidebars').' <span class="cas-pro-label">'.__('Pro', 'content-aware-sidebars').'</span>',
+            'view'    => 'design',
+            'context' => 'section-design',
         );
 
-        if (!$cas_fs->can_use_premium_code()) {
-            $boxes[] = array(
-                'id'       => 'cas-schedule',
-                'title'    => __('Time Schedule', 'content-aware-sidebars').' <span class="cas-pro-label">'.__('Pro', 'content-aware-sidebars').'</span>',
-                'view'     => 'schedule',
-                'context'  => 'section-schedule',
-                'priority' => 'default'
-            );
-            $boxes[] = array(
-                'id'       => 'cas-design',
-                'title'    => __('Design', 'content-aware-sidebars').' <span class="cas-pro-label">'.__('Pro', 'content-aware-sidebars').'</span>',
-                'view'     => 'design',
-                'context'  => 'section-design',
-                'priority' => 'default'
-            );
-        }
-
-        //Add meta boxes
         foreach ($boxes as $box) {
             $view = WPCAView::make($path.'meta_box_'.$box['view'].'.php', array(
                 'post' => $post
@@ -788,7 +777,7 @@ final class CAS_Sidebar_Edit extends CAS_Admin
                 array($view,'render'),
                 CAS_App::BASE_SCREEN.'-edit',
                 $box['context'],
-                $box['priority']
+                isset($box['priority']) ? $box['priority'] : 'default'
             );
         }
 

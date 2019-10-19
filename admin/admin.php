@@ -143,12 +143,8 @@ abstract class CAS_Admin
         $this->add_action('admin_enqueue_scripts', 'add_general_scripts_styles', 11);
         if (!cas_fs()->can_use_premium_code()) {
             $this->add_action('all_admin_notices', 'admin_notice_review');
-        }
-
-        if (!cas_fs()->can_use_premium_code()) {
-            add_thickbox();
-            //enqueue scripts here
             $this->add_action('admin_footer', 'render_upgrade_modal');
+            add_thickbox();
         }
     }
 

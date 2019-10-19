@@ -40,9 +40,19 @@ class CAS_Quick_Select
                 return;
             }
 
+            $legacy_removal = !has_action('admin_init', array('CAS_Post_Type_Sidebar','initiate'));
+
+            if ($legacy_removal) {
+                _deprecated_hook(
+                    "remove_action('admin_init', array('CAS_Post_Type_Sidebar', 'initiate'))",
+                    '3.7',
+                    "add_filter('cas/module/quick_select', '__return_false')"
+                );
+            }
+
             $enable = apply_filters(
                 'cas/module/quick_select',
-                has_action('admin_init', array('CAS_Post_Type_Sidebar','initiate')),
+                !$legacy_removal,
                 $screen->post_type
             );
 
