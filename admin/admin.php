@@ -194,7 +194,7 @@ abstract class CAS_Admin
         );
         echo '<a style="display:none;" class="thickbox js-cas-pro-popup" href="#TB_inline?width=600&amp;height=350&amp;inlineId=pro-popup-notice" title="'.__('Content Aware Sidebars Pro', 'content-aware-sidebars').'"></a>';
         echo '<div id="pro-popup-notice" style="display:none;">';
-        echo '<img style="margin-top:15px;" class="alignright" src="'.plugins_url('css/icon.png', dirname(__FILE__)).'" width="128" height="128" />';
+        echo '<img style="margin-top:15px;" class="alignright" src="'.plugins_url('assets/css/icon.png', dirname(__FILE__)).'" width="128" height="128" />';
         echo '
 		<h2>'.__('Get All Features With Content Aware Sidebars Pro', 'content-aware-sidebars').'</h2>';
         echo '<ul>';

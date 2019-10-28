@@ -10,7 +10,7 @@ const freemius = require("gulp-freemius-deploy");
 const fs_config = require( './fs-config.json' );
 
 gulp.task('less', function (done) {
-	return gulp.src('css/style.less')
+	return gulp.src('assets/css/style.less')
 		.pipe(less({
 			plugins: [new (require('less-plugin-autoprefix'))({ browsers: ["> 1%"] })]
 		}))
@@ -23,7 +23,7 @@ gulp.task('less', function (done) {
 				2: {}
 			}
 		}))
-		.pipe(gulp.dest('css'));
+		.pipe(gulp.dest('assets/css'));
 });
 
 gulp.task('uglify', function () {
@@ -70,7 +70,7 @@ gulp.task('freemius', function() {
 });
 
 gulp.task('watch', function() {
-	gulp.watch('css/style.less', gulp.parallel('less'));
+	gulp.watch('assets/css/style.less', gulp.parallel('less'));
 	gulp.watch(['js/*.js','!js/*.min.js'], gulp.parallel('uglify'));
 });
 
