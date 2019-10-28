@@ -38,40 +38,6 @@ abstract class CAS_Admin
     }
 
     /**
-     * @since 3.10
-     * @param string $tag
-     * @param string $callback
-     * @param int $priority
-     * @param int $accepted_args
-     *
-     * @return void
-     */
-    protected function add_action($tag, $callback, $priority = 10, $accepted_args = 1)
-    {
-        if (is_string($callback)) {
-            $callback = array($this, $callback);
-        }
-        add_action($tag, $callback, $priority, $accepted_args);
-    }
-
-    /**
-     * @since 3.10
-     * @param string $tag
-     * @param string $callback
-     * @param int $priority
-     * @param int $accepted_args
-     *
-     * @return void
-     */
-    protected function add_filter($tag, $callback, $priority = 10, $accepted_args = 1)
-    {
-        if (is_string($callback)) {
-            $callback = array($this, $callback);
-        }
-        add_filter($tag, $callback, $priority, $accepted_args);
-    }
-
-    /**
      * Set up screen and menu if necessary
      *
      * @since 3.4
@@ -155,17 +121,12 @@ abstract class CAS_Admin
      */
     public function add_general_scripts_styles()
     {
-        wp_register_script('cas/admin/general', plugins_url('../js/general.min.js', __FILE__), array('jquery'), CAS_App::PLUGIN_VERSION, true);
-        wp_enqueue_script('cas/admin/general');
+        $this->enqueue_script('cas/admin/general', 'general', array('jquery'), '', true);
         wp_localize_script('cas/admin/general', 'CAS', array(
             'showPopups'    => !cas_fs()->can_use_premium_code(),
             'enableConfirm' => __('This sidebar is already scheduled to be activated. Do you want to activate it now?', 'content-aware-sidebars')
         ));
-
-        wp_register_style('cas/admin/style', plugins_url('../assets/css/style.css', __FILE__), array(), CAS_App::PLUGIN_VERSION);
-        wp_enqueue_style('cas/admin/style');
-
-
+        $this->enqueue_style('cas/admin/style', 'style');
         $this->add_scripts_styles();
     }
 
@@ -233,7 +194,7 @@ abstract class CAS_Admin
         );
         echo '<a style="display:none;" class="thickbox js-cas-pro-popup" href="#TB_inline?width=600&amp;height=350&amp;inlineId=pro-popup-notice" title="'.__('Content Aware Sidebars Pro', 'content-aware-sidebars').'"></a>';
         echo '<div id="pro-popup-notice" style="display:none;">';
-        echo '<img style="margin-top:15px;" class="alignright" src="'.plugins_url('../css/icon.png', __FILE__).'" width="128" height="128" />';
+        echo '<img style="margin-top:15px;" class="alignright" src="'.plugins_url('css/icon.png', dirname(__FILE__)).'" width="128" height="128" />';
         echo '
 		<h2>'.__('Get All Features With Content Aware Sidebars Pro', 'content-aware-sidebars').'</h2>';
         echo '<ul>';
@@ -245,5 +206,110 @@ abstract class CAS_Admin
         echo '<br />'.__('Free updates and email support included.', 'content-aware-sidebars').'</p>';
         echo '<p><a class="button-primary" target="_blank" href="'.esc_url(cas_fs()->get_upgrade_url()).'">'.__('Upgrade Now', 'content-aware-sidebars').'</a> <a href="" class="button-secondary js-cas-pro-read-more" target="_blank" href="">'.__('Read More', 'content-aware-sidebars').'</a></p>';
         echo '</div>';
+    }
+
+    /**
+     * @since 3.10
+     * @param string $tag
+     * @param string $callback
+     * @param int $priority
+     * @param int $accepted_args
+     *
+     * @return void
+     */
+    protected function add_action($tag, $callback, $priority = 10, $accepted_args = 1)
+    {
+        if (is_string($callback)) {
+            $callback = array($this, $callback);
+        }
+        add_action($tag, $callback, $priority, $accepted_args);
+    }
+
+    /**
+     * @since 3.10
+     * @param string $tag
+     * @param string $callback
+     * @param int $priority
+     * @param int $accepted_args
+     *
+     * @return void
+     */
+    protected function add_filter($tag, $callback, $priority = 10, $accepted_args = 1)
+    {
+        if (is_string($callback)) {
+            $callback = array($this, $callback);
+        }
+        add_filter($tag, $callback, $priority, $accepted_args);
+    }
+
+    /**
+     * @since 3.10
+     * @param string $handle
+     * @param string $filename
+     * @param array $deps
+     * @param bool $in_footer
+     * @param string $ver
+     *
+     * @return void
+     */
+    protected function enqueue_script($handle, $filename, $deps = array(), $ver = '', $in_footer = false)
+    {
+        $this->register_script($handle, $filename, $deps, $ver, $in_footer);
+        wp_enqueue_script($handle);
+    }
+
+    /**
+     * @since 3.10
+     * @param string $handle
+     * @param string $filename
+     * @param array $deps
+     * @param bool $in_footer
+     * @param string $ver
+     *
+     * @return void
+     */
+    protected function register_script($handle, $filename, $deps = array(), $ver = '', $in_footer = false)
+    {
+        $suffix = '.min.js';
+        if (defined('WP_DEBUG') && WP_DEBUG) {
+            $suffix = '.js';
+        }
+        if ($ver === '') {
+            $ver = CAS_App::PLUGIN_VERSION;
+        }
+        wp_register_script($handle, plugins_url('js/'.$filename.$suffix, dirname(__FILE__)), $deps, $ver, $in_footer);
+    }
+
+    /**
+     * @since 3.10
+     * @param string $handle
+     * @param string $filename
+     * @param array $deps
+     * @param string $ver
+     *
+     * @return void
+     */
+    protected function enqueue_style($handle, $filename, $deps = array(), $ver = '')
+    {
+        $this->register_style($handle, $filename, $deps, $ver);
+        wp_enqueue_style($handle);
+    }
+
+    /**
+     * @since 3.10
+     * @param string $handle
+     * @param string $filename
+     * @param array $deps
+     * @param string $ver
+     *
+     * @return void
+     */
+    protected function register_style($handle, $filename, $deps = array(), $ver = '')
+    {
+        $suffix = '.css';
+        if ($ver === '') {
+            $ver = CAS_App::PLUGIN_VERSION;
+        }
+        wp_enqueue_style($handle, plugins_url('assets/css/'.$filename.$suffix, dirname(__FILE__)), $deps, $ver);
     }
 }

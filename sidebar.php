@@ -147,7 +147,7 @@ final class CAS_Sidebar_Manager
             'multi',
             array(
                 'general' => array(
-                    'label' => 'General',
+                    'label'   => 'General',
                     'options' => array(
                         -1 => __('Logged-in', 'content-aware-sidebars')
                     )
@@ -241,7 +241,7 @@ final class CAS_Sidebar_Manager
 
         // Register the sidebar type
         register_post_type(CAS_App::TYPE_SIDEBAR, array(
-            'labels'        => array(
+            'labels' => array(
                 'name'               => __('Sidebars', 'content-aware-sidebars'),
                 'singular_name'      => __('Sidebar', 'content-aware-sidebars'),
                 'add_new'            => _x('Add New', 'sidebar', 'content-aware-sidebars'),
@@ -254,9 +254,9 @@ final class CAS_Sidebar_Manager
                 'not_found'          => __('No sidebars found', 'content-aware-sidebars'),
                 'not_found_in_trash' => __('No sidebars found in Trash', 'content-aware-sidebars'),
                 //wp-content-aware-engine specific
-                'ca_title'           => __('Where to display', 'content-aware-sidebars')
+                'ca_title' => __('Where to display', 'content-aware-sidebars')
             ),
-            'capabilities'  => array(
+            'capabilities' => array(
                 'edit_post'          => CAS_App::CAPABILITY,
                 'read_post'          => CAS_App::CAPABILITY,
                 'delete_post'        => CAS_App::CAPABILITY,
@@ -301,8 +301,8 @@ final class CAS_Sidebar_Manager
                 CAS_App::STATUS_INACTIVE,
                 CAS_App::STATUS_SCHEDULED
             ),
-            'orderby'     => 'title',
-            'order'       => 'ASC'
+            'orderby' => 'title',
+            'order'   => 'ASC'
         ));
 
         //Register sidebars to add them to the list
@@ -333,7 +333,7 @@ final class CAS_Sidebar_Manager
             'before_title'  => '<h4 class="widget-title">',
             'after_title'   => '</h4>'
         );
-        $has_host = array(0=>1,1=>1,3=>1);
+        $has_host = array(0 => 1,1 => 1,3 => 1);
         $metadata = $this->metadata();
 
         foreach ($this->sidebars as $id => $post) {
@@ -383,7 +383,7 @@ final class CAS_Sidebar_Manager
             global $wp_registered_sidebars;
 
             $metadata = $this->metadata();
-            $has_host = array(0=>1,1=>1,3=>1);
+            $has_host = array(0 => 1,1 => 1,3 => 1);
 
             foreach ($posts as $post) {
                 $id = CAS_App::SIDEBAR_PREFIX . $post->ID;

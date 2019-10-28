@@ -275,7 +275,7 @@ class CAS_Quick_Select
         }
         $content[] = __('Archive Page', 'content-aware-sidebars');
 
-        $path = plugin_dir_path(__FILE__).'../view/';
+        $path = plugin_dir_path(dirname(__FILE__)).'view/';
         $view = WPCAView::make($path.'sidebars_quick_select.php', array(
             'post'     => $post,
             'sidebars' => self::$_theme_sidebars,
@@ -330,12 +330,12 @@ class CAS_Quick_Select
     {
         wp_register_script(
             'select2',
-            plugins_url('../lib/wp-content-aware-engine/assets/js/select2.min.js', __FILE__),
+            plugins_url('lib/wp-content-aware-engine/assets/js/select2.min.js', dirname(__FILE__)),
             array('jquery'),
             '4.0.3',
             false
         );
-        wp_register_script('cas/sidebars/suggest', plugins_url('/js/suggest-sidebars.min.js', dirname(__FILE__)), array('select2'), CAS_App::PLUGIN_VERSION, true);
+        wp_register_script('cas/sidebars/suggest', plugins_url('js/suggest-sidebars.min.js', dirname(__FILE__)), array('select2'), CAS_App::PLUGIN_VERSION, true);
     }
 
     /**

@@ -160,9 +160,9 @@ final class CAS_Sidebar_Edit extends CAS_Admin
 
         $pro_label = '(Pro)';
         $type = $types->get(CAS_App::TYPE_SIDEBAR);
-        $path = plugin_dir_path(__FILE__);
+        $path = plugin_dir_path(dirname(__FILE__));
 
-        require($path.'../conditions/placeholder.php');
+        require($path.'conditions/placeholder.php');
 
         $module = new CASConditionPlaceholder('cas_url', __('URLs', 'content-aware-sidebars').' '.$pro_label);
         $type->add($module, 'cas_url');
@@ -711,7 +711,7 @@ final class CAS_Sidebar_Edit extends CAS_Admin
     {
         $this->create_pointers();
         CAS_App::instance()->manager()->populate_metadata();
-        $path = plugin_dir_path(__FILE__).'../view/';
+        $path = plugin_dir_path(dirname(__FILE__)).'view/';
 
         $cas_fs = cas_fs();
 
@@ -1016,12 +1016,10 @@ final class CAS_Sidebar_Edit extends CAS_Admin
 
         WPCACore::enqueue_scripts_styles('');
 
-        wp_register_script('flatpickr', plugins_url('../js/flatpickr.min.js', __FILE__), array(), '3.0.6', false);
+        $this->register_script('flatpickr', 'flatpickr', array(), '3.0.6');
+        $this->register_script('cas/admin/edit', 'cas_admin', array('jquery','flatpickr','wp-color-picker'));
 
-        wp_register_script('cas/admin/edit', plugins_url('../js/cas_admin.min.js', __FILE__), array('jquery','flatpickr','wp-color-picker'), CAS_App::PLUGIN_VERSION, false);
-
-        wp_register_style('flatpickr', plugins_url('../assets/css/flatpickr.dark.min.css', __FILE__), array(), '3.0.6');
-        wp_enqueue_style('flatpickr');
+        $this->enqueue_style('flatpickr', 'flatpickr.dark.min', array(), '3.0.6');
         wp_enqueue_style('wp-color-picker');
 
         $visibility = array();
