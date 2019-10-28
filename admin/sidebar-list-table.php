@@ -259,6 +259,9 @@ class CAS_Sidebar_List_Table extends WP_List_Table
         if (current_user_can($post_type_obj->cap->edit_posts)) {
             if ($this->is_trash) {
                 $actions['untrash'] = __('Restore');
+            } else {
+                $actions['activate'] = __('Activate');
+                $actions['deactivate'] = __('Deactivate');
             }
         }
 

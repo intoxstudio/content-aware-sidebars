@@ -157,8 +157,7 @@ final class CAS_Sidebar_Overview extends CAS_Admin
 
             $pagenum = $this->table->get_pagenum();
 
-            $sendback = remove_query_arg(array('trashed', 'untrashed', 'deleted', 'locked', 'ids'), wp_get_referer());
-
+            $sendback = remove_query_arg(array('activated','deactivated','trashed', 'untrashed', 'deleted', 'locked', 'ids'), wp_get_referer());
             $sendback = add_query_arg('paged', $pagenum, $sendback);
 
             if ('delete_all' == $doaction) {
@@ -177,11 +176,50 @@ final class CAS_Sidebar_Overview extends CAS_Admin
                 exit;
             }
 
-            switch ($doaction) {
-                case 'trash':
-                    $trashed = $locked = 0;
+            $post_ids = (array)$post_ids;
+            $handled = 0;
 
-                    foreach ((array) $post_ids as $post_id) {
+            switch ($doaction) {
+                case 'activate':
+                case 'deactivate':
+                    $locked = 0;
+
+                    foreach ($post_ids as $post_id) {
+                        if (!current_user_can('edit_post', $post_id)) {
+                            wp_die(__('You are not allowed to update this item.'));
+                        }
+
+                        if (wp_check_post_lock($post_id)) {
+                            $locked++;
+                            continue;
+                        }
+
+                        if ($doaction == 'activate') {
+                            $data = array(
+                                'ID'            => $post_id,
+                                'post_status'   => CAS_App::STATUS_ACTIVE,
+                                'post_date'     => current_time('mysql'),
+                                'post_date_gmt' => current_time('mysql', true)
+                            );
+                        } else {
+                            $data = array(
+                                'ID'          => $post_id,
+                                'post_status' => CAS_App::STATUS_INACTIVE
+                            );
+                        }
+
+                        if (!wp_update_post($data)) {
+                            wp_die(__('Error in updating status.'));
+                        }
+
+                        $handled++;
+                    }
+                    $sendback = add_query_arg(array($doaction.'d' => $handled, 'ids' => join(',', $post_ids), 'locked' => $locked ), $sendback);
+                    break;
+                case 'trash':
+                    $locked = 0;
+
+                    foreach ($post_ids as $post_id) {
                         if (!current_user_can('delete_post', $post_id)) {
                             wp_die(__('You are not allowed to move this item to the Trash.'));
                         }
@@ -195,14 +233,13 @@ final class CAS_Sidebar_Overview extends CAS_Admin
                             wp_die(__('Error in moving to Trash.'));
                         }
 
-                        $trashed++;
+                        $handled++;
                     }
 
-                    $sendback = add_query_arg(array('trashed' => $trashed, 'ids' => join(',', $post_ids), 'locked' => $locked ), $sendback);
+                    $sendback = add_query_arg(array('trashed' => $handled, 'ids' => join(',', $post_ids), 'locked' => $locked ), $sendback);
                     break;
                 case 'untrash':
-                    $untrashed = 0;
-                    foreach ((array) $post_ids as $post_id) {
+                    foreach ($post_ids as $post_id) {
                         if (!current_user_can('delete_post', $post_id)) {
                             wp_die(__('You are not allowed to restore this item from the Trash.'));
                         }
@@ -211,13 +248,12 @@ final class CAS_Sidebar_Overview extends CAS_Admin
                             wp_die(__('Error in restoring from Trash.'));
                         }
 
-                        $untrashed++;
+                        $handled++;
                     }
-                    $sendback = add_query_arg('untrashed', $untrashed, $sendback);
+                    $sendback = add_query_arg('untrashed', $handled, $sendback);
                     break;
                 case 'delete':
-                    $deleted = 0;
-                    foreach ((array) $post_ids as $post_id) {
+                    foreach ($post_ids as $post_id) {
                         $post_del = get_post($post_id);
 
                         if (!current_user_can('delete_post', $post_id)) {
@@ -227,10 +263,9 @@ final class CAS_Sidebar_Overview extends CAS_Admin
                         if (!wp_delete_post($post_id)) {
                             wp_die(__('Error in deleting.'));
                         }
-
-                        $deleted++;
+                        $handled++;
                     }
-                    $sendback = add_query_arg('deleted', $deleted, $sendback);
+                    $sendback = add_query_arg('deleted', $handled, $sendback);
                     break;
             }
 
@@ -264,13 +299,14 @@ final class CAS_Sidebar_Overview extends CAS_Admin
     public function bulk_messages()
     {
         $manage_widgets = sprintf(' <a href="%1$s">%2$s</a>', 'widgets.php', __('Manage widgets', 'content-aware-sidebars'));
-
         $bulk_messages = array(
-            'updated'   => _n_noop('%s sidebar updated.', '%s sidebars updated.', 'content-aware-sidebars'),
-            'locked'    => _n_noop('%s sidebar not updated, somebody is editing it.', '%s sidebars not updated, somebody is editing them.', 'content-aware-sidebars'),
-            'deleted'   => _n_noop('%s sidebar permanently deleted.', '%s sidebars permanently deleted.', 'content-aware-sidebars'),
-            'trashed'   => _n_noop('%s sidebar moved to the Trash.', '%s sidebars moved to the Trash.', 'content-aware-sidebars'),
-            'untrashed' => _n_noop('%s sidebar restored from the Trash.', '%s sidebars restored from the Trash.', 'content-aware-sidebars'),
+            'updated'     => _n_noop('%s sidebar updated.', '%s sidebars updated.', 'content-aware-sidebars'),
+            'locked'      => _n_noop('%s sidebar not updated, somebody is editing it.', '%s sidebars not updated, somebody is editing them.', 'content-aware-sidebars'),
+            'activated'   => _n_noop('%s sidebar activated.', '%s sidebars activated.', 'content-aware-sidebars'),
+            'deactivated' => _n_noop('%s sidebar deactivated.', '%s sidebars deactivated.', 'content-aware-sidebars'),
+            'deleted'     => _n_noop('%s sidebar permanently deleted.', '%s sidebars permanently deleted.', 'content-aware-sidebars'),
+            'trashed'     => _n_noop('%s sidebar moved to the Trash.', '%s sidebars moved to the Trash.', 'content-aware-sidebars'),
+            'untrashed'   => _n_noop('%s sidebar restored from the Trash.', '%s sidebars restored from the Trash.', 'content-aware-sidebars'),
         );
         $bulk_messages = apply_filters('cas/admin/bulk_messages', $bulk_messages);
 
