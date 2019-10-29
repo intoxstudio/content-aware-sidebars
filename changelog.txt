@@ -1,3 +1,48 @@
+= 3.8.2 =
+
+* Added: wordpress 5.2 support
+* Updated: freemius sdk
+* Updated: ui improvements
+
+**Pro Plan:**
+
+* Added: include hidden buddypress groups in user visibility
+
+= 3.8.1 =
+
+* Added: wordpress 5.1 support
+* Updated: freemius sdk - security update
+* Updated: wp-content-aware-engine library
+* Fixed: minor bugfixes
+
+= 3.8 =
+
+* Added: Overhauled and simplified UI
+* Added: quick-add conditions
+* Added: minimum wordpress version 4.5
+* Added: minimum php version 5.6
+* Updated: user visibility now has categories
+* Updated: introduction tour
+* Updated: singulars/archives condition setting replaced with page type setting
+* Updated: admin menu renamed to "content aware"
+* Updated: freemius sdk
+* Updated: wp-content-aware-engine library
+* Updated: wp-db-updater library
+* Fixed: searching for attachments in conditions
+* Fixed: shop condition not working due to bug in woocommerce
+* Fixed: some conditions not displaying properly after save
+* Fixed: better compatibility with plugins loading unnecessary admin scripts
+
+**Pro Plan:**
+
+* Added: widget cleaner
+* Added: buddypress groups in user visibility
+* Added: "author of content" in user visibility
+* Updated: performance improvements for url condition
+* Updated: performance improvements for date condition
+* Fixed: no longer necessary to enable styling before using widget area designer
+* Fixed: time schedule now shows time format from settings (12/24h)
+
 = 3.7.7 =
 
 * Updated: freemius sdk
@@ -40,7 +85,7 @@
 Added: list of generatepress hooks to insert widget areas in
 Fixed: url condition could in some cases not be set
 
-= 3.7.1 = 
+= 3.7.1 =
 
 * Added: display only active shortcode sidebars
 * Added: UI improvements
@@ -49,7 +94,7 @@ Fixed: url condition could in some cases not be set
 
 **Pro Plan:**
 
-* Added: time schedule for shortcode sidebars 
+* Added: time schedule for shortcode sidebars
 
 = 3.7 =
 
@@ -119,7 +164,7 @@ Fixed: url condition could in some cases not be set
 
 * Added: widget to insert widgets from other sidebars
 * Added: 1-click automatic install on checkout
-* Fixed: avoid auto-draft sidebar adding extra revision 
+* Fixed: avoid auto-draft sidebar adding extra revision
 
 = 3.5.2 =
 
@@ -566,7 +611,7 @@ Fixed: url condition could in some cases not be set
 
 = 1.1.2 =
 
-* Added: wordpress 3.5 compatibility 
+* Added: wordpress 3.5 compatibility
 * Fixed: slight css changes on edit screen
 * Fixed: "show with all" checkbox toggles other checkboxes correctly
 
@@ -580,7 +625,7 @@ Fixed: url condition could in some cases not be set
 
 = 1.1 =
 
-* Added: improved gui on edit screen including content accordion 
+* Added: improved gui on edit screen including content accordion
 * Added: bbpress forum-topic dependency
 * Added: sidebars hidden on password protected content
 * Added: relevant usermeta cleared on plugin deletion

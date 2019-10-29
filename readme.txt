@@ -2,10 +2,10 @@
 Contributors: intoxstudio, devinstitute, freemius
 Donate link: #
 Tags: custom sidebars, sidebar, hide sidebar, display widgets, widget, bbpress, buddypress, sidebar manager
-Requires at least: 4.6
+Requires at least: 4.7
 Requires PHP: 5.6
-Tested up to: 5.2
-Stable tag: 3.9
+Tested up to: 5.3
+Stable tag: 3.10
 License: GPLv3
 
 Display custom sidebars and widgets on any post, page, category etc. Supports bbPress, BuddyPress, WooCommerce, WPML, and more.
@@ -158,16 +158,28 @@ Of course! Check out the links below:
 
 == Upgrade Notice ==
 
-= 3.5.1 =
-
-* Content Aware Sidebars data in your database will be updated automatically. It is highly recommended to backup this data before updating the plugin.
-* Data from version 0.8 and below will not be updated during this process.
-
 == Changelog ==
 
 [Follow development and see all changes on GitHub](https://github.com/intoxstudio/content-aware-sidebars)
 
 ####Highlights
+
+= 3.10 =
+
+* Added: bulk actions for activation and deactivation
+* Added: filter to disable enhanced widget manager
+* Added: filter to disable sidebar quick select
+* Added: hide sidebar quick select from special pages
+* Added: wordpress 5.3 support
+* Added: minimum wordpress version 4.7
+* Updated: ui improvements
+* Updated: wp-content-aware-engine library
+* Removed: bundled spanish translations - now handled with automatic language pack
+
+**Pro Plan:**
+
+* Added: sticky option in widget area designer
+* Added: duplication now includes widgets
 
 = 3.9 =
 
@@ -185,50 +197,5 @@ Of course! Check out the links below:
 * Added: display condition for referrer url
 * Added: predefined infuse locations for genesis framework, astra theme
 * Updated: predefined infuse locations for generatepress theme
-
-= 3.8.2 =
-
-* Added: wordpress 5.2 support
-* Updated: freemius sdk
-* Updated: ui improvements
-
-**Pro Plan:**
-
-* Added: include hidden buddypress groups in user visibility
-
-= 3.8.1 =
-
-* Added: wordpress 5.1 support
-* Updated: freemius sdk - security update
-* Updated: wp-content-aware-engine library
-* Fixed: minor bugfixes
-
-= 3.8 =
-
-* Added: Overhauled and simplified UI
-* Added: quick-add conditions
-* Added: minimum wordpress version 4.5
-* Added: minimum php version 5.6
-* Updated: user visibility now has categories
-* Updated: introduction tour
-* Updated: singulars/archives condition setting replaced with page type setting
-* Updated: admin menu renamed to "content aware"
-* Updated: freemius sdk
-* Updated: wp-content-aware-engine library
-* Updated: wp-db-updater library
-* Fixed: searching for attachments in conditions
-* Fixed: shop condition not working due to bug in woocommerce
-* Fixed: some conditions not displaying properly after save
-* Fixed: better compatibility with plugins loading unnecessary admin scripts
-
-**Pro Plan:**
-
-* Added: widget cleaner
-* Added: buddypress groups in user visibility
-* Added: "author of content" in user visibility
-* Updated: performance improvements for url condition
-* Updated: performance improvements for date condition
-* Fixed: no longer necessary to enable styling before using widget area designer
-* Fixed: time schedule now shows time format from settings (12/24h)
 
 See changelog.txt for previous changes.
