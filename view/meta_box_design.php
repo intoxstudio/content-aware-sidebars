@@ -7,6 +7,7 @@
  */
 
 $url = 'https://dev.institute/wordpress-sidebars/pricing/?utm_source=plugin&utm_medium=popup&utm_content=design&utm_campaign=cas';
+$sticky_url = 'https://dev.institute/docs/content-aware-sidebars/faq/sticky-sidebar-theme-support/?utm_source=plugin&utm_medium=link&utm_content=design&utm_campaign=cas';
 
 ?>
 
@@ -27,6 +28,8 @@ $url = 'https://dev.institute/wordpress-sidebars/pricing/?utm_source=plugin&utm_
                     <input type="checkbox" value="1" disabled />
                     <div class="cae-toggle-bar"></div>
                 </label>
+                <p><a href="<?php echo $sticky_url; ?>"
+                        target="_blank">Check Theme Support</a></p>
             </td>
         </tr>
         <tr>
