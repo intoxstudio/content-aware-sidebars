@@ -119,6 +119,10 @@ class CAS_Quick_Select
      */
     public static function save_post_sidebars($post_id, $post)
     {
+        if (in_array($post_id, self::get_special_post_ids())) {
+            return;
+        }
+
         if (!(isset($_POST[self::NONCE])
             && wp_verify_nonce($_POST[self::NONCE], self::NONCE.$post_id))) {
             return;
@@ -227,16 +231,7 @@ class CAS_Quick_Select
      */
     public static function create_meta_boxes($post)
     {
-        $special_post_ids = array(
-            get_option('page_on_front'),
-            get_option('page_for_posts'),
-        );
-
-        if (defined('WC_VERSION')) {
-            $special_post_ids = get_option('woocommerce_shop_page_id');
-        }
-
-        if (in_array($post->ID, $special_post_ids)) {
+        if (in_array($post->ID, self::get_special_post_ids())) {
             return;
         }
 
@@ -361,6 +356,25 @@ class CAS_Quick_Select
             $labels['notFound'] = __('No sidebars found', 'content-aware-sidebars');
         }
         wp_localize_script('cas/sidebars/suggest', 'CAS', $labels);
+    }
+
+    /**
+     * @since 3.10.1
+     *
+     * @return array
+     */
+    protected static function get_special_post_ids()
+    {
+        $special_post_ids = array(
+            get_option('page_on_front'),
+            get_option('page_for_posts'),
+        );
+
+        if (defined('WC_VERSION')) {
+            $special_post_ids[] = get_option('woocommerce_shop_page_id');
+        }
+
+        return $special_post_ids;
     }
 
     /**
