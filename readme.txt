@@ -5,7 +5,7 @@ Tags: custom sidebars, sidebar, hide sidebar, display widgets, widget, bbpress, 
 Requires at least: 4.7
 Requires PHP: 5.6
 Tested up to: 5.3
-Stable tag: 3.10
+Stable tag: 3.10.1
 License: GPLv3
 
 Display custom sidebars and widgets on any post, page, category etc. Supports bbPress, BuddyPress, WooCommerce, WPML, and more.
@@ -163,6 +163,10 @@ Of course! Check out the links below:
 [Follow development and see all changes on GitHub](https://github.com/intoxstudio/content-aware-sidebars)
 
 ####Highlights
+
+= 3.10.1 =
+
+* Fixed: minor bug when using quick select with woocommerce
 
 = 3.10 =
 
