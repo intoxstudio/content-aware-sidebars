@@ -1,3 +1,20 @@
+= 3.9 =
+
+* Added: 1-click activation in widget area list screen
+* Added: categories and search in dropdown for display condition types
+* Added: minimum wordpress version 4.6
+* Updated: ui improvements
+* Updated: wp-content-aware-engine library
+* Updated: wp-db-updater library
+* Updated: wp-pointer-tour library
+* Fixed: activation datepicker now shows time format from settings (12/24h)
+
+**Pro Plan:**
+
+* Added: display condition for referrer url
+* Added: predefined infuse locations for genesis framework, astra theme
+* Updated: predefined infuse locations for generatepress theme
+
 = 3.8.2 =
 
 * Added: wordpress 5.2 support

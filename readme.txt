@@ -5,7 +5,7 @@ Tags: custom sidebars, sidebar, hide sidebar, display widgets, widget, bbpress, 
 Requires at least: 4.7
 Requires PHP: 5.6
 Tested up to: 5.3
-Stable tag: 3.10.1
+Stable tag: 3.11
 License: GPLv3
 
 Display custom sidebars and widgets on any post, page, category etc. Supports bbPress, BuddyPress, WooCommerce, WPML, and more.
@@ -75,25 +75,29 @@ Content Aware Sidebars automatically supports Custom Post Types and Taxonomies c
 
 ####Highlighted Premium Features
 
-* **Widget Area Designer:** Add widget columns and edit colors, backgrounds, paddings, etc.
-* **Widget Areas in Theme Hooks:** Intelligently insert new widget areas into your theme without coding
-* **Automatic Widgets Backup:** Easily restore any changed or deleted widgets
-* **Widget Cleaner:** Save memory and remove clutter by disabling and removing unused widgets
-* **Extended User Visibility:** Show or hide widget areas for User Roles, BuddyPress Groups, and more
-* **Time & Weekday Schedule**: Display widget areas only in select time ranges on given days
-* **Container Widget:** Turn widget areas into reusable blocks and show the same widgets in different places
-* **Duplicate Widget Areas:** A real time-saver when adding new similar widget areas
-* **First-class Email Support:** Get expert help fast and directly to your inbox
+* **Sticky Sidebars & Widget Areas**
+Make any sidebar or widget area sticky without hurting site performance. No jQuery and no bloat.
+* **Even More Display Conditions**
+Create sidebars for these additional conditions: **UR LS + wildcards, Referrer URLs + wildcards, Content by publish date, BuddyPress Groups**
+* **Widget Area Designer**
+Add responsive widget columns and edit colors, backgrounds, paddings, etc.
+* **Widget Areas in Theme Hooks**
+Intelligently insert new widget areas into your theme without coding
+* **Automatic Widgets Backup**
+Easily restore any changed or deleted widgets
+* **Widget Cleaner**
+Save memory and remove clutter by disabling and removing unused widgets
+* **Extended User Visibility**
+Show or hide widget areas for User Roles, BuddyPress Groups, and more
+* **Time & Weekday Schedule**
+Display widget areas only in select time ranges on given days
+* **Container Widget**
+Turn widget areas into reusable blocks and show the same widgets in different places
+* **Duplicate Widget Areas**
+A real time-saver when adding new similar widget areas
+* **First-class Email Support**
+Get expert help fast and directly to your inbox
 * [and so much more...](https://dev.institute/wordpress-sidebars/pricing/?utm_source=readme&utm_medium=referral&utm_content=more&utm_campaign=cas)
-
-####Even More Sidebar Conditions
-
-Display your widget areas on these additional conditions:
-
-* URLs + wildcards
-* Referrer URLs + wildcards
-* Content from any day, month, year
-* BuddyPress Groups
 
 Upgrade at anytime instantly and securely from the Admin Dashboard, or [click here to upgrade now!](https://dev.institute/wordpress-sidebars/pricing/?utm_source=readme&utm_medium=referral&utm_content=upgrade&utm_campaign=cas)
 
@@ -164,6 +168,18 @@ Of course! Check out the links below:
 
 ####Highlights
 
+= 3.11 =
+
+* Added: condition type cache for improved performance
+* Updated: ui improvements
+* Updated: wp-content-aware-engine library
+* Updated: freemius sdk
+
+**Pro Plan:**
+
+* Updated: sticky option now fully supports most themes out of the box
+* Fixed: sticky option would in some cases result in error
+
 = 3.10.1 =
 
 * Fixed: minor bug when using quick select with woocommerce
@@ -184,22 +200,5 @@ Of course! Check out the links below:
 
 * Added: sticky option in widget area designer
 * Added: duplication now includes widgets
-
-= 3.9 =
-
-* Added: 1-click activation in widget area list screen
-* Added: categories and search in dropdown for display condition types
-* Added: minimum wordpress version 4.6
-* Updated: ui improvements
-* Updated: wp-content-aware-engine library
-* Updated: wp-db-updater library
-* Updated: wp-pointer-tour library
-* Fixed: activation datepicker now shows time format from settings (12/24h)
-
-**Pro Plan:**
-
-* Added: display condition for referrer url
-* Added: predefined infuse locations for genesis framework, astra theme
-* Updated: predefined infuse locations for generatepress theme
 
 See changelog.txt for previous changes.

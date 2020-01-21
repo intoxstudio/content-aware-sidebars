@@ -11,7 +11,7 @@ defined('ABSPATH') || exit;
 final class CAS_App
 {
     const PLUGIN_VERSION_KEY = 'cas_db_version';
-    const PLUGIN_VERSION = '3.10.1';
+    const PLUGIN_VERSION = '3.11';
 
     /**
      * Prefix for sidebar id
