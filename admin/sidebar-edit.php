@@ -171,6 +171,11 @@ final class CAS_Sidebar_Edit extends CAS_Admin
             $module = new CASConditionPlaceholder('cas_bbp', __('BuddyPress Groups', 'content-aware-sidebars').' '.$pro_label, '', '', 'plugins');
             $type->add($module, 'cas_bbp');
         }
+
+        if (defined('ACF')) {
+            $module = new CASConditionPlaceholder('cas_acf', __('Advanced Custom Fields', 'content-aware-sidebars').' '.$pro_label, '', '', 'plugins');
+            $type->add($module, 'cas_acf');
+        }
     }
 
     /**
