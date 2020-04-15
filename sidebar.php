@@ -328,8 +328,8 @@ final class CAS_Sidebar_Manager
 
         //todo: only for manual
         $default_styles = array(
-            'before_widget' => '<li id="%1$s" class="widget-container %2$s">',
-            'after_widget'  => '</li>',
+            'before_widget' => '<div id="%1$s" class="widget-container %2$s">',
+            'after_widget'  => '</div>',
             'before_title'  => '<h4 class="widget-title">',
             'after_title'   => '</h4>'
         );
