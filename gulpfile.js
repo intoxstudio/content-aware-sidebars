@@ -8,6 +8,7 @@ const cleanCSS = require("gulp-clean-css");
 const zip = require("gulp-zip");
 const freemius = require("gulp-freemius-deploy");
 const fs_config = require( './fs-config.json' );
+const pkg = require('./package.json');
 
 gulp.task('less', function (done) {
 	return gulp.src('assets/css/style.less')
@@ -27,7 +28,7 @@ gulp.task('less', function (done) {
 });
 
 gulp.task('uglify', function () {
-	return gulp.src(['js/*.js','!js/*.min.js'])
+	return gulp.src(['assets/js/*.js', '!assets/js/*.min.js'])
 		.pipe(uglify({
 			compress: {
 				drop_console: true
@@ -41,12 +42,21 @@ gulp.task('uglify', function () {
 			warnings: false
 		}))
 		.pipe(rename({extname: '.min.js'}))
-		.pipe(gulp.dest('js'));
+		.pipe(gulp.dest('assets/js'));
 });
 
-gulp.task('zip', function() {
-	return gulp.src(['**','!fs-config.json','!**/*.less','!build{,/**}','!**/node_modules{,/**}', '!gulpfile.js', '!package.json'],{base:'../'})
-		.pipe(zip('content-aware-sidebars.zip'))
+gulp.task('zip', function () {
+	return gulp.src([
+		'**',
+		'!build{,/**}',
+		'!**/node_modules{,/**}',
+		'!**/package.json',
+		'!**/pnpm-lock.yaml',
+		'!**/*.{less,scss,po,pot,js}',
+		'!**/{scss,less}{,/**}',
+		'{lib/freemius/assets/js/*,**/*.min}.js',
+	], { base: '../' })
+		.pipe(zip(pkg.name + '.zip'))
 		.pipe(gulp.dest('build'));
 });
 
@@ -71,7 +81,7 @@ gulp.task('freemius', function() {
 
 gulp.task('watch', function() {
 	gulp.watch('assets/css/style.less', gulp.parallel('less'));
-	gulp.watch(['js/*.js','!js/*.min.js'], gulp.parallel('uglify'));
+	gulp.watch(['assets/js/*.js','!assets/js/*.min.js'], gulp.parallel('uglify'));
 });
 
 gulp.task('build', gulp.parallel('less','uglify'));
