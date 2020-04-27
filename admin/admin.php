@@ -277,7 +277,7 @@ abstract class CAS_Admin
         if ($ver === '') {
             $ver = CAS_App::PLUGIN_VERSION;
         }
-        wp_register_script($handle, plugins_url('js/'.$filename.$suffix, dirname(__FILE__)), $deps, $ver, $in_footer);
+        wp_register_script($handle, plugins_url('assets/js/'.$filename.$suffix, dirname(__FILE__)), $deps, $ver, $in_footer);
     }
 
     /**

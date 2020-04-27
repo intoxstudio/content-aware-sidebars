@@ -330,7 +330,7 @@ class CAS_Quick_Select
             '4.0.3',
             false
         );
-        wp_register_script('cas/sidebars/suggest', plugins_url('js/suggest-sidebars.min.js', dirname(__FILE__)), array('select2'), CAS_App::PLUGIN_VERSION, true);
+        wp_register_script('cas/sidebars/suggest', plugins_url('assets/js/suggest-sidebars.min.js', dirname(__FILE__)), array('select2'), CAS_App::PLUGIN_VERSION, true);
     }
 
     /**
