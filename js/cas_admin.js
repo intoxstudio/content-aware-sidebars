@@ -46,7 +46,7 @@
 				onChange: function(dateObj, dateStr, instance) {
 					console.log("activate");
 					if(dateStr || deactivate.config.minDate) {
-						deactivate.set("minDate", dateStr ? new Date(dateObj).fp_incr(1) : null);
+						deactivate.set("minDate", dateStr ? new Date(dateObj) : null);
 					}
 					if(dateStr) {
 						$toggle.prop('checked',false);
@@ -67,7 +67,7 @@
 				onChange: function(dateObj, dateStr, instance) {
 					console.log("deactivate");
 					if(dateStr || activate.config.maxDate) {
-						activate.set("maxDate", dateStr ? new Date(dateObj).fp_incr(-1) : null);
+						activate.set("maxDate", dateStr ? new Date(dateObj) : null);
 					}
 				}
 			}),
