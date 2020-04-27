@@ -220,9 +220,11 @@ final class CAS_Sidebar_Manager
             $this->metadata->get('host')->set_input_list($sidebar_list);
 
             if (!cas_fs()->can_use_premium_code()) {
+                $pro_label = ' (Pro)';
                 $actions = $this->metadata->get('handle');
                 $action_list = $actions->get_input_list();
-                $action_list['__infuse'] = __('Infuse', 'content-aware-sidebars').' '.__('(Pro Feature)', 'content-aware-sidebars');
+                $action_list['__infuse'] = __('Infuse', 'content-aware-sidebars').$pro;
+                $action_list['__after_paragraph'] = __('After Paragraph', 'content-aware-sidebars').$pro;
                 $actions->set_input_list($action_list);
             }
 
