@@ -50,11 +50,12 @@ gulp.task('zip', function () {
 		'**',
 		'!build{,/**}',
 		'!**/node_modules{,/**}',
-		'!**/package.json',
+		'!**/package{,-lock}.json',
 		'!**/pnpm-lock.yaml',
 		'!**/*.{less,scss,po,pot,js}',
 		'!**/{scss,less}{,/**}',
-		'{lib/freemius/assets/js/*,**/*.min}.js',
+		'!fs-config.json',
+		'{lib/freemius/assets/js/*,lib/wp-pointer-tour/assets/js/*,**/*.min}.js',
 	], { base: '../' })
 		.pipe(zip(pkg.name + '.zip'))
 		.pipe(gulp.dest('build'));

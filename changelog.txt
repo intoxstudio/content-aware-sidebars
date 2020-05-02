@@ -1,765 +1,786 @@
-= 3.9 =
+= 3.10.1 =
 
-* Added: 1-click activation in widget area list screen
-* Added: categories and search in dropdown for display condition types
-* Added: minimum wordpress version 4.6
-* Updated: ui improvements
-* Updated: wp-content-aware-engine library
-* Updated: wp-db-updater library
-* Updated: wp-pointer-tour library
-* Fixed: activation datepicker now shows time format from settings (12/24h)
+* [fixed] minor bug when using quick select with woocommerce
+
+= 3.10 =
+
+* [new] bulk actions for activation and deactivation
+* [new] filter to disable enhanced widget manager
+* [new] filter to disable sidebar quick select
+* [new] hide sidebar quick select from special pages
+* [updated] wordpress 5.3 support
+* [updated] minimum wordpress version 4.7
+* [updated] ui improvements
+* [updated] wp-content-aware-engine library
+* [removed] bundled spanish translations - now handled with automatic language pack
 
 **Pro Plan:**
 
-* Added: display condition for referrer url
-* Added: predefined infuse locations for genesis framework, astra theme
-* Updated: predefined infuse locations for generatepress theme
+* [new] sticky option in widget area designer
+* [updated] duplication now includes widgets
+
+= 3.9 =
+
+* [new] 1-click activation in widget area list screen
+* [new] categories and search in dropdown for display condition types
+* [new] minimum wordpress version 4.6
+* [updated] ui improvements
+* [updated] wp-content-aware-engine library
+* [updated] wp-db-updater library
+* [updated] wp-pointer-tour library
+* [fixed] activation datepicker now shows time format from settings (12/24h)
+
+**Pro Plan:**
+
+* [new] display condition for referrer url
+* [new] predefined infuse locations for genesis framework, astra theme
+* [updated] predefined infuse locations for generatepress theme
 
 = 3.8.2 =
 
-* Added: wordpress 5.2 support
-* Updated: freemius sdk
-* Updated: ui improvements
+* [new] wordpress 5.2 support
+* [updated] freemius sdk
+* [updated] ui improvements
 
 **Pro Plan:**
 
-* Added: include hidden buddypress groups in user visibility
+* [new] include hidden buddypress groups in user visibility
 
 = 3.8.1 =
 
-* Added: wordpress 5.1 support
-* Updated: freemius sdk - security update
-* Updated: wp-content-aware-engine library
-* Fixed: minor bugfixes
+* [new] wordpress 5.1 support
+* [updated] freemius sdk - security update
+* [updated] wp-content-aware-engine library
+* [fixed] minor bugfixes
 
 = 3.8 =
 
-* Added: Overhauled and simplified UI
-* Added: quick-add conditions
-* Added: minimum wordpress version 4.5
-* Added: minimum php version 5.6
-* Updated: user visibility now has categories
-* Updated: introduction tour
-* Updated: singulars/archives condition setting replaced with page type setting
-* Updated: admin menu renamed to "content aware"
-* Updated: freemius sdk
-* Updated: wp-content-aware-engine library
-* Updated: wp-db-updater library
-* Fixed: searching for attachments in conditions
-* Fixed: shop condition not working due to bug in woocommerce
-* Fixed: some conditions not displaying properly after save
-* Fixed: better compatibility with plugins loading unnecessary admin scripts
+* [new] Overhauled and simplified UI
+* [new] quick-add conditions
+* [new] minimum wordpress version 4.5
+* [new] minimum php version 5.6
+* [updated] user visibility now has categories
+* [updated] introduction tour
+* [updated] singulars/archives condition setting replaced with page type setting
+* [updated] admin menu renamed to "content aware"
+* [updated] freemius sdk
+* [updated] wp-content-aware-engine library
+* [updated] wp-db-updater library
+* [fixed] searching for attachments in conditions
+* [fixed] shop condition not working due to bug in woocommerce
+* [fixed] some conditions not displaying properly after save
+* [fixed] better compatibility with plugins loading unnecessary admin scripts
 
 **Pro Plan:**
 
-* Added: widget cleaner
-* Added: buddypress groups in user visibility
-* Added: "author of content" in user visibility
-* Updated: performance improvements for url condition
-* Updated: performance improvements for date condition
-* Fixed: no longer necessary to enable styling before using widget area designer
-* Fixed: time schedule now shows time format from settings (12/24h)
+* [new] widget cleaner
+* [new] buddypress groups in user visibility
+* [new] "author of content" in user visibility
+* [updated] performance improvements for url condition
+* [updated] performance improvements for date condition
+* [fixed] no longer necessary to enable styling before using widget area designer
+* [fixed] time schedule now shows time format from settings (12/24h)
 
 = 3.7.7 =
 
-* Updated: freemius sdk
+* [updated] freemius sdk
 
 = 3.7.6 =
 
-* Fixed: javascript error introduced in v3.7.5
+* [fixed] javascript error introduced in v3.7.5
 
 = 3.7.5 =
 
-* Added: UI improvements
-* Added: affiliation program
-* Fixed: some hierarchical sub-items could not be selectable as conditions
-* Fixed: conditions would in some cases not be displayed properly after save
-* Updated: wp-content-aware-engine
-* Updated: freemius sdk
+* [new] UI improvements
+* [new] affiliation program
+* [fixed] some hierarchical sub-items could not be selectable as conditions
+* [fixed] conditions would in some cases not be displayed properly after save
+* [updated] wp-content-aware-engine
+* [updated] freemius sdk
 
 = 3.7.4 =
 
-* Added: UI improvements
-* Fixed: some conditions could not be added on legacy php versions
-* Updated: wp-content-aware-engine
-* Updated: freemius sdk
+* [new] UI improvements
+* [fixed] some conditions could not be added on legacy php versions
+* [updated] wp-content-aware-engine
+* [updated] freemius sdk
 
 = 3.7.3 =
 
-* Updated: freemius sdk
+* [updated] freemius sdk
 
 = 3.7.2 =
 
-* Added: redirect to current tab on sidebar update
-* Added: better display of hierarchical items in conditions
-* Added: UI improvements
-* Added: improved compatibility with other plugins
-* Updated: wp-content-aware-engine
-* Updated: freemius sdk
+* [new] redirect to current tab on sidebar update
+* [new] better display of hierarchical items in conditions
+* [new] UI improvements
+* [new] improved compatibility with other plugins
+* [updated] wp-content-aware-engine
+* [updated] freemius sdk
 
 **Pro Plan:**
 
-Added: list of generatepress hooks to insert widget areas in
-Fixed: url condition could in some cases not be set
+[new] list of generatepress hooks to insert widget areas in
+[fixed] url condition could in some cases not be set
 
 = 3.7.1 =
 
-* Added: display only active shortcode sidebars
-* Added: UI improvements
-* Added: wordpress 4.9 support
-* Fixed: visibility for sidebars inserted with shortcodes
+* [new] display only active shortcode sidebars
+* [new] UI improvements
+* [new] wordpress 4.9 support
+* [fixed] visibility for sidebars inserted with shortcodes
 
 **Pro Plan:**
 
-* Added: time schedule for shortcode sidebars
+* [new] time schedule for shortcode sidebars
 
 = 3.7 =
 
-* Added: visibility for sidebars inserted with shortcodes
-* Added: icon navigation to custom sidebars on widgets screen
-* Added: quick select uses less memory and has better theme sidebar recognition
-* Added: sidebars can be displayed on password protected content with removal of filter
-* Added: manage widgets links will now open specific sidebar by default
-* Added: better wpml and polylang compatibility when editing sidebars
-* Added: performance and memory improvements
-* Added: UI improvements
-* Added: minimum requirement wordpress 4.1
-* Fixed: styling from nested sidebars is now inherited properly
-* Updated: wp-content-aware-engine
-* Updated: freemius sdk
+* [new] visibility for sidebars inserted with shortcodes
+* [new] icon navigation to custom sidebars on widgets screen
+* [new] quick select uses less memory and has better theme sidebar recognition
+* [new] sidebars can be displayed on password protected content with removal of filter
+* [new] manage widgets links will now open specific sidebar by default
+* [new] better wpml and polylang compatibility when editing sidebars
+* [new] performance and memory improvements
+* [new] UI improvements
+* [new] minimum requirement wordpress 4.1
+* [fixed] styling from nested sidebars is now inherited properly
+* [updated] wp-content-aware-engine
+* [updated] freemius sdk
 
 **Pro Plan:**
 
-* Added: insert sidebars in theme locations and wp action hooks
-* Added: design and add columns to sidebars and widgets
-* Added: url condition automatically trims domain name
-* Fixed: improve sidebar revisioning and compatibility with older wordpress versions
-* Fixed: allow saving and restoring empty sidebar revisions
-* Fixed: show message for successful revision restore
-* Fixed: improved widget sync on theme switch
-* Removed: sidebar column in post overview list
+* [new] insert sidebars in theme locations and wp action hooks
+* [new] design and add columns to sidebars and widgets
+* [new] url condition automatically trims domain name
+* [fixed] improve sidebar revisioning and compatibility with older wordpress versions
+* [fixed] allow saving and restoring empty sidebar revisions
+* [fixed] show message for successful revision restore
+* [fixed] improved widget sync on theme switch
+* [removed] sidebar column in post overview list
 
 = 3.6.2 =
 
-* Added: UI improvements
-* Added: better support for RTL languages
-* Fixed: forced replace action now always takes priority
-* Fixed: archives would in rare cases not display correct sidebar if a post was password protected
-* Fixed: special characters in translations of conditions
-* Fixed: post type conditions with no titles
+* [new] UI improvements
+* [new] better support for RTL languages
+* [fixed] forced replace action now always takes priority
+* [fixed] archives would in rare cases not display correct sidebar if a post was password protected
+* [fixed] special characters in translations of conditions
+* [fixed] post type conditions with no titles
 
 **Pro Plan:**
 
-* Added: changes in sidebar title no longer adds revision
-* Fixed: edit links in sidebar admin columns for post types
+* [new] changes in sidebar title no longer adds revision
+* [fixed] edit links in sidebar admin columns for post types
 
 = 3.6.1 =
 
-* Fixed: UI improvements
-* Fixed: better plugin compatibility for sidebars quick select
+* [fixed] UI improvements
+* [fixed] better plugin compatibility for sidebars quick select
 
 **Pro Plan:**
 
-* Fixed: unable to disable widgets
-* Fixed: javascript would in rare cases not be loaded correctly in sidebar editor
+* [fixed] unable to disable widgets
+* [fixed] javascript would in rare cases not be loaded correctly in sidebar editor
 
 = 3.6 =
 
-* Added: ability to wrap sidebar in html
-* Added: ability to change widget html
-* Added: danish and german translations now use automatic language packs
-* Added: performance and memory improvements
-* Added: UI improvements
-* Added: wordpress 4.8 support
-* Fixed: widget manager could behave unexpectedly in cases with many inactive widget areas
-* Fixed: sidebars quick select could cause nested sidebars to be removed from posts
-* Fixed: sidebar bulk messages
-* Updated: wp-content-aware-engine
-* Updated: freemius sdk
+* [new] ability to wrap sidebar in html
+* [new] ability to change widget html
+* [new] danish and german translations now use automatic language packs
+* [new] performance and memory improvements
+* [new] UI improvements
+* [new] wordpress 4.8 support
+* [fixed] widget manager could behave unexpectedly in cases with many inactive widget areas
+* [fixed] sidebars quick select could cause nested sidebars to be removed from posts
+* [fixed] sidebar bulk messages
+* [updated] wp-content-aware-engine
+* [updated] freemius sdk
 
 **Pro Plan:**
 
-* Added: widget to insert widgets from other sidebars
-* Added: 1-click automatic install on checkout
-* Fixed: avoid auto-draft sidebar adding extra revision
+* [new] widget to insert widgets from other sidebars
+* [new] 1-click automatic install on checkout
+* [fixed] avoid auto-draft sidebar adding extra revision
 
 = 3.5.2 =
 
-* Added: woocommerce 3.0 compat
-* Added: badgeos compat
-* Added: UI improvements in widget manager
+* [new] woocommerce 3.0 compat
+* [new] badgeos compat
+* [new] UI improvements in widget manager
 
 = 3.5.1 =
 
-* Fixed: database upgrade script
+* [fixed] database upgrade script
 
 = 3.5 =
 
-* Added: 1-click sidebar activation
-* Added: improved design on widgets screen
-* Added: autosave conditions
-* Added: simplify option to autoselect conditions
-* Added: UI improvements
-* Added: minimum requirement wordpress 4.0
-* Added: freemius sdk updated
-* Added: actions and filters for developers
+* [new] 1-click sidebar activation
+* [new] improved design on widgets screen
+* [new] autosave conditions
+* [new] simplify option to autoselect conditions
+* [new] UI improvements
+* [new] minimum requirement wordpress 4.0
+* [new] freemius sdk updated
+* [new] actions and filters for developers
 
 **Pro Plan:**
 
-* Added: duplicate sidebars and conditions
-* Added: disable widgets
-* Fixed: improved upgrade routine
+* [new] duplicate sidebars and conditions
+* [new] disable widgets
+* [fixed] improved upgrade routine
 
 = 3.4.3 =
 
-* Added: preparation for automatic translation packages
-* Added: prevent adding duplicate sidebar titles
-* Fixed: sidebar quick select would in rare cases not show sidebars
-* Fixed: UI improvements
+* [new] preparation for automatic translation packages
+* [new] prevent adding duplicate sidebar titles
+* [fixed] sidebar quick select would in rare cases not show sidebars
+* [fixed] UI improvements
 
 = 3.4.2 =
 
-* Added: freemius sdk updated
-* Fixed: sidebar editor now works properly in IE browser
-* Fixed: UI improvements
+* [new] freemius sdk updated
+* [fixed] sidebar editor now works properly in IE browser
+* [fixed] UI improvements
 
 = 3.4.1 =
 
-* Added: ability to target all buddypress profile sections
-* Added: freemius opt-in message made more clear
-* Added: links to docs
-* Added: wordpress 4.7 support
-* Fixed: sidebar order not being saved
-* Fixed: "Automatically add new children of a selected ancestor" not working for post types
-* Fixed: sidebar edit links on widgets screen
+* [new] ability to target all buddypress profile sections
+* [new] freemius opt-in message made more clear
+* [new] links to docs
+* [new] wordpress 4.7 support
+* [fixed] sidebar order not being saved
+* [fixed] "Automatically add new children of a selected ancestor" not working for post types
+* [fixed] sidebar edit links on widgets screen
 
 **Pro Plan:**
 
-* Fixed: buddypress groups condition not selectable on new sidebars
+* [fixed] buddypress groups condition not selectable on new sidebars
 
 = 3.4 =
 
-* Added: sidebar list and editor screens completely rewritten for performance and extensibility
-* Added: ability to schedule sidebar deactivation
-* Added: exposure moved to condition groups, now called singulars or archives
-* Added: freemius sdk updated
-* Added: data update process will no longer be triggered on new installs
-* Added: sidebar status now active/inactive instead of publish/draft
-* Added: always load latest version of wp-content-aware-engine
-* Fixed: sidebar quick select compatibility with other sidebar managers
-* Removed: deprecated function display_ca_sidebar (use ca_display_sidebar)
+* [new] sidebar list and editor screens completely rewritten for performance and extensibility
+* [new] ability to schedule sidebar deactivation
+* [new] exposure moved to condition groups, now called singulars or archives
+* [new] freemius sdk updated
+* [new] data update process will no longer be triggered on new installs
+* [new] sidebar status now active/inactive instead of publish/draft
+* [new] always load latest version of wp-content-aware-engine
+* [fixed] sidebar quick select compatibility with other sidebar managers
+* [removed] deprecated function display_ca_sidebar (use ca_display_sidebar)
 
 **Pro Plan:**
 
-* Added: display sidebars in time ranges on given days
-* Fixed: initial widget revision could in some cases be malformed
-* Fixed: bug when adding url and date conditions
-* Fixed: bug with license activation if user had opted out of freemius
+* [new] display sidebars in time ranges on given days
+* [fixed] initial widget revision could in some cases be malformed
+* [fixed] bug when adding url and date conditions
+* [fixed] bug with license activation if user had opted out of freemius
 
 = 3.3.3 =
 
-* Added: counter-measure against plugins that add buggy scripts
-* Fixed: saving sidebars in quick select would in some cases trigger warning
+* [new] counter-measure against plugins that add buggy scripts
+* [fixed] saving sidebars in quick select would in some cases trigger warning
 
 **Pro Plan:**
 
-* Fixed: include draft sidebars when syncing widgets across themes
+* [fixed] include draft sidebars when syncing widgets across themes
 
 = 3.3.2 =
 
-* Fixed: markup in quick select could in some cases be malformed
-* Fixed: warning when saving sidebar
+* [fixed] markup in quick select could in some cases be malformed
+* [fixed] warning when saving sidebar
 
 = 3.3.1 =
 
-* Added: ux design improvements
-* Added: ability to add more sidebars in quick select
-* Added: toggle to display more than 3 sidebar input fields in quick select
-* Added: select2 dropdowns updated to 4.0.3 on sidebar edit screen
-* Added: re-enabled info box on sidebar edit screen
-* Added: freemius sdk updated
-* Fixed: decoding of taxonomy term names in conditions
-* Fixed: order of content in conditions dropdowns
-* Fixed: yoast seo compatibility on post edit screens
-* Fixed: negated post conditions were included in sidebar quick select
-* Removed: upgrade box on sidebar edit screen
+* [new] ux design improvements
+* [new] ability to add more sidebars in quick select
+* [new] toggle to display more than 3 sidebar input fields in quick select
+* [new] select2 dropdowns updated to 4.0.3 on sidebar edit screen
+* [new] re-enabled info box on sidebar edit screen
+* [new] freemius sdk updated
+* [fixed] decoding of taxonomy term names in conditions
+* [fixed] order of content in conditions dropdowns
+* [fixed] yoast seo compatibility on post edit screens
+* [fixed] negated post conditions were included in sidebar quick select
+* [removed] upgrade box on sidebar edit screen
 
 **Pro Plan:**
 
-* Fixed: improved widget revision ux
-* Fixed: select dates would in some cases not be displayed correct in conditions
-* Fixed: widget revisions could in some cases contain wrong or malformed data
-* Fixed: backwards compat in widget revision ui for versions before wp4.5
+* [fixed] improved widget revision ux
+* [fixed] select dates would in some cases not be displayed correct in conditions
+* [fixed] widget revisions could in some cases contain wrong or malformed data
+* [fixed] backwards compat in widget revision ui for versions before wp4.5
 
 = 3.3 =
 
-* Added: manage widgets for draft sidebars
-* Added: quick select and create sidebars on post type editor screen
-* Added: ability to add widgets to draft sidebars
-* Added: expand/collapse all sidebars on widgets screen
-* Added: view sidebar status on widgets screen
-* Added: order sidebars by title on widgets screen
-* Added: dialog on unsaved condition changes in sidebar editor
-* Added: ux design improvements
-* Added: more focus on pro features, upgrade box moved to bottom
-* Fixed: error in wpml config (props Chouby)
-* Fixed: updated review notice description
-* Fixed: select2 dropdowns styling more robust to external changes
-* Fixed: minor performance improvements
+* [new] manage widgets for draft sidebars
+* [new] quick select and create sidebars on post type editor screen
+* [new] ability to add widgets to draft sidebars
+* [new] expand/collapse all sidebars on widgets screen
+* [new] view sidebar status on widgets screen
+* [new] order sidebars by title on widgets screen
+* [new] dialog on unsaved condition changes in sidebar editor
+* [new] ux design improvements
+* [new] more focus on pro features, upgrade box moved to bottom
+* [fixed] error in wpml config (props Chouby)
+* [fixed] updated review notice description
+* [fixed] select2 dropdowns styling more robust to external changes
+* [fixed] minor performance improvements
 
 **Pro Plan:**
 
-* Added: set sidebars to published or draft on widgets screen
+* [new] set sidebars to published or draft on widgets screen
 
 = 3.2.4 =
 
-* Added: infinite scroll for content in sidebar editor
-* Added: guard when activating both free and pro version, uninstall cleanup not run if one is active
-* Added: support for buddypress 2.6 members
-* Added: wordpress 4.6 support
-* Fixed: option to select all authors and bbpress profiles
-* Fixed: simplified introduction tour
-* Fixed: uninstall cleanup for users not on freemius
+* [new] infinite scroll for content in sidebar editor
+* [new] guard when activating both free and pro version, uninstall cleanup not run if one is active
+* [new] support for buddypress 2.6 members
+* [new] wordpress 4.6 support
+* [fixed] option to select all authors and bbpress profiles
+* [fixed] simplified introduction tour
+* [fixed] uninstall cleanup for users not on freemius
 
 **Pro Plan:**
 
-* Fixed: load buddypress group module correctly
-* Fixed: search for buddypress groups
+* [fixed] load buddypress group module correctly
+* [fixed] search for buddypress groups
 
 = 3.2.3 =
 
-* Fixed: wp function is_user_logged_in would in some cases not be defined in time
+* [fixed] wp function is_user_logged_in would in some cases not be defined in time
 
 = 3.2.2 =
 
-* Fixed: pages with no custom sidebars could cause malformed sql query
+* [fixed] pages with no custom sidebars could cause malformed sql query
 
 = 3.2.1 =
 
-* Fixed: quick edit link removed from other post types
+* [fixed] quick edit link removed from other post types
 
 = 3.2 =
 
-* Added: performance improvements
-* Added: drastically reduced database queries when checking taxonomies
-* Added: visibility option for all and logged-in users
-* Added: visibility column in sidebar overview
-* Added: combined handle and merge position columns
-* Added: freemius integration
-* Added: wp filters to add and populate metadata
-* Added: minimum requirement wp3.9
-* Fixed: improved sidebar editor ux
-* Fixed: display correct template tag for manual handled sidebars in editor
-* Fixed: wpml config
-* Removed: sidebar quick edit
-* Removed: ability to set private post status (in favor of visibility option)
-* Removed: donation link from readme
+* [new] performance improvements
+* [new] drastically reduced database queries when checking taxonomies
+* [new] visibility option for all and logged-in users
+* [new] visibility column in sidebar overview
+* [new] combined handle and merge position columns
+* [new] freemius integration
+* [new] wp filters to add and populate metadata
+* [new] minimum requirement wp3.9
+* [fixed] improved sidebar editor ux
+* [fixed] display correct template tag for manual handled sidebars in editor
+* [fixed] wpml config
+* [removed] sidebar quick edit
+* [removed] ability to set private post status (in favor of visibility option)
+* [removed] donation link from readme
 
 **Pro Plan:**
 
-* Added: sidebar and widget revisions
-* Added: extended visibility for roles and guests
-* Added: condition for URLs + wildcards
-* Added: condition for content from any day, month, year
-* Added: condition for buddypress groups
-* Added: sidebar meta box for post types
-* Added: sidebar column for post type overviews
-* Added: widget synchronization across themes
-* Added: white label admin screens
+* [new] sidebar and widget revisions
+* [new] extended visibility for roles and guests
+* [new] condition for URLs + wildcards
+* [new] condition for content from any day, month, year
+* [new] condition for buddypress groups
+* [new] sidebar meta box for post types
+* [new] sidebar column for post type overviews
+* [new] widget synchronization across themes
+* [new] white label admin screens
 
 = 3.1.2 =
 
-* Added: wordpress 4.5 support
-* Added: module javascript more extensible
-* Fixed: styling for autocomplete input fields
-* Fixed: updated translations
+* [new] wordpress 4.5 support
+* [new] module javascript more extensible
+* [fixed] styling for autocomplete input fields
+* [fixed] updated translations
 
 = 3.1.1 =
 
-* Added: pods pages module, props @sc0ttkclark @herold
-* Fixed: better compat when other themes or plugins load breaking scripts
+* [new] pods pages module, props @sc0ttkclark @herold
+* [fixed] better compat when other themes or plugins load breaking scripts
 
 = 3.1 =
 
-* Added: completely rewritten sidebar editor ui
-* Added: refactored plugin into more logical abstractions
-* Added: wp-db-updater now handles database updates
-* Added: tour reflects new sidebar editor ui
-* Added: review notice after 2 weeks use
-* Added: admin footer text on relevant pages
-* Added: minified some scripts
-* Added: qtranslate x module
-* Fixed: sidebar and widget filtering for wp4.4+
-* Fixed: bug making attachments not selectable
-* Fixed: bumped versions for integrated plugins
-* Removed: qtranslate module
+* [new] completely rewritten sidebar editor ui
+* [new] refactored plugin into more logical abstractions
+* [new] wp-db-updater now handles database updates
+* [new] tour reflects new sidebar editor ui
+* [new] review notice after 2 weeks use
+* [new] admin footer text on relevant pages
+* [new] minified some scripts
+* [new] qtranslate x module
+* [fixed] sidebar and widget filtering for wp4.4+
+* [fixed] bug making attachments not selectable
+* [fixed] bumped versions for integrated plugins
+* [removed] qtranslate module
 
 = 3.0.1 =
 
-* Added: wp4.4 compatibility
+* [new] wp4.4 compatibility
 
 = 3.0 =
 
-* Added: plugin rewritten with wp-content-aware-engine to take care of everything related to conditional content
-* Added: migrate existing sidebar data to wp-content-aware-engine standards
-* Added: negation of condition groups
-* Added: new api to add modules
-* Added: new action and filter hooks
-* Added: intro tour
-* Added: ca_display_sidebar deprecates display_ca_sidebar
-* Added: filter for sidebars on widgets screen
-* Added: add sidebar from widgets screen
-* Added: filter for available widgets on widgets screen
-* Added: more simple information meta box
-* Added: gui improvements in sidebar editor
-* Added: bulk update messages translatable
-* Added: draft post status included in post type lists
-* Added: arabic, bulgarian, croatian, czech, estonian, french (canada), greek, hebrew, indonesian, japanese, persian, vietnamese translations
-* Fixed: uninstall script cleans residual data better
-* Fixed: posts page and front page excluded from page post type list
-* Fixed: updated translations
-* Fixed: finnish translation included properly
-* Fixed: minimum requirement wp3.8
-* Removed: all action and filter hooks (moved to wp-content-aware-engine under new names)
-* Removed: deprecated icons
-* Removed: screenshots
+* [new] plugin rewritten with wp-content-aware-engine to take care of everything related to conditional content
+* [new] migrate existing sidebar data to wp-content-aware-engine standards
+* [new] negation of condition groups
+* [new] new api to add modules
+* [new] new action and filter hooks
+* [new] intro tour
+* [new] ca_display_sidebar deprecates display_ca_sidebar
+* [new] filter for sidebars on widgets screen
+* [new] add sidebar from widgets screen
+* [new] filter for available widgets on widgets screen
+* [new] more simple information meta box
+* [new] gui improvements in sidebar editor
+* [new] bulk update messages translatable
+* [new] draft post status included in post type lists
+* [new] arabic, bulgarian, croatian, czech, estonian, french (canada), greek, hebrew, indonesian, japanese, persian, vietnamese translations
+* [fixed] uninstall script cleans residual data better
+* [fixed] posts page and front page excluded from page post type list
+* [fixed] updated translations
+* [fixed] finnish translation included properly
+* [fixed] minimum requirement wp3.8
+* [removed] all action and filter hooks (moved to wp-content-aware-engine under new names)
+* [removed] deprecated icons
+* [removed] screenshots
 
 = 2.6.3 =
 
-* Fixed: sidebars would not be displayed on front page
+* [fixed] sidebars would not be displayed on front page
 
 = 2.6.2 =
-* Added: wp4.3 compatibility
-* Fixed: sidebars would not be displayed on 404 or empty content
-* Fixed: sidebars would not be displayed when queried object differed from post object
-* Fixed: included ukranian translation properly
+* [new] wp4.3 compatibility
+* [fixed] sidebars would not be displayed on 404 or empty content
+* [fixed] sidebars would not be displayed when queried object differed from post object
+* [fixed] included ukranian translation properly
 
 = 2.6.1 =
 
-* Added: finnish, korean, portuguese (portugal), slovenian and swedish translations
-* Fixed: updated translations
-* Fixed: better compatibility when used together with other sidebar managers
+* [new] finnish, korean, portuguese (portugal), slovenian and swedish translations
+* [fixed] updated translations
+* [fixed] better compatibility when used together with other sidebar managers
 
 = 2.6 =
 
-* Added: date module to display sidebars on date archives
-* Added: basque and french translations
-* Fixed: support for mariadb 10.0
+* [new] date module to display sidebars on date archives
+* [new] basque and french translations
+* [fixed] support for mariadb 10.0
 
 = 2.5.3 =
 
-* Added: catalan, norwegian bokmål and turkish translations
-* Fixed: updated translations
+* [new] catalan, norwegian bokmål and turkish translations
+* [fixed] updated translations
 
 = 2.5.2 =
 
-* Added: delete_posts capability. fixes conflict in wp4.1
-* Fixed: only get custom sidebars when $post is set. fixes conflict in wp4.1
+* [new] delete_posts capability. fixes conflict in wp4.1
+* [fixed] only get custom sidebars when $post is set. fixes conflict in wp4.1
 
 = 2.5.1 =
 
-* Fixed: properly include casmodule.php
+* [fixed] properly include casmodule.php
 
 = 2.5 =
 
-* Added: ca-sidebar shortcode
-* Added: serbian and dutch translations
-* Added: teaser meta box
-* Added: shortcode is displayed when selecting manual handle in sidebar editor
-* Added: description can be added to modules
-* Added: generic module callback for ajax allowing search and pagination to use same request
-* Added: or-separator between condition groups in editor
-* Fixed: headers already sent error on ajax request
+* [new] ca-sidebar shortcode
+* [new] serbian and dutch translations
+* [new] teaser meta box
+* [new] shortcode is displayed when selecting manual handle in sidebar editor
+* [new] description can be added to modules
+* [new] generic module callback for ajax allowing search and pagination to use same request
+* [new] or-separator between condition groups in editor
+* [fixed] headers already sent error on ajax request
 
 = 2.4.3 =
 
-* Fixed: german translation properly included
+* [fixed] german translation properly included
 
 = 2.4.2 =
 
-* Added: polish, brazilian portuguese and russian translations
-* Fixed: "auto-select new children of selected ancestors" caused new top level post types to be selected
-* Fixed: "auto-select new children of selected ancestors" for taxonomies could prevent sidebar from being displayed
+* [new] polish, brazilian portuguese and russian translations
+* [fixed] "auto-select new children of selected ancestors" caused new top level post types to be selected
+* [fixed] "auto-select new children of selected ancestors" for taxonomies could prevent sidebar from being displayed
 
 = 2.4.1 =
 
-* Fixed: authors found via search in sidebar editor could not be saved
-* Fixed: displaying max 20 authors in search results instead of 10
-* Fixed: improved ux design for sidebars in widgets screen
+* [fixed] authors found via search in sidebar editor could not be saved
+* [fixed] displaying max 20 authors in search results instead of 10
+* [fixed] improved ux design for sidebars in widgets screen
 
 = 2.4 =
 
-* Added: compatibility with wp4.0
-* Added: better ux design for condition groups
-* Added: better ux design for sidebars in widgets screen, including an edit link
-* Added: dashicon for admin menu (wp3.8+)
-* Fixed: using some newer wordpress actions and filters for admin columns
-* Fixed: sidebars could be fetched and prepared in administration
+* [new] compatibility with wp4.0
+* [new] better ux design for condition groups
+* [new] better ux design for sidebars in widgets screen, including an edit link
+* [new] dashicon for admin menu (wp3.8+)
+* [fixed] using some newer wordpress actions and filters for admin columns
+* [fixed] sidebars could be fetched and prepared in administration
 
 = 2.3 =
 
-* Added: ukranian translation
-* Added: error if trying to access php files directly
-* Added: bbpress, bp_member, polylang, qtranslate, transposh and wpml modules are more robust
-* Added: content rule boxes can be hidden in screen options in sidebar editor
-* Added: help tab in sidebar editor
-* Added: widgets count column in sidebar overview
-* Added: menu order moved to options meta box in sidebar editor
-* Fixed: merge position option hidden on forced replace handle
-* Fixed: polylang compatibility now 1.2+
-* Fixed: width of columns in sidebar overview
-* Removed: exposure column in sidebar overview
+* [new] ukranian translation
+* [new] error if trying to access php files directly
+* [new] bbpress, bp_member, polylang, qtranslate, transposh and wpml modules are more robust
+* [new] content rule boxes can be hidden in screen options in sidebar editor
+* [new] help tab in sidebar editor
+* [new] widgets count column in sidebar overview
+* [new] menu order moved to options meta box in sidebar editor
+* [fixed] merge position option hidden on forced replace handle
+* [fixed] polylang compatibility now 1.2+
+* [fixed] width of columns in sidebar overview
+* [removed] exposure column in sidebar overview
 
 = 2.2.1 =
 
-* Fixed: taxonomy archive conditions did not work with other modules properly
-* Fixed: removed display limit of 20 for saved post type conditions
-* Fixed: saved post type conditions ordered alphabetically
+* [fixed] taxonomy archive conditions did not work with other modules properly
+* [fixed] removed display limit of 20 for saved post type conditions
+* [fixed] saved post type conditions ordered alphabetically
 
 = 2.2 =
 
-* Added: sidebar displayed in theme customizer (wp3.4+)
-* Added: widget management integration in theme customizer (wp3.9+)
-* Added: handle for forced replace
-* Fixed: reduced database queries in sidebar editor
-* Fixed: disable all add to group buttons before creating first condition group
+* [new] sidebar displayed in theme customizer (wp3.4+)
+* [new] widget management integration in theme customizer (wp3.9+)
+* [new] handle for forced replace
+* [fixed] reduced database queries in sidebar editor
+* [fixed] disable all add to group buttons before creating first condition group
 
 = 2.1 =
 
-* Added: empty condition groups cannot be saved
-* Added: confirmation on various condition group actions in sidebar editor
-* Added: improved ux design for sidebar editor
-* Added: chinese translation
-* Added: wp3.9 compatibility
-* Fixed: transposh compatibility now 0.9.5+
-* Fixed: removed warnings for auto-select new children functionality
-* Fixed: unprivileged users could in theory make, but never successfully execute, ajax requests for sidebar editor
-* Fixed: removed warning in widgets screen when handle is not set
+* [new] empty condition groups cannot be saved
+* [new] confirmation on various condition group actions in sidebar editor
+* [new] improved ux design for sidebar editor
+* [new] chinese translation
+* [new] wp3.9 compatibility
+* [fixed] transposh compatibility now 0.9.5+
+* [fixed] removed warnings for auto-select new children functionality
+* [fixed] unprivileged users could in theory make, but never successfully execute, ajax requests for sidebar editor
+* [fixed] removed warning in widgets screen when handle is not set
 
 = 2.0.3 =
 
-* Fixed: taxonomy pagination in sidebar editor
-* Fixed: categories found in search can now be saved. props Xandoc
+* [fixed] taxonomy pagination in sidebar editor
+* [fixed] categories found in search can now be saved. props Xandoc
 
 = 2.0.2 =
 
-* Fixed: terms caused a sidebar to be displayed on all pages
+* [fixed] terms caused a sidebar to be displayed on all pages
 
 = 2.0.1 =
 
-* Fixed: admin menu would in some cases be overwritten by other plugins
+* [fixed] admin menu would in some cases be overwritten by other plugins
 
 = 2.0 =
 
-* Added: condition groups
-* Added: gui and uxd overhaul for sidebar editor
-* Added: pagination for taxonomies in sidebar editor
-* Added: pagination for post types in sidebar editor
-* Added: mysql 5.6+ compatibility
-* Added: more efficient uninstall process
-* Added: easier for developers to extend and manipulate content support
-* Added: wp3.8 and mp6 compatibility
-* Added: german translation
-* Added: hungarian translation
-* Added: latvian translation
-* Added: spanish translation
-* Added: all conditions follow a strict logical "and" operator per group
-* Fixed: scripts and styles only loaded on sidebar administrative pages
-* Fixed: slovak translation now recognized
-* Fixed: paths to assets compatible with ssl
-* Removed: jquery ui autocomplete and accordion
+* [new] condition groups
+* [new] gui and uxd overhaul for sidebar editor
+* [new] pagination for taxonomies in sidebar editor
+* [new] pagination for post types in sidebar editor
+* [new] mysql 5.6+ compatibility
+* [new] more efficient uninstall process
+* [new] easier for developers to extend and manipulate content support
+* [new] wp3.8 and mp6 compatibility
+* [new] german translation
+* [new] hungarian translation
+* [new] latvian translation
+* [new] spanish translation
+* [new] all conditions follow a strict logical "and" operator per group
+* [fixed] scripts and styles only loaded on sidebar administrative pages
+* [fixed] slovak translation now recognized
+* [fixed] paths to assets compatible with ssl
+* [removed] jquery ui autocomplete and accordion
 
 = 1.3.5 =
 
-* Fixed: menu would disappear in rare cases. Props grezvany13
-* Fixed: search function now searches in title and slug (not content) for post types
-* Added: search function displays at most 20 results instead of 10
+* [fixed] menu would disappear in rare cases. Props grezvany13
+* [fixed] search function now searches in title and slug (not content) for post types
+* [new] search function displays at most 20 results instead of 10
 
 = 1.3.4 =
 
-* Fixed: cas_walker_checklist now follows walker declaration for wp3.6
-* Fixed: content list in accordion now not scrollable
-* Fixed: only terms from public taxonomies are included for content recognition.
-* Fixed: polylang fully supported again
-* Fixed: consistent css across wp versions
-* Removed: flushing rewrite rules on activation/deactivation is needless
+* [fixed] cas_walker_checklist now follows walker declaration for wp3.6
+* [fixed] content list in accordion now not scrollable
+* [fixed] only terms from public taxonomies are included for content recognition.
+* [fixed] polylang fully supported again
+* [fixed] consistent css across wp versions
+* [removed] flushing rewrite rules on activation/deactivation is needless
 
 = 1.3.3 =
 
-* Added: html placeholder in search field
-* Added: items already displayed in edit page moved to top and checked when found in search
-* Fixed: private and scheduled singulars included in search results
-* Fixed: search results displayed in ascending order
+* [new] html placeholder in search field
+* [new] items already displayed in edit page moved to top and checked when found in search
+* [fixed] private and scheduled singulars included in search results
+* [fixed] search results displayed in ascending order
 
 = 1.3.2 =
 
-* Added: items found in search now added to list directly on select
-* Fixed: some terms found by search could not be saved
-* Fixed: widget locations are saved again for each theme
+* [new] items found in search now added to list directly on select
+* [fixed] some terms found by search could not be saved
+* [fixed] widget locations are saved again for each theme
 
 = 1.3.1 =
 
-* Added: authors and bbpress user profiles now searchable on edit page
-* Added: items found in search on edit page are prepended and checked by default
-* Added: updated edit page gui
-* Added: search field only visible when quantity is above 20
-* Fixed: select all checkbox will now disable all input in container
-* Fixed: host sidebar could sometimes not be found in sidebar list
+* [new] authors and bbpress user profiles now searchable on edit page
+* [new] items found in search on edit page are prepended and checked by default
+* [new] updated edit page gui
+* [new] search field only visible when quantity is above 20
+* [fixed] select all checkbox will now disable all input in container
+* [fixed] host sidebar could sometimes not be found in sidebar list
 
 = 1.3 =
 
-* Added: post type posts and taxonomy terms now searchable on edit page
-* Added: sidebar handle and host shown on widgets page
-* Added: slovak translation
-* Fixed: sidebar meta boxes more robust to external modifications
-* Fixed: admin column headers more robust to external modifications
-* Fixed: sidebar menu now always hidden for users without right cap
-* Fixed: code optimization and refactor for performance
-* Removed: support for sidebar excerpt
+* [new] post type posts and taxonomy terms now searchable on edit page
+* [new] sidebar handle and host shown on widgets page
+* [new] slovak translation
+* [fixed] sidebar meta boxes more robust to external modifications
+* [fixed] admin column headers more robust to external modifications
+* [fixed] sidebar menu now always hidden for users without right cap
+* [fixed] code optimization and refactor for performance
+* [removed] support for sidebar excerpt
 
 = 1.2 =
 
-* Added: polylang support
-* Added: buddypress support
-* Added: managing sidebars now requires edit_theme_options cap
-* Added: bbpress user profile has own rules instead of author rules
-* Added: filter for content recognition
-* Added: auto-select new children of selected taxonomy or post type ancestor
+* [new] polylang support
+* [new] buddypress support
+* [new] managing sidebars now requires edit_theme_options cap
+* [new] bbpress user profile has own rules instead of author rules
+* [new] filter for content recognition
+* [new] auto-select new children of selected taxonomy or post type ancestor
 
 = 1.1.2 =
 
-* Added: wordpress 3.5 compatibility
-* Fixed: slight css changes on edit screen
-* Fixed: "show with all" checkbox toggles other checkboxes correctly
+* [new] wordpress 3.5 compatibility
+* [fixed] slight css changes on edit screen
+* [fixed] "show with all" checkbox toggles other checkboxes correctly
 
 = 1.1.1 =
 
-* Fixed: slight css changes on edit screen
-* Fixed: tick.png included
-* Fixed: taxonomy terms could influence each other in rare cases
-* Fixed: taxonomy wide rules for taxonomy archives
-* Fixed: cache caused db update module to skip 1.1 update if going from 0
+* [fixed] slight css changes on edit screen
+* [fixed] tick.png included
+* [fixed] taxonomy terms could influence each other in rare cases
+* [fixed] taxonomy wide rules for taxonomy archives
+* [fixed] cache caused db update module to skip 1.1 update if going from 0
 
 = 1.1 =
 
-* Added: improved gui on edit screen including content accordion
-* Added: bbpress forum-topic dependency
-* Added: sidebars hidden on password protected content
-* Added: relevant usermeta cleared on plugin deletion
-* Fixed: performance gain by dropping serialized metadata
-* Fixed: database data update module revised
-* Fixed: css class in posts and terms walker
-* Fixed: limit of max 200 of each content type on edit screen (temp)
-* Fixed: style and scripts loaded properly
-* Removed: individual content meta boxes on edit screen
+* [new] improved gui on edit screen including content accordion
+* [new] bbpress forum-topic dependency
+* [new] sidebars hidden on password protected content
+* [new] relevant usermeta cleared on plugin deletion
+* [fixed] performance gain by dropping serialized metadata
+* [fixed] database data update module revised
+* [fixed] css class in posts and terms walker
+* [fixed] limit of max 200 of each content type on edit screen (temp)
+* [fixed] style and scripts loaded properly
+* [removed] individual content meta boxes on edit screen
 
 = 1.0 =
 
-* Added: plugin rewritten to flexible modular system
-* Added: builtin support for bbpress, qtranslate, transposh, wpml
-* Added: lithuanian translation
-* Fixed: all present rules now dependent of each other
-* Fixed: sidebar update messages
-* Fixed: specific hooks now not sitewide
-* Fixed: better use of meta cache
-* Fixed: dir structure
-* Fixed: unexpected output notice on plugin activation
+* [new] plugin rewritten to flexible modular system
+* [new] builtin support for bbpress, qtranslate, transposh, wpml
+* [new] lithuanian translation
+* [fixed] all present rules now dependent of each other
+* [fixed] sidebar update messages
+* [fixed] specific hooks now not sitewide
+* [fixed] better use of meta cache
+* [fixed] dir structure
+* [fixed] unexpected output notice on plugin activation
 
 = 0.8.3 =
 
-* Added: danish and italian translation
-* Fixed: sidebar query might be larger than max_join_size
-* Fixed: row content in admin overview would be loaded with post types with matching keys
+* [new] danish and italian translation
+* [fixed] sidebar query might be larger than max_join_size
+* [fixed] row content in admin overview would be loaded with post types with matching keys
 
 = 0.8.2 =
 
-* Fixed: new rules caused issues with post types with taxonomies
+* [fixed] new rules caused issues with post types with taxonomies
 
 = 0.8.1 =
 
-* Fixed: several checks for proper widget and sidebar removal
+* [fixed] several checks for proper widget and sidebar removal
 
 = 0.8 =
 
-* Added: some rules are dependent of each other if present
-* Added: widgets in removed sidebars will be removed too
-* Added: database data update module
-* Added: rewrite rules flushed on plugin deactivation
-* Added: data will be removed when plugin is uninstalled
-* Added: icon-32 is back
-* Added: message if a host is not available in sidebar overview
-* Fixed: prefixed data
-* Fixed: data hidden from custom fields
-* Fixed: manage widgets link removed from trashed sidebars
-* Fixed: view sidebar link removed in wp3.1.x
-* Fixed: all custom taxonomies could not be removed again when assigned to sidebar
-* Fixed: altered options meta box on edit screen
-* Fixed: check if host of sidebar exists before handling it
+* [new] some rules are dependent of each other if present
+* [new] widgets in removed sidebars will be removed too
+* [new] database data update module
+* [new] rewrite rules flushed on plugin deactivation
+* [new] data will be removed when plugin is uninstalled
+* [new] icon-32 is back
+* [new] message if a host is not available in sidebar overview
+* [fixed] prefixed data
+* [fixed] data hidden from custom fields
+* [fixed] manage widgets link removed from trashed sidebars
+* [fixed] view sidebar link removed in wp3.1.x
+* [fixed] all custom taxonomies could not be removed again when assigned to sidebar
+* [fixed] altered options meta box on edit screen
+* [fixed] check if host of sidebar exists before handling it
 
 = 0.7 =
 
-* Added: sidebars will be displayed even if empty (i.e. hidden)
-* Added: author rules on singulars and archives
-* Added: page template rules
-* Added: javascript handling for disabling/enabling specific input on editor page
-* Fixed: minor tweak for full compatibility with wp3.3
-* Fixed: function for meta boxes is called only on editor page
-* Fixed: proper column sorting in administration
-* Fixed: specific post type label not supported in wp3.1.x
-* Fixed: type (array) not supported as post_status in get_posts() in wp3.1.x
-* Fixed: code cleanup
+* [new] sidebars will be displayed even if empty (i.e. hidden)
+* [new] author rules on singulars and archives
+* [new] page template rules
+* [new] javascript handling for disabling/enabling specific input on editor page
+* [fixed] minor tweak for full compatibility with wp3.3
+* [fixed] function for meta boxes is called only on editor page
+* [fixed] proper column sorting in administration
+* [fixed] specific post type label not supported in wp3.1.x
+* [fixed] type (array) not supported as post_status in get_posts() in wp3.1.x
+* [fixed] code cleanup
 
 = 0.6.3 =
 
-* Added: scheduled and private singulars are selectable in sidebar editor
-* Added: combined cache for manual and automatically handled sidebars
-* Added: display_ca_sidebar accepts specific ids to be included
-* Fixed: only a limited amount of sidebars were present in widgets area
-* Fixed: better caching in sidebar editor
-* Fixed: page list in sidebar editor could behave incorrectly if some pages were static
+* [new] scheduled and private singulars are selectable in sidebar editor
+* [new] combined cache for manual and automatically handled sidebars
+* [new] display_ca_sidebar accepts specific ids to be included
+* [fixed] only a limited amount of sidebars were present in widgets area
+* [fixed] better caching in sidebar editor
+* [fixed] page list in sidebar editor could behave incorrectly if some pages were static
 
 = 0.6.2 =
 
-* Fixed: array_flip triggered type mismatch errors in some cases
+* [fixed] array_flip triggered type mismatch errors in some cases
 
 = 0.6.1 =
 
-* Fixed: an image caused headers already sent error
+* [fixed] an image caused headers already sent error
 
 = 0.6 =
 
-* Added: sidebars can be set with specific singulars
-* Added: sidebars can be set with specific post formats
-* Added: updated gui
-* Fixed: draft sidebars save meta
+* [new] sidebars can be set with specific singulars
+* [new] sidebars can be set with specific post formats
+* [new] updated gui
+* [fixed] draft sidebars save meta
 
 = 0.5 =
 
-* Added: search, 404, front page rules now supported
-* Fixed: custom tax and terms are now supported properly (again)
+* [new] search, 404, front page rules now supported
+* [fixed] custom tax and terms are now supported properly (again)
 
 = 0.4 =
 
-* Added: post type archives, taxonomy archives and taxonomy terms archives now supported
-* Added: taxonomy rules
-* Added: removable donation button
-* Fixed: faster!
+* [new] post type archives, taxonomy archives and taxonomy terms archives now supported
+* [new] taxonomy rules
+* [new] removable donation button
+* [fixed] faster!
 
 = 0.3 =
 
-* Added: sidebars can now be private
-* Fixed: taxonomy terms are now supported by template function
-* Fixed: faster rule recognition and handling
-* Fixed: custom taxonomies are now supported properly
-* Fixed: error if several sidebars had taxonomy terms rules
+* [new] sidebars can now be private
+* [fixed] taxonomy terms are now supported by template function
+* [fixed] faster rule recognition and handling
+* [fixed] custom taxonomies are now supported properly
+* [fixed] error if several sidebars had taxonomy terms rules
 
 = 0.2 =
 
-* Added: taxonomy terms rules
-* Added: optional description for sidebars
-* Added: display_ca_sidebar also accepts URL-style string as parameter
-* Fixed: saving meta now only kicks in with sidebar types
-* Fixed: archives are not singulars and will not be treated like them
+* [new] taxonomy terms rules
+* [new] optional description for sidebars
+* [new] display_ca_sidebar also accepts URL-style string as parameter
+* [fixed] saving meta now only kicks in with sidebar types
+* [fixed] archives are not singulars and will not be treated like them
 
 = 0.1 =
 
