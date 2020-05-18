@@ -223,8 +223,8 @@ final class CAS_Sidebar_Manager
                 $pro_label = ' (Pro)';
                 $actions = $this->metadata->get('handle');
                 $action_list = $actions->get_input_list();
-                $action_list['__infuse'] = __('Infuse', 'content-aware-sidebars').$pro;
-                $action_list['__after_paragraph'] = __('After Paragraph', 'content-aware-sidebars').$pro;
+                $action_list['__infuse'] = __('Infuse', 'content-aware-sidebars').$pro_label;
+                $action_list['__after_paragraph'] = __('After Paragraph', 'content-aware-sidebars').$pro_label;
                 $actions->set_input_list($action_list);
             }
 
@@ -240,8 +240,6 @@ final class CAS_Sidebar_Manager
      */
     public function init_sidebar_type()
     {
-
-        // Register the sidebar type
         register_post_type(CAS_App::TYPE_SIDEBAR, array(
             'labels' => array(
                 'name'               => __('Sidebars', 'content-aware-sidebars'),
