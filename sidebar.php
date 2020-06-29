@@ -502,9 +502,15 @@ final class CAS_Sidebar_Manager
 
         $id = CAS_App::SIDEBAR_PREFIX.esc_attr($a['id']);
 
-        //if sidebar is in replacement map, shortcode is called wrongly
-        //todo: check for handle instead?
-        if (isset($this->sidebars[$id]) && $this->sidebars[$id]->post_status == CAS_App::STATUS_ACTIVE && !isset($this->replace_map[$id]) && is_active_sidebar($id) && apply_filters('cas/shortcode/display', true, $a['id'])) {
+        if (!isset($this->sidebars[$id]) || $this->sidebars[$id]->post_status != CAS_App::STATUS_ACTIVE) {
+            return $content;
+        }
+
+        if ($this->metadata()->get('handle')->get_data($a['id']) != 2) {
+            return $content;
+        }
+
+        if (is_active_sidebar($id) && apply_filters('cas/shortcode/display', true, $a['id'])) {
             ob_start();
             do_action('cas/shortcode/before', $a['id']);
             dynamic_sidebar($id);
