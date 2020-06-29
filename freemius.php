@@ -29,10 +29,10 @@ function cas_fs()
             'has_paid_plans'      => true,
             'has_affiliation'     => 'selected',
             'menu'                => array(
-                'slug'           => 'wpcas',
-                'support'        => false,
-                'contact'        => false,
-                'affiliation'    => false
+                'slug'        => 'wpcas',
+                'support'     => false,
+                'contact'     => false,
+                'affiliation' => false
             )
         ));
     }
@@ -42,8 +42,6 @@ function cas_fs()
 
 // Init Freemius.
 cas_fs();
-// Signal that SDK was initiated.
-do_action('cas_fs_loaded');
 
 global $cas_fs;
 
@@ -118,3 +116,6 @@ if ($cas_fs->is__premium_only()) {
         require(plugin_dir_path(__FILE__).'/lib/content-aware-premium/app.php');
     }
 }
+
+// Signal that SDK was initiated.
+do_action('cas_fs_loaded');
