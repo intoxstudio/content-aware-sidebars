@@ -5,7 +5,7 @@ Tags: custom sidebars, sidebar, hide sidebar, display widgets, widget, bbpress, 
 Requires at least: 4.8
 Requires PHP: 5.6
 Tested up to: 5.4
-Stable tag: 3.12
+Stable tag: 3.12.2
 License: GPLv3
 
 Display new sidebars and widget areas on any post, page, category etc. Works with all themes, no code required.
@@ -172,6 +172,21 @@ Of course! Check out the links below:
 [Follow development and see all changes on GitHub](https://github.com/intoxstudio/content-aware-sidebars)
 
 ####Highlights
+
+= 3.12.2 =
+
+* [fixed] sidebars inserted with shortcode can now be replaced/merged
+
+**Pro Plan:**
+
+* [fixed] acf condition now works with relational fields
+* [fixed] ensure sticky js is only loaded once
+
+= 3.12.1 =
+
+**Pro Plan:**
+
+* [fixed] acf condition loaded improperly without acf installed
 
 = 3.12 =
 

@@ -9,7 +9,7 @@
 Plugin Name: Content Aware Sidebars
 Plugin URI: https://dev.institute/wordpress-sidebars/
 Description: Unlimited custom sidebars and widget areas for any post, page, category etc.
-Version: 3.12
+Version: 3.12.2
 Author: Joachim Jensen - DEV Institute
 Author URI: https://dev.institute
 Text Domain: content-aware-sidebars
@@ -50,13 +50,13 @@ if (!class_exists('CAS_App')) {
     require($cas_dir_path.'lib/wp-content-aware-engine/bootstrap.php');
     require($cas_dir_path.'lib/wp-db-updater/wp-db-updater.php');
     require($cas_dir_path.'app.php');
-        require($cas_dir_path.'lib/wp-pointer-tour/wp-pointer-tour.php');
-        require($cas_dir_path.'admin/admin.php');
-        require($cas_dir_path.'admin/quick_select.php');
-        require($cas_dir_path.'admin/sidebar-list-table.php');
-        require($cas_dir_path.'admin/sidebar-overview.php');
-        require($cas_dir_path.'admin/sidebar-edit.php');
-        require($cas_dir_path.'admin/screen_widgets.php');
+    require($cas_dir_path.'lib/wp-pointer-tour/wp-pointer-tour.php');
+    require($cas_dir_path.'admin/admin.php');
+    require($cas_dir_path.'admin/quick_select.php');
+    require($cas_dir_path.'admin/sidebar-list-table.php');
+    require($cas_dir_path.'admin/sidebar-overview.php');
+    require($cas_dir_path.'admin/sidebar-edit.php');
+    require($cas_dir_path.'admin/screen_widgets.php');
     require($cas_dir_path.'sidebar.php');
     require($cas_dir_path.'freemius.php');
     require($cas_dir_path.'admin/db-updates.php');
