@@ -78,7 +78,7 @@ final class CAS_Sidebar_Edit extends CAS_Admin
     {
         $this->add_action('cas/admin/add_meta_boxes', 'create_meta_boxes');
 
-        global $nav_tabs, $post, $title, $active_post_lock;
+        global $post, $title, $active_post_lock;
 
         $post_type = CAS_App::TYPE_SIDEBAR;
         $post_type_object = $this->get_sidebar_type();
@@ -111,7 +111,6 @@ final class CAS_Sidebar_Edit extends CAS_Admin
 
             if (! wp_check_post_lock($post->ID)) {
                 $active_post_lock = wp_set_post_lock($post->ID);
-                //wp_enqueue_script('autosave');
             }
 
             $title = $post_type_object->labels->edit_item;
@@ -127,21 +126,10 @@ final class CAS_Sidebar_Edit extends CAS_Admin
                 );
             }
 
-            //wp_enqueue_script( 'autosave' );
-
             $post = get_default_post_to_edit($post_type, true);
 
             $title = $post_type_object->labels->add_new_item;
         }
-
-        $nav_tabs = array(
-            'conditions' => __('Conditions', 'content-aware-sidebars'),
-            'action'     => __('Action', 'content-aware-sidebars'),
-            'design'     => __('Design', 'content-aware-sidebars'),
-            'schedule'   => __('Schedule', 'content-aware-sidebars'),
-            'advanced'   => __('Options', 'content-aware-sidebars')
-        );
-        $nav_tabs = apply_filters('cas/admin/nav-tabs', $nav_tabs);
 
         do_action('cas/admin/add_meta_boxes', $post);
     }
@@ -318,7 +306,7 @@ final class CAS_Sidebar_Edit extends CAS_Admin
      */
     public function render_screen()
     {
-        global $nav_tabs, $post, $active_post_lock;
+        global $post, $active_post_lock;
 
         $post_type_object = get_post_type_object($post->post_type);
 
@@ -330,33 +318,7 @@ final class CAS_Sidebar_Edit extends CAS_Admin
             if (isset($_REQUEST['sidebar_id'])) {
                 $post->post_title = '';
             }
-            //$autosave = false;
             $form_extra .= "<input type='hidden' id='auto_draft' name='auto_draft' value='1' />";
-        }
-        // else {
-        // 	$autosave = wp_get_post_autosave( $post->ID );
-        // }
-
-        // Detect if there exists an autosave newer than the post and if that autosave is different than the post
-        // if ( $autosave && mysql2date( 'U', $autosave->post_modified_gmt, false ) > mysql2date( 'U', $post->post_modified_gmt, false ) ) {
-        // 	foreach ( _wp_post_revision_fields( $post ) as $autosave_field => $_autosave_field ) {
-        // 		if ( normalize_whitespace( $autosave->$autosave_field ) != normalize_whitespace( $post->$autosave_field ) ) {
-        // 			$notice = sprintf( __( 'There is an autosave of this post that is more recent than the version below. <a href="%s">View the autosave</a>' ), get_edit_post_link( $autosave->ID ) );
-        // 			break;
-        // 		}
-        // 	}
-        // 	// If this autosave isn't different from the current post, begone.
-        // 	if ( ! $notice )
-        // 		wp_delete_post_revision( $autosave->ID );
-        // 	unset($autosave_field, $_autosave_field);
-        // }
-
-        //Not only for decoration
-        //Older wp versions inject updated message after first h2
-        if (version_compare(get_bloginfo('version'), '4.3', '<')) {
-            $tag = 'h2';
-        } else {
-            $tag = 'h1';
         }
 
         if ($post_id) {
@@ -366,7 +328,7 @@ final class CAS_Sidebar_Edit extends CAS_Admin
         }
 
         echo '<div class="wrap">';
-        echo '<'.$tag.'>';
+        echo '<h1>';
         echo '<a href="'.admin_url('admin.php?page=wpcas').'">'.$post_type_object->labels->all_items.'</a> &raquo; ';
         echo esc_html($title);
         if (isset($_REQUEST['sidebar_id'])) {
@@ -375,7 +337,7 @@ final class CAS_Sidebar_Edit extends CAS_Admin
             }
         }
 
-        echo '</'.$tag.'>';
+        echo '</h1>';
 
         $this->sidebar_updated_messages($post);
 
@@ -396,6 +358,15 @@ final class CAS_Sidebar_Edit extends CAS_Admin
             wp_original_referer_field(true, 'previous');
         }
         echo $form_extra;
+
+        $nav_tabs = array(
+            'conditions' => __('Conditions', 'content-aware-sidebars'),
+            'action'     => __('Action', 'content-aware-sidebars'),
+            'design'     => __('Design', 'content-aware-sidebars'),
+            'schedule'   => __('Schedule', 'content-aware-sidebars'),
+            'advanced'   => __('Options', 'content-aware-sidebars')
+        );
+        $nav_tabs = apply_filters('cas/admin/nav-tabs', $nav_tabs);
 
         echo '<div id="poststuff">';
         echo '<div id="post-body" class="cas-metabox-holder metabox-holder columns-2">';
@@ -559,11 +530,18 @@ final class CAS_Sidebar_Edit extends CAS_Admin
     /**
      * Create update messages
      *
-     * @param  array  $messages
-     * @return array
+     * @param WP_Post $post
+     *
+     * @return void
      */
     public function sidebar_updated_messages($post)
     {
+        $message_number = isset($_GET['message']) ? absint($_GET['message']) : null;
+
+        if (is_null($message_number)) {
+            return;
+        }
+
         $manage_widgets = sprintf(' <a href="%1$s">%2$s</a>', esc_url(admin_url('widgets.php#'.CAS_App::SIDEBAR_PREFIX.$post->ID)), __('Manage widgets', 'content-aware-sidebars'));
         $messages = array(
             1 => __('Sidebar updated.', 'content-aware-sidebars').$manage_widgets,
@@ -577,11 +555,8 @@ final class CAS_Sidebar_Edit extends CAS_Admin
         );
         $messages = apply_filters('cas/admin/messages', $messages, $post);
 
-        if (isset($_GET['message'])) {
-            $_GET['message'] = absint($_GET['message']);
-            if (isset($messages[$_GET['message']])) {
-                echo '<div id="message" class="updated notice notice-success is-dismissible"><p>'.$messages[$_GET['message']].'</p></div>';
-            }
+        if (isset($messages[$message_number])) {
+            echo '<div id="message" class="updated notice notice-success is-dismissible"><p>'.$messages[$message_number].'</p></div>';
         }
     }
 
@@ -959,7 +934,8 @@ final class CAS_Sidebar_Edit extends CAS_Admin
             }
             $link = admin_url('admin.php?page=wpcas-edit'.$sep.'sidebar_id='.$post_id);
 
-            //load page in all languages for wpml
+            //load page in all languages for wpml, polylang,
+            //ensures post type conditions are not filtered
             if (defined('ICL_SITEPRESS_VERSION') || defined('POLYLANG_VERSION')) {
                 $link .= $sep.'lang=all';
             }
@@ -1015,9 +991,6 @@ final class CAS_Sidebar_Edit extends CAS_Admin
         if (wp_is_mobile()) {
             wp_enqueue_script('jquery-touch-punch');
         }
-
-        // Add the local autosave notice HTML
-        //add_action( 'admin_footer', '_local_storage_notice' );
 
         WPCACore::enqueue_scripts_styles('');
 

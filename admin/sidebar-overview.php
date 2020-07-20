@@ -96,18 +96,10 @@ final class CAS_Sidebar_Overview extends CAS_Admin
      */
     public function render_screen()
     {
-        $post_type_object = get_post_type_object(CAS_App::TYPE_SIDEBAR);
-
-        //Not only for decoration
-        //Older wp versions inject updated message after first h2
-        if (version_compare(get_bloginfo('version'), '4.3', '<')) {
-            $tag = 'h2';
-        } else {
-            $tag = 'h1';
-        }
+        $post_type_object = $this->get_sidebar_type();
 
         echo '<div class="wrap">';
-        echo '<'.$tag.'>';
+        echo '<h1>';
         echo esc_html($post_type_object->labels->name);
 
         if (current_user_can($post_type_object->cap->create_posts)) {
@@ -121,7 +113,7 @@ final class CAS_Sidebar_Overview extends CAS_Admin
             printf(' <span class="subtitle">' . __('Search results for &#8220;%s&#8221;') . '</span>', get_search_query());
         }
 
-        echo '</'.$tag.'>';
+        echo '</h1>';
 
         $this->bulk_messages();
 
