@@ -35,7 +35,6 @@ Create a post sidebar, a page sidebar, a category sidebar, or any custom sidebar
 * Blog Page & Post Type Archives
 * Author Archives
 * Taxonomy Archives
-* Date Archives
 * Front Page, Search Results, 404 Not Found Page
 * bbPress Profiles, Forums & Topics
 * BuddyPress Profile Sections
@@ -84,7 +83,7 @@ Display a widget area after a specific number or percentage of paragraphs in you
     * Advanced Custom Fields data
     * URLS + wildcards
     * Referrer URLs
-    * Content by publish date
+    * Date Archives & Content by publish date
     * BuddyPress Groups
 * **Widget Area Designer**
 Add responsive widget columns and edit colors, backgrounds, paddings, etc.
