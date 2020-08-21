@@ -3,7 +3,7 @@
  * @package Content Aware Sidebars
  * @author Joachim Jensen <joachim@dev.institute>
  * @license GPLv3
- * @copyright 2019 by Joachim Jensen
+ * @copyright 2020 by Joachim Jensen
  */
 
 defined('ABSPATH') || exit;
@@ -16,6 +16,53 @@ $cas_db_updater->register_version_update('3.1', 'cas_update_to_31');
 $cas_db_updater->register_version_update('3.4', 'cas_update_to_34');
 $cas_db_updater->register_version_update('3.5.1', 'cas_update_to_351');
 $cas_db_updater->register_version_update('3.8', 'cas_update_to_38');
+$cas_db_updater->register_version_update('3.13', 'cas_update_to_313');
+
+    /**
+     * Enable legacy date module and
+     * negated conditions if in use
+     *
+     * @since 3.13
+     *
+     * @return bool
+     */
+    function cas_update_to_313()
+    {
+        global $wpdb;
+
+        $types = WPCACore::types()->get_all();
+
+        $options = array(
+             'legacy.date_module'        => array(),
+             'legacy.negated_conditions' => array()
+        );
+
+        $options['legacy.date_module'] = array_flip((array)$wpdb->get_col("
+            SELECT p.post_type FROM $wpdb->posts p
+            INNER JOIN $wpdb->posts c on p.ID = c.post_parent
+            INNER JOIN $wpdb->postmeta m on c.ID = m.post_id
+            WHERE c.post_type = 'condition_group' AND m.meta_key = '_ca_date'
+        "));
+
+        $options['legacy.negated_conditions'] = array_flip((array)$wpdb->get_col("
+            SELECT p.post_type FROM $wpdb->posts p
+            INNER JOIN $wpdb->posts c on p.ID = c.post_parent
+            WHERE c.post_type = 'condition_group' AND c.post_status = 'negated'
+        "));
+
+        foreach ($types as $type => $val) {
+            foreach ($options as $option => $post_types) {
+                if (isset($post_types[$type])) {
+                    WPCACore::save_option($type, $option, true);
+                } elseif (WPCACore::get_option($type, $option, false)) {
+                    WPCACore::save_option($type, $option, false);
+                }
+            }
+        }
+
+        return true;
+    }
+
 
 /**
  * Update to version 3.8
@@ -136,9 +183,9 @@ function cas_update_to_30()
 
     // Get all sidebars
     $posts = get_posts(array(
-        'numberposts'     => -1,
-        'post_type'       => 'sidebar',
-        'post_status'     => 'publish,pending,draft,future,private,trash'
+        'numberposts' => -1,
+        'post_type'   => 'sidebar',
+        'post_status' => 'publish,pending,draft,future,private,trash'
     ));
 
     if (!empty($posts)) {
@@ -224,19 +271,19 @@ function cas_update_to_20()
 
     // Get all sidebars
     $posts = get_posts(array(
-        'numberposts'     => -1,
-        'post_type'       => 'sidebar',
-        'post_status'     => 'publish,pending,draft,future,private,trash'
+        'numberposts' => -1,
+        'post_type'   => 'sidebar',
+        'post_status' => 'publish,pending,draft,future,private,trash'
     ));
     if (!empty($posts)) {
         foreach ($posts as $post) {
 
             //Create new condition group
             $group_id = wp_insert_post(array(
-                'post_status'           => $post->post_status,
-                'post_type'             => 'sidebar_group',
-                'post_author'           => $post->post_author,
-                'post_parent'           => $post->ID,
+                'post_status' => $post->post_status,
+                'post_type'   => 'sidebar_group',
+                'post_author' => $post->post_author,
+                'post_parent' => $post->ID,
             ));
 
             if ($group_id) {
@@ -281,9 +328,9 @@ function cas_update_to_11()
 
     // Get all sidebars
     $posts = get_posts(array(
-        'numberposts'     => -1,
-        'post_type'       => 'sidebar',
-        'post_status'     => 'publish,pending,draft,future,private,trash'
+        'numberposts' => -1,
+        'post_type'   => 'sidebar',
+        'post_status' => 'publish,pending,draft,future,private,trash'
     ));
 
     if (!empty($posts)) {
