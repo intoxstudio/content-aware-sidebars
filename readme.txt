@@ -1,11 +1,11 @@
-=== Content Aware Sidebars - Unlimited Widget Areas ===
+=== Lightweight Widget Area Plugin - Content Aware Sidebars ===
 Contributors: intoxstudio, devinstitute, freemius
 Donate link: #
 Tags: custom sidebars, sidebar, hide sidebar, display widgets, widget, bbpress, buddypress, sidebar manager
 Requires at least: 4.8
 Requires PHP: 5.6
-Tested up to: 5.4
-Stable tag: 3.12.2
+Tested up to: 5.5
+Stable tag: 3.13
 License: GPLv3
 
 Display new sidebars and widget areas on any post, page, category etc. Works with all themes, no code required.
@@ -172,6 +172,23 @@ Of course! Check out the links below:
 [Follow development and see all changes on GitHub](https://github.com/intoxstudio/content-aware-sidebars)
 
 ####Highlights
+
+= 3.13 =
+
+* [new] exception conditions
+* [new] intelligent search by id in post type condition
+* [new] intelligent search by id, email in author condition
+* [new] performance improvements
+* [new] wordpress 5.5 support
+* [updated] wp-content-aware-engine library
+* [updated] freemius sdk
+* [deprecated] negated conditions
+* [deprecated] simple date archive condition
+
+**Pro Plan:**
+
+* [new] sticky support for storefront theme
+* [fixed] sticky left sidebars in generatepress
 
 = 3.12.2 =
 
