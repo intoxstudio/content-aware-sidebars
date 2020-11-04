@@ -12,6 +12,8 @@ Description: Unlimited custom sidebars and widget areas for any post, page, cate
 Version: 3.13
 Author: Joachim Jensen - DEV Institute
 Author URI: https://dev.institute
+Requires at least: 4.8
+Requires PHP: 5.6
 Text Domain: content-aware-sidebars
 Domain Path: /lang/
 License: GPLv3
