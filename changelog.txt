@@ -1,3 +1,19 @@
+= 3.11.1 =
+
+* [fixed] conditions would not always be auto-saved
+
+= 3.11 =
+
+* [new] condition type cache for improved performance
+* [updated] ui improvements
+* [updated] wp-content-aware-engine library
+* [updated] freemius sdk
+
+**Pro Plan:**
+
+* [updated] sticky option now fully supports most themes out of the box
+* [fixed] sticky option would in some cases result in error
+
 = 3.10.1 =
 
 * [fixed] minor bug when using quick select with woocommerce

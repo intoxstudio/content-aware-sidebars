@@ -83,5 +83,5 @@ gulp.task('watch', function() {
 });
 
 gulp.task('build', gulp.parallel('less','uglify'));
-gulp.task('deploy', gulp.series('build','zip', 'aelia-gulp-freemius-deploy'));
+gulp.task('deploy', gulp.series('build','zip', 'freemius-deploy'));
 gulp.task('default', gulp.parallel('build'));

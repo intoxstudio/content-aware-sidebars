@@ -5,7 +5,7 @@ Tags: custom sidebars, sidebar, hide sidebar, display widgets, widget, bbpress, 
 Requires at least: 4.8
 Requires PHP: 5.6
 Tested up to: 5.5
-Stable tag: 3.13
+Stable tag: 3.13.1
 License: GPLv3
 
 Display new sidebars and widget areas on any post, page, category etc. Works with all themes, no code required.
@@ -172,6 +172,17 @@ Of course! Check out the links below:
 
 ####Highlights
 
+= 3.13.1 =
+
+* [new] identical taxonomy names are now displayed with their post type
+* [fixed] taxonomy and attachment condition suggestions would not display all results
+* [updated] wp-content-aware-engine library
+* [updated] freemius sdk
+
+**Pro Plan:**
+
+* [new] support for auto-updates
+
 = 3.13 =
 
 * [new] exception conditions
@@ -218,21 +229,5 @@ Of course! Check out the links below:
 * [new] advanced custom fields display condition
 * [new] action to display widget area after paragraphs
 * [updated] css will no longer be loaded for empty sidebars
-
-= 3.11.1 =
-
-* [fixed] conditions would not always be auto-saved
-
-= 3.11 =
-
-* [new] condition type cache for improved performance
-* [updated] ui improvements
-* [updated] wp-content-aware-engine library
-* [updated] freemius sdk
-
-**Pro Plan:**
-
-* [updated] sticky option now fully supports most themes out of the box
-* [fixed] sticky option would in some cases result in error
 
 See changelog.txt for previous changes.
