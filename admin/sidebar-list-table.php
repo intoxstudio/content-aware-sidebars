@@ -466,7 +466,7 @@ class CAS_Sidebar_List_Table extends WP_List_Table
                 case 3:
                     $return = $action->get_list_data($post->ID);
                     $host = $metadata->get('host')->get_list_data($post->ID);
-                    $return .= ': ' . ($host ? $host : '<span style="color:red;">' . __('Target not found', 'content-aware-sidebars') . '</span>');
+                    $return .= ':<br> ' . ($host ? $host : '<span style="color:red;">' . __('Target not found', 'content-aware-sidebars') . '</span>');
                     if ($action->get_data($post->ID) == 1) {
                         $pos = $metadata->get('merge_pos')->get_data($post->ID, true);
                         $pos_icon = $pos ? 'up' : 'down';
