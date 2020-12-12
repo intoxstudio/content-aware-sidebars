@@ -1,4 +1,4 @@
-=== Lightweight Widget Area Plugin - Content Aware Sidebars ===
+=== Unlimited Custom Sidebars - Content Aware Sidebars ===
 Contributors: intoxstudio, devinstitute, freemius
 Donate link: #
 Tags: custom sidebars, sidebar, hide sidebar, display widgets, widget, bbpress, buddypress, sidebar manager
@@ -18,15 +18,9 @@ You can optimize conversion rates, boost on-site SEO, upsell products, and much 
 
 If your website is big or in growth, CAS is the ideal solution for you.
 
-####Add Unlimited Sidebars & Widget Areas
+###Show or Hide Widgets on Any Page (Yes, any)
 
-Replace your theme sidebars on different conditions, or insert widget areas with shortcodes. With the All-in-one Sidebar Manager, you can easily activate and deactivate widget areas, and you can even schedule them for specific times.
-
-> Sidebars - Quick Select&copy; lets you add or select widget areas directly when editing a post or page.
-
-####Show or Hide Widgets on Any Page (Yes, any)
-
-Create a post sidebar, a page sidebar, a category sidebar, or any custom sidebar you need. The following Display Conditions are available out of the box:
+**Replace your theme sidebars on different conditions**, or insert widget areas with shortcodes. The following Display Conditions are available out of the box:
 
 * Posts, Pages & Custom Post Types
 * Content with Tags, Categories, or Custom Taxonomies
@@ -41,23 +35,29 @@ Create a post sidebar, a page sidebar, a category sidebar, or any custom sidebar
 * Languages (WPML, Polylang, qTranslate X, TranslatePress, Transposh)
 * Pods Pages
 
-> You can even combine conditions in any way you like! E.g. target all posts in a select category and written by a specific author.
+> **You can even combine conditions in any way you like! E.g. target all posts in a select category and written by a specific author.**
 
-####Customize Your Widget Areas Your Way
+###Add Unlimited Sidebars & Widget Areas
 
-Without writing any code, you can modify the HTML and CSS classes of widget areas, widgets, and widget titles. You get full control over the look and feel of your sidebars and widget areas, no matter what theme you use.
+Create a post sidebar, a page sidebar, a category sidebar, or any custom sidebar you need - no coding required. **CAS will never slow down your site**, even if you create a lot of custom sidebars and conditions. 
 
-> Sidebar Visibility lets you elegantly hide any widget area for logged-out users.
+> **Sidebars - Quick Select&copy; lets you add or select widget areas directly when editing a post or page.**
+
+###Schedule & Disable Custom Sidebars
+
+In the All-in-one Sidebar Manager you **just pick a start and end date** for when widget areas should be displayed, and CAS will take care of the rest.
+
+> **1-Click Sidebar Activation&copy; lets you activate or deactivate widget areas instantly.**
 
 ####The Most User-friendly Widget Manager
 
-If you have more than just a few widgets and widget areas, you will love the Enhanced Widget Manager. When adding new widgets to sidebars, Live Search will find widgets in seconds, and the smart split-screen gives you a much better overview of your widget options.
+When adding new widgets to sidebars, **Live Search will find widgets instantly**, and the smart split-screen makes it a joy to manage a lot of widgets and sidebars.
 
-> 1-Click Sidebar Activation&copy; lets you activate or deactivate widget areas instantly.
+> **The Enhanced Widget Manager adds the signature turquoise line to easily identify custom sidebars.**
 
-####Sidebar Plugin Integrations & Support
+###Sidebar Plugin Integrations & Support
 
-CAS automatically supports Custom Post Types and Taxonomies created by any plugin or theme. Built-in support for some of the most popular WordPress plugins means that you e.g. can create WooCommerce sidebars for select products or BuddyPress sidebars for your members.
+**CAS autodetects Custom Post Types and Taxonomies** created by any plugin or theme. Built-in support for some of the most popular WordPress plugins means that you e.g. can create WooCommerce sidebars for select products or BuddyPress sidebars for your members.
 
 * [bbPress](https://dev.institute/wordpress-sidebars/bbpress/?utm_source=readme&utm_medium=referral&utm_content=integration&utm_campaign=cas)
 * [BuddyPress](https://dev.institute/wordpress-sidebars/buddypress/?utm_source=readme&utm_medium=referral&utm_content=integration&utm_campaign=cas)
@@ -70,10 +70,15 @@ CAS automatically supports Custom Post Types and Taxonomies created by any plugi
 * [WooCommerce](https://dev.institute/wordpress-sidebars/woocommerce/?utm_source=readme&utm_medium=referral&utm_content=integration&utm_campaign=cas)
 * [WPML](https://dev.institute/wordpress-sidebars/multilingual-plugins/?utm_source=readme&utm_medium=referral&utm_content=integration&utm_campaign=cas)
 
+###Customize Your Widget Areas Your Way
+
+Without writing any code, you can **modify the HTML and CSS classes** of widget areas, widgets, and widget titles. You get full control over the look and feel of your sidebars and widget areas, no matter what theme you use.
+
+> **Sidebar Visibility lets you elegantly hide any widget area for logged-out users.**
 
 **Content Aware Sidebars Pro - [Complete control for your widget areas](https://dev.institute/wordpress-sidebars/?utm_source=readme&utm_medium=referral&utm_content=title&utm_campaign=cas)**
 
-####Highlighted Premium Features
+###Highlighted Premium Features
 
 * **Sticky Sidebars & Widget Areas**
 Make any sidebar or widget area sticky without hurting site performance. No jQuery and no bloat.
@@ -105,7 +110,7 @@ A real time-saver when adding new similar widget areas
 
 Upgrade at anytime instantly and securely from your website's Admin Dashboard.
 
-####More Information
+###More Information
 
 * [Documentation](https://dev.institute/docs/content-aware-sidebars/?utm_source=readme&utm_medium=referral&utm_content=info&utm_campaign=cas)
 * [GitHub](https://github.com/intoxstudio/content-aware-sidebars)
@@ -120,7 +125,7 @@ Upgrade at anytime instantly and securely from your website's Admin Dashboard.
 
 = Do I need to know widget logic PHP code? =
 
-Of course not.
+Of course not!
 
 CAS is praised by users for its unparalleled sidebar and widget visibility options. It's the only plugin that allows you to display widget areas on literally any condition without any code.
 
@@ -133,22 +138,29 @@ If your theme already has WordPress sidebars and widget areas, you can create ne
 You can also display custom sidebars using the sidebar shortcode [ca-sidebar id=""] anywhere in your content.
 
 If your theme has a built-in sidebar generator, it is recommended to disable it and/or only use CAS for maximum speed and compatibility.
-
-= Will this plugin work with page builders? =
-
-Yes!
-
-Many users already mix CAS with popular page builder plugins such as Elementor, SiteOrigin Page Builder, Beaver Builder, and Visual Composer.
-
 = Can I really display sidebars and widget areas on any page? =
 
-Yep.
+Yes!
 
 In the Sidebar Editor, you can select where, when and to whom your sidebar should be displayed. Create a sidebar for each page, a sidebar for posts in a category, or any sidebar you need, all in a user-friendly UI.
 
 You can also select sidebars directly when you're editing a post or page.
 
 [Click here to read more about Display Conditions](https://dev.institute/docs/content-aware-sidebars/getting-started/display-sidebar-simple/?utm_source=readme&utm_medium=referral&utm_content=faq&utm_campaign=cas).
+
+= Is this plugin Gutenberg-ready? =
+
+Yes!
+
+Gutenberg is the New Block Editor that has been part of WordPress since version 5.0. CAS will support Block-based Widgets and Widget Areas (Block Areas) when they get implemented in WordPress Core as planned.
+
+Moreover, the Pro version makes it possible to infuse widget areas into theme hooks, as well as insert areas between content paragraphs.
+
+= Will this plugin work with page builders? =
+
+Yes!
+
+Many users already compliment CAS with popular page builder plugins such as Elementor, SiteOrigin Page Builder, Beaver Builder, and Visual Composer.
 
 = I have other questions, can you help? =
 
