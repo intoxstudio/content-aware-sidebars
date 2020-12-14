@@ -58,8 +58,19 @@ class CAS_Admin_Screen_Widgets extends CAS_Admin
             $args['description'] = $handle_meta->get_list_data($post->ID, true);
 
             if (isset($has_host[$handle_meta->get_data($post->ID)])) {
-                $host = $manager->metadata()->get('host')->get_list_data($post->ID, false);
-                $args['description'] .= ': ' . ($host ? $host :  __('Target not found', 'content-aware-sidebars'));
+                $hosts = $manager->metadata()->get('host')->get_data($post->ID, false, false);
+                if ($hosts) {
+                    $list = $manager->metadata()->get('host')->get_input_list();
+                    $data = [];
+                    foreach ($hosts as $host) {
+                        if (!isset($list[$host])) {
+                            $data[] = __('Target not found', 'content-aware-sidebars');
+                        } else {
+                            $data[] = $list[$host];
+                        }
+                    }
+                    $args['description'] .= ': ' .  implode(', ', $data);
+                }
             }
 
             $wp_registered_sidebars[$id] = array_merge($wp_registered_sidebars[$id], $args);

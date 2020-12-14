@@ -388,38 +388,47 @@ final class CAS_Sidebar_Manager
 
             foreach ($posts as $post) {
                 $id = CAS_App::SIDEBAR_PREFIX . $post->ID;
-                $host = $metadata->get('host')->get_data($post->ID);
 
-                // Check for correct handling and if host exist
-                if (!isset($has_host[$post->handle]) || !isset($sidebars_widgets[$host])) {
+                // Check for correct handling
+                if (!isset($has_host[$post->handle])) {
                     continue;
                 }
 
-                // Sidebar might not have any widgets. Get it anyway!
-                if (!isset($sidebars_widgets[$id])) {
-                    $sidebars_widgets[$id] = array();
-                }
+                $hosts = $metadata->get('host')->get_data($post->ID, false, false);
 
-                // If handle is merge or if handle is replace and host has already been replaced
-                if ($post->handle == 1 || ($post->handle == 0 && isset($handled_already[$host]))) {
-                    //do not merge forced replace
-                    //todo: maybe reverse order of fetched sidebars instead?
-                    if (isset($handled_already[$host]) && $handled_already[$host] == 3) {
+                foreach ($hosts as $host) {
+
+                    // Check if host exist
+                    if (!isset($sidebars_widgets[$host])) {
                         continue;
                     }
-                    if ($metadata->get('merge_pos')->get_data($post->ID)) {
-                        $sidebars_widgets[$host] = array_merge($sidebars_widgets[$host], $sidebars_widgets[$id]);
-                    } else {
-                        $sidebars_widgets[$host] = array_merge($sidebars_widgets[$id], $sidebars_widgets[$host]);
-                    }
-                } else {
-                    $sidebars_widgets[$host] = $sidebars_widgets[$id];
-                    $handled_already[$host] = $post->handle;
-                }
 
-                //last replacement will take priority
-                //todo: extend to work for widgets too
-                $this->replace_map[$host] = $id;
+                    // Sidebar might not have any widgets. Get it anyway!
+                    if (!isset($sidebars_widgets[$id])) {
+                        $sidebars_widgets[$id] = array();
+                    }
+
+                    // If handle is merge or if handle is replace and host has already been replaced
+                    if ($post->handle == 1 || ($post->handle == 0 && isset($handled_already[$host]))) {
+                        //do not merge forced replace
+                        //todo: maybe reverse order of fetched sidebars instead?
+                        if (isset($handled_already[$host]) && $handled_already[$host] == 3) {
+                            continue;
+                        }
+                        if ($metadata->get('merge_pos')->get_data($post->ID)) {
+                            $sidebars_widgets[$host] = array_merge($sidebars_widgets[$host], $sidebars_widgets[$id]);
+                        } else {
+                            $sidebars_widgets[$host] = array_merge($sidebars_widgets[$id], $sidebars_widgets[$host]);
+                        }
+                    } else {
+                        $sidebars_widgets[$host] = $sidebars_widgets[$id];
+                        $handled_already[$host] = $post->handle;
+                    }
+
+                    //last replacement will take priority
+                    //todo: extend to work for widgets too
+                    $this->replace_map[$host] = $id;
+                }
             }
             $this->replaced_sidebars = $sidebars_widgets;
         }
