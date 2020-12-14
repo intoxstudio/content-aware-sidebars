@@ -170,8 +170,8 @@ final class CAS_Sidebar_Manager
         ->add(new WPCAMeta(
             'host',
             __('Target Sidebar', 'content-aware-sidebars'),
-            'sidebar-1',
-            'select',
+            array(),
+            'multi',
             array()
         ), 'host')
         ->add(new WPCAMeta(
@@ -217,6 +217,7 @@ final class CAS_Sidebar_Manager
             if (get_the_ID()) {
                 unset($sidebar_list[CAS_App::SIDEBAR_PREFIX.get_the_ID()]);
             }
+            asort($sidebar_list);
             $this->metadata->get('host')->set_input_list($sidebar_list);
 
             if (!cas_fs()->can_use_premium_code()) {

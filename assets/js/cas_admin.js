@@ -17,6 +17,7 @@
 			this.tabController();
 			this.actionOptionHandler();
 			this.suggestVisibility();
+			this.suggestTarget();
 			this.initSidebarActivation();
 
 			$('.js-cas-color-field').wpColorPicker();
@@ -189,6 +190,36 @@
 					return currentSearchTerm;
 				},
 				data: CASAdmin.visibility
+			})
+			.on("select2:selecting",function(e) {
+				$elem.data("forceOpen",true);
+			})
+			.on("select2:close",function(e) {
+				if($elem.data("forceOpen")) {
+					e.preventDefault();
+					$elem.select2("open");
+					$elem.data("forceOpen",false);
+				}
+			});
+			//select3.5 compat for setting value by id
+			if($elem.data('value')) {
+				$elem.val($elem.data('value').toString().split(',')).trigger('change');
+			}
+		},
+
+		suggestTarget: function() {
+			var $elem = $('.js-cas-host');
+			$elem.select2({
+				theme:'wpca',
+				minimumInputLength: 0,
+				closeOnSelect: true,//does not work properly on false
+				allowClear:false,
+				//multiple: true,
+				width:"250px",
+				nextSearchTerm: function(selectedObject, currentSearchTerm) {
+					return currentSearchTerm;
+				},
+				data: CASAdmin.target
 			})
 			.on("select2:selecting",function(e) {
 				$elem.data("forceOpen",true);

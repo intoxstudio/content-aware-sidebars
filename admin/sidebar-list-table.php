@@ -465,8 +465,20 @@ class CAS_Sidebar_List_Table extends WP_List_Table
                 case 1:
                 case 3:
                     $return = $action->get_list_data($post->ID);
-                    $host = $metadata->get('host')->get_list_data($post->ID);
-                    $return .= ':<br> ' . ($host ? $host : '<span style="color:red;">' . __('Target not found', 'content-aware-sidebars') . '</span>');
+                    $hosts = $metadata->get('host')->get_data($post->ID, false, false);
+                    if ($hosts) {
+                        $list = $metadata->get('host')->get_input_list();
+                        $data = [];
+                        foreach ($hosts as $host) {
+                            if (!isset($list[$host])) {
+                                $data[] = '<span style="color:red;">' . __('Target not found', 'content-aware-sidebars') . '</span>';
+                            } else {
+                                $data[] = $list[$host];
+                            }
+                        }
+                        $return .= ':<br> ' .  implode(', ', $data);
+                    }
+
                     if ($action->get_data($post->ID) == 1) {
                         $pos = $metadata->get('merge_pos')->get_data($post->ID, true);
                         $pos_icon = $pos ? 'up' : 'down';

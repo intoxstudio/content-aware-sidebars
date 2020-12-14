@@ -1000,8 +1000,10 @@ final class CAS_Sidebar_Edit extends CAS_Admin
         $this->enqueue_style('flatpickr', 'flatpickr.dark.min', array(), '3.0.6');
         wp_enqueue_style('wp-color-picker');
 
+        $metadata = CAS_App::instance()->_manager->metadata();
         $visibility = array();
-        foreach (CAS_App::instance()->_manager->metadata()->get('visibility')->get_input_list() as $category_key => $category) {
+        $target = array();
+        foreach ($metadata->get('visibility')->get_input_list() as $category_key => $category) {
 
             //legacy format
             if (!is_array($category)) {
@@ -1024,6 +1026,12 @@ final class CAS_Sidebar_Edit extends CAS_Admin
             }
             $visibility[] = $data;
         }
+        foreach ($metadata->get('host')->get_input_list() as $value => $label) {
+                $target[] = array(
+                    'id'   => $value,
+                    'text' => $label
+                );
+        }
 
         if (!cas_fs()->can_use_premium_code()) {
             $visibility[] = array(
@@ -1038,6 +1046,7 @@ final class CAS_Sidebar_Edit extends CAS_Admin
         wp_localize_script('cas/admin/edit', 'CASAdmin', array(
             'allVisibility' => __('All Users', 'content-aware-sidebars'),
             'visibility'    => $visibility,
+            'target'    => $target,
             'weekdays'      => array(
                 'shorthand' => array_values($wp_locale->weekday_abbrev),
                 'longhand'  => array_values($wp_locale->weekday)
