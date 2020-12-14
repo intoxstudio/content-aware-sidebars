@@ -2,10 +2,10 @@
 Contributors: intoxstudio, devinstitute, freemius
 Donate link: #
 Tags: custom sidebars, sidebar, hide sidebar, display widgets, widget, bbpress, buddypress, sidebar manager
-Requires at least: 4.8
+Requires at least: 4.9
 Requires PHP: 5.6
-Tested up to: 5.5
-Stable tag: 3.13.1
+Tested up to: 5.6
+Stable tag: 3.14
 License: GPLv3
 
 Display new sidebars and widget areas on any post, page, category etc. Works with all themes, no code required.
@@ -183,6 +183,20 @@ Of course! Check out the links below:
 [Follow development and see all changes on GitHub](https://github.com/intoxstudio/content-aware-sidebars)
 
 ####Highlights
+
+= 3.14 =
+
+* [new] ability to replace or merge with multiple sidebars
+* [new] wordpress 5.6 support
+* [new] minimum wordpress version 4.9
+* [fixed] some custom sidebar styles would not take effect in wp5.6+
+* [updated] wp-content-aware-engine library
+
+**Pro Plan:**
+
+* [new] time schedule displayed on overview screen
+* [fixed] conditions would not be duplicated with sidebar
+* [updated] improved time schedule ui
 
 = 3.13.1 =
 

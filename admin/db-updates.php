@@ -16,17 +16,17 @@ $cas_db_updater->register_version_update('3.1', 'cas_update_to_31');
 $cas_db_updater->register_version_update('3.4', 'cas_update_to_34');
 $cas_db_updater->register_version_update('3.5.1', 'cas_update_to_351');
 $cas_db_updater->register_version_update('3.8', 'cas_update_to_38');
-$cas_db_updater->register_version_update('3.13.1', 'cas_update_to_3131');
+$cas_db_updater->register_version_update('3.14', 'cas_update_to_314');
 
     /**
      * Enable legacy date module and
      * negated conditions if in use
      *
-     * @since 3.13.1
+     * @since 3.14
      *
      * @return bool
      */
-    function cas_update_to_3131()
+    function cas_update_to_314()
     {
         global $wpdb;
 
