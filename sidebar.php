@@ -365,6 +365,39 @@ final class CAS_Sidebar_Manager
     }
 
     /**
+     * @param string $i
+     * @return void
+     */
+    public function override_sidebar_styles($i)
+    {
+        //Get nested styles
+        $html = $this->get_sidebar_styles($i);
+        if ($html) {
+            global  $wp_registered_sidebars;
+            $styles = $wp_registered_sidebars[$i];
+            //Set user styles
+            foreach (array(
+                'widget',
+                'title',
+                'sidebar'
+            ) as $pos) {
+                if (isset($html[$pos],$html[$pos.'_class'])) {
+                    $e = esc_html($html[$pos]);
+                    $class = esc_html($html[$pos.'_class']);
+                    $id = '';
+                    if (isset($html[$pos.'_id'])) {
+                        $id = ' id="'.$html[$pos.'_id'].'"';
+                    }
+                    $styles['before_'.$pos] = '<'.$e.$id.' class="'.$class.'">';
+                    $styles['after_'.$pos] = "</$e>";
+                }
+            }
+            $wp_registered_sidebars[$i] = $styles;
+        }
+    }
+    
+
+    /**
      * Replace or merge a sidebar with content aware sidebars.
      * @since  .
      * @param  array    $sidebars_widgets
@@ -381,11 +414,10 @@ final class CAS_Sidebar_Manager
         $posts = WPCACore::get_posts(CAS_App::TYPE_SIDEBAR);
 
         if ($posts) {
-            global $wp_registered_sidebars;
-
             $metadata = $this->metadata();
             $has_host = array(0 => 1,1 => 1,3 => 1);
 
+            //replace and merge widgets, build replacement map 
             foreach ($posts as $post) {
                 $id = CAS_App::SIDEBAR_PREFIX . $post->ID;
 
@@ -402,6 +434,8 @@ final class CAS_Sidebar_Manager
                     if (!isset($sidebars_widgets[$host])) {
                         continue;
                     }
+                    
+                    $this->override_sidebar_styles($host);
 
                     // Sidebar might not have any widgets. Get it anyway!
                     if (!isset($sidebars_widgets[$id])) {
@@ -431,6 +465,28 @@ final class CAS_Sidebar_Manager
                 }
             }
             $this->replaced_sidebars = $sidebars_widgets;
+
+            //override styles
+            foreach ($posts as $post) {
+                $id = CAS_App::SIDEBAR_PREFIX . $post->ID;
+
+                // Check for correct handling
+                if (!isset($has_host[$post->handle])) {
+                    $this->override_sidebar_styles($id);
+                    continue;
+                }
+
+                $hosts = $metadata->get('host')->get_data($post->ID, false, false);
+
+                foreach ($hosts as $host) {
+                    // Check if host exist
+                    if (!isset($sidebars_widgets[$host])) {
+                        continue;
+                    }
+                    
+                    $this->override_sidebar_styles($host);
+                }
+            }
         }
         return $sidebars_widgets;
     }
@@ -523,6 +579,7 @@ final class CAS_Sidebar_Manager
         if (is_active_sidebar($id) && apply_filters('cas/shortcode/display', true, $a['id'])) {
             ob_start();
             do_action('cas/shortcode/before', $a['id']);
+            $this->override_sidebar_styles($id);
             dynamic_sidebar($id);
             $content = ob_get_clean();
         }
@@ -544,7 +601,7 @@ final class CAS_Sidebar_Manager
         $metadata = $this->metadata()->get('html');
         while ($i) {
             if (isset($this->sidebars[$i])) {
-                $style = apply_filters('cas/sidebar/html', $metadata->get_data($this->sidebars[$i]->ID), $this->sidebars[$i]->ID);
+                $style = apply_filters('cas/sidebar/html', $metadata->get_data($this->sidebars[$i]->ID, true), $this->sidebars[$i]->ID);
                 if ($style) {
                     $styles = array_merge($styles, $style);
                     $styles['widget_id'] = '%1$s';
@@ -560,6 +617,7 @@ final class CAS_Sidebar_Manager
     /**
      * Render html if present before sidebar
      *
+     * @deprecated since WP5.6
      * @since  3.6
      * @param  string   $i
      * @param  boolean  $has_widgets
@@ -567,30 +625,9 @@ final class CAS_Sidebar_Manager
      */
     public function render_sidebar_before($i, $has_widgets)
     {
-        global $wp_registered_sidebars;
-
-        //Get nested styles
-        $html = $this->get_sidebar_styles($i);
-        if ($html) {
-            $styles = $wp_registered_sidebars[$i];
-            //Set user styles
-            foreach (array(
-                'widget',
-                'title',
-                'sidebar'
-            ) as $pos) {
-                if (isset($html[$pos],$html[$pos.'_class'])) {
-                    $e = esc_html($html[$pos]);
-                    $class = esc_html($html[$pos.'_class']);
-                    $id = '';
-                    if (isset($html[$pos.'_id'])) {
-                        $id = ' id="'.$html[$pos.'_id'].'"';
-                    }
-                    $styles['before_'.$pos] = '<'.$e.$id.' class="'.$class.'">';
-                    $styles['after_'.$pos] = "</$e>";
-                }
-            }
-            $wp_registered_sidebars[$i] = $styles;
+        //wp5.6 introduced before_sidebar without notice
+        if (version_compare(get_bloginfo('version'),'5.6', '>=')) {
+            return;
         }
 
         if ($has_widgets && isset($wp_registered_sidebars[$i]['before_sidebar'])) {
@@ -601,6 +638,7 @@ final class CAS_Sidebar_Manager
     /**
      * Render html if present after sidebar
      *
+     * @deprecated since WP5.6
      * @since  3.6
      * @param  string   $i
      * @param  boolean  $has_widgets
@@ -608,6 +646,10 @@ final class CAS_Sidebar_Manager
      */
     public function render_sidebar_after($i, $has_widgets)
     {
+        //wp5.6 introduced after_sidebar without notice
+        if (version_compare(get_bloginfo('version'),'5.6', '>=')) {
+            return;
+        }
         global $wp_registered_sidebars;
         if ($has_widgets && isset($wp_registered_sidebars[$i]['after_sidebar'])) {
             echo $wp_registered_sidebars[$i]['after_sidebar'];
