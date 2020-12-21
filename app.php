@@ -148,6 +148,11 @@ final class CAS_App
                 99,
                 4
             );
+            /**
+             * gutenberg disables widgets screen without user consent,
+             * reenable by popular demand for now
+             */
+            add_filter('gutenberg_use_widgets_block_editor','__return_false');
         }
     }
 
