@@ -205,9 +205,11 @@ class CAS_Quick_Select
         $host_meta = CAS_App::instance()->manager()->metadata()->get('host');
         foreach ($relations as $sidebar_id => $group_id) {
             if (isset($sidebars[CAS_App::SIDEBAR_PREFIX.$sidebar_id])) {
-                $host_id = $host_meta->get_data($sidebar_id);
-                if (!isset(self::$_theme_sidebars[$host_id])) {
-                    continue;
+                $host_ids = $host_meta->get_data($sidebar_id, false, false);
+                foreach ($host_ids as $host_id) {
+                    if (!isset(self::$_theme_sidebars[$host_id])) {
+                        continue;
+                    }
                 }
             }
 
@@ -240,14 +242,16 @@ class CAS_Quick_Select
         $manager = CAS_App::instance()->manager();
         $host_meta = $manager->metadata()->get('host');
         foreach ($manager->sidebars as $sidebar) {
-            $host_id = $host_meta->get_data($sidebar->ID);
-            if (isset(self::$_theme_sidebars[$host_id])) {
-                self::$_theme_sidebars[$host_id]['options'][$sidebar->ID] = array(
-                    'id'   => $sidebar->ID,
-                    'text' => $sidebar->post_title.self::sidebar_states($sidebar)
-                );
-                if (isset($post_sidebars[$sidebar->ID])) {
-                    self::$_theme_sidebars[$host_id]['options'][$sidebar->ID]['select'] = 1;
+            $host_ids = $host_meta->get_data($sidebar->ID, false, false);
+            foreach ($host_ids as $host_id) {
+                if (isset(self::$_theme_sidebars[$host_id])) {
+                    self::$_theme_sidebars[$host_id]['options'][$sidebar->ID] = array(
+                        'id'   => $sidebar->ID,
+                        'text' => $sidebar->post_title.self::sidebar_states($sidebar)
+                    );
+                    if (isset($post_sidebars[$sidebar->ID])) {
+                        self::$_theme_sidebars[$host_id]['options'][$sidebar->ID]['select'] = 1;
+                    }
                 }
             }
         }
@@ -396,7 +400,7 @@ class CAS_Quick_Select
 				INNER JOIN $wpdb->postmeta gm ON gm.post_id = g.ID AND gm.meta_key = '".WPCACore::PREFIX.self::MODULE_NAME."'
 				WHERE s.post_status <> 'trash'
 				AND s.post_type = '".CAS_App::TYPE_SIDEBAR."'
-				AND g.post_status = '".WPCACore::STATUS_PUBLISHED."'
+				AND g.post_status IN ('".WPCACore::STATUS_PUBLISHED."','".WPCACore::STATUS_OR."')
 				AND gm.meta_value = %d
 				ORDER BY s.post_title ASC",
                 $post->ID
