@@ -5,7 +5,7 @@ Tags: custom sidebars, sidebar, hide sidebar, display widgets, widget, bbpress, 
 Requires at least: 4.9
 Requires PHP: 5.6
 Tested up to: 5.6
-Stable tag: 3.14
+Stable tag: 3.14.1
 License: GPLv3
 
 Display new sidebars and widget areas on any post, page, category etc. Works with all themes, no code required.
@@ -49,7 +49,7 @@ In the All-in-one Sidebar Manager you **just pick a start and end date** for whe
 
 > **1-Click Sidebar Activation&copy; lets you activate or deactivate widget areas instantly.**
 
-####The Most User-friendly Widget Manager
+###The Most User-friendly Widget Manager
 
 When adding new widgets to sidebars, **Live Search will find widgets instantly**, and the smart split-screen makes it a joy to manage a lot of widgets and sidebars.
 
@@ -183,6 +183,15 @@ Of course! Check out the links below:
 [Follow development and see all changes on GitHub](https://github.com/intoxstudio/content-aware-sidebars)
 
 ####Highlights
+
+= 3.14.1 =
+
+* [fixed] sidebar quick select now displays all eligible sidebars
+* [updated] reinstate widgets screen if disabled by gutenberg plugin without user consent
+
+**Pro Plan:**
+
+* [fixed] styles would not always be loaded for container widget
 
 = 3.14 =
 
