@@ -18,6 +18,11 @@ abstract class CAS_Admin
      */
     protected $_screen;
 
+    /**
+     * @var int
+     */
+    protected $notification_count = 0;
+
     public function __construct()
     {
         if (is_admin()) {
@@ -148,6 +153,7 @@ abstract class CAS_Admin
         $tour_manager = new WP_Pointer_Tour(CAS_App::META_PREFIX.'cas_tour');
         $tour_taken = (int) $tour_manager->get_user_option();
         if ($tour_taken && (time() - $tour_taken) >= WEEK_IN_SECONDS) {
+            $this->notification_count++;
             $path = plugin_dir_path(dirname(__FILE__)).'view/';
             $view = WPCAView::make($path.'notice_review.php', array(
                 'current_user' => wp_get_current_user()

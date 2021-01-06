@@ -40,10 +40,12 @@ final class CAS_Sidebar_Overview extends CAS_Admin
         global $_wp_last_object_menu;
 
         $post_type_object = get_post_type_object(CAS_App::TYPE_SIDEBAR);
+       
+        $notification_label = $this->notification_count ? sprintf(' <span class="awaiting-mod">%d</span>', $this->notification_count) : '';
 
         add_menu_page(
             $post_type_object->labels->name,
-            __('Content Aware', 'content-aware-sidebars'),
+            __('Content Aware', 'content-aware-sidebars') . $notification_label,
             $post_type_object->cap->edit_posts,
             CAS_App::BASE_SCREEN,
             array($this,'render_screen'),
