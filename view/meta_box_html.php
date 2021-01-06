@@ -8,32 +8,32 @@
 
 $data = CAS_App::instance()->manager()->metadata()->get('html')->get_data($post->ID, true);
 
-$data_default = array_merge(array(
+$data_default = array_merge([
     'sidebar'       => '',
     'sidebar_class' => '',
     'widget'        => '',
     'widget_class'  => 'widget %2$s',
     'title'         => '',
     'title_class'   => 'widget-title'
-), $data);
+], $data);
 
-$sidebar_opts = array(
+$sidebar_opts = [
     'div'   => 'div',
     'aside' => 'aside',
     'ul'    => 'ul'
-);
-$widget_opts = array(
+];
+$widget_opts = [
     'div'     => 'div',
     'li'      => 'li',
     'section' => 'section'
-);
-$widget_title_opts = array(
+];
+$widget_title_opts = [
     'h2' => 'h2',
     'h3' => 'h3',
     'h4' => 'h4',
     'h5' => 'h5',
     'h6' => 'h6'
-);
+];
 
 ?>
 

@@ -23,7 +23,7 @@ if (!EMPTY_TRASH_DAYS) {
         </td>
     </tr>
 
-<?php if (current_user_can("delete_post", $post->ID)) : ?>
+<?php if (current_user_can('delete_post', $post->ID)) : ?>
     <tr>
         <td scope="row"></td>
         <td>

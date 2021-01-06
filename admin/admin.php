@@ -126,11 +126,11 @@ abstract class CAS_Admin
      */
     public function add_general_scripts_styles()
     {
-        $this->enqueue_script('cas/admin/general', 'general', array('jquery'), '', true);
-        wp_localize_script('cas/admin/general', 'CAS', array(
+        $this->enqueue_script('cas/admin/general', 'general', ['jquery'], '', true);
+        wp_localize_script('cas/admin/general', 'CAS', [
             'showPopups'    => !cas_fs()->can_use_premium_code(),
             'enableConfirm' => __('This sidebar is already scheduled to be activated. Do you want to activate it now?', 'content-aware-sidebars')
-        ));
+        ]);
         $this->enqueue_style('cas/admin/style', 'style');
         $this->add_scripts_styles();
     }
@@ -155,9 +155,9 @@ abstract class CAS_Admin
         if ($tour_taken && (time() - $tour_taken) >= WEEK_IN_SECONDS) {
             $this->notification_count++;
             $path = plugin_dir_path(dirname(__FILE__)).'view/';
-            $view = WPCAView::make($path.'notice_review.php', array(
+            $view = WPCAView::make($path.'notice_review.php', [
                 'current_user' => wp_get_current_user()
-            ))->render();
+            ])->render();
         }
     }
 
@@ -188,7 +188,7 @@ abstract class CAS_Admin
     {
         __('Enhance your sidebars and widget areas with: %s and more.', 'content-aware-sidebars');
         __('Sync widgets across themes', 'content-aware-sidebars');
-        $features = array(
+        $features = [
             __('Extra Display Conditions', 'content-aware-sidebars'),
             __('Insert Widget Areas in Theme Hooks', 'content-aware-sidebars'),
             __('Widget Area Designer', 'content-aware-sidebars'),
@@ -197,7 +197,7 @@ abstract class CAS_Admin
             __('Time & Weekday Schedule', 'content-aware-sidebars'),
             __('Widget Cleaner', 'content-aware-sidebars'),
             __('and so much more...', 'content-aware-sidebars')
-        );
+        ];
         echo '<a style="display:none;" class="thickbox js-cas-pro-popup" href="#TB_inline?width=600&amp;height=350&amp;inlineId=pro-popup-notice" title="'.__('Content Aware Sidebars Pro', 'content-aware-sidebars').'"></a>';
         echo '<div id="pro-popup-notice" style="display:none;">';
         echo '<img style="margin-top:15px;" class="alignright" src="'.plugins_url('assets/img/icon.png', dirname(__FILE__)).'" width="128" height="128" />';
@@ -226,7 +226,7 @@ abstract class CAS_Admin
     protected function add_action($tag, $callback, $priority = 10, $accepted_args = 1)
     {
         if (is_string($callback)) {
-            $callback = array($this, $callback);
+            $callback = [$this, $callback];
         }
         add_action($tag, $callback, $priority, $accepted_args);
     }
@@ -243,7 +243,7 @@ abstract class CAS_Admin
     protected function add_filter($tag, $callback, $priority = 10, $accepted_args = 1)
     {
         if (is_string($callback)) {
-            $callback = array($this, $callback);
+            $callback = [$this, $callback];
         }
         add_filter($tag, $callback, $priority, $accepted_args);
     }
@@ -258,7 +258,7 @@ abstract class CAS_Admin
      *
      * @return void
      */
-    protected function enqueue_script($handle, $filename, $deps = array(), $ver = '', $in_footer = false)
+    protected function enqueue_script($handle, $filename, $deps = [], $ver = '', $in_footer = false)
     {
         $this->register_script($handle, $filename, $deps, $ver, $in_footer);
         wp_enqueue_script($handle);
@@ -274,7 +274,7 @@ abstract class CAS_Admin
      *
      * @return void
      */
-    protected function register_script($handle, $filename, $deps = array(), $ver = '', $in_footer = false)
+    protected function register_script($handle, $filename, $deps = [], $ver = '', $in_footer = false)
     {
         $suffix = '.min.js';
         if ($ver === '') {
@@ -292,7 +292,7 @@ abstract class CAS_Admin
      *
      * @return void
      */
-    protected function enqueue_style($handle, $filename, $deps = array(), $ver = '')
+    protected function enqueue_style($handle, $filename, $deps = [], $ver = '')
     {
         $this->register_style($handle, $filename, $deps, $ver);
         wp_enqueue_style($handle);
@@ -307,7 +307,7 @@ abstract class CAS_Admin
      *
      * @return void
      */
-    protected function register_style($handle, $filename, $deps = array(), $ver = '')
+    protected function register_style($handle, $filename, $deps = [], $ver = '')
     {
         $suffix = '.css';
         if ($ver === '') {

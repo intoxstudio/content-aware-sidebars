@@ -19,16 +19,16 @@ delete_option('cas_db_version');
 delete_option('cas_pro');
 
 //Remove all sidebars, groups, meta and terms.
-$sidebars = get_posts(array(
+$sidebars = get_posts([
     'post_type'      => 'sidebar',
     'posts_per_page' => -1
-));
+]);
 foreach ($sidebars as $sidebar) {
-    $groups = get_posts(array(
+    $groups = get_posts([
         'post_parent'    => $sidebar->ID,
         'post_type'      => 'condition_group',
         'posts_per_page' => -1
-    ));
+    ]);
     foreach ($groups as $group) {
         wp_delete_post($group->ID, true);
     }

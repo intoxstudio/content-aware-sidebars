@@ -21,19 +21,19 @@ final class CAS_Sidebar_Manager
      * Custom sidebars
      * @var array
      */
-    public $sidebars = array();
+    public $sidebars = [];
 
     /**
      * Cache replaced sidebars
      * @var array
      */
-    protected $replaced_sidebars = array();
+    protected $replaced_sidebars = [];
 
     /**
      * Sidebar replacement map
      * @var array
      */
-    protected $replace_map = array();
+    protected $replace_map = [];
 
     /**
      * @var array
@@ -45,31 +45,31 @@ final class CAS_Sidebar_Manager
     {
         add_action(
             'wpca/loaded',
-            array($this,'late_init')
+            [$this,'late_init']
         );
         add_action(
             'wp_head',
-            array($this,'sidebar_notify_theme_customizer')
+            [$this,'sidebar_notify_theme_customizer']
         );
         add_action(
             'init',
-            array($this,'init_sidebar_type'),
+            [$this,'init_sidebar_type'],
             99
         );
         add_action(
             'widgets_init',
-            array($this,'create_sidebars'),
+            [$this,'create_sidebars'],
             99
         );
         add_action(
             'wp_loaded',
-            array($this,'set_sidebar_styles'),
+            [$this,'set_sidebar_styles'],
             99
         );
 
         add_shortcode(
             'ca-sidebar',
-            array($this,'sidebar_shortcode')
+            [$this,'sidebar_shortcode']
         );
     }
 
@@ -86,31 +86,31 @@ final class CAS_Sidebar_Manager
         if (!is_admin()) {
             add_filter(
                 'sidebars_widgets',
-                array($this,'replace_sidebar')
+                [$this,'replace_sidebar']
             );
             add_filter(
                 'wpca/posts/sidebar',
-                array(__CLASS__,'filter_password_protection')
+                [__CLASS__,'filter_password_protection']
             );
             add_filter(
                 'wpca/posts/sidebar',
-                array($this,'filter_visibility')
+                [$this,'filter_visibility']
             );
             add_filter(
                 'cas/shortcode/display',
-                array($this,'filter_shortcode_visibility'),
+                [$this,'filter_shortcode_visibility'],
                 10,
                 2
             );
             add_action(
                 'dynamic_sidebar_before',
-                array($this,'render_sidebar_before'),
+                [$this,'render_sidebar_before'],
                 9,
                 2
             );
             add_action(
                 'dynamic_sidebar_after',
-                array($this,'render_sidebar_after'),
+                [$this,'render_sidebar_after'],
                 99,
                 2
             );
@@ -143,54 +143,54 @@ final class CAS_Sidebar_Manager
         ->add(new WPCAMeta(
             'visibility',
             __('User Visibility', 'content-aware-sidebars'),
-            array(),
+            [],
             'multi',
-            array(
-                'general' => array(
+            [
+                'general' => [
                     'label'   => 'General',
-                    'options' => array(
+                    'options' => [
                         -1 => __('Logged-in', 'content-aware-sidebars')
-                    )
-                )
-            )
+                    ]
+                ]
+            ]
         ), 'visibility')
         ->add(new WPCAMeta(
             'handle',
             _x('Action', 'option', 'content-aware-sidebars'),
             0,
             'select',
-            array(
+            [
                 0 => __('Replace', 'content-aware-sidebars'),
                 1 => __('Merge', 'content-aware-sidebars'),
                 3 => __('Forced replace', 'content-aware-sidebars'),
                 2 => __('Shortcode')
-            ),
+            ],
             __('Replace host sidebar, merge with it or add sidebar manually.', 'content-aware-sidebars')
         ), 'handle')
         ->add(new WPCAMeta(
             'host',
             __('Target Sidebar', 'content-aware-sidebars'),
-            array(),
+            [],
             'multi',
-            array()
+            []
         ), 'host')
         ->add(new WPCAMeta(
             'merge_pos',
             __('Merge Position', 'content-aware-sidebars'),
             1,
             'select',
-            array(
+            [
                 __('Top', 'content-aware-sidebars'),
                 __('Bottom', 'content-aware-sidebars')
-            ),
+            ],
             __('Place sidebar on top or bottom of host when merging.', 'content-aware-sidebars')
         ), 'merge_pos')
         ->add(new WPCAMeta(
             'html',
             __('HTML', 'content-aware-sidebars'),
-            array(),
+            [],
             'select',
-            array('')
+            ['']
         ), 'html');
         apply_filters('cas/metadata/init', $this->metadata);
     }
@@ -208,7 +208,7 @@ final class CAS_Sidebar_Manager
             global $wp_registered_sidebars;
 
             // List of sidebars
-            $sidebar_list = array();
+            $sidebar_list = [];
             foreach ($wp_registered_sidebars as $sidebar) {
                 $sidebar_list[$sidebar['id']] = $sidebar['name'];
             }
@@ -241,8 +241,8 @@ final class CAS_Sidebar_Manager
      */
     public function init_sidebar_type()
     {
-        register_post_type(CAS_App::TYPE_SIDEBAR, array(
-            'labels' => array(
+        register_post_type(CAS_App::TYPE_SIDEBAR, [
+            'labels' => [
                 'name'               => __('Sidebars', 'content-aware-sidebars'),
                 'singular_name'      => __('Sidebar', 'content-aware-sidebars'),
                 'add_new'            => _x('Add New', 'sidebar', 'content-aware-sidebars'),
@@ -256,8 +256,8 @@ final class CAS_Sidebar_Manager
                 'not_found_in_trash' => __('No sidebars found in Trash', 'content-aware-sidebars'),
                 //wp-content-aware-engine specific
                 'ca_title' => __('Where to display', 'content-aware-sidebars')
-            ),
-            'capabilities' => array(
+            ],
+            'capabilities' => [
                 'edit_post'          => CAS_App::CAPABILITY,
                 'read_post'          => CAS_App::CAPABILITY,
                 'delete_post'        => CAS_App::CAPABILITY,
@@ -266,7 +266,7 @@ final class CAS_Sidebar_Manager
                 'edit_others_posts'  => CAS_App::CAPABILITY,
                 'publish_posts'      => CAS_App::CAPABILITY,
                 'read_private_posts' => CAS_App::CAPABILITY
-            ),
+            ],
             'public'              => false,
             'hierarchical'        => false,
             'exclude_from_search' => true,
@@ -278,11 +278,11 @@ final class CAS_Sidebar_Manager
             'has_archive'         => false,
             'rewrite'             => false,
             'query_var'           => false,
-            'supports'            => array('title','page-attributes'),
+            'supports'            => ['title','page-attributes'],
             'menu_icon'           => 'dashicons-welcome-widgets-menus',
             'can_export'          => false,
             'delete_with_user'    => false
-        ));
+        ]);
 
         WPCACore::types()->add(CAS_App::TYPE_SIDEBAR);
     }
@@ -294,27 +294,27 @@ final class CAS_Sidebar_Manager
      */
     public function create_sidebars()
     {
-        $sidebars = get_posts(array(
+        $sidebars = get_posts([
             'numberposts' => -1,
             'post_type'   => CAS_App::TYPE_SIDEBAR,
-            'post_status' => array(
+            'post_status' => [
                 CAS_App::STATUS_ACTIVE,
                 CAS_App::STATUS_INACTIVE,
                 CAS_App::STATUS_SCHEDULED
-            ),
+            ],
             'orderby' => 'title',
             'order'   => 'ASC'
-        ));
+        ]);
 
         //Register sidebars to add them to the list
         foreach ($sidebars as $post) {
             $this->sidebars[CAS_App::SIDEBAR_PREFIX.$post->ID] = $post;
-            register_sidebar(array(
+            register_sidebar([
                 'name'           => $post->post_title ? $post->post_title : __('(no title)'),
                 'id'             => CAS_App::SIDEBAR_PREFIX.$post->ID,
                 'before_sidebar' => '',
                 'after_sidebar'  => ''
-            ));
+            ]);
         }
     }
 
@@ -328,13 +328,13 @@ final class CAS_Sidebar_Manager
         global $wp_registered_sidebars;
 
         //todo: only for manual
-        $default_styles = array(
+        $default_styles = [
             'before_widget' => '<div id="%1$s" class="widget-container %2$s">',
             'after_widget'  => '</div>',
             'before_title'  => '<h4 class="widget-title">',
             'after_title'   => '</h4>'
-        );
-        $has_host = array(0 => 1,1 => 1,3 => 1);
+        ];
+        $has_host = [0 => 1,1 => 1,3 => 1];
         $metadata = $this->metadata();
 
         foreach ($this->sidebars as $id => $post) {
@@ -345,14 +345,14 @@ final class CAS_Sidebar_Manager
                 //is called directly by other sidebar managers
                 $host_id = $metadata->get('host')->get_data($post->ID);
                 if (isset($wp_registered_sidebars[$host_id])) {
-                    foreach (array(
+                    foreach ([
                         'before_widget',
                         'after_widget',
                         'before_title',
                         'after_title',
                         'before_sidebar',
                         'after_sidebar'
-                    ) as $pos) {
+                    ] as $pos) {
                         if (isset($wp_registered_sidebars[$host_id][$pos])) {
                             $args[$pos] = $wp_registered_sidebars[$host_id][$pos];
                         }
@@ -376,11 +376,11 @@ final class CAS_Sidebar_Manager
             global  $wp_registered_sidebars;
             $styles = $wp_registered_sidebars[$i];
             //Set user styles
-            foreach (array(
+            foreach ([
                 'widget',
                 'title',
                 'sidebar'
-            ) as $pos) {
+            ] as $pos) {
                 if (isset($html[$pos],$html[$pos.'_class'])) {
                     $e = esc_html($html[$pos]);
                     $class = esc_html($html[$pos.'_class']);
@@ -415,9 +415,9 @@ final class CAS_Sidebar_Manager
 
         if ($posts) {
             $metadata = $this->metadata();
-            $has_host = array(0 => 1,1 => 1,3 => 1);
+            $has_host = [0 => 1,1 => 1,3 => 1];
 
-            //replace and merge widgets, build replacement map 
+            //replace and merge widgets, build replacement map
             foreach ($posts as $post) {
                 $id = CAS_App::SIDEBAR_PREFIX . $post->ID;
 
@@ -439,7 +439,7 @@ final class CAS_Sidebar_Manager
 
                     // Sidebar might not have any widgets. Get it anyway!
                     if (!isset($sidebars_widgets[$id])) {
-                        $sidebars_widgets[$id] = array();
+                        $sidebars_widgets[$id] = [];
                     }
 
                     // If handle is merge or if handle is replace and host has already been replaced
@@ -502,11 +502,11 @@ final class CAS_Sidebar_Manager
         global $_wp_sidebars_widgets;
 
         // Grab args or defaults
-        $args = wp_parse_args($args, array(
+        $args = wp_parse_args($args, [
             'include' => '',
             'before'  => '',
             'after'   => ''
-        ));
+        ]);
         extract($args, EXTR_SKIP);
 
         // Get sidebars
@@ -562,9 +562,9 @@ final class CAS_Sidebar_Manager
      */
     public function sidebar_shortcode($atts, $content = '')
     {
-        $a = shortcode_atts(array(
+        $a = shortcode_atts([
             'id' => 0,
-        ), $atts);
+        ], $atts);
 
         $id = CAS_App::SIDEBAR_PREFIX.esc_attr($a['id']);
 
@@ -596,7 +596,7 @@ final class CAS_Sidebar_Manager
      */
     public function get_sidebar_styles($i)
     {
-        $styles = array();
+        $styles = [];
 
         $metadata = $this->metadata()->get('html');
         while ($i) {
@@ -626,7 +626,7 @@ final class CAS_Sidebar_Manager
     public function render_sidebar_before($i, $has_widgets)
     {
         //wp5.6 introduced before_sidebar without notice
-        if (version_compare(get_bloginfo('version'),'5.6', '>=')) {
+        if (version_compare(get_bloginfo('version'), '5.6', '>=')) {
             return;
         }
 
@@ -647,7 +647,7 @@ final class CAS_Sidebar_Manager
     public function render_sidebar_after($i, $has_widgets)
     {
         //wp5.6 introduced after_sidebar without notice
-        if (version_compare(get_bloginfo('version'),'5.6', '>=')) {
+        if (version_compare(get_bloginfo('version'), '5.6', '>=')) {
             return;
         }
         global $wp_registered_sidebars;
@@ -666,7 +666,7 @@ final class CAS_Sidebar_Manager
     public static function filter_password_protection($sidebars)
     {
         if (is_singular() && post_password_required()) {
-            return array();
+            return [];
         }
         return $sidebars;
     }
@@ -684,7 +684,7 @@ final class CAS_Sidebar_Manager
             $metadata = $this->metadata()->get('visibility');
 
             //temporary filter until WPCACore allows filtering
-            $user_visibility = is_user_logged_in() ? array(-1) : array();
+            $user_visibility = is_user_logged_in() ? [-1] : [];
             $user_visibility = apply_filters('cas/user_visibility', $user_visibility);
             foreach ($sidebars as $id => $sidebar) {
                 $visibility = $metadata->get_data($id, true, false);
@@ -712,7 +712,7 @@ final class CAS_Sidebar_Manager
             $metadata = $this->metadata()->get('visibility');
 
             //temporary filter until WPCACore allows filtering
-            $user_visibility = is_user_logged_in() ? array(-1) : array();
+            $user_visibility = is_user_logged_in() ? [-1] : [];
             $user_visibility = apply_filters('cas/user_visibility', $user_visibility);
 
             $visibility = $metadata->get_data($id, true, false);

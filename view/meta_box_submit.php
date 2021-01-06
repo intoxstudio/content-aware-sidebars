@@ -35,11 +35,11 @@ if (post_type_supports($post->post_type, 'revisions')) {
 </div>
 <ul class="cas-overview-actions">
     <li style="overflow: hidden;">
-        <span class="dashicons dashicons-calendar"></span> <strong><?php _e("Status", 'content-aware-sidebars'); ?></strong>
+        <span class="dashicons dashicons-calendar"></span> <strong><?php _e('Status', 'content-aware-sidebars'); ?></strong>
         <div class="wpca-pull-right">
         <a class="js-nav-link" href="#top#section-schedule"><?php _ex('Schedule', 'verb', 'content-aware-sidebars'); ?></a>
         <label class="cae-toggle">
-            <input class="js-cas-status" type="checkbox" name="post_status" value="<?php echo CAS_App::STATUS_ACTIVE; ?>" <?php checked(in_array($post->post_status, array(CAS_App::STATUS_ACTIVE,'auto-draft')), true); ?> />
+            <input class="js-cas-status" type="checkbox" name="post_status" value="<?php echo CAS_App::STATUS_ACTIVE; ?>" <?php checked(in_array($post->post_status, [CAS_App::STATUS_ACTIVE,'auto-draft']), true); ?> />
             <div class="cae-toggle-bar"></div>
         </label>
     </div>

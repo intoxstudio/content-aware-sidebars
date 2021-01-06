@@ -73,7 +73,7 @@ if (!class_exists('CAS_App')) {
      * @param  array|string  $args
      * @return void
      */
-    function ca_display_sidebar($args = array())
+    function ca_display_sidebar($args = [])
     {
         CAS_App::instance()->manager()->manual_sidebar($args);
     }

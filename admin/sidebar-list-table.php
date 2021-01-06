@@ -21,16 +21,16 @@ class CAS_Sidebar_List_Table extends WP_List_Table
      */
     private $is_trash;
 
-    private $visibility = array();
+    private $visibility = [];
 
-    public function __construct($args = array())
+    public function __construct($args = [])
     {
-        parent::__construct(array(
+        parent::__construct([
             'singular' => 'sidebar',
             'plural'   => 'sidebars',
             'ajax'     => false,
             'screen'   => isset($args['screen']) ? $args['screen'] : null
-        ));
+        ]);
     }
 
     /**
@@ -50,19 +50,19 @@ class CAS_Sidebar_List_Table extends WP_List_Table
         $per_page = $this->get_items_per_page('cas_sidebars_per_page', 20);
         $current_page = $this->get_pagenum();
 
-        $args = array(
+        $args = [
             'post_type'   => CAS_App::TYPE_SIDEBAR,
-            'post_status' => array(
+            'post_status' => [
                 CAS_App::STATUS_ACTIVE,
                 CAS_App::STATUS_INACTIVE,
                 CAS_App::STATUS_SCHEDULED
-            ),
+            ],
             'posts_per_page'         => $per_page,
             'paged'                  => $current_page,
             'orderby'                => 'title',
             'order'                  => 'asc',
             'update_post_term_cache' => false
-        );
+        ];
 
         if (isset($_REQUEST['s']) && strlen($_REQUEST['s'])) {
             $args['s'] = $_REQUEST['s'];
@@ -100,7 +100,7 @@ class CAS_Sidebar_List_Table extends WP_List_Table
                 $total_items = array_sum($post_counts);
 
                 // Subtract post types that are not included in the admin all list.
-                foreach (get_post_stati(array( 'show_in_admin_all_list' => false )) as $state) {
+                foreach (get_post_stati([ 'show_in_admin_all_list' => false ]) as $state) {
                     $total_items -= $post_counts[ $state ];
                 }
             }
@@ -108,11 +108,11 @@ class CAS_Sidebar_List_Table extends WP_List_Table
 
         $this->items = $wp_query->posts;
         $this->is_trash = isset($_REQUEST['post_status']) && $_REQUEST['post_status'] == 'trash';
-        $this->set_pagination_args(array(
+        $this->set_pagination_args([
             'total_items' => $total_items,
             'total_pages' => ceil($total_items / $per_page),
             'per_page'    => $per_page
-        ));
+        ]);
 
         //Make sure filter is run
         CAS_App::instance()->manager()->populate_metadata();
@@ -176,16 +176,16 @@ class CAS_Sidebar_List_Table extends WP_List_Table
         global $locked_post_status, $avail_post_stati;
 
         if (!empty($locked_post_status)) {
-            return array();
+            return [];
         }
 
-        $status_links = array();
+        $status_links = [];
         $num_posts = wp_count_posts(CAS_App::TYPE_SIDEBAR); //do not include private
         $total_posts = array_sum((array) $num_posts);
         $class = '';
 
         // Subtract post types that are not included in the admin all list.
-        foreach (get_post_stati(array( 'show_in_admin_all_list' => false )) as $state) {
+        foreach (get_post_stati([ 'show_in_admin_all_list' => false ]) as $state) {
             $total_posts -= $num_posts->$state;
         }
 
@@ -204,15 +204,15 @@ class CAS_Sidebar_List_Table extends WP_List_Table
             number_format_i18n($total_posts)
         );
 
-        $status_links['all'] = $this->get_view_link(array(), $all_inner_html, $class);
+        $status_links['all'] = $this->get_view_link([], $all_inner_html, $class);
 
         //no way to change post status per post type, replace here instead
-        $label_replacement = array(
+        $label_replacement = [
             CAS_App::STATUS_ACTIVE   => _n_noop('Active <span class="count">(%s)</span>', 'Active <span class="count">(%s)</span>', 'content-aware-sidebars'),
             CAS_App::STATUS_INACTIVE => _n_noop('Inactive <span class="count">(%s)</span>', 'Inactive <span class="count">(%s)</span>', 'content-aware-sidebars')
-        );
+        ];
 
-        foreach (get_post_stati(array('show_in_admin_status_list' => true), 'objects') as $status) {
+        foreach (get_post_stati(['show_in_admin_status_list' => true], 'objects') as $status) {
             $class = '';
 
             $status_name = $status->name;
@@ -225,9 +225,9 @@ class CAS_Sidebar_List_Table extends WP_List_Table
                 $class = 'current';
             }
 
-            $status_args = array(
+            $status_args = [
                 'post_status' => $status_name
-            );
+            ];
 
             $label_count = $status->label_count;
             if (isset($label_replacement[$status->name])) {
@@ -253,7 +253,7 @@ class CAS_Sidebar_List_Table extends WP_List_Table
      */
     public function get_bulk_actions()
     {
-        $actions = array();
+        $actions = [];
         $post_type_obj = get_post_type_object(CAS_App::TYPE_SIDEBAR);
 
         if (current_user_can($post_type_obj->cap->edit_posts)) {
@@ -316,7 +316,7 @@ class CAS_Sidebar_List_Table extends WP_List_Table
      */
     public function get_columns()
     {
-        $posts_columns = array();
+        $posts_columns = [];
         $posts_columns['cb'] = '<input type="checkbox" />';
         $posts_columns['title'] = _x('Title', 'column name');
         $posts_columns['handler'] = _x('Action', 'option', 'content-aware-sidebars');
@@ -335,11 +335,11 @@ class CAS_Sidebar_List_Table extends WP_List_Table
      */
     public function get_sortable_columns()
     {
-        $columns = array(
-            'title'   => array('title', true),
+        $columns = [
+            'title'   => ['title', true],
             'status'  => 'post_status',
             'handler' => 'meta_handle'
-        );
+        ];
         return $columns;
     }
 
@@ -363,7 +363,7 @@ class CAS_Sidebar_List_Table extends WP_List_Table
      */
     public function get_table_classes()
     {
-        return array( 'widefat', 'fixed', 'striped', $this->_args['plural'] );
+        return [ 'widefat', 'fixed', 'striped', $this->_args['plural'] ];
     }
 
     /**
@@ -482,10 +482,10 @@ class CAS_Sidebar_List_Table extends WP_List_Table
                     if ($action->get_data($post->ID) == 1) {
                         $pos = $metadata->get('merge_pos')->get_data($post->ID, true);
                         $pos_icon = $pos ? 'up' : 'down';
-                        $pos_title = array(
+                        $pos_title = [
                             __('Add sidebar at the top during merge', 'content-aware-sidebars'),
                             __('Add sidebar at the bottom during merge', 'content-aware-sidebars')
-                        );
+                        ];
                         $return .= '<span title="'.$pos_title[$pos].'" class="dashicons dashicons-arrow-'.$pos_icon.'-alt"></span>';
                     }
                     echo $return;
@@ -652,7 +652,7 @@ class CAS_Sidebar_List_Table extends WP_List_Table
         }
 
         $post_type_object = get_post_type_object($post->post_type);
-        $actions = array();
+        $actions = [];
         $title = _draft_or_post_title();
         $cas_fs = cas_fs();
 

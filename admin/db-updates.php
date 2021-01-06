@@ -32,10 +32,10 @@ $cas_db_updater->register_version_update('3.14', 'cas_update_to_314');
 
         $types = WPCACore::types()->get_all();
 
-        $options = array(
-             'legacy.date_module'        => array(),
-             'legacy.negated_conditions' => array()
-        );
+        $options = [
+             'legacy.date_module'        => [],
+             'legacy.negated_conditions' => []
+        ];
 
         $options['legacy.date_module'] = array_flip((array)$wpdb->get_col("
             SELECT p.post_type FROM $wpdb->posts p
@@ -182,11 +182,11 @@ function cas_update_to_30()
     global $wpdb;
 
     // Get all sidebars
-    $posts = get_posts(array(
+    $posts = get_posts([
         'numberposts' => -1,
         'post_type'   => 'sidebar',
         'post_status' => 'publish,pending,draft,future,private,trash'
-    ));
+    ]);
 
     if (!empty($posts)) {
         $wpdb->query("
@@ -195,7 +195,7 @@ function cas_update_to_30()
 			WHERE post_type = 'sidebar_group'
 		");
 
-        $metadata = array(
+        $metadata = [
             'post_types'     => 'post_type',
             'taxonomies'     => 'taxonomy',
             'authors'        => 'author',
@@ -209,7 +209,7 @@ function cas_update_to_30()
             'handle'         => 'handle',
             'host'           => 'host',
             'merge-pos'      => 'merge_pos'
-        );
+        ];
 
         foreach ($metadata as $old_key => $new_key) {
             $wpdb->query("
@@ -258,7 +258,7 @@ function cas_update_to_20()
 {
     global $wpdb;
 
-    $module_keys = array(
+    $module_keys = [
         'static',
         'post_types',
         'authors',
@@ -267,24 +267,24 @@ function cas_update_to_20()
         'language',
         'bb_profile',
         'bp_member'
-    );
+    ];
 
     // Get all sidebars
-    $posts = get_posts(array(
+    $posts = get_posts([
         'numberposts' => -1,
         'post_type'   => 'sidebar',
         'post_status' => 'publish,pending,draft,future,private,trash'
-    ));
+    ]);
     if (!empty($posts)) {
         foreach ($posts as $post) {
 
             //Create new condition group
-            $group_id = wp_insert_post(array(
+            $group_id = wp_insert_post([
                 'post_status' => $post->post_status,
                 'post_type'   => 'sidebar_group',
                 'post_author' => $post->post_author,
                 'post_parent' => $post->ID,
-            ));
+            ]);
 
             if ($group_id) {
 
@@ -317,21 +317,21 @@ function cas_update_to_20()
  */
 function cas_update_to_11()
 {
-    $moduledata = array(
+    $moduledata = [
         'static',
         'post_types',
         'authors',
         'page_templates',
         'taxonomies',
         'language'
-    );
+    ];
 
     // Get all sidebars
-    $posts = get_posts(array(
+    $posts = get_posts([
         'numberposts' => -1,
         'post_type'   => 'sidebar',
         'post_status' => 'publish,pending,draft,future,private,trash'
-    ));
+    ]);
 
     if (!empty($posts)) {
         foreach ($posts as $post) {

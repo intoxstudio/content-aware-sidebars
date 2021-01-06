@@ -49,12 +49,12 @@ class CAS_Admin_Screen_Widgets extends CAS_Admin
         $manager = CAS_App::instance()->manager();
         $manager->populate_metadata();
 
-        $has_host = array(0 => 1,1 => 1,3 => 1);
+        $has_host = [0 => 1,1 => 1,3 => 1];
 
         foreach ($manager->sidebars as $id => $post) {
             $handle_meta = $manager->metadata()->get('handle');
 
-            $args = array();
+            $args = [];
             $args['description'] = $handle_meta->get_list_data($post->ID, true);
 
             if (isset($has_host[$handle_meta->get_data($post->ID)])) {
@@ -111,20 +111,20 @@ class CAS_Admin_Screen_Widgets extends CAS_Admin
             wp_send_json_error('401 Unauthorized');
         }
 
-        $data = array();
+        $data = [];
         $status = filter_var($_POST['status'], FILTER_VALIDATE_BOOLEAN);
         if ($status) {
-            $data = array(
+            $data = [
                 'ID'            => $sidebar_id,
                 'post_status'   => CAS_App::STATUS_ACTIVE,
                 'post_date'     => current_time('mysql'),
                 'post_date_gmt' => current_time('mysql', true)
-            );
+            ];
         } else {
-            $data = array(
+            $data = [
                 'ID'          => $sidebar_id,
                 'post_status' => CAS_App::STATUS_INACTIVE
-            );
+            ];
         }
 
         if (!wp_update_post($data)) {
@@ -206,13 +206,13 @@ class CAS_Admin_Screen_Widgets extends CAS_Admin
      */
     public function add_scripts_styles()
     {
-        $this->enqueue_script('cas/admin/widgets', 'widgets', array('jquery'), '', true);
-        wp_localize_script('cas/admin/widgets', 'CASAdmin', array(
+        $this->enqueue_script('cas/admin/widgets', 'widgets', ['jquery'], '', true);
+        wp_localize_script('cas/admin/widgets', 'CASAdmin', [
             'addNew'         => $this->get_sidebar_type()->labels->add_new_item,
             'collapse'       => __('Collapse', 'content-aware-sidebars'),
             'expand'         => __('Expand', 'content-aware-sidebars'),
             'filterSidebars' => __('Search Sidebars', 'content-aware-sidebars'),
             'filterWidgets'  => __('Search Widgets', 'content-aware-sidebars')
-        ));
+        ]);
     }
 }

@@ -33,13 +33,13 @@ final class CASConditionPlaceholder extends WPCAModule_Base
      */
     public function list_module($list)
     {
-        $list[] = array(
+        $list[] = [
             'id'            => $this->id,
             'text'          => $this->name,
             'placeholder'   => $this->placeholder,
             'default_value' => $this->default_value,
             'disabled'      => true,
-        );
+        ];
         return $list;
     }
 
@@ -81,9 +81,9 @@ final class CASConditionPlaceholder extends WPCAModule_Base
      *
      * @return void
      */
-    protected function _get_content($args = array())
+    protected function _get_content($args = [])
     {
-        return array();
+        return [];
     }
 
     /**
@@ -103,7 +103,7 @@ final class CASConditionPlaceholder extends WPCAModule_Base
      */
     public function get_context_data()
     {
-        return array();
+        return [];
     }
 
     /**
