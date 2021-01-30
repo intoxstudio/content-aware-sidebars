@@ -129,6 +129,24 @@ final class CAS_App
                 'plugins_loaded',
                 [$this,'redirect_revision_link']
             );
+            add_action(
+                'admin_menu',
+                [$this, 'admin_menu_upsell'],
+                999
+            );
+        }
+    }
+
+    public function admin_menu_upsell()
+    {
+        $cas_fs = cas_fs();
+        if (!$cas_fs->can_use_premium_code()) {
+            global $submenu;
+            $submenu['wpcas'][] = [
+                 __('Widget Cleaner', 'content-aware-sidebars'). ' (Pro)',
+                 CAS_App::CAPABILITY,
+                 $cas_fs->get_upgrade_url()
+            ];
         }
     }
 
