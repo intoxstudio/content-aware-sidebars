@@ -150,8 +150,15 @@ final class CAS_Sidebar_Edit extends CAS_Admin
 
         require($path.'conditions/placeholder.php');
 
+        if (!WPCACore::get_option(CAS_App::TYPE_SIDEBAR, 'legacy.date_module', false)) {
+            $module = new CASConditionPlaceholder('cas_date', __('Dates', 'content-aware-sidebars').' '.$pro_label);
+            $type->add($module, 'cas_date');
+        }
+
         $module = new CASConditionPlaceholder('cas_url', __('URLs', 'content-aware-sidebars').' '.$pro_label);
         $type->add($module, 'cas_url');
+        $module = new CASConditionPlaceholder('cas_ref_url', __('Referrer URLs', 'content-aware-sidebars').' '.$pro_label);
+        $type->add($module, 'cas_ref_url');
 
         if (function_exists('bp_is_active')) {
             $module = new CASConditionPlaceholder('cas_bbp', __('BuddyPress Groups', 'content-aware-sidebars').' '.$pro_label, '', '', 'plugins');
