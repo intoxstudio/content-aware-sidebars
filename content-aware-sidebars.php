@@ -54,6 +54,7 @@ if (!class_exists('CAS_App')) {
     require($cas_dir_path.'app.php');
     require($cas_dir_path.'lib/wp-pointer-tour/wp-pointer-tour.php');
     require($cas_dir_path.'admin/admin.php');
+    require($cas_dir_path.'admin/admin_bar.php');
     require($cas_dir_path.'admin/quick_select.php');
     require($cas_dir_path.'admin/sidebar-list-table.php');
     require($cas_dir_path.'admin/sidebar-overview.php');

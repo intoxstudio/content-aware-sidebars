@@ -82,6 +82,8 @@ final class CAS_App
             new CAS_Sidebar_Edit();
             new CAS_Quick_Select();
             new CAS_Admin_Screen_Widgets();
+        } else {
+            new CAS_Admin_Bar();
         }
 
         $this->add_actions();
@@ -113,11 +115,6 @@ final class CAS_App
         add_action(
             'init',
             [$this,'load_textdomain']
-        );
-        add_action(
-            'admin_bar_menu',
-            [$this,'admin_bar_menu'],
-            99
         );
         add_action(
             'cas/event/deactivate',
@@ -183,26 +180,6 @@ final class CAS_App
     public function load_textdomain()
     {
         load_plugin_textdomain('content-aware-sidebars', false, dirname(plugin_basename(__FILE__)).'/lang/');
-    }
-
-    /**
-     * Add admin bar link to create sidebars
-     *
-     * @since  3.4
-     * @param  [type]  $wp_admin_bar
-     * @return void
-     */
-    public function admin_bar_menu($wp_admin_bar)
-    {
-        $post_type = get_post_type_object(self::TYPE_SIDEBAR);
-        if (current_user_can($post_type->cap->create_posts)) {
-            $wp_admin_bar->add_menu([
-                'parent' => 'new-content',
-                'id'     => self::BASE_SCREEN,
-                'title'  => $post_type->labels->singular_name,
-                'href'   => admin_url('admin.php?page=wpcas-edit')
-            ]);
-        }
     }
 
     /**
