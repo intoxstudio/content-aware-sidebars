@@ -67,6 +67,9 @@ final class CAS_Sidebar_Manager
             99
         );
 
+        add_filter('get_edit_post_link', [$this,'get_edit_post_link'], 10, 3);
+        add_filter('get_delete_post_link', [$this,'get_delete_post_link'], 10, 3);
+
         add_shortcode(
             'ca-sidebar',
             [$this,'sidebar_shortcode']
@@ -746,5 +749,60 @@ final class CAS_Sidebar_Manager
                 }
             }
         }
+    }
+
+    /**
+     * Get sidebar edit link
+     * TODO: Consider changing post type _edit_link instead
+     *
+     * @since  3.4
+     * @param  string  $link
+     * @param  int     $post_id
+     * @param  string  $context
+     * @return string
+     */
+    public function get_edit_post_link($link, $post_id, $context)
+    {
+        $post = get_post($post_id);
+        if ($post->post_type == CAS_App::TYPE_SIDEBAR) {
+            $sep = '&';
+            if ($context == 'display') {
+                $sep = '&amp;';
+            }
+            $link = admin_url('admin.php?page=wpcas-edit'.$sep.'sidebar_id='.$post_id);
+
+            //load page in all languages for wpml, polylang,
+            //ensures post type conditions are not filtered
+            if (defined('ICL_SITEPRESS_VERSION') || defined('POLYLANG_VERSION')) {
+                $link .= $sep.'lang=all';
+            }
+        }
+        return $link;
+    }
+
+    /**
+     * Get sidebar delete link
+     * TODO: Consider changing post type _edit_link instead
+     *
+     * @since  3.4
+     * @param  string   $link
+     * @param  int      $post_id
+     * @param  boolean  $force_delete
+     * @return string
+     */
+    public function get_delete_post_link($link, $post_id, $force_delete)
+    {
+        $post = get_post($post_id);
+        if ($post->post_type == CAS_App::TYPE_SIDEBAR) {
+            $action = ($force_delete || !EMPTY_TRASH_DAYS) ? 'delete' : 'trash';
+
+            $link = add_query_arg(
+                'action',
+                $action,
+                admin_url('admin.php?page=wpcas-edit&sidebar_id='.$post_id)
+            );
+            $link = wp_nonce_url($link, "$action-post_{$post_id}");
+        }
+        return $link;
     }
 }

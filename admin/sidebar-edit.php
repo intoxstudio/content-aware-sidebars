@@ -32,8 +32,6 @@ final class CAS_Sidebar_Edit extends CAS_Admin
         $this->add_action('save_post_'.CAS_App::TYPE_SIDEBAR, 'save_post', 10, 2);
 
         $this->add_filter('wp_insert_post_data', 'add_duplicate_title_suffix', 99, 2);
-        $this->add_filter('get_edit_post_link', 'get_edit_post_link', 10, 3);
-        $this->add_filter('get_delete_post_link', 'get_delete_post_link', 10, 3);
 
         if (!cas_fs()->can_use_premium_code()) {
             $this->add_action('wpca/modules/init', 'add_modules');
@@ -821,7 +819,6 @@ final class CAS_Sidebar_Edit extends CAS_Admin
     {
 
         //Verify nonce, check_admin_referer dies on false
-        //TODO: check other nonce instead
         if (!(isset($_POST[WPCACore::NONCE])
             && wp_verify_nonce($_POST[WPCACore::NONCE], WPCACore::PREFIX.$post_id))) {
             return;
@@ -915,61 +912,6 @@ final class CAS_Sidebar_Edit extends CAS_Admin
     }
 
     /**
-     * Get sidebar edit link
-     * TODO: Consider changing post type _edit_link instead
-     *
-     * @since  3.4
-     * @param  string  $link
-     * @param  int     $post_id
-     * @param  string  $context
-     * @return string
-     */
-    public function get_edit_post_link($link, $post_id, $context)
-    {
-        $post = get_post($post_id);
-        if ($post->post_type == CAS_App::TYPE_SIDEBAR) {
-            $sep = '&';
-            if ($context == 'display') {
-                $sep = '&amp;';
-            }
-            $link = admin_url('admin.php?page=wpcas-edit'.$sep.'sidebar_id='.$post_id);
-
-            //load page in all languages for wpml, polylang,
-            //ensures post type conditions are not filtered
-            if (defined('ICL_SITEPRESS_VERSION') || defined('POLYLANG_VERSION')) {
-                $link .= $sep.'lang=all';
-            }
-        }
-        return $link;
-    }
-
-    /**
-     * Get sidebar delete link
-     * TODO: Consider changing post type _edit_link instead
-     *
-     * @since  3.4
-     * @param  string   $link
-     * @param  int      $post_id
-     * @param  boolean  $force_delete
-     * @return string
-     */
-    public function get_delete_post_link($link, $post_id, $force_delete)
-    {
-        $post = get_post($post_id);
-        if ($post->post_type == CAS_App::TYPE_SIDEBAR) {
-            $action = ($force_delete || !EMPTY_TRASH_DAYS) ? 'delete' : 'trash';
-
-            $link = add_query_arg(
-                'action',
-                $action,
-                admin_url('admin.php?page=wpcas-edit&sidebar_id='.$post_id)
-            );
-            $link = wp_nonce_url($link, "$action-post_{$post_id}");
-        }
-        return $link;
-    }
-
-    /**
      * Register and enqueue scripts styles
      * for screen
      *
@@ -1027,7 +969,7 @@ final class CAS_Sidebar_Edit extends CAS_Admin
             $visibility[] = $data;
         }
         foreach ($metadata->get('host')->get_input_list() as $value => $label) {
-                $target[] = array(
+            $target[] = array(
                     'id'   => $value,
                     'text' => $label
                 );
@@ -1046,7 +988,7 @@ final class CAS_Sidebar_Edit extends CAS_Admin
         wp_localize_script('cas/admin/edit', 'CASAdmin', array(
             'allVisibility' => __('All Users', 'content-aware-sidebars'),
             'visibility'    => $visibility,
-            'target'    => $target,
+            'target'        => $target,
             'weekdays'      => array(
                 'shorthand' => array_values($wp_locale->weekday_abbrev),
                 'longhand'  => array_values($wp_locale->weekday)
