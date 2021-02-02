@@ -61,7 +61,7 @@ class CAS_Admin_Bar
 
     public function print_styles()
     {
-        echo '<style>'; ?>
+        echo '<style type="text/css" media="screen">'."\n"; ?>
         #wp-admin-bar-wpcas-tool #wp-admin-bar-wpcas-tool-custom-sidebars {
             border-top:4px solid #75d7ef;
         }
@@ -134,14 +134,15 @@ class CAS_Admin_Bar
             $link = '';
             if (isset(self::DOCS_MAP[$module->get_id()])) {
                 $title .= ' <span class="ab-icon dashicons dashicons-external"></span>';
-                $link = self::DOCS_MAP[$module->get_id()];
+                $link = self::DOCS_MAP[$module->get_id()].'?utm_source=plugin&amp;utm_medium=admin_bar&amp;utm_campaign=cas';
             }
             $args[] = [
                 'id'    => $module->get_id(),
                 'title' => $title,
                 'href'  => $link,
                 'meta'  => [
-                    'target' => '_blank'
+                    'target' => '_blank',
+                    'rel'    => 'noopener'
                 ]
             ];
         }

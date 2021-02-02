@@ -210,7 +210,7 @@ abstract class CAS_Admin
         echo '</ul>';
         echo '<p>'.__('You can upgrade without leaving the admin panel by clicking below.', 'content-aware-sidebars');
         echo '<br />'.__('Free updates and email support included.', 'content-aware-sidebars').'</p>';
-        echo '<p><a class="button-primary" target="_blank" href="'.esc_url(cas_fs()->get_upgrade_url()).'">'.__('Upgrade Now', 'content-aware-sidebars').'</a> <a href="" class="button-secondary js-cas-pro-read-more" target="_blank" href="">'.__('Read More', 'content-aware-sidebars').'</a></p>';
+        echo '<p><a class="button-primary" target="_blank" href="'.esc_url(cas_fs()->get_upgrade_url()).'">'.__('Upgrade Now', 'content-aware-sidebars').'</a> <a href="" class="button-secondary js-cas-pro-read-more" target="_blank" rel="noopener" href="">'.__('Read More', 'content-aware-sidebars').'</a></p>';
         echo '</div>';
     }
 
