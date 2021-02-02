@@ -1,3 +1,33 @@
+= 3.12.2 =
+
+* [fixed] sidebars inserted with shortcode can now be replaced/merged
+
+**Pro Plan:**
+
+* [fixed] acf condition now works with relational fields
+* [fixed] ensure sticky js is only loaded once
+
+= 3.12.1 =
+
+**Pro Plan:**
+
+* [fixed] acf condition loaded improperly without acf installed
+
+= 3.12 =
+
+* [new] translatepress display condition
+* [new] wordpress 5.4 support
+* [new] minimum wordpress version 4.8
+* [new] activation/deactivation can now be same day
+* [updated] wp-content-aware-engine library
+* [updated] optimized and reduced plugin size with 37%
+
+**Pro Plan:**
+
+* [new] advanced custom fields display condition
+* [new] action to display widget area after paragraphs
+* [updated] css will no longer be loaded for empty sidebars
+
 = 3.11.1 =
 
 * [fixed] conditions would not always be auto-saved

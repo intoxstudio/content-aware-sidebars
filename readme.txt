@@ -5,7 +5,7 @@ Tags: custom sidebars, sidebar, hide sidebar, display widgets, widget, bbpress, 
 Requires at least: 4.9
 Requires PHP: 5.6
 Tested up to: 5.6
-Stable tag: 3.14.1
+Stable tag: 3.15
 License: GPLv3
 
 Display new sidebars and widget areas on any post, page, category etc. Works with all themes, no code required.
@@ -184,6 +184,13 @@ Of course! Check out the links below:
 
 ####Highlights
 
+= 3.15 =
+
+* [new] toolbar menu to view conditions, theme areas, and sidebars for a given page
+* [new] better compatibility with retired custom sidebars plugin
+* [updated] ui improvements
+* [updated] wp-content-aware-engine library
+
 = 3.14.1 =
 
 * [fixed] sidebar quick select now displays all eligible sidebars
@@ -234,35 +241,5 @@ Of course! Check out the links below:
 
 * [new] sticky support for storefront theme
 * [fixed] sticky left sidebars in generatepress
-
-= 3.12.2 =
-
-* [fixed] sidebars inserted with shortcode can now be replaced/merged
-
-**Pro Plan:**
-
-* [fixed] acf condition now works with relational fields
-* [fixed] ensure sticky js is only loaded once
-
-= 3.12.1 =
-
-**Pro Plan:**
-
-* [fixed] acf condition loaded improperly without acf installed
-
-= 3.12 =
-
-* [new] translatepress display condition
-* [new] wordpress 5.4 support
-* [new] minimum wordpress version 4.8
-* [new] activation/deactivation can now be same day
-* [updated] wp-content-aware-engine library
-* [updated] optimized and reduced plugin size with 37%
-
-**Pro Plan:**
-
-* [new] advanced custom fields display condition
-* [new] action to display widget area after paragraphs
-* [updated] css will no longer be loaded for empty sidebars
 
 See changelog.txt for previous changes.
