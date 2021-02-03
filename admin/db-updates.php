@@ -236,6 +236,8 @@ function cas_update_to_30()
 						AND meta_value LIKE '_cas_sub_%'
 					");
                     break;
+                default:
+                    break;
             }
         }
 

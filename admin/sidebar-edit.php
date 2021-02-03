@@ -314,10 +314,8 @@ final class CAS_Sidebar_Edit extends CAS_Admin
         global $post, $active_post_lock;
 
         $post_type_object = get_post_type_object($post->post_type);
-
         $post_id = isset($_REQUEST['sidebar_id']) ? $_REQUEST['sidebar_id'] : 0;
 
-        $notice = false;
         $form_extra = '';
         if ('auto-draft' == $post->post_status) {
             if (isset($_REQUEST['sidebar_id'])) {
@@ -336,10 +334,8 @@ final class CAS_Sidebar_Edit extends CAS_Admin
         echo '<h1>';
         echo '<a href="'.admin_url('admin.php?page=wpcas').'">'.$post_type_object->labels->all_items.'</a> &raquo; ';
         echo esc_html($title);
-        if (isset($_REQUEST['sidebar_id'])) {
-            if (current_user_can('edit_theme_options')) {
-                echo ' <a href="' . esc_url(admin_url('widgets.php#'.CAS_App::SIDEBAR_PREFIX.$post->ID)) . '" class="page-title-action add-new-h2">' . __('Manage Widgets', 'content-aware-sidebars') . '</a>';
-            }
+        if (isset($_REQUEST['sidebar_id']) && current_user_can('edit_theme_options')) {
+            echo ' <a href="' . esc_url(admin_url('widgets.php#'.CAS_App::SIDEBAR_PREFIX.$post->ID)) . '" class="page-title-action add-new-h2">' . __('Manage Widgets', 'content-aware-sidebars') . '</a>';
         }
 
         echo '</h1>';
@@ -501,7 +497,7 @@ final class CAS_Sidebar_Edit extends CAS_Admin
         }
 
         update_post_meta($post_ID, '_edit_last', $post_data['post_author']);
-        $success = wp_update_post($post_data);
+        wp_update_post($post_data);
         wp_set_post_lock($post_ID);
 
         return $post_ID;
@@ -617,7 +613,7 @@ final class CAS_Sidebar_Edit extends CAS_Admin
                     '2/5 '.__('Where to display', 'content-aware-sidebars'),
                     '<p>'.__('Click on the input field and select the content you want - just type to search. Changes are saved automatically!', 'content-aware-sidebars').'</p>'.
                     '<p>'.__('You can add multiple content types to the same group. Try e.g. "All Posts" and an Author to display on all posts written by that author.', 'content-aware-sidebars').'</p>'.
-                    '<p>'.sprintf(__('<a href="%s" target="_blank">Learn more about AND vs OR conditions</a>', 'content-aware-sidebars'), 'https://dev.institute/docs/content-aware-sidebars/getting-started/display-sidebar-advanced/').'</p>'
+                    '<p>'.sprintf('<a href="%s" target="_blank" rel="noopener">'.__('Learn more about AND vs OR conditions', 'content-aware-sidebars').'</a>', 'https://dev.institute/docs/content-aware-sidebars/getting-started/display-sidebar-advanced/').'</p>'
                 ),
                 'ref_id'   => '#cas-groups > ul',
                 'position' => [

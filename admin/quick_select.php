@@ -208,7 +208,7 @@ class CAS_Quick_Select
                 $host_ids = $host_meta->get_data($sidebar_id, false, false);
                 foreach ($host_ids as $host_id) {
                     if (!isset(self::$_theme_sidebars[$host_id])) {
-                        continue;
+                        continue 2;
                     }
                 }
             }

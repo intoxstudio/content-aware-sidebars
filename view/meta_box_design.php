@@ -29,7 +29,7 @@ $sticky_url = 'https://dev.institute/docs/content-aware-sidebars/faq/sticky-side
                     <div class="cae-toggle-bar"></div>
                 </label>
                 <p><a href="<?php echo $sticky_url; ?>"
-                        target="_blank"><?php _e('Check Theme Support', 'content-aware-sidebars'); ?></a>
+                        target="_blank" rel="noopener"><?php _e('Check Theme Support', 'content-aware-sidebars'); ?></a>
                 </p>
             </td>
         </tr>

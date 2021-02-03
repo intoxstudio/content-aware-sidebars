@@ -155,7 +155,7 @@ abstract class CAS_Admin
         if ($tour_taken && (time() - $tour_taken) >= WEEK_IN_SECONDS) {
             $this->notification_count++;
             $path = plugin_dir_path(dirname(__FILE__)).'view/';
-            $view = WPCAView::make($path.'notice_review.php', [
+            WPCAView::make($path.'notice_review.php', [
                 'current_user' => wp_get_current_user()
             ])->render();
         }

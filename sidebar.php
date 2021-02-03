@@ -633,6 +633,7 @@ final class CAS_Sidebar_Manager
             return;
         }
 
+        global $wp_registered_sidebars;
         if ($has_widgets && isset($wp_registered_sidebars[$i]['before_sidebar'])) {
             echo $wp_registered_sidebars[$i]['before_sidebar'];
         }
