@@ -132,7 +132,7 @@ class CAS_Admin_Bar
         foreach (WPCACore::get_conditional_modules('sidebar') as $module) {
             $title = $module->get_name();
             $link = '';
-            if (isset(self::DOCS_MAP[$module->get_id()])) {
+            if (array_key_exists($module->get_id(), self::DOCS_MAP)) {
                 $title .= ' <span class="ab-icon dashicons dashicons-external"></span>';
                 $link = self::DOCS_MAP[$module->get_id()].'?utm_source=plugin&amp;utm_medium=admin_bar&amp;utm_campaign=cas';
             }
