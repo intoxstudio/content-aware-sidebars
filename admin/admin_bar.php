@@ -150,9 +150,12 @@ class CAS_Admin_Bar
 
         $args = [];
         foreach ($this->theme_sidebars as $index => $has_widgets) {
+            $sidebar_name = isset($wp_registered_sidebars[$index]['name'])
+                ? $wp_registered_sidebars[$index]['name']
+                : $index;
             $args[] = [
                 'id'    => $index,
-                'title' => $wp_registered_sidebars[$index]['name'] . ($has_widgets ? '' : ' ('.__('Hidden').')'),
+                'title' => $sidebar_name . ($has_widgets ? '' : ' ('.__('Hidden').')'),
             ];
         }
         $this->add_nodes($admin_bar, $args, self::NODE_THEME_AREAS);
