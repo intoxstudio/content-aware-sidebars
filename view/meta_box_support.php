@@ -9,13 +9,13 @@
 $locale = get_locale();
 global $cas_fs;
 ?>
-    <img class="wpca-pull-right" style="border-radius:3px;" src="<?php echo $cas_fs->get_local_icon_url(); ?>" width="48" height="48" />
+    <img class="wpca-pull-right" style="border-radius:3px;" src="<?php echo $cas_fs->get_local_icon_url(); ?>" width="48" height="48" alt="" />
     <ul>
         <li><a href="https://dev.institute/docs/content-aware-sidebars/getting-started/?utm_source=plugin&amp;utm_medium=referral&amp;utm_content=info-box&amp;utm_campaign=cas" target="_blank" rel="noopener"><?php _e('Get Started', 'content-aware-sidebars'); ?></a></li>
         <li><a href="https://dev.institute/docs/content-aware-sidebars/getting-started/display-sidebar-advanced/?utm_source=plugin&amp;utm_medium=referral&amp;utm_content=info-box&amp;utm_campaign=cas" target="_blank" rel="noopener"><?php _e('Sidebar not displayed where expected?', 'content-aware-sidebars'); ?></a></li>
         <li><a href="https://dev.institute/docs/content-aware-sidebars/?utm_source=plugin&amp;utm_medium=referral&amp;utm_content=info-box&amp;utm_campaign=cas" target="_blank" rel="noopener"><?php _e('Documentation & FAQ', 'content-aware-sidebars'); ?></a></li>
 <?php if (!$cas_fs->can_use_premium_code()) : ?>
-        <li><a href="https://wordpress.org/support/plugin/content-aware-sidebars/" target="_blank" rel="noopener"><?php _e('Support Forums', 'content-aware-sidebars'); ?></a></li>
+        <li><a href="https://wordpress.org/support/plugin/content-aware-sidebars/" target="_blank" rel="noopener noreferrer"><?php _e('Support Forums', 'content-aware-sidebars'); ?></a></li>
 <?php if (stripos($locale, 'en') !== 0) : ?>
         <li><a href="https://dev.institute/translate-content-aware-sidebars/" target="_blank" rel="noopener"><?php _e('Translate plugin &amp; get Pro version', 'content-aware-sidebars'); ?></a></li>
 <?php endif; ?>
