@@ -368,6 +368,14 @@ final class CAS_Sidebar_Manager
     }
 
     /**
+     * @return array
+     */
+    public function get_replacement_map()
+    {
+        return $this->replace_map;
+    }
+
+    /**
      * @param string $i
      * @return void
      */

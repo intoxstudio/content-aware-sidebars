@@ -247,5 +247,14 @@ class CAS_Admin_Bar
         } else {
             $this->custom_sidebars[$index] = $has_widgets;
         }
+        $this->detect_sidebar_target($has_widgets, $index);
+    }
+
+    private function detect_sidebar_target($has_widgets, $index)
+    {
+        $host_map = CAS_App::instance()->manager()->get_replacement_map();
+        if (isset($host_map[$index])) {
+            $this->detect_sidebar($has_widgets, $host_map[$index]);
+        }
     }
 }
