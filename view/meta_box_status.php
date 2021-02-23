@@ -11,11 +11,10 @@ $deactivate_date = get_post_meta($post->ID, CAS_App::META_PREFIX.'deactivate_tim
 
 ?>
 
-<table class="form-table cas-form-table" width="100%">
+<table class="form-table cas-form-table" role="presentation">
     <tbody>
         <tr>
-            <td scope="row"><?php _e('Activate', 'content-aware-sidebars'); ?>
-            </td>
+            <th scope="row"><?php _e('Activate', 'content-aware-sidebars'); ?></th>
             <td>
                 <span class="js-cas-activation">
                     <input type="text" name="sidebar_activate"
@@ -32,8 +31,7 @@ $deactivate_date = get_post_meta($post->ID, CAS_App::META_PREFIX.'deactivate_tim
             </td>
         </tr>
         <tr>
-            <td scope="row"><?php _e('Deactivate', 'content-aware-sidebars'); ?>
-            </td>
+            <th scope="row"><?php _e('Deactivate', 'content-aware-sidebars'); ?></th>
             <td>
                 <span class="js-cas-expiry">
                     <input type="text" name="sidebar_deactivate"
@@ -49,4 +47,5 @@ $deactivate_date = get_post_meta($post->ID, CAS_App::META_PREFIX.'deactivate_tim
                 </span>
             </td>
         </tr>
+    </tbody>
 </table>

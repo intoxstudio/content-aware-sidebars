@@ -37,9 +37,10 @@ $widget_title_opts = [
 
 ?>
 
-<table class="form-table cas-form-table" width="100%"><tbody>
+<table class="form-table cas-form-table" role="presentation">
+    <tbody>
     <tr>
-        <td scope="row"><?php _e('Sidebar'); ?></td>
+        <th scope="row"><?php _e('Sidebar'); ?></th>
         <td>
             <label class="cae-toggle">
                 <input class="js-cas-html" type="checkbox" <?php checked(isset($data['sidebar'],$data['sidebar_class']), true); ?> data-target=".js-cas-html-sidebar" />
@@ -57,7 +58,7 @@ $widget_title_opts = [
         </td>
     </tr>
     <tr>
-        <td scope="row"><?php _e('Widget'); ?></td>
+        <th scope="row"><?php _e('Widget'); ?></th>
         <td>
             <label class="cae-toggle">
                 <input class="js-cas-html" type="checkbox" <?php checked(isset($data['widget'],$data['widget_class']), true); ?> data-target=".js-cas-html-widget" />
@@ -75,7 +76,7 @@ $widget_title_opts = [
         </td>
     </tr>
     <tr>
-        <td scope="row"><?php _e('Widget Title'); ?></td>
+        <th scope="row"><?php _e('Widget Title'); ?></th>
         <td>
             <label class="cae-toggle">
                 <input class="js-cas-html" type="checkbox" <?php checked(isset($data['title'],$data['title_class']), true); ?> data-target=".js-cas-html-widget-title" />
@@ -92,5 +93,6 @@ $widget_title_opts = [
             </code>
         </td>
     </tr>
-</tbody></table>
+    </tbody>
+</table>
 <p><?php _e('By default styling will be inherited from the Target Sidebar.', 'content-aware-sidebars'); ?></p>

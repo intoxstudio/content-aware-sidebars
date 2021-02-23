@@ -11,7 +11,7 @@ $sticky_url = 'https://dev.institute/docs/content-aware-sidebars/faq/sticky-side
 
 ?>
 
-<table class="form-table cas-form-table" width="100%">
+<table class="form-table cas-form-table" role="presentation">
     <tbody>
         <tr>
             <td></td>
@@ -19,9 +19,7 @@ $sticky_url = 'https://dev.institute/docs/content-aware-sidebars/faq/sticky-side
             </td>
         </tr>
         <tr>
-            <td scope="row">
-                <?php _e('Sticky', 'content-aware-sidebars'); ?>
-            </td>
+            <th scope="row"><?php _e('Sticky', 'content-aware-sidebars'); ?></th>
             <td>
                 <label class="cae-toggle js-cas-pro-notice"
                     data-url="<?php echo $url; ?>">
@@ -34,31 +32,27 @@ $sticky_url = 'https://dev.institute/docs/content-aware-sidebars/faq/sticky-side
             </td>
         </tr>
         <tr>
-            <td scope="row"><?php _e('Columns', 'content-aware-sidebars'); ?>
-            </td>
+            <th scope="row"><?php _e('Columns', 'content-aware-sidebars'); ?></th>
             <td>
                 <input class="cas-input-sm js-cas-pro-notice" type="number" value="1" readonly
                     data-url="<?php echo $url; ?>" /> <?php _e('columns', 'content-aware-sidebars'); ?>
             </td>
         </tr>
         <tr>
-            <td scope="row"><?php _e('Gap', 'content-aware-sidebars'); ?>
-            </td>
+            <th scope="row"><?php _e('Gap', 'content-aware-sidebars'); ?></th>
             <td>
                 <input class="cas-input-sm js-cas-pro-notice" type="number" value="" readonly
                     data-url="<?php echo $url; ?>" /> px
             </td>
         </tr>
         <tr>
-            <td scope="row"><?php _e('Background Color', 'content-aware-sidebars'); ?>
-            </td>
+            <th scope="row"><?php _e('Background Color', 'content-aware-sidebars'); ?></th>
             <td>
                 <input type="text" class="js-cas-color-field" value="" readonly />
             </td>
         </tr>
         <tr>
-            <td scope="row"><?php _e('Padding', 'content-aware-sidebars'); ?>
-            </td>
+            <th scope="row"><?php _e('Padding', 'content-aware-sidebars'); ?></th>
             <td>
                 <input class="cas-input-sm js-cas-pro-notice" type="number"
                     placeholder="<?php _e('Top', 'content-aware-sidebars'); ?>"
@@ -84,15 +78,13 @@ $sticky_url = 'https://dev.institute/docs/content-aware-sidebars/faq/sticky-side
             </td>
         </tr>
         <tr>
-            <td scope="row"><?php _e('Background Color', 'content-aware-sidebars'); ?>
-            </td>
+            <th scope="row"><?php _e('Background Color', 'content-aware-sidebars'); ?></th>
             <td>
                 <input type="text" class="js-cas-color-field testing-something" value="" readonly />
             </td>
         </tr>
         <tr>
-            <td scope="row"><?php _e('Padding', 'content-aware-sidebars'); ?>
-            </td>
+            <th scope="row"><?php _e('Padding', 'content-aware-sidebars'); ?></th>
             <td>
                 <input class="cas-input-sm js-cas-pro-notice" type="number"
                     placeholder="<?php _e('Top', 'content-aware-sidebars'); ?>"
@@ -113,24 +105,21 @@ $sticky_url = 'https://dev.institute/docs/content-aware-sidebars/faq/sticky-side
             </td>
         </tr>
         <tr>
-            <td scope="row"><?php _e('Border Width', 'content-aware-sidebars'); ?>
-            </td>
+            <th scope="row"><?php _e('Border Width', 'content-aware-sidebars'); ?></th>
             <td>
                 <input class="cas-input-sm js-cas-pro-notice" type="number" value="" readonly
                     data-url="<?php echo $url; ?>" /> px
             </td>
         </tr>
         <tr>
-            <td scope="row"><?php _e('Border Radius', 'content-aware-sidebars'); ?>
-            </td>
+            <th scope="row"><?php _e('Border Radius', 'content-aware-sidebars'); ?></th>
             <td>
                 <input class="cas-input-sm js-cas-pro-notice" type="number" value="" readonly
                     data-url="<?php echo $url; ?>" /> px
             </td>
         </tr>
         <tr>
-            <td scope="row"><?php _e('Border Color', 'content-aware-sidebars'); ?>
-            </td>
+            <th scope="row"><?php _e('Border Color', 'content-aware-sidebars'); ?></th>
             <td>
                 <input type="text" class="js-cas-color-field" value="" readonly />
             </td>
@@ -141,29 +130,25 @@ $sticky_url = 'https://dev.institute/docs/content-aware-sidebars/faq/sticky-side
             </td>
         </tr>
         <tr>
-            <td scope="row"><?php _e('Text Color', 'content-aware-sidebars'); ?>
-            </td>
+            <th scope="row"><?php _e('Text Color', 'content-aware-sidebars'); ?></th>
             <td>
                 <input type="text" class="js-cas-color-field" value="" readonly />
             </td>
         </tr>
         <tr>
-            <td scope="row"><?php _e('Title Color', 'content-aware-sidebars'); ?>
-            </td>
+            <th scope="row"><?php _e('Title Color', 'content-aware-sidebars'); ?></th>
             <td>
                 <input type="text" class="js-cas-color-field" value="" readonly />
             </td>
         </tr>
         <tr>
-            <td scope="row"><?php _e('Link Color', 'content-aware-sidebars'); ?>
-            </td>
+            <th scope="row"><?php _e('Link Color', 'content-aware-sidebars'); ?></th>
             <td>
                 <input type="text" class="js-cas-color-field" value="" readonly />
             </td>
         </tr>
         <tr>
-            <td scope="row"><?php _e('Link Hover Color', 'content-aware-sidebars'); ?>
-            </td>
+            <th scope="row"><?php _e('Link Hover Color', 'content-aware-sidebars'); ?></th>
             <td>
                 <input type="text" class="js-cas-color-field" value="" readonly />
             </td>
