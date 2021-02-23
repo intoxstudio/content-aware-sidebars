@@ -5,9 +5,6 @@
  * @license GPLv3
  * @copyright 2021 by Joachim Jensen
  */
-
-//updated class for wp4.0 and below
-
 ?>
 <div class="notice notice-success updated js-cas-notice-review is-dismissible">
 <p>

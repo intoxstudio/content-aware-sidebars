@@ -694,8 +694,6 @@ final class CAS_Sidebar_Edit extends CAS_Admin
         CAS_App::instance()->manager()->populate_metadata();
         $path = plugin_dir_path(dirname(__FILE__)).'view/';
 
-        $cas_fs = cas_fs();
-
         $boxes = [];
         $boxes[] = [
             'id'       => 'submitdiv',

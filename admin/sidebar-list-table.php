@@ -335,12 +335,11 @@ class CAS_Sidebar_List_Table extends WP_List_Table
      */
     public function get_sortable_columns()
     {
-        $columns = [
+        return [
             'title'   => ['title', true],
             'status'  => 'post_status',
             'handler' => 'meta_handle'
         ];
-        return $columns;
     }
 
     /**

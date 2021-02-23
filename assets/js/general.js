@@ -33,7 +33,7 @@
 				if ($this.hasClass('sidebar-status-future') && !confirm(CAS.enableConfirm)) {
 					$this.attr('checked', !status);
 					e.preventDefault();
-					return false;;
+					return false;
 				}
 
 				$.post(

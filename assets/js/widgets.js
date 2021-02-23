@@ -82,8 +82,7 @@
 		 * @return {void}
 		 */
 		searchWidgetListener: function($widgets) {
-			var that = this,
-				filterTimer,
+			var filterTimer,
 				cachedFilter = "";
 			this.$widgetContainer.on('input', '.js-cas-widget-filter',function(e) {
 				var filter = $(this).val();

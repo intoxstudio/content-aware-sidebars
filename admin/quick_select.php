@@ -193,7 +193,6 @@ class CAS_Quick_Select
 
                     if ($condition_group_id) {
                         add_post_meta($condition_group_id, $meta_key, $post_id);
-                        //add_post_meta($condition_group_id, $meta_key.'_direct', 1);
                     }
                 }
             }

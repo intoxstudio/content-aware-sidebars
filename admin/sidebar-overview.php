@@ -39,7 +39,7 @@ final class CAS_Sidebar_Overview extends CAS_Admin
     {
         global $_wp_last_object_menu;
 
-        $post_type_object = get_post_type_object(CAS_App::TYPE_SIDEBAR);
+        $post_type_object = $this->get_sidebar_type();
        
         $notification_label = $this->notification_count ? sprintf(' <span class="awaiting-mod">%d</span>', $this->notification_count) : '';
 
@@ -143,7 +143,6 @@ final class CAS_Sidebar_Overview extends CAS_Admin
      */
     public function process_actions()
     {
-        $post_type = CAS_App::TYPE_SIDEBAR;
         $doaction = $this->table->current_action();
 
         if ($doaction) {
@@ -248,8 +247,6 @@ final class CAS_Sidebar_Overview extends CAS_Admin
                     break;
                 case 'delete':
                     foreach ($post_ids as $post_id) {
-                        $post_del = get_post($post_id);
-
                         if (!current_user_can('delete_post', $post_id)) {
                             wp_die(__('You are not allowed to delete this item.'));
                         }
@@ -260,6 +257,8 @@ final class CAS_Sidebar_Overview extends CAS_Admin
                         $handled++;
                     }
                     $sendback = add_query_arg('deleted', $handled, $sendback);
+                    break;
+                default:
                     break;
             }
 
@@ -292,7 +291,6 @@ final class CAS_Sidebar_Overview extends CAS_Admin
 
     public function bulk_messages()
     {
-        $manage_widgets = sprintf(' <a href="%1$s">%2$s</a>', 'widgets.php', __('Manage widgets', 'content-aware-sidebars'));
         $bulk_messages = [
             'updated'     => _n_noop('%s sidebar updated.', '%s sidebars updated.', 'content-aware-sidebars'),
             'locked'      => _n_noop('%s sidebar not updated, somebody is editing it.', '%s sidebars not updated, somebody is editing them.', 'content-aware-sidebars'),

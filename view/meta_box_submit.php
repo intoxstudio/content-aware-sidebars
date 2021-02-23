@@ -45,6 +45,6 @@ if (post_type_supports($post->post_type, 'revisions')) {
     </div>
     </li>
     <li>
-        <?php echo CAS_Sidebar_Edit::form_field('visibility', '', 'dashicons dashicons-visibility'); ?>
+        <?php CAS_Sidebar_Edit::form_field('visibility', '', 'dashicons dashicons-visibility'); ?>
     </li>
 </ul>
