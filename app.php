@@ -45,6 +45,9 @@ final class CAS_App
      */
     const META_PREFIX = '_ca_';
 
+    /**
+     * @var CAS_Sidebar_Manager
+     */
     private $manager;
 
     /**
@@ -53,7 +56,6 @@ final class CAS_App
     private $db_updater;
 
     /**
-     * Class singleton
      * @var CAS_App
      */
     private static $_instance;
@@ -73,7 +75,7 @@ final class CAS_App
 
     public function __construct()
     {
-        $this->_manager = new CAS_Sidebar_Manager();
+        $this->manager = new CAS_Sidebar_Manager();
 
         $this->db_updater = new WP_DB_Updater(self::PLUGIN_VERSION_KEY, self::PLUGIN_VERSION, true);
 
@@ -99,9 +101,12 @@ final class CAS_App
         return $this->db_updater;
     }
 
+    /**
+     * @return CAS_Sidebar_Manager
+     */
     public function manager()
     {
-        return $this->_manager;
+        return $this->manager;
     }
 
     /**

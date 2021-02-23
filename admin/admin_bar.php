@@ -170,7 +170,7 @@ class CAS_Admin_Bar
 
         $args = [];
         foreach ($this->custom_sidebars as $id => $has_widgets) {
-            $sidebar = CAS_App::instance()->_manager->sidebars[$id];
+            $sidebar = CAS_App::instance()->manager()->sidebars[$id];
             $args[] = [
                 'id'    => $sidebar->ID,
                 'title' => $sidebar->post_title,

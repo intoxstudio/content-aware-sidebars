@@ -945,7 +945,7 @@ final class CAS_Sidebar_Edit extends CAS_Admin
         $this->enqueue_style('flatpickr', 'flatpickr.dark.min', [], '3.0.6');
         wp_enqueue_style('wp-color-picker');
 
-        $metadata = CAS_App::instance()->_manager->metadata();
+        $metadata = CAS_App::instance()->manager()->metadata();
         $visibility = [];
         $target = [];
         foreach ($metadata->get('visibility')->get_input_list() as $category_key => $category) {
