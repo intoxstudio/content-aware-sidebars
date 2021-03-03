@@ -17,51 +17,86 @@ $cas_db_updater->register_version_update('3.4', 'cas_update_to_34');
 $cas_db_updater->register_version_update('3.5.1', 'cas_update_to_351');
 $cas_db_updater->register_version_update('3.8', 'cas_update_to_38');
 $cas_db_updater->register_version_update('3.15', 'cas_update_to_315');
+$cas_db_updater->register_version_update('3.15.2', 'cas_update_to_3152');
 
-    /**
-     * Enable legacy date module and
-     * negated conditions if in use
-     *
-     * @since 3.15
-     *
-     * @return bool
-     */
-    function cas_update_to_315()
-    {
-        global $wpdb;
+/**
+ * Add -1 to condition groups with select terms
+ *
+ * @since 3.15.2
+ *
+ * @return bool
+ */
+function cas_update_to_3152()
+{
+    $taxonomies = array_map(function ($value) {
+        return "'" . esc_sql($value) . "'";
+    }, get_taxonomies(['public' => true]));
 
-        $types = WPCACore::types()->get_all();
-
-        $options = [
-             'legacy.date_module'        => [],
-             'legacy.negated_conditions' => []
-        ];
-
-        $options['legacy.date_module'] = array_flip((array)$wpdb->get_col("
-            SELECT p.post_type FROM $wpdb->posts p
-            INNER JOIN $wpdb->posts c on p.ID = c.post_parent
-            INNER JOIN $wpdb->postmeta m on c.ID = m.post_id
-            WHERE c.post_type = 'condition_group' AND m.meta_key = '_ca_date'
-        "));
-
-        $options['legacy.negated_conditions'] = array_flip((array)$wpdb->get_col("
-            SELECT p.post_type FROM $wpdb->posts p
-            INNER JOIN $wpdb->posts c on p.ID = c.post_parent
-            WHERE c.post_type = 'condition_group' AND c.post_status = 'negated'
-        "));
-
-        foreach ($types as $type => $val) {
-            foreach ($options as $option => $post_types) {
-                if (isset($post_types[$type])) {
-                    WPCACore::save_option($type, $option, true);
-                } elseif (WPCACore::get_option($type, $option, false)) {
-                    WPCACore::save_option($type, $option, false);
-                }
-            }
-        }
-
+    if (empty($taxonomies)) {
         return true;
     }
+
+    global $wpdb;
+
+    $condition_group_ids = array_unique((array)$wpdb->get_col("
+        SELECT p.ID FROM $wpdb->posts p
+        INNER JOIN $wpdb->term_relationships r ON r.object_id = p.ID
+        INNER JOIN $wpdb->term_taxonomy t ON t.term_taxonomy_id = r.term_taxonomy_id
+        WHERE p.post_type = 'condition_group'
+        AND t.taxonomy IN (".implode(',', $taxonomies).')
+    '));
+
+    foreach ($condition_group_ids as $id) {
+        add_post_meta($id, '_ca_taxonomy', '-1');
+    }
+
+    return true;
+}
+
+/**
+ * Enable legacy date module and
+ * negated conditions if in use
+ *
+ * @since 3.15
+ *
+ * @return bool
+ */
+function cas_update_to_315()
+{
+    global $wpdb;
+
+    $types = WPCACore::types()->get_all();
+
+    $options = [
+            'legacy.date_module'        => [],
+            'legacy.negated_conditions' => []
+    ];
+
+    $options['legacy.date_module'] = array_flip((array)$wpdb->get_col("
+        SELECT p.post_type FROM $wpdb->posts p
+        INNER JOIN $wpdb->posts c on p.ID = c.post_parent
+        INNER JOIN $wpdb->postmeta m on c.ID = m.post_id
+        WHERE c.post_type = 'condition_group' AND m.meta_key = '_ca_date'
+    "));
+
+    $options['legacy.negated_conditions'] = array_flip((array)$wpdb->get_col("
+        SELECT p.post_type FROM $wpdb->posts p
+        INNER JOIN $wpdb->posts c on p.ID = c.post_parent
+        WHERE c.post_type = 'condition_group' AND c.post_status = 'negated'
+    "));
+
+    foreach ($types as $type => $val) {
+        foreach ($options as $option => $post_types) {
+            if (isset($post_types[$type])) {
+                WPCACore::save_option($type, $option, true);
+            } elseif (WPCACore::get_option($type, $option, false)) {
+                WPCACore::save_option($type, $option, false);
+            }
+        }
+    }
+
+    return true;
+}
 
 
 /**
