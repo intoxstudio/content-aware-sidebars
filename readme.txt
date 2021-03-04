@@ -4,8 +4,8 @@ Donate link: #
 Tags: custom sidebars, sidebar, hide sidebar, display widgets, widget, bbpress, buddypress, sidebar manager
 Requires at least: 4.9
 Requires PHP: 5.6
-Tested up to: 5.6
-Stable tag: 3.15.1
+Tested up to: 5.7
+Stable tag: 3.15.2
 License: GPLv3
 
 Display new sidebars and widget areas on any post, page, category etc. Works with all themes, no code required.
@@ -183,6 +183,22 @@ Of course! Check out the links below:
 [Follow development and see all changes on GitHub](https://github.com/intoxstudio/content-aware-sidebars)
 
 ####Highlights
+
+= 3.15.2 =
+
+* [new] performance improvements
+* [new] publishpress authors compatibility
+* [new] wordpress 5.7 support
+* [fixed] toolbar menu now supports theme areas registered without titles
+* [fixed] toolbar menu now displays nested custom sidebars properly
+* [updated] ui improvements for screen readers
+* [updated] wp-content-aware-engine library
+* [updated] freemius sdk
+
+**Pro Plan:**
+
+* [fixed] url condition compatible with wordpress installed in subdirectories
+* [fixed] acf condition supports more field types
 
 = 3.15.1 =
 

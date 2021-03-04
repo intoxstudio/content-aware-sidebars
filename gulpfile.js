@@ -63,7 +63,7 @@ gulp.task('zip', function () {
 gulp.task('update-version', function (done) {
 	const version = [...process.argv].pop();
 	return gulp.src(['app.php', 'readme.txt', 'content-aware-sidebars.php'])
-		.pipe(replace(/(PLUGIN\_VERSION = '|Version: |Stable tag: )[\.0-9]{3,5}/gs, '$1' + version))
+		.pipe(replace(/(PLUGIN\_VERSION = '|Version: |Stable tag: )[\.0-9]{3,7}/gs, '$1' + version))
 		.pipe(gulp.dest('./'));
 });
 
