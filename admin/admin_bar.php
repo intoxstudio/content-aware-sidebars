@@ -69,6 +69,9 @@ class CAS_Admin_Bar
             top:2px;
             margin:0!important;
         }
+        #wp-admin-bar-wpcas-tool #wp-admin-bar-wpcas-tool-condition-types .ab-sub-wrapper {
+            min-width:100%;
+        }
         #wp-admin-bar-wpcas-tool #wp-admin-bar-wpcas-tool-condition-types .ab-icon {
             float:right!important;
             margin-right:0!important;
@@ -133,7 +136,7 @@ class CAS_Admin_Bar
             $title = $module->get_name();
             $link = '';
             if (array_key_exists($module->get_id(), self::DOCS_MAP)) {
-                $title .= ' <span class="ab-icon dashicons dashicons-external"></span>';
+                $title = '<span class="ab-icon dashicons dashicons-external"></span> '.$title;
                 $link = self::DOCS_MAP[$module->get_id()].'?utm_source=plugin&amp;utm_medium=admin_bar&amp;utm_campaign=cas';
             }
             $args[] = [
@@ -232,7 +235,7 @@ class CAS_Admin_Bar
      */
     private function sort_nodes($a, $b)
     {
-        return strcasecmp($a['title'], $b['title']);
+        return strcasecmp($a['id'], $b['id']);
     }
 
     /**
