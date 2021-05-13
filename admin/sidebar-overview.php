@@ -37,10 +37,7 @@ final class CAS_Sidebar_Overview extends CAS_Admin
      */
     public function get_screen()
     {
-        global $_wp_last_object_menu;
-
         $post_type_object = $this->get_sidebar_type();
-       
         $notification_label = $this->notification_count ? sprintf(' <span class="awaiting-mod">%d</span>', $this->notification_count) : '';
 
         add_menu_page(
@@ -50,7 +47,7 @@ final class CAS_Sidebar_Overview extends CAS_Admin
             CAS_App::BASE_SCREEN,
             [$this,'render_screen'],
             $post_type_object->menu_icon,
-            ++$_wp_last_object_menu
+            60 //after Appearance
         );
 
         return add_submenu_page(
