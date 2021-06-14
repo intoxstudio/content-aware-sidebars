@@ -160,13 +160,13 @@ final class CAS_Sidebar_Manager
         ->add(new WPCAMeta(
             'handle',
             _x('Action', 'option', 'content-aware-sidebars'),
-            0,
+            CAS_App::ACTION_REPLACE,
             'select',
             [
-                0 => __('Replace', 'content-aware-sidebars'),
-                1 => __('Merge', 'content-aware-sidebars'),
-                3 => __('Forced replace', 'content-aware-sidebars'),
-                2 => __('Shortcode')
+                CAS_App::ACTION_REPLACE        => __('Replace', 'content-aware-sidebars'),
+                CAS_App::ACTION_MERGE          => __('Merge', 'content-aware-sidebars'),
+                CAS_App::ACTION_REPLACE_FORCED => __('Forced replace', 'content-aware-sidebars'),
+                CAS_App::ACTION_SHORTCODE      => __('Shortcode')
             ],
             __('Replace host sidebar, merge with it or add sidebar manually.', 'content-aware-sidebars')
         ), 'handle')
@@ -337,7 +337,11 @@ final class CAS_Sidebar_Manager
             'before_title'  => '<h4 class="widget-title">',
             'after_title'   => '</h4>'
         ];
-        $has_host = [0 => 1,1 => 1,3 => 1];
+        $has_host = [
+            CAS_App::ACTION_REPLACE        => 1,
+            CAS_App::ACTION_MERGE          => 1,
+            CAS_App::ACTION_REPLACE_FORCED => 1
+        ];
         $metadata = $this->metadata();
 
         foreach ($this->sidebars as $id => $post) {
@@ -426,7 +430,11 @@ final class CAS_Sidebar_Manager
 
         if ($posts) {
             $metadata = $this->metadata();
-            $has_host = [0 => 1,1 => 1,3 => 1];
+            $has_host = [
+                CAS_App::ACTION_REPLACE        => 1,
+                CAS_App::ACTION_MERGE          => 1,
+                CAS_App::ACTION_REPLACE_FORCED => 1
+            ];
 
             //replace and merge widgets, build replacement map
             foreach ($posts as $post) {
@@ -454,10 +462,10 @@ final class CAS_Sidebar_Manager
                     }
 
                     // If handle is merge or if handle is replace and host has already been replaced
-                    if ($post->handle == 1 || ($post->handle == 0 && isset($handled_already[$host]))) {
+                    if ($post->handle == CAS_App::ACTION_MERGE || ($post->handle == CAS_App::ACTION_REPLACE && isset($handled_already[$host]))) {
                         //do not merge forced replace
                         //todo: maybe reverse order of fetched sidebars instead?
-                        if (isset($handled_already[$host]) && $handled_already[$host] == 3) {
+                        if (isset($handled_already[$host]) && $handled_already[$host] == CAS_App::ACTION_REPLACE_FORCED) {
                             continue;
                         }
                         if ($metadata->get('merge_pos')->get_data($post->ID)) {
@@ -540,7 +548,7 @@ final class CAS_Sidebar_Manager
             $id = CAS_App::SIDEBAR_PREFIX . $post->ID;
 
             // Check for manual handling, if sidebar exists and if id should be included
-            if ($post->handle != 2 || !isset($_wp_sidebars_widgets[$id]) || (!empty($include) && !isset($include[$post->ID]))) {
+            if ($post->handle != CAS_App::ACTION_SHORTCODE || !isset($_wp_sidebars_widgets[$id]) || (!empty($include) && !isset($include[$post->ID]))) {
                 continue;
             }
 
@@ -583,7 +591,7 @@ final class CAS_Sidebar_Manager
             return $content;
         }
 
-        if ($this->metadata()->get('handle')->get_data($a['id']) != 2) {
+        if ($this->metadata()->get('handle')->get_data($a['id']) != CAS_App::ACTION_SHORTCODE) {
             return $content;
         }
 

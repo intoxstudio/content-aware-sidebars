@@ -30,6 +30,11 @@ final class CAS_App
     const STATUS_INACTIVE = 'draft';
     const STATUS_SCHEDULED = 'future';
 
+    const ACTION_REPLACE = 0;
+    const ACTION_MERGE = 1;
+    const ACTION_SHORTCODE = 2;
+    const ACTION_REPLACE_FORCED = 3;
+
     /**
      * Capability to manage sidebars
      */

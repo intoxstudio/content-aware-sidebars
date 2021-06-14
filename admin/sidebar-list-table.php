@@ -460,9 +460,9 @@ class CAS_Sidebar_List_Table extends WP_List_Table
 
         if ($action) {
             switch ($action->get_data($post->ID)) {
-                case 0:
-                case 1:
-                case 3:
+                case CAS_App::ACTION_REPLACE:
+                case CAS_App::ACTION_MERGE:
+                case CAS_App::ACTION_REPLACE_FORCED:
                     $return = $action->get_list_data($post->ID);
                     $data = [];
                     $hosts = $metadata->get('host')->get_data($post->ID, false, false);
@@ -491,7 +491,7 @@ class CAS_Sidebar_List_Table extends WP_List_Table
                     }
                     echo $return;
                     break;
-                case 2:
+                case CAS_App::ACTION_SHORTCODE:
                     echo "<input type='text' value='[ca-sidebar id=\"$post->ID\"]' readonly />";
                     break;
                 default:

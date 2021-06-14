@@ -186,7 +186,6 @@ final class CAS_Sidebar_Edit extends CAS_Admin
         }
 
         if ($action && $post_id) {
-            //wp_reset_vars( array( 'action' ) );
             $sendback = wp_get_referer();
             $sendback = remove_query_arg(
                 ['action','trashed', 'untrashed', 'deleted', 'ids'],
