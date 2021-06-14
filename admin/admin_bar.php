@@ -48,8 +48,7 @@ class CAS_Admin_Bar
 
     public function initiate()
     {
-        $post_type_object = get_post_type_object(CAS_App::TYPE_SIDEBAR);
-        if (is_admin() || !current_user_can($post_type_object->cap->create_posts)) {
+        if (!$this->authorize_user()) {
             return;
         }
 
@@ -68,6 +67,12 @@ class CAS_Admin_Bar
         #wp-admin-bar-wpcas-tool .dashicons-welcome-widgets-menus {
             top:2px;
             margin:0!important;
+        }
+        #wp-admin-bar-wpcas-tool .wpcas-ok .ab-item {
+            color:#8c8!important;
+        }
+        #wp-admin-bar-wpcas-tool .wpcas-warn .ab-item {
+            color:#dba617!important;
         }
         #wp-admin-bar-wpcas-tool #wp-admin-bar-wpcas-tool-condition-types .ab-sub-wrapper {
             min-width:100%;
@@ -130,6 +135,25 @@ class CAS_Admin_Bar
             'id'    => self::NODE_THEME_AREAS,
             'title' => __('Theme Areas', 'content-aware-sidebars')
         ]);
+
+        $cache = get_option(WPCACore::OPTION_CONDITION_TYPE_CACHE, []);
+        if (isset($cache[CAS_App::TYPE_SIDEBAR]) && !empty($cache[CAS_App::TYPE_SIDEBAR])) {
+            $title = __('Cache Active', 'content-aware-sidebars');
+            $link = null;
+            $class = 'wpcas-ok';
+        } else {
+            $title = __('Activate Cache Now', 'content-aware-sidebars');
+            $link = wp_nonce_url(admin_url('admin.php?page=wpcas-settings&action=update_condition_type_cache'), 'update_condition_type_cache');
+            $class = 'wpcas-warn';
+        }
+        $this->add_node($admin_bar, [
+            'id'    => 'condition_cache',
+            'title' => $title.' &#9210;',
+            'href'  => $link,
+            'meta'  => [
+                'class' => $class,
+            ]
+        ], self::NODE_CONDITION_TYPES);
 
         $args = [];
         foreach (WPCACore::get_conditional_modules('sidebar') as $module) {
@@ -253,11 +277,25 @@ class CAS_Admin_Bar
         $this->detect_sidebar_target($has_widgets, $index);
     }
 
+    /**
+     * @param bool $has_widgets
+     * @param string $index
+     * @return void
+     */
     private function detect_sidebar_target($has_widgets, $index)
     {
         $host_map = CAS_App::instance()->manager()->get_replacement_map();
         if (isset($host_map[$index])) {
             $this->detect_sidebar($has_widgets, $host_map[$index]);
         }
+    }
+
+    /**
+     * @return bool
+     */
+    private function authorize_user()
+    {
+        $post_type_object = get_post_type_object(CAS_App::TYPE_SIDEBAR);
+        return current_user_can($post_type_object->cap->create_posts);
     }
 }

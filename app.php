@@ -89,6 +89,7 @@ final class CAS_App
             new CAS_Sidebar_Edit();
             new CAS_Quick_Select();
             new CAS_Admin_Screen_Widgets();
+            new CAS_Admin_Settings();
         } else {
             new CAS_Admin_Bar();
         }

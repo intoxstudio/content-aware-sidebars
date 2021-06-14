@@ -60,6 +60,7 @@ if (!class_exists('CAS_App')) {
     require($cas_dir_path.'admin/sidebar-overview.php');
     require($cas_dir_path.'admin/sidebar-edit.php');
     require($cas_dir_path.'admin/screen_widgets.php');
+    require($cas_dir_path.'admin/settings.php');
     require($cas_dir_path.'sidebar.php');
     require($cas_dir_path.'freemius.php');
     require($cas_dir_path.'admin/db-updates.php');
