@@ -2,10 +2,10 @@
 Contributors: intoxstudio, devinstitute, freemius
 Donate link: #
 Tags: custom sidebars, sidebar, hide sidebar, display widgets, widget, bbpress, buddypress, sidebar manager
-Requires at least: 4.9
+Requires at least: 5.0
 Requires PHP: 5.6
-Tested up to: 5.7
-Stable tag: 3.15.2
+Tested up to: 5.8
+Stable tag: 3.16
 License: GPLv3
 
 Display new sidebars and widget areas on any post, page, category etc. Works with all themes, no code required.
@@ -183,6 +183,22 @@ Of course! Check out the links below:
 [Follow development and see all changes on GitHub](https://github.com/intoxstudio/content-aware-sidebars)
 
 ####Highlights
+
+= 3.16 =
+
+* [new] enable condition type cache in toolbar menu
+* [new] performance improvements
+* [new] taxonomy condition added to cache system (all condition types supported now)
+* [new] wordpress 5.8 support
+* [new] minimum wordpress version 5.0
+* [fixed] multiple taxonomy conditions now use AND properly on singular pages (long-standing bug)
+* [updated] wp-content-aware-engine library
+
+**Pro Plan:**
+
+* [new] totem - display widgets in floating button
+* [new] option to display container widget only if conditions are met
+* [new] sticky support for ajax powered themes such as woodmart
 
 = 3.15.2 =
 
