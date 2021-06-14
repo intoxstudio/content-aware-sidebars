@@ -16,53 +16,24 @@ $cas_db_updater->register_version_update('3.1', 'cas_update_to_31');
 $cas_db_updater->register_version_update('3.4', 'cas_update_to_34');
 $cas_db_updater->register_version_update('3.5.1', 'cas_update_to_351');
 $cas_db_updater->register_version_update('3.8', 'cas_update_to_38');
-$cas_db_updater->register_version_update('3.15', 'cas_update_to_315');
 $cas_db_updater->register_version_update('3.15.2', 'cas_update_to_3152');
+$cas_db_updater->register_version_update('3.16', 'cas_update_to_316');
 
-/**
- * Add -1 to condition groups with select terms
- *
- * @since 3.15.2
- *
- * @return bool
- */
-function cas_update_to_3152()
-{
-    $taxonomies = array_map(function ($value) {
-        return "'" . esc_sql($value) . "'";
-    }, get_taxonomies(['public' => true]));
-
-    if (empty($taxonomies)) {
-        return true;
-    }
-
-    global $wpdb;
-
-    $condition_group_ids = array_unique((array)$wpdb->get_col("
-        SELECT p.ID FROM $wpdb->posts p
-        INNER JOIN $wpdb->term_relationships r ON r.object_id = p.ID
-        INNER JOIN $wpdb->term_taxonomy t ON t.term_taxonomy_id = r.term_taxonomy_id
-        WHERE p.post_type = 'condition_group'
-        AND t.taxonomy IN (".implode(',', $taxonomies).')
-    '));
-
-    foreach ($condition_group_ids as $id) {
-        add_post_meta($id, '_ca_taxonomy', '-1');
-    }
-
-    return true;
-}
 
 /**
  * Enable legacy date module and
  * negated conditions if in use
  *
- * @since 3.15
+ * Clear condition type cache
+ *
+ * @since 3.16
  *
  * @return bool
  */
-function cas_update_to_315()
+function cas_update_to_316()
 {
+    update_option('_ca_condition_type_cache', []);
+
     global $wpdb;
 
     $types = WPCACore::types()->get_all();
@@ -98,6 +69,39 @@ function cas_update_to_315()
     return true;
 }
 
+/**
+ * Add -1 to condition groups with select terms
+ *
+ * @since 3.15.2
+ *
+ * @return bool
+ */
+function cas_update_to_3152()
+{
+    $taxonomies = array_map(function ($value) {
+        return "'" . esc_sql($value) . "'";
+    }, get_taxonomies(['public' => true]));
+
+    if (empty($taxonomies)) {
+        return true;
+    }
+
+    global $wpdb;
+
+    $condition_group_ids = array_unique((array)$wpdb->get_col("
+        SELECT p.ID FROM $wpdb->posts p
+        INNER JOIN $wpdb->term_relationships r ON r.object_id = p.ID
+        INNER JOIN $wpdb->term_taxonomy t ON t.term_taxonomy_id = r.term_taxonomy_id
+        WHERE p.post_type = 'condition_group'
+        AND t.taxonomy IN (".implode(',', $taxonomies).')
+    '));
+
+    foreach ($condition_group_ids as $id) {
+        add_post_meta($id, '_ca_taxonomy', '-1');
+    }
+
+    return true;
+}
 
 /**
  * Update to version 3.8
