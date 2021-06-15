@@ -17,7 +17,7 @@ $cas_db_updater->register_version_update('3.4', 'cas_update_to_34');
 $cas_db_updater->register_version_update('3.5.1', 'cas_update_to_351');
 $cas_db_updater->register_version_update('3.8', 'cas_update_to_38');
 $cas_db_updater->register_version_update('3.15.2', 'cas_update_to_3152');
-$cas_db_updater->register_version_update('3.16', 'cas_update_to_316');
+$cas_db_updater->register_version_update('3.16.1', 'cas_update_to_3161');
 
 
 /**
@@ -26,11 +26,11 @@ $cas_db_updater->register_version_update('3.16', 'cas_update_to_316');
  *
  * Clear condition type cache
  *
- * @since 3.16
+ * @since 3.16.1
  *
  * @return bool
  */
-function cas_update_to_316()
+function cas_update_to_3161()
 {
     update_option('_ca_condition_type_cache', []);
 
