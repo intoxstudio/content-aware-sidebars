@@ -108,17 +108,6 @@ final class CASConditionPlaceholder extends WPCAModule_Base
 
     /**
      * @since 3.9
-     * @param array $posts
-     *
-     * @return array
-     */
-    public function filter_excluded_context($posts)
-    {
-        return $posts;
-    }
-
-    /**
-     * @since 3.9
      */
     public function __destruct()
     {
