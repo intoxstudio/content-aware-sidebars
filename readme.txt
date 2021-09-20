@@ -5,7 +5,7 @@ Tags: custom sidebars, sidebar, hide sidebar, display widgets, widget, bbpress, 
 Requires at least: 5.0
 Requires PHP: 5.6
 Tested up to: 5.8
-Stable tag: 3.16.1
+Stable tag: 3.16.2
 License: GPLv3
 
 Display new sidebars and widget areas on any post, page, category etc. Works with all themes, no code required.
