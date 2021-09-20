@@ -1,4 +1,4 @@
-=== Unlimited Custom Sidebars - Content Aware Sidebars ===
+=== Lightweight Widget Area Plugin - Content Aware Sidebars ===
 Contributors: intoxstudio, devinstitute, freemius
 Donate link: #
 Tags: custom sidebars, sidebar, hide sidebar, display widgets, widget, bbpress, buddypress, sidebar manager
@@ -8,7 +8,7 @@ Tested up to: 5.8
 Stable tag: 3.16.2
 License: GPLv3
 
-Display new sidebars and widget areas on any post, page, category etc. Works with all themes, no code required.
+Display new sidebars on any post, page, category etc. Works with Classic Widgets, Block Widgets, and all themes!
 
 == Description ==
 
@@ -148,11 +148,11 @@ You can also select sidebars directly when you're editing a post or page.
 
 [Click here to read more about Display Conditions](https://dev.institute/docs/content-aware-sidebars/getting-started/display-sidebar-simple/?utm_source=readme&utm_medium=referral&utm_content=faq&utm_campaign=cas).
 
-= Is this plugin Gutenberg-ready? =
+= Will CAS work with block-based Widgets? =
 
 Yes!
 
-Gutenberg is the New Block Editor that has been part of WordPress since version 5.0. CAS will support Block-based Widgets and Widget Areas (Block Areas) when they get implemented in WordPress Core as planned.
+If you prefer to manage widgets in the traditional way, you can use [Classic Widgets](https://wordpress.org/plugins/classic-widgets/) which CAS also supports.
 
 Moreover, the Pro version makes it possible to infuse widget areas into theme hooks, as well as insert areas between content paragraphs.
 
@@ -183,6 +183,12 @@ Of course! Check out the links below:
 [Follow development and see all changes on GitHub](https://github.com/intoxstudio/content-aware-sidebars)
 
 ####Highlights
+
+= 3.16.2 =
+
+* [fixed] compatibility improvements
+* [updated] wp-content-aware-engine library
+* [updated] freemius sdk
 
 = 3.16.1 = 
 
