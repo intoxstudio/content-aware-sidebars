@@ -4,3 +4,6 @@ node_modules/
 build/
 fs-config.json
 .php_cs
+.idea/
+vendor/
+*.cache

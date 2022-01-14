@@ -48,7 +48,9 @@ gulp.task('zip', function () {
 	return gulp.src([
 		'**',
 		'!fs-config.json',
+		'!composer.*',
 		'!build{,/**}',
+		'!vendor{,/**}',
 		'!**/package*.json',
 		'!**/pnpm-lock.yaml',
 		'!**/*.{less,scss,po,pot,js}',
