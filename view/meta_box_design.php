@@ -3,7 +3,7 @@
  * @package Content Aware Sidebars
  * @author Joachim Jensen <joachim@dev.institute>
  * @license GPLv3
- * @copyright 2021 by Joachim Jensen
+ * @copyright 2022 by Joachim Jensen
  */
 
 $url = 'https://dev.institute/wordpress-sidebars/pricing/?utm_source=plugin&utm_medium=popup&utm_content=design&utm_campaign=cas';
