@@ -1,3 +1,81 @@
+= 3.15.2 =
+
+* [new] performance improvements
+* [new] publishpress authors compatibility
+* [new] wordpress 5.7 support
+* [fixed] toolbar menu now supports theme areas registered without titles
+* [fixed] toolbar menu now displays nested custom sidebars properly
+* [updated] ui improvements for screen readers
+* [updated] wp-content-aware-engine library
+* [updated] freemius sdk
+
+**Pro Plan:**
+
+* [fixed] url condition compatible with wordpress installed in subdirectories
+* [fixed] acf condition supports more field types
+
+= 3.15.1 =
+
+* [fixed] toolbar menu compatibility with php5.6
+
+= 3.15 =
+
+* [new] toolbar menu to view conditions, theme areas, and sidebars for a given page
+* [new] better compatibility with retired custom sidebars plugin
+* [updated] ui improvements
+* [updated] wp-content-aware-engine library
+
+= 3.14.1 =
+
+* [fixed] sidebar quick select now displays all eligible sidebars
+* [updated] reinstate widgets screen if disabled by gutenberg plugin without user consent
+
+**Pro Plan:**
+
+* [fixed] styles would not always be loaded for container widget
+
+= 3.14 =
+
+* [new] ability to replace or merge with multiple sidebars
+* [new] wordpress 5.6 support
+* [new] minimum wordpress version 4.9
+* [fixed] some custom sidebar styles would not take effect in wp5.6+
+* [updated] wp-content-aware-engine library
+
+**Pro Plan:**
+
+* [new] time schedule displayed on overview screen
+* [fixed] conditions would not be duplicated with sidebar
+* [updated] improved time schedule ui
+
+= 3.13.1 =
+
+* [new] identical taxonomy names are now displayed with their post type
+* [fixed] taxonomy and attachment condition suggestions would not display all results
+* [updated] wp-content-aware-engine library
+* [updated] freemius sdk
+
+**Pro Plan:**
+
+* [new] support for auto-updates
+
+= 3.13 =
+
+* [new] exception conditions
+* [new] intelligent search by id in post type condition
+* [new] intelligent search by id, email in author condition
+* [new] performance improvements
+* [new] wordpress 5.5 support
+* [updated] wp-content-aware-engine library
+* [updated] freemius sdk
+* [deprecated] negated conditions
+* [deprecated] simple date archive condition
+
+**Pro Plan:**
+
+* [new] sticky support for storefront theme
+* [fixed] sticky left sidebars in generatepress
+
 = 3.12.2 =
 
 * [fixed] sidebars inserted with shortcode can now be replaced/merged

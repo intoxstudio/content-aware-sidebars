@@ -1,11 +1,11 @@
 === Lightweight Widget Area Plugin - Content Aware Sidebars ===
 Contributors: intoxstudio, devinstitute, freemius
 Donate link: #
-Tags: custom sidebars, sidebar, hide sidebar, display widgets, widget, bbpress, buddypress, sidebar manager
+Tags: custom sidebars, sidebar, classic widgets, widget, bbpress, buddypress, sidebar manager
 Requires at least: 5.0
 Requires PHP: 5.6
-Tested up to: 5.8
-Stable tag: 3.16.2
+Tested up to: 5.9
+Stable tag: 3.17
 License: GPLv3
 
 Display new sidebars on any post, page, category etc. Works with Classic Widgets, Block Widgets, and all themes!
@@ -32,7 +32,7 @@ If your website is big or in growth, CAS is the ideal solution for you.
 * Front Page, Search Results, 404 Not Found Page
 * bbPress Profiles, Forums & Topics
 * BuddyPress Profile Sections
-* Languages (WPML, Polylang, qTranslate X, TranslatePress, Transposh)
+* Languages (Polylang, qTranslate X, TranslatePress, Transposh, Weglot, WPML)
 * Pods Pages
 
 > **You can even combine conditions in any way you like! E.g. target all posts in a select category and written by a specific author.**
@@ -68,6 +68,7 @@ When adding new widgets to sidebars, **Live Search will find widgets instantly**
 * [TranslatePress](https://dev.institute/wordpress-sidebars/multilingual-plugins/?utm_source=readme&utm_medium=referral&utm_content=integration&utm_campaign=cas)
 * [Transposh Translation Filter](https://dev.institute/wordpress-sidebars/multilingual-plugins/?utm_source=readme&utm_medium=referral&utm_content=integration&utm_campaign=cas)
 * [WooCommerce](https://dev.institute/wordpress-sidebars/woocommerce/?utm_source=readme&utm_medium=referral&utm_content=integration&utm_campaign=cas)
+* [Weglot](https://dev.institute/wordpress-sidebars/multilingual-plugins/?utm_source=readme&utm_medium=referral&utm_content=integration&utm_campaign=cas)
 * [WPML](https://dev.institute/wordpress-sidebars/multilingual-plugins/?utm_source=readme&utm_medium=referral&utm_content=integration&utm_campaign=cas)
 
 ###Customize Your Widget Areas Your Way
@@ -86,6 +87,7 @@ Make any sidebar or widget area sticky without hurting site performance. No jQue
 Display a widget area after a specific number or percentage of paragraphs in your content
 * **Even More Display Conditions**
     * Advanced Custom Fields data
+    * Meta Box data
     * URLS + wildcards
     * Referrer URLs
     * Date Archives & Content by publish date
@@ -184,6 +186,18 @@ Of course! Check out the links below:
 
 ####Highlights
 
+= 3.17 =
+
+* [new] weglot display condition
+* [new] wordpress 5.9 support
+
+**Pro Plan:**
+
+* [new] meta box display condition
+* [new] infuse action now uses sidebar order option as hook priority
+* [new] option to disable all widgets at once in widget cleaner
+* [fixed] pagination in buddypress groups condition
+
 = 3.16.2 =
 
 * [fixed] compatibility improvements
@@ -209,83 +223,5 @@ Of course! Check out the links below:
 * [new] totem - display widgets in floating button
 * [new] option to display container widget only if conditions are met
 * [new] sticky support for ajax powered themes such as woodmart
-
-= 3.15.2 =
-
-* [new] performance improvements
-* [new] publishpress authors compatibility
-* [new] wordpress 5.7 support
-* [fixed] toolbar menu now supports theme areas registered without titles
-* [fixed] toolbar menu now displays nested custom sidebars properly
-* [updated] ui improvements for screen readers
-* [updated] wp-content-aware-engine library
-* [updated] freemius sdk
-
-**Pro Plan:**
-
-* [fixed] url condition compatible with wordpress installed in subdirectories
-* [fixed] acf condition supports more field types
-
-= 3.15.1 =
-
-* [fixed] toolbar menu compatibility with php5.6
-
-= 3.15 =
-
-* [new] toolbar menu to view conditions, theme areas, and sidebars for a given page
-* [new] better compatibility with retired custom sidebars plugin
-* [updated] ui improvements
-* [updated] wp-content-aware-engine library
-
-= 3.14.1 =
-
-* [fixed] sidebar quick select now displays all eligible sidebars
-* [updated] reinstate widgets screen if disabled by gutenberg plugin without user consent
-
-**Pro Plan:**
-
-* [fixed] styles would not always be loaded for container widget
-
-= 3.14 =
-
-* [new] ability to replace or merge with multiple sidebars
-* [new] wordpress 5.6 support
-* [new] minimum wordpress version 4.9
-* [fixed] some custom sidebar styles would not take effect in wp5.6+
-* [updated] wp-content-aware-engine library
-
-**Pro Plan:**
-
-* [new] time schedule displayed on overview screen
-* [fixed] conditions would not be duplicated with sidebar
-* [updated] improved time schedule ui
-
-= 3.13.1 =
-
-* [new] identical taxonomy names are now displayed with their post type
-* [fixed] taxonomy and attachment condition suggestions would not display all results
-* [updated] wp-content-aware-engine library
-* [updated] freemius sdk
-
-**Pro Plan:**
-
-* [new] support for auto-updates
-
-= 3.13 =
-
-* [new] exception conditions
-* [new] intelligent search by id in post type condition
-* [new] intelligent search by id, email in author condition
-* [new] performance improvements
-* [new] wordpress 5.5 support
-* [updated] wp-content-aware-engine library
-* [updated] freemius sdk
-* [deprecated] negated conditions
-* [deprecated] simple date archive condition
-
-**Pro Plan:**
-
-* [new] sticky support for storefront theme
-* [fixed] sticky left sidebars in generatepress
 
 See changelog.txt for previous changes.
