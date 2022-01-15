@@ -10,7 +10,6 @@ defined('ABSPATH') || exit;
 
 final class CAS_Sidebar_Overview extends CAS_Admin
 {
-
     /**
      * Sidebar table
      * @var CAS_Sidebar_List_Table
@@ -116,7 +115,7 @@ final class CAS_Sidebar_Overview extends CAS_Admin
 
         $this->bulk_messages();
 
-        $_SERVER['REQUEST_URI'] = remove_query_arg([ 'locked', 'skipped', 'deleted', 'trashed', 'untrashed' ], $_SERVER['REQUEST_URI']);
+        $_SERVER['REQUEST_URI'] = remove_query_arg(['locked', 'skipped', 'deleted', 'trashed', 'untrashed'], $_SERVER['REQUEST_URI']);
 
         $this->table->views();
 
@@ -125,7 +124,7 @@ final class CAS_Sidebar_Overview extends CAS_Admin
         $this->table->search_box($post_type_object->labels->search_items, 'post');
 
         echo '<input type="hidden" name="page" value="wpcas" />';
-        echo '<input type="hidden" name="post_status" class="post_status_page" value="'.(!empty($_REQUEST['post_status']) ? esc_attr($_REQUEST['post_status']) : 'all').'" />';
+        echo '<input type="hidden" name="post_status" class="post_status_page" value="' . (!empty($_REQUEST['post_status']) ? esc_attr($_REQUEST['post_status']) : 'all') . '" />';
 
         $this->table->display();
 
@@ -204,7 +203,7 @@ final class CAS_Sidebar_Overview extends CAS_Admin
 
                         $handled++;
                     }
-                    $sendback = add_query_arg([$doaction.'d' => $handled, 'ids' => join(',', $post_ids), 'locked' => $locked ], $sendback);
+                    $sendback = add_query_arg([$doaction . 'd' => $handled, 'ids' => join(',', $post_ids), 'locked' => $locked], $sendback);
                     break;
                 case 'trash':
                     $locked = 0;
@@ -226,7 +225,7 @@ final class CAS_Sidebar_Overview extends CAS_Admin
                         $handled++;
                     }
 
-                    $sendback = add_query_arg(['trashed' => $handled, 'ids' => join(',', $post_ids), 'locked' => $locked ], $sendback);
+                    $sendback = add_query_arg(['trashed' => $handled, 'ids' => join(',', $post_ids), 'locked' => $locked], $sendback);
                     break;
                 case 'untrash':
                     foreach ($post_ids as $post_id) {
@@ -264,7 +263,7 @@ final class CAS_Sidebar_Overview extends CAS_Admin
             wp_safe_redirect($sendback);
             exit;
         }
-        if (! empty($_REQUEST['_wp_http_referer'])) {
+        if (!empty($_REQUEST['_wp_http_referer'])) {
             wp_safe_redirect(remove_query_arg(['_wp_http_referer', '_wpnonce'], wp_unslash($_SERVER['REQUEST_URI'])));
             exit;
         }
