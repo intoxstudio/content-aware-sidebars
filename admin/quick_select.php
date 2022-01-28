@@ -64,11 +64,11 @@ class CAS_Quick_Select
             self::get_theme_sidebars();
             if (isset($post_types[$screen->post_type]) && self::$_theme_sidebars) {
                 add_action(
-                    'add_meta_boxes_'.$screen->post_type,
+                    'add_meta_boxes_' . $screen->post_type,
                     [__CLASS__,'create_meta_boxes']
                 );
                 add_action(
-                    'save_post_'.$screen->post_type,
+                    'save_post_' . $screen->post_type,
                     [__CLASS__,'save_post_sidebars'],
                     10,
                     2
@@ -124,7 +124,7 @@ class CAS_Quick_Select
         }
 
         if (!(isset($_POST[self::NONCE])
-            && wp_verify_nonce($_POST[self::NONCE], self::NONCE.$post_id))) {
+            && wp_verify_nonce($_POST[self::NONCE], self::NONCE . $post_id))) {
             return;
         }
 
@@ -168,7 +168,7 @@ class CAS_Quick_Select
                             ]);
                             if ($id) {
                                 //wp_insert_post does not handle meta before WP4.4
-                                add_post_meta($id, WPCACore::PREFIX.'host', $host);
+                                add_post_meta($id, WPCACore::PREFIX . 'host', $host);
                                 $condition_group_id = WPCACore::add_condition_group($id);
                             }
                         }
@@ -203,7 +203,7 @@ class CAS_Quick_Select
         $sidebars = CAS_App::instance()->manager()->sidebars;
         $host_meta = CAS_App::instance()->manager()->metadata()->get('host');
         foreach ($relations as $sidebar_id => $group_id) {
-            if (isset($sidebars[CAS_App::SIDEBAR_PREFIX.$sidebar_id])) {
+            if (isset($sidebars[CAS_App::SIDEBAR_PREFIX . $sidebar_id])) {
                 $host_ids = $host_meta->get_data($sidebar_id, false, false);
                 foreach ($host_ids as $host_id) {
                     if (!isset(self::$_theme_sidebars[$host_id])) {
@@ -246,7 +246,7 @@ class CAS_Quick_Select
                 if (isset(self::$_theme_sidebars[$host_id])) {
                     self::$_theme_sidebars[$host_id]['options'][$sidebar->ID] = [
                         'id'   => $sidebar->ID,
-                        'text' => $sidebar->post_title.self::sidebar_states($sidebar)
+                        'text' => $sidebar->post_title . self::sidebar_states($sidebar)
                     ];
                     if (isset($post_sidebars[$sidebar->ID])) {
                         self::$_theme_sidebars[$host_id]['options'][$sidebar->ID]['select'] = 1;
@@ -273,14 +273,14 @@ class CAS_Quick_Select
         }
         $content[] = __('Archive Page', 'content-aware-sidebars');
 
-        $path = plugin_dir_path(dirname(__FILE__)).'view/';
-        $view = WPCAView::make($path.'sidebars_quick_select.php', [
+        $path = plugin_dir_path(dirname(__FILE__)) . 'view/';
+        $view = WPCAView::make($path . 'sidebars_quick_select.php', [
             'post'     => $post,
             'sidebars' => self::$_theme_sidebars,
             'limit'    => 3,
             'content'  => $content,
             'singular' => $post_type->labels->singular_name,
-            'nonce'    => wp_nonce_field(self::NONCE.$post->ID, self::NONCE, false, false)
+            'nonce'    => wp_nonce_field(self::NONCE . $post->ID, self::NONCE, false, false)
         ]);
 
         add_meta_box(
@@ -307,10 +307,10 @@ class CAS_Quick_Select
                 $status = '';
                 break;
             case CAS_App::STATUS_SCHEDULED:
-                $status = ' ('.__('Scheduled').')';
+                $status = ' (' . __('Scheduled') . ')';
                 break;
             default:
-                $status = ' ('.__('Inactive', 'content-aware-sidebars').')';
+                $status = ' (' . __('Inactive', 'content-aware-sidebars') . ')';
                 break;
         }
         return $status;
@@ -346,7 +346,7 @@ class CAS_Quick_Select
      */
     public static function enqueue_scripts($hook)
     {
-        wp_enqueue_style(CAS_App::META_PREFIX.'condition-groups');
+        wp_enqueue_style(CAS_App::META_PREFIX . 'condition-groups');
         wp_enqueue_script('cas/sidebars/suggest');
 
         $labels = [
@@ -396,10 +396,12 @@ class CAS_Quick_Select
                 "SELECT s.ID, g.ID as group_id
 				FROM $wpdb->posts s
 				INNER JOIN $wpdb->posts g ON g.post_parent = s.ID
-				INNER JOIN $wpdb->postmeta gm ON gm.post_id = g.ID AND gm.meta_key = '".WPCACore::PREFIX.self::MODULE_NAME."'
+				INNER JOIN $wpdb->postmeta sm ON sm.post_id = s.ID AND sm.meta_key = '" . WPCACore::PREFIX . "handle'
+				INNER JOIN $wpdb->postmeta gm ON gm.post_id = g.ID AND gm.meta_key = '" . WPCACore::PREFIX . self::MODULE_NAME . "'
 				WHERE s.post_status <> 'trash'
-				AND s.post_type = '".CAS_App::TYPE_SIDEBAR."'
-				AND g.post_status IN ('".WPCACore::STATUS_PUBLISHED."','".WPCACore::STATUS_OR."')
+				AND s.post_type = '" . CAS_App::TYPE_SIDEBAR . "'
+				AND sm.meta_value IN (" . CAS_App::ACTION_REPLACE . ',' . CAS_App::ACTION_MERGE . ',' . CAS_App::ACTION_REPLACE_FORCED . ")
+				AND g.post_status IN ('" . WPCACore::STATUS_PUBLISHED . "','" . WPCACore::STATUS_OR . "')
 				AND gm.meta_value = %d
 				ORDER BY s.post_title ASC",
                 $post->ID
