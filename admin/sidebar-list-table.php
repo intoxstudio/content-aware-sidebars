@@ -46,7 +46,7 @@ class CAS_Sidebar_List_Table extends WP_List_Table
 
         $avail_post_stati = get_available_post_statuses(CAS_App::TYPE_SIDEBAR);
 
-        $per_page = $this->get_items_per_page('cas_sidebars_per_page', 20);
+        $per_page = $this->get_items_per_page('cas_sidebars_per_page');
         $current_page = $this->get_pagenum();
 
         $args = [
@@ -396,7 +396,7 @@ class CAS_Sidebar_List_Table extends WP_List_Table
     protected function _column_title($post, $classes, $data, $primary)
     {
         echo '<td class="' . $classes . ' page-title" ', $data, '>';
-        echo $this->column_title($post);
+        $this->column_title($post);
         echo '</td>';
     }
 
@@ -652,7 +652,6 @@ class CAS_Sidebar_List_Table extends WP_List_Table
             return '';
         }
 
-        $post_type_object = get_post_type_object($post->post_type);
         $actions = [];
         $title = _draft_or_post_title();
         $cas_fs = cas_fs();
@@ -681,7 +680,7 @@ class CAS_Sidebar_List_Table extends WP_List_Table
             if ($post->post_status == 'trash') {
                 $actions['untrash'] = sprintf(
                     '<a href="%s" aria-label="%s">%s</a>',
-                    wp_nonce_url(get_edit_post_link($post->ID, 'display') . '&amp;action=untrash', 'untrash-post_' . $post->ID),
+                    wp_nonce_url(get_edit_post_link($post->ID) . '&amp;action=untrash', 'untrash-post_' . $post->ID),
                     /* translators: %s: post title */
                     esc_attr(sprintf(__('Restore &#8220;%s&#8221; from the Trash'), $title)),
                     __('Restore')

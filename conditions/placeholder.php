@@ -10,6 +10,13 @@ defined('ABSPATH') || exit;
 
 final class CASConditionPlaceholder extends WPCAModule_Base
 {
+    /**
+     * @param string $id
+     * @param string $title
+     * @param string $description
+     * @param string $placeholder
+     * @param string $category
+     */
     public function __construct($id, $title, $description = '', $placeholder = '', $category = 'general')
     {
         parent::__construct($id, $title, $description, $placeholder);
@@ -17,19 +24,14 @@ final class CASConditionPlaceholder extends WPCAModule_Base
     }
 
     /**
-     * @since 3.9
-     *
-     * @return void
+     * @inheritDoc
      */
     public function initiate()
     {
     }
 
     /**
-     * @since 3.9
-     * @param array $list
-     *
-     * @return array
+     * @inheritDoc
      */
     public function list_module($list)
     {
@@ -44,9 +46,7 @@ final class CASConditionPlaceholder extends WPCAModule_Base
     }
 
     /**
-     * @since 3.9
-     *
-     * @return string
+     * @inheritDoc
      */
     public function db_join()
     {
@@ -54,21 +54,14 @@ final class CASConditionPlaceholder extends WPCAModule_Base
     }
 
     /**
-     * @since 3.9
-     * @param int $post_id
-     *
-     * @return void
+     * @inheritDoc
      */
     public function save_data($post_id)
     {
     }
 
     /**
-     * @since 3.9
-     * @param array $group_data
-     * @param int $post_id
-     *
-     * @return array
+     * @inheritDoc
      */
     public function get_group_data($group_data, $post_id)
     {
@@ -76,10 +69,7 @@ final class CASConditionPlaceholder extends WPCAModule_Base
     }
 
     /**
-     * @since 3.9
-     * @param array $args
-     *
-     * @return void
+     * @inheritDoc
      */
     protected function _get_content($args = [])
     {
@@ -87,9 +77,7 @@ final class CASConditionPlaceholder extends WPCAModule_Base
     }
 
     /**
-     * @since 1.0
-     *
-     * @return boolean
+     * @inheritDoc
      */
     public function in_context()
     {
@@ -97,9 +85,7 @@ final class CASConditionPlaceholder extends WPCAModule_Base
     }
 
     /**
-     * @since 3.9
-     *
-     * @return array
+     * @inheritDoc
      */
     public function get_context_data()
     {
@@ -107,7 +93,7 @@ final class CASConditionPlaceholder extends WPCAModule_Base
     }
 
     /**
-     * @since 3.9
+     * @inheritDoc
      */
     public function __destruct()
     {

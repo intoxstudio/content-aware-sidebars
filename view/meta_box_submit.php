@@ -39,7 +39,7 @@ if (post_type_supports($post->post_type, 'revisions')) {
         <div class="wpca-pull-right">
         <a class="js-nav-link" href="#top#section-schedule"><?php _ex('Schedule', 'verb', 'content-aware-sidebars'); ?></a>
         <label class="cae-toggle">
-            <input class="js-cas-status" type="checkbox" name="post_status" value="<?php echo CAS_App::STATUS_ACTIVE; ?>" <?php checked(in_array($post->post_status, [CAS_App::STATUS_ACTIVE,'auto-draft']), true); ?> />
+            <input class="js-cas-status" type="checkbox" name="post_status" value="<?php echo CAS_App::STATUS_ACTIVE; ?>" <?php checked(in_array($post->post_status, [CAS_App::STATUS_ACTIVE,'auto-draft'])); ?> />
             <div class="cae-toggle-bar"></div>
         </label>
     </div>

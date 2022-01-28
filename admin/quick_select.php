@@ -288,8 +288,7 @@ class CAS_Quick_Select
             __('Sidebars - Quick Select', 'content-aware-sidebars'),
             [$view, 'render'],
             $post->post_type,
-            'side',
-            'default'
+            'side'
         );
     }
 
@@ -330,8 +329,7 @@ class CAS_Quick_Select
             'select2',
             plugins_url('lib/wp-content-aware-engine/assets/js/select2.min.js', dirname(__FILE__)),
             ['jquery'],
-            '4.0.3',
-            false
+            '4.0.3'
         );
         wp_register_script('cas/sidebars/suggest', plugins_url('assets/js/suggest-sidebars.min.js', dirname(__FILE__)), ['select2'], CAS_App::PLUGIN_VERSION, true);
     }

@@ -10,7 +10,6 @@ defined('ABSPATH') || exit;
 
 final class CAS_Sidebar_Manager
 {
-
     /**
      * Sidebar metadata
      * @var WPCAObjectManager
@@ -218,7 +217,7 @@ final class CAS_Sidebar_Manager
 
             // Remove ability to set self to host
             if (get_the_ID()) {
-                unset($sidebar_list[CAS_App::SIDEBAR_PREFIX.get_the_ID()]);
+                unset($sidebar_list[CAS_App::SIDEBAR_PREFIX . get_the_ID()]);
             }
             asort($sidebar_list);
             $this->metadata->get('host')->set_input_list($sidebar_list);
@@ -227,9 +226,9 @@ final class CAS_Sidebar_Manager
                 $pro_label = ' (Pro)';
                 $actions = $this->metadata->get('handle');
                 $action_list = $actions->get_input_list();
-                $action_list['__infuse'] = __('Infuse', 'content-aware-sidebars').$pro_label;
-                $action_list['__after_paragraph'] = __('After Paragraph', 'content-aware-sidebars').$pro_label;
-                $action_list['__totem'] = __('Totem - Floating Button', 'content-aware-sidebars').$pro_label;
+                $action_list['__infuse'] = __('Infuse', 'content-aware-sidebars') . $pro_label;
+                $action_list['__after_paragraph'] = __('After Paragraph', 'content-aware-sidebars') . $pro_label;
+                $action_list['__totem'] = __('Totem - Floating Button', 'content-aware-sidebars') . $pro_label;
                 $actions->set_input_list($action_list);
             }
 
@@ -312,10 +311,10 @@ final class CAS_Sidebar_Manager
 
         //Register sidebars to add them to the list
         foreach ($sidebars as $post) {
-            $this->sidebars[CAS_App::SIDEBAR_PREFIX.$post->ID] = $post;
+            $this->sidebars[CAS_App::SIDEBAR_PREFIX . $post->ID] = $post;
             register_sidebar([
                 'name'           => $post->post_title ? $post->post_title : __('(no title)'),
-                'id'             => CAS_App::SIDEBAR_PREFIX.$post->ID,
+                'id'             => CAS_App::SIDEBAR_PREFIX . $post->ID,
                 'before_sidebar' => '',
                 'after_sidebar'  => ''
             ]);
@@ -397,21 +396,20 @@ final class CAS_Sidebar_Manager
                 'title',
                 'sidebar'
             ] as $pos) {
-                if (isset($html[$pos],$html[$pos.'_class'])) {
+                if (isset($html[$pos],$html[$pos . '_class'])) {
                     $e = esc_html($html[$pos]);
-                    $class = esc_html($html[$pos.'_class']);
+                    $class = esc_html($html[$pos . '_class']);
                     $id = '';
-                    if (isset($html[$pos.'_id'])) {
-                        $id = ' id="'.$html[$pos.'_id'].'"';
+                    if (isset($html[$pos . '_id'])) {
+                        $id = ' id="' . $html[$pos . '_id'] . '"';
                     }
-                    $styles['before_'.$pos] = '<'.$e.$id.' class="'.$class.'">';
-                    $styles['after_'.$pos] = "</$e>";
+                    $styles['before_' . $pos] = '<' . $e . $id . ' class="' . $class . '">';
+                    $styles['after_' . $pos] = "</$e>";
                 }
             }
             $wp_registered_sidebars[$i] = $styles;
         }
     }
-    
 
     /**
      * Replace or merge a sidebar with content aware sidebars.
@@ -421,7 +419,6 @@ final class CAS_Sidebar_Manager
      */
     public function replace_sidebar($sidebars_widgets)
     {
-
         //customizer requires sidebars_widgets filter. cache for repeat calls
         if ($this->replaced_sidebars) {
             return $this->replaced_sidebars;
@@ -449,12 +446,11 @@ final class CAS_Sidebar_Manager
                 $hosts = $metadata->get('host')->get_data($post->ID, false, false);
 
                 foreach ($hosts as $host) {
-
                     // Check if host exist
                     if (!isset($sidebars_widgets[$host])) {
                         continue;
                     }
-                    
+
                     $this->override_sidebar_styles($host);
 
                     // Sidebar might not have any widgets. Get it anyway!
@@ -503,7 +499,7 @@ final class CAS_Sidebar_Manager
                     if (!isset($sidebars_widgets[$host])) {
                         continue;
                     }
-                    
+
                     $this->override_sidebar_styles($host);
                 }
             }
@@ -586,7 +582,7 @@ final class CAS_Sidebar_Manager
             'id' => 0,
         ], $atts);
 
-        $id = CAS_App::SIDEBAR_PREFIX.esc_attr($a['id']);
+        $id = CAS_App::SIDEBAR_PREFIX . esc_attr($a['id']);
 
         if (!isset($this->sidebars[$id]) || $this->sidebars[$id]->post_status != CAS_App::STATUS_ACTIVE) {
             return $content;
@@ -611,7 +607,6 @@ final class CAS_Sidebar_Manager
      *
      * @since  3.7
      * @param  string  $i
-     * @param  array   $styles
      * @return array
      */
     public function get_sidebar_styles($i)
@@ -625,7 +620,7 @@ final class CAS_Sidebar_Manager
                 if ($style) {
                     $styles = array_merge($styles, $style);
                     $styles['widget_id'] = '%1$s';
-                    $styles['sidebar_id'] = CAS_App::SIDEBAR_PREFIX.$this->sidebars[$i]->ID;
+                    $styles['sidebar_id'] = CAS_App::SIDEBAR_PREFIX . $this->sidebars[$i]->ID;
                 }
             }
             $i = isset($this->replace_map[$i]) ? $this->replace_map[$i] : false;
@@ -746,13 +741,12 @@ final class CAS_Sidebar_Manager
         return $retval;
     }
 
-
     /**
      * Runs is_active_sidebar for sidebars
      * Widget management in Theme Customizer
      * expects this
      *
-     * @global type $wp_customize
+     * @global WP_Customize_Manager $wp_customize
      * @since  2.2
      * @return void
      */
@@ -787,12 +781,12 @@ final class CAS_Sidebar_Manager
             if ($context == 'display') {
                 $sep = '&amp;';
             }
-            $link = admin_url('admin.php?page=wpcas-edit'.$sep.'sidebar_id='.$post_id);
+            $link = admin_url('admin.php?page=wpcas-edit' . $sep . 'sidebar_id=' . $post_id);
 
             //load page in all languages for wpml, polylang,
             //ensures post type conditions are not filtered
             if (defined('ICL_SITEPRESS_VERSION') || defined('POLYLANG_VERSION')) {
-                $link .= $sep.'lang=all';
+                $link .= $sep . 'lang=all';
             }
         }
         return $link;
@@ -817,9 +811,9 @@ final class CAS_Sidebar_Manager
             $link = add_query_arg(
                 'action',
                 $action,
-                admin_url('admin.php?page=wpcas-edit&sidebar_id='.$post_id)
+                admin_url('admin.php?page=wpcas-edit&sidebar_id=' . $post_id)
             );
-            $link = wp_nonce_url($link, "$action-post_{$post_id}");
+            $link = wp_nonce_url($link, "$action-post_$post_id");
         }
         return $link;
     }

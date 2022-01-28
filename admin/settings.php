@@ -22,15 +22,14 @@ class CAS_Admin_Settings extends CAS_Admin
      */
     public function get_screen()
     {
-        $screen = add_submenu_page(
-            CAS_App::BASE_SCREEN.'-bogus', //dont add menu item
+        return add_submenu_page(
+            CAS_App::BASE_SCREEN . '-bogus', //dont add menu item
             null,
             null,
             $this->authorize_user(),
-            CAS_App::BASE_SCREEN.'-settings',
+            CAS_App::BASE_SCREEN . '-settings',
             [$this,'render_screen']
         );
-        return $screen;
     }
 
     /**
@@ -50,9 +49,6 @@ class CAS_Admin_Settings extends CAS_Admin
         $this->process_actions();
     }
 
-    /**
-     * @inheritDoc
-     */
     public function process_actions()
     {
         $action = isset($_REQUEST['action']) ? $_REQUEST['action'] : '';
@@ -62,7 +58,7 @@ class CAS_Admin_Settings extends CAS_Admin
         }
 
         check_admin_referer($action);
-        
+
         $sendback = wp_get_referer();
 
         switch ($action) {
@@ -77,9 +73,6 @@ class CAS_Admin_Settings extends CAS_Admin
         exit();
     }
 
-    /**
-     * @inheritDoc
-     */
     public function render_screen()
     {
     }

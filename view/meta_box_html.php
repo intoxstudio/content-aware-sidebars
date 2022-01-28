@@ -43,13 +43,13 @@ $widget_title_opts = [
         <th scope="row"><?php _e('Sidebar'); ?></th>
         <td>
             <label class="cae-toggle">
-                <input class="js-cas-html" type="checkbox" <?php checked(isset($data['sidebar'],$data['sidebar_class']), true); ?> data-target=".js-cas-html-sidebar" />
+                <input class="js-cas-html" type="checkbox" <?php checked(isset($data['sidebar'],$data['sidebar_class'])); ?>data-target=".js-cas-html-sidebar" />
                 <div class="cae-toggle-bar"></div>
             </label>
             <code style="display:inline-block;">
                 <<select style="width:80px;" name="html[sidebar]" class="js-cas-html-sidebar">
                 <?php foreach ($sidebar_opts as $k => $v) {
-    echo '<option value="'.$k.'"'.selected($data_default['sidebar'], $k, false).'>'.$v.'</option>';
+    echo '<option value="' . $k . '"' . selected($data_default['sidebar'], $k, false) . '>' . $v . '</option>';
 }
                 ?>
                 </select>
@@ -61,13 +61,13 @@ $widget_title_opts = [
         <th scope="row"><?php _e('Widget'); ?></th>
         <td>
             <label class="cae-toggle">
-                <input class="js-cas-html" type="checkbox" <?php checked(isset($data['widget'],$data['widget_class']), true); ?> data-target=".js-cas-html-widget" />
+                <input class="js-cas-html" type="checkbox" <?php checked(isset($data['widget'],$data['widget_class'])); ?>data-target=".js-cas-html-widget" />
                 <div class="cae-toggle-bar"></div>
             </label>
             <code style="display:inline-block;">
                 <<select style="width:80px;" name="html[widget]" class="js-cas-html-widget">
                 <?php foreach ($widget_opts as $k => $v) {
-                    echo '<option value="'.$k.'"'.selected($data_default['widget'], $k, false).'>'.$v.'</option>';
+                    echo '<option value="' . $k . '"' . selected($data_default['widget'], $k, false) . '>' . $v . '</option>';
                 }
                 ?>
                 </select>
@@ -79,13 +79,13 @@ $widget_title_opts = [
         <th scope="row"><?php _e('Widget Title'); ?></th>
         <td>
             <label class="cae-toggle">
-                <input class="js-cas-html" type="checkbox" <?php checked(isset($data['title'],$data['title_class']), true); ?> data-target=".js-cas-html-widget-title" />
+                <input class="js-cas-html" type="checkbox" <?php checked(isset($data['title'],$data['title_class'])); ?>data-target=".js-cas-html-widget-title" />
                 <div class="cae-toggle-bar"></div>
             </label>
             <code style="display:inline-block;">
                 <<select style="width:80px;" name="html[title]" class="js-cas-html-widget-title">
                 <?php foreach ($widget_title_opts as $k => $v) {
-                    echo '<option value="'.$k.'"'.selected($data_default['title'], $k, false).'>'.$v.'</option>';
+                    echo '<option value="' . $k . '"' . selected($data_default['title'], $k, false) . '>' . $v . '</option>';
                 }
                 ?>
                 </select>

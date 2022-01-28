@@ -10,7 +10,6 @@ defined('ABSPATH') || exit;
 
 class CAS_Admin_Screen_Widgets extends CAS_Admin
 {
-
     /**
      * Get current screen
      *
@@ -69,7 +68,7 @@ class CAS_Admin_Screen_Widgets extends CAS_Admin
                             $data[] = $list[$host];
                         }
                     }
-                    $args['description'] .= ': ' .  implode(', ', $data);
+                    $args['description'] .= ': ' . implode(', ', $data);
                 }
             }
 
@@ -103,7 +102,7 @@ class CAS_Admin_Screen_Widgets extends CAS_Admin
 
         $sidebar_id = $_POST['sidebar_id'];
 
-        if (!wp_verify_nonce($_POST['token'], CAS_Admin::NONCE_PREFIX_1CLICK.$sidebar_id)) {
+        if (!wp_verify_nonce($_POST['token'], CAS_Admin::NONCE_PREFIX_1CLICK . $sidebar_id)) {
             wp_send_json_error('403 Forbidden');
         }
 
@@ -111,7 +110,6 @@ class CAS_Admin_Screen_Widgets extends CAS_Admin
             wp_send_json_error('401 Unauthorized');
         }
 
-        $data = [];
         $status = filter_var($_POST['status'], FILTER_VALIDATE_BOOLEAN);
         if ($status) {
             $data = [
@@ -166,8 +164,8 @@ class CAS_Admin_Screen_Widgets extends CAS_Admin
         $sidebars = CAS_App::instance()->manager()->sidebars;
         if (isset($sidebars[$index])) {
             $sidebar = $sidebars[$index];
-            $link = admin_url('post.php?post='.$sidebar->ID);
-            $edit_link = admin_url('admin.php?page=wpcas-edit&sidebar_id='.$sidebar->ID);
+            $link = admin_url('post.php?post=' . $sidebar->ID);
+            $edit_link = admin_url('admin.php?page=wpcas-edit&sidebar_id=' . $sidebar->ID);
             $more_link = esc_url('https://dev.institute/wordpress-sidebars/pricing/?utm_source=plugin&utm_medium=popup&utm_content=widget-revisions&utm_campaign=cas');
 
             switch ($sidebar->post_status) {
@@ -183,17 +181,17 @@ class CAS_Admin_Screen_Widgets extends CAS_Admin
 
             echo '<div class="cas-settings">';
             echo '<div class="sidebar-status">';
-            echo '<input type="checkbox" class="sidebar-status-input sidebar-status-'.$sidebar->post_status.'"
-                id="cas-status-'.$sidebar->ID.'" data-nonce="'.wp_create_nonce(CAS_Admin::NONCE_PREFIX_1CLICK.$sidebar->ID).'"
-                value="'.$sidebar->ID.'" '.checked($sidebar->post_status, CAS_App::STATUS_ACTIVE, false).'>';
-            echo '<label title="'.$status.'" class="sidebar-status-label" for="cas-status-'.$sidebar->ID.'">';
+            echo '<input type="checkbox" class="sidebar-status-input sidebar-status-' . $sidebar->post_status . '"
+                id="cas-status-' . $sidebar->ID . '" data-nonce="' . wp_create_nonce(CAS_Admin::NONCE_PREFIX_1CLICK . $sidebar->ID) . '"
+                value="' . $sidebar->ID . '" ' . checked($sidebar->post_status, CAS_App::STATUS_ACTIVE, false) . '>';
+            echo '<label title="' . $status . '" class="sidebar-status-label" for="cas-status-' . $sidebar->ID . '">';
             echo '</label>';
             echo '</div>';
-            echo '<a title="'.esc_attr__('Widget Revisions', 'content-aware-sidebars').'" class="js-cas-pro-notice cas-sidebar-link dashicons dashicons-backup" data-url="'.$more_link.'" href="'.add_query_arg('action', 'cas-revisions', $link).'"></a>';
-            echo '<a title="'.esc_attr__('Sidebar Conditions', 'content-aware-sidebars').'" class="dashicons dashicons-visibility cas-sidebar-link" href="'.$edit_link.'"></a>';
-            echo '<a title="'.esc_attr__('Schedule Sidebar', 'content-aware-sidebars').'" class="dashicons dashicons-calendar cas-sidebar-link" href="'.$edit_link.'#top#section-schedule"></a>';
-            echo '<a title="'.esc_attr__('Design Sidebar', 'content-aware-sidebars').'" class="dashicons dashicons-admin-appearance cas-sidebar-link" href="'.$edit_link.'#top#section-design"></a>';
-            echo '<a title="'.esc_attr__('Edit Sidebar', 'content-aware-sidebars').'" class="dashicons dashicons-admin-generic cas-sidebar-link" href="'.$edit_link.'"></a>';
+            echo '<a title="' . esc_attr__('Widget Revisions', 'content-aware-sidebars') . '" class="js-cas-pro-notice cas-sidebar-link dashicons dashicons-backup" data-url="' . $more_link . '" href="' . add_query_arg('action', 'cas-revisions', $link) . '"></a>';
+            echo '<a title="' . esc_attr__('Sidebar Conditions', 'content-aware-sidebars') . '" class="dashicons dashicons-visibility cas-sidebar-link" href="' . $edit_link . '"></a>';
+            echo '<a title="' . esc_attr__('Schedule Sidebar', 'content-aware-sidebars') . '" class="dashicons dashicons-calendar cas-sidebar-link" href="' . $edit_link . '#top#section-schedule"></a>';
+            echo '<a title="' . esc_attr__('Design Sidebar', 'content-aware-sidebars') . '" class="dashicons dashicons-admin-appearance cas-sidebar-link" href="' . $edit_link . '#top#section-design"></a>';
+            echo '<a title="' . esc_attr__('Edit Sidebar', 'content-aware-sidebars') . '" class="dashicons dashicons-admin-generic cas-sidebar-link" href="' . $edit_link . '"></a>';
             echo '</div>';
         }
     }

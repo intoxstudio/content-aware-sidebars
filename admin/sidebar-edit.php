@@ -10,7 +10,6 @@ defined('ABSPATH') || exit;
 
 final class CAS_Sidebar_Edit extends CAS_Admin
 {
-
     /**
      * Intro tour manager
      * @var WP_Pointer_Tour
@@ -26,10 +25,10 @@ final class CAS_Sidebar_Edit extends CAS_Admin
      */
     public function admin_hooks()
     {
-        $this->_tour_manager = new WP_Pointer_Tour(CAS_App::META_PREFIX.'cas_tour');
+        $this->_tour_manager = new WP_Pointer_Tour(CAS_App::META_PREFIX . 'cas_tour');
 
         $this->add_action('delete_post', 'remove_sidebar_widgets');
-        $this->add_action('save_post_'.CAS_App::TYPE_SIDEBAR, 'save_post', 10, 2);
+        $this->add_action('save_post_' . CAS_App::TYPE_SIDEBAR, 'save_post', 10, 2);
 
         $this->add_filter('wp_insert_post_data', 'add_duplicate_title_suffix', 99, 2);
 
@@ -52,7 +51,7 @@ final class CAS_Sidebar_Edit extends CAS_Admin
             $post_type_object->labels->add_new_item,
             $post_type_object->labels->add_new,
             $post_type_object->cap->edit_posts,
-            CAS_App::BASE_SCREEN.'-edit',
+            CAS_App::BASE_SCREEN . '-edit',
             [$this,'render_screen']
         );
     }
@@ -90,24 +89,24 @@ final class CAS_Sidebar_Edit extends CAS_Admin
 
             $post = get_post($post_id, OBJECT, 'edit');
 
-            if (! $post) {
+            if (!$post) {
                 wp_die(__('The sidebar no longer exists.'));
             }
-            if (! current_user_can($post_type_object->cap->edit_post, $post_id)) {
+            if (!current_user_can($post_type_object->cap->edit_post, $post_id)) {
                 wp_die(__('You are not allowed to edit this sidebar.'));
             }
             if ('trash' == $post->post_status) {
                 wp_die(__('You cannot edit this sidebar because it is in the Trash. Please restore it and try again.'));
             }
 
-            if (! empty($_GET['get-post-lock'])) {
+            if (!empty($_GET['get-post-lock'])) {
                 check_admin_referer('lock-post_' . $post_id);
                 wp_set_post_lock($post_id);
                 wp_redirect(get_edit_post_link($post_id, 'url'));
                 exit();
             }
 
-            if (! wp_check_post_lock($post->ID)) {
+            if (!wp_check_post_lock($post->ID)) {
                 $active_post_lock = wp_set_post_lock($post->ID);
             }
 
@@ -117,7 +116,7 @@ final class CAS_Sidebar_Edit extends CAS_Admin
          * New Mode
          */
         } else {
-            if (! (current_user_can($post_type_object->cap->edit_posts) || current_user_can($post_type_object->cap->create_posts))) {
+            if (!(current_user_can($post_type_object->cap->edit_posts) || current_user_can($post_type_object->cap->create_posts))) {
                 wp_die(
                     '<p>' . __('You are not allowed to create sidebars.', 'content-aware-sidebars') . '</p>',
                     403
@@ -148,25 +147,25 @@ final class CAS_Sidebar_Edit extends CAS_Admin
         $type = $types->get(CAS_App::TYPE_SIDEBAR);
         $path = plugin_dir_path(dirname(__FILE__));
 
-        require($path.'conditions/placeholder.php');
+        require $path . 'conditions/placeholder.php';
 
         if (!WPCACore::get_option(CAS_App::TYPE_SIDEBAR, 'legacy.date_module', false)) {
-            $module = new CASConditionPlaceholder('cas_date', __('Dates', 'content-aware-sidebars').' '.$pro_label);
+            $module = new CASConditionPlaceholder('cas_date', __('Dates', 'content-aware-sidebars') . ' ' . $pro_label);
             $type->add($module, 'cas_date');
         }
 
-        $module = new CASConditionPlaceholder('cas_url', __('URLs', 'content-aware-sidebars').' '.$pro_label);
+        $module = new CASConditionPlaceholder('cas_url', __('URLs', 'content-aware-sidebars') . ' ' . $pro_label);
         $type->add($module, 'cas_url');
-        $module = new CASConditionPlaceholder('cas_ref_url', __('Referrer URLs', 'content-aware-sidebars').' '.$pro_label);
+        $module = new CASConditionPlaceholder('cas_ref_url', __('Referrer URLs', 'content-aware-sidebars') . ' ' . $pro_label);
         $type->add($module, 'cas_ref_url');
 
         if (function_exists('bp_is_active')) {
-            $module = new CASConditionPlaceholder('cas_bbp', __('BuddyPress Groups', 'content-aware-sidebars').' '.$pro_label, '', '', 'plugins');
+            $module = new CASConditionPlaceholder('cas_bbp', __('BuddyPress Groups', 'content-aware-sidebars') . ' ' . $pro_label, '', '', 'plugins');
             $type->add($module, 'cas_bbp');
         }
 
         if (defined('ACF')) {
-            $module = new CASConditionPlaceholder('cas_acf', __('Advanced Custom Fields', 'content-aware-sidebars').' '.$pro_label, '', '', 'plugins');
+            $module = new CASConditionPlaceholder('cas_acf', __('Advanced Custom Fields', 'content-aware-sidebars') . ' ' . $pro_label, '', '', 'plugins');
             $type->add($module, 'cas_acf');
         }
     }
@@ -196,7 +195,7 @@ final class CAS_Sidebar_Edit extends CAS_Admin
             }
 
             $post = get_post($post_id);
-            if (! $post) {
+            if (!$post) {
                 wp_die(__('The sidebar no longer exists.', 'content-aware-sidebars'));
             }
 
@@ -243,7 +242,7 @@ final class CAS_Sidebar_Edit extends CAS_Admin
                     exit();
                 case 'trash':
 
-                    if (! current_user_can('delete_post', $post_id)) {
+                    if (!current_user_can('delete_post', $post_id)) {
                         wp_die(__('You are not allowed to move this sidebar to the Trash.', 'content-aware-sidebars'));
                     }
 
@@ -252,7 +251,7 @@ final class CAS_Sidebar_Edit extends CAS_Admin
                         wp_die(sprintf(__('You cannot move this sidebar to the Trash. %s is currently editing.', 'content-aware-sidebars'), $user->display_name));
                     }
 
-                    if (! wp_trash_post($post_id)) {
+                    if (!wp_trash_post($post_id)) {
                         wp_die(__('Error in moving to Trash.'));
                     }
 
@@ -269,11 +268,11 @@ final class CAS_Sidebar_Edit extends CAS_Admin
                     exit();
                 case 'untrash':
 
-                    if (! current_user_can('delete_post', $post_id)) {
+                    if (!current_user_can('delete_post', $post_id)) {
                         wp_die(__('You are not allowed to restore this sidebar from the Trash.', 'content-aware-sidebars'));
                     }
 
-                    if (! wp_untrash_post($post_id)) {
+                    if (!wp_untrash_post($post_id)) {
                         wp_die(__('Error in restoring from Trash.'));
                     }
 
@@ -281,11 +280,11 @@ final class CAS_Sidebar_Edit extends CAS_Admin
                     exit();
                 case 'delete':
 
-                    if (! current_user_can('delete_post', $post_id)) {
+                    if (!current_user_can('delete_post', $post_id)) {
                         wp_die(__('You are not allowed to delete this sidebar.', 'content-aware-sidebars'));
                     }
 
-                    if (! wp_delete_post($post_id, true)) {
+                    if (!wp_delete_post($post_id, true)) {
                         wp_die(__('Error in deleting.'));
                     }
 
@@ -331,10 +330,10 @@ final class CAS_Sidebar_Edit extends CAS_Admin
 
         echo '<div class="wrap">';
         echo '<h1>';
-        echo '<a href="'.admin_url('admin.php?page=wpcas').'">'.$post_type_object->labels->all_items.'</a> &raquo; ';
+        echo '<a href="' . admin_url('admin.php?page=wpcas') . '">' . $post_type_object->labels->all_items . '</a> &raquo; ';
         echo esc_html($title);
         if (isset($_REQUEST['sidebar_id']) && current_user_can('edit_theme_options')) {
-            echo ' <a href="' . esc_url(admin_url('widgets.php#'.CAS_App::SIDEBAR_PREFIX.$post->ID)) . '" class="page-title-action add-new-h2">' . __('Manage Widgets', 'content-aware-sidebars') . '</a>';
+            echo ' <a href="' . esc_url(admin_url('widgets.php#' . CAS_App::SIDEBAR_PREFIX . $post->ID)) . '" class="page-title-action add-new-h2">' . __('Manage Widgets', 'content-aware-sidebars') . '</a>';
         }
 
         echo '</h1>';
@@ -344,15 +343,15 @@ final class CAS_Sidebar_Edit extends CAS_Admin
         echo '<form name="post" action="admin.php?page=wpcas-edit" method="post" id="post">';
         $referer = wp_get_referer();
         wp_nonce_field('update-post_' . $post->ID);
-        echo '<input type="hidden" id="user-id" name="user_ID" value="'.(int)get_current_user_id().'" />';
+        echo '<input type="hidden" id="user-id" name="user_ID" value="' . get_current_user_id() . '" />';
         echo '<input type="hidden" id="_cas_section" name="_cas_section" value="" />';
         echo '<input type="hidden" id="hiddenaction" name="action" value="update" />';
-        echo '<input type="hidden" id="post_author" name="post_author" value="'.esc_attr($post->post_author).'" />';
-        echo '<input type="hidden" id="original_post_status" name="original_post_status" value="'.esc_attr($post->post_status).'" />';
-        echo '<input type="hidden" id="referredby" name="referredby" value="'.($referer ? esc_url($referer) : '').'" />';
-        echo '<input type="hidden" id="post_ID" name="sidebar_id" value="'.esc_attr($post->ID).'" />';
-        if (! empty($active_post_lock)) {
-            echo '<input type="hidden" id="active_post_lock" value="'.esc_attr(implode(':', $active_post_lock)).'" />';
+        echo '<input type="hidden" id="post_author" name="post_author" value="' . esc_attr($post->post_author) . '" />';
+        echo '<input type="hidden" id="original_post_status" name="original_post_status" value="' . esc_attr($post->post_status) . '" />';
+        echo '<input type="hidden" id="referredby" name="referredby" value="' . ($referer ? esc_url($referer) : '') . '" />';
+        echo '<input type="hidden" id="post_ID" name="sidebar_id" value="' . esc_attr($post->ID) . '" />';
+        if (!empty($active_post_lock)) {
+            echo '<input type="hidden" id="active_post_lock" value="' . esc_attr(implode(':', $active_post_lock)) . '" />';
         }
         if (get_post_status($post) != CAS_App::STATUS_INACTIVE) {
             wp_original_referer_field(true, 'previous');
@@ -373,8 +372,8 @@ final class CAS_Sidebar_Edit extends CAS_Admin
         echo '<div id="post-body-content">';
         echo '<div id="titlediv">';
         echo '<div id="titlewrap">';
-        echo '<label class="screen-reader-text" id="title-prompt-text" for="title">'.__('Enter title here').'</label>';
-        echo '<input type="text" name="post_title" size="30" value="'.esc_attr($post->post_title).'" id="title" spellcheck="true" autocomplete="off" />';
+        echo '<label class="screen-reader-text" id="title-prompt-text" for="title">' . __('Enter title here') . '</label>';
+        echo '<input type="text" name="post_title" size="30" value="' . esc_attr($post->post_title) . '" id="title" spellcheck="true" autocomplete="off" />';
         echo '</div></div>';
         $this->render_section_nav($nav_tabs);
         echo '</div>';
@@ -395,7 +394,7 @@ final class CAS_Sidebar_Edit extends CAS_Admin
     {
         echo '<h2 class="nav-tab-wrapper js-cas-tabs hide-if-no-js " style="padding-bottom:0;">';
         foreach ($tabs as $id => $label) {
-            echo '<a class="js-nav-link nav-tab nav-tab-section-'.$id.'" href="#top#section-'.$id.'">'.$label.'</a>';
+            echo '<a class="js-nav-link nav-tab nav-tab-section-' . $id . '" href="#top#section-' . $id . '">' . $label . '</a>';
         }
         echo '</h2>';
     }
@@ -412,17 +411,17 @@ final class CAS_Sidebar_Edit extends CAS_Admin
     public function render_sections($tabs, $post, $post_type)
     {
         echo '<div id="postbox-container-1" class="postbox-container">';
-        do_meta_boxes(CAS_App::BASE_SCREEN.'-edit', 'side', $post);
+        do_meta_boxes(CAS_App::BASE_SCREEN . '-edit', 'side', $post);
         echo '</div>';
         echo '<div id="postbox-container-2" class="postbox-container">';
         foreach ($tabs as $id => $label) {
-            $name = 'section-'.$id;
-            echo '<div id="'.$name.'" class="cas-section">';
-            do_meta_boxes(CAS_App::BASE_SCREEN.'-edit', $name, $post);
+            $name = 'section-' . $id;
+            echo '<div id="' . $name . '" class="cas-section">';
+            do_meta_boxes(CAS_App::BASE_SCREEN . '-edit', $name, $post);
             echo '</div>';
         }
         //boxes across sections
-        do_meta_boxes(CAS_App::BASE_SCREEN.'-edit', 'normal', $post);
+        do_meta_boxes(CAS_App::BASE_SCREEN . '-edit', 'normal', $post);
         echo '</div>';
     }
 
@@ -430,16 +429,14 @@ final class CAS_Sidebar_Edit extends CAS_Admin
      * Update sidebar post type
      *
      * @since  3.4
-     * @return int
+     * @return int|WP_Error
      */
     public function update_sidebar_type()
     {
-        global $wpdb;
-
         $post_ID = (int) $_POST['sidebar_id'];
         $post = get_post($post_ID);
         $post_data['post_type'] = CAS_App::TYPE_SIDEBAR;
-        $post_data['ID'] = (int) $post_ID;
+        $post_data['ID'] = $post_ID;
         $post_data['post_title'] = $_POST['post_title'];
         $post_data['comment_status'] = 'closed';
         $post_data['ping_status'] = 'closed';
@@ -450,10 +447,10 @@ final class CAS_Sidebar_Edit extends CAS_Admin
 
         if (!current_user_can('edit_post', $post_ID)) {
             wp_die(__('You are not allowed to edit this sidebar.', 'content-aware-sidebars'));
-        } elseif (! current_user_can($ptype->cap->create_posts)) {
+        } elseif (!current_user_can($ptype->cap->create_posts)) {
             return new WP_Error('edit_others_posts', __('You are not allowed to create sidebars.', 'content-aware-sidebars'));
         } elseif ($post_data['post_author'] != $_POST['post_author']
-             && ! current_user_can($ptype->cap->edit_others_posts)) {
+             && !current_user_can($ptype->cap->edit_others_posts)) {
             return new WP_Error('edit_others_posts', __('You are not allowed to edit this sidebar.', 'content-aware-sidebars'));
         }
 
@@ -521,9 +518,9 @@ final class CAS_Sidebar_Edit extends CAS_Admin
             //Requires to be in GMT
             $utime = get_gmt_from_date($time, 'U');
             wp_schedule_single_event($utime, $name, [$post_id]);
-            update_post_meta($post_id, CAS_App::META_PREFIX.'deactivate_time', $time);
+            update_post_meta($post_id, CAS_App::META_PREFIX . 'deactivate_time', $time);
         } else {
-            delete_post_meta($post_id, CAS_App::META_PREFIX.'deactivate_time');
+            delete_post_meta($post_id, CAS_App::META_PREFIX . 'deactivate_time');
         }
     }
 
@@ -542,21 +539,21 @@ final class CAS_Sidebar_Edit extends CAS_Admin
             return;
         }
 
-        $manage_widgets = sprintf(' <a href="%1$s">%2$s</a>', esc_url(admin_url('widgets.php#'.CAS_App::SIDEBAR_PREFIX.$post->ID)), __('Manage widgets', 'content-aware-sidebars'));
+        $manage_widgets = sprintf(' <a href="%1$s">%2$s</a>', esc_url(admin_url('widgets.php#' . CAS_App::SIDEBAR_PREFIX . $post->ID)), __('Manage widgets', 'content-aware-sidebars'));
         $messages = [
-            1 => __('Sidebar updated.', 'content-aware-sidebars').$manage_widgets,
-            6 => __('Sidebar activated.', 'content-aware-sidebars').$manage_widgets,
+            1 => __('Sidebar updated.', 'content-aware-sidebars') . $manage_widgets,
+            6 => __('Sidebar activated.', 'content-aware-sidebars') . $manage_widgets,
             9 => sprintf(
                 __('Sidebar scheduled for: <strong>%1$s</strong>.', 'content-aware-sidebars'),
                 // translators: Publish box date format, see http://php.net/date
                 date_i18n(__('M j, Y @ G:i'), strtotime($post->post_date))
-            ).$manage_widgets,
-            10 => __('Sidebar deactivated.', 'content-aware-sidebars').$manage_widgets,
+            ) . $manage_widgets,
+            10 => __('Sidebar deactivated.', 'content-aware-sidebars') . $manage_widgets,
         ];
         $messages = apply_filters('cas/admin/messages', $messages, $post);
 
         if (isset($messages[$message_number])) {
-            echo '<div id="message" class="updated notice notice-success is-dismissible"><p>'.$messages[$message_number].'</p></div>';
+            echo '<div id="message" class="updated notice notice-success is-dismissible"><p>' . $messages[$message_number] . '</p></div>';
         }
     }
 
@@ -577,8 +574,8 @@ final class CAS_Sidebar_Edit extends CAS_Admin
                 'content' => sprintf(
                     '<h3>%s</h3>%s',
                     __('Get Started in 60 Seconds', 'content-aware-sidebars'),
-                    '<p>'.__('Welcome to Content Aware Sidebars!', 'content-aware-sidebars').'</p>'.
-                    '<p>'.__('This interactive guide will show you just how easy it is to create a widget area and control where, how, and when to display it.', 'content-aware-sidebars').'</p>'
+                    '<p>' . __('Welcome to Content Aware Sidebars!', 'content-aware-sidebars') . '</p>' .
+                    '<p>' . __('This interactive guide will show you just how easy it is to create a widget area and control where, how, and when to display it.', 'content-aware-sidebars') . '</p>'
                 ),
                 'ref_id'   => '#titlediv',
                 'position' => [
@@ -592,9 +589,9 @@ final class CAS_Sidebar_Edit extends CAS_Admin
             [
                 'content' => sprintf(
                     '<h3>%s</h3>%s',
-                    '1/5 '.__('Where to display', 'content-aware-sidebars'),
-                    '<p>'.__('Choose from the extensive Display Conditions with built-in support for other plugins. You will never be asked to enter widget logic PHP code!', 'content-aware-sidebars').'</p>'.
-                    '<p>'.__('Select anything to continue the tour. You can change it later.', 'content-aware-sidebars').'</p>'
+                    '1/5 ' . __('Where to display', 'content-aware-sidebars'),
+                    '<p>' . __('Choose from the extensive Display Conditions with built-in support for other plugins. You will never be asked to enter widget logic PHP code!', 'content-aware-sidebars') . '</p>' .
+                    '<p>' . __('Select anything to continue the tour. You can change it later.', 'content-aware-sidebars') . '</p>'
                 ),
                 'ref_id'   => '.cas-group-new',
                 'position' => [
@@ -609,10 +606,10 @@ final class CAS_Sidebar_Edit extends CAS_Admin
             [
                 'content' => sprintf(
                     '<h3>%s</h3>%s',
-                    '2/5 '.__('Where to display', 'content-aware-sidebars'),
-                    '<p>'.__('Click on the input field and select the content you want - just type to search. Changes are saved automatically!', 'content-aware-sidebars').'</p>'.
-                    '<p>'.__('You can add multiple content types to the same group. Try e.g. "All Posts" and an Author to display on all posts written by that author.', 'content-aware-sidebars').'</p>'.
-                    '<p>'.sprintf('<a href="%s" target="_blank" rel="noopener">'.__('Learn more about AND vs OR conditions', 'content-aware-sidebars').'</a>', 'https://dev.institute/docs/content-aware-sidebars/getting-started/display-sidebar-advanced/').'</p>'
+                    '2/5 ' . __('Where to display', 'content-aware-sidebars'),
+                    '<p>' . __('Click on the input field and select the content you want - just type to search. Changes are saved automatically!', 'content-aware-sidebars') . '</p>' .
+                    '<p>' . __('You can add multiple content types to the same group. Try e.g. "All Posts" and an Author to display on all posts written by that author.', 'content-aware-sidebars') . '</p>' .
+                    '<p>' . sprintf('<a href="%s" target="_blank" rel="noopener">' . __('Learn more about AND vs OR conditions', 'content-aware-sidebars') . '</a>', 'https://dev.institute/docs/content-aware-sidebars/getting-started/display-sidebar-advanced/') . '</p>'
                 ),
                 'ref_id'   => '#cas-groups > ul',
                 'position' => [
@@ -624,9 +621,9 @@ final class CAS_Sidebar_Edit extends CAS_Admin
             [
                 'content' => sprintf(
                     '<h3>%s</h3>%s',
-                    '3/5 '.__('How to display', 'content-aware-sidebars'),
-                    '<p>'.__('Replace any sidebar or widget area in your theme, or add widgets by merging with them.', 'content-aware-sidebars').'</p>'.
-                    '<p>'.__('You can also use the shortcode to display widgets inside a page or post.', 'content-aware-sidebars').'</p>'
+                    '3/5 ' . __('How to display', 'content-aware-sidebars'),
+                    '<p>' . __('Replace any sidebar or widget area in your theme, or add widgets by merging with them.', 'content-aware-sidebars') . '</p>' .
+                    '<p>' . __('You can also use the shortcode to display widgets inside a page or post.', 'content-aware-sidebars') . '</p>'
                 ),
                 'ref_id'   => '.nav-tab-wrapper.js-cas-tabs .nav-tab-section-action',
                 'position' => [
@@ -638,10 +635,10 @@ final class CAS_Sidebar_Edit extends CAS_Admin
             [
                 'content' => sprintf(
                     '<h3>%s</h3>%s',
-                    '4/5 '.__('When to activate', 'content-aware-sidebars'),
-                    '<p>'.__('Create a widget area and manage its widgets today, then publish it when you are ready.', 'content-aware-sidebars').'</p>'.
-                    '<p>'.__('To schedule automatic activation or deactivation, just pick a date and time!', 'content-aware-sidebars').'</p>'.
-                    '<p>'.__('By default, new widget areas will be activated when created.', 'content-aware-sidebars').'</p>'
+                    '4/5 ' . __('When to activate', 'content-aware-sidebars'),
+                    '<p>' . __('Create a widget area and manage its widgets today, then publish it when you are ready.', 'content-aware-sidebars') . '</p>' .
+                    '<p>' . __('To schedule automatic activation or deactivation, just pick a date and time!', 'content-aware-sidebars') . '</p>' .
+                    '<p>' . __('By default, new widget areas will be activated when created.', 'content-aware-sidebars') . '</p>'
                 ),
                 'ref_id'   => '.nav-tab-wrapper.js-cas-tabs .nav-tab-section-schedule',
                 'position' => [
@@ -653,9 +650,9 @@ final class CAS_Sidebar_Edit extends CAS_Admin
             [
                 'content' => sprintf(
                     '<h3>%s</h3>%s',
-                    '5/5 '.__('How to look', 'content-aware-sidebars'),
-                    '<p>'.__('Personalize the styling without writing any code!', 'content-aware-sidebars').'</p>'.
-                    '<p>'.__('You can modify the HTML and CSS classes of the widget area itself, each widget, as well as widget titles.', 'content-aware-sidebars').'</p>'
+                    '5/5 ' . __('How to look', 'content-aware-sidebars'),
+                    '<p>' . __('Personalize the styling without writing any code!', 'content-aware-sidebars') . '</p>' .
+                    '<p>' . __('You can modify the HTML and CSS classes of the widget area itself, each widget, as well as widget titles.', 'content-aware-sidebars') . '</p>'
                 ),
                 'ref_id'   => '.nav-tab-wrapper.js-cas-tabs .nav-tab-section-design',
                 'position' => [
@@ -668,8 +665,8 @@ final class CAS_Sidebar_Edit extends CAS_Admin
                 'content' => sprintf(
                     '<h3>%s</h3>%s',
                     __("That's it", 'content-aware-sidebars'),
-                    '<p>'.__('Hit the Create button to save your first custom widget area.', 'content-aware-sidebars').'</p>'.
-                    '<p>'.__('If you need more help, check out the links below.', 'content-aware-sidebars').'</p>'
+                    '<p>' . __('Hit the Create button to save your first custom widget area.', 'content-aware-sidebars') . '</p>' .
+                    '<p>' . __('If you need more help, check out the links below.', 'content-aware-sidebars') . '</p>'
                 ),
                 'ref_id'   => '#submitdiv',
                 'position' => [
@@ -691,7 +688,7 @@ final class CAS_Sidebar_Edit extends CAS_Admin
     {
         $this->create_pointers();
         CAS_App::instance()->manager()->populate_metadata();
-        $path = plugin_dir_path(dirname(__FILE__)).'view/';
+        $path = plugin_dir_path(dirname(__FILE__)) . 'view/';
 
         $boxes = [];
         $boxes[] = [
@@ -733,19 +730,19 @@ final class CAS_Sidebar_Edit extends CAS_Admin
         ];
         $boxes[] = [
             'id'      => 'cas-schedule',
-            'title'   => __('Time Schedule', 'content-aware-sidebars').' <span class="cas-pro-label">'.__('Pro', 'content-aware-sidebars').'</span>',
+            'title'   => __('Time Schedule', 'content-aware-sidebars') . ' <span class="cas-pro-label">' . __('Pro', 'content-aware-sidebars') . '</span>',
             'view'    => 'schedule',
             'context' => 'section-schedule',
         ];
         $boxes[] = [
             'id'      => 'cas-design',
-            'title'   => __('Design', 'content-aware-sidebars').' <span class="cas-pro-label">'.__('Pro', 'content-aware-sidebars').'</span>',
+            'title'   => __('Design', 'content-aware-sidebars') . ' <span class="cas-pro-label">' . __('Pro', 'content-aware-sidebars') . '</span>',
             'view'    => 'design',
             'context' => 'section-design',
         ];
 
         foreach ($boxes as $box) {
-            $view = WPCAView::make($path.'meta_box_'.$box['view'].'.php', [
+            $view = WPCAView::make($path . 'meta_box_' . $box['view'] . '.php', [
                 'post' => $post
             ]);
 
@@ -753,7 +750,7 @@ final class CAS_Sidebar_Edit extends CAS_Admin
                 $box['id'],
                 $box['title'],
                 [$view,'render'],
-                CAS_App::BASE_SCREEN.'-edit',
+                CAS_App::BASE_SCREEN . '-edit',
                 $box['context'],
                 isset($box['priority']) ? $box['priority'] : 'default'
             );
@@ -762,27 +759,28 @@ final class CAS_Sidebar_Edit extends CAS_Admin
         //todo: refactor add of meta box
         //with new bootstrapper, legacy core might be loaded
         if (method_exists('WPCACore', 'render_group_meta_box')) {
-            WPCACore::render_group_meta_box($post, CAS_App::BASE_SCREEN.'-edit', 'section-conditions', 'default');
+            WPCACore::render_group_meta_box($post, CAS_App::BASE_SCREEN . '-edit', 'section-conditions');
         }
     }
 
     /**
      * Create form field for metadata
-     * @global object $post
-     * @param  array $setting
-     * @return void
+     *
+     * @param string $id
+     * @param string $class
+     * @param string $icon
      */
     public static function form_field($id, $class = '', $icon = '')
     {
         $setting = CAS_App::instance()->manager()->metadata()->get($id);
         $current = $setting->get_data(get_the_ID(), true, $setting->get_input_type() != 'multi');
-        $icon = $icon ? '<span class="'.$icon.'"></span> ' : '';
+        $icon = $icon ? '<span class="' . $icon . '"></span> ' : '';
 
-        echo '<div class="'.$class.'">'.$icon.'<strong>' . $setting->get_title() . '</strong>';
+        echo '<div class="' . $class . '">' . $icon . '<strong>' . $setting->get_title() . '</strong>';
         echo '<p>';
         switch ($setting->get_input_type()) {
             case 'select':
-                echo '<select style="width:250px;" name="' . $id . '" class="js-cas-'.$id.'">' . "\n";
+                echo '<select style="width:250px;" name="' . $id . '" class="js-cas-' . $id . '">' . "\n";
                 foreach ($setting->get_input_list() as $key => $value) {
                     $disabled = '';
                     if (is_string($key) && strpos($key, '__') === 0) {
@@ -795,12 +793,12 @@ final class CAS_Sidebar_Edit extends CAS_Admin
             case 'checkbox':
                 echo '<ul>' . "\n";
                 foreach ($setting->get_input_list() as $key => $value) {
-                    echo '<li><label><input type="checkbox" name="' . $id . '[]" class="js-cas-'.$id.'" value="' . $key . '"' . (in_array($key, $current) ? ' checked="checked"' : '') . ' /> ' . $value . '</label></li>' . "\n";
+                    echo '<li><label><input type="checkbox" name="' . $id . '[]" class="js-cas-' . $id . '" value="' . $key . '"' . (in_array($key, $current) ? ' checked="checked"' : '') . ' /> ' . $value . '</label></li>' . "\n";
                 }
                 echo '</ul>' . "\n";
                 break;
             case 'multi':
-                echo '<div><select style="width:100%;" class="js-cas-'.$id.'" multiple="multiple"  name="' . $id . '[]" data-value="'.implode(',', $current).'"></select></div>';
+                echo '<div><select style="width:100%;" class="js-cas-' . $id . '" multiple="multiple"  name="' . $id . '[]" data-value="' . implode(',', $current) . '"></select></div>';
                 break;
             case 'text':
             default:
@@ -817,10 +815,9 @@ final class CAS_Sidebar_Edit extends CAS_Admin
      */
     public function save_post($post_id, $post)
     {
-
         //Verify nonce, check_admin_referer dies on false
         if (!(isset($_POST[WPCACore::NONCE])
-            && wp_verify_nonce($_POST[WPCACore::NONCE], WPCACore::PREFIX.$post_id))) {
+            && wp_verify_nonce($_POST[WPCACore::NONCE], WPCACore::PREFIX . $post_id))) {
             return;
         }
 
@@ -863,7 +860,7 @@ final class CAS_Sidebar_Edit extends CAS_Admin
             $title = wp_unslash($insert_data['post_title']);
             $new_title = $title;
             while (isset($sidebar_titles[$new_title])) {
-                $new_title = $title.' ('.++$i.')';
+                $new_title = $title . ' (' . ++$i . ')';
             }
             if ($i) {
                 $insert_data['post_title'] = wp_slash($new_title);
@@ -879,7 +876,6 @@ final class CAS_Sidebar_Edit extends CAS_Admin
      */
     public function remove_sidebar_widgets($post_id)
     {
-
         // Authenticate and only continue on sidebar post type
         if (!current_user_can(CAS_App::CAPABILITY) || get_post_type($post_id) != CAS_App::TYPE_SIDEBAR) {
             return;
@@ -922,7 +918,7 @@ final class CAS_Sidebar_Edit extends CAS_Admin
         if (is_multisite()) {
             add_action('admin_footer', '_admin_notice_post_locked');
         } else {
-            $check_users = get_users([ 'fields' => 'ID', 'number' => 2 ]);
+            $check_users = get_users(['fields' => 'ID', 'number' => 2]);
             if (count($check_users) > 1) {
                 add_action('admin_footer', '_admin_notice_post_locked');
             }
@@ -934,7 +930,7 @@ final class CAS_Sidebar_Edit extends CAS_Admin
             wp_enqueue_script('jquery-touch-punch');
         }
 
-        WPCACore::enqueue_scripts_styles('');
+        WPCACore::enqueue_scripts_styles();
 
         $this->register_script('flatpickr', 'flatpickr', [], '3.0.6');
         $this->register_script('cas/admin/edit', 'cas_admin', ['jquery','flatpickr','wp-color-picker']);
@@ -946,7 +942,6 @@ final class CAS_Sidebar_Edit extends CAS_Admin
         $visibility = [];
         $target = [];
         foreach ($metadata->get('visibility')->get_input_list() as $category_key => $category) {
-
             //legacy format
             if (!is_array($category)) {
                 $visibility[] = [
@@ -970,9 +965,9 @@ final class CAS_Sidebar_Edit extends CAS_Admin
         }
         foreach ($metadata->get('host')->get_input_list() as $value => $label) {
             $target[] = [
-                    'id'   => $value,
-                    'text' => $label
-                ];
+                'id'   => $value,
+                'text' => $label
+            ];
         }
 
         if (!cas_fs()->can_use_premium_code()) {

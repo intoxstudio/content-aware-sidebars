@@ -60,7 +60,7 @@ class CAS_Admin_Bar
 
     public function print_styles()
     {
-        echo '<style type="text/css" media="screen">'."\n"; ?>
+        echo '<style type="text/css" media="screen">' . "\n"; ?>
         #wp-admin-bar-wpcas-tool #wp-admin-bar-wpcas-tool-custom-sidebars {
             border-top:4px solid #75d7ef;
         }
@@ -95,14 +95,14 @@ class CAS_Admin_Bar
     private function add_node($admin_bar, $args, $parent = null)
     {
         if ($args['id'] !== self::NODE_ROOT) {
-            $args['parent'] = self::NODE_ROOT . (!is_null($parent) ? '-'.$parent : '');
-            $args['id'] = $args['parent'].'-'.$args['id'];
+            $args['parent'] = self::NODE_ROOT . (!is_null($parent) ? '-' . $parent : '');
+            $args['id'] = $args['parent'] . '-' . $args['id'];
         }
         $admin_bar->add_node($args);
 
         return $this;
     }
- 
+
     /**
      * @param WP_Admin_Bar $admin_bar
      * @return void
@@ -110,13 +110,13 @@ class CAS_Admin_Bar
     public function add_menu($admin_bar)
     {
         global $wp_registered_sidebars;
-    
+
         $post_type_object = get_post_type_object(CAS_App::TYPE_SIDEBAR);
 
         $this
         ->add_node($admin_bar, [
             'id'    => self::NODE_ROOT,
-            'title' => '<span class="ab-icon dashicons '.$post_type_object->menu_icon.'"></span>',
+            'title' => '<span class="ab-icon dashicons ' . $post_type_object->menu_icon . '"></span>',
             'href'  => admin_url('admin.php?page=wpcas'),
             'meta'  => [
                 'title' => __('Content Aware Sidebars', 'content-aware-sidebars')
@@ -148,7 +148,7 @@ class CAS_Admin_Bar
         }
         $this->add_node($admin_bar, [
             'id'    => 'condition_cache',
-            'title' => $title.' &#9210;',
+            'title' => $title . ' &#9210;',
             'href'  => $link,
             'meta'  => [
                 'class' => $class,
@@ -160,8 +160,8 @@ class CAS_Admin_Bar
             $title = $module->get_name();
             $link = '';
             if (array_key_exists($module->get_id(), self::DOCS_MAP)) {
-                $title = '<span class="ab-icon dashicons dashicons-external"></span> '.$title;
-                $link = self::DOCS_MAP[$module->get_id()].'?utm_source=plugin&amp;utm_medium=admin_bar&amp;utm_campaign=cas';
+                $title = '<span class="ab-icon dashicons dashicons-external"></span> ' . $title;
+                $link = self::DOCS_MAP[$module->get_id()] . '?utm_source=plugin&amp;utm_medium=admin_bar&amp;utm_campaign=cas';
             }
             $args[] = [
                 'id'    => $module->get_id(),
@@ -182,13 +182,13 @@ class CAS_Admin_Bar
                 : $index;
             $args[] = [
                 'id'    => $index,
-                'title' => $sidebar_name . ($has_widgets ? '' : ' ('.__('Hidden').')'),
+                'title' => $sidebar_name . ($has_widgets ? '' : ' (' . __('Hidden') . ')'),
             ];
         }
         $this->add_nodes($admin_bar, $args, self::NODE_THEME_AREAS);
 
         $admin_bar->add_group([
-            'id'     => self::NODE_ROOT.'-'.self::NODE_CUSTOM_SIDEBARS,
+            'id'     => self::NODE_ROOT . '-' . self::NODE_CUSTOM_SIDEBARS,
             'parent' => self::NODE_ROOT,
             'meta'   => [
                 'class' => 'ab-sub-secondary'
@@ -253,8 +253,8 @@ class CAS_Admin_Bar
     }
 
     /**
-     * @param string $a
-     * @param string $b
+     * @param array $a
+     * @param array $b
      * @return int
      */
     private function sort_nodes($a, $b)

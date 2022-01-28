@@ -19,7 +19,6 @@ $cas_db_updater->register_version_update('3.8', 'cas_update_to_38');
 $cas_db_updater->register_version_update('3.15.2', 'cas_update_to_3152');
 $cas_db_updater->register_version_update('3.16.1', 'cas_update_to_3161');
 
-
 /**
  * Enable legacy date module and
  * negated conditions if in use
@@ -39,8 +38,8 @@ function cas_update_to_3161()
     $types = WPCACore::types()->get_all();
 
     $options = [
-            'legacy.date_module'        => [],
-            'legacy.negated_conditions' => []
+        'legacy.date_module'        => [],
+        'legacy.negated_conditions' => []
     ];
 
     $options['legacy.date_module'] = array_flip((array)$wpdb->get_col("
@@ -93,7 +92,7 @@ function cas_update_to_3152()
         INNER JOIN $wpdb->term_relationships r ON r.object_id = p.ID
         INNER JOIN $wpdb->term_taxonomy t ON t.term_taxonomy_id = r.term_taxonomy_id
         WHERE p.post_type = 'condition_group'
-        AND t.taxonomy IN (".implode(',', $taxonomies).')
+        AND t.taxonomy IN (" . implode(',', $taxonomies) . ')
     '));
 
     foreach ($condition_group_ids as $id) {
@@ -118,7 +117,7 @@ function cas_update_to_38()
     $wpdb->query("
 		UPDATE $wpdb->usermeta AS t
 		INNER JOIN $wpdb->usermeta AS r ON t.user_id = r.user_id
-		SET t.meta_value = '{$time}'
+		SET t.meta_value = '$time'
 		WHERE t.meta_key = '{$wpdb->prefix}_ca_cas_tour'
 		AND r.meta_key = '{$wpdb->prefix}_ca_cas_review'
 		AND r.meta_value != '1'
@@ -253,17 +252,17 @@ function cas_update_to_30()
         foreach ($metadata as $old_key => $new_key) {
             $wpdb->query("
 				UPDATE $wpdb->postmeta
-				SET meta_key = '_ca_".$new_key."'
-				WHERE meta_key = '_cas_".$old_key."'
+				SET meta_key = '_ca_" . $new_key . "'
+				WHERE meta_key = '_cas_" . $old_key . "'
 			");
             switch ($new_key) {
                 case 'author':
                 case 'page_template':
                     $wpdb->query("
 						UPDATE $wpdb->postmeta
-						SET meta_value = '".$new_key."'
-						WHERE meta_key = '_ca_".$new_key."'
-						AND meta_value = '".$old_key."'
+						SET meta_value = '" . $new_key . "'
+						WHERE meta_key = '_ca_" . $new_key . "'
+						AND meta_value = '" . $old_key . "'
 					");
                     break;
                 case 'post_type':
@@ -271,7 +270,7 @@ function cas_update_to_30()
                     $wpdb->query("
 						UPDATE $wpdb->postmeta
 						SET meta_value = REPLACE(meta_value, '_cas_sub_', '_ca_sub_')
-						WHERE meta_key = '_ca_".$new_key."'
+						WHERE meta_key = '_ca_" . $new_key . "'
 						AND meta_value LIKE '_cas_sub_%'
 					");
                     break;
@@ -318,7 +317,6 @@ function cas_update_to_20()
     ]);
     if (!empty($posts)) {
         foreach ($posts as $post) {
-
             //Create new condition group
             $group_id = wp_insert_post([
                 'post_status' => $post->post_status,
@@ -328,20 +326,19 @@ function cas_update_to_20()
             ]);
 
             if ($group_id) {
-
                 //Move module data to condition group
                 $wpdb->query("
 					UPDATE $wpdb->postmeta
-					SET post_id = '".$group_id."'
-					WHERE meta_key IN ('_cas_".implode("','_cas_", $module_keys)."')
-					AND post_id = '".$post->ID."'
+					SET post_id = '" . $group_id . "'
+					WHERE meta_key IN ('_cas_" . implode("','_cas_", $module_keys) . "')
+					AND post_id = '" . $post->ID . "'
 				");
 
                 //Move term data to condition group
                 $wpdb->query("
 					UPDATE $wpdb->term_relationships
-					SET object_id = '".$group_id."'
-					WHERE object_id = '".$post->ID."'
+					SET object_id = '" . $group_id . "'
+					WHERE object_id = '" . $post->ID . "'
 				");
             }
         }
@@ -378,11 +375,11 @@ function cas_update_to_11()
         foreach ($posts as $post) {
             foreach ($moduledata as $field) {
                 // Remove old serialized data and insert it again properly
-                $old = get_post_meta($post->ID, '_cas_'.$field, true);
+                $old = get_post_meta($post->ID, '_cas_' . $field, true);
                 if ($old != '') {
-                    delete_post_meta($post->ID, '_cas_'.$field, $old);
+                    delete_post_meta($post->ID, '_cas_' . $field, $old);
                     foreach ((array)$old as $new_single) {
-                        add_post_meta($post->ID, '_cas_'.$field, $new_single);
+                        add_post_meta($post->ID, '_cas_' . $field, $new_single);
                     }
                 }
             }
