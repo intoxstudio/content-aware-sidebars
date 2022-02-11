@@ -13,7 +13,7 @@ function cas_fs()
 {
     global $cas_fs;
 
-    if (! isset($cas_fs)) {
+    if (!isset($cas_fs)) {
         // Include Freemius SDK.
         require_once dirname(__FILE__) . '/lib/freemius/start.php';
 
@@ -66,7 +66,7 @@ function cas_fs_connect_message_update(
 
 function cas_fs_get_plugin_icon()
 {
-    return dirname(__FILE__).'/assets/img/icon.png';
+    return dirname(__FILE__) . '/assets/img/icon.png';
 }
 
 $cas_fs->add_filter('connect_message_on_update', 'cas_fs_connect_message_update', 10, 6);
@@ -74,6 +74,7 @@ $cas_fs->add_filter('connect_message', 'cas_fs_connect_message_update', 10, 6);
 $cas_fs->add_filter('show_affiliate_program_notice', '__return_false');
 $cas_fs->add_filter('plugin_icon', 'cas_fs_get_plugin_icon');
 $cas_fs->add_filter('permission_extensions_default', '__return_true');
+$cas_fs->add_filter('hide_freemius_powered_by', '__return_true');
 
 function cas_fs_upgrade()
 {
@@ -102,21 +103,21 @@ add_action('admin_init', 'cas_fs_upgrade', 999);
 if (!$cas_fs->can_use_premium_code()) {
     function cas_fs_uninstall()
     {
-        require(plugin_dir_path(__FILE__).'/cas_uninstall.php');
+        require plugin_dir_path(__FILE__) . '/cas_uninstall.php';
     }
 
     if ($cas_fs->is_on()) {
         $cas_fs->add_action('after_uninstall', 'cas_fs_uninstall');
     } elseif (is_admin()) {
         //after_uninstall is only run for new users
-        register_uninstall_hook(plugin_dir_path(__FILE__).'content-aware-sidebars.php', 'cas_fs_uninstall');
+        register_uninstall_hook(plugin_dir_path(__FILE__) . 'content-aware-sidebars.php', 'cas_fs_uninstall');
     }
 }
 
 if ($cas_fs->is__premium_only()) {
     //Launch PRO features
     if ($cas_fs->can_use_premium_code()) {
-        require(plugin_dir_path(__FILE__).'/lib/content-aware-premium/app.php');
+        require plugin_dir_path(__FILE__) . '/lib/content-aware-premium/app.php';
     }
 }
 
