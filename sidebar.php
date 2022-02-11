@@ -12,7 +12,7 @@ final class CAS_Sidebar_Manager
 {
     /**
      * Sidebar metadata
-     * @var WPCAObjectManager
+     * @var WPCACollection
      */
     protected $metadata;
 
@@ -123,7 +123,7 @@ final class CAS_Sidebar_Manager
      * Get instance of metadata manager
      *
      * @since  3.0
-     * @return WPCAObjectManager
+     * @return WPCACollection
      */
     public function metadata()
     {
@@ -140,7 +140,7 @@ final class CAS_Sidebar_Manager
      */
     private function init_metadata()
     {
-        $this->metadata = new WPCAObjectManager();
+        $this->metadata = new WPCACollection();
         $this->metadata
         ->add(new WPCAMeta(
             'visibility',
