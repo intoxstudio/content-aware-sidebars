@@ -157,7 +157,7 @@
 		 * @return {void}
 		 */
 		actionOptionHandler: function() {
-			var $options = $('#cas-options'),
+			var $options = $('.cas-metabox-holder'),
 				$actions = $options.find('.js-cas-action');
 			$options.on('change','.js-cas-handle',function(){
 				var action = $(this);
