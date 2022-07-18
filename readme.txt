@@ -186,6 +186,17 @@ Of course! Check out the links below:
 
 ####Highlights
 
+= 3.18 =
+
+* [new] wordpress 6.0 support
+* [updated] ui improvements
+* [updated] wp-content-aware-engine library
+
+**Pro Plan:**
+
+* [new] display condition for guest author name premium by shoofly solutions
+* [new] ability to control totem location and design
+
 = 3.17.2 =
 
 * [updated] freemius sdk
@@ -214,31 +225,5 @@ Of course! Check out the links below:
 * [new] infuse action now uses sidebar order option as hook priority
 * [new] option to disable all widgets at once in widget cleaner
 * [fixed] pagination in buddypress groups condition
-
-= 3.16.2 =
-
-* [fixed] compatibility improvements
-* [updated] wp-content-aware-engine library
-* [updated] freemius sdk
-
-= 3.16.1 = 
-
-* [fixed] warning on admin dashboard 
-
-= 3.16 =
-
-* [new] enable condition type cache in toolbar menu
-* [new] performance improvements
-* [new] taxonomy condition added to cache system (all condition types supported now)
-* [new] wordpress 5.8 support
-* [new] minimum wordpress version 5.0
-* [fixed] multiple taxonomy conditions now use AND properly on singular pages (long-standing bug)
-* [updated] wp-content-aware-engine library
-
-**Pro Plan:**
-
-* [new] totem - display widgets in floating button
-* [new] option to display container widget only if conditions are met
-* [new] sticky support for ajax powered themes such as woodmart
 
 See changelog.txt for previous changes.
