@@ -4,8 +4,8 @@ Donate link: #
 Tags: custom sidebars, sidebar, classic widgets, widget, bbpress, buddypress, sidebar manager
 Requires at least: 5.0
 Requires PHP: 5.6
-Tested up to: 5.9
-Stable tag: 3.17.2
+Tested up to: 6.0
+Stable tag: 3.18
 License: GPLv3
 
 Display new sidebars on any post, page, category etc. Works with Classic Widgets, Block Widgets, and all themes!
@@ -81,14 +81,16 @@ Without writing any code, you can **modify the HTML and CSS classes** of widget 
 
 ###Highlighted Premium Features
 
+* **Totem - Smart Floating Button**
+Like the button you may have seen by Intercom or Helpscout, only this is for all your widgets
 * **Sticky Sidebars & Widget Areas**
-Make any sidebar or widget area sticky without hurting site performance. No jQuery and no bloat.
+Make any sidebar or widget area sticky without hurting site performance. No jQuery and no bloat
 * **Widget Areas after Paragraphs**
 Display a widget area after a specific number or percentage of paragraphs in your content
 * **Even More Display Conditions**
     * Advanced Custom Fields data
     * Meta Box data
-    * URLS + wildcards
+    * URLs + wildcards
     * Referrer URLs
     * Date Archives & Content by publish date
     * BuddyPress Groups
