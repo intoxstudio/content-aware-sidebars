@@ -396,6 +396,11 @@ final class CAS_Sidebar_Manager
                 'title',
                 'sidebar'
             ] as $pos) {
+                if (empty($styles['before_' . $pos])) {
+                    $html[$pos] = 'div';
+                }
+
+                //if we have both custom element and class, rebuild
                 if (isset($html[$pos],$html[$pos . '_class'])) {
                     $e = esc_html($html[$pos]);
                     $class = esc_html($html[$pos . '_class']);
@@ -405,6 +410,30 @@ final class CAS_Sidebar_Manager
                     }
                     $styles['before_' . $pos] = '<' . $e . $id . ' class="' . $class . '">';
                     $styles['after_' . $pos] = "</$e>";
+                //if we only have custom class, inject it
+                } elseif (isset($html[$pos . '_class'])) {
+                    $class = esc_html($html[$pos . '_class']);
+
+                    $classPos = stripos($styles['before_' . $pos], 'class=');
+                    if ($classPos !== false) {
+                        $styles['before_' . $pos] = substr_replace(
+                            $styles['before_' . $pos],
+                            $class . ' ',
+                            $classPos + 7,
+                            0
+                        );
+                        continue;
+                    }
+
+                    $classPos = stripos($styles['before_' . $pos], '>');
+                    if ($classPos !== false) {
+                        $styles['before_' . $pos] = substr_replace(
+                            $styles['before_' . $pos],
+                            ' class="' . $class . '"',
+                            $classPos,
+                            0
+                        );
+                    }
                 }
             }
             $wp_registered_sidebars[$i] = $styles;
