@@ -113,6 +113,8 @@ final class CAS_Sidebar_Overview extends CAS_Admin
 
         echo '</h1>';
 
+        echo '<hr class="wp-header-end">';
+
         $this->bulk_messages();
 
         $_SERVER['REQUEST_URI'] = remove_query_arg(['locked', 'skipped', 'deleted', 'trashed', 'untrashed'], $_SERVER['REQUEST_URI']);
