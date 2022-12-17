@@ -4,8 +4,8 @@ Donate link: #
 Tags: custom sidebars, sidebar, classic widgets, widget, bbpress, buddypress, sidebar manager
 Requires at least: 5.0
 Requires PHP: 5.6
-Tested up to: 6.0
-Stable tag: 3.18
+Tested up to: 6.1
+Stable tag: 3.18.1
 License: GPLv3
 
 Display new sidebars on any post, page, category etc. Works with Classic Widgets, Block Widgets, and all themes!
@@ -187,6 +187,18 @@ Of course! Check out the links below:
 [Follow development and see all changes on GitHub](https://github.com/intoxstudio/content-aware-sidebars)
 
 ####Highlights
+
+= 3.18.1 =
+
+* [new] support for hidden sidebars in generatepress theme
+* [new] wordpress 6.1 support
+* [updated] wp-content-aware-engine library
+* [updated] freemius sdk
+
+**Pro Plan:**
+
+* [new] widget cleaner now recognizes widgets in use by elementor
+* [new] added sortable columns to widget cleaner
 
 = 3.18 =
 

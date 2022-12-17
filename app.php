@@ -11,7 +11,7 @@ defined('ABSPATH') || exit;
 final class CAS_App
 {
     const PLUGIN_VERSION_KEY = 'cas_db_version';
-    const PLUGIN_VERSION = '3.18';
+    const PLUGIN_VERSION = '3.18.1';
 
     /**
      * Prefix for sidebar id
@@ -151,9 +151,9 @@ final class CAS_App
         if (!$cas_fs->can_use_premium_code()) {
             global $submenu;
             $submenu['wpcas'][] = [
-                 __('Widget Cleaner', 'content-aware-sidebars'). ' (Pro)',
-                 CAS_App::CAPABILITY,
-                 $cas_fs->get_upgrade_url()
+                __('Widget Cleaner', 'content-aware-sidebars') . ' (Pro)',
+                CAS_App::CAPABILITY,
+                $cas_fs->get_upgrade_url()
             ];
         }
     }
@@ -167,9 +167,9 @@ final class CAS_App
     protected function add_filters()
     {
         if (is_admin()) {
-            $file = plugin_basename(plugin_dir_path(__FILE__)).'/content-aware-sidebars.php';
+            $file = plugin_basename(plugin_dir_path(__FILE__)) . '/content-aware-sidebars.php';
             add_filter(
-                'plugin_action_links_'.$file,
+                'plugin_action_links_' . $file,
                 [$this,'plugin_action_links'],
                 99,
                 4
@@ -190,7 +190,7 @@ final class CAS_App
      */
     public function load_textdomain()
     {
-        load_plugin_textdomain('content-aware-sidebars', false, dirname(plugin_basename(__FILE__)).'/lang/');
+        load_plugin_textdomain('content-aware-sidebars', false, dirname(plugin_basename(__FILE__)) . '/lang/');
     }
 
     /**
@@ -209,11 +209,11 @@ final class CAS_App
 
         $new_actions = [];
 
-        $new_actions['docs'] = '<a href="https://dev.institute/docs/content-aware-sidebars/?utm_source=plugin&utm_medium=referral&utm_content=plugin-list&utm_campaign=cas" target="_blank" rel="noopener">'.__('Docs & FAQ', 'content-aware-sidebars').'</a>';
-        $new_actions['support'] = '<a href="'.esc_url($cas_fs->contact_url()).'">'.__('Premium Support', 'content-aware-sidebars').'</a>';
+        $new_actions['docs'] = '<a href="https://dev.institute/docs/content-aware-sidebars/?utm_source=plugin&utm_medium=referral&utm_content=plugin-list&utm_campaign=cas" target="_blank" rel="noopener">' . __('Docs & FAQ', 'content-aware-sidebars') . '</a>';
+        $new_actions['support'] = '<a href="' . esc_url($cas_fs->contact_url()) . '">' . __('Premium Support', 'content-aware-sidebars') . '</a>';
 
         if (!$cas_fs->has_active_valid_license()) {
-            $new_actions['support'] = '<a href="'.esc_url($cas_fs->get_upgrade_url()).'">'.__('Premium Support', 'content-aware-sidebars').'</a>';
+            $new_actions['support'] = '<a href="' . esc_url($cas_fs->get_upgrade_url()) . '">' . __('Premium Support', 'content-aware-sidebars') . '</a>';
             unset($actions['upgrade']);
         }
         unset($actions['addons']);
@@ -235,7 +235,7 @@ final class CAS_App
             'post_status' => self::STATUS_INACTIVE
         ]);
         if ($success) {
-            delete_post_meta($post_id, self::META_PREFIX.'deactivate_time');
+            delete_post_meta($post_id, self::META_PREFIX . 'deactivate_time');
         }
     }
 

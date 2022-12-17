@@ -116,6 +116,11 @@ final class CAS_Sidebar_Manager
                 99,
                 2
             );
+            add_filter(
+                'generate_sidebar_layout',
+                [$this, 'generatepress_adjust_column_width'],
+                9999
+            );
         }
     }
 
@@ -845,5 +850,50 @@ final class CAS_Sidebar_Manager
             $link = wp_nonce_url($link, "$action-post_$post_id");
         }
         return $link;
+    }
+
+    /**
+     * @param string $layout
+     * @return string
+     */
+    public function generatepress_adjust_column_width($layout)
+    {
+        if ($layout === 'no-sidebar') {
+            return 'no-sidebar';
+        }
+
+        //only adjust layout if custom sidebars are empty (keep theme sidebar behavior intact)
+        $replaced_sidebars = CAS_App::instance()->manager()->get_replacement_map();
+
+        $active_left = !isset($replaced_sidebars['sidebar-2']) || is_active_sidebar('sidebar-2');
+        $active_right = !isset($replaced_sidebars['sidebar-1']) || is_active_sidebar('sidebar-1');
+
+        if ($active_left && $active_right) {
+            return $layout;
+        }
+
+        if ($layout === 'right-sidebar' && !$active_right) {
+            return 'no-sidebar';
+        }
+
+        if ($layout === 'left-sidebar' && !$active_left) {
+            return 'no-sidebar';
+        }
+
+        if (in_array($layout, ['both-sidebars', 'both-right', 'both-left'])) {
+            if (!$active_left && !$active_right) {
+                return 'no-sidebar';
+            }
+            if ($active_left) {
+                //todo if layout==both-right, we need to move left-sidebar widgets into right-sidebar
+                return 'left-sidebar';
+            }
+            if ($active_right) {
+                //todo if layout==both-left, we need to move right-sidebar widgets into left-sidebar
+                return 'right-sidebar';
+            }
+        }
+
+        return $layout;
     }
 }
