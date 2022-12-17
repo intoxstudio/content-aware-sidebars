@@ -577,10 +577,10 @@ final class CAS_Sidebar_Edit extends CAS_Admin
                     '<p>' . __('Welcome to Content Aware Sidebars!', 'content-aware-sidebars') . '</p>' .
                     '<p>' . __('This interactive guide will show you just how easy it is to create a widget area and control where, how, and when to display it.', 'content-aware-sidebars') . '</p>'
                 ),
-                'ref_id'   => '#titlediv',
+                'ref_id'   => '.nav-tab-wrapper.js-cas-tabs .nav-tab-section-conditions',
                 'position' => [
-                    'edge'  => 'top',
-                    'align' => 'center'
+                    'edge'  => 'left',
+                    'align' => 'left'
                 ],
                 'pointerWidth' => 400,
                 'next'         => __('Start Quick Tour', 'content-aware-sidebars'),
@@ -593,7 +593,7 @@ final class CAS_Sidebar_Edit extends CAS_Admin
                     '<p>' . __('Choose from the extensive Display Conditions with built-in support for other plugins. You will never be asked to enter widget logic PHP code!', 'content-aware-sidebars') . '</p>' .
                     '<p>' . __('Select anything to continue the tour. You can change it later.', 'content-aware-sidebars') . '</p>'
                 ),
-                'ref_id'   => '.cas-group-new',
+                'ref_id'   => '#cas-rules',
                 'position' => [
                     'edge'  => 'top',
                     'align' => 'center'
@@ -630,17 +630,17 @@ final class CAS_Sidebar_Edit extends CAS_Admin
                     'edge'  => 'left',
                     'align' => 'left'
                 ],
+                'prev'    => false, //we may be on new tab, so true would break tour
                 'dismiss' => __('Close Tour', 'content-aware-sidebars')
             ],
             [
                 'content' => sprintf(
                     '<h3>%s</h3>%s',
-                    '4/5 ' . __('When to activate', 'content-aware-sidebars'),
-                    '<p>' . __('Create a widget area and manage its widgets today, then publish it when you are ready.', 'content-aware-sidebars') . '</p>' .
-                    '<p>' . __('To schedule automatic activation or deactivation, just pick a date and time!', 'content-aware-sidebars') . '</p>' .
-                    '<p>' . __('By default, new widget areas will be activated when created.', 'content-aware-sidebars') . '</p>'
+                    '4/5 ' . __('How to look', 'content-aware-sidebars'),
+                    '<p>' . __('Personalize the styling without writing any code!', 'content-aware-sidebars') . '</p>' .
+                    '<p>' . __('You can modify the HTML and CSS classes of the widget area itself, each widget, as well as widget titles.', 'content-aware-sidebars') . '</p>'
                 ),
-                'ref_id'   => '.nav-tab-wrapper.js-cas-tabs .nav-tab-section-schedule',
+                'ref_id'   => '.nav-tab-wrapper.js-cas-tabs .nav-tab-section-design',
                 'position' => [
                     'edge'  => 'left',
                     'align' => 'left'
@@ -650,11 +650,12 @@ final class CAS_Sidebar_Edit extends CAS_Admin
             [
                 'content' => sprintf(
                     '<h3>%s</h3>%s',
-                    '5/5 ' . __('How to look', 'content-aware-sidebars'),
-                    '<p>' . __('Personalize the styling without writing any code!', 'content-aware-sidebars') . '</p>' .
-                    '<p>' . __('You can modify the HTML and CSS classes of the widget area itself, each widget, as well as widget titles.', 'content-aware-sidebars') . '</p>'
+                    '5/5 ' . __('When to activate', 'content-aware-sidebars'),
+                    '<p>' . __('Create a widget area and manage its widgets today, then publish it when you are ready.', 'content-aware-sidebars') . '</p>' .
+                    '<p>' . __('To schedule automatic activation or deactivation, just pick a date and time!', 'content-aware-sidebars') . '</p>' .
+                    '<p>' . __('By default, new widget areas will be activated when created.', 'content-aware-sidebars') . '</p>'
                 ),
-                'ref_id'   => '.nav-tab-wrapper.js-cas-tabs .nav-tab-section-design',
+                'ref_id'   => '.nav-tab-wrapper.js-cas-tabs .nav-tab-section-schedule',
                 'position' => [
                     'edge'  => 'left',
                     'align' => 'left'
