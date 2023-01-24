@@ -394,6 +394,13 @@ final class CAS_Sidebar_Manager
         $html = $this->get_sidebar_styles($i);
         if ($html) {
             global  $wp_registered_sidebars;
+
+            //bail if trying to style non-existing sidebar.
+            //this can happen after theme change
+            if (!isset($wp_registered_sidebars[$i])) {
+                return;
+            }
+
             $styles = $wp_registered_sidebars[$i];
             //Set user styles
             foreach ([
