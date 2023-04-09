@@ -10,6 +10,8 @@ defined('ABSPATH') || exit;
 
 class CAS_Admin_Screen_Widgets extends CAS_Admin
 {
+    protected $enable_navbar = false;
+
     /**
      * Get current screen
      *

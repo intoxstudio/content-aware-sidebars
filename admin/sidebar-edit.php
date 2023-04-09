@@ -323,20 +323,21 @@ final class CAS_Sidebar_Edit extends CAS_Admin
         }
 
         if ($post_id) {
-            $title = __('Edit');
+            $title = $post_type_object->labels->edit_item;
         } else {
             $title = $post_type_object->labels->new_item;
         }
 
         echo '<div class="wrap">';
         echo '<h1>';
-        echo '<a href="' . admin_url('admin.php?page=wpcas') . '">' . $post_type_object->labels->all_items . '</a> &raquo; ';
         echo esc_html($title);
         if (isset($_REQUEST['sidebar_id']) && current_user_can('edit_theme_options')) {
             echo ' <a href="' . esc_url(admin_url('widgets.php#' . CAS_App::SIDEBAR_PREFIX . $post->ID)) . '" class="page-title-action add-new-h2">' . __('Manage Widgets', 'content-aware-sidebars') . '</a>';
         }
 
         echo '</h1>';
+
+        echo '<hr class="wp-header-end">';
 
         $this->sidebar_updated_messages($post);
 
@@ -722,12 +723,6 @@ final class CAS_Sidebar_Edit extends CAS_Admin
             'title'   => __('Options', 'content-aware-sidebars'),
             'view'    => 'advanced',
             'context' => 'section-advanced',
-        ];
-        $boxes[] = [
-            'id'      => 'cas-plugin-links',
-            'title'   => __('Recommendations', 'content-aware-sidebars'),
-            'view'    => 'support',
-            'context' => 'side',
         ];
         $boxes[] = [
             'id'      => 'cas-schedule',

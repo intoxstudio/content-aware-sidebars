@@ -52,7 +52,7 @@ final class CAS_Sidebar_Overview extends CAS_Admin
         return add_submenu_page(
             CAS_App::BASE_SCREEN,
             $post_type_object->labels->name,
-            $post_type_object->labels->all_items,
+            $post_type_object->labels->name,
             $post_type_object->cap->edit_posts,
             CAS_App::BASE_SCREEN,
             [$this,'render_screen']
@@ -103,9 +103,7 @@ final class CAS_Sidebar_Overview extends CAS_Admin
         if (current_user_can($post_type_object->cap->create_posts)) {
             echo ' <a href="' . esc_url(admin_url('admin.php?page=wpcas-edit')) . '" class="add-new-h2 page-title-action">' . esc_html($post_type_object->labels->add_new) . '</a>';
         }
-        if (current_user_can('edit_theme_options')) {
-            echo ' <a href="' . esc_url(admin_url('widgets.php')) . '" class="page-title-action add-new-h2">' . __('Manage Widgets', 'content-aware-sidebars') . '</a>';
-        }
+
         if (isset($_REQUEST['s']) && strlen($_REQUEST['s'])) {
             /* translators: %s: search keywords */
             printf(' <span class="subtitle">' . __('Search results for &#8220;%s&#8221;') . '</span>', get_search_query());
