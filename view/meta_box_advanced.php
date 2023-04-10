@@ -3,7 +3,7 @@
  * @package Content Aware Sidebars
  * @author Joachim Jensen <joachim@dev.institute>
  * @license GPLv3
- * @copyright 2022 by Joachim Jensen
+ * @copyright 2023 by Joachim Jensen
  */
 
 if (!EMPTY_TRASH_DAYS) {
