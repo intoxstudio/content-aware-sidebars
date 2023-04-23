@@ -142,8 +142,8 @@
 				$(this.sections[this.current_section]).hide();
 				$tabs.eq(this.current_section).removeClass("nav-tab-active");
 				this.current_section = section;
-				$(this.sections[this.current_section]).show();
 				$tabs.eq(this.current_section).addClass("nav-tab-active");
+				$(this.sections[this.current_section]).show();
 
 				$('#_cas_section').val('#top'+this.sections[this.current_section]);
 			}

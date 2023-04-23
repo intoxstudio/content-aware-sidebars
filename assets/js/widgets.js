@@ -197,4 +197,4 @@
 		cas_widgets.init();
 	});
 
-})(jQuery);
+})(jQuery, CASAdmin);
