@@ -42,39 +42,42 @@ class CAS_Admin_Screen_Widgets extends CAS_Admin
      */
     public function prepare_screen()
     {
-        $this->add_action('dynamic_sidebar_before', 'render_sidebar_controls');
-        $this->add_filter('admin_body_class', 'widget_manager_class');
+        $screen = get_current_screen();
+        if ($screen instanceof WP_Screen && !$screen->is_block_editor) {
+            $this->add_action('dynamic_sidebar_before', 'render_sidebar_controls');
+            $this->add_filter('admin_body_class', 'widget_manager_class');
 
-        global $wp_registered_sidebars;
+            global $wp_registered_sidebars;
 
-        $manager = CAS_App::instance()->manager();
-        $manager->populate_metadata();
+            $manager = CAS_App::instance()->manager();
+            $manager->populate_metadata();
 
-        $has_host = [0 => 1,1 => 1,3 => 1];
+            $has_host = [0 => 1,1 => 1,3 => 1];
 
-        foreach ($manager->sidebars as $id => $post) {
-            $handle_meta = $manager->metadata()->get('handle');
+            foreach ($manager->sidebars as $id => $post) {
+                $handle_meta = $manager->metadata()->get('handle');
 
-            $args = [];
-            $args['description'] = $handle_meta->get_list_data($post->ID, true);
+                $args = [];
+                $args['description'] = $handle_meta->get_list_data($post->ID, true);
 
-            if (isset($has_host[$handle_meta->get_data($post->ID)])) {
-                $hosts = $manager->metadata()->get('host')->get_data($post->ID, false, false);
-                if ($hosts) {
-                    $list = $manager->metadata()->get('host')->get_input_list();
-                    $data = [];
-                    foreach ($hosts as $host) {
-                        if (!isset($list[$host])) {
-                            $data[] = __('Target not found', 'content-aware-sidebars');
-                        } else {
-                            $data[] = $list[$host];
+                if (isset($has_host[$handle_meta->get_data($post->ID)])) {
+                    $hosts = $manager->metadata()->get('host')->get_data($post->ID, false, false);
+                    if ($hosts) {
+                        $list = $manager->metadata()->get('host')->get_input_list();
+                        $data = [];
+                        foreach ($hosts as $host) {
+                            if (!isset($list[$host])) {
+                                $data[] = __('Target not found', 'content-aware-sidebars');
+                            } else {
+                                $data[] = $list[$host];
+                            }
                         }
+                        $args['description'] .= ': ' . implode(', ', $data);
                     }
-                    $args['description'] .= ': ' . implode(', ', $data);
                 }
-            }
 
-            $wp_registered_sidebars[$id] = array_merge($wp_registered_sidebars[$id], $args);
+                $wp_registered_sidebars[$id] = array_merge($wp_registered_sidebars[$id], $args);
+            }
         }
     }
 
@@ -206,13 +209,23 @@ class CAS_Admin_Screen_Widgets extends CAS_Admin
      */
     public function add_scripts_styles()
     {
+        $screen = get_current_screen();
+        $manager = CAS_App::instance()->manager();
+        $sidebar_names = [];
+
+        foreach ($manager->sidebars as $post) {
+            $sidebar_names[] = $post->post_title;
+        }
+
         $this->enqueue_script('cas/admin/widgets', 'widgets', ['jquery'], '', true);
         wp_localize_script('cas/admin/widgets', 'CASAdmin', [
+            'isBlockEditor'  => $screen instanceof WP_Screen && $screen->is_block_editor,
             'addNew'         => $this->get_sidebar_type()->labels->add_new_item,
             'collapse'       => __('Collapse', 'content-aware-sidebars'),
             'expand'         => __('Expand', 'content-aware-sidebars'),
             'filterSidebars' => __('Search Sidebars', 'content-aware-sidebars'),
-            'filterWidgets'  => __('Search Widgets', 'content-aware-sidebars')
+            'filterWidgets'  => __('Search Widgets', 'content-aware-sidebars'),
+            'sidebarNames'   => $sidebar_names
         ]);
     }
 }

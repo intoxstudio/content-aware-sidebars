@@ -5,7 +5,7 @@
  * @copyright 2023 by Joachim Jensen
  */
 
-(function($) {
+(function($, CASAdmin) {
 	"use strict";
 
 	var cas_widgets = {
@@ -20,12 +20,21 @@
 		 * @return {void}
 		 */
 		init: function() {
-
-			this.openSidebarByURL();
-			this.addSidebarToolbar();
-			this.addWidgetSearch();
-			this.enhancedWidgetManager();
-
+			if(!CASAdmin.isBlockEditor) {
+				this.openSidebarByURL();
+				this.addSidebarToolbar();
+				this.addWidgetSearch();
+				this.enhancedWidgetManager();
+			} else {
+				//block editor is super slow to render, so wait a bit
+				setTimeout(function() {
+					$('.wp-block-widget-area .components-panel__body-title').each(function(i, elem ) {
+						if(CASAdmin.sidebarNames.includes(elem.innerText)) {
+							elem.classList.add('ca-sidebar');
+						}
+					})
+				}, 2000);
+			}
 		},
 
 		/**
