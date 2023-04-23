@@ -620,7 +620,8 @@ final class CAS_Sidebar_Manager
     public function sidebar_shortcode($atts, $content = '')
     {
         $a = shortcode_atts([
-            'id' => 0,
+            'id'          => 0,
+            'conditional' => 0
         ], $atts);
 
         $id = CAS_App::SIDEBAR_PREFIX . esc_attr($a['id']);
@@ -633,7 +634,13 @@ final class CAS_Sidebar_Manager
             return $content;
         }
 
-        if (is_active_sidebar($id) && apply_filters('cas/shortcode/display', true, $a['id'])) {
+        $display = true;
+        if ($a['conditional']) {
+            $sidebars = WPCACore::get_posts(CAS_App::TYPE_SIDEBAR);
+            $display = !empty($sidebars) && isset($sidebars[$id]);
+        }
+
+        if (is_active_sidebar($id) && apply_filters('cas/shortcode/display', $display, $a['id'])) {
             ob_start();
             do_action('cas/shortcode/before', $a['id']);
             $this->override_sidebar_styles($id);
