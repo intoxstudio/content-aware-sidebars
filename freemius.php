@@ -35,15 +35,16 @@ function cas_fs()
                 'affiliation' => false
             ]
         ]);
+        $cas_fs->add_filter('connect_message_on_update', 'cas_fs_connect_message_update', 10, 6);
+        $cas_fs->add_filter('connect_message', 'cas_fs_connect_message_update', 10, 6);
+        $cas_fs->add_filter('show_affiliate_program_notice', '__return_false');
+        $cas_fs->add_filter('plugin_icon', 'cas_fs_get_plugin_icon');
+        $cas_fs->add_filter('permission_extensions_default', '__return_true');
+        $cas_fs->add_filter('hide_freemius_powered_by', '__return_true');
     }
 
     return $cas_fs;
 }
-
-// Init Freemius.
-cas_fs();
-
-global $cas_fs;
 
 function cas_fs_connect_message_update(
     $message,
@@ -69,16 +70,9 @@ function cas_fs_get_plugin_icon()
     return dirname(__FILE__) . '/assets/img/icon.png';
 }
 
-$cas_fs->add_filter('connect_message_on_update', 'cas_fs_connect_message_update', 10, 6);
-$cas_fs->add_filter('connect_message', 'cas_fs_connect_message_update', 10, 6);
-$cas_fs->add_filter('show_affiliate_program_notice', '__return_false');
-$cas_fs->add_filter('plugin_icon', 'cas_fs_get_plugin_icon');
-$cas_fs->add_filter('permission_extensions_default', '__return_true');
-$cas_fs->add_filter('hide_freemius_powered_by', '__return_true');
-
 function cas_fs_upgrade()
 {
-    global $cas_fs;
+    $cas_fs = cas_fs();
     $flag = 'cas_pro';
     $upgrade_flag = (int)$cas_fs->can_use_premium_code();
 
@@ -100,6 +94,11 @@ function cas_fs_upgrade()
 }
 add_action('admin_init', 'cas_fs_upgrade', 999);
 
+// Init Freemius.
+$cas_fs = cas_fs();
+
+new CAS_Admin_Screen_Account($cas_fs);
+
 if (!$cas_fs->can_use_premium_code()) {
     function cas_fs_uninstall()
     {
@@ -114,11 +113,8 @@ if (!$cas_fs->can_use_premium_code()) {
     }
 }
 
-if ($cas_fs->is__premium_only()) {
-    //Launch PRO features
-    if ($cas_fs->can_use_premium_code()) {
-        require plugin_dir_path(__FILE__) . '/lib/content-aware-premium/app.php';
-    }
+if ($cas_fs->can_use_premium_code__premium_only()) {
+    require plugin_dir_path(__FILE__) . '/lib/content-aware-premium/app.php';
 }
 
 // Signal that SDK was initiated.

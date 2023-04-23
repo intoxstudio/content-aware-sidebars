@@ -54,6 +54,7 @@ if (!class_exists('CAS_App')) {
     require $cas_dir_path . 'admin/sidebar-list-table.php';
     require $cas_dir_path . 'admin/sidebar-overview.php';
     require $cas_dir_path . 'admin/sidebar-edit.php';
+    require $cas_dir_path . 'admin/screen_account.php';
     require $cas_dir_path . 'admin/screen_widgets.php';
     require $cas_dir_path . 'admin/settings.php';
     require $cas_dir_path . 'sidebar.php';
