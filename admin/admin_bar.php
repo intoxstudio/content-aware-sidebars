@@ -66,13 +66,14 @@ class CAS_Admin_Bar
         }
         #wp-admin-bar-wpcas-tool .dashicons-welcome-widgets-menus {
             top:2px;
-            margin:0!important;
         }
         #wp-admin-bar-wpcas-tool .wpcas-ok .ab-item {
             color:#8c8!important;
+            background-color:rgba(136, 204, 136, 0.1);
         }
         #wp-admin-bar-wpcas-tool .wpcas-warn .ab-item {
             color:#dba617!important;
+            background-color:rgba(219, 166, 23, 0.1);
         }
         #wp-admin-bar-wpcas-tool #wp-admin-bar-wpcas-tool-condition-types .ab-sub-wrapper {
             min-width:100%;
@@ -116,7 +117,7 @@ class CAS_Admin_Bar
         $this
         ->add_node($admin_bar, [
             'id'    => self::NODE_ROOT,
-            'title' => '<span class="ab-icon dashicons ' . $post_type_object->menu_icon . '"></span>',
+            'title' => '<span class="ab-icon dashicons ' . $post_type_object->menu_icon . '"></span><span class="ab-label" aria-hidden="true">' . count($this->custom_sidebars) . '</span>',
             'href'  => admin_url('admin.php?page=wpcas'),
             'meta'  => [
                 'title' => __('Content Aware Sidebars', 'content-aware-sidebars')
@@ -138,22 +139,23 @@ class CAS_Admin_Bar
 
         $cache = get_option(WPCACore::OPTION_CONDITION_TYPE_CACHE, []);
         if (isset($cache[CAS_App::TYPE_SIDEBAR]) && !empty($cache[CAS_App::TYPE_SIDEBAR])) {
-            $title = __('Cache Active', 'content-aware-sidebars');
-            $link = null;
-            $class = 'wpcas-ok';
+            $this->add_node($admin_bar, [
+                'id'    => 'condition_cache',
+                'title' => __('Cache Active', 'content-aware-sidebars'),
+                'meta'  => [
+                    'class' => 'wpcas-ok'
+                ]
+            ], self::NODE_CONDITION_TYPES);
         } else {
-            $title = __('Activate Cache Now', 'content-aware-sidebars');
-            $link = wp_nonce_url(admin_url('admin.php?page=wpcas-settings&action=update_condition_type_cache'), 'update_condition_type_cache');
-            $class = 'wpcas-warn';
+            $this->add_node($admin_bar, [
+                'id'    => 'condition_cache',
+                'title' => __('Boost Speed Now', 'content-aware-sidebars'),
+                'href'  => wp_nonce_url(admin_url('admin.php?page=wpcas-settings&action=update_condition_type_cache'), 'update_condition_type_cache'),
+                'meta'  => [
+                    'class' => 'wpcas-warn',
+                ]
+            ], self::NODE_CONDITION_TYPES);
         }
-        $this->add_node($admin_bar, [
-            'id'    => 'condition_cache',
-            'title' => $title . ' &#9210;',
-            'href'  => $link,
-            'meta'  => [
-                'class' => $class,
-            ]
-        ], self::NODE_CONDITION_TYPES);
 
         $args = [];
         foreach (WPCACore::get_conditional_modules('sidebar') as $module) {
