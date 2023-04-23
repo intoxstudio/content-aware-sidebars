@@ -143,30 +143,33 @@ final class CAS_Sidebar_Edit extends CAS_Admin
             return;
         }
 
-        $pro_label = '(Pro)';
-        $type = $types->get(CAS_App::TYPE_SIDEBAR);
-        $path = plugin_dir_path(dirname(__FILE__));
-
-        require $path . 'conditions/placeholder.php';
+        $unavailable_labels = [
+            __('URLs', 'content-aware-sidebars'),
+            __('Referrer URLs', 'content-aware-sidebars'),
+            __('Random', 'content-aware-sidebars')
+        ];
 
         if (!WPCACore::get_option(CAS_App::TYPE_SIDEBAR, 'legacy.date_module', false)) {
-            $module = new CASConditionPlaceholder('cas_date', __('Dates', 'content-aware-sidebars') . ' ' . $pro_label);
-            $type->add($module, 'cas_date');
+            $unavailable_labels[] = __('Dates', 'content-aware-sidebars');
         }
-
-        $module = new CASConditionPlaceholder('cas_url', __('URLs', 'content-aware-sidebars') . ' ' . $pro_label);
-        $type->add($module, 'cas_url');
-        $module = new CASConditionPlaceholder('cas_ref_url', __('Referrer URLs', 'content-aware-sidebars') . ' ' . $pro_label);
-        $type->add($module, 'cas_ref_url');
-
         if (function_exists('bp_is_active')) {
-            $module = new CASConditionPlaceholder('cas_bbp', __('BuddyPress Groups', 'content-aware-sidebars') . ' ' . $pro_label, '', '', 'plugins');
-            $type->add($module, 'cas_bbp');
+            $unavailable_labels[] = __('BuddyPress Groups', 'content-aware-sidebars');
+        }
+        if (defined('ACF')) {
+            $unavailable_labels[] = __('Advanced Custom Fields', 'content-aware-sidebars');
+        }
+        if (defined('RWMB_VER')) {
+            $unavailable_labels[] = __('Meta Box', 'content-aware-sidebars');
         }
 
-        if (defined('ACF')) {
-            $module = new CASConditionPlaceholder('cas_acf', __('Advanced Custom Fields', 'content-aware-sidebars') . ' ' . $pro_label, '', '', 'plugins');
-            $type->add($module, 'cas_acf');
+        $pro_label = ' (Pro)';
+        $type = $types->get(CAS_App::TYPE_SIDEBAR);
+        $path = plugin_dir_path(dirname(__FILE__));
+        require $path . 'conditions/placeholder.php';
+
+        foreach ($unavailable_labels as $i => $label) {
+            $module = new CASConditionPlaceholder('cas_' . $i, $label . $pro_label);
+            $type->put($module->get_id(), $module);
         }
     }
 
