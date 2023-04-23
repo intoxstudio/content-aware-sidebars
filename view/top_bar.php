@@ -24,7 +24,7 @@ if (current_user_can('edit_theme_options')) {
 }
 
 $nav_extra[] = [
-    'title' => __('Documentation', 'content-aware-sidebars'),
+    'title' => '<span class="dashicons dashicons-welcome-learn-more"></span> ' . __('Docs', 'content-aware-sidebars'),
     'link'  => 'https://dev.institute/docs/content-aware-sidebars/?utm_source=plugin&amp;utm_medium=referral&amp;utm_content=nav&amp;utm_campaign=cas',
     'meta'  => [
         'target' => '_blank',
@@ -32,22 +32,33 @@ $nav_extra[] = [
     ]
 ];
 
+$label = '';
 if (!$freemius->can_use_premium_code()) {
     $nav_core[] = [
-        'title' => '<span class="cas-heart">❤</span> ' . __('Unlock Features with Pro', 'content-aware-sidebars'),
+        'title' => '<span class="dashicons dashicons-superhero-alt"></span> ' . __('Get more features with PRO', 'content-aware-sidebars'),
         'link'  => $freemius->get_upgrade_url(),
         'meta'  => [
             'class' => 'cas-nav-upgrade',
         ]
     ];
     $nav_extra[] = [
-        'title' => __('Support Forums', 'content-aware-sidebars'),
+        'title' => '<span class="dashicons dashicons-sos"></span> ' . __('Forums', 'content-aware-sidebars'),
         'link'  => 'https://wordpress.org/support/plugin/content-aware-sidebars/',
         'meta'  => [
             'target' => '_blank',
             'rel'    => 'noopener noreferrer',
         ]
     ];
+} else {
+    if ($freemius->is__premium_only()) {
+        $label = '<span class="cas-nav-pro">PRO</span>';
+    }
+    if (!$freemius->is_whitelabeled()) {
+        $nav_extra[] = [
+            'title' => '<span class="dashicons dashicons-sos"></span> ' . __('Support', 'content-aware-sidebars'),
+            'link'  => $freemius->contact_url()
+        ];
+    }
 }
 
 function cas_display_nav($items)
@@ -72,7 +83,10 @@ function cas_display_nav($items)
 
 <div class="cas-navbar">
     <img src="<?php echo $freemius->get_local_icon_url(); ?>" width="36" height="36" alt="" />
-    <h2 class="screen-reader-text"><?php _e('Content Aware', 'content-aware-sidebars'); ?></h2>
+    <h2>
+        <span class="screen-reader-text"><?php _e('Content Aware', 'content-aware-sidebars'); ?></span>
+        <?php echo $label; ?>
+    </h2>
     <div style="display: inline-block;vertical-align: middle;padding-left: 20px;">
         <?php cas_display_nav($nav_core); ?>
     </div>
