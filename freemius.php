@@ -35,6 +35,13 @@ function cas_fs()
                 'affiliation' => false
             ]
         ]);
+        $cas_fs->add_filter('connect-header', function ($text) use ($cas_fs) {
+            return '<h2>' .
+                sprintf(
+                    __('Thank you for installing %s!', 'content-aware-sidebars'),
+                    esc_html($cas_fs->get_plugin_name())
+                ) . '</h2>';
+        });
         $cas_fs->add_filter('connect_message_on_update', 'cas_fs_connect_message_update', 10, 6);
         $cas_fs->add_filter('connect_message', 'cas_fs_connect_message_update', 10, 6);
         $cas_fs->add_filter('show_affiliate_program_notice', '__return_false');
@@ -55,11 +62,10 @@ function cas_fs_connect_message_update(
     $freemius_link
 ) {
     return sprintf(
-        __('Hey %1$s') . ',<br>' .
-        __('Please help us improve %2$s by securely sharing some usage data with %5$s. If you skip this, that\'s okay! %2$s will still work just fine.', 'content-aware-sidebars'),
+        __('Please help us improve the plugin by securely sharing some basic WordPress environment info. If you skip this, that\'s okay! %2$s will still work just fine.', 'content-aware-sidebars'),
         $user_first_name,
-        '<b>' . $plugin_title . '</b>',
-        '<b>' . $user_login . '</b>',
+        $plugin_title,
+        $user_login,
         $site_link,
         $freemius_link
     );

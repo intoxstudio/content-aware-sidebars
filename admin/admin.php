@@ -113,10 +113,12 @@ abstract class CAS_Admin
             );
         }
 
-        if ($this->enable_navbar) {
+        $freemius = cas_fs();
+
+        if ($this->enable_navbar && !$freemius->is_activation_mode()) {
             $path = plugin_dir_path(__FILE__) . '../view/';
             $view = WPCAView::make($path . '/top_bar.php', [
-                'freemius'  => cas_fs(),
+                'freemius'  => $freemius,
                 'post_type' => $this->get_sidebar_type()
             ]);
 
@@ -125,7 +127,7 @@ abstract class CAS_Admin
 
         $this->prepare_screen();
         $this->add_action('admin_enqueue_scripts', 'add_general_scripts_styles', 11);
-        if (!cas_fs()->can_use_premium_code()) {
+        if (!$freemius->can_use_premium_code()) {
             $this->add_action('all_admin_notices', 'admin_notice_review');
             $this->add_action('admin_footer', 'render_upgrade_modal');
             add_thickbox();
