@@ -4,8 +4,8 @@ Donate link: #
 Tags: custom sidebars, sidebar, classic widgets, widget, bbpress, buddypress, sidebar manager
 Requires at least: 5.0
 Requires PHP: 5.6
-Tested up to: 6.1
-Stable tag: 3.18.1
+Tested up to: 6.2
+Stable tag: 3.19
 License: GPLv3
 
 Display new sidebars on any post, page, category etc. Works with Classic Widgets, Block Widgets, and all themes!
@@ -94,6 +94,7 @@ Display a widget area after a specific number or percentage of paragraphs in you
     * Referrer URLs
     * Date Archives & Content by publish date
     * BuddyPress Groups
+    * Random
 * **Widget Area Designer**
 Add responsive widget columns and edit colors, backgrounds, paddings, etc.
 * **Widget Areas in Theme Hooks**
@@ -187,6 +188,19 @@ Of course! Check out the links below:
 [Follow development and see all changes on GitHub](https://github.com/intoxstudio/content-aware-sidebars)
 
 ####Highlights
+
+= 3.19 =
+
+* [new] performance improvements
+* [new] ui improvements
+* [new] sidebar shortcode parameter for conditional display
+* [new] wordpress 6.2 support
+* [updated] freemius sdk
+
+**Pro Plan:**
+
+* [new] "random" display condition
+* [new] widget revision support when updating via REST API or Block  Editor
 
 = 3.18.1 =
 

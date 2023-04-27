@@ -33,7 +33,12 @@ function cas_fs()
                 'support'     => false,
                 'contact'     => false,
                 'affiliation' => false
-            ]
+            ],
+            'opt_in_moderation' => [
+                'new'       => 100,
+                'updates'   => 0,
+                'localhost' => true,
+            ],
         ]);
         $cas_fs->add_filter('connect-header', function ($text) use ($cas_fs) {
             return '<h2>' .
