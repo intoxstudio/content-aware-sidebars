@@ -5,7 +5,7 @@ Tags: custom sidebars, sidebar, classic widgets, widget, bbpress, buddypress, si
 Requires at least: 5.0
 Requires PHP: 5.6
 Tested up to: 6.2
-Stable tag: 3.19
+Stable tag: 3.19.1
 License: GPLv3
 
 Display new sidebars on any post, page, category etc. Works with Classic Widgets, Block Widgets, and all themes!
@@ -188,6 +188,10 @@ Of course! Check out the links below:
 [Follow development and see all changes on GitHub](https://github.com/intoxstudio/content-aware-sidebars)
 
 ####Highlights
+
+= 3.19.1 =
+
+* [updated] freemius sdk
 
 = 3.19 =
 
