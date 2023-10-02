@@ -1,3 +1,31 @@
+= 3.17.2 =
+
+* [updated] freemius sdk
+
+= 3.17.1 =
+
+* [new] added icons and improved ui when editing conditions
+* [new] performance improvements
+* [fixed] quick-select could in some cases remove edited post from conditions
+* [fixed] php8.1 deprecation warnings
+* [updated] wp-content-aware-engine library
+* [updated] freemius sdk
+
+**Pro Plan:**
+
+* [fixed] php8+ error when editing sidebar
+
+= 3.17 =
+
+* [new] weglot display condition
+* [new] wordpress 5.9 support
+
+**Pro Plan:**
+
+* [new] meta box display condition
+* [new] infuse action now uses sidebar order option as hook priority
+* [new] option to disable all widgets at once in widget cleaner
+* [fixed] pagination in buddypress groups condition
 
 = 3.16.2 =
 

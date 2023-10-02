@@ -4,8 +4,8 @@ Donate link: #
 Tags: custom sidebars, sidebar, classic widgets, widget, bbpress, buddypress, sidebar manager
 Requires at least: 5.0
 Requires PHP: 5.6
-Tested up to: 6.2
-Stable tag: 3.19.1
+Tested up to: 6.3
+Stable tag: 3.19.2
 License: GPLv3
 
 Display new sidebars on any post, page, category etc. Works with Classic Widgets, Block Widgets, and all themes!
@@ -60,7 +60,7 @@ When adding new widgets to sidebars, **Live Search will find widgets instantly**
 **CAS autodetects Custom Post Types and Taxonomies** created by any plugin or theme. Built-in support for some of the most popular WordPress plugins means that you e.g. can create WooCommerce sidebars for select products or BuddyPress sidebars for your members.
 
 * [bbPress](https://dev.institute/wordpress-sidebars/bbpress/?utm_source=readme&utm_medium=referral&utm_content=integration&utm_campaign=cas)
-* [BuddyPress](https://dev.institute/wordpress-sidebars/buddypress/?utm_source=readme&utm_medium=referral&utm_content=integration&utm_campaign=cas)
+* [BuddyPress / BuddyBoss](https://dev.institute/wordpress-sidebars/buddypress/?utm_source=readme&utm_medium=referral&utm_content=integration&utm_campaign=cas)
 * [Easy Digital Downloads](https://dev.institute/wordpress-sidebars/easy-digital-downloads/?utm_source=readme&utm_medium=referral&utm_content=integration&utm_campaign=cas)
 * [qTranslate X](https://dev.institute/wordpress-sidebars/multilingual-plugins/?utm_source=readme&utm_medium=referral&utm_content=integration&utm_campaign=cas)
 * [Pods](https://dev.institute/wordpress-sidebars/pods/?utm_source=readme&utm_medium=referral&utm_content=integration&utm_campaign=cas)
@@ -189,6 +189,15 @@ Of course! Check out the links below:
 
 ####Highlights
 
+= 3.19.2 =
+
+* [new] wordpress 6.3 support
+* [updated] freemius sdk
+
+**Pro Plan:**
+
+* [updated] sticky support for more themes
+
 = 3.19.1 =
 
 * [updated] freemius sdk
@@ -228,34 +237,5 @@ Of course! Check out the links below:
 
 * [new] display condition for guest author name premium by shoofly solutions
 * [new] ability to control totem location and design
-
-= 3.17.2 =
-
-* [updated] freemius sdk
-
-= 3.17.1 =
-
-* [new] added icons and improved ui when editing conditions
-* [new] performance improvements
-* [fixed] quick-select could in some cases remove edited post from conditions
-* [fixed] php8.1 deprecation warnings
-* [updated] wp-content-aware-engine library
-* [updated] freemius sdk
-
-**Pro Plan:**
-
-* [fixed] php8+ error when editing sidebar
-
-= 3.17 =
-
-* [new] weglot display condition
-* [new] wordpress 5.9 support
-
-**Pro Plan:**
-
-* [new] meta box display condition
-* [new] infuse action now uses sidebar order option as hook priority
-* [new] option to disable all widgets at once in widget cleaner
-* [fixed] pagination in buddypress groups condition
 
 See changelog.txt for previous changes.
