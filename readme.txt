@@ -2,10 +2,10 @@
 Contributors: intoxstudio, devinstitute, freemius
 Donate link: #
 Tags: custom sidebars, sidebar, classic widgets, widget, bbpress, buddypress, sidebar manager
-Requires at least: 5.0
-Requires PHP: 5.6
-Tested up to: 6.3
-Stable tag: 3.19.2
+Requires at least: 5.1
+Requires PHP: 7.0
+Tested up to: 6.4
+Stable tag: 3.19.3
 License: GPLv3
 
 Display new sidebars on any post, page, category etc. Works with Classic Widgets, Block Widgets, and all themes!
@@ -189,6 +189,14 @@ Of course! Check out the links below:
 
 ####Highlights
 
+= 3.19.3 =
+
+* [new] wordpress 6.4 support
+* [new] minimum wordpress version 5.1
+* [new] minimum php version 7.0
+* [new] performance improvements
+* [updated] wp-content-aware-engine library
+
 = 3.19.2 =
 
 * [new] wordpress 6.3 support
@@ -213,7 +221,7 @@ Of course! Check out the links below:
 **Pro Plan:**
 
 * [new] "random" display condition
-* [new] widget revision support when updating via REST API or Block  Editor
+* [new] widget revision support when updating via REST API or Block Editor
 
 = 3.18.1 =
 
