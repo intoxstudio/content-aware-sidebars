@@ -17,7 +17,7 @@ $cas_db_updater->register_version_update('3.4', 'cas_update_to_34');
 $cas_db_updater->register_version_update('3.5.1', 'cas_update_to_351');
 $cas_db_updater->register_version_update('3.8', 'cas_update_to_38');
 $cas_db_updater->register_version_update('3.15.2', 'cas_update_to_3152');
-$cas_db_updater->register_version_update('3.19.2', 'cas_update_to_3192');
+$cas_db_updater->register_version_update('3.19.3', 'cas_update_to_3193');
 
 /**
  * Enable legacy date module and
@@ -25,11 +25,11 @@ $cas_db_updater->register_version_update('3.19.2', 'cas_update_to_3192');
  *
  * Clear condition type cache
  *
- * @since 3.19.2
+ * @since 3.19.3
  *
  * @return bool
  */
-function cas_update_to_3192()
+function cas_update_to_3193()
 {
     update_option('_ca_condition_type_cache', []);
 
