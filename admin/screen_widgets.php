@@ -150,7 +150,7 @@ class CAS_Admin_Screen_Widgets extends CAS_Admin
     public function widget_manager_class($classes)
     {
         $enhanced_enabled = apply_filters('cas/module/widget_manager', true);
-        if ($enhanced_enabled && version_compare(get_bloginfo('version'), '4.7', '>=')) {
+        if ($enhanced_enabled) {
             $classes .= ' cas-widget-manager ';
         }
         return $classes;

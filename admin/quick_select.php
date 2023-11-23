@@ -17,7 +17,6 @@ class CAS_Quick_Select
 
     public function __construct()
     {
-        new CAS_Post_Type_Sidebar();
         add_action(
             'current_screen',
             [__CLASS__,'load_screen']
@@ -40,19 +39,9 @@ class CAS_Quick_Select
                 return;
             }
 
-            $legacy_removal = !has_action('admin_init', ['CAS_Post_Type_Sidebar','initiate']);
-
-            if ($legacy_removal) {
-                _deprecated_hook(
-                    "remove_action('admin_init', array('CAS_Post_Type_Sidebar', 'initiate'))",
-                    '3.7',
-                    "add_filter('cas/module/quick_select', '__return_false')"
-                );
-            }
-
             $enable = apply_filters(
                 'cas/module/quick_select',
-                !$legacy_removal,
+                true,
                 $screen->post_type
             );
 
@@ -411,24 +400,5 @@ class CAS_Quick_Select
             }
         }
         return $sidebars;
-    }
-}
-
-/**
- * Backwards compat for users disabling quick select
- * with remove_action('admin_init', array('CAS_Post_Type_Sidebar', 'initiate'))
- *
- * @deprecated  3.7
- * @see add_filter('cas/module/quick_select', ...)
- */
-class CAS_Post_Type_Sidebar
-{
-    public function __construct()
-    {
-        add_action('admin_init', [__CLASS__,'initiate']);
-    }
-
-    public static function initiate()
-    {
     }
 }

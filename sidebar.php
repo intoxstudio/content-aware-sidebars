@@ -147,7 +147,7 @@ final class CAS_Sidebar_Manager
     {
         $this->metadata = new WPCACollection();
         $this->metadata
-        ->add(new WPCAMeta(
+        ->put('visibility', new WPCAMeta(
             'visibility',
             __('User Visibility', 'content-aware-sidebars'),
             [],
@@ -160,8 +160,8 @@ final class CAS_Sidebar_Manager
                     ]
                 ]
             ]
-        ), 'visibility')
-        ->add(new WPCAMeta(
+        ))
+        ->put('handle', new WPCAMeta(
             'handle',
             _x('Action', 'option', 'content-aware-sidebars'),
             CAS_App::ACTION_REPLACE,
@@ -173,15 +173,15 @@ final class CAS_Sidebar_Manager
                 CAS_App::ACTION_SHORTCODE      => __('Shortcode')
             ],
             __('Replace host sidebar, merge with it or add sidebar manually.', 'content-aware-sidebars')
-        ), 'handle')
-        ->add(new WPCAMeta(
+        ))
+        ->put('host', new WPCAMeta(
             'host',
             __('Target Sidebar', 'content-aware-sidebars'),
             [],
             'multi',
             []
-        ), 'host')
-        ->add(new WPCAMeta(
+        ))
+        ->put('merge_pos', new WPCAMeta(
             'merge_pos',
             __('Merge Position', 'content-aware-sidebars'),
             1,
@@ -191,14 +191,14 @@ final class CAS_Sidebar_Manager
                 __('Bottom', 'content-aware-sidebars')
             ],
             __('Place sidebar on top or bottom of host when merging.', 'content-aware-sidebars')
-        ), 'merge_pos')
-        ->add(new WPCAMeta(
+        ))
+        ->put('html', new WPCAMeta(
             'html',
             __('HTML', 'content-aware-sidebars'),
             [],
             'select',
             ['']
-        ), 'html');
+        ));
         apply_filters('cas/metadata/init', $this->metadata);
     }
 
