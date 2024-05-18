@@ -198,6 +198,12 @@ final class CAS_Sidebar_Manager
             [],
             'select',
             ['']
+        ))
+        ->put('protected_content', new WPCAMeta(
+            'protected_content',
+            __('Password Protected Content', 'content-aware-sidebars'),
+            false,
+            'checkbox'
         ));
         apply_filters('cas/metadata/init', $this->metadata);
     }
@@ -729,9 +735,21 @@ final class CAS_Sidebar_Manager
      */
     public static function filter_password_protection($sidebars)
     {
-        if (is_singular() && post_password_required()) {
-            return [];
+        if (!is_singular()) {
+            return $sidebars;
         }
+
+        if (!post_password_required()) {
+            return $sidebars;
+        }
+
+        $metadata = CAS_App::instance()->manager()->metadata()->get('protected_content');
+        foreach ($sidebars as $id => $sidebar) {
+            if ((bool)$metadata->get_data($id) === false) {
+                unset($sidebars[$id]);
+            }
+        }
+
         return $sidebars;
     }
 

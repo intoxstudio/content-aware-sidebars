@@ -771,11 +771,23 @@ final class CAS_Sidebar_Edit extends CAS_Admin
      */
     public static function form_field($id, $class = '', $icon = '')
     {
-        $setting = CAS_App::instance()->manager()->metadata()->get($id);
-        $current = $setting->get_data(get_the_ID(), true, $setting->get_input_type() != 'multi');
-        $icon = $icon ? '<span class="' . $icon . '"></span> ' : '';
+        if (!($id instanceof WPCAMeta)) {
+            $setting = CAS_App::instance()->manager()->metadata()->get($id);
+            $icon = $icon ? '<span class="' . $icon . '"></span> ' : '';
+            $title = $icon . '<strong>' . $setting->get_title() . '</strong>';
+        } else {
+            $setting = $id;
+            $title = '';
+        }
 
-        echo '<div class="' . $class . '">' . $icon . '<strong>' . $setting->get_title() . '</strong>';
+        $current = $setting->get_data(get_the_ID(), true, $setting->get_input_type() != 'multi');
+        $type = $setting->get_input_type();
+
+        if ($type == 'checkbox') {
+            $class .= ' cae-toggle';
+        }
+
+        echo '<div class="' . $class . '">' . $title;
         echo '<p>';
         switch ($setting->get_input_type()) {
             case 'select':
@@ -790,11 +802,8 @@ final class CAS_Sidebar_Edit extends CAS_Admin
                 echo '</select>' . "\n";
                 break;
             case 'checkbox':
-                echo '<ul>' . "\n";
-                foreach ($setting->get_input_list() as $key => $value) {
-                    echo '<li><label><input type="checkbox" name="' . $id . '[]" class="js-cas-' . $id . '" value="' . $key . '"' . (in_array($key, $current) ? ' checked="checked"' : '') . ' /> ' . $value . '</label></li>' . "\n";
-                }
-                echo '</ul>' . "\n";
+                echo '<input type="checkbox" name="' . $setting->get_id() . '" value="1"' . ($current == 1 ? ' checked="checked"' : '') . ' />';
+                echo '<div class="cae-toggle-bar"></div>';
                 break;
             case 'multi':
                 echo '<div><select style="width:100%;" class="js-cas-' . $id . '" multiple="multiple"  name="' . $id . '[]" data-value="' . implode(',', $current) . '"></select></div>';
