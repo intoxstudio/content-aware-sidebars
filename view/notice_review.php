@@ -3,7 +3,7 @@
  * @package Content Aware Sidebars
  * @author Joachim Jensen <joachim@dev.institute>
  * @license GPLv3
- * @copyright 2023 by Joachim Jensen
+ * @copyright 2024 by Joachim Jensen
  */
 ?>
 <div class="notice notice-success updated js-cas-notice-review is-dismissible">
