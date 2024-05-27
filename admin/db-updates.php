@@ -15,9 +15,9 @@ $cas_db_updater->register_version_update('3.0', 'cas_update_to_30');
 $cas_db_updater->register_version_update('3.1', 'cas_update_to_31');
 $cas_db_updater->register_version_update('3.4', 'cas_update_to_34');
 $cas_db_updater->register_version_update('3.5.1', 'cas_update_to_351');
-$cas_db_updater->register_version_update('3.8', 'cas_update_to_38');
 $cas_db_updater->register_version_update('3.15.2', 'cas_update_to_3152');
-$cas_db_updater->register_version_update('3.19.3', 'cas_update_to_3193');
+$cas_db_updater->register_version_update('3.20', 'cas_update_wpca_legacy');
+$cas_db_updater->register_version_update('3.20', 'cas_update_tour');
 
 /**
  * Enable legacy date module and
@@ -25,11 +25,9 @@ $cas_db_updater->register_version_update('3.19.3', 'cas_update_to_3193');
  *
  * Clear condition type cache
  *
- * @since 3.19.3
- *
  * @return bool
  */
-function cas_update_to_3193()
+function cas_update_wpca_legacy()
 {
     update_option('_ca_condition_type_cache', []);
 
@@ -69,6 +67,35 @@ function cas_update_to_3193()
 }
 
 /**
+ * @return bool
+ */
+function cas_update_tour()
+{
+    global $wpdb;
+
+    $time = time();
+
+    $wpdb->query("
+		UPDATE $wpdb->usermeta AS t
+		INNER JOIN $wpdb->usermeta AS r ON t.user_id = r.user_id
+		SET t.meta_value = '$time'
+		WHERE t.meta_key = '{$wpdb->prefix}_ca_cas_tour'
+		AND r.meta_key = '{$wpdb->prefix}_ca_cas_review'
+		AND r.meta_value != '1'
+		AND CAST(r.meta_value AS DECIMAL) <= 1685175836
+	");
+
+    $wpdb->query("
+		DELETE FROM $wpdb->usermeta
+		WHERE meta_key = '{$wpdb->prefix}_ca_cas_review'
+		AND meta_value != '1'
+		AND CAST(meta_value AS DECIMAL) <= 1685175836
+	");
+
+    return true;
+}
+
+/**
  * Add -1 to condition groups with select terms
  *
  * @since 3.15.2
@@ -98,38 +125,6 @@ function cas_update_to_3152()
     foreach ($condition_group_ids as $id) {
         add_post_meta($id, '_ca_taxonomy', '-1');
     }
-
-    return true;
-}
-
-/**
- * Update to version 3.8
- *
- * @since  3.8
- * @return boolean
- */
-function cas_update_to_38()
-{
-    global $wpdb;
-
-    $time = time();
-
-    $wpdb->query("
-		UPDATE $wpdb->usermeta AS t
-		INNER JOIN $wpdb->usermeta AS r ON t.user_id = r.user_id
-		SET t.meta_value = '$time'
-		WHERE t.meta_key = '{$wpdb->prefix}_ca_cas_tour'
-		AND r.meta_key = '{$wpdb->prefix}_ca_cas_review'
-		AND r.meta_value != '1'
-		AND CAST(r.meta_value AS DECIMAL) <= 1522540800
-	");
-
-    $wpdb->query("
-		DELETE FROM $wpdb->usermeta
-		WHERE meta_key = '{$wpdb->prefix}_ca_cas_review'
-		AND meta_value != '1'
-		AND CAST(meta_value AS DECIMAL) <= 1522540800
-	");
 
     return true;
 }

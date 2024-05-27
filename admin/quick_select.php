@@ -171,7 +171,7 @@ class CAS_Quick_Select
                             'meta_compare'   => '!=',
                             'post_parent'    => $id,
                             'post_type'      => WPCACore::TYPE_CONDITION_GROUP,
-                            'post_status'    => WPCACore::STATUS_PUBLISHED
+                            'post_status'    => [WPCACore::STATUS_PUBLISHED, WPCACore::STATUS_OR]
                         ]);
                         if ($condition_groups) {
                             $condition_group_id = $condition_groups[0]->ID;
