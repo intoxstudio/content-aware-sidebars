@@ -8,6 +8,10 @@
 
 defined('ABSPATH') || exit;
 
+if (!defined('CAS_IS_PLAYGROUND_PREVIEW')) {
+    define('CAS_IS_PLAYGROUND_PREVIEW', false);
+}
+
 // Create a helper function for easy SDK access.
 function cas_fs()
 {
@@ -35,10 +39,11 @@ function cas_fs()
                 'affiliation' => false
             ],
             'opt_in_moderation' => [
-                'new'       => 100,
-                'updates'   => 0,
-                'localhost' => true,
+                'new'       => true,
+                'updates'   => false,
+                'localhost' => false,
             ],
+            'anonymous_mode' => CAS_IS_PLAYGROUND_PREVIEW,
         ]);
         $cas_fs->add_filter('connect-header', function ($text) use ($cas_fs) {
             return '<h2>' .
