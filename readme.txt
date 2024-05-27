@@ -3,7 +3,7 @@ Contributors: intoxstudio, devinstitute, freemius
 Donate link: #
 Tags: custom sidebars, sidebar, classic widgets, widget, bbpress, buddypress, sidebar manager
 Requires at least: 5.5
-Requires PHP: 7.0
+Requires PHP: 7.1
 Tested up to: 6.5
 Stable tag: 3.20
 License: GPLv3
@@ -201,6 +201,7 @@ Of course! Check out the links below:
 * [new] minimum wordpress version 5.5
 * [new] minimum php version 7.1
 * [fixed] improved compatibility with wpml plugin
+* [updated] buddypress 12 compatibility
 * [updated] wp-content-aware-engine library
 * [updated] freemius sdk
 

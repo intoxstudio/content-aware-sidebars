@@ -12,7 +12,7 @@
  * Author:            DEV Institute
  * Author URI:        https://dev.institute
  * Requires at least: 5.5
- * Requires PHP:      7.0
+ * Requires PHP:      7.1
  * Text Domain:       content-aware-sidebars
  * Domain Path:       /lang/
  * License:           GPLv3
