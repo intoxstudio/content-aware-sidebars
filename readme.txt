@@ -1,4 +1,4 @@
-=== Lightweight Widget Area Plugin - Content Aware Sidebars ===
+=== Content Aware Sidebars - Fastest Widget Area Plugin ===
 Contributors: intoxstudio, devinstitute, freemius
 Donate link: #
 Tags: custom sidebars, sidebar, classic widgets, widget, bbpress, buddypress, sidebar manager
@@ -12,11 +12,11 @@ Display new sidebars on any post, page, category etc. Works with Classic Widgets
 
 == Description ==
 
-**CAS is the Fastest and Most Powerful WordPress Sidebar Plugin yet. Create tailored widget areas in seconds.**
+###Content Aware Sidebars is the #1 WordPress Sidebar Plugin
 
 You can optimize conversion rates, boost on-site SEO, upsell products, and much more by displaying different widget areas on different conditions.
 
-If your website is big or in growth, CAS is the ideal solution for you.
+Create tailored widget areas in seconds. No widget logic coding required.
 
 ###Show or Hide Widgets on Any Page (Yes, any)
 
@@ -77,9 +77,9 @@ Without writing any code, you can **modify the HTML and CSS classes** of widget 
 
 > **Sidebar Visibility lets you elegantly hide any widget area for logged-out users.**
 
-**Content Aware Sidebars Pro - [Complete control for your widget areas](https://dev.institute/wordpress-sidebars/?utm_source=readme&utm_medium=referral&utm_content=title&utm_campaign=cas)**
+###Complete control over your WordPress widget areas
 
-###Highlighted Premium Features
+**[Upgrade to Content Aware Sidebars Pro](https://dev.institute/wordpress-sidebars/?utm_source=readme&utm_medium=referral&utm_content=title&utm_campaign=cas)** and get these additional powerful features:
 
 * **Totem - Smart Floating Button**
 Like the button you may have seen by Intercom or Helpscout, only this is for all your widgets
@@ -167,6 +167,10 @@ Yes!
 
 Many users already compliment CAS with popular page builder plugins such as Elementor, SiteOrigin Page Builder, Beaver Builder, and Visual Composer.
 
+= How can I report security bugs? =
+
+You can report security bugs through the Patchstack Vulnerability Disclosure Program. The Patchstack team help validate, triage and handle any security vulnerabilities. [Report a security vulnerability.](https://patchstack.com/database/vdp/content-aware-sidebars)
+
 = I have other questions, can you help? =
 
 Of course! Check out the links below:
@@ -188,6 +192,21 @@ Of course! Check out the links below:
 [Follow development and see all changes on GitHub](https://github.com/intoxstudio/content-aware-sidebars)
 
 ####Highlights
+
+= 3.20 =
+
+* [new] option to display widget area on password protected content
+* [new] performance improvements
+* [new] wordpress 6.5 support
+* [new] minimum wordpress version 5.5
+* [new] minimum php version 7.1
+* [fixed] improved compatibility with wpml plugin
+* [updated] wp-content-aware-engine library
+* [updated] freemius sdk
+
+**Pro Plan:**
+
+* [updated] more themes supported by sticky option
 
 = 3.19.3 =
 
@@ -222,28 +241,5 @@ Of course! Check out the links below:
 
 * [new] "random" display condition
 * [new] widget revision support when updating via REST API or Block Editor
-
-= 3.18.1 =
-
-* [new] support for hidden sidebars in generatepress theme
-* [new] wordpress 6.1 support
-* [updated] wp-content-aware-engine library
-* [updated] freemius sdk
-
-**Pro Plan:**
-
-* [new] widget cleaner now recognizes widgets in use by elementor
-* [new] added sortable columns to widget cleaner
-
-= 3.18 =
-
-* [new] wordpress 6.0 support
-* [updated] ui improvements
-* [updated] wp-content-aware-engine library
-
-**Pro Plan:**
-
-* [new] display condition for guest author name premium by shoofly solutions
-* [new] ability to control totem location and design
 
 See changelog.txt for previous changes.
