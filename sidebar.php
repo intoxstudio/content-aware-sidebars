@@ -790,20 +790,26 @@ final class CAS_Sidebar_Manager
      */
     public function filter_shortcode_visibility($retval, $id)
     {
-        if ($retval) {
+        if (!$retval) {
+            return $retval;
+        }
+
             $metadata = $this->metadata()->get('visibility');
+        $visibility = $metadata->get_data($id, true, false);
+
+        if (!$visibility) {
+            return $retval;
+        }
 
             //temporary filter until WPCACore allows filtering
             $user_visibility = is_user_logged_in() ? [-1] : [];
             $user_visibility = apply_filters('cas/user_visibility', $user_visibility);
 
-            $visibility = $metadata->get_data($id, true, false);
-
             // Check visibility
-            if ($visibility && !array_intersect($visibility, $user_visibility)) {
+        if (!array_intersect($visibility, $user_visibility)) {
                 $retval = false;
             }
-        }
+
         return $retval;
     }
 
