@@ -794,21 +794,21 @@ final class CAS_Sidebar_Manager
             return $retval;
         }
 
-            $metadata = $this->metadata()->get('visibility');
+        $metadata = $this->metadata()->get('visibility');
         $visibility = $metadata->get_data($id, true, false);
 
         if (!$visibility) {
             return $retval;
         }
 
-            //temporary filter until WPCACore allows filtering
-            $user_visibility = is_user_logged_in() ? [-1] : [];
-            $user_visibility = apply_filters('cas/user_visibility', $user_visibility);
+        //temporary filter until WPCACore allows filtering
+        $user_visibility = is_user_logged_in() ? [-1] : [];
+        $user_visibility = apply_filters('cas/user_visibility', $user_visibility);
 
-            // Check visibility
+        // Check visibility
         if (!array_intersect($visibility, $user_visibility)) {
-                $retval = false;
-            }
+            $retval = false;
+        }
 
         return $retval;
     }
