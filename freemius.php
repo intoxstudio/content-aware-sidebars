@@ -55,9 +55,13 @@ function cas_fs()
         $cas_fs->add_filter('connect_message_on_update', 'cas_fs_connect_message_update', 10, 6);
         $cas_fs->add_filter('connect_message', 'cas_fs_connect_message_update', 10, 6);
         $cas_fs->add_filter('show_affiliate_program_notice', '__return_false');
-        $cas_fs->add_filter('plugin_icon', 'cas_fs_get_plugin_icon');
+        $cas_fs->add_filter('plugin_icon', function () {
+            return dirname(__FILE__) . '/assets/img/icon.png';
+        });
         $cas_fs->add_filter('permission_extensions_default', '__return_true');
         $cas_fs->add_filter('hide_freemius_powered_by', '__return_true');
+        $cas_fs->add_filter('pricing/show_annual_in_monthly', '__return_false');
+        $cas_fs->add_filter('pricing/disable_single_package', '__return_true');
     }
 
     return $cas_fs;
@@ -80,12 +84,6 @@ function cas_fs_connect_message_update(
         $freemius_link
     );
 }
-
-function cas_fs_get_plugin_icon()
-{
-    return dirname(__FILE__) . '/assets/img/icon.png';
-}
-
 function cas_fs_upgrade()
 {
     $cas_fs = cas_fs();

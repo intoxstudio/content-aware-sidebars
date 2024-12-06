@@ -1,3 +1,36 @@
+= 3.19.3 =
+
+* [new] wordpress 6.4 support
+* [new] minimum wordpress version 5.1
+* [new] minimum php version 7.0
+* [new] performance improvements
+* [updated] wp-content-aware-engine library
+
+= 3.19.2 =
+
+* [new] wordpress 6.3 support
+* [updated] freemius sdk
+
+**Pro Plan:**
+
+* [updated] sticky support for more themes
+
+= 3.19.1 =
+
+* [updated] freemius sdk
+
+= 3.19 =
+
+* [new] performance improvements
+* [new] ui improvements
+* [new] sidebar shortcode parameter for conditional display
+* [new] wordpress 6.2 support
+* [updated] freemius sdk
+
+**Pro Plan:**
+
+* [new] "random" display condition
+* [new] widget revision support when updating via REST API or Block Editor
 
 = 3.18.1 =
 

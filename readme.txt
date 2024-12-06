@@ -1,11 +1,11 @@
 === Content Aware Sidebars - Fastest Widget Area Plugin ===
 Contributors: intoxstudio, devinstitute, freemius
 Donate link: #
-Tags: custom sidebars, sidebar, classic widgets, widget, bbpress, buddypress, sidebar manager
+Tags: custom sidebars, sidebar, classic widgets, widget, bbpress
 Requires at least: 5.5
 Requires PHP: 7.1
-Tested up to: 6.5
-Stable tag: 3.20
+Tested up to: 6.7
+Stable tag: 3.21
 License: GPLv3
 
 Display new sidebars on any post, page, category etc. Works with Classic Widgets, Block Widgets, and all themes!
@@ -193,6 +193,19 @@ Of course! Check out the links below:
 
 ####Highlights
 
+= 3.21 =
+
+* [new] performance improvements
+* [new] ui improvements
+* [new] wordpress 6.7 support
+* [fixed] stop bluehost-wordpress-plugin from breaking the plugin
+* [updated] wp-content-aware-engine library
+* [updated] freemius sdk
+
+**Pro Plan:**
+
+* [fixed] buddypress group visibility
+
 = 3.20 =
 
 * [new] option to display widget area on password protected content
@@ -208,39 +221,5 @@ Of course! Check out the links below:
 **Pro Plan:**
 
 * [updated] more themes supported by sticky option
-
-= 3.19.3 =
-
-* [new] wordpress 6.4 support
-* [new] minimum wordpress version 5.1
-* [new] minimum php version 7.0
-* [new] performance improvements
-* [updated] wp-content-aware-engine library
-
-= 3.19.2 =
-
-* [new] wordpress 6.3 support
-* [updated] freemius sdk
-
-**Pro Plan:**
-
-* [updated] sticky support for more themes
-
-= 3.19.1 =
-
-* [updated] freemius sdk
-
-= 3.19 =
-
-* [new] performance improvements
-* [new] ui improvements
-* [new] sidebar shortcode parameter for conditional display
-* [new] wordpress 6.2 support
-* [updated] freemius sdk
-
-**Pro Plan:**
-
-* [new] "random" display condition
-* [new] widget revision support when updating via REST API or Block Editor
 
 See changelog.txt for previous changes.
