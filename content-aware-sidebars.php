@@ -8,7 +8,7 @@
  * Plugin Name:       Content Aware Sidebars
  * Plugin URI:        https://dev.institute/wordpress-sidebars/
  * Description:       Unlimited custom sidebars and widget areas for any post, page, category etc.
- * Version:           3.21.1
+ * Version:           3.21.2
  * Author:            DEV Institute
  * Author URI:        https://dev.institute
  * Requires at least: 5.5

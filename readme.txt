@@ -5,7 +5,7 @@ Tags: custom sidebars, sidebar, classic widgets, widget, bbpress
 Requires at least: 5.5
 Requires PHP: 7.1
 Tested up to: 6.8
-Stable tag: 3.21.1
+Stable tag: 3.21.2
 License: GPLv3
 
 Display new sidebars on any post, page, category etc. Works with Classic Widgets, Block Widgets, and all themes!
@@ -193,11 +193,17 @@ Of course! Check out the links below:
 
 ####Highlights
 
-= 3.21.1 =
+
+
+= 3.21.2 =
 
 * [new] ui improvements
 * [new] wordpress 6.8 support
 * [updated] freemius sdk
+
+= 3.21.1 =
+
+* [new] performance improvements
 
 = 3.21 =
 
