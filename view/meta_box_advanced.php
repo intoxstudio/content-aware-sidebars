@@ -23,7 +23,7 @@ $metadata = CAS_App::instance()->manager()->metadata();
         <td><?php _e('Order'); ?></td>
         <td>
             <label for="menu_order" class="screen-reader-text"><?php _e('Order'); ?></label>
-            <input type="number" value="<?php esc_attr($post->menu_order); ?>" id="menu_order" size="4" name="menu_order">
+            <input type="number" value="<?php echo esc_attr($post->menu_order); ?>" id="menu_order" size="4" name="menu_order">
         </td>
     </tr>
     </tbody>

@@ -237,9 +237,9 @@ final class CAS_Sidebar_Manager
                 $pro_label = ' (Pro)';
                 $actions = $this->metadata->get('handle');
                 $action_list = $actions->get_input_list();
-                $action_list['__infuse'] = __('Infuse', 'content-aware-sidebars') . $pro_label;
-                $action_list['__after_paragraph'] = __('After Paragraph', 'content-aware-sidebars') . $pro_label;
-                $action_list['__totem'] = __('Totem - Floating Button', 'content-aware-sidebars') . $pro_label;
+                $action_list['__infuse'] = __('Theme Infusion', 'content-aware-sidebars') . $pro_label;
+                $action_list['__after_paragraph'] = __('Between Paragraphs', 'content-aware-sidebars') . $pro_label;
+                $action_list['__totem'] = __('Floating Button', 'content-aware-sidebars') . $pro_label;
                 $actions->set_input_list($action_list);
             }
 
