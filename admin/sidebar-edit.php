@@ -810,7 +810,7 @@ final class CAS_Sidebar_Edit extends CAS_Admin
                 break;
             case 'text':
             default:
-                echo '<input style="width:200px;" type="text" name="' . $id . '" value="' . $current . '" />' . "\n";
+                echo '<input style="width:200px;" type="text" name="' . $id . '" value="' . esc_attr($current) . '" />' . "\n";
                 break;
         }
         echo '</p></div>';

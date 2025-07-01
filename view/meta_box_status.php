@@ -18,7 +18,7 @@ $deactivate_date = get_post_meta($post->ID, CAS_App::META_PREFIX.'deactivate_tim
             <td>
                 <span class="js-cas-activation">
                     <input type="text" name="sidebar_activate"
-                        value="<?php echo $activate_date; ?>"
+                        value="<?php echo esc_attr($activate_date); ?>"
                         data-input
                         placeholder="<?php esc_attr_e('Select date', 'content-aware-sidebars'); ?>">
                     <div class="button-group">
@@ -35,7 +35,7 @@ $deactivate_date = get_post_meta($post->ID, CAS_App::META_PREFIX.'deactivate_tim
             <td>
                 <span class="js-cas-expiry">
                     <input type="text" name="sidebar_deactivate"
-                        value="<?php echo $deactivate_date; ?>"
+                        value="<?php echo esc_attr($deactivate_date); ?>"
                         data-input
                         placeholder="<?php esc_attr_e('Never', 'content-aware-sidebars'); ?>">
                     <div class="button-group">
